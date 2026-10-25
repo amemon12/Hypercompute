@@ -1,0 +1,734 @@
+{
+  "schema": "hypercompute.capacity.bench/1",
+  "status": "ok",
+  "started_at": "2026-10-22T04:06:52.407685+00:00",
+  "finished_at": "2026-10-22T04:06:55.968484+00:00",
+  "case": {
+    "label": "smoke-qwen2.5-0.5b-instruct-q4_k_m-stock-cpu",
+    "model_paths": [
+      "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-0.5b-instruct-q4_k_m\\qwen2.5-0.5b-instruct-q4_k_m.gguf"
+    ],
+    "engine": {
+      "devices": [],
+      "tensor_split": [],
+      "ngl": 0,
+      "ctx": 1024,
+      "threads": 8,
+      "load_mode": "mmap",
+      "flags": []
+    },
+    "stream": null,
+    "rpc_endpoints": [],
+    "rpc_path_class": "local"
+  },
+  "workload": {
+    "prompt": "You are a careful assistant. Explain, in plain sentences, why a laptop that reads part of a language model from its SSD for every token is slower than one that keeps every layer in memory, and what changes when a second computer with spare memory joins over a network.",
+    "prompt_tokens": null,
+    "output_tokens": 16,
+    "reps": 3,
+    "warmup": 1,
+    "reuse_output_tokens": 1,
+    "seed": 7,
+    "temperature": 0.0,
+    "top_k": 1,
+    "request_timeout_s": 1800,
+    "load_timeout_s": 900
+  },
+  "host": {
+    "system": "Windows",
+    "release": "11",
+    "version": "10.0.26200",
+    "machine": "AMD64",
+    "processor": "AMD64 Family 26 Model 36 Stepping 0, AuthenticAMD",
+    "python": "3.12.10",
+    "cpu_logical": 24,
+    "cpu_physical": 12,
+    "ram_total_bytes": 33412722688,
+    "ram_available_bytes": 10325123072,
+    "power": {
+      "source": "ac",
+      "percent": 100,
+      "via": "psutil.sensors_battery"
+    }
+  },
+  "llama_cpp": {
+    "release": "b11770",
+    "variant": "windows-x64-cuda13.4",
+    "accelerator": "cuda",
+    "engine_dir": "C:\\Users\\operator\\.hypercompute\\engines\\llama-b11770-windows-x64-cuda13.4",
+    "source": "llama-server log",
+    "build": 11770,
+    "commit": "39da130fc"
+  },
+  "model": {
+    "model_id": "qwen2.5-0.5b-instruct-q4_k_m",
+    "shards": [
+      {
+        "path": "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-0.5b-instruct-q4_k_m\\qwen2.5-0.5b-instruct-q4_k_m.gguf",
+        "size": 491400032,
+        "mtime_ns": 1792546567859131600
+      }
+    ],
+    "bytes": 491400032,
+    "fingerprint": "1882222dbcdee64cb779fc0b162e066cd89dc56ed26473469a59a2163f117f93",
+    "architecture": "qwen2",
+    "file_type": "Q4_K_M",
+    "n_layer": 24
+  },
+  "preflight": {
+    "port": 51969,
+    "port_listener": null,
+    "available_ram_bytes": 10287169536,
+    "predicted": {
+      "total_bytes": 1035009024,
+      "parts": [
+        [
+          "cpu unit weights",
+          391962624
+        ],
+        [
+          "token_embd",
+          93592576
+        ],
+        [
+          "kv cache (cpu blocks)",
+          12582912
+        ],
+        [
+          "compute prior",
+          536870912
+        ]
+      ],
+      "provenance": "estimate"
+    },
+    "free_disk_bytes": 45692059648,
+    "disk_path": "C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity"
+  },
+  "refused": [],
+  "launch": {
+    "argv": [
+      "C:\\Users\\operator\\.hypercompute\\engines\\llama-b11770-windows-x64-cuda13.4\\llama-server.exe",
+      "-m",
+      "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-0.5b-instruct-q4_k_m\\qwen2.5-0.5b-instruct-q4_k_m.gguf",
+      "--load-mode",
+      "mmap",
+      "--device",
+      "none",
+      "-ngl",
+      "0",
+      "--fit",
+      "off",
+      "-c",
+      "1024",
+      "-np",
+      "1",
+      "-t",
+      "8",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "51969",
+      "--no-ui",
+      "-lv",
+      "4",
+      "--log-colors",
+      "off"
+    ],
+    "port": 51969,
+    "bin_dir": "C:\\Users\\operator\\.hypercompute\\engines\\llama-b11770-windows-x64-cuda13.4",
+    "log": "C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T040652Z-bench-smoke-qwen2.5-0.5b-instruct-q4_k_m-stock-cpu\\llama-server-51969.log"
+  },
+  "load": {
+    "ok": true,
+    "seconds": 1.081,
+    "error": null,
+    "log_lines": [
+      "0.00.581.229 I cmn  common_param: common_params_print_info: build 11770 (39da130fc) with Clang 20.1.8 for Windows x86_64",
+      "0.00.636.542 I cmn  common_param: system_info: n_threads = 8 (n_threads_batch = 8) / 24 | CUDA : ARCHS = 750,800,860,890,900,1200,1210 | USE_GRAPHS = 1 | FA_QUANTS = q4_0-q4_0,q8_0-q8_0,f16-f16,bf16-bf16 | BLACKWELL_NATIVE_FP4 = 1 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | AVX512 = 1 | AVX512_VBMI = 1 | AVX512_VNNI = 1 | AVX512_BF16 = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 |",
+      "0.00.643.985 I srv    load_model: loading model 'C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-0.5b-instruct-q4_k_m\\qwen2.5-0.5b-instruct-q4_k_m.gguf'",
+      "0.00.643.988 I srv    load_model: local path 'C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-0.5b-instruct-q4_k_m\\qwen2.5-0.5b-instruct-q4_k_m.gguf'",
+      "0.00.837.395 I load_tensors: loading model tensors, this can take a while... (load_mode = mmap)",
+      "0.00.875.775 I load_tensors: offloading 0 repeating layers to GPU",
+      "0.00.875.781 I load_tensors: offloaded 0/25 layers to GPU",
+      "0.00.875.786 I load_tensors:   CPU_Mapped model buffer size =   258.34 MiB",
+      "0.00.875.789 I load_tensors:   CPU_Mapped model buffer size =     6.93 MiB",
+      "0.00.875.790 I load_tensors:   CPU_Mapped model buffer size =    17.31 MiB",
+      "0.00.875.790 I load_tensors:   CPU_Mapped model buffer size =     6.93 MiB",
+      "0.00.875.791 I load_tensors:   CPU_Mapped model buffer size =    17.31 MiB",
+      "0.00.875.791 I load_tensors:   CPU_Mapped model buffer size =     6.93 MiB",
+      "0.00.875.792 I load_tensors:   CPU_Mapped model buffer size =    17.31 MiB",
+      "0.00.875.792 I load_tensors:   CPU_Mapped model buffer size =     6.93 MiB",
+      "0.00.875.792 I load_tensors:   CPU_Mapped model buffer size =    17.31 MiB",
+      "0.00.875.793 I load_tensors:   CPU_Mapped model buffer size =     6.93 MiB",
+      "0.00.875.793 I load_tensors:   CPU_Mapped model buffer size =    17.31 MiB",
+      "0.00.875.794 I load_tensors:   CPU_Mapped model buffer size =     6.93 MiB",
+      "0.00.875.794 I load_tensors:   CPU_Mapped model buffer size =    48.45 MiB",
+      "0.00.875.795 I load_tensors:   CPU_REPACK model buffer size =    28.05 MiB",
+      "0.00.898.333 I llama_kv_cache:        CPU KV buffer size =    12.00 MiB",
+      "0.00.899.480 I llama_kv_cache: size =   12.00 MiB (  1024 cells,  24 layers,  1/1 seqs), K (f16):    6.00 MiB, V (f16):    6.00 MiB",
+      "0.00.899.489 I llama_kv_cache: n_rot_k = 0, n_embd_head_k_all = 64",
+      "0.00.899.489 I llama_kv_cache: n_rot_v = 0, n_embd_head_k_all = 64",
+      "0.00.899.496 I sched_reserve: reserving ...",
+      "0.00.902.050 I sched_reserve:        CPU compute buffer size =    38.27 MiB",
+      "0.00.902.055 I sched_reserve: graph: nodes = 825, splits = 1, input objects = 4, input tensors = 9",
+      "0.00.902.055 I sched_reserve: reserve took 2.56 ms, sched copies = 1",
+      "0.01.010.266 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 1024, kv_unified = 'false'",
+      "0.01.010.307 I slot   load_model: id  0 | task -1 | new slot, n_ctx = 1024",
+      "0.01.010.339 I srv    load_model: prompt cache is enabled, size limit: 8192 MiB",
+      "0.01.010.340 I srv    load_model: use `--cache-ram 0` to disable the prompt cache",
+      "0.01.010.341 I srv    load_model: for more info see https://github.com/ggml-org/llama.cpp/pull/16391",
+      "0.01.010.342 I srv    load_model: context checkpoints enabled, max = 32, min spacing = 8192",
+      "0.01.015.397 I srv  llama_server: model loaded"
+    ],
+    "build": {
+      "build": 11770,
+      "commit": "39da130fc",
+      "source": "llama-server log"
+    },
+    "memory": {
+      "loaded_at_s": 1.095,
+      "samples": 11,
+      "seconds": 1.071,
+      "working_set_peak": 810512384,
+      "working_set_median": 197496832,
+      "private_peak": 754573312,
+      "sys_available_min": 9404874752,
+      "page_faults": 212081,
+      "proc_read_bytes": 15858816,
+      "sys_disk_read_bytes": 192512
+    }
+  },
+  "reps": [
+    {
+      "index": 0,
+      "warmup": true,
+      "ok": true,
+      "phases": [
+        {
+          "phase": "uncached",
+          "ok": true,
+          "error": null,
+          "wall_ms": 296.853,
+          "ttft_ms": 160.854,
+          "timings": {
+            "prompt_n": 89,
+            "prompt_ms": 157.328,
+            "predicted_n": 16,
+            "predicted_ms": 134.735,
+            "cache_n": 0
+          },
+          "cache_prompt": false,
+          "prompt_head": "[bench smoke-qwen2.5-0.5b-instruct-q4_k_m-stock-cpu rep 0 uncach",
+          "io": {
+            "seconds": 0.2973,
+            "proc_read_bytes": 0,
+            "sys_disk_read_bytes": 106496,
+            "page_faults": 2941,
+            "working_set_peak": 822517760,
+            "private_peak": 757047296
+          }
+        },
+        {
+          "phase": "prefix_prime",
+          "ok": true,
+          "error": null,
+          "wall_ms": 137.171,
+          "ttft_ms": null,
+          "timings": {
+            "prompt_n": 88,
+            "prompt_ms": 133.693,
+            "predicted_n": 1,
+            "predicted_ms": 0.001,
+            "cache_n": 0
+          },
+          "cache_prompt": false,
+          "prompt_head": "[bench smoke-qwen2.5-0.5b-instruct-q4_k_m-stock-cpu rep 0 reuse ",
+          "io": {
+            "seconds": 0.1373,
+            "proc_read_bytes": 0,
+            "sys_disk_read_bytes": 0,
+            "page_faults": 831,
+            "working_set_peak": 824090624,
+            "private_peak": 758362112
+          }
+        },
+        {
+          "phase": "prefix_reuse",
+          "ok": true,
+          "error": null,
+          "wall_ms": 12.084,
+          "ttft_ms": null,
+          "timings": {
+            "prompt_n": 1,
+            "prompt_ms": 9.574,
+            "predicted_n": 1,
+            "predicted_ms": 0.001,
+            "cache_n": 87
+          },
+          "cache_prompt": true,
+          "prompt_head": "[bench smoke-qwen2.5-0.5b-instruct-q4_k_m-stock-cpu rep 0 reuse ",
+          "io": {
+            "seconds": 0.0122,
+            "proc_read_bytes": 0,
+            "sys_disk_read_bytes": 0,
+            "page_faults": 451,
+            "working_set_peak": 824111104,
+            "private_peak": 758382592
+          }
+        }
+      ],
+      "gpu": null,
+      "power": {
+        "source": "ac",
+        "percent": 100,
+        "via": "psutil.sensors_battery"
+      },
+      "rpc": null,
+      "started_at": "2026-10-22T04:06:54.026416+00:00"
+    },
+    {
+      "index": 1,
+      "warmup": false,
+      "ok": true,
+      "phases": [
+        {
+          "phase": "uncached",
+          "ok": true,
+          "error": null,
+          "wall_ms": 268.875,
+          "ttft_ms": 142.736,
+          "timings": {
+            "prompt_n": 91,
+            "prompt_ms": 140.947,
+            "predicted_n": 16,
+            "predicted_ms": 125.737,
+            "cache_n": 0
+          },
+          "cache_prompt": false,
+          "prompt_head": "[bench smoke-qwen2.5-0.5b-instruct-q4_k_m-stock-cpu rep 1 uncach",
+          "io": {
+            "seconds": 0.269,
+            "proc_read_bytes": 0,
+            "sys_disk_read_bytes": 0,
+            "page_faults": 1545,
+            "working_set_peak": 825163776,
+            "private_peak": 759484416
+          }
+        },
+        {
+          "phase": "prefix_prime",
+          "ok": true,
+          "error": null,
+          "wall_ms": 158.273,
+          "ttft_ms": null,
+          "timings": {
+            "prompt_n": 90,
+            "prompt_ms": 146.575,
+            "predicted_n": 1,
+            "predicted_ms": 0.001,
+            "cache_n": 0
+          },
+          "cache_prompt": false,
+          "prompt_head": "[bench smoke-qwen2.5-0.5b-instruct-q4_k_m-stock-cpu rep 1 reuse ",
+          "io": {
+            "seconds": 0.1584,
+            "proc_read_bytes": 0,
+            "sys_disk_read_bytes": 0,
+            "page_faults": 821,
+            "working_set_peak": 826699776,
+            "private_peak": 760819712
+          }
+        },
+        {
+          "phase": "prefix_reuse",
+          "ok": true,
+          "error": null,
+          "wall_ms": 15.991,
+          "ttft_ms": null,
+          "timings": {
+            "prompt_n": 1,
+            "prompt_ms": 11.566,
+            "predicted_n": 1,
+            "predicted_ms": 0.001,
+            "cache_n": 89
+          },
+          "cache_prompt": true,
+          "prompt_head": "[bench smoke-qwen2.5-0.5b-instruct-q4_k_m-stock-cpu rep 1 reuse ",
+          "io": {
+            "seconds": 0.0161,
+            "proc_read_bytes": 0,
+            "sys_disk_read_bytes": 0,
+            "page_faults": 446,
+            "working_set_peak": 826699776,
+            "private_peak": 760819712
+          }
+        }
+      ],
+      "gpu": null,
+      "power": {
+        "source": "ac",
+        "percent": 100,
+        "via": "psutil.sensors_battery"
+      },
+      "rpc": null,
+      "started_at": "2026-10-22T04:06:54.480457+00:00"
+    },
+    {
+      "index": 2,
+      "warmup": false,
+      "ok": true,
+      "phases": [
+        {
+          "phase": "uncached",
+          "ok": true,
+          "error": null,
+          "wall_ms": 303.03,
+          "ttft_ms": 160.47,
+          "timings": {
+            "prompt_n": 90,
+            "prompt_ms": 157.917,
+            "predicted_n": 16,
+            "predicted_ms": 141.58,
+            "cache_n": 0
+          },
+          "cache_prompt": false,
+          "prompt_head": "[bench smoke-qwen2.5-0.5b-instruct-q4_k_m-stock-cpu rep 2 uncach",
+          "io": {
+            "seconds": 0.3034,
+            "proc_read_bytes": 0,
+            "sys_disk_read_bytes": 0,
+            "page_faults": 718,
+            "working_set_peak": 827813888,
+            "private_peak": 761929728
+          }
+        },
+        {
+          "phase": "prefix_prime",
+          "ok": true,
+          "error": null,
+          "wall_ms": 155.539,
+          "ttft_ms": null,
+          "timings": {
+            "prompt_n": 89,
+            "prompt_ms": 146.102,
+            "predicted_n": 1,
+            "predicted_ms": 0.001,
+            "cache_n": 0
+          },
+          "cache_prompt": false,
+          "prompt_head": "[bench smoke-qwen2.5-0.5b-instruct-q4_k_m-stock-cpu rep 2 reuse ",
+          "io": {
+            "seconds": 0.1558,
+            "proc_read_bytes": 0,
+            "sys_disk_read_bytes": 0,
+            "page_faults": 808,
+            "working_set_peak": 829292544,
+            "private_peak": 763269120
+          }
+        },
+        {
+          "phase": "prefix_reuse",
+          "ok": true,
+          "error": null,
+          "wall_ms": 10.405,
+          "ttft_ms": null,
+          "timings": {
+            "prompt_n": 1,
+            "prompt_ms": 7.916,
+            "predicted_n": 1,
+            "predicted_ms": 0.001,
+            "cache_n": 88
+          },
+          "cache_prompt": true,
+          "prompt_head": "[bench smoke-qwen2.5-0.5b-instruct-q4_k_m-stock-cpu rep 2 reuse ",
+          "io": {
+            "seconds": 0.0106,
+            "proc_read_bytes": 0,
+            "sys_disk_read_bytes": 0,
+            "page_faults": 446,
+            "working_set_peak": 829292544,
+            "private_peak": 763269120
+          }
+        }
+      ],
+      "gpu": null,
+      "power": {
+        "source": "ac",
+        "percent": 100,
+        "via": "psutil.sensors_battery"
+      },
+      "rpc": null,
+      "started_at": "2026-10-22T04:06:54.921842+00:00"
+    },
+    {
+      "index": 3,
+      "warmup": false,
+      "ok": true,
+      "phases": [
+        {
+          "phase": "uncached",
+          "ok": true,
+          "error": null,
+          "wall_ms": 279.882,
+          "ttft_ms": 148.623,
+          "timings": {
+            "prompt_n": 89,
+            "prompt_ms": 146.348,
+            "predicted_n": 16,
+            "predicted_ms": 130.425,
+            "cache_n": 0
+          },
+          "cache_prompt": false,
+          "prompt_head": "[bench smoke-qwen2.5-0.5b-instruct-q4_k_m-stock-cpu rep 3 uncach",
+          "io": {
+            "seconds": 0.2801,
+            "proc_read_bytes": 0,
+            "sys_disk_read_bytes": 40960,
+            "page_faults": 721,
+            "working_set_peak": 830414848,
+            "private_peak": 764387328
+          }
+        },
+        {
+          "phase": "prefix_prime",
+          "ok": true,
+          "error": null,
+          "wall_ms": 148.416,
+          "ttft_ms": null,
+          "timings": {
+            "prompt_n": 88,
+            "prompt_ms": 132.24,
+            "predicted_n": 1,
+            "predicted_ms": 0.001,
+            "cache_n": 0
+          },
+          "cache_prompt": false,
+          "prompt_head": "[bench smoke-qwen2.5-0.5b-instruct-q4_k_m-stock-cpu rep 3 reuse ",
+          "io": {
+            "seconds": 0.1487,
+            "proc_read_bytes": 0,
+            "sys_disk_read_bytes": 4096,
+            "page_faults": 794,
+            "working_set_peak": 831840256,
+            "private_peak": 765698048
+          }
+        },
+        {
+          "phase": "prefix_reuse",
+          "ok": true,
+          "error": null,
+          "wall_ms": 11.923,
+          "ttft_ms": null,
+          "timings": {
+            "prompt_n": 1,
+            "prompt_ms": 9.394,
+            "predicted_n": 1,
+            "predicted_ms": 0.001,
+            "cache_n": 87
+          },
+          "cache_prompt": true,
+          "prompt_head": "[bench smoke-qwen2.5-0.5b-instruct-q4_k_m-stock-cpu rep 3 reuse ",
+          "io": {
+            "seconds": 0.0121,
+            "proc_read_bytes": 0,
+            "sys_disk_read_bytes": 0,
+            "page_faults": 446,
+            "working_set_peak": 831840256,
+            "private_peak": 765698048
+          }
+        }
+      ],
+      "gpu": null,
+      "power": {
+        "source": "ac",
+        "percent": 100,
+        "via": "psutil.sensors_battery"
+      },
+      "rpc": null,
+      "started_at": "2026-10-22T04:06:55.397673+00:00"
+    }
+  ],
+  "summary": {
+    "n_reps": 3,
+    "n_warmup": 1,
+    "n_reps_ok": 3,
+    "metrics": {
+      "prefill_tokens": {
+        "n": 3,
+        "median": 90.0,
+        "low": 89.0,
+        "high": 91.0,
+        "spread": "min/max"
+      },
+      "prefill_ms": {
+        "n": 3,
+        "median": 146.348,
+        "low": 140.947,
+        "high": 157.917,
+        "spread": "min/max"
+      },
+      "prefill_tok_s": {
+        "n": 3,
+        "median": 608.1395031021947,
+        "low": 569.9196413305724,
+        "high": 645.6327555747905,
+        "spread": "min/max"
+      },
+      "ttft_ms": {
+        "n": 3,
+        "median": 148.623,
+        "low": 142.736,
+        "high": 160.47,
+        "spread": "min/max"
+      },
+      "decode_tokens": {
+        "n": 3,
+        "median": 16.0,
+        "low": 16.0,
+        "high": 16.0,
+        "spread": "min/max"
+      },
+      "decode_ms": {
+        "n": 3,
+        "median": 130.425,
+        "low": 125.737,
+        "high": 141.58,
+        "spread": "min/max"
+      },
+      "decode_tok_s": {
+        "n": 3,
+        "median": 122.67586735671841,
+        "low": 113.01031219098742,
+        "high": 127.24973555914329,
+        "spread": "min/max"
+      },
+      "decode_ms_per_token": {
+        "n": 3,
+        "median": 8.1515625,
+        "low": 7.8585625,
+        "high": 8.84875,
+        "spread": "min/max"
+      },
+      "uncached_wall_ms": {
+        "n": 3,
+        "median": 279.882,
+        "low": 268.875,
+        "high": 303.03,
+        "spread": "min/max"
+      },
+      "proc_read_bytes": {
+        "n": 3,
+        "median": 0.0,
+        "low": 0.0,
+        "high": 0.0,
+        "spread": "min/max"
+      },
+      "sys_disk_read_bytes": {
+        "n": 3,
+        "median": 0.0,
+        "low": 0.0,
+        "high": 40960.0,
+        "spread": "min/max"
+      },
+      "proc_read_bytes_per_token": {
+        "n": 3,
+        "median": 0.0,
+        "low": 0.0,
+        "high": 0.0,
+        "spread": "min/max"
+      },
+      "sys_disk_read_bytes_per_token": {
+        "n": 3,
+        "median": 0.0,
+        "low": 0.0,
+        "high": 2560.0,
+        "spread": "min/max"
+      },
+      "hcstream_bytes_read": {
+        "n": 0
+      },
+      "hcstream_bytes_per_token": {
+        "n": 0
+      },
+      "page_faults": {
+        "n": 3,
+        "median": 721.0,
+        "low": 718.0,
+        "high": 1545.0,
+        "spread": "min/max"
+      },
+      "reuse_cache_n": {
+        "n": 3,
+        "median": 88.0,
+        "low": 87.0,
+        "high": 89.0,
+        "spread": "min/max"
+      },
+      "reuse_prompt_n": {
+        "n": 3,
+        "median": 1.0,
+        "low": 1.0,
+        "high": 1.0,
+        "spread": "min/max"
+      },
+      "reuse_prompt_ms": {
+        "n": 3,
+        "median": 9.394,
+        "low": 7.916,
+        "high": 11.566,
+        "spread": "min/max"
+      },
+      "reuse_wall_ms": {
+        "n": 3,
+        "median": 11.923,
+        "low": 10.405,
+        "high": 15.991,
+        "spread": "min/max"
+      },
+      "working_set_peak": {
+        "n": 3,
+        "median": 829292544.0,
+        "low": 826699776.0,
+        "high": 831840256.0,
+        "spread": "min/max"
+      },
+      "private_peak": {
+        "n": 3,
+        "median": 763269120.0,
+        "low": 760819712.0,
+        "high": 765698048.0,
+        "spread": "min/max"
+      }
+    },
+    "failures": []
+  },
+  "stop": {
+    "exit_code": 1,
+    "stop_s": 0.131,
+    "children": 0,
+    "children_alive": [],
+    "child_alive_after_stop": false,
+    "error": null,
+    "pressure_guard_tripped": false,
+    "sampler_error": null,
+    "memory_whole_run": {
+      "samples": 28,
+      "seconds": 2.921,
+      "working_set_peak": 831840256,
+      "working_set_median": 822333440,
+      "private_peak": 765661184,
+      "sys_available_min": 9341341696,
+      "page_faults": 223049,
+      "proc_read_bytes": 15858816,
+      "sys_disk_read_bytes": 344064
+    },
+    "available_after_stop": 10218586112
+  },
+  "error": null,
+  "provenance": {
+    "load, reps, summary": "measured on this host during this run",
+    "preflight.predicted": "estimate: GGUF unit sizes plus KV sizing plus a compute prior, used only to refuse a run",
+    "ttft_ms": "measured client side over loopback with streaming; no gateway in the path",
+    "gpu": "nvidia-smi snapshot after the uncached phase, not a peak"
+  }
+}

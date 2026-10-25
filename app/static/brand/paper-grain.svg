@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="384" height="384" viewBox="0 0 384 384">
+  <filter id="paper" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+    <feTurbulence type="fractalNoise" baseFrequency=".72" numOctaves="3" seed="17" stitchTiles="stitch"/>
+    <feColorMatrix type="saturate" values="0"/>
+    <feComponentTransfer>
+      <feFuncR type="linear" slope=".04" intercept=".93686"/>
+      <feFuncG type="linear" slope=".04" intercept=".91725"/>
+      <feFuncB type="linear" slope=".04" intercept=".87804"/>
+      <feFuncA type="discrete" tableValues="1"/>
+    </feComponentTransfer>
+  </filter>
+  <path fill="#808080" d="M0 0h384v384H0z" filter="url(#paper)"/>
+</svg>

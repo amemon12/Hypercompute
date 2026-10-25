@@ -1,0 +1,48 @@
+         4984936 function calls (4982580 primitive calls) in 23.363 seconds
+
+   Ordered by: internal time
+   List reduced from 515 to 40 due to restriction <40>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     9454   19.292    0.002   19.354    0.002 C:\Users\operator\.hypercompute\worktrees\iroh-transport\.venv\Lib\site-packages\iroh\iroh_ffi.py:211(write)
+    99514    0.436    0.000    0.535    0.000 {built-in method _overlapped.GetQueuedCompletionStatus}
+    43142    0.353    0.000    1.005    0.000 C:\Users\operator\.hypercompute\worktrees\iroh-transport\.venv\Lib\site-packages\iroh\iroh_ffi.py:2684(_uniffi_rust_call_async)
+24370/23794    0.328    0.000    0.381    0.000 {method 'send' of '_socket.socket' objects}
+     9242    0.219    0.000    0.219    0.000 {method 'WSASend' of '_overlapped.Overlapped' objects}
+121210/121193    0.169    0.000    0.328    0.000 C:\Users\operator\.hypercompute\worktrees\iroh-transport\.venv\Lib\site-packages\iroh\iroh_ffi.py:286(_uniffi_rust_call_with_error)
+    18908    0.164    0.000   19.808    0.001 C:\Users\operator\.hypercompute\worktrees\iroh-transport\.venv\Lib\site-packages\iroh\iroh_ffi.py:3937(write_all)
+52790/52786    0.141    0.000   25.938    0.000 C:\Users\operator\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py:1922(_run_once)
+    52786    0.134    0.000    2.613    0.000 C:\Users\operator\AppData\Local\Programs\Python\Python312\Lib\asyncio\windows_events.py:761(_poll)
+    14750    0.111    0.000    0.111    0.000 {method 'WSARecvInto' of '_overlapped.Overlapped' objects}
+    14841    0.092    0.000    1.615    0.000 C:\Users\operator\.hypercompute\worktrees\iroh-transport\backend\hypercompute\transport\iroh.py:405(quic_to_tcp)
+   121210    0.076    0.000    0.124    0.000 C:\Users\operator\.hypercompute\worktrees\iroh-transport\.venv\Lib\site-packages\iroh\iroh_ffi.py:268(default)
+104262/104260    0.075    0.000   24.790    0.000 {method 'run' of '_contextvars.Context' objects}
+   104261    0.068    0.000    0.135    0.000 C:\Users\operator\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py:818(_call_soon)
+    22723    0.063    0.000    0.069    0.000 {method 'WSARecv' of '_overlapped.Overlapped' objects}
+    46727    0.061    0.000    0.134    0.000 C:\Users\operator\AppData\Local\Programs\Python\Python312\Lib\asyncio\windows_events.py:714(_register)
+    22723    0.052    0.000    0.290    0.000 C:\Users\operator\AppData\Local\Programs\Python\Python312\Lib\asyncio\proactor_events.py:792(_loop_self_reading)
+   121210    0.048    0.000    0.048    0.000 C:\Users\operator\.hypercompute\worktrees\iroh-transport\.venv\Lib\site-packages\iroh\iroh_ffi.py:44(default)
+104262/104260    0.046    0.000   25.056    0.000 C:\Users\operator\AppData\Local\Programs\Python\Python312\Lib\asyncio\events.py:86(_run)
+    16292    0.043    0.000    0.307    0.000 C:\Users\operator\AppData\Local\Programs\Python\Python312\Lib\asyncio\proactor_events.py:276(_loop_reading)
+   104318    0.039    0.000    0.053    0.000 C:\Users\operator\AppData\Local\Programs\Python\Python312\Lib\asyncio\events.py:36(__init__)
+    83668    0.039    0.000    0.251    0.000 C:\Users\operator\.hypercompute\worktrees\iroh-transport\.venv\Lib\site-packages\iroh\iroh_ffi.py:282(_uniffi_rust_call)
+    46727    0.038    0.000    0.042    0.000 C:\Users\operator\AppData\Local\Programs\Python\Python312\Lib\asyncio\windows_events.py:55(__init__)
+    22723    0.035    0.000    0.210    0.000 C:\Users\operator\AppData\Local\Programs\Python\Python312\Lib\asyncio\windows_events.py:482(recv)
+    93455    0.032    0.000    0.032    0.000 C:\Users\operator\AppData\Local\Programs\Python\Python312\Lib\_weakrefset.py:75(__contains__)
+    79890    0.031    0.000    0.123    0.000 C:\Users\operator\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py:789(call_soon)
+    24083    0.030    0.000    0.726    0.000 C:\Users\operator\.hypercompute\worktrees\iroh-transport\.venv\Lib\site-packages\iroh\iroh_ffi.py:3622(read)
+    46728    0.029    0.000    0.087    0.000 C:\Users\operator\AppData\Local\Programs\Python\Python312\Lib\asyncio\windows_events.py:92(set_result)
+    76672    0.027    0.000    0.111    0.000 {function _OverlappedFuture.set_result at 0x000001E13104C720}
+    52786    0.025    0.000    2.644    0.000 C:\Users\operator\AppData\Local\Programs\Python\Python312\Lib\asyncio\windows_events.py:443(select)
+    14989    0.025    0.000   20.025    0.001 C:\Users\operator\.hypercompute\worktrees\iroh-transport\backend\hypercompute\transport\iroh.py:396(tcp_to_quic)
+    14978    0.025    0.000    0.045    0.000 C:\Users\operator\AppData\Local\Programs\Python\Python312\Lib\asyncio\streams.py:671(read)
+    24083    0.024    0.000    0.866    0.000 C:\Users\operator\.hypercompute\worktrees\iroh-transport\backend\hypercompute\transport\iroh.py:125(read)
+24365/23793    0.024    0.000    0.524    0.000 C:\Users\operator\.hypercompute\worktrees\iroh-transport\.venv\Lib\site-packages\iroh\iroh_ffi.py:2675(_uniffi_continuation_callback)
+    75318    0.024    0.000    0.168    0.000 {built-in method builtins.next}
+    37655    0.023    0.000    0.029    0.000 C:\Users\operator\AppData\Local\Programs\Python\Python312\Lib\contextlib.py:104(__init__)
+    71093    0.022    0.000    0.022    0.000 {method 'pop' of 'dict' objects}
+     9454    0.022    0.000    0.054    0.000 C:\Users\operator\.hypercompute\worktrees\iroh-transport\.venv\Lib\site-packages\iroh\iroh_ffi.py:205(_pack_into)
+    46728    0.021    0.000    0.022    0.000 {method 'getresult' of '_overlapped.Overlapped' objects}
+    24365    0.021    0.000    0.034    0.000 C:\Users\operator\.hypercompute\worktrees\iroh-transport\.venv\Lib\site-packages\iroh\iroh_ffi.py:379(remove)
+
+

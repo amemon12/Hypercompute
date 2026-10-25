@@ -1,0 +1,177 @@
+[
+ {
+  "label": "120b-local-w",
+  "model": "gpt-oss-120b-mxfp4",
+  "nodes": [],
+  "args": [
+   "--prompt-tokens",
+   "128",
+   "--output-tokens",
+   "64",
+   "--warmup",
+   "1",
+   "--reps",
+   "3"
+  ],
+  "timeout_s": 5400
+ },
+ {
+  "label": "120b-3mac-1",
+  "model": "gpt-oss-120b-mxfp4",
+  "nodes": [
+   "4c2991743c154be896d10a0b53ba4d2b",
+   "6dad6cf75b2e4cf197b7bc7f4d0a67e4",
+   "d4e65f83c4be4a41aad722e40983b08b"
+  ],
+  "args": [
+   "--prompt-tokens",
+   "128",
+   "--output-tokens",
+   "64",
+   "--warmup",
+   "1",
+   "--reps",
+   "3",
+   "--seed-peers",
+   "--seed-timeout",
+   "1800"
+  ],
+  "timeout_s": 5400
+ },
+ {
+  "label": "120b-local-1",
+  "model": "gpt-oss-120b-mxfp4",
+  "nodes": [],
+  "args": [
+   "--prompt-tokens",
+   "128",
+   "--output-tokens",
+   "64",
+   "--warmup",
+   "1",
+   "--reps",
+   "3"
+  ],
+  "timeout_s": 5400
+ },
+ {
+  "label": "120b-3mac-2",
+  "model": "gpt-oss-120b-mxfp4",
+  "nodes": [
+   "4c2991743c154be896d10a0b53ba4d2b",
+   "6dad6cf75b2e4cf197b7bc7f4d0a67e4",
+   "d4e65f83c4be4a41aad722e40983b08b"
+  ],
+  "args": [
+   "--prompt-tokens",
+   "128",
+   "--output-tokens",
+   "64",
+   "--warmup",
+   "1",
+   "--reps",
+   "3",
+   "--seed-peers",
+   "--seed-timeout",
+   "1800"
+  ],
+  "timeout_s": 5400
+ },
+ {
+  "label": "120b-1mac-1",
+  "model": "gpt-oss-120b-mxfp4",
+  "nodes": [
+   "4c2991743c154be896d10a0b53ba4d2b"
+  ],
+  "args": [
+   "--prompt-tokens",
+   "128",
+   "--output-tokens",
+   "64",
+   "--warmup",
+   "1",
+   "--reps",
+   "3",
+   "--seed-peers",
+   "--seed-timeout",
+   "1800"
+  ],
+  "timeout_s": 5400
+ },
+ {
+  "label": "120b-local-2",
+  "model": "gpt-oss-120b-mxfp4",
+  "nodes": [],
+  "args": [
+   "--prompt-tokens",
+   "128",
+   "--output-tokens",
+   "64",
+   "--warmup",
+   "1",
+   "--reps",
+   "3"
+  ],
+  "timeout_s": 5400
+ },
+ {
+  "label": "120b-1mac-2",
+  "model": "gpt-oss-120b-mxfp4",
+  "nodes": [
+   "4c2991743c154be896d10a0b53ba4d2b"
+  ],
+  "args": [
+   "--prompt-tokens",
+   "128",
+   "--output-tokens",
+   "64",
+   "--warmup",
+   "1",
+   "--reps",
+   "3",
+   "--seed-peers",
+   "--seed-timeout",
+   "1800"
+  ],
+  "timeout_s": 5400
+ },
+ {
+  "label": "120b-3mac-3",
+  "model": "gpt-oss-120b-mxfp4",
+  "nodes": [
+   "4c2991743c154be896d10a0b53ba4d2b",
+   "6dad6cf75b2e4cf197b7bc7f4d0a67e4",
+   "d4e65f83c4be4a41aad722e40983b08b"
+  ],
+  "args": [
+   "--prompt-tokens",
+   "128",
+   "--output-tokens",
+   "64",
+   "--warmup",
+   "1",
+   "--reps",
+   "3",
+   "--seed-peers",
+   "--seed-timeout",
+   "1800"
+  ],
+  "timeout_s": 5400
+ },
+ {
+  "label": "120b-local-3",
+  "model": "gpt-oss-120b-mxfp4",
+  "nodes": [],
+  "args": [
+   "--prompt-tokens",
+   "128",
+   "--output-tokens",
+   "64",
+   "--warmup",
+   "1",
+   "--reps",
+   "3"
+  ],
+  "timeout_s": 5400
+ }
+]

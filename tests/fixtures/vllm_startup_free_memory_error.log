@@ -1,0 +1,5 @@
+(APIServer pid=3120) INFO 10-21 09:20:11 [utils.py:253] non-default args: {'model_tag': 'Qwen/Qwen2.5-7B-Instruct-AWQ', 'gpu_memory_utilization': 0.89}
+(EngineCore pid=3301) ERROR 10-21 09:20:40 [core.py:1102] EngineCore failed to start.
+(EngineCore pid=3301) ERROR 10-21 09:20:40 [core.py:1102] Traceback (most recent call last):
+(EngineCore pid=3301) ERROR 10-21 09:20:40 [core.py:1102] ValueError: Free memory on device cuda:0 (0.71/11.94 GiB) on startup is less than desired GPU memory utilization (0.89, 10.63 GiB). Decrease GPU memory utilization or reduce GPU memory used by other processes.
+(APIServer pid=3120) RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}

@@ -1,0 +1,1903 @@
+{
+  "started_at": "2026-10-21T02:09:14.846687+00:00",
+  "args": {
+    "port": 8000,
+    "model": "qwen2.5-0.5b-instruct-q4_k_m",
+    "strategy": "all_selected",
+    "node": null,
+    "ctx": 4096,
+    "prompt": "Name three planets and one fact about each, briefly.",
+    "bench": false,
+    "reps": 3,
+    "keep": true,
+    "label": "pre-crash"
+  },
+  "nodes": [
+    {
+      "id": "local",
+      "display_name": "benchmark-host (this machine)",
+      "is_local": true,
+      "session_id": null,
+      "state": "eligible",
+      "state_reason": null,
+      "joined_at": "2026-10-21T02:05:27.662251Z",
+      "last_heartbeat_at": "2026-10-21T02:09:11.277164Z",
+      "heartbeat_age_s": 0.0,
+      "inventory": {
+        "hostname": "benchmark-host",
+        "os": {
+          "system": "windows",
+          "release": "11",
+          "version": "10.0.26200",
+          "machine": "x86_64"
+        },
+        "cpu": {
+          "model": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+          "physical_cores": 12,
+          "logical_cores": 24
+        },
+        "memory_pools": [
+          {
+            "id": "ram",
+            "kind": "system_ram",
+            "total_bytes": 33412722688,
+            "free_bytes": 8045387776,
+            "measured_at": "2026-10-21T02:09:11.228367Z",
+            "source": "psutil",
+            "note": null
+          },
+          {
+            "id": "vram:CUDA0",
+            "kind": "discrete_vram",
+            "total_bytes": 12820938752,
+            "free_bytes": 12524191744,
+            "measured_at": "2026-10-21T02:09:11.277164Z",
+            "source": "nvidia-smi",
+            "note": null
+          }
+        ],
+        "devices": [
+          {
+            "id": "CPU",
+            "kind": "cpu",
+            "name": "AMD64 Family 26 Model 36 Stepping 0, AuthenticAMD",
+            "vendor": null,
+            "pool_id": "ram",
+            "backend": "cpu",
+            "total_bytes": null,
+            "free_bytes": null,
+            "driver_version": null,
+            "compute_capability": null,
+            "source": "platform"
+          },
+          {
+            "id": "CUDA0",
+            "kind": "gpu",
+            "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+            "vendor": "NVIDIA",
+            "pool_id": "vram:CUDA0",
+            "backend": "cuda",
+            "total_bytes": 12820938752,
+            "free_bytes": 12524191744,
+            "driver_version": "591.84",
+            "compute_capability": "12.0",
+            "source": "nvidia-smi"
+          },
+          {
+            "id": "AMD Radeon(TM) 890M Graphics",
+            "kind": "igpu",
+            "name": "AMD Radeon(TM) 890M Graphics",
+            "vendor": null,
+            "pool_id": "ram",
+            "backend": "unknown",
+            "total_bytes": null,
+            "free_bytes": null,
+            "driver_version": "32.0.13062.3005",
+            "compute_capability": null,
+            "source": "Win32_VideoController (AdapterRAM not trusted)"
+          }
+        ],
+        "disk_free_bytes": 70606032896,
+        "network": [
+          {
+            "name": "Ethernet 2",
+            "ipv4": [
+              "169.254.21.125"
+            ],
+            "is_up": false,
+            "speed_mbps": null,
+            "kind": "ethernet"
+          },
+          {
+            "name": "Ethernet",
+            "ipv4": [
+              "192.168.56.1"
+            ],
+            "is_up": true,
+            "speed_mbps": 1000,
+            "kind": "ethernet"
+          },
+          {
+            "name": "Wi-Fi 3",
+            "ipv4": [
+              "169.254.150.175"
+            ],
+            "is_up": false,
+            "speed_mbps": null,
+            "kind": "wifi"
+          },
+          {
+            "name": "Wi-Fi 5",
+            "ipv4": [
+              "169.254.129.29"
+            ],
+            "is_up": false,
+            "speed_mbps": null,
+            "kind": "wifi"
+          },
+          {
+            "name": "Wi-Fi",
+            "ipv4": [
+              "10.19.175.205"
+            ],
+            "is_up": true,
+            "speed_mbps": 1201,
+            "kind": "wifi"
+          },
+          {
+            "name": "Bluetooth Network Connection",
+            "ipv4": [
+              "169.254.85.255"
+            ],
+            "is_up": false,
+            "speed_mbps": 3,
+            "kind": "other"
+          },
+          {
+            "name": "vEthernet (WSL (Hyper-V firewall))",
+            "ipv4": [
+              "172.18.48.1"
+            ],
+            "is_up": true,
+            "speed_mbps": 4294,
+            "kind": "virtual"
+          },
+          {
+            "name": "Loopback Pseudo-Interface 1",
+            "ipv4": [
+              "127.0.0.1"
+            ],
+            "is_up": true,
+            "speed_mbps": 1073,
+            "kind": "loopback"
+          }
+        ],
+        "engine": {
+          "engine": "llama_rpc",
+          "installed": true,
+          "release": "b11770",
+          "build_number": 11770,
+          "commit": "39da130fc",
+          "rpc_proto": "8.0.0",
+          "variant": "windows-x64-cuda13.4",
+          "accelerator": "cuda",
+          "bin_dir": "C:\\Users\\operator\\.hypercompute\\engines\\llama-b11770-windows-x64-cuda13.4",
+          "smoke": "passed",
+          "smoke_detail": "version: 0.7.0-dev (build 11770, commit 39da130fc); devices: CUDA0",
+          "devices": [
+            {
+              "name": "CUDA0",
+              "description": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+              "total_bytes": 12819890176,
+              "free_bytes": 11561598976
+            }
+          ]
+        },
+        "collected_at": "2026-10-21T02:05:27.658249Z",
+        "diagnostics": [
+          {
+            "level": "warning",
+            "code": "windows_public_network",
+            "message": "Network 'Wi-Fi' uses the Windows Public profile; inbound connections to the worker are blocked by default.",
+            "fix": "Allow ggml-rpc-server.exe when Windows asks, or add the scoped firewall rule that `hypercompute join` prints."
+          }
+        ]
+      },
+      "contribution": {
+        "devices": [
+          "CUDA0"
+        ],
+        "max_bytes": 12284067840,
+        "reserve_bytes": 6682544537,
+        "enforcement": "soft_admission",
+        "cache_enabled": false
+      },
+      "worker": null,
+      "worker_state": null,
+      "worker_cpu_seconds": null,
+      "verification": null,
+      "deployments": []
+    },
+    {
+      "id": "8f169e3549fc41fbb14f6876a19d704c",
+      "display_name": "loopback-cpu-worker",
+      "is_local": false,
+      "session_id": "2c56b674d0e742a8bcd2db236101832c",
+      "state": "eligible",
+      "state_reason": null,
+      "joined_at": "2026-10-21T02:06:35.066612Z",
+      "last_heartbeat_at": "2026-10-21T02:09:12.053136Z",
+      "heartbeat_age_s": 2.794551,
+      "inventory": {
+        "hostname": "benchmark-host",
+        "os": {
+          "system": "windows",
+          "release": "11",
+          "version": "10.0.26200",
+          "machine": "x86_64"
+        },
+        "cpu": {
+          "model": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+          "physical_cores": 12,
+          "logical_cores": 24
+        },
+        "memory_pools": [
+          {
+            "id": "ram",
+            "kind": "system_ram",
+            "total_bytes": 33412722688,
+            "free_bytes": 8172797952,
+            "measured_at": "2026-10-21T02:09:11.990532Z",
+            "source": "psutil",
+            "note": null
+          },
+          {
+            "id": "vram:CUDA0",
+            "kind": "discrete_vram",
+            "total_bytes": 12820938752,
+            "free_bytes": 12524191744,
+            "measured_at": "2026-10-21T02:09:12.051136Z",
+            "source": "nvidia-smi",
+            "note": null
+          }
+        ],
+        "devices": [
+          {
+            "id": "CPU",
+            "kind": "cpu",
+            "name": "AMD64 Family 26 Model 36 Stepping 0, AuthenticAMD",
+            "vendor": null,
+            "pool_id": "ram",
+            "backend": "cpu",
+            "total_bytes": null,
+            "free_bytes": null,
+            "driver_version": null,
+            "compute_capability": null,
+            "source": "platform"
+          },
+          {
+            "id": "CUDA0",
+            "kind": "gpu",
+            "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+            "vendor": "NVIDIA",
+            "pool_id": "vram:CUDA0",
+            "backend": "cuda",
+            "total_bytes": 12820938752,
+            "free_bytes": 12524191744,
+            "driver_version": "591.84",
+            "compute_capability": "12.0",
+            "source": "nvidia-smi"
+          },
+          {
+            "id": "AMD Radeon(TM) 890M Graphics",
+            "kind": "igpu",
+            "name": "AMD Radeon(TM) 890M Graphics",
+            "vendor": null,
+            "pool_id": "ram",
+            "backend": "unknown",
+            "total_bytes": null,
+            "free_bytes": null,
+            "driver_version": "32.0.13062.3005",
+            "compute_capability": null,
+            "source": "Win32_VideoController (AdapterRAM not trusted)"
+          }
+        ],
+        "disk_free_bytes": 70568153088,
+        "network": [
+          {
+            "name": "Ethernet 2",
+            "ipv4": [
+              "169.254.21.125"
+            ],
+            "is_up": false,
+            "speed_mbps": null,
+            "kind": "ethernet"
+          },
+          {
+            "name": "Ethernet",
+            "ipv4": [
+              "192.168.56.1"
+            ],
+            "is_up": true,
+            "speed_mbps": 1000,
+            "kind": "ethernet"
+          },
+          {
+            "name": "Wi-Fi 3",
+            "ipv4": [
+              "169.254.150.175"
+            ],
+            "is_up": false,
+            "speed_mbps": null,
+            "kind": "wifi"
+          },
+          {
+            "name": "Wi-Fi 5",
+            "ipv4": [
+              "169.254.129.29"
+            ],
+            "is_up": false,
+            "speed_mbps": null,
+            "kind": "wifi"
+          },
+          {
+            "name": "Wi-Fi",
+            "ipv4": [
+              "10.19.175.205"
+            ],
+            "is_up": true,
+            "speed_mbps": 1201,
+            "kind": "wifi"
+          },
+          {
+            "name": "Bluetooth Network Connection",
+            "ipv4": [
+              "169.254.85.255"
+            ],
+            "is_up": false,
+            "speed_mbps": 3,
+            "kind": "other"
+          },
+          {
+            "name": "vEthernet (WSL (Hyper-V firewall))",
+            "ipv4": [
+              "172.18.48.1"
+            ],
+            "is_up": true,
+            "speed_mbps": 4294,
+            "kind": "virtual"
+          },
+          {
+            "name": "Loopback Pseudo-Interface 1",
+            "ipv4": [
+              "127.0.0.1"
+            ],
+            "is_up": true,
+            "speed_mbps": 1073,
+            "kind": "loopback"
+          }
+        ],
+        "engine": {
+          "engine": "llama_rpc",
+          "installed": true,
+          "release": "b11770",
+          "build_number": 11770,
+          "commit": "39da130fc",
+          "rpc_proto": "8.0.0",
+          "variant": "windows-x64-cuda13.4",
+          "accelerator": "cuda",
+          "bin_dir": "C:\\Users\\operator\\.hypercompute\\engines\\llama-b11770-windows-x64-cuda13.4",
+          "smoke": "passed",
+          "smoke_detail": "version: 0.7.0-dev (build 11770, commit 39da130fc); devices: CUDA0",
+          "devices": [
+            {
+              "name": "CUDA0",
+              "description": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+              "total_bytes": 12819890176,
+              "free_bytes": 11561598976
+            }
+          ]
+        },
+        "collected_at": "2026-10-21T02:06:34.384241Z",
+        "diagnostics": [
+          {
+            "level": "warning",
+            "code": "low_free_ram",
+            "message": "Only 3.4 GiB host RAM is free right now.",
+            "fix": "Close large apps before contributing, or lower --max-memory."
+          },
+          {
+            "level": "warning",
+            "code": "windows_public_network",
+            "message": "Network 'Wi-Fi' uses the Windows Public profile; inbound connections to the worker are blocked by default.",
+            "fix": "Allow ggml-rpc-server.exe when Windows asks, or add the scoped firewall rule that `hypercompute join` prints."
+          }
+        ]
+      },
+      "contribution": {
+        "devices": [
+          "CPU"
+        ],
+        "max_bytes": 2147483648,
+        "reserve_bytes": 1073741824,
+        "enforcement": "soft_admission",
+        "cache_enabled": false
+      },
+      "worker": {
+        "host": "127.0.0.1",
+        "port": 47052
+      },
+      "worker_state": "running",
+      "worker_cpu_seconds": 71.515625,
+      "verification": {
+        "checked_at": "2026-10-21T02:06:35.397770Z",
+        "reachable": true,
+        "engine_match": true,
+        "rpc_devices": [
+          {
+            "name": "RPC0",
+            "description": "127.0.0.1:47052",
+            "total_bytes": 33411825664,
+            "free_bytes": 3329228800
+          }
+        ],
+        "detail": "worker answered the llama.cpp RPC handshake; llama.cpp b11770, RPC 8.0.0",
+        "fix": null
+      },
+      "deployments": []
+    }
+  ],
+  "plan": {
+    "id": "58ce67d25b4e455ab2989135b4c8b932",
+    "model_id": "qwen2.5-0.5b-instruct-q4_k_m",
+    "strategy": "all_selected",
+    "ctx_size": 4096,
+    "feasible": true,
+    "fit_label": "estimated_fit",
+    "heuristic": true,
+    "assignments": [
+      {
+        "node_id": "local",
+        "device": "CUDA0",
+        "endpoint": null,
+        "pool_id": "vram:CUDA0",
+        "layers": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ],
+        "holds_output": false,
+        "weight_bytes": 216894720,
+        "kv_bytes": 44040192,
+        "compute_bytes_est": 115343360,
+        "overhead_bytes_est": 471859200,
+        "total_bytes_est": 848137472,
+        "budget_bytes": 11987320832,
+        "fits": true
+      },
+      {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+        "device": "RPC0",
+        "endpoint": "127.0.0.1:47052",
+        "pool_id": "ram",
+        "layers": [
+          21,
+          22,
+          23
+        ],
+        "holds_output": true,
+        "weight_bytes": 174961408,
+        "kv_bytes": 6291456,
+        "compute_bytes_est": 115343360,
+        "overhead_bytes_est": 134217728,
+        "total_bytes_est": 430813952,
+        "budget_bytes": 2147483648,
+        "fits": true
+      }
+    ],
+    "device_list": [
+      "CUDA0",
+      "RPC0"
+    ],
+    "tensor_split": [
+      21,
+      4
+    ],
+    "rpc_endpoints": [
+      "127.0.0.1:47052"
+    ],
+    "cpu_resident_bytes": 93592576,
+    "reasons": [
+      "strategy: run together (every selected device gets at least one layer)",
+      "contributed / estimated usable across selected devices: 13.2 GiB (separate memory pools, not one fast global memory)"
+    ],
+    "warnings": [
+      "the model fits on this machine alone; splitting it adds network hops and is expected to be slower. This run demonstrates participation, not necessity."
+    ],
+    "candidates": [
+      {
+        "label": "this machine only",
+        "devices": [
+          "local:CUDA0"
+        ],
+        "feasible": true,
+        "reason": "estimated fit"
+      },
+      {
+        "label": "every selected device participates",
+        "devices": [
+          "local:CUDA0",
+          "8f169e3549fc41fbb14f6876a19d704c:127.0.0.1:47052#0"
+        ],
+        "feasible": true,
+        "reason": "estimated fit"
+      }
+    ],
+    "created_at": "2026-10-21T02:09:14.848167Z"
+  },
+  "load_seconds": 2.01,
+  "deployment": {
+    "id": "ee5ff5c9fbd443979690efe8b6bac0a5",
+    "plan": {
+      "id": "58ce67d25b4e455ab2989135b4c8b932",
+      "model_id": "qwen2.5-0.5b-instruct-q4_k_m",
+      "strategy": "all_selected",
+      "ctx_size": 4096,
+      "feasible": true,
+      "fit_label": "estimated_fit",
+      "heuristic": true,
+      "assignments": [
+        {
+          "node_id": "local",
+          "device": "CUDA0",
+          "endpoint": null,
+          "pool_id": "vram:CUDA0",
+          "layers": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20
+          ],
+          "holds_output": false,
+          "weight_bytes": 216894720,
+          "kv_bytes": 44040192,
+          "compute_bytes_est": 115343360,
+          "overhead_bytes_est": 471859200,
+          "total_bytes_est": 848137472,
+          "budget_bytes": 11987320832,
+          "fits": true
+        },
+        {
+          "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+          "device": "RPC0",
+          "endpoint": "127.0.0.1:47052",
+          "pool_id": "ram",
+          "layers": [
+            21,
+            22,
+            23
+          ],
+          "holds_output": true,
+          "weight_bytes": 174961408,
+          "kv_bytes": 6291456,
+          "compute_bytes_est": 115343360,
+          "overhead_bytes_est": 134217728,
+          "total_bytes_est": 430813952,
+          "budget_bytes": 2147483648,
+          "fits": true
+        }
+      ],
+      "device_list": [
+        "CUDA0",
+        "RPC0"
+      ],
+      "tensor_split": [
+        21,
+        4
+      ],
+      "rpc_endpoints": [
+        "127.0.0.1:47052"
+      ],
+      "cpu_resident_bytes": 93592576,
+      "reasons": [
+        "strategy: run together (every selected device gets at least one layer)",
+        "contributed / estimated usable across selected devices: 13.2 GiB (separate memory pools, not one fast global memory)"
+      ],
+      "warnings": [
+        "the model fits on this machine alone; splitting it adds network hops and is expected to be slower. This run demonstrates participation, not necessity."
+      ],
+      "candidates": [
+        {
+          "label": "this machine only",
+          "devices": [
+            "local:CUDA0"
+          ],
+          "feasible": true,
+          "reason": "estimated fit"
+        },
+        {
+          "label": "every selected device participates",
+          "devices": [
+            "local:CUDA0",
+            "8f169e3549fc41fbb14f6876a19d704c:127.0.0.1:47052#0"
+          ],
+          "feasible": true,
+          "reason": "estimated fit"
+        }
+      ],
+      "created_at": "2026-10-21T02:09:14.848167Z"
+    },
+    "state": "ready",
+    "history": [
+      {
+        "state": "planned",
+        "at": "2026-10-21T02:09:14.861647Z",
+        "detail": null
+      },
+      {
+        "state": "reserving",
+        "at": "2026-10-21T02:09:14.869934Z",
+        "detail": null
+      },
+      {
+        "state": "preparing",
+        "at": "2026-10-21T02:09:14.870933Z",
+        "detail": "re-checking peers and model file"
+      },
+      {
+        "state": "loading",
+        "at": "2026-10-21T02:09:15.123335Z",
+        "detail": "starting llama-server"
+      },
+      {
+        "state": "warming",
+        "at": "2026-10-21T02:09:16.698801Z",
+        "detail": "first request"
+      },
+      {
+        "state": "ready",
+        "at": "2026-10-21T02:09:16.761521Z",
+        "detail": "CUDA0: model 207 MiB, KV 42 MiB, ~21 layers (planned 21); RPC0[127.0.0.1:47052]: model 167 MiB, KV 6 MiB, ~3 layers (planned 3)"
+      }
+    ],
+    "error": null,
+    "cleanup": null,
+    "progress": "ready",
+    "engine_args": [
+      "-m",
+      "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-0.5b-instruct-q4_k_m\\qwen2.5-0.5b-instruct-q4_k_m.gguf",
+      "--alias",
+      "qwen2.5-0.5b-instruct-q4_k_m",
+      "--rpc",
+      "127.0.0.1:47052",
+      "--device",
+      "CUDA0,RPC0",
+      "--split-mode",
+      "layer",
+      "--tensor-split",
+      "21,4",
+      "-ngl",
+      "all",
+      "--fit",
+      "off",
+      "-c",
+      "4096",
+      "-np",
+      "1",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "51341",
+      "--metrics",
+      "--no-ui",
+      "-lv",
+      "4",
+      "--log-colors",
+      "off"
+    ],
+    "upstream_port": 51341,
+    "pid": 29728,
+    "placement": {
+      "offloaded": "25/25",
+      "devices": [
+        {
+          "name": "CPU_Mapped",
+          "model_bytes": 93595893,
+          "kv_bytes": 0,
+          "compute_bytes": 0,
+          "layers_est": null
+        },
+        {
+          "name": "CUDA0",
+          "model_bytes": 216918917,
+          "kv_bytes": 44040192,
+          "compute_bytes": 76074188,
+          "layers_est": 21
+        },
+        {
+          "name": "RPC0[127.0.0.1:47052]",
+          "model_bytes": 174965391,
+          "kv_bytes": 6291456,
+          "compute_bytes": 59548631,
+          "layers_est": 3
+        },
+        {
+          "name": "CUDA_Host",
+          "model_bytes": 0,
+          "kv_bytes": 0,
+          "compute_bytes": 35200696,
+          "layers_est": null
+        }
+      ],
+      "evidence_lines": [
+        "load_tensors: offloaded 25/25 layers to GPU",
+        "load_tensors:   CPU_Mapped model buffer size =    89.26 MiB",
+        "load_tensors:        CUDA0 model buffer size =   206.87 MiB",
+        "load_tensors: RPC0[127.0.0.1:47052] model buffer size =   166.86 MiB",
+        "llama_kv_cache:      CUDA0 KV buffer size =    42.00 MiB",
+        "llama_kv_cache: RPC0[127.0.0.1:47052] KV buffer size =     6.00 MiB",
+        "sched_reserve:      CUDA0 compute buffer size =    72.55 MiB",
+        "sched_reserve: RPC0[127.0.0.1:47052] compute buffer size =    56.79 MiB",
+        "sched_reserve:  CUDA_Host compute buffer size =    33.57 MiB"
+      ],
+      "parsed_at": "2026-10-21T02:09:16.696803Z"
+    },
+    "participation_verified": true,
+    "participation_detail": "CUDA0: model 207 MiB, KV 42 MiB, ~21 layers (planned 21); RPC0[127.0.0.1:47052]: model 167 MiB, KV 6 MiB, ~3 layers (planned 3)",
+    "created_at": "2026-10-21T02:09:14.861647Z",
+    "idempotency_key": "7a85b7eeb6c84da4b3c8d11c994c8340"
+  },
+  "runs": [
+    {
+      "id": "0584b328c97a47438f9645734bdcd75e",
+      "attempt_id": "666460f9be834e1a9b3948c9b3be00d6",
+      "deployment_id": "ee5ff5c9fbd443979690efe8b6bac0a5",
+      "kind": "chat",
+      "status": "ok",
+      "simulated": false,
+      "model": {
+        "id": "qwen2.5-0.5b-instruct-q4_k_m",
+        "repo": "Qwen/Qwen2.5-0.5B-Instruct-GGUF",
+        "revision": "9217f5db79a29953eb74d5343926648285ec7e67",
+        "quantization": "Q4_K_M",
+        "format": "gguf",
+        "files": [
+          {
+            "name": "qwen2.5-0.5b-instruct-q4_k_m.gguf",
+            "sha256": "74a4da8c9fdbcd15bd1f6d01d621410d31c6fc00986f5eb687824e7b93d7a9db"
+          }
+        ]
+      },
+      "engine": {
+        "engine": "llama_rpc",
+        "release": "b11770",
+        "commit": "39da130fc",
+        "variant": "windows-x64-cuda13.4"
+      },
+      "placement": [
+        {
+          "device": "CPU_Mapped",
+          "model_bytes": 93595893,
+          "kv_bytes": 0,
+          "layers_est": null
+        },
+        {
+          "device": "CUDA0",
+          "model_bytes": 216918917,
+          "kv_bytes": 44040192,
+          "layers_est": 21
+        },
+        {
+          "device": "RPC0[127.0.0.1:47052]",
+          "model_bytes": 174965391,
+          "kv_bytes": 6291456,
+          "layers_est": 3
+        },
+        {
+          "device": "CUDA_Host",
+          "model_bytes": 0,
+          "kv_bytes": 0,
+          "layers_est": null
+        }
+      ],
+      "transport": "tcp",
+      "ctx_size": 4096,
+      "stream": true,
+      "prompt_tokens": 40,
+      "completion_tokens": 128,
+      "ttft_ms": 25.79480002168566,
+      "total_ms": 860.5918000685051,
+      "timings": {
+        "prompt_n": 16,
+        "prompt_ms": 19.752,
+        "predicted_n": 128,
+        "predicted_ms": 834.246,
+        "predicted_per_second": 152.23327411818576,
+        "prompt_per_second": 810.0445524503848,
+        "cache_n": 24
+      },
+      "finish_reason": "length",
+      "sampling": {
+        "temperature": 0,
+        "max_tokens": 128
+      },
+      "cache_state": "warm",
+      "output_text": "Sure, here are three planets and one fact about each:\n\n1. **Mercury** - The smallest planet in our solar system, with a diameter of about 4,880 kilometers. It is the closest planet to the Sun and is the first planet to be visited by humans.\n\n2. **Venus** - The second planet from the Sun, with a diameter of about 12,104 kilometers. It is the second-smallest planet in our solar system and is known for its thick atmosphere, which is composed mainly of carbon dioxide and sulfur dioxide.\n\n3. **Earth** - The third planet from the",
+      "error": null,
+      "started_at": "2026-10-21T02:09:17.745510Z",
+      "benchmark_id": null,
+      "prompt_label": null
+    },
+    {
+      "id": "344da517be1243518eccc2f5b5b2c680",
+      "attempt_id": "bf35538dfa6f4864836b86ddeb40797c",
+      "deployment_id": "ee5ff5c9fbd443979690efe8b6bac0a5",
+      "kind": "warmup",
+      "status": "ok",
+      "simulated": false,
+      "model": {
+        "id": "qwen2.5-0.5b-instruct-q4_k_m",
+        "repo": "Qwen/Qwen2.5-0.5B-Instruct-GGUF",
+        "revision": "9217f5db79a29953eb74d5343926648285ec7e67",
+        "quantization": "Q4_K_M",
+        "format": "gguf",
+        "files": [
+          {
+            "name": "qwen2.5-0.5b-instruct-q4_k_m.gguf",
+            "sha256": "74a4da8c9fdbcd15bd1f6d01d621410d31c6fc00986f5eb687824e7b93d7a9db"
+          }
+        ]
+      },
+      "engine": {
+        "engine": "llama_rpc",
+        "release": "b11770",
+        "commit": "39da130fc",
+        "variant": "windows-x64-cuda13.4"
+      },
+      "placement": [
+        {
+          "device": "CPU_Mapped",
+          "model_bytes": 93595893,
+          "kv_bytes": 0,
+          "layers_est": null
+        },
+        {
+          "device": "CUDA0",
+          "model_bytes": 216918917,
+          "kv_bytes": 44040192,
+          "layers_est": 21
+        },
+        {
+          "device": "RPC0[127.0.0.1:47052]",
+          "model_bytes": 174965391,
+          "kv_bytes": 6291456,
+          "layers_est": 3
+        },
+        {
+          "device": "CUDA_Host",
+          "model_bytes": 0,
+          "kv_bytes": 0,
+          "layers_est": null
+        }
+      ],
+      "transport": "tcp",
+      "ctx_size": 4096,
+      "stream": true,
+      "prompt_tokens": 33,
+      "completion_tokens": 2,
+      "ttft_ms": 45.189399970695376,
+      "total_ms": 58.40630002785474,
+      "timings": {
+        "prompt_n": 33,
+        "prompt_ms": 42.248,
+        "predicted_n": 2,
+        "predicted_ms": 13.159,
+        "predicted_per_second": 75.99361653621095,
+        "prompt_per_second": 781.1020640030298,
+        "cache_n": 0
+      },
+      "finish_reason": "stop",
+      "sampling": {
+        "temperature": 0,
+        "max_tokens": 8
+      },
+      "cache_state": "cold",
+      "output_text": "ready",
+      "error": null,
+      "started_at": "2026-10-21T02:09:16.758520Z",
+      "benchmark_id": null,
+      "prompt_label": null
+    },
+    {
+      "id": "1fc6195403274202a44c4eea1a46007d",
+      "attempt_id": "656569dbea1349518fd9355e111a85e9",
+      "deployment_id": "aa4e4e4547184513896356776f45cf0c",
+      "kind": "benchmark",
+      "status": "ok",
+      "simulated": false,
+      "model": {
+        "id": "qwen2.5-0.5b-instruct-q4_k_m",
+        "repo": "Qwen/Qwen2.5-0.5B-Instruct-GGUF",
+        "revision": "9217f5db79a29953eb74d5343926648285ec7e67",
+        "quantization": "Q4_K_M",
+        "format": "gguf",
+        "files": [
+          {
+            "name": "qwen2.5-0.5b-instruct-q4_k_m.gguf",
+            "sha256": "74a4da8c9fdbcd15bd1f6d01d621410d31c6fc00986f5eb687824e7b93d7a9db"
+          }
+        ]
+      },
+      "engine": {
+        "engine": "llama_rpc",
+        "release": "b11770",
+        "commit": "39da130fc",
+        "variant": "windows-x64-cuda13.4"
+      },
+      "placement": [
+        {
+          "device": "CPU_Mapped",
+          "model_bytes": 93595893,
+          "kv_bytes": 0,
+          "layers_est": null
+        },
+        {
+          "device": "CUDA0",
+          "model_bytes": 216918917,
+          "kv_bytes": 44040192,
+          "layers_est": 21
+        },
+        {
+          "device": "RPC0[127.0.0.1:47052]",
+          "model_bytes": 174965391,
+          "kv_bytes": 6291456,
+          "layers_est": 3
+        },
+        {
+          "device": "CUDA_Host",
+          "model_bytes": 0,
+          "kv_bytes": 0,
+          "layers_est": null
+        }
+      ],
+      "transport": "tcp",
+      "ctx_size": 4096,
+      "stream": true,
+      "prompt_tokens": 3528,
+      "completion_tokens": 79,
+      "ttft_ms": 26.35790000203997,
+      "total_ms": 679.1867000283673,
+      "timings": {
+        "prompt_n": 1,
+        "prompt_ms": 13.744,
+        "predicted_n": 79,
+        "predicted_ms": 652.331,
+        "predicted_per_second": 119.57119928379917,
+        "prompt_per_second": 72.75902211874272,
+        "cache_n": 3527
+      },
+      "finish_reason": "stop",
+      "sampling": {
+        "temperature": 0,
+        "max_tokens": 128,
+        "seed": 42
+      },
+      "cache_state": "warm",
+      "output_text": "Based on the weather log, the three stations with the most rain are station 1, station 2, and station 3. The three stations with the most rain are 37 millimetres, 74 millimetres, and 10 millimetres. The pattern observed is that the stations with the most rain are the ones with the highest peak wind speeds.",
+      "error": null,
+      "started_at": "2026-10-21T02:07:06.844609Z",
+      "benchmark_id": "98bb973e8c344037ac5874dd5380479d",
+      "prompt_label": "long"
+    },
+    {
+      "id": "ce439c1c7d2e42d98141cad0ee64a31d",
+      "attempt_id": "ed558f8ab964453c94b646cb0862b0c9",
+      "deployment_id": "aa4e4e4547184513896356776f45cf0c",
+      "kind": "benchmark",
+      "status": "ok",
+      "simulated": false,
+      "model": {
+        "id": "qwen2.5-0.5b-instruct-q4_k_m",
+        "repo": "Qwen/Qwen2.5-0.5B-Instruct-GGUF",
+        "revision": "9217f5db79a29953eb74d5343926648285ec7e67",
+        "quantization": "Q4_K_M",
+        "format": "gguf",
+        "files": [
+          {
+            "name": "qwen2.5-0.5b-instruct-q4_k_m.gguf",
+            "sha256": "74a4da8c9fdbcd15bd1f6d01d621410d31c6fc00986f5eb687824e7b93d7a9db"
+          }
+        ]
+      },
+      "engine": {
+        "engine": "llama_rpc",
+        "release": "b11770",
+        "commit": "39da130fc",
+        "variant": "windows-x64-cuda13.4"
+      },
+      "placement": [
+        {
+          "device": "CPU_Mapped",
+          "model_bytes": 93595893,
+          "kv_bytes": 0,
+          "layers_est": null
+        },
+        {
+          "device": "CUDA0",
+          "model_bytes": 216918917,
+          "kv_bytes": 44040192,
+          "layers_est": 21
+        },
+        {
+          "device": "RPC0[127.0.0.1:47052]",
+          "model_bytes": 174965391,
+          "kv_bytes": 6291456,
+          "layers_est": 3
+        },
+        {
+          "device": "CUDA_Host",
+          "model_bytes": 0,
+          "kv_bytes": 0,
+          "layers_est": null
+        }
+      ],
+      "transport": "tcp",
+      "ctx_size": 4096,
+      "stream": true,
+      "prompt_tokens": 3528,
+      "completion_tokens": 79,
+      "ttft_ms": 48.00539999268949,
+      "total_ms": 776.7193999607116,
+      "timings": {
+        "prompt_n": 1,
+        "prompt_ms": 27.326,
+        "predicted_n": 79,
+        "predicted_ms": 728.431,
+        "predicted_per_second": 107.07946257092298,
+        "prompt_per_second": 36.59518407377589,
+        "cache_n": 3527
+      },
+      "finish_reason": "stop",
+      "sampling": {
+        "temperature": 0,
+        "max_tokens": 128,
+        "seed": 42
+      },
+      "cache_state": "warm",
+      "output_text": "Based on the weather log, the three stations with the most rain are station 1, station 2, and station 3. The three stations with the most rain are 37 millimetres, 74 millimetres, and 10 millimetres. The pattern observed is that the stations with the most rain are the ones with the highest peak wind speeds.",
+      "error": null,
+      "started_at": "2026-10-21T02:07:06.147072Z",
+      "benchmark_id": "98bb973e8c344037ac5874dd5380479d",
+      "prompt_label": "long"
+    },
+    {
+      "id": "e8caed0719514ed685d66937f331b131",
+      "attempt_id": "09edd8e883ec484ab0957a20799e8ac5",
+      "deployment_id": "aa4e4e4547184513896356776f45cf0c",
+      "kind": "benchmark",
+      "status": "ok",
+      "simulated": false,
+      "model": {
+        "id": "qwen2.5-0.5b-instruct-q4_k_m",
+        "repo": "Qwen/Qwen2.5-0.5B-Instruct-GGUF",
+        "revision": "9217f5db79a29953eb74d5343926648285ec7e67",
+        "quantization": "Q4_K_M",
+        "format": "gguf",
+        "files": [
+          {
+            "name": "qwen2.5-0.5b-instruct-q4_k_m.gguf",
+            "sha256": "74a4da8c9fdbcd15bd1f6d01d621410d31c6fc00986f5eb687824e7b93d7a9db"
+          }
+        ]
+      },
+      "engine": {
+        "engine": "llama_rpc",
+        "release": "b11770",
+        "commit": "39da130fc",
+        "variant": "windows-x64-cuda13.4"
+      },
+      "placement": [
+        {
+          "device": "CPU_Mapped",
+          "model_bytes": 93595893,
+          "kv_bytes": 0,
+          "layers_est": null
+        },
+        {
+          "device": "CUDA0",
+          "model_bytes": 216918917,
+          "kv_bytes": 44040192,
+          "layers_est": 21
+        },
+        {
+          "device": "RPC0[127.0.0.1:47052]",
+          "model_bytes": 174965391,
+          "kv_bytes": 6291456,
+          "layers_est": 3
+        },
+        {
+          "device": "CUDA_Host",
+          "model_bytes": 0,
+          "kv_bytes": 0,
+          "layers_est": null
+        }
+      ],
+      "transport": "tcp",
+      "ctx_size": 4096,
+      "stream": true,
+      "prompt_tokens": 3528,
+      "completion_tokens": 79,
+      "ttft_ms": 20.165699999779463,
+      "total_ms": 619.8065000353381,
+      "timings": {
+        "prompt_n": 1,
+        "prompt_ms": 12.126,
+        "predicted_n": 79,
+        "predicted_ms": 598.502,
+        "predicted_per_second": 130.325379029644,
+        "prompt_per_second": 82.46742536698005,
+        "cache_n": 3527
+      },
+      "finish_reason": "stop",
+      "sampling": {
+        "temperature": 0,
+        "max_tokens": 128,
+        "seed": 42
+      },
+      "cache_state": "warm",
+      "output_text": "Based on the weather log, the three stations with the most rain are station 1, station 2, and station 3. The three stations with the most rain are 37 millimetres, 74 millimetres, and 10 millimetres. The pattern observed is that the stations with the most rain are the ones with the highest peak wind speeds.",
+      "error": null,
+      "started_at": "2026-10-21T02:07:05.368489Z",
+      "benchmark_id": "98bb973e8c344037ac5874dd5380479d",
+      "prompt_label": "long"
+    },
+    {
+      "id": "fb095659468c4bad80262847f40061f4",
+      "attempt_id": "6cbec9d0e29e4b24bc032b8cdafccc69",
+      "deployment_id": "aa4e4e4547184513896356776f45cf0c",
+      "kind": "warmup",
+      "status": "ok",
+      "simulated": false,
+      "model": {
+        "id": "qwen2.5-0.5b-instruct-q4_k_m",
+        "repo": "Qwen/Qwen2.5-0.5B-Instruct-GGUF",
+        "revision": "9217f5db79a29953eb74d5343926648285ec7e67",
+        "quantization": "Q4_K_M",
+        "format": "gguf",
+        "files": [
+          {
+            "name": "qwen2.5-0.5b-instruct-q4_k_m.gguf",
+            "sha256": "74a4da8c9fdbcd15bd1f6d01d621410d31c6fc00986f5eb687824e7b93d7a9db"
+          }
+        ]
+      },
+      "engine": {
+        "engine": "llama_rpc",
+        "release": "b11770",
+        "commit": "39da130fc",
+        "variant": "windows-x64-cuda13.4"
+      },
+      "placement": [
+        {
+          "device": "CPU_Mapped",
+          "model_bytes": 93595893,
+          "kv_bytes": 0,
+          "layers_est": null
+        },
+        {
+          "device": "CUDA0",
+          "model_bytes": 216918917,
+          "kv_bytes": 44040192,
+          "layers_est": 21
+        },
+        {
+          "device": "RPC0[127.0.0.1:47052]",
+          "model_bytes": 174965391,
+          "kv_bytes": 6291456,
+          "layers_est": 3
+        },
+        {
+          "device": "CUDA_Host",
+          "model_bytes": 0,
+          "kv_bytes": 0,
+          "layers_est": null
+        }
+      ],
+      "transport": "tcp",
+      "ctx_size": 4096,
+      "stream": true,
+      "prompt_tokens": 3528,
+      "completion_tokens": 128,
+      "ttft_ms": 903.3342000329867,
+      "total_ms": 1890.194799983874,
+      "timings": {
+        "prompt_n": 3504,
+        "prompt_ms": 890.072,
+        "predicted_n": 128,
+        "predicted_ms": 986.677,
+        "predicted_per_second": 128.71486818888047,
+        "prompt_per_second": 3936.7601722107875,
+        "cache_n": 24
+      },
+      "finish_reason": "length",
+      "sampling": {
+        "temperature": 0,
+        "max_tokens": 128,
+        "seed": 42
+      },
+      "cache_state": "cold",
+      "output_text": "Based on the weather log provided, the three stations with the most rain are station 1, station 2, and station 3. The three stations with the most rain are:\n\n1. Station 1 recorded 37 millimetres of rain and a peak wind of 13 km/h.\n2. Station 2 recorded 74 millimetres of rain and a peak wind of 26 km/h.\n3. Station 3 recorded 10 millimetres of rain and a peak wind of 39 km/h.\n\nThe pattern I noticed is that the stations with the most rain are always the first",
+      "error": null,
+      "started_at": "2026-10-21T02:07:04.732753Z",
+      "benchmark_id": "98bb973e8c344037ac5874dd5380479d",
+      "prompt_label": "long"
+    },
+    {
+      "id": "287e35fb05ee4f12bc25517832f66f76",
+      "attempt_id": "4e87234c370f4a1a84528b127b75a53b",
+      "deployment_id": "aa4e4e4547184513896356776f45cf0c",
+      "kind": "benchmark",
+      "status": "ok",
+      "simulated": false,
+      "model": {
+        "id": "qwen2.5-0.5b-instruct-q4_k_m",
+        "repo": "Qwen/Qwen2.5-0.5B-Instruct-GGUF",
+        "revision": "9217f5db79a29953eb74d5343926648285ec7e67",
+        "quantization": "Q4_K_M",
+        "format": "gguf",
+        "files": [
+          {
+            "name": "qwen2.5-0.5b-instruct-q4_k_m.gguf",
+            "sha256": "74a4da8c9fdbcd15bd1f6d01d621410d31c6fc00986f5eb687824e7b93d7a9db"
+          }
+        ]
+      },
+      "engine": {
+        "engine": "llama_rpc",
+        "release": "b11770",
+        "commit": "39da130fc",
+        "variant": "windows-x64-cuda13.4"
+      },
+      "placement": [
+        {
+          "device": "CPU_Mapped",
+          "model_bytes": 93595893,
+          "kv_bytes": 0,
+          "layers_est": null
+        },
+        {
+          "device": "CUDA0",
+          "model_bytes": 216918917,
+          "kv_bytes": 44040192,
+          "layers_est": 21
+        },
+        {
+          "device": "RPC0[127.0.0.1:47052]",
+          "model_bytes": 174965391,
+          "kv_bytes": 6291456,
+          "layers_est": 3
+        },
+        {
+          "device": "CUDA_Host",
+          "model_bytes": 0,
+          "kv_bytes": 0,
+          "layers_est": null
+        }
+      ],
+      "transport": "tcp",
+      "ctx_size": 4096,
+      "stream": true,
+      "prompt_tokens": 43,
+      "completion_tokens": 28,
+      "ttft_ms": 14.543300028890371,
+      "total_ms": 193.54819995351136,
+      "timings": {
+        "prompt_n": 1,
+        "prompt_ms": 7.307,
+        "predicted_n": 28,
+        "predicted_ms": 178.575,
+        "predicted_per_second": 151.19697606047882,
+        "prompt_per_second": 136.8550704803613,
+        "cache_n": 42
+      },
+      "finish_reason": "stop",
+      "sampling": {
+        "temperature": 0,
+        "max_tokens": 128,
+        "seed": 42
+      },
+      "cache_state": "warm",
+      "output_text": "The sky appears blue during the day due to the scattering of sunlight by Earth's atmosphere, which causes the blue color of the sky.",
+      "error": null,
+      "started_at": "2026-10-21T02:07:02.824858Z",
+      "benchmark_id": "98bb973e8c344037ac5874dd5380479d",
+      "prompt_label": "short"
+    },
+    {
+      "id": "dc4a0ebb9f054d86a95eeb79edd2fe88",
+      "attempt_id": "74108d9a297e429ea9dfb386e5ffc3ec",
+      "deployment_id": "aa4e4e4547184513896356776f45cf0c",
+      "kind": "benchmark",
+      "status": "ok",
+      "simulated": false,
+      "model": {
+        "id": "qwen2.5-0.5b-instruct-q4_k_m",
+        "repo": "Qwen/Qwen2.5-0.5B-Instruct-GGUF",
+        "revision": "9217f5db79a29953eb74d5343926648285ec7e67",
+        "quantization": "Q4_K_M",
+        "format": "gguf",
+        "files": [
+          {
+            "name": "qwen2.5-0.5b-instruct-q4_k_m.gguf",
+            "sha256": "74a4da8c9fdbcd15bd1f6d01d621410d31c6fc00986f5eb687824e7b93d7a9db"
+          }
+        ]
+      },
+      "engine": {
+        "engine": "llama_rpc",
+        "release": "b11770",
+        "commit": "39da130fc",
+        "variant": "windows-x64-cuda13.4"
+      },
+      "placement": [
+        {
+          "device": "CPU_Mapped",
+          "model_bytes": 93595893,
+          "kv_bytes": 0,
+          "layers_est": null
+        },
+        {
+          "device": "CUDA0",
+          "model_bytes": 216918917,
+          "kv_bytes": 44040192,
+          "layers_est": 21
+        },
+        {
+          "device": "RPC0[127.0.0.1:47052]",
+          "model_bytes": 174965391,
+          "kv_bytes": 6291456,
+          "layers_est": 3
+        },
+        {
+          "device": "CUDA_Host",
+          "model_bytes": 0,
+          "kv_bytes": 0,
+          "layers_est": null
+        }
+      ],
+      "transport": "tcp",
+      "ctx_size": 4096,
+      "stream": true,
+      "prompt_tokens": 43,
+      "completion_tokens": 28,
+      "ttft_ms": 14.177000033669174,
+      "total_ms": 209.83870001509786,
+      "timings": {
+        "prompt_n": 1,
+        "prompt_ms": 6.733,
+        "predicted_n": 28,
+        "predicted_ms": 195.43,
+        "predicted_per_second": 138.15688481809343,
+        "prompt_per_second": 148.5222040695084,
+        "cache_n": 42
+      },
+      "finish_reason": "stop",
+      "sampling": {
+        "temperature": 0,
+        "max_tokens": 128,
+        "seed": 42
+      },
+      "cache_state": "warm",
+      "output_text": "The sky appears blue during the day due to the scattering of sunlight by Earth's atmosphere, which causes the blue color of the sky.",
+      "error": null,
+      "started_at": "2026-10-21T02:07:02.627138Z",
+      "benchmark_id": "98bb973e8c344037ac5874dd5380479d",
+      "prompt_label": "short"
+    },
+    {
+      "id": "880cf389e6024e5e91d713bf182fe87b",
+      "attempt_id": "3af7a00b7590451cb9acac2208c0a8bd",
+      "deployment_id": "aa4e4e4547184513896356776f45cf0c",
+      "kind": "benchmark",
+      "status": "ok",
+      "simulated": false,
+      "model": {
+        "id": "qwen2.5-0.5b-instruct-q4_k_m",
+        "repo": "Qwen/Qwen2.5-0.5B-Instruct-GGUF",
+        "revision": "9217f5db79a29953eb74d5343926648285ec7e67",
+        "quantization": "Q4_K_M",
+        "format": "gguf",
+        "files": [
+          {
+            "name": "qwen2.5-0.5b-instruct-q4_k_m.gguf",
+            "sha256": "74a4da8c9fdbcd15bd1f6d01d621410d31c6fc00986f5eb687824e7b93d7a9db"
+          }
+        ]
+      },
+      "engine": {
+        "engine": "llama_rpc",
+        "release": "b11770",
+        "commit": "39da130fc",
+        "variant": "windows-x64-cuda13.4"
+      },
+      "placement": [
+        {
+          "device": "CPU_Mapped",
+          "model_bytes": 93595893,
+          "kv_bytes": 0,
+          "layers_est": null
+        },
+        {
+          "device": "CUDA0",
+          "model_bytes": 216918917,
+          "kv_bytes": 44040192,
+          "layers_est": 21
+        },
+        {
+          "device": "RPC0[127.0.0.1:47052]",
+          "model_bytes": 174965391,
+          "kv_bytes": 6291456,
+          "layers_est": 3
+        },
+        {
+          "device": "CUDA_Host",
+          "model_bytes": 0,
+          "kv_bytes": 0,
+          "layers_est": null
+        }
+      ],
+      "transport": "tcp",
+      "ctx_size": 4096,
+      "stream": true,
+      "prompt_tokens": 43,
+      "completion_tokens": 28,
+      "ttft_ms": 13.810699922032654,
+      "total_ms": 198.98679992184043,
+      "timings": {
+        "prompt_n": 1,
+        "prompt_ms": 6.954,
+        "predicted_n": 28,
+        "predicted_ms": 183.662,
+        "predicted_per_second": 147.00917990656748,
+        "prompt_per_second": 143.80212827149842,
+        "cache_n": 42
+      },
+      "finish_reason": "stop",
+      "sampling": {
+        "temperature": 0,
+        "max_tokens": 128,
+        "seed": 42
+      },
+      "cache_state": "warm",
+      "output_text": "The sky appears blue during the day due to the scattering of sunlight by Earth's atmosphere, which causes the blue color of the sky.",
+      "error": null,
+      "started_at": "2026-10-21T02:07:02.414570Z",
+      "benchmark_id": "98bb973e8c344037ac5874dd5380479d",
+      "prompt_label": "short"
+    },
+    {
+      "id": "79635424ac39455297081158b8e39935",
+      "attempt_id": "7d2794597997475398d1d8b2da42cd49",
+      "deployment_id": "aa4e4e4547184513896356776f45cf0c",
+      "kind": "warmup",
+      "status": "ok",
+      "simulated": false,
+      "model": {
+        "id": "qwen2.5-0.5b-instruct-q4_k_m",
+        "repo": "Qwen/Qwen2.5-0.5B-Instruct-GGUF",
+        "revision": "9217f5db79a29953eb74d5343926648285ec7e67",
+        "quantization": "Q4_K_M",
+        "format": "gguf",
+        "files": [
+          {
+            "name": "qwen2.5-0.5b-instruct-q4_k_m.gguf",
+            "sha256": "74a4da8c9fdbcd15bd1f6d01d621410d31c6fc00986f5eb687824e7b93d7a9db"
+          }
+        ]
+      },
+      "engine": {
+        "engine": "llama_rpc",
+        "release": "b11770",
+        "commit": "39da130fc",
+        "variant": "windows-x64-cuda13.4"
+      },
+      "placement": [
+        {
+          "device": "CPU_Mapped",
+          "model_bytes": 93595893,
+          "kv_bytes": 0,
+          "layers_est": null
+        },
+        {
+          "device": "CUDA0",
+          "model_bytes": 216918917,
+          "kv_bytes": 44040192,
+          "layers_est": 21
+        },
+        {
+          "device": "RPC0[127.0.0.1:47052]",
+          "model_bytes": 174965391,
+          "kv_bytes": 6291456,
+          "layers_est": 3
+        },
+        {
+          "device": "CUDA_Host",
+          "model_bytes": 0,
+          "kv_bytes": 0,
+          "layers_est": null
+        }
+      ],
+      "transport": "tcp",
+      "ctx_size": 4096,
+      "stream": true,
+      "prompt_tokens": 43,
+      "completion_tokens": 29,
+      "ttft_ms": 31.92700003273785,
+      "total_ms": 245.69879996124655,
+      "timings": {
+        "prompt_n": 19,
+        "prompt_ms": 22.88,
+        "predicted_n": 29,
+        "predicted_ms": 213.609,
+        "predicted_per_second": 131.080619262297,
+        "prompt_per_second": 830.4195804195804,
+        "cache_n": 24
+      },
+      "finish_reason": "stop",
+      "sampling": {
+        "temperature": 0,
+        "max_tokens": 128,
+        "seed": 42
+      },
+      "cache_state": "cold",
+      "output_text": "The sky appears blue during the day due to the scattering of sunlight by Earth's atmosphere, which bounces white light back to our eyes.",
+      "error": null,
+      "started_at": "2026-10-21T02:07:02.210882Z",
+      "benchmark_id": "98bb973e8c344037ac5874dd5380479d",
+      "prompt_label": "short"
+    },
+    {
+      "id": "91d79755c4744a1fab2da99bd800b31e",
+      "attempt_id": "8301249c44d945e3bbd626283bb883d4",
+      "deployment_id": "aa4e4e4547184513896356776f45cf0c",
+      "kind": "chat",
+      "status": "ok",
+      "simulated": false,
+      "model": {
+        "id": "qwen2.5-0.5b-instruct-q4_k_m",
+        "repo": "Qwen/Qwen2.5-0.5B-Instruct-GGUF",
+        "revision": "9217f5db79a29953eb74d5343926648285ec7e67",
+        "quantization": "Q4_K_M",
+        "format": "gguf",
+        "files": [
+          {
+            "name": "qwen2.5-0.5b-instruct-q4_k_m.gguf",
+            "sha256": "74a4da8c9fdbcd15bd1f6d01d621410d31c6fc00986f5eb687824e7b93d7a9db"
+          }
+        ]
+      },
+      "engine": {
+        "engine": "llama_rpc",
+        "release": "b11770",
+        "commit": "39da130fc",
+        "variant": "windows-x64-cuda13.4"
+      },
+      "placement": [
+        {
+          "device": "CPU_Mapped",
+          "model_bytes": 93595893,
+          "kv_bytes": 0,
+          "layers_est": null
+        },
+        {
+          "device": "CUDA0",
+          "model_bytes": 216918917,
+          "kv_bytes": 44040192,
+          "layers_est": 21
+        },
+        {
+          "device": "RPC0[127.0.0.1:47052]",
+          "model_bytes": 174965391,
+          "kv_bytes": 6291456,
+          "layers_est": 3
+        },
+        {
+          "device": "CUDA_Host",
+          "model_bytes": 0,
+          "kv_bytes": 0,
+          "layers_est": null
+        }
+      ],
+      "transport": "tcp",
+      "ctx_size": 4096,
+      "stream": true,
+      "prompt_tokens": 40,
+      "completion_tokens": 128,
+      "ttft_ms": 23.956900113262236,
+      "total_ms": 938.2396000437438,
+      "timings": {
+        "prompt_n": 16,
+        "prompt_ms": 19.022,
+        "predicted_n": 128,
+        "predicted_ms": 913.724,
+        "predicted_per_second": 138.9916429906624,
+        "prompt_per_second": 841.1313216275892,
+        "cache_n": 24
+      },
+      "finish_reason": "length",
+      "sampling": {
+        "temperature": 0,
+        "max_tokens": 128
+      },
+      "cache_state": "warm",
+      "output_text": "Sure, here are three planets and one fact about each:\n\n1. **Mercury** - The smallest planet in our solar system, with a diameter of about 4,880 kilometers. It is the closest planet to the Sun and is the first planet to be visited by humans.\n\n2. **Venus** - The second planet from the Sun, with a diameter of about 12,104 kilometers. It is the second-smallest planet in our solar system and is known for its thick atmosphere, which is composed mainly of carbon dioxide and sulfur dioxide.\n\n3. **Earth** - The third planet from the",
+      "error": null,
+      "started_at": "2026-10-21T02:07:01.951550Z",
+      "benchmark_id": null,
+      "prompt_label": null
+    },
+    {
+      "id": "e506f4a7251f40a6a69cf1cf00257a98",
+      "attempt_id": "41afecea8aa9400b9cd0c66465dd9f23",
+      "deployment_id": "aa4e4e4547184513896356776f45cf0c",
+      "kind": "warmup",
+      "status": "ok",
+      "simulated": false,
+      "model": {
+        "id": "qwen2.5-0.5b-instruct-q4_k_m",
+        "repo": "Qwen/Qwen2.5-0.5B-Instruct-GGUF",
+        "revision": "9217f5db79a29953eb74d5343926648285ec7e67",
+        "quantization": "Q4_K_M",
+        "format": "gguf",
+        "files": [
+          {
+            "name": "qwen2.5-0.5b-instruct-q4_k_m.gguf",
+            "sha256": "74a4da8c9fdbcd15bd1f6d01d621410d31c6fc00986f5eb687824e7b93d7a9db"
+          }
+        ]
+      },
+      "engine": {
+        "engine": "llama_rpc",
+        "release": "b11770",
+        "commit": "39da130fc",
+        "variant": "windows-x64-cuda13.4"
+      },
+      "placement": [
+        {
+          "device": "CPU_Mapped",
+          "model_bytes": 93595893,
+          "kv_bytes": 0,
+          "layers_est": null
+        },
+        {
+          "device": "CUDA0",
+          "model_bytes": 216918917,
+          "kv_bytes": 44040192,
+          "layers_est": 21
+        },
+        {
+          "device": "RPC0[127.0.0.1:47052]",
+          "model_bytes": 174965391,
+          "kv_bytes": 6291456,
+          "layers_est": 3
+        },
+        {
+          "device": "CUDA_Host",
+          "model_bytes": 0,
+          "kv_bytes": 0,
+          "layers_est": null
+        }
+      ],
+      "transport": "tcp",
+      "ctx_size": 4096,
+      "stream": true,
+      "prompt_tokens": 33,
+      "completion_tokens": 2,
+      "ttft_ms": 47.91379999369383,
+      "total_ms": 63.606200041249394,
+      "timings": {
+        "prompt_n": 33,
+        "prompt_ms": 44.257,
+        "predicted_n": 2,
+        "predicted_ms": 15.486,
+        "predicted_per_second": 64.57445434586077,
+        "prompt_per_second": 745.6447567616422,
+        "cache_n": 0
+      },
+      "finish_reason": "stop",
+      "sampling": {
+        "temperature": 0,
+        "max_tokens": 8
+      },
+      "cache_state": "cold",
+      "output_text": "ready",
+      "error": null,
+      "started_at": "2026-10-21T02:07:00.959595Z",
+      "benchmark_id": null,
+      "prompt_label": null
+    },
+    {
+      "id": "7f0de62f121c4ae193122b73bfb1d2d0",
+      "attempt_id": "d95422d0bcf747fc92772918b5a73168",
+      "deployment_id": "e77030de8be34c4d996bb7193a6df786",
+      "kind": "chat",
+      "status": "ok",
+      "simulated": false,
+      "model": {
+        "id": "qwen2.5-0.5b-instruct-q4_k_m",
+        "repo": "Qwen/Qwen2.5-0.5B-Instruct-GGUF",
+        "revision": "9217f5db79a29953eb74d5343926648285ec7e67",
+        "quantization": "Q4_K_M",
+        "format": "gguf",
+        "files": [
+          {
+            "name": "qwen2.5-0.5b-instruct-q4_k_m.gguf",
+            "sha256": "74a4da8c9fdbcd15bd1f6d01d621410d31c6fc00986f5eb687824e7b93d7a9db"
+          }
+        ]
+      },
+      "engine": {
+        "engine": "llama_rpc",
+        "release": "b11770",
+        "commit": "39da130fc",
+        "variant": "windows-x64-cuda13.4"
+      },
+      "placement": [
+        {
+          "device": "CPU_Mapped",
+          "model_bytes": 93595893,
+          "kv_bytes": 0,
+          "layers_est": null
+        },
+        {
+          "device": "CUDA0",
+          "model_bytes": 391884308,
+          "kv_bytes": 50331648,
+          "layers_est": 24
+        },
+        {
+          "device": "CUDA_Host",
+          "model_bytes": 0,
+          "kv_bytes": 0,
+          "layers_est": null
+        }
+      ],
+      "transport": "tcp",
+      "ctx_size": 4096,
+      "stream": true,
+      "prompt_tokens": 40,
+      "completion_tokens": 128,
+      "ttft_ms": 18.23109993711114,
+      "total_ms": 426.71569995582104,
+      "timings": {
+        "prompt_n": 16,
+        "prompt_ms": 13.602,
+        "predicted_n": 128,
+        "predicted_ms": 401.114,
+        "predicted_per_second": 316.61821826214,
+        "prompt_per_second": 1176.2976032936333,
+        "cache_n": 24
+      },
+      "finish_reason": "length",
+      "sampling": {
+        "temperature": 0,
+        "max_tokens": 128
+      },
+      "cache_state": "warm",
+      "output_text": "Sure, here are three planets and one fact about each:\n\n1. **Mercury** - The smallest planet in our solar system, with a diameter of about 3, 300 miles. It is the closest planet to the Sun and is the first planet to be visited by humans.\n\n2. **Venus** - The second planet from the Sun, with a diameter of about 12, 742 miles. It is the second planet from the Sun and is the hottest planet in our solar system, with temperatures reaching up to 9, 000 degrees Fahrenheit.\n\n3. **Earth** -",
+      "error": null,
+      "started_at": "2026-10-21T02:06:02.588781Z",
+      "benchmark_id": null,
+      "prompt_label": null
+    },
+    {
+      "id": "8cb340ff425a4aedb7ffdc8d42031993",
+      "attempt_id": "5c8960ca6921490ab21c375a2d72f4c5",
+      "deployment_id": "e77030de8be34c4d996bb7193a6df786",
+      "kind": "warmup",
+      "status": "ok",
+      "simulated": false,
+      "model": {
+        "id": "qwen2.5-0.5b-instruct-q4_k_m",
+        "repo": "Qwen/Qwen2.5-0.5B-Instruct-GGUF",
+        "revision": "9217f5db79a29953eb74d5343926648285ec7e67",
+        "quantization": "Q4_K_M",
+        "format": "gguf",
+        "files": [
+          {
+            "name": "qwen2.5-0.5b-instruct-q4_k_m.gguf",
+            "sha256": "74a4da8c9fdbcd15bd1f6d01d621410d31c6fc00986f5eb687824e7b93d7a9db"
+          }
+        ]
+      },
+      "engine": {
+        "engine": "llama_rpc",
+        "release": "b11770",
+        "commit": "39da130fc",
+        "variant": "windows-x64-cuda13.4"
+      },
+      "placement": [
+        {
+          "device": "CPU_Mapped",
+          "model_bytes": 93595893,
+          "kv_bytes": 0,
+          "layers_est": null
+        },
+        {
+          "device": "CUDA0",
+          "model_bytes": 391884308,
+          "kv_bytes": 50331648,
+          "layers_est": 24
+        },
+        {
+          "device": "CUDA_Host",
+          "model_bytes": 0,
+          "kv_bytes": 0,
+          "layers_est": null
+        }
+      ],
+      "transport": "tcp",
+      "ctx_size": 4096,
+      "stream": true,
+      "prompt_tokens": 33,
+      "completion_tokens": 2,
+      "ttft_ms": 43.580600060522556,
+      "total_ms": 54.689700016751885,
+      "timings": {
+        "prompt_n": 33,
+        "prompt_ms": 39.213,
+        "predicted_n": 2,
+        "predicted_ms": 10.637,
+        "predicted_per_second": 94.0114693992667,
+        "prompt_per_second": 841.5576466987989,
+        "cache_n": 0
+      },
+      "finish_reason": "stop",
+      "sampling": {
+        "temperature": 0,
+        "max_tokens": 8
+      },
+      "cache_state": "cold",
+      "output_text": "ready",
+      "error": null,
+      "started_at": "2026-10-21T02:06:01.721476Z",
+      "benchmark_id": null,
+      "prompt_label": null
+    }
+  ]
+}

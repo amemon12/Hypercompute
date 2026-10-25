@@ -1,0 +1,823 @@
+{
+  "schema": "hypercompute.capacity.bench/1",
+  "status": "ok",
+  "started_at": "2026-10-22T07:29:24.001460+00:00",
+  "finished_at": "2026-10-22T07:29:50.743323+00:00",
+  "case": {
+    "label": "rank-qwen2.5-14b-instruct-q6_k-e6",
+    "model_paths": [
+      "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-14b-instruct-q6_k\\qwen2.5-14b-instruct-q6_k-00001-of-00004.gguf",
+      "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-14b-instruct-q6_k\\qwen2.5-14b-instruct-q6_k-00002-of-00004.gguf",
+      "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-14b-instruct-q6_k\\qwen2.5-14b-instruct-q6_k-00003-of-00004.gguf",
+      "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-14b-instruct-q6_k\\qwen2.5-14b-instruct-q6_k-00004-of-00004.gguf"
+    ],
+    "engine": {
+      "devices": [
+        "CUDA0"
+      ],
+      "tensor_split": [
+        43
+      ],
+      "ngl": 43,
+      "ctx": 2048,
+      "threads": 12,
+      "load_mode": "none",
+      "flags": [
+        "--no-host",
+        "--no-repack",
+        "--cache-ram",
+        "0"
+      ]
+    },
+    "stream": null,
+    "rpc_endpoints": [],
+    "rpc_path_class": "local"
+  },
+  "workload": {
+    "prompt": "You are a careful assistant. Explain, in plain sentences, why a laptop that reads part of a language model from its SSD for every token is slower than one that keeps every layer in memory, and what changes when a second computer with spare memory joins over a network.",
+    "prompt_tokens": 512,
+    "output_tokens": 64,
+    "reps": 3,
+    "warmup": 1,
+    "reuse_output_tokens": 1,
+    "seed": 7,
+    "temperature": 0.0,
+    "top_k": 1,
+    "request_timeout_s": 1800,
+    "load_timeout_s": 900
+  },
+  "host": {
+    "system": "Windows",
+    "release": "11",
+    "version": "10.0.26200",
+    "machine": "AMD64",
+    "processor": "AMD64 Family 26 Model 36 Stepping 0, AuthenticAMD",
+    "python": "3.12.10",
+    "cpu_logical": 24,
+    "cpu_physical": 12,
+    "ram_total_bytes": 33412722688,
+    "ram_available_bytes": 9338748928,
+    "power": {
+      "source": "ac",
+      "percent": 40,
+      "via": "psutil.sensors_battery"
+    }
+  },
+  "llama_cpp": {
+    "release": "b11770",
+    "variant": "windows-x64-cuda13.4",
+    "accelerator": "cuda",
+    "engine_dir": "C:\\Users\\operator\\.hypercompute\\engines\\llama-b11770-windows-x64-cuda13.4",
+    "source": "pinned-release",
+    "build": 11770,
+    "commit": "39da130fc",
+    "build_source": "llama-server log"
+  },
+  "model": {
+    "model_id": "qwen2.5-14b-instruct-q6_k",
+    "shards": [
+      {
+        "path": "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-14b-instruct-q6_k\\qwen2.5-14b-instruct-q6_k-00001-of-00004.gguf",
+        "size": 3985204096,
+        "mtime_ns": 1792556797516648800
+      },
+      {
+        "path": "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-14b-instruct-q6_k\\qwen2.5-14b-instruct-q6_k-00002-of-00004.gguf",
+        "size": 3945074624,
+        "mtime_ns": 1792556921432872800
+      },
+      {
+        "path": "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-14b-instruct-q6_k\\qwen2.5-14b-instruct-q6_k-00003-of-00004.gguf",
+        "size": 3497613920,
+        "mtime_ns": 1792557019130472400
+      },
+      {
+        "path": "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-14b-instruct-q6_k\\qwen2.5-14b-instruct-q6_k-00004-of-00004.gguf",
+        "size": 696791424,
+        "mtime_ns": 1792557044614693500
+      }
+    ],
+    "bytes": 12124684064,
+    "fingerprint": "b880ec42c440b27ccdeada26be0d201f59c6ad57ea8dcd2a3b95aa52ba7541b3",
+    "architecture": "qwen2",
+    "file_type": "Q6_K",
+    "n_layer": 48
+  },
+  "preflight": {
+    "port": 65368,
+    "port_listener": null,
+    "available_ram_bytes": 9389133824,
+    "predicted": {
+      "total_bytes": 2581069824,
+      "parts": [
+        [
+          "cpu unit weights",
+          1355198464
+        ],
+        [
+          "token_embd",
+          638668800
+        ],
+        [
+          "kv cache (cpu blocks)",
+          50331648
+        ],
+        [
+          "compute prior",
+          536870912
+        ]
+      ],
+      "provenance": "estimate"
+    },
+    "free_disk_bytes": 46090207232,
+    "disk_path": "C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity"
+  },
+  "refused": [],
+  "launch": {
+    "argv": [
+      "C:\\Users\\operator\\.hypercompute\\engines\\llama-b11770-windows-x64-cuda13.4\\llama-server.exe",
+      "-m",
+      "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-14b-instruct-q6_k\\qwen2.5-14b-instruct-q6_k-00001-of-00004.gguf",
+      "--load-mode",
+      "none",
+      "--no-host",
+      "--no-repack",
+      "--cache-ram",
+      "0",
+      "--device",
+      "CUDA0",
+      "--split-mode",
+      "layer",
+      "--tensor-split",
+      "43",
+      "-ngl",
+      "43",
+      "--fit",
+      "off",
+      "-c",
+      "2048",
+      "-np",
+      "1",
+      "-t",
+      "12",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "65368",
+      "--no-ui",
+      "-lv",
+      "4",
+      "--log-colors",
+      "off"
+    ],
+    "port": 65368,
+    "bin_dir": "C:\\Users\\operator\\.hypercompute\\engines\\llama-b11770-windows-x64-cuda13.4",
+    "log": "C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T072924Z-bench-rank-qwen2.5-14b-instruct-q6_k-e6\\llama-server-65368.log",
+    "env_removed": []
+  },
+  "load": {
+    "ok": true,
+    "seconds": 8.149,
+    "error": null,
+    "log_lines": [
+      "0.01.046.272 I cmn  common_param: common_params_print_info: build 11770 (39da130fc) with Clang 20.1.8 for Windows x86_64",
+      "0.01.128.645 I cmn  common_param: system_info: n_threads = 12 (n_threads_batch = 12) / 24 | CUDA : ARCHS = 750,800,860,890,900,1200,1210 | USE_GRAPHS = 1 | FA_QUANTS = q4_0-q4_0,q8_0-q8_0,f16-f16,bf16-bf16 | BLACKWELL_NATIVE_FP4 = 1 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | AVX512 = 1 | AVX512_VBMI = 1 | AVX512_VNNI = 1 | AVX512_BF16 = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 |",
+      "0.01.142.489 I srv    load_model: loading model 'C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-14b-instruct-q6_k\\qwen2.5-14b-instruct-q6_k-00001-of-00004.gguf'",
+      "0.01.142.503 I srv    load_model: local path 'C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-14b-instruct-q6_k\\qwen2.5-14b-instruct-q6_k-00001-of-00004.gguf'",
+      "0.01.378.858 I load_tensors: loading model tensors, this can take a while... (load_mode = none)",
+      "0.01.398.664 I load_tensors: offloading output layer to GPU",
+      "0.01.398.669 I load_tensors: offloading 42 repeating layers to GPU",
+      "0.01.398.669 I load_tensors: offloaded 43/49 layers to GPU",
+      "0.01.398.673 I load_tensors:          CPU model buffer size =  1901.47 MiB",
+      "0.01.398.676 I load_tensors:        CUDA0 model buffer size =  9655.84 MiB",
+      "0.07.660.507 I llama_kv_cache:        CPU KV buffer size =    48.00 MiB",
+      "0.07.668.708 I llama_kv_cache:      CUDA0 KV buffer size =   336.00 MiB",
+      "0.07.674.435 I llama_kv_cache: size =  384.00 MiB (  2048 cells,  48 layers,  1/1 seqs), K (f16):  192.00 MiB, V (f16):  192.00 MiB",
+      "0.07.674.452 I llama_kv_cache: n_rot_k = 0, n_embd_head_k_all = 128",
+      "0.07.674.453 I llama_kv_cache: n_rot_v = 0, n_embd_head_k_all = 128",
+      "0.07.674.471 I sched_reserve: reserving ...",
+      "0.07.694.717 I sched_reserve:      CUDA0 compute buffer size =   179.88 MiB",
+      "0.07.694.724 I sched_reserve:  CUDA_Host compute buffer size =    42.02 MiB",
+      "0.07.694.927 I sched_reserve: graph (pp bs=512, tg bs=1): nodes = 1641 / 1641, splits = 86 / 2, input objects = 4 / 4, input tensors = 9 / 9",
+      "0.07.694.932 I sched_reserve: reserve took 20.46 ms, sched copies = 1",
+      "0.07.999.365 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 2048, kv_unified = 'false'",
+      "0.07.999.816 I slot   load_model: id  0 | task -1 | new slot, n_ctx = 2048",
+      "0.08.000.225 I srv    load_model: prompt cache is disabled - use `--cache-ram N` to enable it",
+      "0.08.000.236 I srv    load_model: for more info see https://github.com/ggml-org/llama.cpp/pull/16391",
+      "0.08.000.237 I srv    load_model: context checkpoints enabled, max = 32, min spacing = 8192",
+      "0.08.031.738 I srv  llama_server: model loaded"
+    ],
+    "build": {
+      "build": 11770,
+      "commit": "39da130fc",
+      "build_source": "llama-server log"
+    },
+    "memory": {
+      "loaded_at_s": 8.138,
+      "samples": 78,
+      "seconds": 8.105,
+      "working_set_peak": 2545496064,
+      "working_set_median": 383279104,
+      "private_peak": 13681401856,
+      "sys_available_min": 6513885184,
+      "page_faults": 642633,
+      "proc_read_bytes": 12134605273,
+      "sys_disk_read_bytes": 12063240704
+    },
+    "log_tail": []
+  },
+  "reps": [
+    {
+      "index": 0,
+      "warmup": true,
+      "ok": true,
+      "phases": [
+        {
+          "phase": "uncached",
+          "ok": true,
+          "error": null,
+          "wall_ms": 3467.514,
+          "ttft_ms": 485.553,
+          "timings": {
+            "prompt_n": 512,
+            "prompt_ms": 478.631,
+            "predicted_n": 64,
+            "predicted_ms": 2980.355,
+            "cache_n": 0
+          },
+          "cache_prompt": false,
+          "prompt_head": "[58, 9995, 220, 15, 15, 15, 15, 220, 24, 18, 16, 23, 21, 21, 15,",
+          "io": {
+            "seconds": 3.4678,
+            "proc_read_bytes": 0,
+            "sys_disk_read_bytes": 117957120,
+            "page_faults": 5702,
+            "working_set_peak": 2567507968,
+            "private_peak": 13704945664
+          }
+        },
+        {
+          "phase": "prefix_prime",
+          "ok": true,
+          "error": null,
+          "wall_ms": 445.175,
+          "ttft_ms": null,
+          "timings": {
+            "prompt_n": 512,
+            "prompt_ms": 443.063,
+            "predicted_n": 1,
+            "predicted_ms": 0.001,
+            "cache_n": 0
+          },
+          "cache_prompt": false,
+          "prompt_head": "[58, 9995, 220, 15, 15, 15, 15, 220, 24, 18, 16, 23, 21, 21, 15,",
+          "io": {
+            "seconds": 0.4454,
+            "proc_read_bytes": 0,
+            "sys_disk_read_bytes": 6479872,
+            "page_faults": 3358,
+            "working_set_peak": 2579398656,
+            "private_peak": 13693419520
+          }
+        },
+        {
+          "phase": "prefix_reuse",
+          "ok": true,
+          "error": null,
+          "wall_ms": 71.768,
+          "ttft_ms": null,
+          "timings": {
+            "prompt_n": 1,
+            "prompt_ms": 69.16,
+            "predicted_n": 1,
+            "predicted_ms": 0.001,
+            "cache_n": 511
+          },
+          "cache_prompt": true,
+          "prompt_head": "[58, 9995, 220, 15, 15, 15, 15, 220, 24, 18, 16, 23, 21, 21, 15,",
+          "io": {
+            "seconds": 0.0718,
+            "proc_read_bytes": 0,
+            "sys_disk_read_bytes": 462848,
+            "page_faults": 446,
+            "working_set_peak": 2579398656,
+            "private_peak": 13693419520
+          }
+        }
+      ],
+      "gpu": {
+        "available": true,
+        "unit": "MiB",
+        "gpus": [
+          {
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+            "used_mib": 10360,
+            "total_mib": 12227
+          }
+        ],
+        "process_used_mib": null
+      },
+      "power": {
+        "source": "ac",
+        "percent": 40,
+        "via": "psutil.sensors_battery"
+      },
+      "rpc": null,
+      "started_at": "2026-10-22T07:29:32.850983+00:00"
+    },
+    {
+      "index": 1,
+      "warmup": false,
+      "ok": true,
+      "phases": [
+        {
+          "phase": "uncached",
+          "ok": true,
+          "error": null,
+          "wall_ms": 3475.933,
+          "ttft_ms": 430.562,
+          "timings": {
+            "prompt_n": 512,
+            "prompt_ms": 428.219,
+            "predicted_n": 64,
+            "predicted_ms": 3042.368,
+            "cache_n": 0
+          },
+          "cache_prompt": false,
+          "prompt_head": "[58, 9995, 220, 15, 15, 15, 16, 220, 24, 19, 22, 21, 21, 21, 22,",
+          "io": {
+            "seconds": 3.4764,
+            "proc_read_bytes": 0,
+            "sys_disk_read_bytes": 36289536,
+            "page_faults": 900,
+            "working_set_peak": 2581311488,
+            "private_peak": 13695361024
+          }
+        },
+        {
+          "phase": "prefix_prime",
+          "ok": true,
+          "error": null,
+          "wall_ms": 462.657,
+          "ttft_ms": null,
+          "timings": {
+            "prompt_n": 512,
+            "prompt_ms": 460.873,
+            "predicted_n": 1,
+            "predicted_ms": 0.001,
+            "cache_n": 0
+          },
+          "cache_prompt": false,
+          "prompt_head": "[58, 9995, 220, 15, 15, 15, 16, 220, 24, 19, 22, 21, 21, 21, 22,",
+          "io": {
+            "seconds": 0.4629,
+            "proc_read_bytes": 0,
+            "sys_disk_read_bytes": 8552448,
+            "page_faults": 446,
+            "working_set_peak": 2581372928,
+            "private_peak": 13695393792
+          }
+        },
+        {
+          "phase": "prefix_reuse",
+          "ok": true,
+          "error": null,
+          "wall_ms": 95.812,
+          "ttft_ms": null,
+          "timings": {
+            "prompt_n": 1,
+            "prompt_ms": 92.902,
+            "predicted_n": 1,
+            "predicted_ms": 0.001,
+            "cache_n": 511
+          },
+          "cache_prompt": true,
+          "prompt_head": "[58, 9995, 220, 15, 15, 15, 16, 220, 24, 19, 22, 21, 21, 21, 22,",
+          "io": {
+            "seconds": 0.0959,
+            "proc_read_bytes": 0,
+            "sys_disk_read_bytes": 610304,
+            "page_faults": 446,
+            "working_set_peak": 2581372928,
+            "private_peak": 13695393792
+          }
+        }
+      ],
+      "gpu": {
+        "available": true,
+        "unit": "MiB",
+        "gpus": [
+          {
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+            "used_mib": 10370,
+            "total_mib": 12227
+          }
+        ],
+        "process_used_mib": null
+      },
+      "power": {
+        "source": "ac",
+        "percent": 40,
+        "via": "psutil.sensors_battery"
+      },
+      "rpc": null,
+      "started_at": "2026-10-22T07:29:37.061212+00:00"
+    },
+    {
+      "index": 2,
+      "warmup": false,
+      "ok": true,
+      "phases": [
+        {
+          "phase": "uncached",
+          "ok": true,
+          "error": null,
+          "wall_ms": 3715.659,
+          "ttft_ms": 475.112,
+          "timings": {
+            "prompt_n": 512,
+            "prompt_ms": 472.908,
+            "predicted_n": 64,
+            "predicted_ms": 3239.747,
+            "cache_n": 0
+          },
+          "cache_prompt": false,
+          "prompt_head": "[58, 9995, 220, 15, 15, 15, 17, 220, 22, 19, 18, 15, 17, 22, 15,",
+          "io": {
+            "seconds": 3.7161,
+            "proc_read_bytes": 0,
+            "sys_disk_read_bytes": 35537408,
+            "page_faults": 446,
+            "working_set_peak": 2581397504,
+            "private_peak": 13695418368
+          }
+        },
+        {
+          "phase": "prefix_prime",
+          "ok": true,
+          "error": null,
+          "wall_ms": 469.383,
+          "ttft_ms": null,
+          "timings": {
+            "prompt_n": 512,
+            "prompt_ms": 465.046,
+            "predicted_n": 1,
+            "predicted_ms": 0.001,
+            "cache_n": 0
+          },
+          "cache_prompt": false,
+          "prompt_head": "[58, 9995, 220, 15, 15, 15, 17, 220, 22, 19, 18, 15, 17, 22, 15,",
+          "io": {
+            "seconds": 0.4696,
+            "proc_read_bytes": 0,
+            "sys_disk_read_bytes": 462848,
+            "page_faults": 446,
+            "working_set_peak": 2581450752,
+            "private_peak": 13695471616
+          }
+        },
+        {
+          "phase": "prefix_reuse",
+          "ok": true,
+          "error": null,
+          "wall_ms": 92.681,
+          "ttft_ms": null,
+          "timings": {
+            "prompt_n": 1,
+            "prompt_ms": 89.159,
+            "predicted_n": 1,
+            "predicted_ms": 0.001,
+            "cache_n": 511
+          },
+          "cache_prompt": true,
+          "prompt_head": "[58, 9995, 220, 15, 15, 15, 17, 220, 22, 19, 18, 15, 17, 22, 15,",
+          "io": {
+            "seconds": 0.0928,
+            "proc_read_bytes": 0,
+            "sys_disk_read_bytes": 65536,
+            "page_faults": 446,
+            "working_set_peak": 2581450752,
+            "private_peak": 13695471616
+          }
+        }
+      ],
+      "gpu": {
+        "available": true,
+        "unit": "MiB",
+        "gpus": [
+          {
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+            "used_mib": 10370,
+            "total_mib": 12227
+          }
+        ],
+        "process_used_mib": null
+      },
+      "power": {
+        "source": "ac",
+        "percent": 40,
+        "via": "psutil.sensors_battery"
+      },
+      "rpc": null,
+      "started_at": "2026-10-22T07:29:41.287455+00:00"
+    },
+    {
+      "index": 3,
+      "warmup": false,
+      "ok": true,
+      "phases": [
+        {
+          "phase": "uncached",
+          "ok": true,
+          "error": null,
+          "wall_ms": 3667.828,
+          "ttft_ms": 540.716,
+          "timings": {
+            "prompt_n": 512,
+            "prompt_ms": 537.626,
+            "predicted_n": 64,
+            "predicted_ms": 3125.121,
+            "cache_n": 0
+          },
+          "cache_prompt": false,
+          "prompt_head": "[58, 9995, 220, 15, 15, 15, 18, 220, 15, 20, 15, 18, 16, 17, 15,",
+          "io": {
+            "seconds": 3.6683,
+            "proc_read_bytes": 0,
+            "sys_disk_read_bytes": 5267456,
+            "page_faults": 449,
+            "working_set_peak": 2581463040,
+            "private_peak": 13695541248
+          }
+        },
+        {
+          "phase": "prefix_prime",
+          "ok": true,
+          "error": null,
+          "wall_ms": 514.227,
+          "ttft_ms": null,
+          "timings": {
+            "prompt_n": 512,
+            "prompt_ms": 507.466,
+            "predicted_n": 1,
+            "predicted_ms": 0.001,
+            "cache_n": 0
+          },
+          "cache_prompt": false,
+          "prompt_head": "[58, 9995, 220, 15, 15, 15, 18, 220, 15, 20, 15, 18, 16, 17, 15,",
+          "io": {
+            "seconds": 0.5145,
+            "proc_read_bytes": 0,
+            "sys_disk_read_bytes": 2080768,
+            "page_faults": 446,
+            "working_set_peak": 2581495808,
+            "private_peak": 13695553536
+          }
+        },
+        {
+          "phase": "prefix_reuse",
+          "ok": true,
+          "error": null,
+          "wall_ms": 69.421,
+          "ttft_ms": null,
+          "timings": {
+            "prompt_n": 1,
+            "prompt_ms": 65.936,
+            "predicted_n": 1,
+            "predicted_ms": 0.001,
+            "cache_n": 511
+          },
+          "cache_prompt": true,
+          "prompt_head": "[58, 9995, 220, 15, 15, 15, 18, 220, 15, 20, 15, 18, 16, 17, 15,",
+          "io": {
+            "seconds": 0.0695,
+            "proc_read_bytes": 0,
+            "sys_disk_read_bytes": 0,
+            "page_faults": 446,
+            "working_set_peak": 2581495808,
+            "private_peak": 13695553536
+          }
+        }
+      ],
+      "gpu": {
+        "available": true,
+        "unit": "MiB",
+        "gpus": [
+          {
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+            "used_mib": 10370,
+            "total_mib": 12227
+          }
+        ],
+        "process_used_mib": null
+      },
+      "power": {
+        "source": "ac",
+        "percent": 40,
+        "via": "psutil.sensors_battery"
+      },
+      "rpc": null,
+      "started_at": "2026-10-22T07:29:45.829067+00:00"
+    }
+  ],
+  "summary": {
+    "n_reps": 3,
+    "n_warmup": 1,
+    "n_reps_ok": 3,
+    "metrics": {
+      "hcstream_bytes_per_pass": {
+        "n": 0
+      },
+      "prefill_tokens": {
+        "n": 3,
+        "median": 512.0,
+        "low": 512.0,
+        "high": 512.0,
+        "spread": "min/max"
+      },
+      "prefill_ms": {
+        "n": 3,
+        "median": 472.908,
+        "low": 428.219,
+        "high": 537.626,
+        "spread": "min/max"
+      },
+      "prefill_tok_s": {
+        "n": 3,
+        "median": 1082.663012678999,
+        "low": 952.3348945177503,
+        "high": 1195.6498894257377,
+        "spread": "min/max"
+      },
+      "ttft_ms": {
+        "n": 3,
+        "median": 475.112,
+        "low": 430.562,
+        "high": 540.716,
+        "spread": "min/max"
+      },
+      "decode_tokens": {
+        "n": 3,
+        "median": 64.0,
+        "low": 64.0,
+        "high": 64.0,
+        "spread": "min/max"
+      },
+      "decode_steps": {
+        "n": 3,
+        "median": 63.0,
+        "low": 63.0,
+        "high": 63.0,
+        "spread": "min/max"
+      },
+      "decode_ms": {
+        "n": 3,
+        "median": 3125.121,
+        "low": 3042.368,
+        "high": 3239.747,
+        "spread": "min/max"
+      },
+      "decode_tok_s": {
+        "n": 3,
+        "median": 20.159219435023473,
+        "low": 19.445962910066743,
+        "high": 20.707554115741424,
+        "spread": "min/max"
+      },
+      "decode_ms_per_token": {
+        "n": 3,
+        "median": 49.60509523809524,
+        "low": 48.291555555555554,
+        "high": 51.42455555555555,
+        "spread": "min/max"
+      },
+      "uncached_wall_ms": {
+        "n": 3,
+        "median": 3667.828,
+        "low": 3475.933,
+        "high": 3715.659,
+        "spread": "min/max"
+      },
+      "proc_read_bytes": {
+        "n": 3,
+        "median": 0.0,
+        "low": 0.0,
+        "high": 0.0,
+        "spread": "min/max"
+      },
+      "sys_disk_read_bytes": {
+        "n": 3,
+        "median": 35537408.0,
+        "low": 5267456.0,
+        "high": 36289536.0,
+        "spread": "min/max"
+      },
+      "proc_read_bytes_per_token": {
+        "n": 3,
+        "median": 0.0,
+        "low": 0.0,
+        "high": 0.0,
+        "spread": "min/max"
+      },
+      "sys_disk_read_bytes_per_token": {
+        "n": 3,
+        "median": 555272.0,
+        "low": 82304.0,
+        "high": 567024.0,
+        "spread": "min/max"
+      },
+      "hcstream_bytes_read": {
+        "n": 0
+      },
+      "hcstream_bytes_per_token": {
+        "n": 0
+      },
+      "page_faults": {
+        "n": 3,
+        "median": 449.0,
+        "low": 446.0,
+        "high": 900.0,
+        "spread": "min/max"
+      },
+      "reuse_cache_n": {
+        "n": 3,
+        "median": 511.0,
+        "low": 511.0,
+        "high": 511.0,
+        "spread": "min/max"
+      },
+      "reuse_prompt_n": {
+        "n": 3,
+        "median": 1.0,
+        "low": 1.0,
+        "high": 1.0,
+        "spread": "min/max"
+      },
+      "reuse_prompt_ms": {
+        "n": 3,
+        "median": 89.159,
+        "low": 65.936,
+        "high": 92.902,
+        "spread": "min/max"
+      },
+      "reuse_wall_ms": {
+        "n": 3,
+        "median": 92.681,
+        "low": 69.421,
+        "high": 95.812,
+        "spread": "min/max"
+      },
+      "working_set_peak": {
+        "n": 3,
+        "median": 2581450752.0,
+        "low": 2581372928.0,
+        "high": 2581495808.0,
+        "spread": "min/max"
+      },
+      "private_peak": {
+        "n": 3,
+        "median": 13695471616.0,
+        "low": 13695393792.0,
+        "high": 13695553536.0,
+        "spread": "min/max"
+      }
+    },
+    "failures": []
+  },
+  "stop": {
+    "exit_code": 1,
+    "stop_s": 0.408,
+    "children": 0,
+    "children_alive": [],
+    "child_alive_after_stop": false,
+    "error": null,
+    "pressure_guard_tripped": false,
+    "sampler_error": null,
+    "memory_whole_run": {
+      "samples": 245,
+      "seconds": 25.994,
+      "working_set_peak": 2581495808,
+      "working_set_median": 2577625088,
+      "private_peak": 13704945664,
+      "sys_available_min": 6513885184,
+      "page_faults": 656721,
+      "proc_read_bytes": 12134605273,
+      "sys_disk_read_bytes": 12291066880
+    },
+    "available_after_stop": 9555836928
+  },
+  "error": null,
+  "provenance": {
+    "load, reps, summary": "measured on this host during this run",
+    "preflight.predicted": "estimate: GGUF unit sizes plus KV sizing plus a compute prior, used only to refuse a run",
+    "ttft_ms": "measured client side over loopback with streaming; no gateway in the path",
+    "gpu": "nvidia-smi snapshot after the uncached phase, not a peak",
+    "decode_tok_s": "(predicted_n - 1) / predicted_ms from engine timings, the engine's own predicted_per_second",
+    "*_read_bytes_per_token": "all reads of the uncached phase (prefill and decode) over predicted_n",
+    "hcstream_bytes_per_pass": "hcstream bytes_read over its forward-pass count (decode bytes per token)"
+  }
+}

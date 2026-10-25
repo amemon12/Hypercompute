@@ -1,0 +1,63 @@
+[
+ {
+  "label": "rank-qwen2.5-14b-instruct-q6_k-s16",
+  "model_paths": [
+   "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-14b-instruct-q6_k\\qwen2.5-14b-instruct-q6_k-00001-of-00004.gguf",
+   "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-14b-instruct-q6_k\\qwen2.5-14b-instruct-q6_k-00002-of-00004.gguf",
+   "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-14b-instruct-q6_k\\qwen2.5-14b-instruct-q6_k-00003-of-00004.gguf",
+   "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-14b-instruct-q6_k\\qwen2.5-14b-instruct-q6_k-00004-of-00004.gguf"
+  ],
+  "engine": {
+   "devices": [
+    "CUDA0"
+   ],
+   "tensor_split": [
+    33
+   ],
+   "ngl": 33,
+   "ctx": 2048,
+   "threads": 12,
+   "load_mode": "mmap",
+   "flags": [
+    "--no-repack",
+    "--no-op-offload",
+    "--cache-ram",
+    "0"
+   ]
+  },
+  "stream": {
+   "resident_units": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    11,
+    14
+   ],
+   "streamed_units": [
+    7,
+    8,
+    9,
+    10,
+    12,
+    13,
+    15
+   ],
+   "slots": 2,
+   "options": {
+    "readers": 4,
+    "chunk_bytes": 8388608,
+    "no_prefetch": true,
+    "on_io_error": "abort",
+    "stats_interval_ms": 500,
+    "fault_read_error_after_bytes": 0,
+    "fault_read_delay_us": 0
+   }
+  },
+  "rpc_endpoints": [],
+  "rpc_path_class": "local"
+ }
+]

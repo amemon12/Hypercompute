@@ -1,0 +1,12 @@
+hcstream: enabled (288 tensors, 24 streamed layers, 2 slots, prefetch off)
+0.00.230.753 E ggml_cuda_init: failed to initialize CUDA: no CUDA-capable device is detected
+0.00.251.197 I srv  llama_server: initializing ...
+0.00.251.206 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.251.337 I srv  init_listene: The UI is disabled
+0.00.251.339 I srv  init_listene: Use --ui/--no-ui (or deprecated --webui/--no-webui) to enable/disable
+0.00.251.435 W srv  llama_server: security: no API key is set and CORS allows all origins (see https://github.com/ggml-org/llama.cpp/pull/25655)
+0.00.257.585 I srv    load_model: loading model 'C:\Users\operator\.hypercompute\models\qwen2.5-0.5b-instruct-q4_k_m\qwen2.5-0.5b-instruct-q4_k_m.gguf'
+0.00.432.796 W load: control-looking token: 128247 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden
+0.00.470.625 I cmn          init: llama threadpool init, n_threads = 8
+hcstream: attached: 24 streamed layers in 2 slots of 10887168 bytes, readers 4, chunk 8388608
+hcstream: FATAL: unbuffered read failed for layer 6 (win32 error 30 at offset 456249344)

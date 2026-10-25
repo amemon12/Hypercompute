@@ -1,0 +1,7 @@
+# Shell scripts run on macOS/Linux/WSL; CRLF breaks them (core.autocrlf=true on Windows hosts).
+*.sh text eol=lf
+*.command text eol=lf
+# Windows launchers need CRLF regardless of the cloning machine's Git settings.
+*.cmd text eol=crlf
+# SSE fixtures are byte-exact protocol captures; a fresh Windows clone would otherwise check them out with CR.
+tests/fixtures/*.sse text eol=lf

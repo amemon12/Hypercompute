@@ -1,0 +1,1188 @@
+{
+  "what": "counterfactual: the Mac contribution reserve_bytes set from 4294967296 to 0 (the owner's real setting is 4 GiB, which makes its pool admit 0 B at the 06:40:25Z inventory); predictions only",
+  "setup_prior_ms": 2000.0,
+  "setup_per_remote_prior_ms": 500.0,
+  "relay_risk_fraction_prior": 0.1,
+  "choices": {
+    "bench_warm": {
+      "workload": {
+        "ctx_size": 2048,
+        "prompt_tokens": 512,
+        "output_tokens": 32,
+        "warm": true,
+        "horizon_tokens": 2048,
+        "objective": "interactive"
+      },
+      "best": {
+        "layout": "local:CUDA0 [0-23 + head]",
+        "feasible": true,
+        "reasons": [],
+        "decode_ms": 1.0700624447482248,
+        "prefill_ms": 11.362926543957016,
+        "load_ms": 2065.33383767931,
+        "objective_ms": 45.60492477590021,
+        "bottleneck": "local:CUDA0 compute 1.1 ms of 1.1 ms per token (100 percent)",
+        "stages": [
+          {
+            "stage": "local:CUDA0",
+            "units": [
+              0,
+              25
+            ],
+            "weight_bytes": 391859712,
+            "compute_ms": 1.0700624447482248,
+            "decode_coefficient": {
+              "value": 2.9320972940894166,
+              "unit": "ms/GiB",
+              "provenance": "measured",
+              "measured_at": "2026-10-22T06:29:29.594784+00:00",
+              "samples": 3,
+              "note": "median decode 11.935 ms/token over 3 reps; qwen2.5-7b-instruct-q4_k_m, every unit and the head on CUDA0 (-ngl all), 12 threads, CPU repack on, 4.070 GiB of unit weights (token_embd lookup excluded); model-agnostic copy of this qwen2.5-7b-instruct-q4_k_m measurement; model-agnostic; CUDA0, build b11770; ctx 2048; power ac; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T062921Z-bench-cal-qwen2.5-7b-instruct-q4_k_m-stock-gpu\\bench.json"
+            },
+            "prefill_coefficient": {
+              "value": 0.060812028891381785,
+              "unit": "ms/GiB/token",
+              "provenance": "measured",
+              "measured_at": "2026-10-22T06:29:29.594784+00:00",
+              "samples": 3,
+              "note": "median uncached prefill 0.2475 ms/token at 512 prompt tokens; qwen2.5-7b-instruct-q4_k_m, every unit and the head on CUDA0 (-ngl all), 12 threads, CPU repack on, 4.070 GiB of unit weights (token_embd lookup excluded); model-agnostic copy of this qwen2.5-7b-instruct-q4_k_m measurement; model-agnostic; CUDA0, build b11770; ctx 2048; power ac; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T062921Z-bench-cal-qwen2.5-7b-instruct-q4_k_m-stock-gpu\\bench.json"
+            },
+            "hop_ms": 0.0,
+            "upload_bytes": 0,
+            "path": "local",
+            "demand_peak_bytes": 1004228096,
+            "admissible_bytes": 11987320832
+          }
+        ],
+        "skipped": [
+          "4c2991743c154be896d10a0b53ba4d2b:MTL0: not used: adds 40.5 ms hop per token, adds 0.1 ms compute and I/O per token; the best layout with it scores J +3786 ms"
+        ],
+        "assumptions": [
+          "cuda overhead 450 MiB per stage (prior: runtime and allocator margin, the planner's figure)",
+          "workspace 110 MiB per stage (prior: the planner's compute buffer base plus ubatch 512 term)"
+        ],
+        "coefficients": [
+          {
+            "label": "local:CUDA0 decode",
+            "value": 2.9320972940894166,
+            "unit": "ms/GiB",
+            "provenance": "measured",
+            "measured_at": "2026-10-22T06:29:29.594784+00:00",
+            "samples": 3,
+            "note": "median decode 11.935 ms/token over 3 reps; qwen2.5-7b-instruct-q4_k_m, every unit and the head on CUDA0 (-ngl all), 12 threads, CPU repack on, 4.070 GiB of unit weights (token_embd lookup excluded); model-agnostic copy of this qwen2.5-7b-instruct-q4_k_m measurement; model-agnostic; CUDA0, build b11770; ctx 2048; power ac; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T062921Z-bench-cal-qwen2.5-7b-instruct-q4_k_m-stock-gpu\\bench.json"
+          },
+          {
+            "label": "local:CUDA0 prefill",
+            "value": 0.060812028891381785,
+            "unit": "ms/GiB/token",
+            "provenance": "measured",
+            "measured_at": "2026-10-22T06:29:29.594784+00:00",
+            "samples": 3,
+            "note": "median uncached prefill 0.2475 ms/token at 512 prompt tokens; qwen2.5-7b-instruct-q4_k_m, every unit and the head on CUDA0 (-ngl all), 12 threads, CPU repack on, 4.070 GiB of unit weights (token_embd lookup excluded); model-agnostic copy of this qwen2.5-7b-instruct-q4_k_m measurement; model-agnostic; CUDA0, build b11770; ctx 2048; power ac; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T062921Z-bench-cal-qwen2.5-7b-instruct-q4_k_m-stock-gpu\\bench.json"
+          }
+        ]
+      },
+      "candidates": [
+        {
+          "layout": "local:CUDA0 [0-23 + head]",
+          "feasible": true,
+          "reasons": [],
+          "decode_ms": 1.0700624447482248,
+          "prefill_ms": 11.362926543957016,
+          "load_ms": 2065.33383767931,
+          "objective_ms": 45.60492477590021,
+          "bottleneck": "local:CUDA0 compute 1.1 ms of 1.1 ms per token (100 percent)",
+          "stages": [
+            {
+              "stage": "local:CUDA0",
+              "units": [
+                0,
+                25
+              ],
+              "weight_bytes": 391859712,
+              "compute_ms": 1.0700624447482248,
+              "decode_coefficient": {
+                "value": 2.9320972940894166,
+                "unit": "ms/GiB",
+                "provenance": "measured",
+                "measured_at": "2026-10-22T06:29:29.594784+00:00",
+                "samples": 3,
+                "note": "median decode 11.935 ms/token over 3 reps; qwen2.5-7b-instruct-q4_k_m, every unit and the head on CUDA0 (-ngl all), 12 threads, CPU repack on, 4.070 GiB of unit weights (token_embd lookup excluded); model-agnostic copy of this qwen2.5-7b-instruct-q4_k_m measurement; model-agnostic; CUDA0, build b11770; ctx 2048; power ac; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T062921Z-bench-cal-qwen2.5-7b-instruct-q4_k_m-stock-gpu\\bench.json"
+              },
+              "prefill_coefficient": {
+                "value": 0.060812028891381785,
+                "unit": "ms/GiB/token",
+                "provenance": "measured",
+                "measured_at": "2026-10-22T06:29:29.594784+00:00",
+                "samples": 3,
+                "note": "median uncached prefill 0.2475 ms/token at 512 prompt tokens; qwen2.5-7b-instruct-q4_k_m, every unit and the head on CUDA0 (-ngl all), 12 threads, CPU repack on, 4.070 GiB of unit weights (token_embd lookup excluded); model-agnostic copy of this qwen2.5-7b-instruct-q4_k_m measurement; model-agnostic; CUDA0, build b11770; ctx 2048; power ac; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T062921Z-bench-cal-qwen2.5-7b-instruct-q4_k_m-stock-gpu\\bench.json"
+              },
+              "hop_ms": 0.0,
+              "upload_bytes": 0,
+              "path": "local",
+              "demand_peak_bytes": 1004228096,
+              "admissible_bytes": 11987320832
+            }
+          ],
+          "skipped": [
+            "4c2991743c154be896d10a0b53ba4d2b:MTL0: not used: adds 40.5 ms hop per token, adds 0.1 ms compute and I/O per token; the best layout with it scores J +3786 ms"
+          ],
+          "assumptions": [
+            "cuda overhead 450 MiB per stage (prior: runtime and allocator margin, the planner's figure)",
+            "workspace 110 MiB per stage (prior: the planner's compute buffer base plus ubatch 512 term)"
+          ],
+          "coefficients": [
+            {
+              "label": "local:CUDA0 decode",
+              "value": 2.9320972940894166,
+              "unit": "ms/GiB",
+              "provenance": "measured",
+              "measured_at": "2026-10-22T06:29:29.594784+00:00",
+              "samples": 3,
+              "note": "median decode 11.935 ms/token over 3 reps; qwen2.5-7b-instruct-q4_k_m, every unit and the head on CUDA0 (-ngl all), 12 threads, CPU repack on, 4.070 GiB of unit weights (token_embd lookup excluded); model-agnostic copy of this qwen2.5-7b-instruct-q4_k_m measurement; model-agnostic; CUDA0, build b11770; ctx 2048; power ac; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T062921Z-bench-cal-qwen2.5-7b-instruct-q4_k_m-stock-gpu\\bench.json"
+            },
+            {
+              "label": "local:CUDA0 prefill",
+              "value": 0.060812028891381785,
+              "unit": "ms/GiB/token",
+              "provenance": "measured",
+              "measured_at": "2026-10-22T06:29:29.594784+00:00",
+              "samples": 3,
+              "note": "median uncached prefill 0.2475 ms/token at 512 prompt tokens; qwen2.5-7b-instruct-q4_k_m, every unit and the head on CUDA0 (-ngl all), 12 threads, CPU repack on, 4.070 GiB of unit weights (token_embd lookup excluded); model-agnostic copy of this qwen2.5-7b-instruct-q4_k_m measurement; model-agnostic; CUDA0, build b11770; ctx 2048; power ac; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T062921Z-bench-cal-qwen2.5-7b-instruct-q4_k_m-stock-gpu\\bench.json"
+            }
+          ]
+        },
+        {
+          "layout": "4c2991743c154be896d10a0b53ba4d2b:MTL0 [0-0], local:CUDA0 [1-23 + head]",
+          "feasible": true,
+          "reasons": [],
+          "decode_ms": 41.650926555827304,
+          "prefill_ms": 2368.5585370279805,
+          "load_ms": 9428.925164546656,
+          "objective_ms": 3831.3420585651056,
+          "bottleneck": "4c2991743c154be896d10a0b53ba4d2b:MTL0 hop 40.5 ms of 41.7 ms per token (97 percent)",
+          "stages": [
+            {
+              "stage": "4c2991743c154be896d10a0b53ba4d2b:MTL0",
+              "units": [
+                0,
+                1
+              ],
+              "weight_bytes": 10883840,
+              "compute_ms": 0.118089664,
+              "decode_coefficient": {
+                "value": 11.6500987904,
+                "unit": "ms/GiB",
+                "provenance": "prior",
+                "measured_at": null,
+                "samples": 0,
+                "note": "derived: M4 llama.cpp discussion #4167 row, 10.85 ms/GB (split_optimization.md section 1), converted to ms/GiB"
+              },
+              "prefill_coefficient": {
+                "value": 1.2591360957697841,
+                "unit": "ms/GiB/token",
+                "provenance": "prior",
+                "measured_at": null,
+                "samples": 0,
+                "note": "derived: 163 us per Qwen2.5-7B layer-token on an M4 (split_optimization.md section 1)"
+              },
+              "hop_ms": 40.49249525807852,
+              "upload_bytes": 10883840,
+              "path": "relay",
+              "demand_peak_bytes": 462820096,
+              "admissible_bytes": 3665199104,
+              "link": {
+                "rtt": {
+                  "value": 17.98550004605204,
+                  "unit": "ms",
+                  "provenance": "measured",
+                  "measured_at": "2026-10-22T06:30:39.608566+00:00",
+                  "samples": 20,
+                  "note": "median of 20 GET_DEVICE_MEMORY round trips over llama.cpp RPC 8.0.0 to 127.0.0.1:52110, path class relay; p90 20.882 ms; relay path; rpc0, build ggml-rpc-8.0.0; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T063039Z-link-relay-127.0.0.1-52110\\link.json"
+                },
+                "goodput": {
+                  "value": 1585316.3028772585,
+                  "unit": "bytes/s",
+                  "provenance": "measured",
+                  "measured_at": "2026-10-22T06:30:44.983185+00:00",
+                  "samples": 1,
+                  "note": "8388608 random bytes in 2 SET_TENSOR chunks to 127.0.0.1:52110, path class relay; bytes / (fence - start - 17.986 ms median RTT); relay path; rpc0, build ggml-rpc-8.0.0; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T063039Z-link-relay-127.0.0.1-52110\\link.json"
+                },
+                "round_trips_per_token": {
+                  "value": 2.0,
+                  "unit": "round trips",
+                  "provenance": "prior",
+                  "measured_at": null,
+                  "samples": 0,
+                  "note": "assumed: 2 RPC exchanges per remote stage per token"
+                }
+              }
+            },
+            {
+              "stage": "local:CUDA0",
+              "units": [
+                1,
+                25
+              ],
+              "weight_bytes": 380975872,
+              "compute_ms": 1.0403416337487807,
+              "decode_coefficient": {
+                "value": 2.9320972940894166,
+                "unit": "ms/GiB",
+                "provenance": "measured",
+                "measured_at": "2026-10-22T06:29:29.594784+00:00",
+                "samples": 3,
+                "note": "median decode 11.935 ms/token over 3 reps; qwen2.5-7b-instruct-q4_k_m, every unit and the head on CUDA0 (-ngl all), 12 threads, CPU repack on, 4.070 GiB of unit weights (token_embd lookup excluded); model-agnostic copy of this qwen2.5-7b-instruct-q4_k_m measurement; model-agnostic; CUDA0, build b11770; ctx 2048; power ac; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T062921Z-bench-cal-qwen2.5-7b-instruct-q4_k_m-stock-gpu\\bench.json"
+              },
+              "prefill_coefficient": {
+                "value": 0.060812028891381785,
+                "unit": "ms/GiB/token",
+                "provenance": "measured",
+                "measured_at": "2026-10-22T06:29:29.594784+00:00",
+                "samples": 3,
+                "note": "median uncached prefill 0.2475 ms/token at 512 prompt tokens; qwen2.5-7b-instruct-q4_k_m, every unit and the head on CUDA0 (-ngl all), 12 threads, CPU repack on, 4.070 GiB of unit weights (token_embd lookup excluded); model-agnostic copy of this qwen2.5-7b-instruct-q4_k_m measurement; model-agnostic; CUDA0, build b11770; ctx 2048; power ac; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T062921Z-bench-cal-qwen2.5-7b-instruct-q4_k_m-stock-gpu\\bench.json"
+              },
+              "hop_ms": 0.0,
+              "upload_bytes": 0,
+              "path": "local",
+              "demand_peak_bytes": 992295680,
+              "admissible_bytes": 11987320832
+            }
+          ],
+          "skipped": [],
+          "assumptions": [
+            "4c2991743c154be896d10a0b53ba4d2b:MTL0 decode 11.65 ms/GiB (prior: derived: M4 llama.cpp discussion #4167 row, 10.85 ms/GB (split_optimization.md section 1), converted to ms/GiB)",
+            "4c2991743c154be896d10a0b53ba4d2b:MTL0 prefill 1.259 ms/GiB/token (prior: derived: 163 us per Qwen2.5-7B layer-token on an M4 (split_optimization.md section 1))",
+            "4c2991743c154be896d10a0b53ba4d2b:MTL0 round trips per token 2 round trips (prior: assumed: 2 RPC exchanges per remote stage per token)",
+            "4c2991743c154be896d10a0b53ba4d2b:MTL0 relay risk 0.1 fraction (prior: assumed margin: 10 percent of a relay stage's per-token cost, for stalls and reconnects on relayed paths)",
+            "metal overhead 256 MiB per stage (prior: runtime and allocator margin, the planner's figure)",
+            "cuda overhead 450 MiB per stage (prior: runtime and allocator margin, the planner's figure)",
+            "workspace 110 MiB per stage (prior: the planner's compute buffer base plus ubatch 512 term)",
+            "RPC staging 64 MiB per peer stage (prior, the planner's figure)"
+          ],
+          "coefficients": [
+            {
+              "label": "4c2991743c154be896d10a0b53ba4d2b:MTL0 decode",
+              "value": 11.6500987904,
+              "unit": "ms/GiB",
+              "provenance": "prior",
+              "measured_at": null,
+              "samples": 0,
+              "note": "derived: M4 llama.cpp discussion #4167 row, 10.85 ms/GB (split_optimization.md section 1), converted to ms/GiB"
+            },
+            {
+              "label": "4c2991743c154be896d10a0b53ba4d2b:MTL0 prefill",
+              "value": 1.2591360957697841,
+              "unit": "ms/GiB/token",
+              "provenance": "prior",
+              "measured_at": null,
+              "samples": 0,
+              "note": "derived: 163 us per Qwen2.5-7B layer-token on an M4 (split_optimization.md section 1)"
+            },
+            {
+              "label": "4c2991743c154be896d10a0b53ba4d2b:MTL0 rtt",
+              "value": 17.98550004605204,
+              "unit": "ms",
+              "provenance": "measured",
+              "measured_at": "2026-10-22T06:30:39.608566+00:00",
+              "samples": 20,
+              "note": "median of 20 GET_DEVICE_MEMORY round trips over llama.cpp RPC 8.0.0 to 127.0.0.1:52110, path class relay; p90 20.882 ms; relay path; rpc0, build ggml-rpc-8.0.0; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T063039Z-link-relay-127.0.0.1-52110\\link.json"
+            },
+            {
+              "label": "4c2991743c154be896d10a0b53ba4d2b:MTL0 goodput",
+              "value": 1585316.3028772585,
+              "unit": "bytes/s",
+              "provenance": "measured",
+              "measured_at": "2026-10-22T06:30:44.983185+00:00",
+              "samples": 1,
+              "note": "8388608 random bytes in 2 SET_TENSOR chunks to 127.0.0.1:52110, path class relay; bytes / (fence - start - 17.986 ms median RTT); relay path; rpc0, build ggml-rpc-8.0.0; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T063039Z-link-relay-127.0.0.1-52110\\link.json"
+            },
+            {
+              "label": "4c2991743c154be896d10a0b53ba4d2b:MTL0 round trips per token",
+              "value": 2.0,
+              "unit": "round trips",
+              "provenance": "prior",
+              "measured_at": null,
+              "samples": 0,
+              "note": "assumed: 2 RPC exchanges per remote stage per token"
+            },
+            {
+              "label": "4c2991743c154be896d10a0b53ba4d2b:MTL0 relay risk",
+              "value": 0.1,
+              "unit": "fraction",
+              "provenance": "prior",
+              "measured_at": null,
+              "samples": 0,
+              "note": "assumed margin: 10 percent of a relay stage's per-token cost, for stalls and reconnects on relayed paths"
+            },
+            {
+              "label": "local:CUDA0 decode",
+              "value": 2.9320972940894166,
+              "unit": "ms/GiB",
+              "provenance": "measured",
+              "measured_at": "2026-10-22T06:29:29.594784+00:00",
+              "samples": 3,
+              "note": "median decode 11.935 ms/token over 3 reps; qwen2.5-7b-instruct-q4_k_m, every unit and the head on CUDA0 (-ngl all), 12 threads, CPU repack on, 4.070 GiB of unit weights (token_embd lookup excluded); model-agnostic copy of this qwen2.5-7b-instruct-q4_k_m measurement; model-agnostic; CUDA0, build b11770; ctx 2048; power ac; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T062921Z-bench-cal-qwen2.5-7b-instruct-q4_k_m-stock-gpu\\bench.json"
+            },
+            {
+              "label": "local:CUDA0 prefill",
+              "value": 0.060812028891381785,
+              "unit": "ms/GiB/token",
+              "provenance": "measured",
+              "measured_at": "2026-10-22T06:29:29.594784+00:00",
+              "samples": 3,
+              "note": "median uncached prefill 0.2475 ms/token at 512 prompt tokens; qwen2.5-7b-instruct-q4_k_m, every unit and the head on CUDA0 (-ngl all), 12 threads, CPU repack on, 4.070 GiB of unit weights (token_embd lookup excluded); model-agnostic copy of this qwen2.5-7b-instruct-q4_k_m measurement; model-agnostic; CUDA0, build b11770; ctx 2048; power ac; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T062921Z-bench-cal-qwen2.5-7b-instruct-q4_k_m-stock-gpu\\bench.json"
+            }
+          ]
+        }
+      ],
+      "explain": [
+        "best: J 46 ms = load not charged (warm) + prefill 11 + 32 x decode 1.1 ms + risk 0; 0 B streamed per token",
+        "stage 1 local:CUDA0 (local) units 0-23 + head: resident 374 MiB; demand 958 MiB of 11.2 GiB admissible; compute 1.1 ms (measured)",
+        "bottleneck: local:CUDA0 compute 1.1 ms of 1.1 ms per token (100 percent)",
+        "skipped 4c2991743c154be896d10a0b53ba4d2b:MTL0: not used: adds 40.5 ms hop per token, adds 0.1 ms compute and I/O per token; the best layout with it scores J +3786 ms",
+        "alternative 2: J 3831 ms, decode 41.7 ms, 4c2991743c154be896d10a0b53ba4d2b:MTL0 [0-0], local:CUDA0 [1-23 + head]",
+        "rejected: local:CPU units 0-2: needs 198 MiB (weights 0 B, KV 3 MiB, workspace 110 MiB, staging 21 MiB, overhead 64 MiB), pool admits 197 MiB",
+        "assumption: decode is the sum of stage terms for one stream, never the slowest stage alone",
+        "assumption: KV is f16 K and V per block on its stage at the workload context; the head has none",
+        "assumption: token embeddings stay file-backed on the host and are not charged to any pool",
+        "assumption: prefill is stage compute plus one exchange carrying the prompt activations per peer stage; weight streaming during prefill is not modelled",
+        "assumption: cuda overhead 450 MiB per stage (prior: runtime and allocator margin, the planner's figure)",
+        "assumption: workspace 110 MiB per stage (prior: the planner's compute buffer base plus ubatch 512 term)"
+      ],
+      "mac_admissible_bytes": 3665199104
+    },
+    "bench_cold": {
+      "workload": {
+        "ctx_size": 2048,
+        "prompt_tokens": 512,
+        "output_tokens": 32,
+        "warm": false,
+        "horizon_tokens": 2048,
+        "objective": "interactive"
+      },
+      "best": {
+        "layout": "local:CUDA0 [0-23 + head]",
+        "feasible": true,
+        "reasons": [],
+        "decode_ms": 1.0700624447482248,
+        "prefill_ms": 11.362926543957016,
+        "load_ms": 2065.33383767931,
+        "objective_ms": 2110.9387624552105,
+        "bottleneck": "local:CUDA0 compute 1.1 ms of 1.1 ms per token (100 percent)",
+        "stages": [
+          {
+            "stage": "local:CUDA0",
+            "units": [
+              0,
+              25
+            ],
+            "weight_bytes": 391859712,
+            "compute_ms": 1.0700624447482248,
+            "decode_coefficient": {
+              "value": 2.9320972940894166,
+              "unit": "ms/GiB",
+              "provenance": "measured",
+              "measured_at": "2026-10-22T06:29:29.594784+00:00",
+              "samples": 3,
+              "note": "median decode 11.935 ms/token over 3 reps; qwen2.5-7b-instruct-q4_k_m, every unit and the head on CUDA0 (-ngl all), 12 threads, CPU repack on, 4.070 GiB of unit weights (token_embd lookup excluded); model-agnostic copy of this qwen2.5-7b-instruct-q4_k_m measurement; model-agnostic; CUDA0, build b11770; ctx 2048; power ac; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T062921Z-bench-cal-qwen2.5-7b-instruct-q4_k_m-stock-gpu\\bench.json"
+            },
+            "prefill_coefficient": {
+              "value": 0.060812028891381785,
+              "unit": "ms/GiB/token",
+              "provenance": "measured",
+              "measured_at": "2026-10-22T06:29:29.594784+00:00",
+              "samples": 3,
+              "note": "median uncached prefill 0.2475 ms/token at 512 prompt tokens; qwen2.5-7b-instruct-q4_k_m, every unit and the head on CUDA0 (-ngl all), 12 threads, CPU repack on, 4.070 GiB of unit weights (token_embd lookup excluded); model-agnostic copy of this qwen2.5-7b-instruct-q4_k_m measurement; model-agnostic; CUDA0, build b11770; ctx 2048; power ac; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T062921Z-bench-cal-qwen2.5-7b-instruct-q4_k_m-stock-gpu\\bench.json"
+            },
+            "hop_ms": 0.0,
+            "upload_bytes": 0,
+            "path": "local",
+            "demand_peak_bytes": 1004228096,
+            "admissible_bytes": 11987320832
+          }
+        ],
+        "skipped": [
+          "4c2991743c154be896d10a0b53ba4d2b:MTL0: not used: adds 40.5 ms hop per token, adds 0.1 ms compute and I/O per token, adds 7.4 s load; the best layout with it scores J +11149 ms"
+        ],
+        "assumptions": [
+          "cuda overhead 450 MiB per stage (prior: runtime and allocator margin, the planner's figure)",
+          "workspace 110 MiB per stage (prior: the planner's compute buffer base plus ubatch 512 term)",
+          "setup 2000 ms (prior: assumed: engine start, graph build and warmup on a cold load)"
+        ],
+        "coefficients": [
+          {
+            "label": "local:CUDA0 decode",
+            "value": 2.9320972940894166,
+            "unit": "ms/GiB",
+            "provenance": "measured",
+            "measured_at": "2026-10-22T06:29:29.594784+00:00",
+            "samples": 3,
+            "note": "median decode 11.935 ms/token over 3 reps; qwen2.5-7b-instruct-q4_k_m, every unit and the head on CUDA0 (-ngl all), 12 threads, CPU repack on, 4.070 GiB of unit weights (token_embd lookup excluded); model-agnostic copy of this qwen2.5-7b-instruct-q4_k_m measurement; model-agnostic; CUDA0, build b11770; ctx 2048; power ac; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T062921Z-bench-cal-qwen2.5-7b-instruct-q4_k_m-stock-gpu\\bench.json"
+          },
+          {
+            "label": "local:CUDA0 prefill",
+            "value": 0.060812028891381785,
+            "unit": "ms/GiB/token",
+            "provenance": "measured",
+            "measured_at": "2026-10-22T06:29:29.594784+00:00",
+            "samples": 3,
+            "note": "median uncached prefill 0.2475 ms/token at 512 prompt tokens; qwen2.5-7b-instruct-q4_k_m, every unit and the head on CUDA0 (-ngl all), 12 threads, CPU repack on, 4.070 GiB of unit weights (token_embd lookup excluded); model-agnostic copy of this qwen2.5-7b-instruct-q4_k_m measurement; model-agnostic; CUDA0, build b11770; ctx 2048; power ac; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T062921Z-bench-cal-qwen2.5-7b-instruct-q4_k_m-stock-gpu\\bench.json"
+          },
+          {
+            "label": "storage read",
+            "value": 5997806434.139657,
+            "unit": "bytes/s",
+            "provenance": "measured",
+            "measured_at": "2026-10-22T06:25:56.666416+00:00",
+            "samples": 3,
+            "note": "unbuffered reads of qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf, 4 readers x 8 MiB chunks, median of 3 runs (5.60, 5.54, 5.59 GiB/s), 3.70 GiB read in total; C:, build storage_probe-4r-8MiB; power ac; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T062556Z-storage-C\\storage.json"
+          },
+          {
+            "label": "setup",
+            "value": 2000.0,
+            "unit": "ms",
+            "provenance": "prior",
+            "measured_at": null,
+            "samples": 0,
+            "note": "assumed: engine start, graph build and warmup on a cold load"
+          }
+        ]
+      },
+      "candidates": [
+        {
+          "layout": "local:CUDA0 [0-23 + head]",
+          "feasible": true,
+          "reasons": [],
+          "decode_ms": 1.0700624447482248,
+          "prefill_ms": 11.362926543957016,
+          "load_ms": 2065.33383767931,
+          "objective_ms": 2110.9387624552105,
+          "bottleneck": "local:CUDA0 compute 1.1 ms of 1.1 ms per token (100 percent)",
+          "stages": [
+            {
+              "stage": "local:CUDA0",
+              "units": [
+                0,
+                25
+              ],
+              "weight_bytes": 391859712,
+              "compute_ms": 1.0700624447482248,
+              "decode_coefficient": {
+                "value": 2.9320972940894166,
+                "unit": "ms/GiB",
+                "provenance": "measured",
+                "measured_at": "2026-10-22T06:29:29.594784+00:00",
+                "samples": 3,
+                "note": "median decode 11.935 ms/token over 3 reps; qwen2.5-7b-instruct-q4_k_m, every unit and the head on CUDA0 (-ngl all), 12 threads, CPU repack on, 4.070 GiB of unit weights (token_embd lookup excluded); model-agnostic copy of this qwen2.5-7b-instruct-q4_k_m measurement; model-agnostic; CUDA0, build b11770; ctx 2048; power ac; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T062921Z-bench-cal-qwen2.5-7b-instruct-q4_k_m-stock-gpu\\bench.json"
+              },
+              "prefill_coefficient": {
+                "value": 0.060812028891381785,
+                "unit": "ms/GiB/token",
+                "provenance": "measured",
+                "measured_at": "2026-10-22T06:29:29.594784+00:00",
+                "samples": 3,
+                "note": "median uncached prefill 0.2475 ms/token at 512 prompt tokens; qwen2.5-7b-instruct-q4_k_m, every unit and the head on CUDA0 (-ngl all), 12 threads, CPU repack on, 4.070 GiB of unit weights (token_embd lookup excluded); model-agnostic copy of this qwen2.5-7b-instruct-q4_k_m measurement; model-agnostic; CUDA0, build b11770; ctx 2048; power ac; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T062921Z-bench-cal-qwen2.5-7b-instruct-q4_k_m-stock-gpu\\bench.json"
+              },
+              "hop_ms": 0.0,
+              "upload_bytes": 0,
+              "path": "local",
+              "demand_peak_bytes": 1004228096,
+              "admissible_bytes": 11987320832
+            }
+          ],
+          "skipped": [
+            "4c2991743c154be896d10a0b53ba4d2b:MTL0: not used: adds 40.5 ms hop per token, adds 0.1 ms compute and I/O per token, adds 7.4 s load; the best layout with it scores J +11149 ms"
+          ],
+          "assumptions": [
+            "cuda overhead 450 MiB per stage (prior: runtime and allocator margin, the planner's figure)",
+            "workspace 110 MiB per stage (prior: the planner's compute buffer base plus ubatch 512 term)",
+            "setup 2000 ms (prior: assumed: engine start, graph build and warmup on a cold load)"
+          ],
+          "coefficients": [
+            {
+              "label": "local:CUDA0 decode",
+              "value": 2.9320972940894166,
+              "unit": "ms/GiB",
+              "provenance": "measured",
+              "measured_at": "2026-10-22T06:29:29.594784+00:00",
+              "samples": 3,
+              "note": "median decode 11.935 ms/token over 3 reps; qwen2.5-7b-instruct-q4_k_m, every unit and the head on CUDA0 (-ngl all), 12 threads, CPU repack on, 4.070 GiB of unit weights (token_embd lookup excluded); model-agnostic copy of this qwen2.5-7b-instruct-q4_k_m measurement; model-agnostic; CUDA0, build b11770; ctx 2048; power ac; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T062921Z-bench-cal-qwen2.5-7b-instruct-q4_k_m-stock-gpu\\bench.json"
+            },
+            {
+              "label": "local:CUDA0 prefill",
+              "value": 0.060812028891381785,
+              "unit": "ms/GiB/token",
+              "provenance": "measured",
+              "measured_at": "2026-10-22T06:29:29.594784+00:00",
+              "samples": 3,
+              "note": "median uncached prefill 0.2475 ms/token at 512 prompt tokens; qwen2.5-7b-instruct-q4_k_m, every unit and the head on CUDA0 (-ngl all), 12 threads, CPU repack on, 4.070 GiB of unit weights (token_embd lookup excluded); model-agnostic copy of this qwen2.5-7b-instruct-q4_k_m measurement; model-agnostic; CUDA0, build b11770; ctx 2048; power ac; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T062921Z-bench-cal-qwen2.5-7b-instruct-q4_k_m-stock-gpu\\bench.json"
+            },
+            {
+              "label": "storage read",
+              "value": 5997806434.139657,
+              "unit": "bytes/s",
+              "provenance": "measured",
+              "measured_at": "2026-10-22T06:25:56.666416+00:00",
+              "samples": 3,
+              "note": "unbuffered reads of qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf, 4 readers x 8 MiB chunks, median of 3 runs (5.60, 5.54, 5.59 GiB/s), 3.70 GiB read in total; C:, build storage_probe-4r-8MiB; power ac; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T062556Z-storage-C\\storage.json"
+            },
+            {
+              "label": "setup",
+              "value": 2000.0,
+              "unit": "ms",
+              "provenance": "prior",
+              "measured_at": null,
+              "samples": 0,
+              "note": "assumed: engine start, graph build and warmup on a cold load"
+            }
+          ]
+        },
+        {
+          "layout": "4c2991743c154be896d10a0b53ba4d2b:MTL0 [0-0], local:CUDA0 [1-23 + head]",
+          "feasible": true,
+          "reasons": [],
+          "decode_ms": 41.650926555827304,
+          "prefill_ms": 2368.5585370279805,
+          "load_ms": 9428.925164546656,
+          "objective_ms": 13260.267223111761,
+          "bottleneck": "4c2991743c154be896d10a0b53ba4d2b:MTL0 hop 40.5 ms of 41.7 ms per token (97 percent)",
+          "stages": [
+            {
+              "stage": "4c2991743c154be896d10a0b53ba4d2b:MTL0",
+              "units": [
+                0,
+                1
+              ],
+              "weight_bytes": 10883840,
+              "compute_ms": 0.118089664,
+              "decode_coefficient": {
+                "value": 11.6500987904,
+                "unit": "ms/GiB",
+                "provenance": "prior",
+                "measured_at": null,
+                "samples": 0,
+                "note": "derived: M4 llama.cpp discussion #4167 row, 10.85 ms/GB (split_optimization.md section 1), converted to ms/GiB"
+              },
+              "prefill_coefficient": {
+                "value": 1.2591360957697841,
+                "unit": "ms/GiB/token",
+                "provenance": "prior",
+                "measured_at": null,
+                "samples": 0,
+                "note": "derived: 163 us per Qwen2.5-7B layer-token on an M4 (split_optimization.md section 1)"
+              },
+              "hop_ms": 40.49249525807852,
+              "upload_bytes": 10883840,
+              "path": "relay",
+              "demand_peak_bytes": 462820096,
+              "admissible_bytes": 3665199104,
+              "link": {
+                "rtt": {
+                  "value": 17.98550004605204,
+                  "unit": "ms",
+                  "provenance": "measured",
+                  "measured_at": "2026-10-22T06:30:39.608566+00:00",
+                  "samples": 20,
+                  "note": "median of 20 GET_DEVICE_MEMORY round trips over llama.cpp RPC 8.0.0 to 127.0.0.1:52110, path class relay; p90 20.882 ms; relay path; rpc0, build ggml-rpc-8.0.0; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T063039Z-link-relay-127.0.0.1-52110\\link.json"
+                },
+                "goodput": {
+                  "value": 1585316.3028772585,
+                  "unit": "bytes/s",
+                  "provenance": "measured",
+                  "measured_at": "2026-10-22T06:30:44.983185+00:00",
+                  "samples": 1,
+                  "note": "8388608 random bytes in 2 SET_TENSOR chunks to 127.0.0.1:52110, path class relay; bytes / (fence - start - 17.986 ms median RTT); relay path; rpc0, build ggml-rpc-8.0.0; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T063039Z-link-relay-127.0.0.1-52110\\link.json"
+                },
+                "round_trips_per_token": {
+                  "value": 2.0,
+                  "unit": "round trips",
+                  "provenance": "prior",
+                  "measured_at": null,
+                  "samples": 0,
+                  "note": "assumed: 2 RPC exchanges per remote stage per token"
+                }
+              }
+            },
+            {
+              "stage": "local:CUDA0",
+              "units": [
+                1,
+                25
+              ],
+              "weight_bytes": 380975872,
+              "compute_ms": 1.0403416337487807,
+              "decode_coefficient": {
+                "value": 2.9320972940894166,
+                "unit": "ms/GiB",
+                "provenance": "measured",
+                "measured_at": "2026-10-22T06:29:29.594784+00:00",
+                "samples": 3,
+                "note": "median decode 11.935 ms/token over 3 reps; qwen2.5-7b-instruct-q4_k_m, every unit and the head on CUDA0 (-ngl all), 12 threads, CPU repack on, 4.070 GiB of unit weights (token_embd lookup excluded); model-agnostic copy of this qwen2.5-7b-instruct-q4_k_m measurement; model-agnostic; CUDA0, build b11770; ctx 2048; power ac; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T062921Z-bench-cal-qwen2.5-7b-instruct-q4_k_m-stock-gpu\\bench.json"
+              },
+              "prefill_coefficient": {
+                "value": 0.060812028891381785,
+                "unit": "ms/GiB/token",
+                "provenance": "measured",
+                "measured_at": "2026-10-22T06:29:29.594784+00:00",
+                "samples": 3,
+                "note": "median uncached prefill 0.2475 ms/token at 512 prompt tokens; qwen2.5-7b-instruct-q4_k_m, every unit and the head on CUDA0 (-ngl all), 12 threads, CPU repack on, 4.070 GiB of unit weights (token_embd lookup excluded); model-agnostic copy of this qwen2.5-7b-instruct-q4_k_m measurement; model-agnostic; CUDA0, build b11770; ctx 2048; power ac; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T062921Z-bench-cal-qwen2.5-7b-instruct-q4_k_m-stock-gpu\\bench.json"
+              },
+              "hop_ms": 0.0,
+              "upload_bytes": 0,
+              "path": "local",
+              "demand_peak_bytes": 992295680,
+              "admissible_bytes": 11987320832
+            }
+          ],
+          "skipped": [],
+          "assumptions": [
+            "4c2991743c154be896d10a0b53ba4d2b:MTL0 decode 11.65 ms/GiB (prior: derived: M4 llama.cpp discussion #4167 row, 10.85 ms/GB (split_optimization.md section 1), converted to ms/GiB)",
+            "4c2991743c154be896d10a0b53ba4d2b:MTL0 prefill 1.259 ms/GiB/token (prior: derived: 163 us per Qwen2.5-7B layer-token on an M4 (split_optimization.md section 1))",
+            "4c2991743c154be896d10a0b53ba4d2b:MTL0 round trips per token 2 round trips (prior: assumed: 2 RPC exchanges per remote stage per token)",
+            "4c2991743c154be896d10a0b53ba4d2b:MTL0 relay risk 0.1 fraction (prior: assumed margin: 10 percent of a relay stage's per-token cost, for stalls and reconnects on relayed paths)",
+            "metal overhead 256 MiB per stage (prior: runtime and allocator margin, the planner's figure)",
+            "cuda overhead 450 MiB per stage (prior: runtime and allocator margin, the planner's figure)",
+            "workspace 110 MiB per stage (prior: the planner's compute buffer base plus ubatch 512 term)",
+            "RPC staging 64 MiB per peer stage (prior, the planner's figure)",
+            "setup per peer stage 500 ms (prior: assumed: RPC connect and remote allocation per peer stage)",
+            "setup 2000 ms (prior: assumed: engine start, graph build and warmup on a cold load)"
+          ],
+          "coefficients": [
+            {
+              "label": "4c2991743c154be896d10a0b53ba4d2b:MTL0 decode",
+              "value": 11.6500987904,
+              "unit": "ms/GiB",
+              "provenance": "prior",
+              "measured_at": null,
+              "samples": 0,
+              "note": "derived: M4 llama.cpp discussion #4167 row, 10.85 ms/GB (split_optimization.md section 1), converted to ms/GiB"
+            },
+            {
+              "label": "4c2991743c154be896d10a0b53ba4d2b:MTL0 prefill",
+              "value": 1.2591360957697841,
+              "unit": "ms/GiB/token",
+              "provenance": "prior",
+              "measured_at": null,
+              "samples": 0,
+              "note": "derived: 163 us per Qwen2.5-7B layer-token on an M4 (split_optimization.md section 1)"
+            },
+            {
+              "label": "4c2991743c154be896d10a0b53ba4d2b:MTL0 rtt",
+              "value": 17.98550004605204,
+              "unit": "ms",
+              "provenance": "measured",
+              "measured_at": "2026-10-22T06:30:39.608566+00:00",
+              "samples": 20,
+              "note": "median of 20 GET_DEVICE_MEMORY round trips over llama.cpp RPC 8.0.0 to 127.0.0.1:52110, path class relay; p90 20.882 ms; relay path; rpc0, build ggml-rpc-8.0.0; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T063039Z-link-relay-127.0.0.1-52110\\link.json"
+            },
+            {
+              "label": "4c2991743c154be896d10a0b53ba4d2b:MTL0 goodput",
+              "value": 1585316.3028772585,
+              "unit": "bytes/s",
+              "provenance": "measured",
+              "measured_at": "2026-10-22T06:30:44.983185+00:00",
+              "samples": 1,
+              "note": "8388608 random bytes in 2 SET_TENSOR chunks to 127.0.0.1:52110, path class relay; bytes / (fence - start - 17.986 ms median RTT); relay path; rpc0, build ggml-rpc-8.0.0; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T063039Z-link-relay-127.0.0.1-52110\\link.json"
+            },
+            {
+              "label": "4c2991743c154be896d10a0b53ba4d2b:MTL0 round trips per token",
+              "value": 2.0,
+              "unit": "round trips",
+              "provenance": "prior",
+              "measured_at": null,
+              "samples": 0,
+              "note": "assumed: 2 RPC exchanges per remote stage per token"
+            },
+            {
+              "label": "4c2991743c154be896d10a0b53ba4d2b:MTL0 relay risk",
+              "value": 0.1,
+              "unit": "fraction",
+              "provenance": "prior",
+              "measured_at": null,
+              "samples": 0,
+              "note": "assumed margin: 10 percent of a relay stage's per-token cost, for stalls and reconnects on relayed paths"
+            },
+            {
+              "label": "setup per peer stage",
+              "value": 500.0,
+              "unit": "ms",
+              "provenance": "prior",
+              "measured_at": null,
+              "samples": 0,
+              "note": "assumed: RPC connect and remote allocation per peer stage"
+            },
+            {
+              "label": "local:CUDA0 decode",
+              "value": 2.9320972940894166,
+              "unit": "ms/GiB",
+              "provenance": "measured",
+              "measured_at": "2026-10-22T06:29:29.594784+00:00",
+              "samples": 3,
+              "note": "median decode 11.935 ms/token over 3 reps; qwen2.5-7b-instruct-q4_k_m, every unit and the head on CUDA0 (-ngl all), 12 threads, CPU repack on, 4.070 GiB of unit weights (token_embd lookup excluded); model-agnostic copy of this qwen2.5-7b-instruct-q4_k_m measurement; model-agnostic; CUDA0, build b11770; ctx 2048; power ac; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T062921Z-bench-cal-qwen2.5-7b-instruct-q4_k_m-stock-gpu\\bench.json"
+            },
+            {
+              "label": "local:CUDA0 prefill",
+              "value": 0.060812028891381785,
+              "unit": "ms/GiB/token",
+              "provenance": "measured",
+              "measured_at": "2026-10-22T06:29:29.594784+00:00",
+              "samples": 3,
+              "note": "median uncached prefill 0.2475 ms/token at 512 prompt tokens; qwen2.5-7b-instruct-q4_k_m, every unit and the head on CUDA0 (-ngl all), 12 threads, CPU repack on, 4.070 GiB of unit weights (token_embd lookup excluded); model-agnostic copy of this qwen2.5-7b-instruct-q4_k_m measurement; model-agnostic; CUDA0, build b11770; ctx 2048; power ac; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T062921Z-bench-cal-qwen2.5-7b-instruct-q4_k_m-stock-gpu\\bench.json"
+            },
+            {
+              "label": "storage read",
+              "value": 5997806434.139657,
+              "unit": "bytes/s",
+              "provenance": "measured",
+              "measured_at": "2026-10-22T06:25:56.666416+00:00",
+              "samples": 3,
+              "note": "unbuffered reads of qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf, 4 readers x 8 MiB chunks, median of 3 runs (5.60, 5.54, 5.59 GiB/s), 3.70 GiB read in total; C:, build storage_probe-4r-8MiB; power ac; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T062556Z-storage-C\\storage.json"
+            },
+            {
+              "label": "setup",
+              "value": 2000.0,
+              "unit": "ms",
+              "provenance": "prior",
+              "measured_at": null,
+              "samples": 0,
+              "note": "assumed: engine start, graph build and warmup on a cold load"
+            }
+          ]
+        }
+      ],
+      "explain": [
+        "best: J 2111 ms = load 2065 + prefill 11 + 32 x decode 1.1 ms + risk 0; 0 B streamed per token",
+        "stage 1 local:CUDA0 (local) units 0-23 + head: resident 374 MiB; demand 958 MiB of 11.2 GiB admissible; compute 1.1 ms (measured)",
+        "bottleneck: local:CUDA0 compute 1.1 ms of 1.1 ms per token (100 percent)",
+        "skipped 4c2991743c154be896d10a0b53ba4d2b:MTL0: not used: adds 40.5 ms hop per token, adds 0.1 ms compute and I/O per token, adds 7.4 s load; the best layout with it scores J +11149 ms",
+        "alternative 2: J 13260 ms, decode 41.7 ms, 4c2991743c154be896d10a0b53ba4d2b:MTL0 [0-0], local:CUDA0 [1-23 + head]",
+        "rejected: local:CPU units 0-1: needs 197 MiB (weights 21 MiB, KV 2 MiB, workspace 110 MiB, staging 0 B, overhead 64 MiB), pool admits 194 MiB",
+        "assumption: decode is the sum of stage terms for one stream, never the slowest stage alone",
+        "assumption: KV is f16 K and V per block on its stage at the workload context; the head has none",
+        "assumption: token embeddings stay file-backed on the host and are not charged to any pool",
+        "assumption: prefill is stage compute plus one exchange carrying the prompt activations per peer stage; weight streaming during prefill is not modelled",
+        "assumption: cuda overhead 450 MiB per stage (prior: runtime and allocator margin, the planner's figure)",
+        "assumption: workspace 110 MiB per stage (prior: the planner's compute buffer base plus ubatch 512 term)",
+        "assumption: setup 2000 ms (prior: assumed: engine start, graph build and warmup on a cold load)"
+      ],
+      "mac_admissible_bytes": 3665199104
+    },
+    "service_default_cold": {
+      "workload": {
+        "ctx_size": 2048,
+        "prompt_tokens": 512,
+        "output_tokens": 256,
+        "warm": false,
+        "horizon_tokens": 2048,
+        "objective": "interactive"
+      },
+      "best": {
+        "layout": "local:CUDA0 [0-23 + head]",
+        "feasible": true,
+        "reasons": [],
+        "decode_ms": 1.0700624447482248,
+        "prefill_ms": 11.362926543957016,
+        "load_ms": 2065.33383767931,
+        "objective_ms": 2350.6327500788125,
+        "bottleneck": "local:CUDA0 compute 1.1 ms of 1.1 ms per token (100 percent)",
+        "stages": [
+          {
+            "stage": "local:CUDA0",
+            "units": [
+              0,
+              25
+            ],
+            "weight_bytes": 391859712,
+            "compute_ms": 1.0700624447482248,
+            "decode_coefficient": {
+              "value": 2.9320972940894166,
+              "unit": "ms/GiB",
+              "provenance": "measured",
+              "measured_at": "2026-10-22T06:29:29.594784+00:00",
+              "samples": 3,
+              "note": "median decode 11.935 ms/token over 3 reps; qwen2.5-7b-instruct-q4_k_m, every unit and the head on CUDA0 (-ngl all), 12 threads, CPU repack on, 4.070 GiB of unit weights (token_embd lookup excluded); model-agnostic copy of this qwen2.5-7b-instruct-q4_k_m measurement; model-agnostic; CUDA0, build b11770; ctx 2048; power ac; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T062921Z-bench-cal-qwen2.5-7b-instruct-q4_k_m-stock-gpu\\bench.json"
+            },
+            "prefill_coefficient": {
+              "value": 0.060812028891381785,
+              "unit": "ms/GiB/token",
+              "provenance": "measured",
+              "measured_at": "2026-10-22T06:29:29.594784+00:00",
+              "samples": 3,
+              "note": "median uncached prefill 0.2475 ms/token at 512 prompt tokens; qwen2.5-7b-instruct-q4_k_m, every unit and the head on CUDA0 (-ngl all), 12 threads, CPU repack on, 4.070 GiB of unit weights (token_embd lookup excluded); model-agnostic copy of this qwen2.5-7b-instruct-q4_k_m measurement; model-agnostic; CUDA0, build b11770; ctx 2048; power ac; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T062921Z-bench-cal-qwen2.5-7b-instruct-q4_k_m-stock-gpu\\bench.json"
+            },
+            "hop_ms": 0.0,
+            "upload_bytes": 0,
+            "path": "local",
+            "demand_peak_bytes": 1004228096,
+            "admissible_bytes": 11987320832
+          }
+        ],
+        "skipped": [
+          "4c2991743c154be896d10a0b53ba4d2b:MTL0: not used: adds 40.5 ms hop per token, adds 0.1 ms compute and I/O per token, adds 7.4 s load; the best layout with it scores J +21149 ms"
+        ],
+        "assumptions": [
+          "cuda overhead 450 MiB per stage (prior: runtime and allocator margin, the planner's figure)",
+          "workspace 110 MiB per stage (prior: the planner's compute buffer base plus ubatch 512 term)",
+          "setup 2000 ms (prior: assumed: engine start, graph build and warmup on a cold load)"
+        ],
+        "coefficients": [
+          {
+            "label": "local:CUDA0 decode",
+            "value": 2.9320972940894166,
+            "unit": "ms/GiB",
+            "provenance": "measured",
+            "measured_at": "2026-10-22T06:29:29.594784+00:00",
+            "samples": 3,
+            "note": "median decode 11.935 ms/token over 3 reps; qwen2.5-7b-instruct-q4_k_m, every unit and the head on CUDA0 (-ngl all), 12 threads, CPU repack on, 4.070 GiB of unit weights (token_embd lookup excluded); model-agnostic copy of this qwen2.5-7b-instruct-q4_k_m measurement; model-agnostic; CUDA0, build b11770; ctx 2048; power ac; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T062921Z-bench-cal-qwen2.5-7b-instruct-q4_k_m-stock-gpu\\bench.json"
+          },
+          {
+            "label": "local:CUDA0 prefill",
+            "value": 0.060812028891381785,
+            "unit": "ms/GiB/token",
+            "provenance": "measured",
+            "measured_at": "2026-10-22T06:29:29.594784+00:00",
+            "samples": 3,
+            "note": "median uncached prefill 0.2475 ms/token at 512 prompt tokens; qwen2.5-7b-instruct-q4_k_m, every unit and the head on CUDA0 (-ngl all), 12 threads, CPU repack on, 4.070 GiB of unit weights (token_embd lookup excluded); model-agnostic copy of this qwen2.5-7b-instruct-q4_k_m measurement; model-agnostic; CUDA0, build b11770; ctx 2048; power ac; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T062921Z-bench-cal-qwen2.5-7b-instruct-q4_k_m-stock-gpu\\bench.json"
+          },
+          {
+            "label": "storage read",
+            "value": 5997806434.139657,
+            "unit": "bytes/s",
+            "provenance": "measured",
+            "measured_at": "2026-10-22T06:25:56.666416+00:00",
+            "samples": 3,
+            "note": "unbuffered reads of qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf, 4 readers x 8 MiB chunks, median of 3 runs (5.60, 5.54, 5.59 GiB/s), 3.70 GiB read in total; C:, build storage_probe-4r-8MiB; power ac; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T062556Z-storage-C\\storage.json"
+          },
+          {
+            "label": "setup",
+            "value": 2000.0,
+            "unit": "ms",
+            "provenance": "prior",
+            "measured_at": null,
+            "samples": 0,
+            "note": "assumed: engine start, graph build and warmup on a cold load"
+          }
+        ]
+      },
+      "candidates": [
+        {
+          "layout": "local:CUDA0 [0-23 + head]",
+          "feasible": true,
+          "reasons": [],
+          "decode_ms": 1.0700624447482248,
+          "prefill_ms": 11.362926543957016,
+          "load_ms": 2065.33383767931,
+          "objective_ms": 2350.6327500788125,
+          "bottleneck": "local:CUDA0 compute 1.1 ms of 1.1 ms per token (100 percent)",
+          "stages": [
+            {
+              "stage": "local:CUDA0",
+              "units": [
+                0,
+                25
+              ],
+              "weight_bytes": 391859712,
+              "compute_ms": 1.0700624447482248,
+              "decode_coefficient": {
+                "value": 2.9320972940894166,
+                "unit": "ms/GiB",
+                "provenance": "measured",
+                "measured_at": "2026-10-22T06:29:29.594784+00:00",
+                "samples": 3,
+                "note": "median decode 11.935 ms/token over 3 reps; qwen2.5-7b-instruct-q4_k_m, every unit and the head on CUDA0 (-ngl all), 12 threads, CPU repack on, 4.070 GiB of unit weights (token_embd lookup excluded); model-agnostic copy of this qwen2.5-7b-instruct-q4_k_m measurement; model-agnostic; CUDA0, build b11770; ctx 2048; power ac; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T062921Z-bench-cal-qwen2.5-7b-instruct-q4_k_m-stock-gpu\\bench.json"
+              },
+              "prefill_coefficient": {
+                "value": 0.060812028891381785,
+                "unit": "ms/GiB/token",
+                "provenance": "measured",
+                "measured_at": "2026-10-22T06:29:29.594784+00:00",
+                "samples": 3,
+                "note": "median uncached prefill 0.2475 ms/token at 512 prompt tokens; qwen2.5-7b-instruct-q4_k_m, every unit and the head on CUDA0 (-ngl all), 12 threads, CPU repack on, 4.070 GiB of unit weights (token_embd lookup excluded); model-agnostic copy of this qwen2.5-7b-instruct-q4_k_m measurement; model-agnostic; CUDA0, build b11770; ctx 2048; power ac; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T062921Z-bench-cal-qwen2.5-7b-instruct-q4_k_m-stock-gpu\\bench.json"
+              },
+              "hop_ms": 0.0,
+              "upload_bytes": 0,
+              "path": "local",
+              "demand_peak_bytes": 1004228096,
+              "admissible_bytes": 11987320832
+            }
+          ],
+          "skipped": [
+            "4c2991743c154be896d10a0b53ba4d2b:MTL0: not used: adds 40.5 ms hop per token, adds 0.1 ms compute and I/O per token, adds 7.4 s load; the best layout with it scores J +21149 ms"
+          ],
+          "assumptions": [
+            "cuda overhead 450 MiB per stage (prior: runtime and allocator margin, the planner's figure)",
+            "workspace 110 MiB per stage (prior: the planner's compute buffer base plus ubatch 512 term)",
+            "setup 2000 ms (prior: assumed: engine start, graph build and warmup on a cold load)"
+          ],
+          "coefficients": [
+            {
+              "label": "local:CUDA0 decode",
+              "value": 2.9320972940894166,
+              "unit": "ms/GiB",
+              "provenance": "measured",
+              "measured_at": "2026-10-22T06:29:29.594784+00:00",
+              "samples": 3,
+              "note": "median decode 11.935 ms/token over 3 reps; qwen2.5-7b-instruct-q4_k_m, every unit and the head on CUDA0 (-ngl all), 12 threads, CPU repack on, 4.070 GiB of unit weights (token_embd lookup excluded); model-agnostic copy of this qwen2.5-7b-instruct-q4_k_m measurement; model-agnostic; CUDA0, build b11770; ctx 2048; power ac; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T062921Z-bench-cal-qwen2.5-7b-instruct-q4_k_m-stock-gpu\\bench.json"
+            },
+            {
+              "label": "local:CUDA0 prefill",
+              "value": 0.060812028891381785,
+              "unit": "ms/GiB/token",
+              "provenance": "measured",
+              "measured_at": "2026-10-22T06:29:29.594784+00:00",
+              "samples": 3,
+              "note": "median uncached prefill 0.2475 ms/token at 512 prompt tokens; qwen2.5-7b-instruct-q4_k_m, every unit and the head on CUDA0 (-ngl all), 12 threads, CPU repack on, 4.070 GiB of unit weights (token_embd lookup excluded); model-agnostic copy of this qwen2.5-7b-instruct-q4_k_m measurement; model-agnostic; CUDA0, build b11770; ctx 2048; power ac; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T062921Z-bench-cal-qwen2.5-7b-instruct-q4_k_m-stock-gpu\\bench.json"
+            },
+            {
+              "label": "storage read",
+              "value": 5997806434.139657,
+              "unit": "bytes/s",
+              "provenance": "measured",
+              "measured_at": "2026-10-22T06:25:56.666416+00:00",
+              "samples": 3,
+              "note": "unbuffered reads of qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf, 4 readers x 8 MiB chunks, median of 3 runs (5.60, 5.54, 5.59 GiB/s), 3.70 GiB read in total; C:, build storage_probe-4r-8MiB; power ac; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T062556Z-storage-C\\storage.json"
+            },
+            {
+              "label": "setup",
+              "value": 2000.0,
+              "unit": "ms",
+              "provenance": "prior",
+              "measured_at": null,
+              "samples": 0,
+              "note": "assumed: engine start, graph build and warmup on a cold load"
+            }
+          ]
+        },
+        {
+          "layout": "4c2991743c154be896d10a0b53ba4d2b:MTL0 [0-0], local:CUDA0 [1-23 + head]",
+          "feasible": true,
+          "reasons": [],
+          "decode_ms": 41.650926555827304,
+          "prefill_ms": 2368.5585370279805,
+          "load_ms": 9428.925164546656,
+          "objective_ms": 23499.751873871635,
+          "bottleneck": "4c2991743c154be896d10a0b53ba4d2b:MTL0 hop 40.5 ms of 41.7 ms per token (97 percent)",
+          "stages": [
+            {
+              "stage": "4c2991743c154be896d10a0b53ba4d2b:MTL0",
+              "units": [
+                0,
+                1
+              ],
+              "weight_bytes": 10883840,
+              "compute_ms": 0.118089664,
+              "decode_coefficient": {
+                "value": 11.6500987904,
+                "unit": "ms/GiB",
+                "provenance": "prior",
+                "measured_at": null,
+                "samples": 0,
+                "note": "derived: M4 llama.cpp discussion #4167 row, 10.85 ms/GB (split_optimization.md section 1), converted to ms/GiB"
+              },
+              "prefill_coefficient": {
+                "value": 1.2591360957697841,
+                "unit": "ms/GiB/token",
+                "provenance": "prior",
+                "measured_at": null,
+                "samples": 0,
+                "note": "derived: 163 us per Qwen2.5-7B layer-token on an M4 (split_optimization.md section 1)"
+              },
+              "hop_ms": 40.49249525807852,
+              "upload_bytes": 10883840,
+              "path": "relay",
+              "demand_peak_bytes": 462820096,
+              "admissible_bytes": 3665199104,
+              "link": {
+                "rtt": {
+                  "value": 17.98550004605204,
+                  "unit": "ms",
+                  "provenance": "measured",
+                  "measured_at": "2026-10-22T06:30:39.608566+00:00",
+                  "samples": 20,
+                  "note": "median of 20 GET_DEVICE_MEMORY round trips over llama.cpp RPC 8.0.0 to 127.0.0.1:52110, path class relay; p90 20.882 ms; relay path; rpc0, build ggml-rpc-8.0.0; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T063039Z-link-relay-127.0.0.1-52110\\link.json"
+                },
+                "goodput": {
+                  "value": 1585316.3028772585,
+                  "unit": "bytes/s",
+                  "provenance": "measured",
+                  "measured_at": "2026-10-22T06:30:44.983185+00:00",
+                  "samples": 1,
+                  "note": "8388608 random bytes in 2 SET_TENSOR chunks to 127.0.0.1:52110, path class relay; bytes / (fence - start - 17.986 ms median RTT); relay path; rpc0, build ggml-rpc-8.0.0; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T063039Z-link-relay-127.0.0.1-52110\\link.json"
+                },
+                "round_trips_per_token": {
+                  "value": 2.0,
+                  "unit": "round trips",
+                  "provenance": "prior",
+                  "measured_at": null,
+                  "samples": 0,
+                  "note": "assumed: 2 RPC exchanges per remote stage per token"
+                }
+              }
+            },
+            {
+              "stage": "local:CUDA0",
+              "units": [
+                1,
+                25
+              ],
+              "weight_bytes": 380975872,
+              "compute_ms": 1.0403416337487807,
+              "decode_coefficient": {
+                "value": 2.9320972940894166,
+                "unit": "ms/GiB",
+                "provenance": "measured",
+                "measured_at": "2026-10-22T06:29:29.594784+00:00",
+                "samples": 3,
+                "note": "median decode 11.935 ms/token over 3 reps; qwen2.5-7b-instruct-q4_k_m, every unit and the head on CUDA0 (-ngl all), 12 threads, CPU repack on, 4.070 GiB of unit weights (token_embd lookup excluded); model-agnostic copy of this qwen2.5-7b-instruct-q4_k_m measurement; model-agnostic; CUDA0, build b11770; ctx 2048; power ac; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T062921Z-bench-cal-qwen2.5-7b-instruct-q4_k_m-stock-gpu\\bench.json"
+              },
+              "prefill_coefficient": {
+                "value": 0.060812028891381785,
+                "unit": "ms/GiB/token",
+                "provenance": "measured",
+                "measured_at": "2026-10-22T06:29:29.594784+00:00",
+                "samples": 3,
+                "note": "median uncached prefill 0.2475 ms/token at 512 prompt tokens; qwen2.5-7b-instruct-q4_k_m, every unit and the head on CUDA0 (-ngl all), 12 threads, CPU repack on, 4.070 GiB of unit weights (token_embd lookup excluded); model-agnostic copy of this qwen2.5-7b-instruct-q4_k_m measurement; model-agnostic; CUDA0, build b11770; ctx 2048; power ac; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T062921Z-bench-cal-qwen2.5-7b-instruct-q4_k_m-stock-gpu\\bench.json"
+              },
+              "hop_ms": 0.0,
+              "upload_bytes": 0,
+              "path": "local",
+              "demand_peak_bytes": 992295680,
+              "admissible_bytes": 11987320832
+            }
+          ],
+          "skipped": [],
+          "assumptions": [
+            "4c2991743c154be896d10a0b53ba4d2b:MTL0 decode 11.65 ms/GiB (prior: derived: M4 llama.cpp discussion #4167 row, 10.85 ms/GB (split_optimization.md section 1), converted to ms/GiB)",
+            "4c2991743c154be896d10a0b53ba4d2b:MTL0 prefill 1.259 ms/GiB/token (prior: derived: 163 us per Qwen2.5-7B layer-token on an M4 (split_optimization.md section 1))",
+            "4c2991743c154be896d10a0b53ba4d2b:MTL0 round trips per token 2 round trips (prior: assumed: 2 RPC exchanges per remote stage per token)",
+            "4c2991743c154be896d10a0b53ba4d2b:MTL0 relay risk 0.1 fraction (prior: assumed margin: 10 percent of a relay stage's per-token cost, for stalls and reconnects on relayed paths)",
+            "metal overhead 256 MiB per stage (prior: runtime and allocator margin, the planner's figure)",
+            "cuda overhead 450 MiB per stage (prior: runtime and allocator margin, the planner's figure)",
+            "workspace 110 MiB per stage (prior: the planner's compute buffer base plus ubatch 512 term)",
+            "RPC staging 64 MiB per peer stage (prior, the planner's figure)",
+            "setup per peer stage 500 ms (prior: assumed: RPC connect and remote allocation per peer stage)",
+            "setup 2000 ms (prior: assumed: engine start, graph build and warmup on a cold load)"
+          ],
+          "coefficients": [
+            {
+              "label": "4c2991743c154be896d10a0b53ba4d2b:MTL0 decode",
+              "value": 11.6500987904,
+              "unit": "ms/GiB",
+              "provenance": "prior",
+              "measured_at": null,
+              "samples": 0,
+              "note": "derived: M4 llama.cpp discussion #4167 row, 10.85 ms/GB (split_optimization.md section 1), converted to ms/GiB"
+            },
+            {
+              "label": "4c2991743c154be896d10a0b53ba4d2b:MTL0 prefill",
+              "value": 1.2591360957697841,
+              "unit": "ms/GiB/token",
+              "provenance": "prior",
+              "measured_at": null,
+              "samples": 0,
+              "note": "derived: 163 us per Qwen2.5-7B layer-token on an M4 (split_optimization.md section 1)"
+            },
+            {
+              "label": "4c2991743c154be896d10a0b53ba4d2b:MTL0 rtt",
+              "value": 17.98550004605204,
+              "unit": "ms",
+              "provenance": "measured",
+              "measured_at": "2026-10-22T06:30:39.608566+00:00",
+              "samples": 20,
+              "note": "median of 20 GET_DEVICE_MEMORY round trips over llama.cpp RPC 8.0.0 to 127.0.0.1:52110, path class relay; p90 20.882 ms; relay path; rpc0, build ggml-rpc-8.0.0; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T063039Z-link-relay-127.0.0.1-52110\\link.json"
+            },
+            {
+              "label": "4c2991743c154be896d10a0b53ba4d2b:MTL0 goodput",
+              "value": 1585316.3028772585,
+              "unit": "bytes/s",
+              "provenance": "measured",
+              "measured_at": "2026-10-22T06:30:44.983185+00:00",
+              "samples": 1,
+              "note": "8388608 random bytes in 2 SET_TENSOR chunks to 127.0.0.1:52110, path class relay; bytes / (fence - start - 17.986 ms median RTT); relay path; rpc0, build ggml-rpc-8.0.0; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T063039Z-link-relay-127.0.0.1-52110\\link.json"
+            },
+            {
+              "label": "4c2991743c154be896d10a0b53ba4d2b:MTL0 round trips per token",
+              "value": 2.0,
+              "unit": "round trips",
+              "provenance": "prior",
+              "measured_at": null,
+              "samples": 0,
+              "note": "assumed: 2 RPC exchanges per remote stage per token"
+            },
+            {
+              "label": "4c2991743c154be896d10a0b53ba4d2b:MTL0 relay risk",
+              "value": 0.1,
+              "unit": "fraction",
+              "provenance": "prior",
+              "measured_at": null,
+              "samples": 0,
+              "note": "assumed margin: 10 percent of a relay stage's per-token cost, for stalls and reconnects on relayed paths"
+            },
+            {
+              "label": "setup per peer stage",
+              "value": 500.0,
+              "unit": "ms",
+              "provenance": "prior",
+              "measured_at": null,
+              "samples": 0,
+              "note": "assumed: RPC connect and remote allocation per peer stage"
+            },
+            {
+              "label": "local:CUDA0 decode",
+              "value": 2.9320972940894166,
+              "unit": "ms/GiB",
+              "provenance": "measured",
+              "measured_at": "2026-10-22T06:29:29.594784+00:00",
+              "samples": 3,
+              "note": "median decode 11.935 ms/token over 3 reps; qwen2.5-7b-instruct-q4_k_m, every unit and the head on CUDA0 (-ngl all), 12 threads, CPU repack on, 4.070 GiB of unit weights (token_embd lookup excluded); model-agnostic copy of this qwen2.5-7b-instruct-q4_k_m measurement; model-agnostic; CUDA0, build b11770; ctx 2048; power ac; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T062921Z-bench-cal-qwen2.5-7b-instruct-q4_k_m-stock-gpu\\bench.json"
+            },
+            {
+              "label": "local:CUDA0 prefill",
+              "value": 0.060812028891381785,
+              "unit": "ms/GiB/token",
+              "provenance": "measured",
+              "measured_at": "2026-10-22T06:29:29.594784+00:00",
+              "samples": 3,
+              "note": "median uncached prefill 0.2475 ms/token at 512 prompt tokens; qwen2.5-7b-instruct-q4_k_m, every unit and the head on CUDA0 (-ngl all), 12 threads, CPU repack on, 4.070 GiB of unit weights (token_embd lookup excluded); model-agnostic copy of this qwen2.5-7b-instruct-q4_k_m measurement; model-agnostic; CUDA0, build b11770; ctx 2048; power ac; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T062921Z-bench-cal-qwen2.5-7b-instruct-q4_k_m-stock-gpu\\bench.json"
+            },
+            {
+              "label": "storage read",
+              "value": 5997806434.139657,
+              "unit": "bytes/s",
+              "provenance": "measured",
+              "measured_at": "2026-10-22T06:25:56.666416+00:00",
+              "samples": 3,
+              "note": "unbuffered reads of qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf, 4 readers x 8 MiB chunks, median of 3 runs (5.60, 5.54, 5.59 GiB/s), 3.70 GiB read in total; C:, build storage_probe-4r-8MiB; power ac; evidence C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T062556Z-storage-C\\storage.json"
+            },
+            {
+              "label": "setup",
+              "value": 2000.0,
+              "unit": "ms",
+              "provenance": "prior",
+              "measured_at": null,
+              "samples": 0,
+              "note": "assumed: engine start, graph build and warmup on a cold load"
+            }
+          ]
+        }
+      ],
+      "explain": [
+        "best: J 2351 ms = load 2065 + prefill 11 + 256 x decode 1.1 ms + risk 0; 0 B streamed per token",
+        "stage 1 local:CUDA0 (local) units 0-23 + head: resident 374 MiB; demand 958 MiB of 11.2 GiB admissible; compute 1.1 ms (measured)",
+        "bottleneck: local:CUDA0 compute 1.1 ms of 1.1 ms per token (100 percent)",
+        "skipped 4c2991743c154be896d10a0b53ba4d2b:MTL0: not used: adds 40.5 ms hop per token, adds 0.1 ms compute and I/O per token, adds 7.4 s load; the best layout with it scores J +21149 ms",
+        "alternative 2: J 23500 ms, decode 41.7 ms, 4c2991743c154be896d10a0b53ba4d2b:MTL0 [0-0], local:CUDA0 [1-23 + head]",
+        "rejected: local:CPU units 0-1: needs 197 MiB (weights 21 MiB, KV 2 MiB, workspace 110 MiB, staging 0 B, overhead 64 MiB), pool admits 194 MiB",
+        "assumption: decode is the sum of stage terms for one stream, never the slowest stage alone",
+        "assumption: KV is f16 K and V per block on its stage at the workload context; the head has none",
+        "assumption: token embeddings stay file-backed on the host and are not charged to any pool",
+        "assumption: prefill is stage compute plus one exchange carrying the prompt activations per peer stage; weight streaming during prefill is not modelled",
+        "assumption: cuda overhead 450 MiB per stage (prior: runtime and allocator margin, the planner's figure)",
+        "assumption: workspace 110 MiB per stage (prior: the planner's compute buffer base plus ubatch 512 term)",
+        "assumption: setup 2000 ms (prior: assumed: engine start, graph build and warmup on a cold load)"
+      ],
+      "mac_admissible_bytes": 3665199104
+    }
+  }
+}

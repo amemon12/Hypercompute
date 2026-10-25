@@ -1,0 +1,31 @@
+[
+ {
+  "label": "pair-qwen2.5-0.5b-instruct-q4_k_m-b",
+  "model_paths": [
+   "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-0.5b-instruct-q4_k_m\\qwen2.5-0.5b-instruct-q4_k_m.gguf"
+  ],
+  "engine": {
+   "devices": [
+    "RPC0",
+    "CUDA0"
+   ],
+   "tensor_split": [
+    2,
+    23
+   ],
+   "ngl": "all",
+   "ctx": 2048,
+   "threads": 12,
+   "load_mode": "mmap",
+   "flags": [
+    "--cache-ram",
+    "0"
+   ]
+  },
+  "stream": null,
+  "rpc_endpoints": [
+   "127.0.0.1:52110"
+  ],
+  "rpc_path_class": "relay"
+ }
+]

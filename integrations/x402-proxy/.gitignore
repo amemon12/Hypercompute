@@ -1,0 +1,10 @@
+# Secrets and wallet keys never enter git.
+.env
+.env.*
+!.env.example
+!.env.buyer.example
+# Local ledger and caches.
+data/
+__pycache__/
+.venv/
+.pytest_cache/

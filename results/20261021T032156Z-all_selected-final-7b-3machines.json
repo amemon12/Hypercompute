@@ -1,0 +1,5062 @@
+{
+  "started_at": "2026-10-21T03:19:42.867170+00:00",
+  "args": {
+    "port": 8000,
+    "model": "qwen2.5-7b-instruct-q4_k_m",
+    "strategy": "all_selected",
+    "node": null,
+    "ctx": 4096,
+    "prompt": "Name three planets and one fact about each, briefly.",
+    "bench": true,
+    "reps": 3,
+    "keep": false,
+    "label": "final-7b-3machines"
+  },
+  "nodes": [
+    {
+      "id": "local",
+      "display_name": "benchmark-host (this machine)",
+      "is_local": true,
+      "session_id": null,
+      "state": "eligible",
+      "state_reason": null,
+      "joined_at": "2026-10-21T03:14:07.343299Z",
+      "last_heartbeat_at": "2026-10-21T03:19:40.870128Z",
+      "heartbeat_age_s": 0.0,
+      "inventory": {
+        "hostname": "benchmark-host",
+        "os": {
+          "system": "windows",
+          "release": "11",
+          "version": "10.0.26200",
+          "machine": "x86_64"
+        },
+        "cpu": {
+          "model": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+          "physical_cores": 12,
+          "logical_cores": 24
+        },
+        "memory_pools": [
+          {
+            "id": "ram",
+            "kind": "system_ram",
+            "total_bytes": 33412722688,
+            "free_bytes": 2273423360,
+            "measured_at": "2026-10-21T03:19:40.661722Z",
+            "source": "psutil",
+            "note": null
+          },
+          {
+            "id": "vram:CUDA0",
+            "kind": "discrete_vram",
+            "total_bytes": 12820938752,
+            "free_bytes": 9269411840,
+            "measured_at": "2026-10-21T03:19:40.870128Z",
+            "source": "nvidia-smi",
+            "note": null
+          }
+        ],
+        "devices": [
+          {
+            "id": "CPU",
+            "kind": "cpu",
+            "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+            "vendor": null,
+            "pool_id": "ram",
+            "backend": "cpu",
+            "total_bytes": null,
+            "free_bytes": null,
+            "driver_version": null,
+            "compute_capability": null,
+            "source": "cpu model probe"
+          },
+          {
+            "id": "CUDA0",
+            "kind": "gpu",
+            "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+            "vendor": "NVIDIA",
+            "pool_id": "vram:CUDA0",
+            "backend": "cuda",
+            "total_bytes": 12820938752,
+            "free_bytes": 9269411840,
+            "driver_version": "591.84",
+            "compute_capability": "12.0",
+            "source": "nvidia-smi"
+          },
+          {
+            "id": "AMD Radeon(TM) 890M Graphics",
+            "kind": "igpu",
+            "name": "AMD Radeon(TM) 890M Graphics",
+            "vendor": null,
+            "pool_id": "ram",
+            "backend": "unknown",
+            "total_bytes": null,
+            "free_bytes": null,
+            "driver_version": "32.0.13062.3005",
+            "compute_capability": null,
+            "source": "Win32_VideoController (AdapterRAM not trusted)"
+          }
+        ],
+        "disk_free_bytes": 62985633792,
+        "network": [
+          {
+            "name": "Ethernet 2",
+            "ipv4": [
+              "169.254.21.125"
+            ],
+            "is_up": false,
+            "speed_mbps": null,
+            "kind": "ethernet"
+          },
+          {
+            "name": "Ethernet",
+            "ipv4": [
+              "192.168.56.1"
+            ],
+            "is_up": true,
+            "speed_mbps": 1000,
+            "kind": "virtual"
+          },
+          {
+            "name": "Wi-Fi 3",
+            "ipv4": [
+              "169.254.150.175"
+            ],
+            "is_up": false,
+            "speed_mbps": null,
+            "kind": "wifi"
+          },
+          {
+            "name": "Wi-Fi 5",
+            "ipv4": [
+              "169.254.129.29"
+            ],
+            "is_up": false,
+            "speed_mbps": null,
+            "kind": "wifi"
+          },
+          {
+            "name": "Wi-Fi",
+            "ipv4": [
+              "10.19.175.205"
+            ],
+            "is_up": true,
+            "speed_mbps": 1201,
+            "kind": "wifi"
+          },
+          {
+            "name": "Bluetooth Network Connection",
+            "ipv4": [
+              "169.254.85.255"
+            ],
+            "is_up": false,
+            "speed_mbps": 3,
+            "kind": "other"
+          },
+          {
+            "name": "vEthernet (WSL (Hyper-V firewall))",
+            "ipv4": [
+              "172.18.48.1"
+            ],
+            "is_up": true,
+            "speed_mbps": 4294,
+            "kind": "virtual"
+          },
+          {
+            "name": "Loopback Pseudo-Interface 1",
+            "ipv4": [
+              "127.0.0.1"
+            ],
+            "is_up": true,
+            "speed_mbps": 1073,
+            "kind": "loopback"
+          }
+        ],
+        "engine": {
+          "engine": "llama_rpc",
+          "installed": true,
+          "release": "b11770",
+          "build_number": 11770,
+          "commit": "39da130fc",
+          "rpc_proto": "8.0.0",
+          "variant": "windows-x64-cuda13.4",
+          "accelerator": "cuda",
+          "bin_dir": "C:\\Users\\operator\\.hypercompute\\engines\\llama-b11770-windows-x64-cuda13.4",
+          "smoke": "passed",
+          "smoke_detail": "version: 0.7.0-dev (build 11770, commit 39da130fc); devices: CUDA0",
+          "devices": [
+            {
+              "name": "CUDA0",
+              "description": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+              "total_bytes": 12819890176,
+              "free_bytes": 11561598976
+            }
+          ]
+        },
+        "collected_at": "2026-10-21T03:14:07.341298Z",
+        "diagnostics": [
+          {
+            "level": "warning",
+            "code": "windows_public_network",
+            "message": "Network 'Wi-Fi' uses the Windows Public profile; inbound connections to the worker are blocked by default.",
+            "fix": "Allow ggml-rpc-server.exe when Windows asks, or add the scoped firewall rule that `hypercompute join` prints."
+          }
+        ]
+      },
+      "contribution": {
+        "devices": [
+          "CUDA0"
+        ],
+        "max_bytes": 12284067840,
+        "reserve_bytes": 6682544537,
+        "enforcement": "soft_admission",
+        "cache_enabled": false
+      },
+      "worker": null,
+      "worker_state": null,
+      "worker_cpu_seconds": null,
+      "verification": null,
+      "deployments": []
+    },
+    {
+      "id": "8f169e3549fc41fbb14f6876a19d704c",
+      "display_name": "loopback-cpu-worker",
+      "is_local": false,
+      "session_id": "2c56b674d0e742a8bcd2db236101832c",
+      "state": "eligible",
+      "state_reason": null,
+      "joined_at": "2026-10-21T03:13:31.506259Z",
+      "last_heartbeat_at": "2026-10-21T03:19:42.775850Z",
+      "heartbeat_age_s": 0.092153,
+      "inventory": {
+        "hostname": "benchmark-host",
+        "os": {
+          "system": "windows",
+          "release": "11",
+          "version": "10.0.26200",
+          "machine": "x86_64"
+        },
+        "cpu": {
+          "model": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+          "physical_cores": 12,
+          "logical_cores": 24
+        },
+        "memory_pools": [
+          {
+            "id": "ram",
+            "kind": "system_ram",
+            "total_bytes": 33412722688,
+            "free_bytes": 7122452480,
+            "measured_at": "2026-10-21T03:19:42.725705Z",
+            "source": "psutil",
+            "note": null
+          },
+          {
+            "id": "vram:CUDA0",
+            "kind": "discrete_vram",
+            "total_bytes": 12820938752,
+            "free_bytes": 12512657408,
+            "measured_at": "2026-10-21T03:19:42.773850Z",
+            "source": "nvidia-smi",
+            "note": null
+          }
+        ],
+        "devices": [
+          {
+            "id": "CPU",
+            "kind": "cpu",
+            "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+            "vendor": null,
+            "pool_id": "ram",
+            "backend": "cpu",
+            "total_bytes": null,
+            "free_bytes": null,
+            "driver_version": null,
+            "compute_capability": null,
+            "source": "cpu model probe"
+          },
+          {
+            "id": "CUDA0",
+            "kind": "gpu",
+            "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+            "vendor": "NVIDIA",
+            "pool_id": "vram:CUDA0",
+            "backend": "cuda",
+            "total_bytes": 12820938752,
+            "free_bytes": 12512657408,
+            "driver_version": "591.84",
+            "compute_capability": "12.0",
+            "source": "nvidia-smi"
+          },
+          {
+            "id": "AMD Radeon(TM) 890M Graphics",
+            "kind": "igpu",
+            "name": "AMD Radeon(TM) 890M Graphics",
+            "vendor": null,
+            "pool_id": "ram",
+            "backend": "unknown",
+            "total_bytes": null,
+            "free_bytes": null,
+            "driver_version": "32.0.13062.3005",
+            "compute_capability": null,
+            "source": "Win32_VideoController (AdapterRAM not trusted)"
+          }
+        ],
+        "disk_free_bytes": 62537609216,
+        "network": [
+          {
+            "name": "Ethernet 2",
+            "ipv4": [
+              "169.254.21.125"
+            ],
+            "is_up": false,
+            "speed_mbps": null,
+            "kind": "ethernet"
+          },
+          {
+            "name": "Ethernet",
+            "ipv4": [
+              "192.168.56.1"
+            ],
+            "is_up": true,
+            "speed_mbps": 1000,
+            "kind": "virtual"
+          },
+          {
+            "name": "Wi-Fi 3",
+            "ipv4": [
+              "169.254.150.175"
+            ],
+            "is_up": false,
+            "speed_mbps": null,
+            "kind": "wifi"
+          },
+          {
+            "name": "Wi-Fi 5",
+            "ipv4": [
+              "169.254.129.29"
+            ],
+            "is_up": false,
+            "speed_mbps": null,
+            "kind": "wifi"
+          },
+          {
+            "name": "Wi-Fi",
+            "ipv4": [
+              "10.19.175.205"
+            ],
+            "is_up": true,
+            "speed_mbps": 1201,
+            "kind": "wifi"
+          },
+          {
+            "name": "Bluetooth Network Connection",
+            "ipv4": [
+              "169.254.85.255"
+            ],
+            "is_up": false,
+            "speed_mbps": 3,
+            "kind": "other"
+          },
+          {
+            "name": "vEthernet (WSL (Hyper-V firewall))",
+            "ipv4": [
+              "172.18.48.1"
+            ],
+            "is_up": true,
+            "speed_mbps": 4294,
+            "kind": "virtual"
+          },
+          {
+            "name": "Loopback Pseudo-Interface 1",
+            "ipv4": [
+              "127.0.0.1"
+            ],
+            "is_up": true,
+            "speed_mbps": 1073,
+            "kind": "loopback"
+          }
+        ],
+        "engine": {
+          "engine": "llama_rpc",
+          "installed": true,
+          "release": "b11770",
+          "build_number": 11770,
+          "commit": "39da130fc",
+          "rpc_proto": "8.0.0",
+          "variant": "windows-x64-cuda13.4",
+          "accelerator": "cuda",
+          "bin_dir": "C:\\Users\\operator\\.hypercompute\\engines\\llama-b11770-windows-x64-cuda13.4",
+          "smoke": "passed",
+          "smoke_detail": "version: 0.7.0-dev (build 11770, commit 39da130fc); devices: CUDA0",
+          "devices": [
+            {
+              "name": "CUDA0",
+              "description": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+              "total_bytes": 12819890176,
+              "free_bytes": 11561598976
+            }
+          ]
+        },
+        "collected_at": "2026-10-21T03:13:30.837441Z",
+        "diagnostics": [
+          {
+            "level": "warning",
+            "code": "windows_public_network",
+            "message": "Network 'Wi-Fi' uses the Windows Public profile; inbound connections to the worker are blocked by default.",
+            "fix": "Allow ggml-rpc-server.exe when Windows asks, or add the scoped firewall rule that `hypercompute join` prints."
+          }
+        ]
+      },
+      "contribution": {
+        "devices": [
+          "CPU"
+        ],
+        "max_bytes": 2147483648,
+        "reserve_bytes": 1073741824,
+        "enforcement": "soft_admission",
+        "cache_enabled": false
+      },
+      "worker": {
+        "host": "127.0.0.1",
+        "port": 47052
+      },
+      "worker_state": "running",
+      "worker_cpu_seconds": 0.109375,
+      "verification": {
+        "checked_at": "2026-10-21T03:17:11.579865Z",
+        "reachable": true,
+        "engine_match": true,
+        "rpc_devices": [
+          {
+            "name": "RPC0",
+            "description": "127.0.0.1:47052",
+            "total_bytes": 33411825664,
+            "free_bytes": 6064963584
+          }
+        ],
+        "detail": "worker answered the llama.cpp RPC handshake; llama.cpp b11770, RPC 8.0.0",
+        "fix": null
+      },
+      "deployments": []
+    },
+    {
+      "id": "07118aa37e8646058734355ad5a7fd61",
+      "display_name": "wsl-ubuntu-cpu",
+      "is_local": false,
+      "session_id": "2c56b674d0e742a8bcd2db236101832c",
+      "state": "eligible",
+      "state_reason": null,
+      "joined_at": "2026-10-21T03:13:31.571825Z",
+      "last_heartbeat_at": "2026-10-21T03:19:42.713040Z",
+      "heartbeat_age_s": 0.154963,
+      "inventory": {
+        "hostname": "benchmark-host",
+        "os": {
+          "system": "linux",
+          "release": "6.6.87.2-microsoft-standard-WSL2",
+          "version": "#1 SMP PREEMPT_DYNAMIC Thu Jun  5 18:30:46 UTC 2025",
+          "machine": "x86_64"
+        },
+        "cpu": {
+          "model": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+          "physical_cores": 12,
+          "logical_cores": 24
+        },
+        "memory_pools": [
+          {
+            "id": "ram",
+            "kind": "system_ram",
+            "total_bytes": 16299233280,
+            "free_bytes": 15532478464,
+            "measured_at": "2026-10-21T03:19:41.724987Z",
+            "source": "psutil",
+            "note": null
+          },
+          {
+            "id": "vram:CUDA0",
+            "kind": "discrete_vram",
+            "total_bytes": 12820938752,
+            "free_bytes": 12512657408,
+            "measured_at": "2026-10-21T03:19:41.793891Z",
+            "source": "nvidia-smi",
+            "note": null
+          }
+        ],
+        "devices": [
+          {
+            "id": "CPU",
+            "kind": "cpu",
+            "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+            "vendor": null,
+            "pool_id": "ram",
+            "backend": "cpu",
+            "total_bytes": null,
+            "free_bytes": null,
+            "driver_version": null,
+            "compute_capability": null,
+            "source": "cpu model probe"
+          },
+          {
+            "id": "CUDA0",
+            "kind": "gpu",
+            "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+            "vendor": "NVIDIA",
+            "pool_id": "vram:CUDA0",
+            "backend": "cuda",
+            "total_bytes": 12820938752,
+            "free_bytes": 12512657408,
+            "driver_version": "591.84",
+            "compute_capability": "12.0",
+            "source": "nvidia-smi"
+          }
+        ],
+        "disk_free_bytes": 1021415903232,
+        "network": [
+          {
+            "name": "lo",
+            "ipv4": [
+              "127.0.0.1",
+              "10.255.255.254"
+            ],
+            "is_up": true,
+            "speed_mbps": null,
+            "kind": "loopback"
+          },
+          {
+            "name": "eth0",
+            "ipv4": [
+              "172.18.63.230"
+            ],
+            "is_up": true,
+            "speed_mbps": 10000,
+            "kind": "ethernet"
+          }
+        ],
+        "engine": {
+          "engine": "llama_rpc",
+          "installed": true,
+          "release": "b11770",
+          "build_number": 11770,
+          "commit": "39da130fc",
+          "rpc_proto": "8.0.0",
+          "variant": "linux-x64-cpu",
+          "accelerator": "cpu",
+          "bin_dir": "/home/operator/.hypercompute/engines/llama-b11770-linux-x64-cpu/llama-b11770",
+          "smoke": "passed",
+          "smoke_detail": "version: 0.7.0-dev (build 11770, commit 39da130fc); devices: CPU only",
+          "devices": []
+        },
+        "collected_at": "2026-10-21T03:13:29.338394Z",
+        "diagnostics": []
+      },
+      "contribution": {
+        "devices": [
+          "CPU"
+        ],
+        "max_bytes": 4294967296,
+        "reserve_bytes": 2147483648,
+        "enforcement": "soft_admission",
+        "cache_enabled": false
+      },
+      "worker": {
+        "host": "172.18.63.230",
+        "port": 47052
+      },
+      "worker_state": "running",
+      "worker_cpu_seconds": 1111.96,
+      "verification": {
+        "checked_at": "2026-10-21T03:14:09.114684Z",
+        "reachable": true,
+        "engine_match": true,
+        "rpc_devices": [
+          {
+            "name": "RPC0",
+            "description": "172.18.63.230:47052",
+            "total_bytes": 16299065344,
+            "free_bytes": 16299065344
+          }
+        ],
+        "detail": "worker answered the llama.cpp RPC handshake; llama.cpp b11770, RPC 8.0.0",
+        "fix": null
+      },
+      "deployments": []
+    }
+  ],
+  "plan": {
+    "id": "031a085947cf493dac208b365c508de5",
+    "model_id": "qwen2.5-7b-instruct-q4_k_m",
+    "strategy": "all_selected",
+    "ctx_size": 4096,
+    "feasible": true,
+    "fit_label": "estimated_fit",
+    "heuristic": true,
+    "assignments": [
+      {
+        "node_id": "local",
+        "device": "CUDA0",
+        "endpoint": null,
+        "pool_id": "vram:CUDA0",
+        "layers": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ],
+        "holds_output": false,
+        "weight_bytes": 2355144704,
+        "kv_bytes": 142606336,
+        "compute_bytes_est": 159383552,
+        "overhead_bytes_est": 471859200,
+        "total_bytes_est": 3128993792,
+        "budget_bytes": 8732540928,
+        "fits": true
+      },
+      {
+        "node_id": "07118aa37e8646058734355ad5a7fd61",
+        "device": "RPC1",
+        "endpoint": "172.18.63.230:47052",
+        "pool_id": "ram",
+        "layers": [
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25
+        ],
+        "holds_output": false,
+        "weight_bytes": 1270106112,
+        "kv_bytes": 75497472,
+        "compute_bytes_est": 159383552,
+        "overhead_bytes_est": 134217728,
+        "total_bytes_est": 1639204864,
+        "budget_bytes": 4294967296,
+        "fits": true
+      },
+      {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+        "device": "RPC0",
+        "endpoint": "127.0.0.1:47052",
+        "pool_id": "ram",
+        "layers": [
+          26,
+          27
+        ],
+        "holds_output": true,
+        "weight_bytes": 745293824,
+        "kv_bytes": 16777216,
+        "compute_bytes_est": 159383552,
+        "overhead_bytes_est": 134217728,
+        "total_bytes_est": 1055672320,
+        "budget_bytes": 2147483648,
+        "fits": true
+      }
+    ],
+    "device_list": [
+      "CUDA0",
+      "RPC1",
+      "RPC0"
+    ],
+    "tensor_split": [
+      17,
+      9,
+      3
+    ],
+    "rpc_endpoints": [
+      "127.0.0.1:47052",
+      "172.18.63.230:47052"
+    ],
+    "cpu_resident_bytes": 306561024,
+    "reasons": [
+      "strategy: run together (every selected device gets at least one layer)",
+      "contributed / estimated usable across selected devices: 14.1 GiB (separate memory pools, not one fast global memory)"
+    ],
+    "warnings": [
+      "the model fits on this machine alone; splitting it adds network hops and is expected to be slower. This run demonstrates participation, not necessity."
+    ],
+    "candidates": [
+      {
+        "label": "this machine only",
+        "devices": [
+          "local:CUDA0"
+        ],
+        "feasible": true,
+        "reason": "estimated fit"
+      },
+      {
+        "label": "every selected device participates",
+        "devices": [
+          "local:CUDA0",
+          "07118aa37e8646058734355ad5a7fd61:172.18.63.230:47052#0",
+          "8f169e3549fc41fbb14f6876a19d704c:127.0.0.1:47052#0"
+        ],
+        "feasible": true,
+        "reason": "estimated fit"
+      }
+    ],
+    "created_at": "2026-10-21T03:19:42.871637Z"
+  },
+  "load_seconds": 8.09,
+  "deployment": {
+    "id": "8aa22e57262b471e8b6b0b327cda2a23",
+    "plan": {
+      "id": "031a085947cf493dac208b365c508de5",
+      "model_id": "qwen2.5-7b-instruct-q4_k_m",
+      "strategy": "all_selected",
+      "ctx_size": 4096,
+      "feasible": true,
+      "fit_label": "estimated_fit",
+      "heuristic": true,
+      "assignments": [
+        {
+          "node_id": "local",
+          "device": "CUDA0",
+          "endpoint": null,
+          "pool_id": "vram:CUDA0",
+          "layers": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16
+          ],
+          "holds_output": false,
+          "weight_bytes": 2355144704,
+          "kv_bytes": 142606336,
+          "compute_bytes_est": 159383552,
+          "overhead_bytes_est": 471859200,
+          "total_bytes_est": 3128993792,
+          "budget_bytes": 8732540928,
+          "fits": true
+        },
+        {
+          "node_id": "07118aa37e8646058734355ad5a7fd61",
+          "device": "RPC1",
+          "endpoint": "172.18.63.230:47052",
+          "pool_id": "ram",
+          "layers": [
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25
+          ],
+          "holds_output": false,
+          "weight_bytes": 1270106112,
+          "kv_bytes": 75497472,
+          "compute_bytes_est": 159383552,
+          "overhead_bytes_est": 134217728,
+          "total_bytes_est": 1639204864,
+          "budget_bytes": 4294967296,
+          "fits": true
+        },
+        {
+          "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+          "device": "RPC0",
+          "endpoint": "127.0.0.1:47052",
+          "pool_id": "ram",
+          "layers": [
+            26,
+            27
+          ],
+          "holds_output": true,
+          "weight_bytes": 745293824,
+          "kv_bytes": 16777216,
+          "compute_bytes_est": 159383552,
+          "overhead_bytes_est": 134217728,
+          "total_bytes_est": 1055672320,
+          "budget_bytes": 2147483648,
+          "fits": true
+        }
+      ],
+      "device_list": [
+        "CUDA0",
+        "RPC1",
+        "RPC0"
+      ],
+      "tensor_split": [
+        17,
+        9,
+        3
+      ],
+      "rpc_endpoints": [
+        "127.0.0.1:47052",
+        "172.18.63.230:47052"
+      ],
+      "cpu_resident_bytes": 306561024,
+      "reasons": [
+        "strategy: run together (every selected device gets at least one layer)",
+        "contributed / estimated usable across selected devices: 14.1 GiB (separate memory pools, not one fast global memory)"
+      ],
+      "warnings": [
+        "the model fits on this machine alone; splitting it adds network hops and is expected to be slower. This run demonstrates participation, not necessity."
+      ],
+      "candidates": [
+        {
+          "label": "this machine only",
+          "devices": [
+            "local:CUDA0"
+          ],
+          "feasible": true,
+          "reason": "estimated fit"
+        },
+        {
+          "label": "every selected device participates",
+          "devices": [
+            "local:CUDA0",
+            "07118aa37e8646058734355ad5a7fd61:172.18.63.230:47052#0",
+            "8f169e3549fc41fbb14f6876a19d704c:127.0.0.1:47052#0"
+          ],
+          "feasible": true,
+          "reason": "estimated fit"
+        }
+      ],
+      "created_at": "2026-10-21T03:19:42.871637Z"
+    },
+    "state": "ready",
+    "history": [
+      {
+        "state": "planned",
+        "at": "2026-10-21T03:19:42.875173Z",
+        "detail": null
+      },
+      {
+        "state": "reserving",
+        "at": "2026-10-21T03:19:42.876480Z",
+        "detail": null
+      },
+      {
+        "state": "preparing",
+        "at": "2026-10-21T03:19:42.878487Z",
+        "detail": "re-checking peers and model file"
+      },
+      {
+        "state": "loading",
+        "at": "2026-10-21T03:19:43.138090Z",
+        "detail": "starting llama-server"
+      },
+      {
+        "state": "warming",
+        "at": "2026-10-21T03:19:50.460819Z",
+        "detail": "first request"
+      },
+      {
+        "state": "ready",
+        "at": "2026-10-21T03:19:50.723256Z",
+        "detail": "CUDA0: model 2246 MiB, KV 136 MiB, ~17 layers (planned 17); RPC0[172.18.63.230:47052]: model 1211 MiB, KV 72 MiB, ~9 layers (planned 9); RPC0[127.0.0.1:47052]: model 711 MiB, KV 16 MiB, ~2 layers (planned 2)"
+      }
+    ],
+    "error": null,
+    "cleanup": null,
+    "progress": "ready",
+    "engine_args": [
+      "-m",
+      "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-7b-instruct-q4_k_m\\qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+      "--alias",
+      "qwen2.5-7b-instruct-q4_k_m",
+      "--rpc",
+      "127.0.0.1:47052,172.18.63.230:47052",
+      "--device",
+      "CUDA0,RPC1,RPC0",
+      "--split-mode",
+      "layer",
+      "--tensor-split",
+      "17,9,3",
+      "-ngl",
+      "all",
+      "--fit",
+      "off",
+      "-c",
+      "4096",
+      "-np",
+      "1",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "65002",
+      "--metrics",
+      "--no-ui",
+      "-lv",
+      "4",
+      "--log-colors",
+      "off"
+    ],
+    "upstream_port": 65002,
+    "pid": 24664,
+    "placement": {
+      "offloaded": "29/29",
+      "devices": [
+        {
+          "name": "CPU_Mapped",
+          "model_bytes": 306561679,
+          "kv_bytes": 0,
+          "compute_bytes": 0,
+          "layers_est": null
+        },
+        {
+          "name": "CUDA0",
+          "model_bytes": 2355143639,
+          "kv_bytes": 142606336,
+          "compute_bytes": 250662092,
+          "layers_est": 17
+        },
+        {
+          "name": "RPC0[127.0.0.1:47052]",
+          "model_bytes": 745306849,
+          "kv_bytes": 16777216,
+          "compute_bytes": 177251287,
+          "layers_est": 2
+        },
+        {
+          "name": "RPC0[172.18.63.230:47052]",
+          "model_bytes": 1270108651,
+          "kv_bytes": 75497472,
+          "compute_bytes": 184591319,
+          "layers_est": 9
+        },
+        {
+          "name": "CUDA_Host",
+          "model_bytes": 0,
+          "kv_bytes": 0,
+          "compute_bytes": 90250936,
+          "layers_est": null
+        }
+      ],
+      "evidence_lines": [
+        "load_tensors: offloaded 29/29 layers to GPU",
+        "load_tensors:   CPU_Mapped model buffer size =   292.36 MiB",
+        "load_tensors:        CUDA0 model buffer size =  2246.04 MiB",
+        "load_tensors: RPC0[127.0.0.1:47052] model buffer size =   710.78 MiB",
+        "load_tensors: RPC0[172.18.63.230:47052] model buffer size =  1211.27 MiB",
+        "llama_kv_cache:      CUDA0 KV buffer size =   136.00 MiB",
+        "llama_kv_cache: RPC0[127.0.0.1:47052] KV buffer size =    16.00 MiB",
+        "llama_kv_cache: RPC0[172.18.63.230:47052] KV buffer size =    72.00 MiB",
+        "sched_reserve:      CUDA0 compute buffer size =   239.05 MiB",
+        "sched_reserve: RPC0[172.18.63.230:47052] compute buffer size =   176.04 MiB",
+        "sched_reserve: RPC0[127.0.0.1:47052] compute buffer size =   169.04 MiB",
+        "sched_reserve:  CUDA_Host compute buffer size =    86.07 MiB"
+      ],
+      "parsed_at": "2026-10-21T03:19:50.459806Z"
+    },
+    "participation_verified": true,
+    "participation_detail": "CUDA0: model 2246 MiB, KV 136 MiB, ~17 layers (planned 17); RPC0[172.18.63.230:47052]: model 1211 MiB, KV 72 MiB, ~9 layers (planned 9); RPC0[127.0.0.1:47052]: model 711 MiB, KV 16 MiB, ~2 layers (planned 2)",
+    "created_at": "2026-10-21T03:19:42.875173Z",
+    "idempotency_key": "6afdf203ac2c4e4db08b72c2788e3fc1"
+  },
+  "benchmark": {
+    "id": "fdbc3e48436141e8a17afd39ea93bb9c",
+    "deployment_id": "8aa22e57262b471e8b6b0b327cda2a23",
+    "label": null,
+    "status": "done",
+    "request": {
+      "deployment_id": null,
+      "prompt_set": "both",
+      "repetitions": 3,
+      "warmup": 1,
+      "max_tokens": 128,
+      "label": null
+    },
+    "run_ids": [
+      "c99caea7e14b4c14b05bf5036419ad01",
+      "a03d67b9954244cdadb751284aee40ec",
+      "f3965251e1b6476ca14214c8bf798b66",
+      "9ec14892af9944ff948cb9d026b4e5c7",
+      "546466f0b49646d1ae820aab39338cda",
+      "78e6a6fd41db4cac80e0028653daddb7",
+      "1e860739c3b548f09e4b4d45d3b75d1e",
+      "e18abd894a57406b839d91586561e2af"
+    ],
+    "summaries": [
+      {
+        "prompt_label": "short",
+        "ttft_ms": {
+          "n": 3,
+          "median": 291.08090000227094,
+          "min": 280.49190004821867,
+          "max": 292.66509995795786
+        },
+        "decode_tokens_per_s": {
+          "n": 3,
+          "median": 18.087973031977018,
+          "min": 17.368958900206316,
+          "max": 18.18409904119159
+        },
+        "prompt_tokens_per_s": {
+          "n": 3,
+          "median": 159.2221074341913,
+          "min": 154.537842004823,
+          "max": 163.95005242588888
+        },
+        "completion_tokens": {
+          "n": 3,
+          "median": 80.0,
+          "min": 80.0,
+          "max": 80.0
+        },
+        "failures": 0
+      },
+      {
+        "prompt_label": "long",
+        "ttft_ms": {
+          "n": 3,
+          "median": 13464.12949997466,
+          "min": 13335.21060005296,
+          "max": 19238.233299925923
+        },
+        "decode_tokens_per_s": {
+          "n": 3,
+          "median": 14.618117787268172,
+          "min": 10.078660373032648,
+          "max": 14.732156632289314
+        },
+        "prompt_tokens_per_s": {
+          "n": 3,
+          "median": 262.27113721002985,
+          "min": 183.50905834105626,
+          "max": 264.8240477650104
+        },
+        "completion_tokens": {
+          "n": 3,
+          "median": 128.0,
+          "min": 128.0,
+          "max": 128.0
+        },
+        "failures": 0
+      }
+    ],
+    "placement_label": "CUDA0 (~17 layers) + RPC0[127.0.0.1:47052] (~2 layers) + RPC0[172.18.63.230:47052] (~9 layers)",
+    "created_at": "2026-10-21T03:19:57.986769Z",
+    "error": null
+  },
+  "runs": [
+    {
+      "id": "e18abd894a57406b839d91586561e2af",
+      "attempt_id": "870c7fe413a046e68ec35ed3349aafb5",
+      "deployment_id": "8aa22e57262b471e8b6b0b327cda2a23",
+      "kind": "benchmark",
+      "status": "ok",
+      "simulated": false,
+      "model": {
+        "id": "qwen2.5-7b-instruct-q4_k_m",
+        "repo": "Qwen/Qwen2.5-7B-Instruct-GGUF",
+        "revision": "bb5d59e06d9551d752d08b292a50eb208b07ab1f",
+        "quantization": "Q4_K_M",
+        "format": "gguf",
+        "files": [
+          {
+            "name": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+            "sha256": "dfce12e3862a5283ccfb88221b48480e58745165de856439950d0f22590580db"
+          },
+          {
+            "name": "qwen2.5-7b-instruct-q4_k_m-00002-of-00002.gguf",
+            "sha256": "539cf93f78e887edea1c04e2d7d8cdaca9d01dae9c9025bcb8accbe29df3d72a"
+          }
+        ],
+        "architecture": "qwen2",
+        "chat_template": true,
+        "context_length": 131072,
+        "max_output_tokens": 1024
+      },
+      "engine": {
+        "engine": "llama_rpc",
+        "release": "b11770",
+        "commit": "39da130fc",
+        "variant": "windows-x64-cuda13.4",
+        "hosts": [
+          {
+            "node_id": "local",
+            "devices": [
+              {
+                "device": "CUDA0",
+                "endpoint": null,
+                "layers": 17
+              }
+            ],
+            "display_name": "benchmark-host (this machine)",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "windows",
+              "release": "11",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CUDA0"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              },
+              {
+                "id": "AMD Radeon(TM) 890M Graphics",
+                "name": "AMD Radeon(TM) 890M Graphics",
+                "backend": "unknown"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "windows-x64-cuda13.4",
+              "accelerator": "cuda",
+              "rpc_proto": "8.0.0"
+            }
+          },
+          {
+            "node_id": "07118aa37e8646058734355ad5a7fd61",
+            "devices": [
+              {
+                "device": "RPC1",
+                "endpoint": "172.18.63.230:47052",
+                "layers": 9
+              }
+            ],
+            "display_name": "wsl-ubuntu-cpu",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "linux",
+              "release": "6.6.87.2-microsoft-standard-WSL2",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CPU"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "linux-x64-cpu",
+              "accelerator": "cpu",
+              "rpc_proto": "8.0.0"
+            }
+          },
+          {
+            "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+            "devices": [
+              {
+                "device": "RPC0",
+                "endpoint": "127.0.0.1:47052",
+                "layers": 2
+              }
+            ],
+            "display_name": "loopback-cpu-worker",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "windows",
+              "release": "11",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CPU"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              },
+              {
+                "id": "AMD Radeon(TM) 890M Graphics",
+                "name": "AMD Radeon(TM) 890M Graphics",
+                "backend": "unknown"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "windows-x64-cuda13.4",
+              "accelerator": "cuda",
+              "rpc_proto": "8.0.0"
+            }
+          }
+        ]
+      },
+      "placement": [
+        {
+          "device": "CPU_Mapped",
+          "model_bytes": 306561679,
+          "kv_bytes": 0,
+          "layers_est": null
+        },
+        {
+          "device": "CUDA0",
+          "model_bytes": 2355143639,
+          "kv_bytes": 142606336,
+          "layers_est": 17
+        },
+        {
+          "device": "RPC0[127.0.0.1:47052]",
+          "model_bytes": 745306849,
+          "kv_bytes": 16777216,
+          "layers_est": 2
+        },
+        {
+          "device": "RPC0[172.18.63.230:47052]",
+          "model_bytes": 1270108651,
+          "kv_bytes": 75497472,
+          "layers_est": 9
+        },
+        {
+          "device": "CUDA_Host",
+          "model_bytes": 0,
+          "kv_bytes": 0,
+          "layers_est": null
+        }
+      ],
+      "transport": "tcp",
+      "ctx_size": 4096,
+      "stream": true,
+      "prompt_tokens": 3528,
+      "completion_tokens": 128,
+      "ttft_ms": 19238.233299925923,
+      "total_ms": 31840.639999951236,
+      "timings": {
+        "prompt_n": 3528,
+        "prompt_ms": 19225.209,
+        "predicted_n": 128,
+        "predicted_ms": 12600.881,
+        "predicted_per_second": 10.078660373032648,
+        "prompt_per_second": 183.50905834105626,
+        "cache_n": 0
+      },
+      "finish_reason": "length",
+      "sampling": {
+        "temperature": 0,
+        "max_tokens": 128,
+        "seed": 42,
+        "cache_prompt": false
+      },
+      "cache_state": "cold",
+      "output_text": "Based on the weather log provided, the three stations with the most rain are:\n\n1. Station 120 with 97 millimetres of rain.\n2. Station 99 with 98 millimetres of rain.\n3. Station 98 with 91 millimetres of rain.\n\nOne pattern that can be noticed is that there is no clear correlation between the amount of rain and the peak wind speed recorded at the stations. For example, station 120, which recorded the highest amount of rain, has a relatively low peak wind speed of 35 km/h, while station 1",
+      "error": null,
+      "started_at": "2026-10-21T03:21:23.529517Z",
+      "benchmark_id": "fdbc3e48436141e8a17afd39ea93bb9c",
+      "prompt_label": "long"
+    },
+    {
+      "id": "1e860739c3b548f09e4b4d45d3b75d1e",
+      "attempt_id": "58c9d912a4224d6fb1e3dc3b107d53ac",
+      "deployment_id": "8aa22e57262b471e8b6b0b327cda2a23",
+      "kind": "benchmark",
+      "status": "ok",
+      "simulated": false,
+      "model": {
+        "id": "qwen2.5-7b-instruct-q4_k_m",
+        "repo": "Qwen/Qwen2.5-7B-Instruct-GGUF",
+        "revision": "bb5d59e06d9551d752d08b292a50eb208b07ab1f",
+        "quantization": "Q4_K_M",
+        "format": "gguf",
+        "files": [
+          {
+            "name": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+            "sha256": "dfce12e3862a5283ccfb88221b48480e58745165de856439950d0f22590580db"
+          },
+          {
+            "name": "qwen2.5-7b-instruct-q4_k_m-00002-of-00002.gguf",
+            "sha256": "539cf93f78e887edea1c04e2d7d8cdaca9d01dae9c9025bcb8accbe29df3d72a"
+          }
+        ],
+        "architecture": "qwen2",
+        "chat_template": true,
+        "context_length": 131072,
+        "max_output_tokens": 1024
+      },
+      "engine": {
+        "engine": "llama_rpc",
+        "release": "b11770",
+        "commit": "39da130fc",
+        "variant": "windows-x64-cuda13.4",
+        "hosts": [
+          {
+            "node_id": "local",
+            "devices": [
+              {
+                "device": "CUDA0",
+                "endpoint": null,
+                "layers": 17
+              }
+            ],
+            "display_name": "benchmark-host (this machine)",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "windows",
+              "release": "11",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CUDA0"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              },
+              {
+                "id": "AMD Radeon(TM) 890M Graphics",
+                "name": "AMD Radeon(TM) 890M Graphics",
+                "backend": "unknown"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "windows-x64-cuda13.4",
+              "accelerator": "cuda",
+              "rpc_proto": "8.0.0"
+            }
+          },
+          {
+            "node_id": "07118aa37e8646058734355ad5a7fd61",
+            "devices": [
+              {
+                "device": "RPC1",
+                "endpoint": "172.18.63.230:47052",
+                "layers": 9
+              }
+            ],
+            "display_name": "wsl-ubuntu-cpu",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "linux",
+              "release": "6.6.87.2-microsoft-standard-WSL2",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CPU"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "linux-x64-cpu",
+              "accelerator": "cpu",
+              "rpc_proto": "8.0.0"
+            }
+          },
+          {
+            "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+            "devices": [
+              {
+                "device": "RPC0",
+                "endpoint": "127.0.0.1:47052",
+                "layers": 2
+              }
+            ],
+            "display_name": "loopback-cpu-worker",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "windows",
+              "release": "11",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CPU"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              },
+              {
+                "id": "AMD Radeon(TM) 890M Graphics",
+                "name": "AMD Radeon(TM) 890M Graphics",
+                "backend": "unknown"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "windows-x64-cuda13.4",
+              "accelerator": "cuda",
+              "rpc_proto": "8.0.0"
+            }
+          }
+        ]
+      },
+      "placement": [
+        {
+          "device": "CPU_Mapped",
+          "model_bytes": 306561679,
+          "kv_bytes": 0,
+          "layers_est": null
+        },
+        {
+          "device": "CUDA0",
+          "model_bytes": 2355143639,
+          "kv_bytes": 142606336,
+          "layers_est": 17
+        },
+        {
+          "device": "RPC0[127.0.0.1:47052]",
+          "model_bytes": 745306849,
+          "kv_bytes": 16777216,
+          "layers_est": 2
+        },
+        {
+          "device": "RPC0[172.18.63.230:47052]",
+          "model_bytes": 1270108651,
+          "kv_bytes": 75497472,
+          "layers_est": 9
+        },
+        {
+          "device": "CUDA_Host",
+          "model_bytes": 0,
+          "kv_bytes": 0,
+          "layers_est": null
+        }
+      ],
+      "transport": "tcp",
+      "ctx_size": 4096,
+      "stream": true,
+      "prompt_tokens": 3528,
+      "completion_tokens": 128,
+      "ttft_ms": 13464.12949997466,
+      "total_ms": 22087.83710002899,
+      "timings": {
+        "prompt_n": 3528,
+        "prompt_ms": 13451.728,
+        "predicted_n": 128,
+        "predicted_ms": 8620.598,
+        "predicted_per_second": 14.732156632289314,
+        "prompt_per_second": 262.27113721002985,
+        "cache_n": 0
+      },
+      "finish_reason": "length",
+      "sampling": {
+        "temperature": 0,
+        "max_tokens": 128,
+        "seed": 42,
+        "cache_prompt": false
+      },
+      "cache_state": "cold",
+      "output_text": "Based on the weather log provided, the three stations with the most rain are:\n\n1. Station 120 with 97 millimetres of rain.\n2. Station 99 with 98 millimetres of rain.\n3. Station 98 with 91 millimetres of rain.\n\nOne pattern that can be noticed is that there is no clear correlation between the amount of rain and the peak wind speed recorded at the stations. For example, station 120, which recorded the highest amount of rain, has a relatively low peak wind speed of 35 km/h, while station 1",
+      "error": null,
+      "started_at": "2026-10-21T03:21:01.437005Z",
+      "benchmark_id": "fdbc3e48436141e8a17afd39ea93bb9c",
+      "prompt_label": "long"
+    },
+    {
+      "id": "78e6a6fd41db4cac80e0028653daddb7",
+      "attempt_id": "9c3ee6c18dce4abcbbc57a8c7f5f8740",
+      "deployment_id": "8aa22e57262b471e8b6b0b327cda2a23",
+      "kind": "benchmark",
+      "status": "ok",
+      "simulated": false,
+      "model": {
+        "id": "qwen2.5-7b-instruct-q4_k_m",
+        "repo": "Qwen/Qwen2.5-7B-Instruct-GGUF",
+        "revision": "bb5d59e06d9551d752d08b292a50eb208b07ab1f",
+        "quantization": "Q4_K_M",
+        "format": "gguf",
+        "files": [
+          {
+            "name": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+            "sha256": "dfce12e3862a5283ccfb88221b48480e58745165de856439950d0f22590580db"
+          },
+          {
+            "name": "qwen2.5-7b-instruct-q4_k_m-00002-of-00002.gguf",
+            "sha256": "539cf93f78e887edea1c04e2d7d8cdaca9d01dae9c9025bcb8accbe29df3d72a"
+          }
+        ],
+        "architecture": "qwen2",
+        "chat_template": true,
+        "context_length": 131072,
+        "max_output_tokens": 1024
+      },
+      "engine": {
+        "engine": "llama_rpc",
+        "release": "b11770",
+        "commit": "39da130fc",
+        "variant": "windows-x64-cuda13.4",
+        "hosts": [
+          {
+            "node_id": "local",
+            "devices": [
+              {
+                "device": "CUDA0",
+                "endpoint": null,
+                "layers": 17
+              }
+            ],
+            "display_name": "benchmark-host (this machine)",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "windows",
+              "release": "11",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CUDA0"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              },
+              {
+                "id": "AMD Radeon(TM) 890M Graphics",
+                "name": "AMD Radeon(TM) 890M Graphics",
+                "backend": "unknown"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "windows-x64-cuda13.4",
+              "accelerator": "cuda",
+              "rpc_proto": "8.0.0"
+            }
+          },
+          {
+            "node_id": "07118aa37e8646058734355ad5a7fd61",
+            "devices": [
+              {
+                "device": "RPC1",
+                "endpoint": "172.18.63.230:47052",
+                "layers": 9
+              }
+            ],
+            "display_name": "wsl-ubuntu-cpu",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "linux",
+              "release": "6.6.87.2-microsoft-standard-WSL2",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CPU"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "linux-x64-cpu",
+              "accelerator": "cpu",
+              "rpc_proto": "8.0.0"
+            }
+          },
+          {
+            "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+            "devices": [
+              {
+                "device": "RPC0",
+                "endpoint": "127.0.0.1:47052",
+                "layers": 2
+              }
+            ],
+            "display_name": "loopback-cpu-worker",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "windows",
+              "release": "11",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CPU"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              },
+              {
+                "id": "AMD Radeon(TM) 890M Graphics",
+                "name": "AMD Radeon(TM) 890M Graphics",
+                "backend": "unknown"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "windows-x64-cuda13.4",
+              "accelerator": "cuda",
+              "rpc_proto": "8.0.0"
+            }
+          }
+        ]
+      },
+      "placement": [
+        {
+          "device": "CPU_Mapped",
+          "model_bytes": 306561679,
+          "kv_bytes": 0,
+          "layers_est": null
+        },
+        {
+          "device": "CUDA0",
+          "model_bytes": 2355143639,
+          "kv_bytes": 142606336,
+          "layers_est": 17
+        },
+        {
+          "device": "RPC0[127.0.0.1:47052]",
+          "model_bytes": 745306849,
+          "kv_bytes": 16777216,
+          "layers_est": 2
+        },
+        {
+          "device": "RPC0[172.18.63.230:47052]",
+          "model_bytes": 1270108651,
+          "kv_bytes": 75497472,
+          "layers_est": 9
+        },
+        {
+          "device": "CUDA_Host",
+          "model_bytes": 0,
+          "kv_bytes": 0,
+          "layers_est": null
+        }
+      ],
+      "transport": "tcp",
+      "ctx_size": 4096,
+      "stream": true,
+      "prompt_tokens": 3528,
+      "completion_tokens": 128,
+      "ttft_ms": 13335.21060005296,
+      "total_ms": 22024.9794999836,
+      "timings": {
+        "prompt_n": 3528,
+        "prompt_ms": 13322.053,
+        "predicted_n": 128,
+        "predicted_ms": 8687.849,
+        "predicted_per_second": 14.618117787268172,
+        "prompt_per_second": 264.8240477650104,
+        "cache_n": 0
+      },
+      "finish_reason": "length",
+      "sampling": {
+        "temperature": 0,
+        "max_tokens": 128,
+        "seed": 42,
+        "cache_prompt": false
+      },
+      "cache_state": "cold",
+      "output_text": "Based on the weather log provided, the three stations with the most rain are:\n\n1. Station 120 with 97 millimetres of rain.\n2. Station 99 with 98 millimetres of rain.\n3. Station 98 with 91 millimetres of rain.\n\nOne pattern that can be noticed is that there is no clear correlation between the amount of rain and the peak wind speed recorded at the stations. For example, station 120, which recorded the highest amount of rain, has a relatively low peak wind speed of 35 km/h, while station 1",
+      "error": null,
+      "started_at": "2026-10-21T03:20:39.406679Z",
+      "benchmark_id": "fdbc3e48436141e8a17afd39ea93bb9c",
+      "prompt_label": "long"
+    },
+    {
+      "id": "546466f0b49646d1ae820aab39338cda",
+      "attempt_id": "70ff00f9ce9d4841be256d0f6bc317a7",
+      "deployment_id": "8aa22e57262b471e8b6b0b327cda2a23",
+      "kind": "warmup",
+      "status": "ok",
+      "simulated": false,
+      "model": {
+        "id": "qwen2.5-7b-instruct-q4_k_m",
+        "repo": "Qwen/Qwen2.5-7B-Instruct-GGUF",
+        "revision": "bb5d59e06d9551d752d08b292a50eb208b07ab1f",
+        "quantization": "Q4_K_M",
+        "format": "gguf",
+        "files": [
+          {
+            "name": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+            "sha256": "dfce12e3862a5283ccfb88221b48480e58745165de856439950d0f22590580db"
+          },
+          {
+            "name": "qwen2.5-7b-instruct-q4_k_m-00002-of-00002.gguf",
+            "sha256": "539cf93f78e887edea1c04e2d7d8cdaca9d01dae9c9025bcb8accbe29df3d72a"
+          }
+        ],
+        "architecture": "qwen2",
+        "chat_template": true,
+        "context_length": 131072,
+        "max_output_tokens": 1024
+      },
+      "engine": {
+        "engine": "llama_rpc",
+        "release": "b11770",
+        "commit": "39da130fc",
+        "variant": "windows-x64-cuda13.4",
+        "hosts": [
+          {
+            "node_id": "local",
+            "devices": [
+              {
+                "device": "CUDA0",
+                "endpoint": null,
+                "layers": 17
+              }
+            ],
+            "display_name": "benchmark-host (this machine)",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "windows",
+              "release": "11",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CUDA0"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              },
+              {
+                "id": "AMD Radeon(TM) 890M Graphics",
+                "name": "AMD Radeon(TM) 890M Graphics",
+                "backend": "unknown"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "windows-x64-cuda13.4",
+              "accelerator": "cuda",
+              "rpc_proto": "8.0.0"
+            }
+          },
+          {
+            "node_id": "07118aa37e8646058734355ad5a7fd61",
+            "devices": [
+              {
+                "device": "RPC1",
+                "endpoint": "172.18.63.230:47052",
+                "layers": 9
+              }
+            ],
+            "display_name": "wsl-ubuntu-cpu",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "linux",
+              "release": "6.6.87.2-microsoft-standard-WSL2",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CPU"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "linux-x64-cpu",
+              "accelerator": "cpu",
+              "rpc_proto": "8.0.0"
+            }
+          },
+          {
+            "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+            "devices": [
+              {
+                "device": "RPC0",
+                "endpoint": "127.0.0.1:47052",
+                "layers": 2
+              }
+            ],
+            "display_name": "loopback-cpu-worker",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "windows",
+              "release": "11",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CPU"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              },
+              {
+                "id": "AMD Radeon(TM) 890M Graphics",
+                "name": "AMD Radeon(TM) 890M Graphics",
+                "backend": "unknown"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "windows-x64-cuda13.4",
+              "accelerator": "cuda",
+              "rpc_proto": "8.0.0"
+            }
+          }
+        ]
+      },
+      "placement": [
+        {
+          "device": "CPU_Mapped",
+          "model_bytes": 306561679,
+          "kv_bytes": 0,
+          "layers_est": null
+        },
+        {
+          "device": "CUDA0",
+          "model_bytes": 2355143639,
+          "kv_bytes": 142606336,
+          "layers_est": 17
+        },
+        {
+          "device": "RPC0[127.0.0.1:47052]",
+          "model_bytes": 745306849,
+          "kv_bytes": 16777216,
+          "layers_est": 2
+        },
+        {
+          "device": "RPC0[172.18.63.230:47052]",
+          "model_bytes": 1270108651,
+          "kv_bytes": 75497472,
+          "layers_est": 9
+        },
+        {
+          "device": "CUDA_Host",
+          "model_bytes": 0,
+          "kv_bytes": 0,
+          "layers_est": null
+        }
+      ],
+      "transport": "tcp",
+      "ctx_size": 4096,
+      "stream": true,
+      "prompt_tokens": 3528,
+      "completion_tokens": 128,
+      "ttft_ms": 13784.354100003839,
+      "total_ms": 22336.559299961664,
+      "timings": {
+        "prompt_n": 3528,
+        "prompt_ms": 13769.287,
+        "predicted_n": 128,
+        "predicted_ms": 8548.442,
+        "predicted_per_second": 14.856508355557656,
+        "prompt_per_second": 256.2224173263292,
+        "cache_n": 0
+      },
+      "finish_reason": "length",
+      "sampling": {
+        "temperature": 0,
+        "max_tokens": 128,
+        "seed": 42,
+        "cache_prompt": false
+      },
+      "cache_state": "cold",
+      "output_text": "Based on the weather log provided, the three stations with the most rain are:\n\n1. Station 120 with 97 millimetres of rain.\n2. Station 99 with 98 millimetres of rain.\n3. Station 98 with 91 millimetres of rain.\n\nOne pattern that can be noticed is that there is no clear correlation between the amount of rain and the peak wind speed recorded at the stations. For example, station 120, which recorded the highest amount of rain, has a relatively low peak wind speed of 35 km/h, while station 1",
+      "error": null,
+      "started_at": "2026-10-21T03:20:17.065864Z",
+      "benchmark_id": "fdbc3e48436141e8a17afd39ea93bb9c",
+      "prompt_label": "long"
+    },
+    {
+      "id": "9ec14892af9944ff948cb9d026b4e5c7",
+      "attempt_id": "9e6f5073d5e74a589645c57f9a292e69",
+      "deployment_id": "8aa22e57262b471e8b6b0b327cda2a23",
+      "kind": "benchmark",
+      "status": "ok",
+      "simulated": false,
+      "model": {
+        "id": "qwen2.5-7b-instruct-q4_k_m",
+        "repo": "Qwen/Qwen2.5-7B-Instruct-GGUF",
+        "revision": "bb5d59e06d9551d752d08b292a50eb208b07ab1f",
+        "quantization": "Q4_K_M",
+        "format": "gguf",
+        "files": [
+          {
+            "name": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+            "sha256": "dfce12e3862a5283ccfb88221b48480e58745165de856439950d0f22590580db"
+          },
+          {
+            "name": "qwen2.5-7b-instruct-q4_k_m-00002-of-00002.gguf",
+            "sha256": "539cf93f78e887edea1c04e2d7d8cdaca9d01dae9c9025bcb8accbe29df3d72a"
+          }
+        ],
+        "architecture": "qwen2",
+        "chat_template": true,
+        "context_length": 131072,
+        "max_output_tokens": 1024
+      },
+      "engine": {
+        "engine": "llama_rpc",
+        "release": "b11770",
+        "commit": "39da130fc",
+        "variant": "windows-x64-cuda13.4",
+        "hosts": [
+          {
+            "node_id": "local",
+            "devices": [
+              {
+                "device": "CUDA0",
+                "endpoint": null,
+                "layers": 17
+              }
+            ],
+            "display_name": "benchmark-host (this machine)",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "windows",
+              "release": "11",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CUDA0"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              },
+              {
+                "id": "AMD Radeon(TM) 890M Graphics",
+                "name": "AMD Radeon(TM) 890M Graphics",
+                "backend": "unknown"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "windows-x64-cuda13.4",
+              "accelerator": "cuda",
+              "rpc_proto": "8.0.0"
+            }
+          },
+          {
+            "node_id": "07118aa37e8646058734355ad5a7fd61",
+            "devices": [
+              {
+                "device": "RPC1",
+                "endpoint": "172.18.63.230:47052",
+                "layers": 9
+              }
+            ],
+            "display_name": "wsl-ubuntu-cpu",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "linux",
+              "release": "6.6.87.2-microsoft-standard-WSL2",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CPU"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "linux-x64-cpu",
+              "accelerator": "cpu",
+              "rpc_proto": "8.0.0"
+            }
+          },
+          {
+            "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+            "devices": [
+              {
+                "device": "RPC0",
+                "endpoint": "127.0.0.1:47052",
+                "layers": 2
+              }
+            ],
+            "display_name": "loopback-cpu-worker",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "windows",
+              "release": "11",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CPU"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              },
+              {
+                "id": "AMD Radeon(TM) 890M Graphics",
+                "name": "AMD Radeon(TM) 890M Graphics",
+                "backend": "unknown"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "windows-x64-cuda13.4",
+              "accelerator": "cuda",
+              "rpc_proto": "8.0.0"
+            }
+          }
+        ]
+      },
+      "placement": [
+        {
+          "device": "CPU_Mapped",
+          "model_bytes": 306561679,
+          "kv_bytes": 0,
+          "layers_est": null
+        },
+        {
+          "device": "CUDA0",
+          "model_bytes": 2355143639,
+          "kv_bytes": 142606336,
+          "layers_est": 17
+        },
+        {
+          "device": "RPC0[127.0.0.1:47052]",
+          "model_bytes": 745306849,
+          "kv_bytes": 16777216,
+          "layers_est": 2
+        },
+        {
+          "device": "RPC0[172.18.63.230:47052]",
+          "model_bytes": 1270108651,
+          "kv_bytes": 75497472,
+          "layers_est": 9
+        },
+        {
+          "device": "CUDA_Host",
+          "model_bytes": 0,
+          "kv_bytes": 0,
+          "layers_est": null
+        }
+      ],
+      "transport": "tcp",
+      "ctx_size": 4096,
+      "stream": true,
+      "prompt_tokens": 43,
+      "completion_tokens": 80,
+      "ttft_ms": 280.49190004821867,
+      "total_ms": 4650.951200048439,
+      "timings": {
+        "prompt_n": 43,
+        "prompt_ms": 270.063,
+        "predicted_n": 80,
+        "predicted_ms": 4367.543,
+        "predicted_per_second": 18.087973031977018,
+        "prompt_per_second": 159.2221074341913,
+        "cache_n": 0
+      },
+      "finish_reason": "stop",
+      "sampling": {
+        "temperature": 0,
+        "max_tokens": 128,
+        "seed": 42,
+        "cache_prompt": false
+      },
+      "cache_state": "cold",
+      "output_text": "The sky appears blue during the day because the Earth's atmosphere scatters short-wavelength light (like blue and violet) more than longer wavelength light (like red and orange), a phenomenon known as Rayleigh scattering. While both blue and violet light are scattered, the eye is more sensitive to blue and there is less violet light in the environment to begin with, making the sky appear predominantly blue.",
+      "error": null,
+      "started_at": "2026-10-21T03:20:12.410455Z",
+      "benchmark_id": "fdbc3e48436141e8a17afd39ea93bb9c",
+      "prompt_label": "short"
+    },
+    {
+      "id": "f3965251e1b6476ca14214c8bf798b66",
+      "attempt_id": "e2e3b60d0f714ac2bcac1f783a41eddb",
+      "deployment_id": "8aa22e57262b471e8b6b0b327cda2a23",
+      "kind": "benchmark",
+      "status": "ok",
+      "simulated": false,
+      "model": {
+        "id": "qwen2.5-7b-instruct-q4_k_m",
+        "repo": "Qwen/Qwen2.5-7B-Instruct-GGUF",
+        "revision": "bb5d59e06d9551d752d08b292a50eb208b07ab1f",
+        "quantization": "Q4_K_M",
+        "format": "gguf",
+        "files": [
+          {
+            "name": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+            "sha256": "dfce12e3862a5283ccfb88221b48480e58745165de856439950d0f22590580db"
+          },
+          {
+            "name": "qwen2.5-7b-instruct-q4_k_m-00002-of-00002.gguf",
+            "sha256": "539cf93f78e887edea1c04e2d7d8cdaca9d01dae9c9025bcb8accbe29df3d72a"
+          }
+        ],
+        "architecture": "qwen2",
+        "chat_template": true,
+        "context_length": 131072,
+        "max_output_tokens": 1024
+      },
+      "engine": {
+        "engine": "llama_rpc",
+        "release": "b11770",
+        "commit": "39da130fc",
+        "variant": "windows-x64-cuda13.4",
+        "hosts": [
+          {
+            "node_id": "local",
+            "devices": [
+              {
+                "device": "CUDA0",
+                "endpoint": null,
+                "layers": 17
+              }
+            ],
+            "display_name": "benchmark-host (this machine)",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "windows",
+              "release": "11",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CUDA0"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              },
+              {
+                "id": "AMD Radeon(TM) 890M Graphics",
+                "name": "AMD Radeon(TM) 890M Graphics",
+                "backend": "unknown"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "windows-x64-cuda13.4",
+              "accelerator": "cuda",
+              "rpc_proto": "8.0.0"
+            }
+          },
+          {
+            "node_id": "07118aa37e8646058734355ad5a7fd61",
+            "devices": [
+              {
+                "device": "RPC1",
+                "endpoint": "172.18.63.230:47052",
+                "layers": 9
+              }
+            ],
+            "display_name": "wsl-ubuntu-cpu",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "linux",
+              "release": "6.6.87.2-microsoft-standard-WSL2",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CPU"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "linux-x64-cpu",
+              "accelerator": "cpu",
+              "rpc_proto": "8.0.0"
+            }
+          },
+          {
+            "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+            "devices": [
+              {
+                "device": "RPC0",
+                "endpoint": "127.0.0.1:47052",
+                "layers": 2
+              }
+            ],
+            "display_name": "loopback-cpu-worker",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "windows",
+              "release": "11",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CPU"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              },
+              {
+                "id": "AMD Radeon(TM) 890M Graphics",
+                "name": "AMD Radeon(TM) 890M Graphics",
+                "backend": "unknown"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "windows-x64-cuda13.4",
+              "accelerator": "cuda",
+              "rpc_proto": "8.0.0"
+            }
+          }
+        ]
+      },
+      "placement": [
+        {
+          "device": "CPU_Mapped",
+          "model_bytes": 306561679,
+          "kv_bytes": 0,
+          "layers_est": null
+        },
+        {
+          "device": "CUDA0",
+          "model_bytes": 2355143639,
+          "kv_bytes": 142606336,
+          "layers_est": 17
+        },
+        {
+          "device": "RPC0[127.0.0.1:47052]",
+          "model_bytes": 745306849,
+          "kv_bytes": 16777216,
+          "layers_est": 2
+        },
+        {
+          "device": "RPC0[172.18.63.230:47052]",
+          "model_bytes": 1270108651,
+          "kv_bytes": 75497472,
+          "layers_est": 9
+        },
+        {
+          "device": "CUDA_Host",
+          "model_bytes": 0,
+          "kv_bytes": 0,
+          "layers_est": null
+        }
+      ],
+      "transport": "tcp",
+      "ctx_size": 4096,
+      "stream": true,
+      "prompt_tokens": 43,
+      "completion_tokens": 80,
+      "ttft_ms": 292.66509995795786,
+      "total_ms": 4844.089500023983,
+      "timings": {
+        "prompt_n": 43,
+        "prompt_ms": 278.249,
+        "predicted_n": 80,
+        "predicted_ms": 4548.344,
+        "predicted_per_second": 17.368958900206316,
+        "prompt_per_second": 154.537842004823,
+        "cache_n": 0
+      },
+      "finish_reason": "stop",
+      "sampling": {
+        "temperature": 0,
+        "max_tokens": 128,
+        "seed": 42,
+        "cache_prompt": false
+      },
+      "cache_state": "cold",
+      "output_text": "The sky appears blue during the day because the Earth's atmosphere scatters short-wavelength light (like blue and violet) more than longer wavelength light (like red and orange), a phenomenon known as Rayleigh scattering. While both blue and violet light are scattered, the eye is more sensitive to blue and there is less violet light in the environment to begin with, making the sky appear predominantly blue.",
+      "error": null,
+      "started_at": "2026-10-21T03:20:07.561437Z",
+      "benchmark_id": "fdbc3e48436141e8a17afd39ea93bb9c",
+      "prompt_label": "short"
+    },
+    {
+      "id": "a03d67b9954244cdadb751284aee40ec",
+      "attempt_id": "63e5672d45834999923c000484cadb33",
+      "deployment_id": "8aa22e57262b471e8b6b0b327cda2a23",
+      "kind": "benchmark",
+      "status": "ok",
+      "simulated": false,
+      "model": {
+        "id": "qwen2.5-7b-instruct-q4_k_m",
+        "repo": "Qwen/Qwen2.5-7B-Instruct-GGUF",
+        "revision": "bb5d59e06d9551d752d08b292a50eb208b07ab1f",
+        "quantization": "Q4_K_M",
+        "format": "gguf",
+        "files": [
+          {
+            "name": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+            "sha256": "dfce12e3862a5283ccfb88221b48480e58745165de856439950d0f22590580db"
+          },
+          {
+            "name": "qwen2.5-7b-instruct-q4_k_m-00002-of-00002.gguf",
+            "sha256": "539cf93f78e887edea1c04e2d7d8cdaca9d01dae9c9025bcb8accbe29df3d72a"
+          }
+        ],
+        "architecture": "qwen2",
+        "chat_template": true,
+        "context_length": 131072,
+        "max_output_tokens": 1024
+      },
+      "engine": {
+        "engine": "llama_rpc",
+        "release": "b11770",
+        "commit": "39da130fc",
+        "variant": "windows-x64-cuda13.4",
+        "hosts": [
+          {
+            "node_id": "local",
+            "devices": [
+              {
+                "device": "CUDA0",
+                "endpoint": null,
+                "layers": 17
+              }
+            ],
+            "display_name": "benchmark-host (this machine)",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "windows",
+              "release": "11",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CUDA0"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              },
+              {
+                "id": "AMD Radeon(TM) 890M Graphics",
+                "name": "AMD Radeon(TM) 890M Graphics",
+                "backend": "unknown"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "windows-x64-cuda13.4",
+              "accelerator": "cuda",
+              "rpc_proto": "8.0.0"
+            }
+          },
+          {
+            "node_id": "07118aa37e8646058734355ad5a7fd61",
+            "devices": [
+              {
+                "device": "RPC1",
+                "endpoint": "172.18.63.230:47052",
+                "layers": 9
+              }
+            ],
+            "display_name": "wsl-ubuntu-cpu",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "linux",
+              "release": "6.6.87.2-microsoft-standard-WSL2",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CPU"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "linux-x64-cpu",
+              "accelerator": "cpu",
+              "rpc_proto": "8.0.0"
+            }
+          },
+          {
+            "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+            "devices": [
+              {
+                "device": "RPC0",
+                "endpoint": "127.0.0.1:47052",
+                "layers": 2
+              }
+            ],
+            "display_name": "loopback-cpu-worker",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "windows",
+              "release": "11",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CPU"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              },
+              {
+                "id": "AMD Radeon(TM) 890M Graphics",
+                "name": "AMD Radeon(TM) 890M Graphics",
+                "backend": "unknown"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "windows-x64-cuda13.4",
+              "accelerator": "cuda",
+              "rpc_proto": "8.0.0"
+            }
+          }
+        ]
+      },
+      "placement": [
+        {
+          "device": "CPU_Mapped",
+          "model_bytes": 306561679,
+          "kv_bytes": 0,
+          "layers_est": null
+        },
+        {
+          "device": "CUDA0",
+          "model_bytes": 2355143639,
+          "kv_bytes": 142606336,
+          "layers_est": 17
+        },
+        {
+          "device": "RPC0[127.0.0.1:47052]",
+          "model_bytes": 745306849,
+          "kv_bytes": 16777216,
+          "layers_est": 2
+        },
+        {
+          "device": "RPC0[172.18.63.230:47052]",
+          "model_bytes": 1270108651,
+          "kv_bytes": 75497472,
+          "layers_est": 9
+        },
+        {
+          "device": "CUDA_Host",
+          "model_bytes": 0,
+          "kv_bytes": 0,
+          "layers_est": null
+        }
+      ],
+      "transport": "tcp",
+      "ctx_size": 4096,
+      "stream": true,
+      "prompt_tokens": 43,
+      "completion_tokens": 80,
+      "ttft_ms": 291.08090000227094,
+      "total_ms": 4639.716700068675,
+      "timings": {
+        "prompt_n": 43,
+        "prompt_ms": 262.275,
+        "predicted_n": 80,
+        "predicted_ms": 4344.455,
+        "predicted_per_second": 18.18409904119159,
+        "prompt_per_second": 163.95005242588888,
+        "cache_n": 0
+      },
+      "finish_reason": "stop",
+      "sampling": {
+        "temperature": 0,
+        "max_tokens": 128,
+        "seed": 42,
+        "cache_prompt": false
+      },
+      "cache_state": "cold",
+      "output_text": "The sky appears blue during the day because the Earth's atmosphere scatters short-wavelength light (like blue and violet) more than longer wavelength light (like red and orange), a phenomenon known as Rayleigh scattering. While both blue and violet light are scattered, the eye is more sensitive to blue and there is less violet light in the environment to begin with, making the sky appear predominantly blue.",
+      "error": null,
+      "started_at": "2026-10-21T03:20:02.914378Z",
+      "benchmark_id": "fdbc3e48436141e8a17afd39ea93bb9c",
+      "prompt_label": "short"
+    },
+    {
+      "id": "c99caea7e14b4c14b05bf5036419ad01",
+      "attempt_id": "d91c948716c3452c859b327e137447d2",
+      "deployment_id": "8aa22e57262b471e8b6b0b327cda2a23",
+      "kind": "warmup",
+      "status": "ok",
+      "simulated": false,
+      "model": {
+        "id": "qwen2.5-7b-instruct-q4_k_m",
+        "repo": "Qwen/Qwen2.5-7B-Instruct-GGUF",
+        "revision": "bb5d59e06d9551d752d08b292a50eb208b07ab1f",
+        "quantization": "Q4_K_M",
+        "format": "gguf",
+        "files": [
+          {
+            "name": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+            "sha256": "dfce12e3862a5283ccfb88221b48480e58745165de856439950d0f22590580db"
+          },
+          {
+            "name": "qwen2.5-7b-instruct-q4_k_m-00002-of-00002.gguf",
+            "sha256": "539cf93f78e887edea1c04e2d7d8cdaca9d01dae9c9025bcb8accbe29df3d72a"
+          }
+        ],
+        "architecture": "qwen2",
+        "chat_template": true,
+        "context_length": 131072,
+        "max_output_tokens": 1024
+      },
+      "engine": {
+        "engine": "llama_rpc",
+        "release": "b11770",
+        "commit": "39da130fc",
+        "variant": "windows-x64-cuda13.4",
+        "hosts": [
+          {
+            "node_id": "local",
+            "devices": [
+              {
+                "device": "CUDA0",
+                "endpoint": null,
+                "layers": 17
+              }
+            ],
+            "display_name": "benchmark-host (this machine)",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "windows",
+              "release": "11",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CUDA0"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              },
+              {
+                "id": "AMD Radeon(TM) 890M Graphics",
+                "name": "AMD Radeon(TM) 890M Graphics",
+                "backend": "unknown"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "windows-x64-cuda13.4",
+              "accelerator": "cuda",
+              "rpc_proto": "8.0.0"
+            }
+          },
+          {
+            "node_id": "07118aa37e8646058734355ad5a7fd61",
+            "devices": [
+              {
+                "device": "RPC1",
+                "endpoint": "172.18.63.230:47052",
+                "layers": 9
+              }
+            ],
+            "display_name": "wsl-ubuntu-cpu",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "linux",
+              "release": "6.6.87.2-microsoft-standard-WSL2",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CPU"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "linux-x64-cpu",
+              "accelerator": "cpu",
+              "rpc_proto": "8.0.0"
+            }
+          },
+          {
+            "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+            "devices": [
+              {
+                "device": "RPC0",
+                "endpoint": "127.0.0.1:47052",
+                "layers": 2
+              }
+            ],
+            "display_name": "loopback-cpu-worker",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "windows",
+              "release": "11",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CPU"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              },
+              {
+                "id": "AMD Radeon(TM) 890M Graphics",
+                "name": "AMD Radeon(TM) 890M Graphics",
+                "backend": "unknown"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "windows-x64-cuda13.4",
+              "accelerator": "cuda",
+              "rpc_proto": "8.0.0"
+            }
+          }
+        ]
+      },
+      "placement": [
+        {
+          "device": "CPU_Mapped",
+          "model_bytes": 306561679,
+          "kv_bytes": 0,
+          "layers_est": null
+        },
+        {
+          "device": "CUDA0",
+          "model_bytes": 2355143639,
+          "kv_bytes": 142606336,
+          "layers_est": 17
+        },
+        {
+          "device": "RPC0[127.0.0.1:47052]",
+          "model_bytes": 745306849,
+          "kv_bytes": 16777216,
+          "layers_est": 2
+        },
+        {
+          "device": "RPC0[172.18.63.230:47052]",
+          "model_bytes": 1270108651,
+          "kv_bytes": 75497472,
+          "layers_est": 9
+        },
+        {
+          "device": "CUDA_Host",
+          "model_bytes": 0,
+          "kv_bytes": 0,
+          "layers_est": null
+        }
+      ],
+      "transport": "tcp",
+      "ctx_size": 4096,
+      "stream": true,
+      "prompt_tokens": 43,
+      "completion_tokens": 80,
+      "ttft_ms": 281.69099998194724,
+      "total_ms": 4920.434899977408,
+      "timings": {
+        "prompt_n": 43,
+        "prompt_ms": 250.411,
+        "predicted_n": 80,
+        "predicted_ms": 4636.661,
+        "predicted_per_second": 17.038122907842517,
+        "prompt_per_second": 171.7176961075991,
+        "cache_n": 0
+      },
+      "finish_reason": "stop",
+      "sampling": {
+        "temperature": 0,
+        "max_tokens": 128,
+        "seed": 42,
+        "cache_prompt": false
+      },
+      "cache_state": "cold",
+      "output_text": "The sky appears blue during the day because the Earth's atmosphere scatters short-wavelength light (like blue and violet) more than longer wavelength light (like red and orange), a phenomenon known as Rayleigh scattering. While both blue and violet light are scattered, the eye is more sensitive to blue and there is less violet light in the environment to begin with, making the sky appear predominantly blue.",
+      "error": null,
+      "started_at": "2026-10-21T03:19:57.989765Z",
+      "benchmark_id": "fdbc3e48436141e8a17afd39ea93bb9c",
+      "prompt_label": "short"
+    },
+    {
+      "id": "48abf2d962564f1fb8ba643edbbed6bd",
+      "attempt_id": "9d84b4c7b5324369b50ec1844e5c08e2",
+      "deployment_id": "8aa22e57262b471e8b6b0b327cda2a23",
+      "kind": "chat",
+      "status": "ok",
+      "simulated": false,
+      "model": {
+        "id": "qwen2.5-7b-instruct-q4_k_m",
+        "repo": "Qwen/Qwen2.5-7B-Instruct-GGUF",
+        "revision": "bb5d59e06d9551d752d08b292a50eb208b07ab1f",
+        "quantization": "Q4_K_M",
+        "format": "gguf",
+        "files": [
+          {
+            "name": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+            "sha256": "dfce12e3862a5283ccfb88221b48480e58745165de856439950d0f22590580db"
+          },
+          {
+            "name": "qwen2.5-7b-instruct-q4_k_m-00002-of-00002.gguf",
+            "sha256": "539cf93f78e887edea1c04e2d7d8cdaca9d01dae9c9025bcb8accbe29df3d72a"
+          }
+        ],
+        "architecture": "qwen2",
+        "chat_template": true,
+        "context_length": 131072,
+        "max_output_tokens": 1024
+      },
+      "engine": {
+        "engine": "llama_rpc",
+        "release": "b11770",
+        "commit": "39da130fc",
+        "variant": "windows-x64-cuda13.4",
+        "hosts": [
+          {
+            "node_id": "local",
+            "devices": [
+              {
+                "device": "CUDA0",
+                "endpoint": null,
+                "layers": 17
+              }
+            ],
+            "display_name": "benchmark-host (this machine)",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "windows",
+              "release": "11",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CUDA0"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              },
+              {
+                "id": "AMD Radeon(TM) 890M Graphics",
+                "name": "AMD Radeon(TM) 890M Graphics",
+                "backend": "unknown"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "windows-x64-cuda13.4",
+              "accelerator": "cuda",
+              "rpc_proto": "8.0.0"
+            }
+          },
+          {
+            "node_id": "07118aa37e8646058734355ad5a7fd61",
+            "devices": [
+              {
+                "device": "RPC1",
+                "endpoint": "172.18.63.230:47052",
+                "layers": 9
+              }
+            ],
+            "display_name": "wsl-ubuntu-cpu",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "linux",
+              "release": "6.6.87.2-microsoft-standard-WSL2",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CPU"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "linux-x64-cpu",
+              "accelerator": "cpu",
+              "rpc_proto": "8.0.0"
+            }
+          },
+          {
+            "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+            "devices": [
+              {
+                "device": "RPC0",
+                "endpoint": "127.0.0.1:47052",
+                "layers": 2
+              }
+            ],
+            "display_name": "loopback-cpu-worker",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "windows",
+              "release": "11",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CPU"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              },
+              {
+                "id": "AMD Radeon(TM) 890M Graphics",
+                "name": "AMD Radeon(TM) 890M Graphics",
+                "backend": "unknown"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "windows-x64-cuda13.4",
+              "accelerator": "cuda",
+              "rpc_proto": "8.0.0"
+            }
+          }
+        ]
+      },
+      "placement": [
+        {
+          "device": "CPU_Mapped",
+          "model_bytes": 306561679,
+          "kv_bytes": 0,
+          "layers_est": null
+        },
+        {
+          "device": "CUDA0",
+          "model_bytes": 2355143639,
+          "kv_bytes": 142606336,
+          "layers_est": 17
+        },
+        {
+          "device": "RPC0[127.0.0.1:47052]",
+          "model_bytes": 745306849,
+          "kv_bytes": 16777216,
+          "layers_est": 2
+        },
+        {
+          "device": "RPC0[172.18.63.230:47052]",
+          "model_bytes": 1270108651,
+          "kv_bytes": 75497472,
+          "layers_est": 9
+        },
+        {
+          "device": "CUDA_Host",
+          "model_bytes": 0,
+          "kv_bytes": 0,
+          "layers_est": null
+        }
+      ],
+      "transport": "tcp",
+      "ctx_size": 4096,
+      "stream": true,
+      "prompt_tokens": 40,
+      "completion_tokens": 128,
+      "ttft_ms": 108.40869997628033,
+      "total_ms": 7010.492700035684,
+      "timings": {
+        "prompt_n": 16,
+        "prompt_ms": 102.504,
+        "predicted_n": 128,
+        "predicted_ms": 6899.107,
+        "predicted_per_second": 18.40817949337501,
+        "prompt_per_second": 156.09146960118628,
+        "cache_n": 24
+      },
+      "finish_reason": "length",
+      "sampling": {
+        "temperature": 0,
+        "max_tokens": 128
+      },
+      "cache_state": "warm",
+      "output_text": "Certainly! Here are three planets along with a brief fact about each:\n\n1. **Mercury**: Mercury is the smallest planet in our solar system and the closest to the Sun. It has no natural satellites and its surface is heavily cratered, similar to the Moon.\n\n2. **Venus**: Venus is known as Earth's \"sister planet\" due to its similar size and mass, but it has a very thick, toxic atmosphere that traps heat, making it the hottest planet in the solar system.\n\n3. **Mars**: Mars is often referred to as the \"Red Planet\" because of its reddish appearance, caused by",
+      "error": null,
+      "started_at": "2026-10-21T03:19:50.969795Z",
+      "benchmark_id": null,
+      "prompt_label": null
+    },
+    {
+      "id": "ffbc094147924941b5c03a084606bcfc",
+      "attempt_id": "424dbb5929f047c098eb8e3d440c4eb1",
+      "deployment_id": "8aa22e57262b471e8b6b0b327cda2a23",
+      "kind": "warmup",
+      "status": "ok",
+      "simulated": false,
+      "model": {
+        "id": "qwen2.5-7b-instruct-q4_k_m",
+        "repo": "Qwen/Qwen2.5-7B-Instruct-GGUF",
+        "revision": "bb5d59e06d9551d752d08b292a50eb208b07ab1f",
+        "quantization": "Q4_K_M",
+        "format": "gguf",
+        "files": [
+          {
+            "name": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+            "sha256": "dfce12e3862a5283ccfb88221b48480e58745165de856439950d0f22590580db"
+          },
+          {
+            "name": "qwen2.5-7b-instruct-q4_k_m-00002-of-00002.gguf",
+            "sha256": "539cf93f78e887edea1c04e2d7d8cdaca9d01dae9c9025bcb8accbe29df3d72a"
+          }
+        ],
+        "architecture": "qwen2",
+        "chat_template": true,
+        "context_length": 131072,
+        "max_output_tokens": 1024
+      },
+      "engine": {
+        "engine": "llama_rpc",
+        "release": "b11770",
+        "commit": "39da130fc",
+        "variant": "windows-x64-cuda13.4",
+        "hosts": [
+          {
+            "node_id": "local",
+            "devices": [
+              {
+                "device": "CUDA0",
+                "endpoint": null,
+                "layers": 17
+              }
+            ],
+            "display_name": "benchmark-host (this machine)",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "windows",
+              "release": "11",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CUDA0"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              },
+              {
+                "id": "AMD Radeon(TM) 890M Graphics",
+                "name": "AMD Radeon(TM) 890M Graphics",
+                "backend": "unknown"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "windows-x64-cuda13.4",
+              "accelerator": "cuda",
+              "rpc_proto": "8.0.0"
+            }
+          },
+          {
+            "node_id": "07118aa37e8646058734355ad5a7fd61",
+            "devices": [
+              {
+                "device": "RPC1",
+                "endpoint": "172.18.63.230:47052",
+                "layers": 9
+              }
+            ],
+            "display_name": "wsl-ubuntu-cpu",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "linux",
+              "release": "6.6.87.2-microsoft-standard-WSL2",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CPU"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "linux-x64-cpu",
+              "accelerator": "cpu",
+              "rpc_proto": "8.0.0"
+            }
+          },
+          {
+            "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+            "devices": [
+              {
+                "device": "RPC0",
+                "endpoint": "127.0.0.1:47052",
+                "layers": 2
+              }
+            ],
+            "display_name": "loopback-cpu-worker",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "windows",
+              "release": "11",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CPU"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              },
+              {
+                "id": "AMD Radeon(TM) 890M Graphics",
+                "name": "AMD Radeon(TM) 890M Graphics",
+                "backend": "unknown"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "windows-x64-cuda13.4",
+              "accelerator": "cuda",
+              "rpc_proto": "8.0.0"
+            }
+          }
+        ]
+      },
+      "placement": [
+        {
+          "device": "CPU_Mapped",
+          "model_bytes": 306561679,
+          "kv_bytes": 0,
+          "layers_est": null
+        },
+        {
+          "device": "CUDA0",
+          "model_bytes": 2355143639,
+          "kv_bytes": 142606336,
+          "layers_est": 17
+        },
+        {
+          "device": "RPC0[127.0.0.1:47052]",
+          "model_bytes": 745306849,
+          "kv_bytes": 16777216,
+          "layers_est": 2
+        },
+        {
+          "device": "RPC0[172.18.63.230:47052]",
+          "model_bytes": 1270108651,
+          "kv_bytes": 75497472,
+          "layers_est": 9
+        },
+        {
+          "device": "CUDA_Host",
+          "model_bytes": 0,
+          "kv_bytes": 0,
+          "layers_est": null
+        }
+      ],
+      "transport": "tcp",
+      "ctx_size": 4096,
+      "stream": true,
+      "prompt_tokens": 33,
+      "completion_tokens": 2,
+      "ttft_ms": 210.2162999799475,
+      "total_ms": 259.72869992256165,
+      "timings": {
+        "prompt_n": 33,
+        "prompt_ms": 205.547,
+        "predicted_n": 2,
+        "predicted_ms": 47.823,
+        "predicted_per_second": 20.91044058298308,
+        "prompt_per_second": 160.54722277629935,
+        "cache_n": 0
+      },
+      "finish_reason": "stop",
+      "sampling": {
+        "temperature": 0,
+        "max_tokens": 8
+      },
+      "cache_state": "cold",
+      "output_text": "ready",
+      "error": null,
+      "started_at": "2026-10-21T03:19:50.462814Z",
+      "benchmark_id": null,
+      "prompt_label": null
+    },
+    {
+      "id": "7160356fc6c54c438cf1d66a1cf3fe81",
+      "attempt_id": "dcbc2006958046eb9bd877e1db73dbf0",
+      "deployment_id": "1e34ded2f53f4a3bab71c347a907b585",
+      "kind": "benchmark",
+      "status": "ok",
+      "simulated": false,
+      "model": {
+        "id": "qwen2.5-7b-instruct-q4_k_m",
+        "repo": "Qwen/Qwen2.5-7B-Instruct-GGUF",
+        "revision": "bb5d59e06d9551d752d08b292a50eb208b07ab1f",
+        "quantization": "Q4_K_M",
+        "format": "gguf",
+        "files": [
+          {
+            "name": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+            "sha256": "dfce12e3862a5283ccfb88221b48480e58745165de856439950d0f22590580db"
+          },
+          {
+            "name": "qwen2.5-7b-instruct-q4_k_m-00002-of-00002.gguf",
+            "sha256": "539cf93f78e887edea1c04e2d7d8cdaca9d01dae9c9025bcb8accbe29df3d72a"
+          }
+        ],
+        "architecture": "qwen2",
+        "chat_template": true,
+        "context_length": 131072,
+        "max_output_tokens": 1024
+      },
+      "engine": {
+        "engine": "llama_rpc",
+        "release": "b11770",
+        "commit": "39da130fc",
+        "variant": "windows-x64-cuda13.4",
+        "hosts": [
+          {
+            "node_id": "local",
+            "devices": [
+              {
+                "device": "CUDA0",
+                "endpoint": null,
+                "layers": 19
+              }
+            ],
+            "display_name": "benchmark-host (this machine)",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "windows",
+              "release": "11",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CUDA0"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              },
+              {
+                "id": "AMD Radeon(TM) 890M Graphics",
+                "name": "AMD Radeon(TM) 890M Graphics",
+                "backend": "unknown"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "windows-x64-cuda13.4",
+              "accelerator": "cuda",
+              "rpc_proto": "8.0.0"
+            }
+          },
+          {
+            "node_id": "07118aa37e8646058734355ad5a7fd61",
+            "devices": [
+              {
+                "device": "RPC0",
+                "endpoint": "172.18.63.230:47052",
+                "layers": 9
+              }
+            ],
+            "display_name": "wsl-ubuntu-cpu",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "linux",
+              "release": "6.6.87.2-microsoft-standard-WSL2",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CPU"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "linux-x64-cpu",
+              "accelerator": "cpu",
+              "rpc_proto": "8.0.0"
+            }
+          }
+        ]
+      },
+      "placement": [
+        {
+          "device": "CPU_Mapped",
+          "model_bytes": 306561679,
+          "kv_bytes": 0,
+          "layers_est": null
+        },
+        {
+          "device": "CUDA0",
+          "model_bytes": 2635396546,
+          "kv_bytes": 159383552,
+          "layers_est": 19
+        },
+        {
+          "device": "RPC0[172.18.63.230:47052]",
+          "model_bytes": 1735162593,
+          "kv_bytes": 75497472,
+          "layers_est": 9
+        },
+        {
+          "device": "CUDA_Host",
+          "model_bytes": 0,
+          "kv_bytes": 0,
+          "layers_est": null
+        }
+      ],
+      "transport": "tcp",
+      "ctx_size": 4096,
+      "stream": true,
+      "prompt_tokens": 3528,
+      "completion_tokens": 128,
+      "ttft_ms": 10602.311700000428,
+      "total_ms": 16378.555699950084,
+      "timings": {
+        "prompt_n": 3528,
+        "prompt_ms": 10590.884,
+        "predicted_n": 128,
+        "predicted_ms": 5712.636,
+        "predicted_per_second": 22.23141821043735,
+        "prompt_per_second": 333.11666901459785,
+        "cache_n": 0
+      },
+      "finish_reason": "length",
+      "sampling": {
+        "temperature": 0,
+        "max_tokens": 128,
+        "seed": 42,
+        "cache_prompt": false
+      },
+      "cache_state": "cold",
+      "output_text": "Based on the weather log provided, the three stations with the most rain are:\n\n1. Station 120 with 97 millimetres of rain.\n2. Station 99 with 98 millimetres of rain.\n3. Station 98 with 91 millimetres of rain.\n\nOne pattern that can be noticed is that the stations with the highest rainfall also tend to have lower peak wind speeds, such as stations 120, 99, and 98, which have peak wind speeds of 35 km/h, 6 km/h, and 54 km/h",
+      "error": null,
+      "started_at": "2026-10-21T03:19:24.974044Z",
+      "benchmark_id": "3b2c63f0e92e428fa11d6051d3b131bb",
+      "prompt_label": "long"
+    },
+    {
+      "id": "d165170b78e149b2ae1b4e0fdabe20d1",
+      "attempt_id": "be81ad0eb5214ec2bb47d66948c9e267",
+      "deployment_id": "1e34ded2f53f4a3bab71c347a907b585",
+      "kind": "benchmark",
+      "status": "ok",
+      "simulated": false,
+      "model": {
+        "id": "qwen2.5-7b-instruct-q4_k_m",
+        "repo": "Qwen/Qwen2.5-7B-Instruct-GGUF",
+        "revision": "bb5d59e06d9551d752d08b292a50eb208b07ab1f",
+        "quantization": "Q4_K_M",
+        "format": "gguf",
+        "files": [
+          {
+            "name": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+            "sha256": "dfce12e3862a5283ccfb88221b48480e58745165de856439950d0f22590580db"
+          },
+          {
+            "name": "qwen2.5-7b-instruct-q4_k_m-00002-of-00002.gguf",
+            "sha256": "539cf93f78e887edea1c04e2d7d8cdaca9d01dae9c9025bcb8accbe29df3d72a"
+          }
+        ],
+        "architecture": "qwen2",
+        "chat_template": true,
+        "context_length": 131072,
+        "max_output_tokens": 1024
+      },
+      "engine": {
+        "engine": "llama_rpc",
+        "release": "b11770",
+        "commit": "39da130fc",
+        "variant": "windows-x64-cuda13.4",
+        "hosts": [
+          {
+            "node_id": "local",
+            "devices": [
+              {
+                "device": "CUDA0",
+                "endpoint": null,
+                "layers": 19
+              }
+            ],
+            "display_name": "benchmark-host (this machine)",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "windows",
+              "release": "11",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CUDA0"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              },
+              {
+                "id": "AMD Radeon(TM) 890M Graphics",
+                "name": "AMD Radeon(TM) 890M Graphics",
+                "backend": "unknown"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "windows-x64-cuda13.4",
+              "accelerator": "cuda",
+              "rpc_proto": "8.0.0"
+            }
+          },
+          {
+            "node_id": "07118aa37e8646058734355ad5a7fd61",
+            "devices": [
+              {
+                "device": "RPC0",
+                "endpoint": "172.18.63.230:47052",
+                "layers": 9
+              }
+            ],
+            "display_name": "wsl-ubuntu-cpu",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "linux",
+              "release": "6.6.87.2-microsoft-standard-WSL2",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CPU"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "linux-x64-cpu",
+              "accelerator": "cpu",
+              "rpc_proto": "8.0.0"
+            }
+          }
+        ]
+      },
+      "placement": [
+        {
+          "device": "CPU_Mapped",
+          "model_bytes": 306561679,
+          "kv_bytes": 0,
+          "layers_est": null
+        },
+        {
+          "device": "CUDA0",
+          "model_bytes": 2635396546,
+          "kv_bytes": 159383552,
+          "layers_est": 19
+        },
+        {
+          "device": "RPC0[172.18.63.230:47052]",
+          "model_bytes": 1735162593,
+          "kv_bytes": 75497472,
+          "layers_est": 9
+        },
+        {
+          "device": "CUDA_Host",
+          "model_bytes": 0,
+          "kv_bytes": 0,
+          "layers_est": null
+        }
+      ],
+      "transport": "tcp",
+      "ctx_size": 4096,
+      "stream": true,
+      "prompt_tokens": 3528,
+      "completion_tokens": 128,
+      "ttft_ms": 10732.274800073355,
+      "total_ms": 16321.661700028926,
+      "timings": {
+        "prompt_n": 3528,
+        "prompt_ms": 10721.893,
+        "predicted_n": 128,
+        "predicted_ms": 5586.729,
+        "predicted_per_second": 22.732443259732126,
+        "prompt_per_second": 329.0463726881065,
+        "cache_n": 0
+      },
+      "finish_reason": "length",
+      "sampling": {
+        "temperature": 0,
+        "max_tokens": 128,
+        "seed": 42,
+        "cache_prompt": false
+      },
+      "cache_state": "cold",
+      "output_text": "Based on the weather log provided, the three stations with the most rain are:\n\n1. Station 120 with 97 millimetres of rain.\n2. Station 99 with 98 millimetres of rain.\n3. Station 98 with 91 millimetres of rain.\n\nOne pattern that can be noticed is that the stations with the highest rainfall also tend to have lower peak wind speeds, such as stations 120, 99, and 98, which have peak wind speeds of 35 km/h, 6 km/h, and 54 km/h",
+      "error": null,
+      "started_at": "2026-10-21T03:19:08.648691Z",
+      "benchmark_id": "3b2c63f0e92e428fa11d6051d3b131bb",
+      "prompt_label": "long"
+    },
+    {
+      "id": "3e82cdb8e02e4d4ba5cd3075833ed693",
+      "attempt_id": "4694dd89e5e64287b0c74aa14cef8e84",
+      "deployment_id": "1e34ded2f53f4a3bab71c347a907b585",
+      "kind": "benchmark",
+      "status": "ok",
+      "simulated": false,
+      "model": {
+        "id": "qwen2.5-7b-instruct-q4_k_m",
+        "repo": "Qwen/Qwen2.5-7B-Instruct-GGUF",
+        "revision": "bb5d59e06d9551d752d08b292a50eb208b07ab1f",
+        "quantization": "Q4_K_M",
+        "format": "gguf",
+        "files": [
+          {
+            "name": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+            "sha256": "dfce12e3862a5283ccfb88221b48480e58745165de856439950d0f22590580db"
+          },
+          {
+            "name": "qwen2.5-7b-instruct-q4_k_m-00002-of-00002.gguf",
+            "sha256": "539cf93f78e887edea1c04e2d7d8cdaca9d01dae9c9025bcb8accbe29df3d72a"
+          }
+        ],
+        "architecture": "qwen2",
+        "chat_template": true,
+        "context_length": 131072,
+        "max_output_tokens": 1024
+      },
+      "engine": {
+        "engine": "llama_rpc",
+        "release": "b11770",
+        "commit": "39da130fc",
+        "variant": "windows-x64-cuda13.4",
+        "hosts": [
+          {
+            "node_id": "local",
+            "devices": [
+              {
+                "device": "CUDA0",
+                "endpoint": null,
+                "layers": 19
+              }
+            ],
+            "display_name": "benchmark-host (this machine)",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "windows",
+              "release": "11",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CUDA0"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              },
+              {
+                "id": "AMD Radeon(TM) 890M Graphics",
+                "name": "AMD Radeon(TM) 890M Graphics",
+                "backend": "unknown"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "windows-x64-cuda13.4",
+              "accelerator": "cuda",
+              "rpc_proto": "8.0.0"
+            }
+          },
+          {
+            "node_id": "07118aa37e8646058734355ad5a7fd61",
+            "devices": [
+              {
+                "device": "RPC0",
+                "endpoint": "172.18.63.230:47052",
+                "layers": 9
+              }
+            ],
+            "display_name": "wsl-ubuntu-cpu",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "linux",
+              "release": "6.6.87.2-microsoft-standard-WSL2",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CPU"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "linux-x64-cpu",
+              "accelerator": "cpu",
+              "rpc_proto": "8.0.0"
+            }
+          }
+        ]
+      },
+      "placement": [
+        {
+          "device": "CPU_Mapped",
+          "model_bytes": 306561679,
+          "kv_bytes": 0,
+          "layers_est": null
+        },
+        {
+          "device": "CUDA0",
+          "model_bytes": 2635396546,
+          "kv_bytes": 159383552,
+          "layers_est": 19
+        },
+        {
+          "device": "RPC0[172.18.63.230:47052]",
+          "model_bytes": 1735162593,
+          "kv_bytes": 75497472,
+          "layers_est": 9
+        },
+        {
+          "device": "CUDA_Host",
+          "model_bytes": 0,
+          "kv_bytes": 0,
+          "layers_est": null
+        }
+      ],
+      "transport": "tcp",
+      "ctx_size": 4096,
+      "stream": true,
+      "prompt_tokens": 3528,
+      "completion_tokens": 128,
+      "ttft_ms": 10706.685599987395,
+      "total_ms": 16343.592799967155,
+      "timings": {
+        "prompt_n": 3528,
+        "prompt_ms": 10697.332,
+        "predicted_n": 128,
+        "predicted_ms": 5634.987,
+        "predicted_per_second": 22.537762731307097,
+        "prompt_per_second": 329.80186087521633,
+        "cache_n": 0
+      },
+      "finish_reason": "length",
+      "sampling": {
+        "temperature": 0,
+        "max_tokens": 128,
+        "seed": 42,
+        "cache_prompt": false
+      },
+      "cache_state": "cold",
+      "output_text": "Based on the weather log provided, the three stations with the most rain are:\n\n1. Station 120 with 97 millimetres of rain.\n2. Station 99 with 98 millimetres of rain.\n3. Station 98 with 91 millimetres of rain.\n\nOne pattern that can be noticed is that the stations with the highest rainfall also tend to have lower peak wind speeds, such as stations 120, 99, and 98, which have peak wind speeds of 35 km/h, 6 km/h, and 54 km/h",
+      "error": null,
+      "started_at": "2026-10-21T03:18:52.302146Z",
+      "benchmark_id": "3b2c63f0e92e428fa11d6051d3b131bb",
+      "prompt_label": "long"
+    },
+    {
+      "id": "e9d90472320244cabae5349a96cee7d1",
+      "attempt_id": "500d9f54071b42b4b80fbe5a637ddbd3",
+      "deployment_id": "1e34ded2f53f4a3bab71c347a907b585",
+      "kind": "warmup",
+      "status": "ok",
+      "simulated": false,
+      "model": {
+        "id": "qwen2.5-7b-instruct-q4_k_m",
+        "repo": "Qwen/Qwen2.5-7B-Instruct-GGUF",
+        "revision": "bb5d59e06d9551d752d08b292a50eb208b07ab1f",
+        "quantization": "Q4_K_M",
+        "format": "gguf",
+        "files": [
+          {
+            "name": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+            "sha256": "dfce12e3862a5283ccfb88221b48480e58745165de856439950d0f22590580db"
+          },
+          {
+            "name": "qwen2.5-7b-instruct-q4_k_m-00002-of-00002.gguf",
+            "sha256": "539cf93f78e887edea1c04e2d7d8cdaca9d01dae9c9025bcb8accbe29df3d72a"
+          }
+        ],
+        "architecture": "qwen2",
+        "chat_template": true,
+        "context_length": 131072,
+        "max_output_tokens": 1024
+      },
+      "engine": {
+        "engine": "llama_rpc",
+        "release": "b11770",
+        "commit": "39da130fc",
+        "variant": "windows-x64-cuda13.4",
+        "hosts": [
+          {
+            "node_id": "local",
+            "devices": [
+              {
+                "device": "CUDA0",
+                "endpoint": null,
+                "layers": 19
+              }
+            ],
+            "display_name": "benchmark-host (this machine)",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "windows",
+              "release": "11",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CUDA0"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              },
+              {
+                "id": "AMD Radeon(TM) 890M Graphics",
+                "name": "AMD Radeon(TM) 890M Graphics",
+                "backend": "unknown"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "windows-x64-cuda13.4",
+              "accelerator": "cuda",
+              "rpc_proto": "8.0.0"
+            }
+          },
+          {
+            "node_id": "07118aa37e8646058734355ad5a7fd61",
+            "devices": [
+              {
+                "device": "RPC0",
+                "endpoint": "172.18.63.230:47052",
+                "layers": 9
+              }
+            ],
+            "display_name": "wsl-ubuntu-cpu",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "linux",
+              "release": "6.6.87.2-microsoft-standard-WSL2",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CPU"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "linux-x64-cpu",
+              "accelerator": "cpu",
+              "rpc_proto": "8.0.0"
+            }
+          }
+        ]
+      },
+      "placement": [
+        {
+          "device": "CPU_Mapped",
+          "model_bytes": 306561679,
+          "kv_bytes": 0,
+          "layers_est": null
+        },
+        {
+          "device": "CUDA0",
+          "model_bytes": 2635396546,
+          "kv_bytes": 159383552,
+          "layers_est": 19
+        },
+        {
+          "device": "RPC0[172.18.63.230:47052]",
+          "model_bytes": 1735162593,
+          "kv_bytes": 75497472,
+          "layers_est": 9
+        },
+        {
+          "device": "CUDA_Host",
+          "model_bytes": 0,
+          "kv_bytes": 0,
+          "layers_est": null
+        }
+      ],
+      "transport": "tcp",
+      "ctx_size": 4096,
+      "stream": true,
+      "prompt_tokens": 3528,
+      "completion_tokens": 128,
+      "ttft_ms": 10726.9708000822,
+      "total_ms": 16311.961500090547,
+      "timings": {
+        "prompt_n": 3528,
+        "prompt_ms": 10715.86,
+        "predicted_n": 128,
+        "predicted_ms": 5582.951,
+        "predicted_per_second": 22.747826373543308,
+        "prompt_per_second": 329.23162489991466,
+        "cache_n": 0
+      },
+      "finish_reason": "length",
+      "sampling": {
+        "temperature": 0,
+        "max_tokens": 128,
+        "seed": 42,
+        "cache_prompt": false
+      },
+      "cache_state": "cold",
+      "output_text": "Based on the weather log provided, the three stations with the most rain are:\n\n1. Station 120 with 97 millimetres of rain.\n2. Station 99 with 98 millimetres of rain.\n3. Station 98 with 91 millimetres of rain.\n\nOne pattern that can be noticed is that the stations with the highest rainfall also tend to have lower peak wind speeds, such as stations 120, 99, and 98, which have peak wind speeds of 35 km/h, 6 km/h, and 54 km/h",
+      "error": null,
+      "started_at": "2026-10-21T03:18:35.986300Z",
+      "benchmark_id": "3b2c63f0e92e428fa11d6051d3b131bb",
+      "prompt_label": "long"
+    },
+    {
+      "id": "c9a90c4f634d4f86ab7d667495807022",
+      "attempt_id": "cf1b6ca107cc4423966b8a7823b8e78b",
+      "deployment_id": "1e34ded2f53f4a3bab71c347a907b585",
+      "kind": "benchmark",
+      "status": "ok",
+      "simulated": false,
+      "model": {
+        "id": "qwen2.5-7b-instruct-q4_k_m",
+        "repo": "Qwen/Qwen2.5-7B-Instruct-GGUF",
+        "revision": "bb5d59e06d9551d752d08b292a50eb208b07ab1f",
+        "quantization": "Q4_K_M",
+        "format": "gguf",
+        "files": [
+          {
+            "name": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+            "sha256": "dfce12e3862a5283ccfb88221b48480e58745165de856439950d0f22590580db"
+          },
+          {
+            "name": "qwen2.5-7b-instruct-q4_k_m-00002-of-00002.gguf",
+            "sha256": "539cf93f78e887edea1c04e2d7d8cdaca9d01dae9c9025bcb8accbe29df3d72a"
+          }
+        ],
+        "architecture": "qwen2",
+        "chat_template": true,
+        "context_length": 131072,
+        "max_output_tokens": 1024
+      },
+      "engine": {
+        "engine": "llama_rpc",
+        "release": "b11770",
+        "commit": "39da130fc",
+        "variant": "windows-x64-cuda13.4",
+        "hosts": [
+          {
+            "node_id": "local",
+            "devices": [
+              {
+                "device": "CUDA0",
+                "endpoint": null,
+                "layers": 19
+              }
+            ],
+            "display_name": "benchmark-host (this machine)",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "windows",
+              "release": "11",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CUDA0"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              },
+              {
+                "id": "AMD Radeon(TM) 890M Graphics",
+                "name": "AMD Radeon(TM) 890M Graphics",
+                "backend": "unknown"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "windows-x64-cuda13.4",
+              "accelerator": "cuda",
+              "rpc_proto": "8.0.0"
+            }
+          },
+          {
+            "node_id": "07118aa37e8646058734355ad5a7fd61",
+            "devices": [
+              {
+                "device": "RPC0",
+                "endpoint": "172.18.63.230:47052",
+                "layers": 9
+              }
+            ],
+            "display_name": "wsl-ubuntu-cpu",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "linux",
+              "release": "6.6.87.2-microsoft-standard-WSL2",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CPU"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "linux-x64-cpu",
+              "accelerator": "cpu",
+              "rpc_proto": "8.0.0"
+            }
+          }
+        ]
+      },
+      "placement": [
+        {
+          "device": "CPU_Mapped",
+          "model_bytes": 306561679,
+          "kv_bytes": 0,
+          "layers_est": null
+        },
+        {
+          "device": "CUDA0",
+          "model_bytes": 2635396546,
+          "kv_bytes": 159383552,
+          "layers_est": 19
+        },
+        {
+          "device": "RPC0[172.18.63.230:47052]",
+          "model_bytes": 1735162593,
+          "kv_bytes": 75497472,
+          "layers_est": 9
+        },
+        {
+          "device": "CUDA_Host",
+          "model_bytes": 0,
+          "kv_bytes": 0,
+          "layers_est": null
+        }
+      ],
+      "transport": "tcp",
+      "ctx_size": 4096,
+      "stream": true,
+      "prompt_tokens": 43,
+      "completion_tokens": 65,
+      "ttft_ms": 195.4448000760749,
+      "total_ms": 2674.09750004299,
+      "timings": {
+        "prompt_n": 43,
+        "prompt_ms": 186.829,
+        "predicted_n": 65,
+        "predicted_ms": 2476.296,
+        "predicted_per_second": 25.845052449303317,
+        "prompt_per_second": 230.15698847609312,
+        "cache_n": 0
+      },
+      "finish_reason": "stop",
+      "sampling": {
+        "temperature": 0,
+        "max_tokens": 128,
+        "seed": 42,
+        "cache_prompt": false
+      },
+      "cache_state": "cold",
+      "output_text": "The sky appears blue during the day because the Earth's atmosphere scatters short-wavelength light more efficiently than long-wavelength light, a phenomenon known as Rayleigh scattering. Blue light is scattered in all directions by the gases and particles in the Earth's atmosphere, making the sky appear blue to an observer on the ground.",
+      "error": null,
+      "started_at": "2026-10-21T03:18:33.307321Z",
+      "benchmark_id": "3b2c63f0e92e428fa11d6051d3b131bb",
+      "prompt_label": "short"
+    },
+    {
+      "id": "91ad5e0540724c11af59539886cdbd81",
+      "attempt_id": "f4d7d10c294b43f5baa4e0ad5616e548",
+      "deployment_id": "1e34ded2f53f4a3bab71c347a907b585",
+      "kind": "benchmark",
+      "status": "ok",
+      "simulated": false,
+      "model": {
+        "id": "qwen2.5-7b-instruct-q4_k_m",
+        "repo": "Qwen/Qwen2.5-7B-Instruct-GGUF",
+        "revision": "bb5d59e06d9551d752d08b292a50eb208b07ab1f",
+        "quantization": "Q4_K_M",
+        "format": "gguf",
+        "files": [
+          {
+            "name": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+            "sha256": "dfce12e3862a5283ccfb88221b48480e58745165de856439950d0f22590580db"
+          },
+          {
+            "name": "qwen2.5-7b-instruct-q4_k_m-00002-of-00002.gguf",
+            "sha256": "539cf93f78e887edea1c04e2d7d8cdaca9d01dae9c9025bcb8accbe29df3d72a"
+          }
+        ],
+        "architecture": "qwen2",
+        "chat_template": true,
+        "context_length": 131072,
+        "max_output_tokens": 1024
+      },
+      "engine": {
+        "engine": "llama_rpc",
+        "release": "b11770",
+        "commit": "39da130fc",
+        "variant": "windows-x64-cuda13.4",
+        "hosts": [
+          {
+            "node_id": "local",
+            "devices": [
+              {
+                "device": "CUDA0",
+                "endpoint": null,
+                "layers": 19
+              }
+            ],
+            "display_name": "benchmark-host (this machine)",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "windows",
+              "release": "11",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CUDA0"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              },
+              {
+                "id": "AMD Radeon(TM) 890M Graphics",
+                "name": "AMD Radeon(TM) 890M Graphics",
+                "backend": "unknown"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "windows-x64-cuda13.4",
+              "accelerator": "cuda",
+              "rpc_proto": "8.0.0"
+            }
+          },
+          {
+            "node_id": "07118aa37e8646058734355ad5a7fd61",
+            "devices": [
+              {
+                "device": "RPC0",
+                "endpoint": "172.18.63.230:47052",
+                "layers": 9
+              }
+            ],
+            "display_name": "wsl-ubuntu-cpu",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "linux",
+              "release": "6.6.87.2-microsoft-standard-WSL2",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CPU"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "linux-x64-cpu",
+              "accelerator": "cpu",
+              "rpc_proto": "8.0.0"
+            }
+          }
+        ]
+      },
+      "placement": [
+        {
+          "device": "CPU_Mapped",
+          "model_bytes": 306561679,
+          "kv_bytes": 0,
+          "layers_est": null
+        },
+        {
+          "device": "CUDA0",
+          "model_bytes": 2635396546,
+          "kv_bytes": 159383552,
+          "layers_est": 19
+        },
+        {
+          "device": "RPC0[172.18.63.230:47052]",
+          "model_bytes": 1735162593,
+          "kv_bytes": 75497472,
+          "layers_est": 9
+        },
+        {
+          "device": "CUDA_Host",
+          "model_bytes": 0,
+          "kv_bytes": 0,
+          "layers_est": null
+        }
+      ],
+      "transport": "tcp",
+      "ctx_size": 4096,
+      "stream": true,
+      "prompt_tokens": 43,
+      "completion_tokens": 65,
+      "ttft_ms": 187.91280000004917,
+      "total_ms": 2572.0014000544325,
+      "timings": {
+        "prompt_n": 43,
+        "prompt_ms": 178.872,
+        "predicted_n": 65,
+        "predicted_ms": 2382.131,
+        "predicted_per_second": 26.86670044594525,
+        "prompt_per_second": 240.39536651907508,
+        "cache_n": 0
+      },
+      "finish_reason": "stop",
+      "sampling": {
+        "temperature": 0,
+        "max_tokens": 128,
+        "seed": 42,
+        "cache_prompt": false
+      },
+      "cache_state": "cold",
+      "output_text": "The sky appears blue during the day because the Earth's atmosphere scatters short-wavelength light more efficiently than long-wavelength light, a phenomenon known as Rayleigh scattering. Blue light is scattered in all directions by the gases and particles in the Earth's atmosphere, making the sky appear blue to an observer on the ground.",
+      "error": null,
+      "started_at": "2026-10-21T03:18:30.729966Z",
+      "benchmark_id": "3b2c63f0e92e428fa11d6051d3b131bb",
+      "prompt_label": "short"
+    },
+    {
+      "id": "0d65762b679c40a8a87fd5c1da86ba1d",
+      "attempt_id": "3b2f8460ad2d409e99606e9bd6b28bb6",
+      "deployment_id": "1e34ded2f53f4a3bab71c347a907b585",
+      "kind": "benchmark",
+      "status": "ok",
+      "simulated": false,
+      "model": {
+        "id": "qwen2.5-7b-instruct-q4_k_m",
+        "repo": "Qwen/Qwen2.5-7B-Instruct-GGUF",
+        "revision": "bb5d59e06d9551d752d08b292a50eb208b07ab1f",
+        "quantization": "Q4_K_M",
+        "format": "gguf",
+        "files": [
+          {
+            "name": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+            "sha256": "dfce12e3862a5283ccfb88221b48480e58745165de856439950d0f22590580db"
+          },
+          {
+            "name": "qwen2.5-7b-instruct-q4_k_m-00002-of-00002.gguf",
+            "sha256": "539cf93f78e887edea1c04e2d7d8cdaca9d01dae9c9025bcb8accbe29df3d72a"
+          }
+        ],
+        "architecture": "qwen2",
+        "chat_template": true,
+        "context_length": 131072,
+        "max_output_tokens": 1024
+      },
+      "engine": {
+        "engine": "llama_rpc",
+        "release": "b11770",
+        "commit": "39da130fc",
+        "variant": "windows-x64-cuda13.4",
+        "hosts": [
+          {
+            "node_id": "local",
+            "devices": [
+              {
+                "device": "CUDA0",
+                "endpoint": null,
+                "layers": 19
+              }
+            ],
+            "display_name": "benchmark-host (this machine)",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "windows",
+              "release": "11",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CUDA0"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              },
+              {
+                "id": "AMD Radeon(TM) 890M Graphics",
+                "name": "AMD Radeon(TM) 890M Graphics",
+                "backend": "unknown"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "windows-x64-cuda13.4",
+              "accelerator": "cuda",
+              "rpc_proto": "8.0.0"
+            }
+          },
+          {
+            "node_id": "07118aa37e8646058734355ad5a7fd61",
+            "devices": [
+              {
+                "device": "RPC0",
+                "endpoint": "172.18.63.230:47052",
+                "layers": 9
+              }
+            ],
+            "display_name": "wsl-ubuntu-cpu",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "linux",
+              "release": "6.6.87.2-microsoft-standard-WSL2",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CPU"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "linux-x64-cpu",
+              "accelerator": "cpu",
+              "rpc_proto": "8.0.0"
+            }
+          }
+        ]
+      },
+      "placement": [
+        {
+          "device": "CPU_Mapped",
+          "model_bytes": 306561679,
+          "kv_bytes": 0,
+          "layers_est": null
+        },
+        {
+          "device": "CUDA0",
+          "model_bytes": 2635396546,
+          "kv_bytes": 159383552,
+          "layers_est": 19
+        },
+        {
+          "device": "RPC0[172.18.63.230:47052]",
+          "model_bytes": 1735162593,
+          "kv_bytes": 75497472,
+          "layers_est": 9
+        },
+        {
+          "device": "CUDA_Host",
+          "model_bytes": 0,
+          "kv_bytes": 0,
+          "layers_est": null
+        }
+      ],
+      "transport": "tcp",
+      "ctx_size": 4096,
+      "stream": true,
+      "prompt_tokens": 43,
+      "completion_tokens": 65,
+      "ttft_ms": 291.61720001138747,
+      "total_ms": 2758.110099937767,
+      "timings": {
+        "prompt_n": 43,
+        "prompt_ms": 181.202,
+        "predicted_n": 65,
+        "predicted_ms": 2553.217,
+        "predicted_per_second": 25.066416211391353,
+        "prompt_per_second": 237.30422401518746,
+        "cache_n": 0
+      },
+      "finish_reason": "stop",
+      "sampling": {
+        "temperature": 0,
+        "max_tokens": 128,
+        "seed": 42,
+        "cache_prompt": false
+      },
+      "cache_state": "cold",
+      "output_text": "The sky appears blue during the day because the Earth's atmosphere scatters short-wavelength light more efficiently than long-wavelength light, a phenomenon known as Rayleigh scattering. Blue light is scattered in all directions by the gases and particles in the Earth's atmosphere, making the sky appear blue to an observer on the ground.",
+      "error": null,
+      "started_at": "2026-10-21T03:18:27.967599Z",
+      "benchmark_id": "3b2c63f0e92e428fa11d6051d3b131bb",
+      "prompt_label": "short"
+    },
+    {
+      "id": "5c328461565f4e44817c7aa091fdbb8d",
+      "attempt_id": "8ebb466418a74a2fa3595efb3583da1a",
+      "deployment_id": "1e34ded2f53f4a3bab71c347a907b585",
+      "kind": "warmup",
+      "status": "ok",
+      "simulated": false,
+      "model": {
+        "id": "qwen2.5-7b-instruct-q4_k_m",
+        "repo": "Qwen/Qwen2.5-7B-Instruct-GGUF",
+        "revision": "bb5d59e06d9551d752d08b292a50eb208b07ab1f",
+        "quantization": "Q4_K_M",
+        "format": "gguf",
+        "files": [
+          {
+            "name": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+            "sha256": "dfce12e3862a5283ccfb88221b48480e58745165de856439950d0f22590580db"
+          },
+          {
+            "name": "qwen2.5-7b-instruct-q4_k_m-00002-of-00002.gguf",
+            "sha256": "539cf93f78e887edea1c04e2d7d8cdaca9d01dae9c9025bcb8accbe29df3d72a"
+          }
+        ],
+        "architecture": "qwen2",
+        "chat_template": true,
+        "context_length": 131072,
+        "max_output_tokens": 1024
+      },
+      "engine": {
+        "engine": "llama_rpc",
+        "release": "b11770",
+        "commit": "39da130fc",
+        "variant": "windows-x64-cuda13.4",
+        "hosts": [
+          {
+            "node_id": "local",
+            "devices": [
+              {
+                "device": "CUDA0",
+                "endpoint": null,
+                "layers": 19
+              }
+            ],
+            "display_name": "benchmark-host (this machine)",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "windows",
+              "release": "11",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CUDA0"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              },
+              {
+                "id": "AMD Radeon(TM) 890M Graphics",
+                "name": "AMD Radeon(TM) 890M Graphics",
+                "backend": "unknown"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "windows-x64-cuda13.4",
+              "accelerator": "cuda",
+              "rpc_proto": "8.0.0"
+            }
+          },
+          {
+            "node_id": "07118aa37e8646058734355ad5a7fd61",
+            "devices": [
+              {
+                "device": "RPC0",
+                "endpoint": "172.18.63.230:47052",
+                "layers": 9
+              }
+            ],
+            "display_name": "wsl-ubuntu-cpu",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "linux",
+              "release": "6.6.87.2-microsoft-standard-WSL2",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CPU"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "linux-x64-cpu",
+              "accelerator": "cpu",
+              "rpc_proto": "8.0.0"
+            }
+          }
+        ]
+      },
+      "placement": [
+        {
+          "device": "CPU_Mapped",
+          "model_bytes": 306561679,
+          "kv_bytes": 0,
+          "layers_est": null
+        },
+        {
+          "device": "CUDA0",
+          "model_bytes": 2635396546,
+          "kv_bytes": 159383552,
+          "layers_est": 19
+        },
+        {
+          "device": "RPC0[172.18.63.230:47052]",
+          "model_bytes": 1735162593,
+          "kv_bytes": 75497472,
+          "layers_est": 9
+        },
+        {
+          "device": "CUDA_Host",
+          "model_bytes": 0,
+          "kv_bytes": 0,
+          "layers_est": null
+        }
+      ],
+      "transport": "tcp",
+      "ctx_size": 4096,
+      "stream": true,
+      "prompt_tokens": 43,
+      "completion_tokens": 65,
+      "ttft_ms": 217.01439993921667,
+      "total_ms": 2886.2372000003234,
+      "timings": {
+        "prompt_n": 43,
+        "prompt_ms": 193.958,
+        "predicted_n": 65,
+        "predicted_ms": 2665.849,
+        "predicted_per_second": 24.007361257145472,
+        "prompt_per_second": 221.69748089792637,
+        "cache_n": 0
+      },
+      "finish_reason": "stop",
+      "sampling": {
+        "temperature": 0,
+        "max_tokens": 128,
+        "seed": 42,
+        "cache_prompt": false
+      },
+      "cache_state": "cold",
+      "output_text": "The sky appears blue during the day because the Earth's atmosphere scatters short-wavelength light more efficiently than long-wavelength light, a phenomenon known as Rayleigh scattering. Blue light is scattered in all directions by the gases and particles in the Earth's atmosphere, making the sky appear blue to an observer on the ground.",
+      "error": null,
+      "started_at": "2026-10-21T03:18:25.075519Z",
+      "benchmark_id": "3b2c63f0e92e428fa11d6051d3b131bb",
+      "prompt_label": "short"
+    },
+    {
+      "id": "14b8c741f1c448f6ad16608b7d7ecd2f",
+      "attempt_id": "e0097fb2c56d4775a07b5347c9b7fcd6",
+      "deployment_id": "1e34ded2f53f4a3bab71c347a907b585",
+      "kind": "chat",
+      "status": "ok",
+      "simulated": false,
+      "model": {
+        "id": "qwen2.5-7b-instruct-q4_k_m",
+        "repo": "Qwen/Qwen2.5-7B-Instruct-GGUF",
+        "revision": "bb5d59e06d9551d752d08b292a50eb208b07ab1f",
+        "quantization": "Q4_K_M",
+        "format": "gguf",
+        "files": [
+          {
+            "name": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+            "sha256": "dfce12e3862a5283ccfb88221b48480e58745165de856439950d0f22590580db"
+          },
+          {
+            "name": "qwen2.5-7b-instruct-q4_k_m-00002-of-00002.gguf",
+            "sha256": "539cf93f78e887edea1c04e2d7d8cdaca9d01dae9c9025bcb8accbe29df3d72a"
+          }
+        ],
+        "architecture": "qwen2",
+        "chat_template": true,
+        "context_length": 131072,
+        "max_output_tokens": 1024
+      },
+      "engine": {
+        "engine": "llama_rpc",
+        "release": "b11770",
+        "commit": "39da130fc",
+        "variant": "windows-x64-cuda13.4",
+        "hosts": [
+          {
+            "node_id": "local",
+            "devices": [
+              {
+                "device": "CUDA0",
+                "endpoint": null,
+                "layers": 19
+              }
+            ],
+            "display_name": "benchmark-host (this machine)",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "windows",
+              "release": "11",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CUDA0"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              },
+              {
+                "id": "AMD Radeon(TM) 890M Graphics",
+                "name": "AMD Radeon(TM) 890M Graphics",
+                "backend": "unknown"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "windows-x64-cuda13.4",
+              "accelerator": "cuda",
+              "rpc_proto": "8.0.0"
+            }
+          },
+          {
+            "node_id": "07118aa37e8646058734355ad5a7fd61",
+            "devices": [
+              {
+                "device": "RPC0",
+                "endpoint": "172.18.63.230:47052",
+                "layers": 9
+              }
+            ],
+            "display_name": "wsl-ubuntu-cpu",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "linux",
+              "release": "6.6.87.2-microsoft-standard-WSL2",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CPU"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "linux-x64-cpu",
+              "accelerator": "cpu",
+              "rpc_proto": "8.0.0"
+            }
+          }
+        ]
+      },
+      "placement": [
+        {
+          "device": "CPU_Mapped",
+          "model_bytes": 306561679,
+          "kv_bytes": 0,
+          "layers_est": null
+        },
+        {
+          "device": "CUDA0",
+          "model_bytes": 2635396546,
+          "kv_bytes": 159383552,
+          "layers_est": 19
+        },
+        {
+          "device": "RPC0[172.18.63.230:47052]",
+          "model_bytes": 1735162593,
+          "kv_bytes": 75497472,
+          "layers_est": 9
+        },
+        {
+          "device": "CUDA_Host",
+          "model_bytes": 0,
+          "kv_bytes": 0,
+          "layers_est": null
+        }
+      ],
+      "transport": "tcp",
+      "ctx_size": 4096,
+      "stream": true,
+      "prompt_tokens": 40,
+      "completion_tokens": 128,
+      "ttft_ms": 174.65749999973923,
+      "total_ms": 4865.8775999210775,
+      "timings": {
+        "prompt_n": 16,
+        "prompt_ms": 83.322,
+        "predicted_n": 128,
+        "predicted_ms": 4772.193,
+        "predicted_per_second": 26.61250288913294,
+        "prompt_per_second": 192.02611555171504,
+        "cache_n": 24
+      },
+      "finish_reason": "length",
+      "sampling": {
+        "temperature": 0,
+        "max_tokens": 128
+      },
+      "cache_state": "warm",
+      "output_text": "Certainly! Here are three planets along with a brief fact about each:\n\n1. **Mercury**: Mercury is the smallest planet in our solar system and the closest to the Sun. It has no natural satellites and its surface is heavily cratered, similar to the Moon.\n\n2. **Venus**: Venus is known as Earth's \"sister planet\" due to its similar size and mass, but it has a very thick, toxic atmosphere that traps heat, making it the hottest planet in the solar system.\n\n3. **Mars**: Mars is often referred to as the \"Red Planet\" because of its reddish appearance, caused by",
+      "error": null,
+      "started_at": "2026-10-21T03:18:20.192550Z",
+      "benchmark_id": null,
+      "prompt_label": null
+    },
+    {
+      "id": "c2aa765dec3a4233a836c357d972919f",
+      "attempt_id": "e9ad1b2237a84527824fbddaf6a39157",
+      "deployment_id": "1e34ded2f53f4a3bab71c347a907b585",
+      "kind": "warmup",
+      "status": "ok",
+      "simulated": false,
+      "model": {
+        "id": "qwen2.5-7b-instruct-q4_k_m",
+        "repo": "Qwen/Qwen2.5-7B-Instruct-GGUF",
+        "revision": "bb5d59e06d9551d752d08b292a50eb208b07ab1f",
+        "quantization": "Q4_K_M",
+        "format": "gguf",
+        "files": [
+          {
+            "name": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+            "sha256": "dfce12e3862a5283ccfb88221b48480e58745165de856439950d0f22590580db"
+          },
+          {
+            "name": "qwen2.5-7b-instruct-q4_k_m-00002-of-00002.gguf",
+            "sha256": "539cf93f78e887edea1c04e2d7d8cdaca9d01dae9c9025bcb8accbe29df3d72a"
+          }
+        ],
+        "architecture": "qwen2",
+        "chat_template": true,
+        "context_length": 131072,
+        "max_output_tokens": 1024
+      },
+      "engine": {
+        "engine": "llama_rpc",
+        "release": "b11770",
+        "commit": "39da130fc",
+        "variant": "windows-x64-cuda13.4",
+        "hosts": [
+          {
+            "node_id": "local",
+            "devices": [
+              {
+                "device": "CUDA0",
+                "endpoint": null,
+                "layers": 19
+              }
+            ],
+            "display_name": "benchmark-host (this machine)",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "windows",
+              "release": "11",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CUDA0"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              },
+              {
+                "id": "AMD Radeon(TM) 890M Graphics",
+                "name": "AMD Radeon(TM) 890M Graphics",
+                "backend": "unknown"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "windows-x64-cuda13.4",
+              "accelerator": "cuda",
+              "rpc_proto": "8.0.0"
+            }
+          },
+          {
+            "node_id": "07118aa37e8646058734355ad5a7fd61",
+            "devices": [
+              {
+                "device": "RPC0",
+                "endpoint": "172.18.63.230:47052",
+                "layers": 9
+              }
+            ],
+            "display_name": "wsl-ubuntu-cpu",
+            "hostname": "benchmark-host",
+            "os": {
+              "system": "linux",
+              "release": "6.6.87.2-microsoft-standard-WSL2",
+              "machine": "x86_64"
+            },
+            "contributed_devices": [
+              "CPU"
+            ],
+            "hardware": [
+              {
+                "id": "CPU",
+                "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                "backend": "cpu"
+              },
+              {
+                "id": "CUDA0",
+                "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                "backend": "cuda"
+              }
+            ],
+            "engine": {
+              "release": "b11770",
+              "commit": "39da130fc",
+              "variant": "linux-x64-cpu",
+              "accelerator": "cpu",
+              "rpc_proto": "8.0.0"
+            }
+          }
+        ]
+      },
+      "placement": [
+        {
+          "device": "CPU_Mapped",
+          "model_bytes": 306561679,
+          "kv_bytes": 0,
+          "layers_est": null
+        },
+        {
+          "device": "CUDA0",
+          "model_bytes": 2635396546,
+          "kv_bytes": 159383552,
+          "layers_est": 19
+        },
+        {
+          "device": "RPC0[172.18.63.230:47052]",
+          "model_bytes": 1735162593,
+          "kv_bytes": 75497472,
+          "layers_est": 9
+        },
+        {
+          "device": "CUDA_Host",
+          "model_bytes": 0,
+          "kv_bytes": 0,
+          "layers_est": null
+        }
+      ],
+      "transport": "tcp",
+      "ctx_size": 4096,
+      "stream": true,
+      "prompt_tokens": 33,
+      "completion_tokens": 2,
+      "ttft_ms": 177.28730000089854,
+      "total_ms": 221.4167999336496,
+      "timings": {
+        "prompt_n": 33,
+        "prompt_ms": 171.497,
+        "predicted_n": 2,
+        "predicted_ms": 43.143,
+        "predicted_per_second": 23.178731196254315,
+        "prompt_per_second": 192.42319107622873,
+        "cache_n": 0
+      },
+      "finish_reason": "stop",
+      "sampling": {
+        "temperature": 0,
+        "max_tokens": 8
+      },
+      "cache_state": "cold",
+      "output_text": "ready",
+      "error": null,
+      "started_at": "2026-10-21T03:18:19.620703Z",
+      "benchmark_id": null,
+      "prompt_label": null
+    }
+  ],
+  "stopped": {
+    "state": "stopped",
+    "cleanup": "deployment:8aa22e57262b471e8b6b0b327cda2a23 pid 24664: terminated (exit code 1); released 3 lease(s)"
+  }
+}

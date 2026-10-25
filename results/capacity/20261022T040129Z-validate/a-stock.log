@@ -1,0 +1,29 @@
+0.00.808.996 E ggml_cuda_init: failed to initialize CUDA: no CUDA-capable device is detected
+0.00.828.364 I srv  llama_server: initializing ...
+0.00.828.372 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.828.520 I srv  init_listene: The UI is disabled
+0.00.828.523 I srv  init_listene: Use --ui/--no-ui (or deprecated --webui/--no-webui) to enable/disable
+0.00.828.627 W srv  llama_server: security: no API key is set and CORS allows all origins (see https://github.com/ggml-org/llama.cpp/pull/25655)
+0.00.846.920 I srv    load_model: loading model 'C:\Users\operator\.hypercompute\models\qwen2.5-0.5b-instruct-q4_k_m\qwen2.5-0.5b-instruct-q4_k_m.gguf'
+0.01.081.711 W load: control-looking token: 128247 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden
+0.01.161.260 I cmn          init: llama threadpool init, n_threads = 8
+0.01.323.124 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 1024, kv_unified = 'false'
+0.01.323.230 W srv          init: --cache-idle-slots requires --cache-ram, disabling
+0.01.331.341 I srv  llama_server: model loaded
+0.01.331.352 I srv  llama_server: listening on http://127.0.0.1:54907
+0.01.540.075 I slot get_availabl: id  0 | task -1 | selected slot by LRU, n_tokens = 0, t_last = -1
+0.01.540.108 I slot launch_slot_: id  0 | task 0 | processing task, is_child = 0
+0.01.892.881 I slot print_timing: id  0 | task 0 | prompt eval time =     110.47 ms /    54 tokens (    2.05 ms per token,   488.82 tokens per second)
+0.01.892.891 I slot print_timing: id  0 | task 0 |        eval time =     242.28 ms /    24 tokens (   10.53 ms per token,    94.93 tokens per second)
+0.01.892.893 I slot print_timing: id  0 | task 0 |       total time =     352.75 ms /    78 tokens
+0.01.892.904 I slot print_timing: id  0 | task 0 |    graphs reused =         23
+0.01.892.905 I slot print_timing: id  0 | task 0 |   graph reallocs =          0    /     0        (same size) / (changed size)
+0.01.892.942 I slot      release: id  0 | task 0 | stop processing: n_tokens = 77, truncated = 0
+0.01.895.095 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 1.000 (> 0.100 thold), f_keep = 0.701
+0.01.895.329 I slot launch_slot_: id  0 | task 25 | processing task, is_child = 0
+0.02.284.097 I slot print_timing: id  0 | task 25 | prompt eval time =     130.12 ms /    54 tokens (    2.41 ms per token,   415.01 tokens per second)
+0.02.284.118 I slot print_timing: id  0 | task 25 |        eval time =     258.61 ms /    24 tokens (   11.24 ms per token,    88.94 tokens per second)
+0.02.284.120 I slot print_timing: id  0 | task 25 |       total time =     388.73 ms /    78 tokens
+0.02.284.122 I slot print_timing: id  0 | task 25 |    graphs reused =         45
+0.02.284.123 I slot print_timing: id  0 | task 25 |   graph reallocs =          0    /     0        (same size) / (changed size)
+0.02.284.160 I slot      release: id  0 | task 25 | stop processing: n_tokens = 77, truncated = 0

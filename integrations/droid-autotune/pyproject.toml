@@ -1,0 +1,36 @@
+[project]
+name = "droid-autotune"
+version = "0.1.0"
+description = "Factory Droid proposes llama.cpp layouts for a Hypercompute pool; the gateway planner checks them; the owner approves."
+requires-python = ">=3.11"
+dependencies = [
+    "droid-sdk[mcp]==0.5.0",
+    "fastapi>=0.115",
+    "httpx>=0.27",
+    "pydantic>=2.7",
+    "uvicorn>=0.31,<1",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+    "pytest-asyncio>=0.24",
+    "pytest-cov>=7.1.0",
+]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["autotune", "mock_gateway", "tests"]

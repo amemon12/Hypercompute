@@ -1,0 +1,15 @@
+#hc-home .hc-open-compute {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  aspect-ratio: 4 / 5;
+  margin: 0 auto !important;
+  color: #191b16;
+}
+
+#hc-home .hc-open-compute-art {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}

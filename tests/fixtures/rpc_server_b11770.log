@@ -1,0 +1,59 @@
+ggml_cuda_init: found 1 CUDA devices (Total VRAM: 12226 MiB):
+  Device 0: NVIDIA GeForce RTX 5070 Ti Laptop GPU, compute capability 12.0, VMM: yes, VRAM: 12226 MiB
+load_backend: loaded CUDA backend from /engine/ggml-cuda.dll
+load_backend: loaded RPC backend from /engine/ggml-rpc.dll
+load_backend: loaded CPU backend from /engine/ggml-cpu-zen4.dll
+Starting RPC server v8.0.0
+  endpoint       : 127.0.0.1:47052
+  local cache    : n/a
+Devices:
+  CPU: AMD Ryzen AI 9 HX 370 w/ Radeon 890M            (31864 MiB, 4727 MiB free)
+  transport      : TCP
+Accepted client connection
+recv returned 0 (peer closed?)
+Client connection closed
+Accepted client connection
+recv returned 0 (peer closed?)
+Client connection closed
+Accepted client connection
+recv returned 0 (peer closed?)
+Client connection closed
+Accepted client connection
+recv returned 0 (peer closed?)
+Client connection closed
+Accepted client connection
+recv returned 0 (peer closed?)
+Client connection closed
+Accepted client connection
+recv returned 0 (peer closed?)
+Client connection closed
+Accepted client connection
+recv returned 0 (peer closed?)
+Client connection closed
+Accepted client connection
+recv returned 0 (peer closed?)
+Client connection closed
+Accepted client connection
+recv returned 0 (peer closed?)
+Client connection closed
+Accepted client connection
+recv returned 0 (peer closed?)
+Client connection closed
+Accepted client connection
+recv returned 0 (peer closed?)
+Client connection closed
+Accepted client connection
+recv returned 0 (peer closed?)
+Client connection closed
+Accepted client connection
+recv returned 0 (peer closed?)
+Client connection closed
+Accepted client connection
+recv returned 0 (peer closed?)
+Client connection closed
+Accepted client connection
+recv returned 0 (peer closed?)
+Client connection closed
+Accepted client connection
+recv failed (bytes_recv=0, size_to_recv=1)
+Client connection closed

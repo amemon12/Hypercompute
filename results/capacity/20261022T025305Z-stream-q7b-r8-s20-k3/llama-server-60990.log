@@ -1,0 +1,38 @@
+hcstream: enabled (338 tensors, 20 streamed layers, 3 slots, prefetch off)
+0.00.130.024 I srv  llama_server: initializing ...
+0.00.130.038 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.130.207 I srv  init_listene: The UI is disabled
+0.00.130.211 I srv  init_listene: Use --ui/--no-ui (or deprecated --webui/--no-webui) to enable/disable
+0.00.130.331 W srv  llama_server: security: no API key is set and CORS allows all origins (see https://github.com/ggml-org/llama.cpp/pull/25655)
+0.00.145.135 I srv    load_model: loading model 'C:\Users\operator\.hypercompute\models\qwen2.5-7b-instruct-q4_k_m\qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf'
+0.00.356.506 W load: control-looking token: 128247 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden
+0.00.404.686 I cmn          init: llama threadpool init, n_threads = 8
+hcstream: attached: 20 streamed layers in 3 slots of 149123072 bytes, readers 4, chunk 8388608
+0.02.141.545 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 1024, kv_unified = 'false'
+0.02.141.671 W srv          init: --cache-idle-slots requires --cache-ram, disabling
+0.02.148.965 I srv  llama_server: model loaded
+0.02.148.977 I srv  llama_server: listening on http://127.0.0.1:60990
+0.02.340.414 I slot get_availabl: id  0 | task -1 | selected slot by LRU, n_tokens = 0, t_last = -1
+0.02.340.465 I slot launch_slot_: id  0 | task 0 | processing task, is_child = 0
+0.14.683.197 I slot print_timing: id  0 | task 0 | prompt eval time =     851.84 ms /    54 tokens (   15.77 ms per token,    63.39 tokens per second)
+0.14.683.212 I slot print_timing: id  0 | task 0 |        eval time =   11490.85 ms /    16 tokens (  766.06 ms per token,     1.31 tokens per second)
+0.14.683.214 I slot print_timing: id  0 | task 0 |       total time =   12342.69 ms /    70 tokens
+0.14.683.230 I slot print_timing: id  0 | task 0 |    graphs reused =         15
+0.14.683.231 I slot print_timing: id  0 | task 0 |   graph reallocs =          0    /     0        (same size) / (changed size)
+0.14.683.275 I slot      release: id  0 | task 0 | stop processing: n_tokens = 69, truncated = 0
+0.14.687.937 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 1.000 (> 0.100 thold), f_keep = 0.783
+0.14.688.156 I slot launch_slot_: id  0 | task 17 | processing task, is_child = 0
+0.26.098.103 I slot print_timing: id  0 | task 17 | prompt eval time =     882.67 ms /    54 tokens (   16.35 ms per token,    61.18 tokens per second)
+0.26.098.111 I slot print_timing: id  0 | task 17 |        eval time =   10527.24 ms /    16 tokens (  701.82 ms per token,     1.42 tokens per second)
+0.26.098.113 I slot print_timing: id  0 | task 17 |       total time =   11409.91 ms /    70 tokens
+0.26.098.114 I slot print_timing: id  0 | task 17 |    graphs reused =         29
+0.26.098.115 I slot print_timing: id  0 | task 17 |   graph reallocs =          0    /     0        (same size) / (changed size)
+0.26.098.156 I slot      release: id  0 | task 17 | stop processing: n_tokens = 69, truncated = 0
+0.26.101.919 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 1.000 (> 0.100 thold), f_keep = 0.783
+0.26.102.127 I slot launch_slot_: id  0 | task 34 | processing task, is_child = 0
+0.37.442.951 I slot print_timing: id  0 | task 34 | prompt eval time =     888.52 ms /    54 tokens (   16.45 ms per token,    60.77 tokens per second)
+0.37.442.964 I slot print_timing: id  0 | task 34 |        eval time =   10452.25 ms /    16 tokens (  696.82 ms per token,     1.44 tokens per second)
+0.37.442.965 I slot print_timing: id  0 | task 34 |       total time =   11340.78 ms /    70 tokens
+0.37.442.967 I slot print_timing: id  0 | task 34 |    graphs reused =         43
+0.37.442.968 I slot print_timing: id  0 | task 34 |   graph reallocs =          0    /     0        (same size) / (changed size)
+0.37.443.000 I slot      release: id  0 | task 34 | stop processing: n_tokens = 69, truncated = 0

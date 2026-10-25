@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hypercompute-fetch-agent"
+version = "0.1.0"
+description = "Hypercompute agent for Agentverse and ASI:One: run a prompt on the biggest model a friends' compute pool can hold"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+    "uagents==0.26.1",
+    "uagents-core==0.4.12",
+    "httpx>=0.27",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "pytest-asyncio>=0.23", "fastapi>=0.110", "uvicorn>=0.29"]
+
+[dependency-groups]
+dev = ["pytest>=8", "pytest-asyncio>=0.23", "fastapi>=0.110", "uvicorn>=0.29"]
+
+[project.scripts]
+hypercompute-agent = "hc_agent.agent:main"
+
+[tool.setuptools]
+packages = ["hc_agent", "mock_gateway"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+pythonpath = ["."]

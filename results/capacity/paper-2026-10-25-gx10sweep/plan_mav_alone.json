@@ -1,0 +1,60 @@
+[
+ {
+  "label": "mav-n1-gxA-1",
+  "model": "llama-4-maverick-17b-128e-instruct-ud-q2_k_xl",
+  "nodes": [],
+  "args": [
+   "--prompt-tokens",
+   "128",
+   "--output-tokens",
+   "64",
+   "--warmup",
+   "1",
+   "--reps",
+   "3",
+   "--load-timeout",
+   "3600"
+  ],
+  "timeout_s": 7200
+ },
+ {
+  "label": "mav-n4-gxA-1",
+  "model": "llama-4-maverick-17b-128e-instruct-ud-q2_k_xl",
+  "nodes": [],
+  "args": [
+   "--prompt-tokens",
+   "128",
+   "--output-tokens",
+   "64",
+   "--warmup",
+   "1",
+   "--reps",
+   "3",
+   "--load-timeout",
+   "3600",
+   "--concurrency",
+   "4"
+  ],
+  "timeout_s": 7200
+ },
+ {
+  "label": "mav-n8-gxA-1",
+  "model": "llama-4-maverick-17b-128e-instruct-ud-q2_k_xl",
+  "nodes": [],
+  "args": [
+   "--prompt-tokens",
+   "128",
+   "--output-tokens",
+   "64",
+   "--warmup",
+   "1",
+   "--reps",
+   "3",
+   "--load-timeout",
+   "3600",
+   "--concurrency",
+   "8"
+  ],
+  "timeout_s": 7200
+ }
+]

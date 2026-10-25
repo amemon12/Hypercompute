@@ -1,0 +1,4 @@
+layout | spans | pred decode ms/tok | pred prefill ms | pred load ms | pred hop ms | upload bytes | optimizer feasible | measured
+a | local:CUDA0 [0-23 + head] | 1.07 | 11.4 | 2065 | 0.00 | 0 | True | not run
+b | 4c2991743c154be896d10a0b53ba4d2b:MTL0 [0-1], local:CUDA0 [2-23 + head] | 41.74 | 2374.8 | 16293 | 40.49 | 21767680 | False | not run
+c | 4c2991743c154be896d10a0b53ba4d2b:MTL0 [0-5], local:CUDA0 [6-23 + head] | 42.06 | 2397.7 | 41540 | 40.49 | 61803264 | False | not run

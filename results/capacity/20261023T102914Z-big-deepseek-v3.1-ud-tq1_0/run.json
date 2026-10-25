@@ -1,0 +1,181 @@
+{
+  "schema": "hypercompute.capacity.big/1",
+  "started_at": "2026-10-23T10:29:14.716608+00:00",
+  "requested": {
+    "model": "deepseek-v3.1-ud-tq1_0",
+    "port": 8001,
+    "strategy": "all_selected",
+    "ctx": 4096,
+    "nodes": [
+      "4c2991743c154be896d10a0b53ba4d2b",
+      "6dad6cf75b2e4cf197b7bc7f4d0a67e4",
+      "d4e65f83c4be4a41aad722e40983b08b"
+    ],
+    "engine": null,
+    "allow_capacity_mode": true,
+    "prompt_tokens": 128,
+    "output_tokens": 64,
+    "warmup": 1,
+    "reps": 3,
+    "keep": false,
+    "plan_only": true,
+    "load_timeout_s": 7200.0,
+    "chat_timeout_s": 1800.0,
+    "poll_s": 2.0,
+    "heartbeat_wait_s": 7.5,
+    "sample_interval_s": 0.5,
+    "gpu_every": 4,
+    "min_available_gib": 0.0,
+    "min_drive_free_gib": 5.0,
+    "max_commit_growth_gib": 0.25,
+    "max_swap_growth_gib": 2.0,
+    "seed_peers": false,
+    "seed_timeout_s": 3600.0,
+    "seed_poll_s": 5.0,
+    "replan_after_s": 480.0,
+    "layout": [
+      {
+        "node_id": "4c2991743c154be896d10a0b53ba4d2b",
+        "device": "MTL0",
+        "layers": 6
+      },
+      {
+        "node_id": "6dad6cf75b2e4cf197b7bc7f4d0a67e4",
+        "device": "MTL0",
+        "layers": 3
+      },
+      {
+        "node_id": "d4e65f83c4be4a41aad722e40983b08b",
+        "device": "MTL0",
+        "layers": 4
+      },
+      {
+        "node_id": "6dad6cf75b2e4cf197b7bc7f4d0a67e4",
+        "device": "CPU",
+        "layers": 4,
+        "residency": "file_backed"
+      },
+      {
+        "node_id": "d4e65f83c4be4a41aad722e40983b08b",
+        "device": "CPU",
+        "layers": 4,
+        "residency": "file_backed"
+      },
+      {
+        "node_id": "local",
+        "device": "CUDA0",
+        "layers": 40
+      }
+    ],
+    "home": null,
+    "results_dir": "C:\\Users\\operator\\.hypercompute\\worktrees\\live-host\\results\\capacity",
+    "chat_settings": {
+      "stream": true,
+      "temperature": 0,
+      "seed": 7,
+      "cache_prompt": false,
+      "ignore_eos": true
+    }
+  },
+  "runner": {
+    "git_head": "75423bd3592637a263222dd74140db938ee50639",
+    "uncommitted_paths": 27,
+    "note": "the runner's checkout; the gateway runs whatever code it was started from"
+  },
+  "predicted": {},
+  "measured": {
+    "host": {
+      "source": "hostmon: GetPerformanceInfo (available, commit, file cache), psutil disk_io_counters (system-wide physical reads, every process), shutil.disk_usage (system drive), psutil engine process counters (ReadFile bytes exclude mmap page-fault reads), nvidia-smi (all GPUs)",
+      "platform": "windows",
+      "guards": {
+        "min_available": {
+          "limit_bytes": 0,
+          "active": false,
+          "inactive_because": "turned off"
+        },
+        "min_drive_free": {
+          "limit_bytes": 5368709120,
+          "active": true,
+          "inactive_because": null,
+          "volume": "system drive",
+          "path": "C:\\"
+        },
+        "max_commit_growth": {
+          "limit_bytes": 268435456,
+          "active": true,
+          "inactive_because": null
+        },
+        "max_swap_growth": {
+          "limit_bytes": 2147483648,
+          "active": false,
+          "inactive_because": "this host reported no swap_used reading"
+        }
+      },
+      "interval_s": 0.5,
+      "marks": [],
+      "error": null,
+      "guard_tripped": null,
+      "guard_stop": null,
+      "whole_run": {
+        "t0": 0.0,
+        "t1": 0.336,
+        "samples": 2,
+        "available_min": 18283405312,
+        "commit_charge_peak": 24323338240,
+        "commit_limit_peak": 52740075520,
+        "system_cache_peak": 19711717376,
+        "drive_free_min": 55042691072,
+        "engine_rss_peak": null,
+        "engine_private_peak": null,
+        "gpu_used_peak": 22020096,
+        "swap_used_min": null,
+        "swap_used_peak": null,
+        "disk_read_bytes": 19232256,
+        "engine_read_bytes": null,
+        "engine_page_faults": null
+      },
+      "samples": [
+        {
+          "t": 0.04,
+          "available": 18283405312,
+          "commit_charge": 24323338240,
+          "commit_limit": 52740075520,
+          "system_cache": 19711717376,
+          "disk_read_bytes": 2121193939456,
+          "drive_free": 55042691072,
+          "engine_rss": null,
+          "engine_private": null,
+          "engine_read_bytes": null,
+          "engine_page_faults": null,
+          "gpu_used": 22020096,
+          "swap_used": null
+        },
+        {
+          "t": 0.336,
+          "available": 18494554112,
+          "commit_charge": 23168524288,
+          "commit_limit": 52740075520,
+          "system_cache": 19704049664,
+          "disk_read_bytes": 2121213171712,
+          "drive_free": 55042691072,
+          "engine_rss": null,
+          "engine_private": null,
+          "engine_read_bytes": null,
+          "engine_page_faults": null,
+          "gpu_used": null,
+          "swap_used": null
+        }
+      ]
+    }
+  },
+  "status": "refused",
+  "error": {
+    "type": "RunRefused",
+    "message": "the gateway rejected --layout: HTTP 422 layout_memory: mac-b's stages need ~11.3 GiB of RAM together and it contributes 11.0 GiB",
+    "fix": "give its stages fewer layers"
+  },
+  "deployment_id": null,
+  "stop": null,
+  "kept": false,
+  "finished_at": "2026-10-23T10:29:15.128159+00:00"
+}

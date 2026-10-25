@@ -1,0 +1,189 @@
+models:
+  - id: qwen2.5-0.5b-instruct-hf
+    display_name: Qwen2.5 0.5B Instruct (HF bf16, AirLLM)
+    family: qwen2
+    params_b: 0.49
+    quantization: bf16
+    format: hf
+    engines: [airllm]
+    logical_id: qwen2.5-0.5b-instruct
+    repo: Qwen/Qwen2.5-0.5B-Instruct
+    revision: 7ae557604adf67be50417f59c2c2f167def9a775
+    license: apache-2.0
+    role: plumbing
+    default_ctx: 4096
+    max_output_tokens: 256
+    notes: "AirLLM validation model: one 0.99 GB bf16 safetensors file with tied embeddings, split into 26 per-layer files on first start. Proves the disk tier end to end at seconds per token; it fits any GPU, so it is not a capacity claim."
+    files:
+      - name: config.json
+        path: config.json
+        url: https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct/resolve/7ae557604adf67be50417f59c2c2f167def9a775/config.json
+        sha256: 18e18afcaccafade98daf13a54092927904649e1dd4eba8299ab717d5d94ff45
+        size_bytes: 659
+      - name: generation_config.json
+        path: generation_config.json
+        url: https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct/resolve/7ae557604adf67be50417f59c2c2f167def9a775/generation_config.json
+        sha256: e558847a8b4402616f1273797b015104dc266fe4b520056fca88823ba8f8ebe6
+        size_bytes: 242
+      - name: merges.txt
+        path: merges.txt
+        url: https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct/resolve/7ae557604adf67be50417f59c2c2f167def9a775/merges.txt
+        sha256: 599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3
+        size_bytes: 1671839
+      - name: model.safetensors
+        path: model.safetensors
+        url: https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct/resolve/7ae557604adf67be50417f59c2c2f167def9a775/model.safetensors
+        sha256: fdf756fa7fcbe7404d5c60e26bff1a0c8b8aa1f72ced49e7dd0210fe288fb7fe
+        size_bytes: 988097824
+      - name: tokenizer.json
+        path: tokenizer.json
+        url: https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct/resolve/7ae557604adf67be50417f59c2c2f167def9a775/tokenizer.json
+        sha256: c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539
+        size_bytes: 7031645
+      - name: tokenizer_config.json
+        path: tokenizer_config.json
+        url: https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct/resolve/7ae557604adf67be50417f59c2c2f167def9a775/tokenizer_config.json
+        sha256: 5b5d4f65d0acd3b2d56a35b56d374a36cbc1c8fa5cf3b3febbbfabf22f359583
+        size_bytes: 7305
+      - name: vocab.json
+        path: vocab.json
+        url: https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct/resolve/7ae557604adf67be50417f59c2c2f167def9a775/vocab.json
+        sha256: ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910
+        size_bytes: 2776833
+
+  - id: qwen2.5-32b-instruct-hf
+    display_name: Qwen2.5 32B Instruct (HF bf16, AirLLM)
+    family: qwen2
+    params_b: 32.8
+    quantization: bf16
+    format: hf
+    engines: [airllm]
+    logical_id: qwen2.5-32b-instruct
+    repo: Qwen/Qwen2.5-32B-Instruct
+    revision: 5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd
+    license: apache-2.0
+    role: capacity_candidate
+    default_ctx: 4096
+    max_output_tokens: 128
+    notes: "Full-precision disk-tier capacity candidate: 65.5 GB of bf16 weights in 17 shards fit no single GPU or RAM pool here, so AirLLM streams every layer from disk for every token (reported 13 s/token from page cache on GB10, minutes per token from a Windows NVMe). Needs about 131 GB of disk for the download plus the per-layer split."
+    files:
+      - name: config.json
+        path: config.json
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/config.json
+        sha256: 9c6772f138ef9e5b3d1c18f2c87e451bbc01f5f1a4eabb36f9bf4f53829b903e
+        size_bytes: 663
+      - name: generation_config.json
+        path: generation_config.json
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/generation_config.json
+        sha256: ea35dfb6fc5051b01114f9b995820d55dab01ed33ee490f6378b442af82c09f9
+        size_bytes: 242
+      - name: merges.txt
+        path: merges.txt
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/merges.txt
+        sha256: 599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3
+        size_bytes: 1671839
+      - name: model-00001-of-00017.safetensors
+        path: model-00001-of-00017.safetensors
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/model-00001-of-00017.safetensors
+        sha256: fa006a0382517a4e9a8781d8e7d3405cd6bdd1b9100fb344d73f925b7da9341c
+        size_bytes: 3916539832
+      - name: model-00002-of-00017.safetensors
+        path: model-00002-of-00017.safetensors
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/model-00002-of-00017.safetensors
+        sha256: 0d7f28a4ba7135c2c8365016170cfa25723f65ec41e32ec9a3c81746e4395615
+        size_bytes: 3900847496
+      - name: model-00003-of-00017.safetensors
+        path: model-00003-of-00017.safetensors
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/model-00003-of-00017.safetensors
+        sha256: 8f4b7b811a7ecf117c179ac9413b7a746f2fc0707a41ae4b2efd0282e73bed85
+        size_bytes: 3900847480
+      - name: model-00004-of-00017.safetensors
+        path: model-00004-of-00017.safetensors
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/model-00004-of-00017.safetensors
+        sha256: de8ab9cb81e6798031d2cf9ef6d15a0034b77fceeba3d4e011647943c8b99afb
+        size_bytes: 3900847544
+      - name: model-00005-of-00017.safetensors
+        path: model-00005-of-00017.safetensors
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/model-00005-of-00017.safetensors
+        sha256: fa86494f0074cc36c610aa54e7bde03edefc57a9be7636216277bd5ed8b8bfda
+        size_bytes: 3900847544
+      - name: model-00006-of-00017.safetensors
+        path: model-00006-of-00017.safetensors
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/model-00006-of-00017.safetensors
+        sha256: c8fa152bd8a23bab2c0cfca43ff9f586bccd82b1cb67f2f84231f31d0f3cab47
+        size_bytes: 3900847544
+      - name: model-00007-of-00017.safetensors
+        path: model-00007-of-00017.safetensors
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/model-00007-of-00017.safetensors
+        sha256: 5e33e16319d18d1e180187d9f858deddbbaf06d950abc88941bf027d1439c7bc
+        size_bytes: 3900847544
+      - name: model-00008-of-00017.safetensors
+        path: model-00008-of-00017.safetensors
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/model-00008-of-00017.safetensors
+        sha256: 8561b86737884397772bb990b38c0efe896f66ed27815ca207ddc8ec7965ffe4
+        size_bytes: 3900847544
+      - name: model-00009-of-00017.safetensors
+        path: model-00009-of-00017.safetensors
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/model-00009-of-00017.safetensors
+        sha256: 47f562bf77d986b53c5390b01a30a77576c3eed69191b484cf88b53bb64bce19
+        size_bytes: 3900847544
+      - name: model-00010-of-00017.safetensors
+        path: model-00010-of-00017.safetensors
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/model-00010-of-00017.safetensors
+        sha256: 359450e2c9e261751b5803fcdd1d0a040029a6119a271dd8592d7bb37fa722b5
+        size_bytes: 3900847544
+      - name: model-00011-of-00017.safetensors
+        path: model-00011-of-00017.safetensors
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/model-00011-of-00017.safetensors
+        sha256: 836f0570f5694ce1d55f505064190e2688926dad4f033384ae519d96faaad670
+        size_bytes: 3900847544
+      - name: model-00012-of-00017.safetensors
+        path: model-00012-of-00017.safetensors
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/model-00012-of-00017.safetensors
+        sha256: 5307431e385a177375a5aa887eb1c546f3413dd2e2269c291672f11f752842b4
+        size_bytes: 3900847544
+      - name: model-00013-of-00017.safetensors
+        path: model-00013-of-00017.safetensors
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/model-00013-of-00017.safetensors
+        sha256: 9b2657db02572dd4370186b35c0e0fa70218d7e2ec1190e4dc4a755c5cbd430e
+        size_bytes: 3900847544
+      - name: model-00014-of-00017.safetensors
+        path: model-00014-of-00017.safetensors
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/model-00014-of-00017.safetensors
+        sha256: b5f1f8af3b6bbf734790985590752fb815dd69566cf05ee578d70af74ace1d4c
+        size_bytes: 3900847544
+      - name: model-00015-of-00017.safetensors
+        path: model-00015-of-00017.safetensors
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/model-00015-of-00017.safetensors
+        sha256: 8cdfcbf8913e10056c981db2db817f92c8601998deb9eabcae14fade98d76c14
+        size_bytes: 3900847544
+      - name: model-00016-of-00017.safetensors
+        path: model-00016-of-00017.safetensors
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/model-00016-of-00017.safetensors
+        sha256: 977b3d2ca7f97dc3b518ed5087ddc43ccf7afb371190828f2334d7e4c81224ee
+        size_bytes: 3900847544
+      - name: model-00017-of-00017.safetensors
+        path: model-00017-of-00017.safetensors
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/model-00017-of-00017.safetensors
+        sha256: 2853695483f9c61a8bd8b109025b3c591214a0362992fa844537f09acc81bd03
+        size_bytes: 3098588976
+      - name: model.safetensors.index.json
+        path: model.safetensors.index.json
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/model.safetensors.index.json
+        sha256: 0183543f2e6e40d3d1e863ed0b2a8c9cdaf2ee4045ce724a45cea30e9995a0af
+        size_bytes: 63248
+      - name: tokenizer.json
+        path: tokenizer.json
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/tokenizer.json
+        sha256: c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539
+        size_bytes: 7031645
+      - name: tokenizer_config.json
+        path: tokenizer_config.json
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/tokenizer_config.json
+        sha256: 5b5d4f65d0acd3b2d56a35b56d374a36cbc1c8fa5cf3b3febbbfabf22f359583
+        size_bytes: 7305
+      - name: vocab.json
+        path: vocab.json
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/vocab.json
+        sha256: ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910
+        size_bytes: 2776833

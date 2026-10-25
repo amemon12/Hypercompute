@@ -1,0 +1,70 @@
+[
+ {
+  "label": "rank-qwen2.5-7b-instruct-q4_k_m-d",
+  "model_paths": [
+   "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-7b-instruct-q4_k_m\\qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+   "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-7b-instruct-q4_k_m\\qwen2.5-7b-instruct-q4_k_m-00002-of-00002.gguf"
+  ],
+  "engine": {
+   "devices": [],
+   "tensor_split": [],
+   "ngl": 0,
+   "ctx": 2048,
+   "threads": 12,
+   "load_mode": "mmap",
+   "flags": [
+    "--no-repack",
+    "--no-op-offload",
+    "--cache-ram",
+    "0"
+   ]
+  },
+  "stream": {
+   "resident_units": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    28
+   ],
+   "streamed_units": [
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27
+   ],
+   "slots": 2,
+   "options": {
+    "readers": 4,
+    "chunk_bytes": 8388608,
+    "no_prefetch": true,
+    "on_io_error": "abort",
+    "stats_interval_ms": 500,
+    "fault_read_error_after_bytes": 0,
+    "fault_read_delay_us": 0
+   }
+  },
+  "rpc_endpoints": [],
+  "rpc_path_class": "local"
+ }
+]

@@ -1,0 +1,4232 @@
+{
+  "schema": "hypercompute.capacity.big/1",
+  "started_at": "2026-10-25T00:42:36.936948+00:00",
+  "requested": {
+    "model": "qwen3-next-80b-a3b-instruct-q3_k_m",
+    "port": 8001,
+    "strategy": "local_only",
+    "ctx": 4096,
+    "nodes": [],
+    "engine": null,
+    "allow_capacity_mode": true,
+    "prompt_tokens": 128,
+    "output_tokens": 64,
+    "warmup": 1,
+    "reps": 3,
+    "keep": false,
+    "plan_only": false,
+    "load_timeout_s": 3600.0,
+    "chat_timeout_s": 1800.0,
+    "poll_s": 2.0,
+    "heartbeat_wait_s": 7.5,
+    "sample_interval_s": 0.5,
+    "gpu_every": 4,
+    "min_available_gib": 0.0,
+    "min_drive_free_gib": 5.0,
+    "max_commit_growth_gib": 8.0,
+    "max_swap_growth_gib": 2.0,
+    "seed_peers": false,
+    "seed_timeout_s": 3600.0,
+    "seed_poll_s": 5.0,
+    "replan_after_s": 480.0,
+    "layout": null,
+    "concurrency": 1,
+    "home": "C:\\Users\\operator\\.hypercompute\\iroh-session",
+    "results_dir": "C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity",
+    "chat_settings": {
+      "stream": true,
+      "temperature": 0,
+      "seed": 7,
+      "cache_prompt": false,
+      "ignore_eos": true
+    }
+  },
+  "runner": {
+    "git_head": "260d9a9e0f62bae0ccb15f368bce9d4b3dc8a8b7",
+    "uncommitted_paths": 13,
+    "note": "the runner's checkout; the gateway runs whatever code it was started from"
+  },
+  "predicted": {
+    "plan": {
+      "id": "51e564c3faa642029fe5c469d39e634e",
+      "model_id": "qwen3-next-80b-a3b-instruct-q3_k_m",
+      "strategy": "local_only",
+      "ctx_size": 4096,
+      "feasible": true,
+      "fit_label": "estimated_fit",
+      "heuristic": true,
+      "assignments": [
+        {
+          "node_id": "local",
+          "device": "CPU",
+          "endpoint": null,
+          "pool_id": "ram",
+          "layers": [],
+          "holds_output": false,
+          "weight_bytes": 27682406400,
+          "kv_bytes": 0,
+          "compute_bytes_est": 134217728,
+          "overhead_bytes_est": 67108864,
+          "total_bytes_est": 201326592,
+          "budget_bytes": 11043995239,
+          "fits": true,
+          "file_backed": false
+        },
+        {
+          "node_id": "local",
+          "device": "CUDA0",
+          "endpoint": null,
+          "pool_id": "vram:CUDA0",
+          "layers": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47
+          ],
+          "holds_output": true,
+          "weight_bytes": 10477777920,
+          "kv_bytes": 402653184,
+          "compute_bytes_est": 134217728,
+          "overhead_bytes_est": 471859200,
+          "total_bytes_est": 11486508032,
+          "budget_bytes": 11987320832,
+          "fits": true,
+          "file_backed": false
+        }
+      ],
+      "device_list": [
+        "CUDA0"
+      ],
+      "tensor_split": [
+        49
+      ],
+      "rpc_endpoints": [],
+      "cpu_resident_bytes": 133703680,
+      "reasons": [
+        "strategy: this machine only",
+        "contributed / estimated usable across selected devices: 11.2 GiB (separate memory pools, not one fast global memory)"
+      ],
+      "warnings": [
+        "moe_offload: attention, norms, router, shared experts, the head and the KV cache stay on the accelerators; the routed experts of 36 host layer(s) (25.8 GiB) stay on this machine's CPU, memory-mapped from the GGUF with no repacked or pinned copy (file cache, not committed RAM)",
+        "capacity mode (MoE): ~10.1 GiB of RAM left for the file cache against 25.8 GiB of CPU experts: an estimated 61% of the 2.0% of expert bytes a token routes to miss it, ~314 MiB of SSD reads per token",
+        "expected speed (readable; an estimate from priors and an assumed page-fault read rate of 1.0 GiB/s, not a measurement): ~317 ms per token, about 3.2 tokens/s. Prompt processing of the CPU experts runs on the CPU",
+        "capacity optimizer not used (moe): qwen3-next-80b-a3b-instruct-q3_k_m is a mixture-of-experts model (512 experts, 10 per token); the optimizer's layer search does not model expert offload, so the planner's moe_offload plan is used"
+      ],
+      "candidates": [
+        {
+          "label": "this machine only",
+          "devices": [
+            "local:CUDA0"
+          ],
+          "feasible": false,
+          "reason": "CUDA0 needs ~36.5 GiB of 11.2 GiB"
+        },
+        {
+          "label": "this machine: GPU + MoE experts on the host CPU",
+          "devices": [
+            "local:CPU",
+            "local:CUDA0"
+          ],
+          "feasible": true,
+          "reason": "estimated fit: experts of 36 of 48 host layer(s) (25.8 GiB) stay on the CPU, file-backed; decode ~317 ms/token (estimate)"
+        }
+      ],
+      "created_at": "2026-10-25T00:42:37.598504Z",
+      "engine": "llama_rpc",
+      "tier": "moe_offload",
+      "cpu_layers": 0,
+      "n_gpu_units": null,
+      "engine_flags": {},
+      "engine_options": {},
+      "profile_id": null,
+      "capacity_mode": true,
+      "stream": null,
+      "moe": {
+        "expert_count": 512,
+        "expert_used_count": 10,
+        "active_fraction": 0.01953125,
+        "cpu_expert_layers": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35
+        ],
+        "cpu_expert_bytes": 27682406400,
+        "gpu_expert_bytes": 9160359936,
+        "override": "^blk\\.([0-9]|[1-2][0-9]|3[0-5])\\.ffn_(up|down|gate_up|gate)_(ch|)exps\\.=CPU",
+        "page_cache_bytes_est": 10842668647,
+        "miss_rate_est": 0.6083191435626059,
+        "ssd_bytes_per_token_est": 328901127,
+        "read_bytes_per_s": 1073741824.0,
+        "decode_ms_est": 317.02175892853245,
+        "provenance": "estimate"
+      },
+      "revision": 0,
+      "prediction": null,
+      "limits": {
+        "allow_ram_tier": true,
+        "allow_capacity_mode": true,
+        "node_ids": null,
+        "strategy": "local_only"
+      },
+      "layout": null
+    },
+    "explain": {
+      "model_id": "qwen3-next-80b-a3b-instruct-q3_k_m",
+      "workload": {
+        "ctx_size": 4096,
+        "prompt_tokens": 128,
+        "output_tokens": 64,
+        "warm": false,
+        "horizon_tokens": 2048,
+        "objective": "interactive"
+      },
+      "feasible": true,
+      "best": null,
+      "plan": {
+        "id": "670ca284d51f4023bc5c5bb7f9c3c763",
+        "model_id": "qwen3-next-80b-a3b-instruct-q3_k_m",
+        "strategy": "fastest_fit",
+        "ctx_size": 4096,
+        "feasible": true,
+        "fit_label": "estimated_fit",
+        "heuristic": true,
+        "assignments": [
+          {
+            "node_id": "local",
+            "device": "CPU",
+            "endpoint": null,
+            "pool_id": "ram",
+            "layers": [],
+            "holds_output": false,
+            "weight_bytes": 6870269952,
+            "kv_bytes": 0,
+            "compute_bytes_est": 134217728,
+            "overhead_bytes_est": 67108864,
+            "total_bytes_est": 201326592,
+            "budget_bytes": 11043995239,
+            "fits": true,
+            "file_backed": false
+          },
+          {
+            "node_id": "6dad6cf75b2e4cf197b7bc7f4d0a67e4",
+            "device": "RPC0",
+            "endpoint": "127.0.0.1:63576",
+            "pool_id": "uma",
+            "layers": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "holds_output": false,
+            "weight_bytes": 10413874688,
+            "kv_bytes": 109051904,
+            "compute_bytes_est": 134217728,
+            "overhead_bytes_est": 335544320,
+            "total_bytes_est": 10992688640,
+            "budget_bytes": 11274289152,
+            "fits": true,
+            "file_backed": false
+          },
+          {
+            "node_id": "d4e65f83c4be4a41aad722e40983b08b",
+            "device": "RPC1",
+            "endpoint": "127.0.0.1:64300",
+            "pool_id": "uma",
+            "layers": [
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25
+            ],
+            "holds_output": false,
+            "weight_bytes": 10212285952,
+            "kv_bytes": 109051904,
+            "compute_bytes_est": 134217728,
+            "overhead_bytes_est": 335544320,
+            "total_bytes_est": 10791099904,
+            "budget_bytes": 11274289152,
+            "fits": true,
+            "file_backed": false
+          },
+          {
+            "node_id": "local",
+            "device": "CUDA0",
+            "endpoint": null,
+            "pool_id": "vram:CUDA0",
+            "layers": [
+              26,
+              27,
+              28,
+              29,
+              30,
+              31,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              42,
+              43,
+              44,
+              45,
+              46,
+              47
+            ],
+            "holds_output": true,
+            "weight_bytes": 10663753728,
+            "kv_bytes": 184549376,
+            "compute_bytes_est": 134217728,
+            "overhead_bytes_est": 471859200,
+            "total_bytes_est": 11454380032,
+            "budget_bytes": 11987320832,
+            "fits": true,
+            "file_backed": false
+          }
+        ],
+        "device_list": [
+          "RPC0",
+          "RPC1",
+          "CUDA0"
+        ],
+        "tensor_split": [
+          13,
+          13,
+          23
+        ],
+        "rpc_endpoints": [
+          "127.0.0.1:63576",
+          "127.0.0.1:64300"
+        ],
+        "cpu_resident_bytes": 133703680,
+        "reasons": [
+          "strategy: fastest fit (fewest devices, local first; peers only when needed)",
+          "contributed / estimated usable across selected devices: 32.2 GiB (separate memory pools, not one fast global memory)"
+        ],
+        "warnings": [
+          "MoE placement with the peers: estimated decode ~23 ms/token against ~317 (priors, not measured); the other layout is in the candidates",
+          "moe_offload: attention, norms, router, shared experts, the head and the KV cache stay on the accelerators; the routed experts of 9 host layer(s) (6.4 GiB) stay on this machine's CPU, memory-mapped from the GGUF with no repacked or pinned copy (file cache, not committed RAM)",
+          "the peers hold whole layers (19.2 GiB), uploaded over the network before the first token",
+          "expected speed (interactive; an estimate from priors and an assumed page-fault read rate of 1.0 GiB/s, not a measurement): ~23 ms per token, about 44.1 tokens/s. Prompt processing of the CPU experts runs on the CPU"
+        ],
+        "candidates": [
+          {
+            "label": "this machine only",
+            "devices": [
+              "local:CUDA0"
+            ],
+            "feasible": false,
+            "reason": "CUDA0 needs ~36.5 GiB of 11.2 GiB"
+          },
+          {
+            "label": "overflow to 1 peer device(s)",
+            "devices": [
+              "6dad6cf75b2e4cf197b7bc7f4d0a67e4:127.0.0.1:63576#0",
+              "local:CUDA0"
+            ],
+            "feasible": false,
+            "reason": "127.0.0.1:63576#0 needs ~25.8 GiB of 10.5 GiB"
+          },
+          {
+            "label": "overflow to 2 peer device(s)",
+            "devices": [
+              "6dad6cf75b2e4cf197b7bc7f4d0a67e4:127.0.0.1:63576#0",
+              "d4e65f83c4be4a41aad722e40983b08b:127.0.0.1:64300#0",
+              "local:CUDA0"
+            ],
+            "feasible": false,
+            "reason": "127.0.0.1:63576#0 needs ~16.2 GiB of 10.5 GiB"
+          },
+          {
+            "label": "MoE experts on the host CPU",
+            "devices": [
+              "local:CPU",
+              "local:CUDA0"
+            ],
+            "feasible": true,
+            "reason": "estimated fit: experts of 36 of 48 host layer(s) (25.8 GiB) stay on the CPU, file-backed; decode ~317 ms/token (estimate)"
+          },
+          {
+            "label": "2 peer device(s) + MoE experts on the host CPU",
+            "devices": [
+              "local:CPU",
+              "6dad6cf75b2e4cf197b7bc7f4d0a67e4:127.0.0.1:63576#0",
+              "d4e65f83c4be4a41aad722e40983b08b:127.0.0.1:64300#0",
+              "local:CUDA0"
+            ],
+            "feasible": true,
+            "reason": "estimated fit: experts of 9 of 22 host layer(s) (6.4 GiB) stay on the CPU, file-backed; decode ~23 ms/token (estimate)"
+          }
+        ],
+        "created_at": "2026-10-25T00:42:37.607577Z",
+        "engine": "llama_rpc",
+        "tier": "moe_offload",
+        "cpu_layers": 0,
+        "n_gpu_units": null,
+        "engine_flags": {},
+        "engine_options": {},
+        "profile_id": null,
+        "capacity_mode": false,
+        "stream": null,
+        "moe": {
+          "expert_count": 512,
+          "expert_used_count": 10,
+          "active_fraction": 0.01953125,
+          "cpu_expert_layers": [
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34
+          ],
+          "cpu_expert_bytes": 6870269952,
+          "gpu_expert_bytes": 9923723264,
+          "override": "^blk\\.(2[6-9]|3[0-4])\\.ffn_(up|down|gate_up|gate)_(ch|)exps\\.=CPU",
+          "page_cache_bytes_est": 10842668647,
+          "miss_rate_est": 0.0,
+          "ssd_bytes_per_token_est": 0,
+          "read_bytes_per_s": 1073741824.0,
+          "decode_ms_est": 22.65595595776,
+          "provenance": "estimate"
+        },
+        "revision": 0,
+        "prediction": null,
+        "limits": null,
+        "layout": null
+      },
+      "candidates": [
+        {
+          "layout": "this machine only: local:CUDA0",
+          "feasible": false,
+          "reasons": [
+            "CUDA0 needs ~36.5 GiB of 11.2 GiB"
+          ]
+        },
+        {
+          "layout": "overflow to 1 peer device(s): 6dad6cf75b2e4cf197b7bc7f4d0a67e4:127.0.0.1:63576#0, local:CUDA0",
+          "feasible": false,
+          "reasons": [
+            "127.0.0.1:63576#0 needs ~25.8 GiB of 10.5 GiB"
+          ]
+        },
+        {
+          "layout": "overflow to 2 peer device(s): 6dad6cf75b2e4cf197b7bc7f4d0a67e4:127.0.0.1:63576#0, d4e65f83c4be4a41aad722e40983b08b:127.0.0.1:64300#0, local:CUDA0",
+          "feasible": false,
+          "reasons": [
+            "127.0.0.1:63576#0 needs ~16.2 GiB of 10.5 GiB"
+          ]
+        },
+        {
+          "layout": "MoE experts on the host CPU: local:CPU, local:CUDA0",
+          "feasible": true,
+          "reasons": [
+            "estimated fit: experts of 36 of 48 host layer(s) (25.8 GiB) stay on the CPU, file-backed; decode ~317 ms/token (estimate)"
+          ]
+        },
+        {
+          "layout": "2 peer device(s) + MoE experts on the host CPU: local:CPU, 6dad6cf75b2e4cf197b7bc7f4d0a67e4:127.0.0.1:63576#0, d4e65f83c4be4a41aad722e40983b08b:127.0.0.1:64300#0, local:CUDA0",
+          "feasible": true,
+          "reasons": [
+            "estimated fit: experts of 9 of 22 host layer(s) (6.4 GiB) stay on the CPU, file-backed; decode ~23 ms/token (estimate)"
+          ]
+        }
+      ],
+      "explain": [
+        "mixture-of-experts model: the optimizer's layer search does not model expert offload (routed experts on the host CPU, file-backed), so the planner's plan is used; its numbers are estimates from priors",
+        "strategy: fastest fit (fewest devices, local first; peers only when needed)",
+        "contributed / estimated usable across selected devices: 32.2 GiB (separate memory pools, not one fast global memory)",
+        "MoE placement with the peers: estimated decode ~23 ms/token against ~317 (priors, not measured); the other layout is in the candidates",
+        "moe_offload: attention, norms, router, shared experts, the head and the KV cache stay on the accelerators; the routed experts of 9 host layer(s) (6.4 GiB) stay on this machine's CPU, memory-mapped from the GGUF with no repacked or pinned copy (file cache, not committed RAM)",
+        "the peers hold whole layers (19.2 GiB), uploaded over the network before the first token",
+        "expected speed (interactive; an estimate from priors and an assumed page-fault read rate of 1.0 GiB/s, not a measurement): ~23 ms per token, about 44.1 tokens/s. Prompt processing of the CPU experts runs on the CPU"
+      ],
+      "rejected": [],
+      "assumptions": [
+        "mixture-of-experts model: the optimizer's layer search does not model expert offload (routed experts on the host CPU, file-backed), so the planner's plan is used; its numbers are estimates from priors",
+        "decode {'cuda': 2.64, 'metal': 10.85, 'vulkan': 2.64, 'cpu': 12.5} ms per GB read (prior)",
+        "peer round trip 4 ms per device per token (prior)",
+        "page-fault read rate 1.0 GiB/s (prior)"
+      ],
+      "measured": [],
+      "warnings": []
+    }
+  },
+  "measured": {
+    "gateway_before": {
+      "health": {
+        "status": "ok",
+        "version": "0.1.0",
+        "time": "2026-10-25T00:42:37.563769+00:00",
+        "engine": {
+          "engine": "llama_rpc",
+          "installed": true,
+          "release": "b11770",
+          "build_number": 11770,
+          "commit": "39da130fc",
+          "rpc_proto": "8.0.0",
+          "variant": "source-build",
+          "accelerator": "unknown",
+          "bin_dir": "C:\\Users\\operator\\.hypercompute\\engines\\llama-b11770-windows-x64-cuda13.4",
+          "smoke": "passed",
+          "smoke_detail": "version: 0.7.0-dev (build 11770, commit 39da130fc); devices: CUDA0",
+          "devices": [
+            {
+              "name": "CUDA0",
+              "description": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+              "total_bytes": 12819890176,
+              "free_bytes": 11561598976
+            }
+          ]
+        },
+        "engines": [
+          {
+            "engine_id": "llama_rpc",
+            "status": "implemented",
+            "streaming": true,
+            "multi_host": true,
+            "disk_offload": false,
+            "cancel": true,
+            "platforms": [
+              "macos-arm64 (Metal)",
+              "windows-x64 (CUDA/CPU)",
+              "linux (CUDA/CPU)"
+            ],
+            "notes": "llama.cpp layer split over ggml RPC; unauthenticated RPC, trusted private LAN only"
+          },
+          {
+            "engine_id": "vllm",
+            "status": "implemented",
+            "streaming": true,
+            "multi_host": false,
+            "disk_offload": false,
+            "cancel": true,
+            "platforms": [
+              "linux x86_64/aarch64 (CUDA)",
+              "windows-x64 via WSL2 (CUDA)"
+            ],
+            "notes": "one NVIDIA GPU holds the whole model; continuous batching for concurrent requests"
+          },
+          {
+            "engine_id": "exo",
+            "status": "implemented",
+            "streaming": true,
+            "multi_host": true,
+            "disk_offload": false,
+            "cancel": true,
+            "platforms": [
+              "macos-arm64"
+            ],
+            "notes": "Apple-only MLX pipeline over the LAN; unauthenticated API, trusted private LAN only"
+          },
+          {
+            "engine_id": "airllm",
+            "status": "implemented",
+            "streaming": true,
+            "multi_host": false,
+            "disk_offload": true,
+            "cancel": true,
+            "platforms": [
+              "windows-x64 (CUDA/CPU)",
+              "linux (CUDA/CPU)"
+            ],
+            "notes": "disk capacity mode: every layer is read from disk for every token"
+          },
+          {
+            "engine_id": "exo_paged",
+            "status": "planned",
+            "streaming": false,
+            "multi_host": false,
+            "disk_offload": false,
+            "cancel": false,
+            "platforms": [],
+            "notes": "phase 4 research: layer offload inside EXO"
+          }
+        ]
+      },
+      "pools": {
+        "observed_at": "2026-10-25T00:42:37.563769+00:00",
+        "host_memory": {
+          "total": 33412722688,
+          "available": 18355474432,
+          "commit_charge": 35692400640,
+          "commit_limit": 52740075520,
+          "system_cache": 18148519936,
+          "observed_at": "2026-10-25T00:42:37.563769+00:00",
+          "source": "GetPerformanceInfo",
+          "error": null
+        },
+        "pools": [
+          {
+            "node_id": "local",
+            "pool_id": "ram",
+            "kind": "system_ram",
+            "total_bytes": 33412722688,
+            "free_bytes": 18355474432,
+            "reserve_bytes": 7219415449,
+            "cap_bytes": null,
+            "admissible_bytes": 11136058983,
+            "devices": [
+              "CPU"
+            ],
+            "source": "GetPerformanceInfo (fresh snapshot)",
+            "observed_at": "2026-10-25T00:42:37.563769+00:00",
+            "age_s": 0.0
+          },
+          {
+            "node_id": "local",
+            "pool_id": "vram:CUDA0",
+            "kind": "discrete_vram",
+            "total_bytes": 12820938752,
+            "free_bytes": 12524191744,
+            "reserve_bytes": 536870912,
+            "cap_bytes": null,
+            "admissible_bytes": 11987320832,
+            "devices": [
+              "CUDA0"
+            ],
+            "source": "nvidia-smi",
+            "observed_at": "2026-10-25T00:42:37.550491+00:00",
+            "age_s": 0.0
+          },
+          {
+            "node_id": "6dad6cf75b2e4cf197b7bc7f4d0a67e4",
+            "pool_id": "uma",
+            "kind": "unified",
+            "total_bytes": 17179869184,
+            "free_bytes": 13409697792,
+            "reserve_bytes": 0,
+            "cap_bytes": 11274289152,
+            "admissible_bytes": 11274289152,
+            "devices": [
+              "MTL0"
+            ],
+            "source": "sysctl hw.memsize + psutil",
+            "observed_at": "2026-10-25T00:42:32.680292+00:00",
+            "age_s": 4.9
+          },
+          {
+            "node_id": "d4e65f83c4be4a41aad722e40983b08b",
+            "pool_id": "uma",
+            "kind": "unified",
+            "total_bytes": 17179869184,
+            "free_bytes": 13326417920,
+            "reserve_bytes": 0,
+            "cap_bytes": 11274289152,
+            "admissible_bytes": 11274289152,
+            "devices": [
+              "MTL0"
+            ],
+            "source": "sysctl hw.memsize + psutil",
+            "observed_at": "2026-10-25T00:42:33.200932+00:00",
+            "age_s": 4.4
+          },
+          {
+            "node_id": "local",
+            "pool_id": "ssd",
+            "kind": "storage",
+            "total_bytes": null,
+            "free_bytes": 120237973504,
+            "reserve_bytes": 0,
+            "cap_bytes": null,
+            "admissible_bytes": 120237973504,
+            "devices": [],
+            "source": "free volume space (caller observation)",
+            "observed_at": "2026-10-25T00:42:37.563769+00:00",
+            "age_s": 0.0
+          }
+        ],
+        "excluded": [],
+        "notes": [],
+        "leases": [],
+        "released": null
+      },
+      "nodes": [
+        {
+          "id": "local",
+          "display_name": "benchmark-host (this machine)",
+          "is_local": true,
+          "state": "eligible",
+          "state_reason": null,
+          "worker_state": null,
+          "worker_cpu_seconds": null,
+          "heartbeat_age_s": 0.0,
+          "contribution": {
+            "devices": [
+              "CUDA0"
+            ],
+            "max_bytes": 12284067840,
+            "reserve_bytes": 6682544537,
+            "enforcement": "soft_admission",
+            "cache_enabled": false
+          },
+          "memory_pools": [
+            {
+              "id": "ram",
+              "kind": "system_ram",
+              "total_bytes": 33412722688,
+              "free_bytes": 18397114368,
+              "measured_at": "2026-10-25T00:42:36.793599Z",
+              "source": "psutil",
+              "note": null
+            },
+            {
+              "id": "vram:CUDA0",
+              "kind": "discrete_vram",
+              "total_bytes": 12820938752,
+              "free_bytes": 12524191744,
+              "measured_at": "2026-10-25T00:42:37.550491Z",
+              "source": "nvidia-smi",
+              "note": null
+            }
+          ],
+          "engine_devices": [
+            {
+              "name": "CUDA0",
+              "description": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+              "total_bytes": 12819890176,
+              "free_bytes": 11561598976
+            }
+          ]
+        },
+        {
+          "id": "6dad6cf75b2e4cf197b7bc7f4d0a67e4",
+          "display_name": "mac-a",
+          "is_local": false,
+          "state": "eligible",
+          "state_reason": null,
+          "worker_state": "running",
+          "worker_cpu_seconds": 11.716223488,
+          "heartbeat_age_s": 3.000416,
+          "contribution": {
+            "devices": [
+              "MTL0"
+            ],
+            "max_bytes": 11274289152,
+            "reserve_bytes": 0,
+            "enforcement": "soft_admission",
+            "cache_enabled": true
+          },
+          "memory_pools": [
+            {
+              "id": "uma",
+              "kind": "unified",
+              "total_bytes": 17179869184,
+              "free_bytes": 13409697792,
+              "measured_at": "2026-10-25T00:42:32.680292Z",
+              "source": "sysctl hw.memsize + psutil",
+              "note": "CPU and GPU share this pool; counted once"
+            }
+          ],
+          "engine_devices": [
+            {
+              "name": "MTL0",
+              "description": "Apple M4",
+              "total_bytes": 11452547072,
+              "free_bytes": 11452547072
+            },
+            {
+              "name": "BLAS",
+              "description": "Accelerate",
+              "total_bytes": 0,
+              "free_bytes": 0
+            }
+          ]
+        },
+        {
+          "id": "d4e65f83c4be4a41aad722e40983b08b",
+          "display_name": "mac-b",
+          "is_local": false,
+          "state": "eligible",
+          "state_reason": null,
+          "worker_state": "running",
+          "worker_cpu_seconds": 17.546637312,
+          "heartbeat_age_s": 2.406359,
+          "contribution": {
+            "devices": [
+              "MTL0"
+            ],
+            "max_bytes": 11274289152,
+            "reserve_bytes": 0,
+            "enforcement": "soft_admission",
+            "cache_enabled": true
+          },
+          "memory_pools": [
+            {
+              "id": "uma",
+              "kind": "unified",
+              "total_bytes": 17179869184,
+              "free_bytes": 13326417920,
+              "measured_at": "2026-10-25T00:42:33.200932Z",
+              "source": "sysctl hw.memsize + psutil",
+              "note": "CPU and GPU share this pool; counted once"
+            }
+          ],
+          "engine_devices": [
+            {
+              "name": "MTL0",
+              "description": "Apple M4",
+              "total_bytes": 11452547072,
+              "free_bytes": 11452547072
+            },
+            {
+              "name": "BLAS",
+              "description": "Accelerate",
+              "total_bytes": 0,
+              "free_bytes": 0
+            }
+          ]
+        }
+      ],
+      "network": {
+        "transport": "iroh",
+        "endpoint_id": "ac7228fe76183c09bfea5810229535a44f4acec3ef111773d317bd3f690bf96a",
+        "listening": true,
+        "connections": 2,
+        "binding_speedups": {
+          "fast_bytes_lowering": true,
+          "inline_ready_wakeups": true
+        },
+        "peers": [
+          {
+            "node_id": "6dad6cf75b2e4cf197b7bc7f4d0a67e4",
+            "peer_id": "a1674d0f7f5853bfeeeb33172d0cc3661a86704719b26784f5f89ded7129ef17",
+            "connected": true,
+            "path": {
+              "remote_id": "a1674d0f7f5853bfeeeb33172d0cc3661a86704719b26784f5f89ded7129ef17",
+              "mode": "direct",
+              "rtt_ms": 6,
+              "paths": 2,
+              "selected_stats": {
+                "cwnd": 3579396,
+                "congestion_events": 0,
+                "lost_packets": 0,
+                "lost_bytes": 0,
+                "udp_tx_bytes": 16589314,
+                "udp_rx_bytes": 71387525,
+                "current_mtu": 1452
+              }
+            },
+            "rpc": {
+              "tcp_to_quic_bytes": 344336534,
+              "tcp_to_quic_chunks": 3396,
+              "quic_to_tcp_bytes": 120074241,
+              "quic_to_tcp_chunks": 6228,
+              "streams": 45,
+              "active": 0
+            }
+          },
+          {
+            "node_id": "d4e65f83c4be4a41aad722e40983b08b",
+            "peer_id": "46e60e1c168b3c989ab48d97001dcb15744e565d291621998ba3c09abb4df401",
+            "connected": true,
+            "path": {
+              "remote_id": "46e60e1c168b3c989ab48d97001dcb15744e565d291621998ba3c09abb4df401",
+              "mode": "direct",
+              "rtt_ms": 7,
+              "paths": 2,
+              "selected_stats": {
+                "cwnd": 1938755,
+                "congestion_events": 0,
+                "lost_packets": 0,
+                "lost_bytes": 0,
+                "udp_tx_bytes": 8835384,
+                "udp_rx_bytes": 61576386,
+                "current_mtu": 1452
+              }
+            },
+            "rpc": {
+              "tcp_to_quic_bytes": 524632925,
+              "tcp_to_quic_chunks": 5236,
+              "quic_to_tcp_bytes": 120075564,
+              "quic_to_tcp_chunks": 6350,
+              "streams": 45,
+              "active": 0
+            }
+          }
+        ]
+      },
+      "source": "the gateway's own state (inventory and heartbeats are measured by the nodes; admissible is derived)"
+    },
+    "model": {
+      "status": "downloaded",
+      "verified_sha256": true,
+      "local_path": "C:\\Users\\operator\\.hypercompute\\iroh-session\\models\\qwen3-next-80b-a3b-instruct-q3_k_m\\Qwen3-Next-80B-A3B-Instruct-Q3_K_M.gguf",
+      "total_bytes": 38299874080,
+      "gguf": {
+        "architecture": "qwen3next",
+        "name": "Qwen3-Next-80B-A3B-Instruct",
+        "file_type": "Q3_K_M",
+        "n_layer": 48,
+        "n_embd": 2048,
+        "n_head": 16,
+        "n_head_kv": 2,
+        "context_length": 262144,
+        "vocab_size": 151936,
+        "tensor_count": 843,
+        "total_tensor_bytes": 38293888000,
+        "layer_bytes": [
+          853561088,
+          853561088,
+          853561088,
+          782718976,
+          786452224,
+          786452224,
+          786452224,
+          782718976,
+          786452224,
+          786452224,
+          786452224,
+          782587904,
+          786452224,
+          786452224,
+          786452224,
+          782587904,
+          786452224,
+          786452224,
+          786452224,
+          782587904,
+          786452224,
+          786452224,
+          786452224,
+          782587904,
+          786452224,
+          786452224,
+          786452224,
+          782587904,
+          786452224,
+          786452224,
+          786452224,
+          782587904,
+          786452224,
+          786452224,
+          786452224,
+          782587904,
+          786452224,
+          786452224,
+          786452224,
+          782587904,
+          786452224,
+          786452224,
+          786452224,
+          782587904,
+          786452224,
+          786452224,
+          786452224,
+          782587904
+        ],
+        "token_embd_bytes": 133703680,
+        "output_bytes": 255260672,
+        "output_tied": false,
+        "other_bytes": 0,
+        "chat_template_present": true,
+        "key_length": 256,
+        "value_length": 256,
+        "expert_count": 512,
+        "expert_used_count": 10,
+        "expert_shared_count": null,
+        "layer_expert_bytes": [
+          830472192,
+          830472192,
+          830472192,
+          763363328,
+          763363328,
+          763363328,
+          763363328,
+          763363328,
+          763363328,
+          763363328,
+          763363328,
+          763363328,
+          763363328,
+          763363328,
+          763363328,
+          763363328,
+          763363328,
+          763363328,
+          763363328,
+          763363328,
+          763363328,
+          763363328,
+          763363328,
+          763363328,
+          763363328,
+          763363328,
+          763363328,
+          763363328,
+          763363328,
+          763363328,
+          763363328,
+          763363328,
+          763363328,
+          763363328,
+          763363328,
+          763363328,
+          763363328,
+          763363328,
+          763363328,
+          763363328,
+          763363328,
+          763363328,
+          763363328,
+          763363328,
+          763363328,
+          763363328,
+          763363328,
+          763363328
+        ]
+      }
+    },
+    "load": {
+      "seconds": 18.031,
+      "source": "client clock from create to the first poll that saw the final state (poll interval bounds the error)"
+    },
+    "placement": {
+      "source": "the gateway's deployment record (placement parsed from the engine's load log)",
+      "state": "ready",
+      "error": null,
+      "observed": {
+        "offloaded": "49/49",
+        "devices": [
+          {
+            "name": "CPU_Mapped",
+            "model_bytes": 27816110325,
+            "kv_bytes": 0,
+            "compute_bytes": 0,
+            "layers_est": null
+          },
+          {
+            "name": "CUDA0",
+            "model_bytes": 10477780336,
+            "kv_bytes": 100663296,
+            "compute_bytes": 109051904,
+            "layers_est": 12
+          },
+          {
+            "name": "CUDA_Host",
+            "model_bytes": 0,
+            "kv_bytes": 0,
+            "compute_bytes": 87052779,
+            "layers_est": null
+          }
+        ],
+        "evidence_lines": [
+          "load_tensors: offloaded 49/49 layers to GPU",
+          "load_tensors:   CPU_Mapped model buffer size =   127.51 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   352.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   352.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   352.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+          "load_tensors:        CUDA0 model buffer size =  9992.39 MiB",
+          "llama_kv_cache:      CUDA0 KV buffer size =    96.00 MiB",
+          "sched_reserve:      CUDA0 compute buffer size =   104.00 MiB",
+          "sched_reserve:  CUDA_Host compute buffer size =    83.02 MiB"
+        ],
+        "parsed_at": "2026-10-25T00:42:53.018764Z"
+      },
+      "participation_verified": true,
+      "participation_detail": "moe_offload verified: CUDA0 model 9992 MiB (planned 9992), CPU_Mapped 26528 MiB, private host weights 0 MiB, 36 CPU expert layer(s) planned; no -ot override lines (debug level, -lv 5), so the expert placement is checked by buffer sizes: CPU experts left on the GPU would push its model buffer over the plan; local-only deployment (no peers in the plan); CPU: no buffers observed; CUDA0: model 9992 MiB, KV 96 MiB, ~12 layers (planned 48)",
+      "engine_args": [
+        "-m",
+        "C:\\Users\\operator\\.hypercompute\\iroh-session\\models\\qwen3-next-80b-a3b-instruct-q3_k_m\\Qwen3-Next-80B-A3B-Instruct-Q3_K_M.gguf",
+        "--alias",
+        "qwen3-next-80b-a3b-instruct-q3_k_m",
+        "--load-mode",
+        "mmap",
+        "--no-repack",
+        "--no-host",
+        "--no-op-offload",
+        "--cache-ram",
+        "0",
+        "-ot",
+        "^blk\\.([0-9]|[1-2][0-9]|3[0-5])\\.ffn_(up|down|gate_up|gate)_(ch|)exps\\.=CPU",
+        "--device",
+        "CUDA0",
+        "--split-mode",
+        "layer",
+        "--tensor-split",
+        "49",
+        "-ngl",
+        "all",
+        "--fit",
+        "off",
+        "-c",
+        "4096",
+        "-np",
+        "1",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "63246",
+        "--metrics",
+        "--no-ui",
+        "-lv",
+        "4",
+        "--log-colors",
+        "off"
+      ],
+      "engine": {
+        "flags": {
+          "--load-mode": "mmap",
+          "--no-repack": true,
+          "--no-host": true,
+          "--no-op-offload": true,
+          "--cache-ram": "0",
+          "--override-tensor": [
+            "^blk\\.([0-9]|[1-2][0-9]|3[0-5])\\.ffn_(up|down|gate_up|gate)_(ch|)exps\\.=CPU"
+          ],
+          "--device": "CUDA0",
+          "--split-mode": "layer",
+          "--tensor-split": "49",
+          "--n-gpu-layers": "all",
+          "--fit": "off",
+          "--ctx-size": "4096",
+          "--parallel": "1"
+        },
+        "moe": {
+          "cpu_moe": false,
+          "n_cpu_moe": null,
+          "override_tensor": [
+            "^blk\\.([0-9]|[1-2][0-9]|3[0-5])\\.ffn_(up|down|gate_up|gate)_(ch|)exps\\.=CPU"
+          ],
+          "no_repack": true,
+          "no_host": true,
+          "no_op_offload": true,
+          "load_mode": "mmap",
+          "fit": "off"
+        }
+      },
+      "pid": 29488,
+      "tier": "moe_offload",
+      "history": [
+        {
+          "state": "planned",
+          "at": "2026-10-25T00:42:37.613800Z",
+          "detail": null
+        },
+        {
+          "state": "reserving",
+          "at": "2026-10-25T00:42:37.613800Z",
+          "detail": null
+        },
+        {
+          "state": "preparing",
+          "at": "2026-10-25T00:42:37.613800Z",
+          "detail": "re-checking peers and model file"
+        },
+        {
+          "state": "loading",
+          "at": "2026-10-25T00:42:37.613800Z",
+          "detail": "starting llama-server"
+        },
+        {
+          "state": "warming",
+          "at": "2026-10-25T00:42:53.025268Z",
+          "detail": "first request"
+        },
+        {
+          "state": "ready",
+          "at": "2026-10-25T00:42:55.119134Z",
+          "detail": "moe_offload verified: CUDA0 model 9992 MiB (planned 9992), CPU_Mapped 26528 MiB, private host weights 0 MiB, 36 CPU expert layer(s) planned; no -ot override lines (debug level, -lv 5), so the expert placement is checked by buffer sizes: CPU experts left on the GPU would push its model buffer over the plan; local-only deployment (no peers in the plan); CPU: no buffers observed; CUDA0: model 9992 MiB, KV 96 MiB, ~12 layers (planned 48)"
+        }
+      ]
+    },
+    "engine_log": {
+      "available": true,
+      "path": "C:\\Users\\operator\\.hypercompute\\iroh-session\\coordinator\\logs\\llama-server-1153a73ff5504b7ebd81e3ed0e9ac912.log",
+      "source": "the engine's load log",
+      "model_buffers_mib": {
+        "CPU_Mapped": 26527.51,
+        "CUDA0": 9992.39
+      },
+      "file_backed_host_mib": 26527.51,
+      "private_host_mib": 0,
+      "metal_mapped_mib": 0,
+      "metal_private_mib": 0,
+      "slots": {
+        "n_slots": 1,
+        "n_ctx_slot": 4096,
+        "kv_unified": false,
+        "n_seq_max": 1,
+        "n_ctx": 4096,
+        "n_ctx_seq": 4096,
+        "kv_caches": [
+          {
+            "mib": 96.0,
+            "cells": 4096,
+            "layers": 12,
+            "n_seq_max": 1,
+            "n_stream": 1
+          }
+        ]
+      },
+      "lines": [
+        "0.00.327.620 I llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.",
+        "0.00.500.358 W load: control-looking token: 128247 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden",
+        "0.00.531.044 I load_tensors: loading model tensors, this can take a while... (load_mode = mmap)",
+        "0.00.532.120 W llama_model_loader: tensor overrides to CPU are used with mmap enabled - consider using --load-mode none for better performance",
+        "0.03.915.724 I load_tensors: offloading output layer to GPU",
+        "0.03.915.734 I load_tensors: offloading 47 repeating layers to GPU",
+        "0.03.915.735 I load_tensors: offloaded 49/49 layers to GPU",
+        "0.03.915.744 I load_tensors:   CPU_Mapped model buffer size =   127.51 MiB",
+        "0.03.915.745 I load_tensors:   CPU_Mapped model buffer size =   352.00 MiB",
+        "0.03.915.746 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.747 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.748 I load_tensors:   CPU_Mapped model buffer size =   352.00 MiB",
+        "0.03.915.748 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.749 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.753 I load_tensors:   CPU_Mapped model buffer size =   352.00 MiB",
+        "0.03.915.753 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.754 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.755 I load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+        "0.03.915.756 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.757 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.757 I load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+        "0.03.915.758 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.759 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.759 I load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+        "0.03.915.760 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.761 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.762 I load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+        "0.03.915.762 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.763 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.764 I load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+        "0.03.915.764 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.765 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.766 I load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+        "0.03.915.767 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.767 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.768 I load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+        "0.03.915.769 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.769 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.770 I load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+        "0.03.915.771 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.772 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.772 I load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+        "0.03.915.773 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.774 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.775 I load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+        "0.03.915.775 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.776 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.776 I load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+        "0.03.915.777 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.778 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.779 I load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+        "0.03.915.779 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.780 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.781 I load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+        "0.03.915.781 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.782 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.783 I load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+        "0.03.915.783 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.784 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.785 I load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+        "0.03.915.785 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.786 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.786 I load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+        "0.03.915.787 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.788 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.789 I load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+        "0.03.915.790 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.790 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.791 I load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+        "0.03.915.792 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.793 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.793 I load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+        "0.03.915.794 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.795 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.795 I load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+        "0.03.915.796 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.797 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.798 I load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+        "0.03.915.798 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.799 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.800 I load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+        "0.03.915.800 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.801 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.802 I load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+        "0.03.915.802 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.803 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.804 I load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+        "0.03.915.805 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.805 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.806 I load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+        "0.03.915.807 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.808 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.808 I load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+        "0.03.915.809 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.810 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.810 I load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+        "0.03.915.811 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.812 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.812 I load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+        "0.03.915.813 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.814 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.814 I load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+        "0.03.915.815 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.816 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.817 I load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+        "0.03.915.817 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.818 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.819 I load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+        "0.03.915.819 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.820 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.821 I load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+        "0.03.915.821 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.822 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.823 I load_tensors:   CPU_Mapped model buffer size =   288.00 MiB",
+        "0.03.915.824 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.824 I load_tensors:   CPU_Mapped model buffer size =   220.00 MiB",
+        "0.03.915.825 I load_tensors:        CUDA0 model buffer size =  9992.39 MiB",
+        "0.13.540.846 I llama_context:  CUDA_Host  output buffer size =     0.58 MiB",
+        "0.13.542.295 I llama_kv_cache:      CUDA0 KV buffer size =    96.00 MiB",
+        "0.13.551.695 I llama_kv_cache: size =   96.00 MiB (  4096 cells,  12 layers,  1/1 seqs), K (f16):   48.00 MiB, V (f16):   48.00 MiB",
+        "0.13.551.712 I llama_kv_cache: n_rot_k = 0, n_embd_head_k_all = 256",
+        "0.13.551.713 I llama_kv_cache: n_rot_v = 0, n_embd_head_k_all = 256",
+        "0.13.560.367 I llama_memory_recurrent:      CUDA0 RS buffer size =    75.38 MiB",
+        "0.13.599.498 I sched_reserve:      CUDA0 compute buffer size =   104.00 MiB",
+        "0.13.599.505 I sched_reserve:  CUDA_Host compute buffer size =    83.02 MiB"
+      ],
+      "lines_dropped": 0
+    },
+    "chats": {
+      "source": "engine timings (decode = (predicted_n - 1) / predicted_ms) and the client clock through the gateway (ttft_ms, total_ms, streaming); host fields from the monitor over each chat, disk reads system wide, bracketed by samples every interval_s",
+      "reps": [
+        {
+          "label": "warmup0",
+          "ok": true,
+          "error": null,
+          "ttft_ms": 9232.230299996445,
+          "total_ms": 12969.762199994875,
+          "finish_reason": "length",
+          "content_chars": 292,
+          "reasoning_chars": 0,
+          "t_start": 18.669,
+          "t_end": 31.639,
+          "prompt_n": 122,
+          "prompt_ms": 9226.113,
+          "predicted_n": 64,
+          "predicted_ms": 3734.959,
+          "cache_n": 0,
+          "prefill_tok_s": 13.2233368483564,
+          "decode_tok_s": 16.867655039854522,
+          "decode_ms_per_token": 59.285063492063486,
+          "host": {
+            "t0": 18.669,
+            "t1": 31.639,
+            "samples": 25,
+            "available_min": 278745088,
+            "commit_charge_peak": 48631693312,
+            "commit_limit_peak": 52740075520,
+            "system_cache_peak": 4338294784,
+            "drive_free_min": 120221560832,
+            "engine_rss_peak": 18620026880,
+            "engine_private_peak": 12948344832,
+            "gpu_used_peak": 11068768256,
+            "swap_used_min": null,
+            "swap_used_peak": null,
+            "disk_read_bytes": 9383754752,
+            "engine_read_bytes": 0,
+            "engine_page_faults": 2270138
+          },
+          "disk_read_bytes_per_output_token": 146621168.0,
+          "decode_disk_read_bytes_per_token": 24501199.23809524
+        },
+        {
+          "label": "rep0",
+          "ok": true,
+          "error": null,
+          "ttft_ms": 1614.1065999981947,
+          "total_ms": 5673.829300008947,
+          "finish_reason": "length",
+          "content_chars": 290,
+          "reasoning_chars": 0,
+          "t_start": 31.639,
+          "t_end": 37.313,
+          "prompt_n": 126,
+          "prompt_ms": 1591.61,
+          "predicted_n": 64,
+          "predicted_ms": 4057.634,
+          "cache_n": 0,
+          "prefill_tok_s": 79.1651221090594,
+          "decode_tok_s": 15.526289458339514,
+          "decode_ms_per_token": 64.40688888888889,
+          "host": {
+            "t0": 31.639,
+            "t1": 37.313,
+            "samples": 11,
+            "available_min": 254693376,
+            "commit_charge_peak": 49450442752,
+            "commit_limit_peak": 52740075520,
+            "system_cache_peak": 640716800,
+            "drive_free_min": 120235057152,
+            "engine_rss_peak": 18911223808,
+            "engine_private_peak": 12948561920,
+            "gpu_used_peak": 11068768256,
+            "swap_used_min": null,
+            "swap_used_peak": null,
+            "disk_read_bytes": 2438407168,
+            "engine_read_bytes": 0,
+            "engine_page_faults": 371533
+          },
+          "disk_read_bytes_per_output_token": 38100112.0,
+          "decode_disk_read_bytes_per_token": 27456853.333333332
+        },
+        {
+          "label": "rep1",
+          "ok": true,
+          "error": null,
+          "ttft_ms": 1530.4793000104837,
+          "total_ms": 4655.931000015698,
+          "finish_reason": "length",
+          "content_chars": 278,
+          "reasoning_chars": 0,
+          "t_start": 37.313,
+          "t_end": 41.969,
+          "prompt_n": 127,
+          "prompt_ms": 1497.044,
+          "predicted_n": 64,
+          "predicted_ms": 3123.606,
+          "cache_n": 0,
+          "prefill_tok_s": 84.83384589898493,
+          "decode_tok_s": 20.16899698617559,
+          "decode_ms_per_token": 49.581047619047624,
+          "host": {
+            "t0": 37.313,
+            "t1": 41.969,
+            "samples": 9,
+            "available_min": 216997888,
+            "commit_charge_peak": 49882738688,
+            "commit_limit_peak": 52740075520,
+            "system_cache_peak": 588681216,
+            "drive_free_min": 120234299392,
+            "engine_rss_peak": 18521010176,
+            "engine_private_peak": 12948627456,
+            "gpu_used_peak": 11068768256,
+            "swap_used_min": null,
+            "swap_used_peak": null,
+            "disk_read_bytes": 1498223616,
+            "engine_read_bytes": 0,
+            "engine_page_faults": 263584
+          },
+          "disk_read_bytes_per_output_token": 23409744.0,
+          "decode_disk_read_bytes_per_token": 14877655.365079366
+        },
+        {
+          "label": "rep2",
+          "ok": true,
+          "error": null,
+          "ttft_ms": 1193.1036000023596,
+          "total_ms": 3022.4043000198435,
+          "finish_reason": "length",
+          "content_chars": 278,
+          "reasoning_chars": 0,
+          "t_start": 41.97,
+          "t_end": 44.992,
+          "prompt_n": 125,
+          "prompt_ms": 1170.139,
+          "predicted_n": 64,
+          "predicted_ms": 1827.858,
+          "cache_n": 0,
+          "prefill_tok_s": 106.82491567241158,
+          "decode_tok_s": 34.466572348617895,
+          "decode_ms_per_token": 29.01361904761905,
+          "host": {
+            "t0": 41.97,
+            "t1": 44.992,
+            "samples": 5,
+            "available_min": 283668480,
+            "commit_charge_peak": 49731891200,
+            "commit_limit_peak": 52740075520,
+            "system_cache_peak": 619143168,
+            "drive_free_min": 120233897984,
+            "engine_rss_peak": 18707116032,
+            "engine_private_peak": 12948639744,
+            "gpu_used_peak": 11068768256,
+            "swap_used_min": null,
+            "swap_used_peak": null,
+            "disk_read_bytes": 497385472,
+            "engine_read_bytes": 0,
+            "engine_page_faults": 123709
+          },
+          "disk_read_bytes_per_output_token": 7771648.0,
+          "decode_disk_read_bytes_per_token": 3167183.238095238
+        }
+      ],
+      "summary": {
+        "ok": 3,
+        "failed": 0,
+        "ttft_ms": {
+          "n": 3,
+          "median": 1530.4793000104837,
+          "min": 1193.1036000023596,
+          "max": 1614.1065999981947
+        },
+        "prompt_n": {
+          "n": 3,
+          "median": 126,
+          "min": 125,
+          "max": 127
+        },
+        "prefill_tok_s": {
+          "n": 3,
+          "median": 84.83384589898493,
+          "min": 79.1651221090594,
+          "max": 106.82491567241158
+        },
+        "decode_tok_s": {
+          "n": 3,
+          "median": 20.16899698617559,
+          "min": 15.526289458339514,
+          "max": 34.466572348617895
+        },
+        "decode_ms_per_token": {
+          "n": 3,
+          "median": 49.581047619047624,
+          "min": 29.01361904761905,
+          "max": 64.40688888888889
+        },
+        "disk_read_bytes_per_output_token": {
+          "n": 3,
+          "median": 23409744.0,
+          "min": 7771648.0,
+          "max": 38100112.0
+        },
+        "decode_disk_read_bytes_per_token": {
+          "n": 3,
+          "median": 14877655.365079366,
+          "min": 3167183.238095238,
+          "max": 27456853.333333332
+        }
+      }
+    },
+    "peer_worker_cpu": {
+      "source": "rpc-server process CPU seconds reported by each peer's heartbeats, read before and after the measured reps (heartbeats are every 3 s, so the window is approximate)",
+      "nodes": {
+        "6dad6cf75b2e4cf197b7bc7f4d0a67e4": {
+          "display_name": "mac-a",
+          "before": 11.737253888000001,
+          "after": 11.776371968000001,
+          "delta_s": 0.039
+        },
+        "d4e65f83c4be4a41aad722e40983b08b": {
+          "display_name": "mac-b",
+          "before": 17.566813696,
+          "after": 17.603501568,
+          "delta_s": 0.037
+        }
+      }
+    },
+    "hcstream": {
+      "source": "hcstream stats file",
+      "path": "C:\\Users\\operator\\.hypercompute\\iroh-session\\coordinator\\logs\\hcstream-1153a73ff5504b7ebd81e3ed0e9ac912.json",
+      "before": {
+        "available": false
+      },
+      "after": {
+        "available": false
+      }
+    },
+    "gateway_runs": {
+      "source": "the gateway's run records for this deployment",
+      "runs": [
+        {
+          "id": "6e4b20e6663b4fb387b89c1892fb395b",
+          "attempt_id": "4c34c10fa5834016a3fd39fc473b0c70",
+          "deployment_id": "1153a73ff5504b7ebd81e3ed0e9ac912",
+          "kind": "chat",
+          "status": "ok",
+          "simulated": false,
+          "model": {
+            "id": "qwen3-next-80b-a3b-instruct-q3_k_m",
+            "repo": "unsloth/Qwen3-Next-80B-A3B-Instruct-GGUF",
+            "revision": "6688872b7a4e5eb8a121ceea08009530a024ba1d",
+            "quantization": "Q3_K_M",
+            "format": "gguf",
+            "files": [
+              {
+                "name": "Qwen3-Next-80B-A3B-Instruct-Q3_K_M.gguf",
+                "sha256": "7705e294047a8c285b5f86556bef81e12bc9309988a9ad7e806e81cb730a86ee"
+              }
+            ],
+            "architecture": "qwen3next",
+            "chat_template": true,
+            "context_length": 262144,
+            "max_output_tokens": 1024
+          },
+          "engine": {
+            "engine": "llama_rpc",
+            "release": "b11770",
+            "commit": "39da130fc",
+            "variant": "source-build",
+            "hosts": [
+              {
+                "node_id": "local",
+                "devices": [
+                  {
+                    "device": "CPU",
+                    "endpoint": null,
+                    "layers": 0
+                  },
+                  {
+                    "device": "CUDA0",
+                    "endpoint": null,
+                    "layers": 48
+                  }
+                ],
+                "display_name": "benchmark-host (this machine)",
+                "hostname": "benchmark-host",
+                "os": {
+                  "system": "windows",
+                  "release": "11",
+                  "machine": "x86_64"
+                },
+                "contributed_devices": [
+                  "CUDA0"
+                ],
+                "hardware": [
+                  {
+                    "id": "CPU",
+                    "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                    "backend": "cpu"
+                  },
+                  {
+                    "id": "CUDA0",
+                    "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                    "backend": "cuda"
+                  },
+                  {
+                    "id": "AMD Radeon(TM) 890M Graphics",
+                    "name": "AMD Radeon(TM) 890M Graphics",
+                    "backend": "unknown"
+                  }
+                ],
+                "engine": {
+                  "release": "b11770",
+                  "commit": "39da130fc",
+                  "variant": "source-build",
+                  "accelerator": "unknown",
+                  "rpc_proto": "8.0.0"
+                }
+              }
+            ]
+          },
+          "placement": [
+            {
+              "device": "CPU_Mapped",
+              "model_bytes": 27816110325,
+              "kv_bytes": 0,
+              "layers_est": null
+            },
+            {
+              "device": "CUDA0",
+              "model_bytes": 10477780336,
+              "kv_bytes": 100663296,
+              "layers_est": 12
+            },
+            {
+              "device": "CUDA_Host",
+              "model_bytes": 0,
+              "kv_bytes": 0,
+              "layers_est": null
+            }
+          ],
+          "transport": "tcp",
+          "ctx_size": 4096,
+          "stream": true,
+          "prompt_tokens": 125,
+          "completion_tokens": 64,
+          "ttft_ms": 1181.7928999953438,
+          "total_ms": 3012.046799995005,
+          "timings": {
+            "prompt_n": 125,
+            "prompt_ms": 1170.139,
+            "predicted_n": 64,
+            "predicted_ms": 1827.858,
+            "predicted_per_second": 34.46657234861789,
+            "prompt_per_second": 106.82491567241158,
+            "cache_n": 0
+          },
+          "finish_reason": "length",
+          "sampling": {
+            "temperature": 0,
+            "max_tokens": 64,
+            "seed": 7,
+            "cache_prompt": false
+          },
+          "cache_state": "cold",
+          "output_text": "the long road that leads over the hills to a busy market town. He pauses, wiping condensation from his spectacles, and watches a single leaf drift on the current\u2014its edge curled like a question mark. The millwheel groans, a familiar sound, half-mechanical, half-musical. Outside",
+          "error": null,
+          "started_at": "2026-10-25T00:43:18.978228Z",
+          "benchmark_id": null,
+          "prompt_label": null,
+          "resumed_from": null,
+          "messages_sha256": "35a5999081ec648bdd33920f5f5f9cd031c6242324f36730ed69dd95d5e67c94",
+          "output_truncated": false,
+          "non_content_output": false
+        },
+        {
+          "id": "152d62ce75524c0983ac577af0029ef9",
+          "attempt_id": "7b6ce3701349427d828bd54f336c0c04",
+          "deployment_id": "1153a73ff5504b7ebd81e3ed0e9ac912",
+          "kind": "chat",
+          "status": "ok",
+          "simulated": false,
+          "model": {
+            "id": "qwen3-next-80b-a3b-instruct-q3_k_m",
+            "repo": "unsloth/Qwen3-Next-80B-A3B-Instruct-GGUF",
+            "revision": "6688872b7a4e5eb8a121ceea08009530a024ba1d",
+            "quantization": "Q3_K_M",
+            "format": "gguf",
+            "files": [
+              {
+                "name": "Qwen3-Next-80B-A3B-Instruct-Q3_K_M.gguf",
+                "sha256": "7705e294047a8c285b5f86556bef81e12bc9309988a9ad7e806e81cb730a86ee"
+              }
+            ],
+            "architecture": "qwen3next",
+            "chat_template": true,
+            "context_length": 262144,
+            "max_output_tokens": 1024
+          },
+          "engine": {
+            "engine": "llama_rpc",
+            "release": "b11770",
+            "commit": "39da130fc",
+            "variant": "source-build",
+            "hosts": [
+              {
+                "node_id": "local",
+                "devices": [
+                  {
+                    "device": "CPU",
+                    "endpoint": null,
+                    "layers": 0
+                  },
+                  {
+                    "device": "CUDA0",
+                    "endpoint": null,
+                    "layers": 48
+                  }
+                ],
+                "display_name": "benchmark-host (this machine)",
+                "hostname": "benchmark-host",
+                "os": {
+                  "system": "windows",
+                  "release": "11",
+                  "machine": "x86_64"
+                },
+                "contributed_devices": [
+                  "CUDA0"
+                ],
+                "hardware": [
+                  {
+                    "id": "CPU",
+                    "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                    "backend": "cpu"
+                  },
+                  {
+                    "id": "CUDA0",
+                    "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                    "backend": "cuda"
+                  },
+                  {
+                    "id": "AMD Radeon(TM) 890M Graphics",
+                    "name": "AMD Radeon(TM) 890M Graphics",
+                    "backend": "unknown"
+                  }
+                ],
+                "engine": {
+                  "release": "b11770",
+                  "commit": "39da130fc",
+                  "variant": "source-build",
+                  "accelerator": "unknown",
+                  "rpc_proto": "8.0.0"
+                }
+              }
+            ]
+          },
+          "placement": [
+            {
+              "device": "CPU_Mapped",
+              "model_bytes": 27816110325,
+              "kv_bytes": 0,
+              "layers_est": null
+            },
+            {
+              "device": "CUDA0",
+              "model_bytes": 10477780336,
+              "kv_bytes": 100663296,
+              "layers_est": 12
+            },
+            {
+              "device": "CUDA_Host",
+              "model_bytes": 0,
+              "kv_bytes": 0,
+              "layers_est": null
+            }
+          ],
+          "transport": "tcp",
+          "ctx_size": 4096,
+          "stream": true,
+          "prompt_tokens": 127,
+          "completion_tokens": 64,
+          "ttft_ms": 1505.2086999930907,
+          "total_ms": 4631.760199990822,
+          "timings": {
+            "prompt_n": 127,
+            "prompt_ms": 1497.044,
+            "predicted_n": 64,
+            "predicted_ms": 3123.606,
+            "predicted_per_second": 20.168996986175593,
+            "prompt_per_second": 84.83384589898492,
+            "cache_n": 0
+          },
+          "finish_reason": "length",
+          "sampling": {
+            "temperature": 0,
+            "max_tokens": 64,
+            "seed": 7,
+            "cache_prompt": false
+          },
+          "cache_state": "cold",
+          "output_text": "the long road that leads over the hills to a busy market town. He doesn\u2019t look up when the rain taps the roof of the mill, nor when the stones clatter against the millstone\u2019s edge. His pen moves slowly, deliberately\u2014recording the wear on the third gear\u2019s teeth, the angle of the",
+          "error": null,
+          "started_at": "2026-10-25T00:43:14.336110Z",
+          "benchmark_id": null,
+          "prompt_label": null,
+          "resumed_from": null,
+          "messages_sha256": "c8b6695da1e1ada54e33c7139752b3f65333bd30d2a4b155062e6babd3f237bb",
+          "output_truncated": false,
+          "non_content_output": false
+        },
+        {
+          "id": "d84a60a5a4c04fe78476e018118cf349",
+          "attempt_id": "1f5286f7fd334187bc91a54bfbb22e9a",
+          "deployment_id": "1153a73ff5504b7ebd81e3ed0e9ac912",
+          "kind": "chat",
+          "status": "ok",
+          "simulated": false,
+          "model": {
+            "id": "qwen3-next-80b-a3b-instruct-q3_k_m",
+            "repo": "unsloth/Qwen3-Next-80B-A3B-Instruct-GGUF",
+            "revision": "6688872b7a4e5eb8a121ceea08009530a024ba1d",
+            "quantization": "Q3_K_M",
+            "format": "gguf",
+            "files": [
+              {
+                "name": "Qwen3-Next-80B-A3B-Instruct-Q3_K_M.gguf",
+                "sha256": "7705e294047a8c285b5f86556bef81e12bc9309988a9ad7e806e81cb730a86ee"
+              }
+            ],
+            "architecture": "qwen3next",
+            "chat_template": true,
+            "context_length": 262144,
+            "max_output_tokens": 1024
+          },
+          "engine": {
+            "engine": "llama_rpc",
+            "release": "b11770",
+            "commit": "39da130fc",
+            "variant": "source-build",
+            "hosts": [
+              {
+                "node_id": "local",
+                "devices": [
+                  {
+                    "device": "CPU",
+                    "endpoint": null,
+                    "layers": 0
+                  },
+                  {
+                    "device": "CUDA0",
+                    "endpoint": null,
+                    "layers": 48
+                  }
+                ],
+                "display_name": "benchmark-host (this machine)",
+                "hostname": "benchmark-host",
+                "os": {
+                  "system": "windows",
+                  "release": "11",
+                  "machine": "x86_64"
+                },
+                "contributed_devices": [
+                  "CUDA0"
+                ],
+                "hardware": [
+                  {
+                    "id": "CPU",
+                    "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                    "backend": "cpu"
+                  },
+                  {
+                    "id": "CUDA0",
+                    "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                    "backend": "cuda"
+                  },
+                  {
+                    "id": "AMD Radeon(TM) 890M Graphics",
+                    "name": "AMD Radeon(TM) 890M Graphics",
+                    "backend": "unknown"
+                  }
+                ],
+                "engine": {
+                  "release": "b11770",
+                  "commit": "39da130fc",
+                  "variant": "source-build",
+                  "accelerator": "unknown",
+                  "rpc_proto": "8.0.0"
+                }
+              }
+            ]
+          },
+          "placement": [
+            {
+              "device": "CPU_Mapped",
+              "model_bytes": 27816110325,
+              "kv_bytes": 0,
+              "layers_est": null
+            },
+            {
+              "device": "CUDA0",
+              "model_bytes": 10477780336,
+              "kv_bytes": 100663296,
+              "layers_est": 12
+            },
+            {
+              "device": "CUDA_Host",
+              "model_bytes": 0,
+              "kv_bytes": 0,
+              "layers_est": null
+            }
+          ],
+          "transport": "tcp",
+          "ctx_size": 4096,
+          "stream": true,
+          "prompt_tokens": 126,
+          "completion_tokens": 64,
+          "ttft_ms": 1603.1937999941874,
+          "total_ms": 5663.434399990365,
+          "timings": {
+            "prompt_n": 126,
+            "prompt_ms": 1591.61,
+            "predicted_n": 64,
+            "predicted_ms": 4057.634,
+            "predicted_per_second": 15.526289458339514,
+            "prompt_per_second": 79.16512210905938,
+            "cache_n": 0
+          },
+          "finish_reason": "length",
+          "sampling": {
+            "temperature": 0,
+            "max_tokens": 64,
+            "seed": 7,
+            "cache_prompt": false
+          },
+          "cache_state": "cold",
+          "output_text": "the long road that leads over the hills to a busy market town. He pauses, wiping condensation from his spectacles, and watches a single leaf drift on the current\u2014its edge curled like a question mark. The millwheel groans, steady as a heartbeat, turning time into flour, into bread, into the",
+          "error": null,
+          "started_at": "2026-10-25T00:43:08.647699Z",
+          "benchmark_id": null,
+          "prompt_label": null,
+          "resumed_from": null,
+          "messages_sha256": "fc67ceac0389cc66ae22cce70331d11148beb59001673b9fba085acada4dd266",
+          "output_truncated": false,
+          "non_content_output": false
+        },
+        {
+          "id": "85f36bcfb584415b928eb94c7692db47",
+          "attempt_id": "6af90c3bc7024d3c80c9297d7b586cf8",
+          "deployment_id": "1153a73ff5504b7ebd81e3ed0e9ac912",
+          "kind": "chat",
+          "status": "ok",
+          "simulated": false,
+          "model": {
+            "id": "qwen3-next-80b-a3b-instruct-q3_k_m",
+            "repo": "unsloth/Qwen3-Next-80B-A3B-Instruct-GGUF",
+            "revision": "6688872b7a4e5eb8a121ceea08009530a024ba1d",
+            "quantization": "Q3_K_M",
+            "format": "gguf",
+            "files": [
+              {
+                "name": "Qwen3-Next-80B-A3B-Instruct-Q3_K_M.gguf",
+                "sha256": "7705e294047a8c285b5f86556bef81e12bc9309988a9ad7e806e81cb730a86ee"
+              }
+            ],
+            "architecture": "qwen3next",
+            "chat_template": true,
+            "context_length": 262144,
+            "max_output_tokens": 1024
+          },
+          "engine": {
+            "engine": "llama_rpc",
+            "release": "b11770",
+            "commit": "39da130fc",
+            "variant": "source-build",
+            "hosts": [
+              {
+                "node_id": "local",
+                "devices": [
+                  {
+                    "device": "CPU",
+                    "endpoint": null,
+                    "layers": 0
+                  },
+                  {
+                    "device": "CUDA0",
+                    "endpoint": null,
+                    "layers": 48
+                  }
+                ],
+                "display_name": "benchmark-host (this machine)",
+                "hostname": "benchmark-host",
+                "os": {
+                  "system": "windows",
+                  "release": "11",
+                  "machine": "x86_64"
+                },
+                "contributed_devices": [
+                  "CUDA0"
+                ],
+                "hardware": [
+                  {
+                    "id": "CPU",
+                    "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                    "backend": "cpu"
+                  },
+                  {
+                    "id": "CUDA0",
+                    "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                    "backend": "cuda"
+                  },
+                  {
+                    "id": "AMD Radeon(TM) 890M Graphics",
+                    "name": "AMD Radeon(TM) 890M Graphics",
+                    "backend": "unknown"
+                  }
+                ],
+                "engine": {
+                  "release": "b11770",
+                  "commit": "39da130fc",
+                  "variant": "source-build",
+                  "accelerator": "unknown",
+                  "rpc_proto": "8.0.0"
+                }
+              }
+            ]
+          },
+          "placement": [
+            {
+              "device": "CPU_Mapped",
+              "model_bytes": 27816110325,
+              "kv_bytes": 0,
+              "layers_est": null
+            },
+            {
+              "device": "CUDA0",
+              "model_bytes": 10477780336,
+              "kv_bytes": 100663296,
+              "layers_est": 12
+            },
+            {
+              "device": "CUDA_Host",
+              "model_bytes": 0,
+              "kv_bytes": 0,
+              "layers_est": null
+            }
+          ],
+          "transport": "tcp",
+          "ctx_size": 4096,
+          "stream": true,
+          "prompt_tokens": 122,
+          "completion_tokens": 64,
+          "ttft_ms": 9230.767100001685,
+          "total_ms": 12969.37470001285,
+          "timings": {
+            "prompt_n": 122,
+            "prompt_ms": 9226.113,
+            "predicted_n": 64,
+            "predicted_ms": 3734.959,
+            "predicted_per_second": 16.867655039854522,
+            "prompt_per_second": 13.2233368483564,
+            "cache_n": 0
+          },
+          "finish_reason": "length",
+          "sampling": {
+            "temperature": 0,
+            "max_tokens": 64,
+            "seed": 7,
+            "cache_prompt": false
+          },
+          "cache_state": "cold",
+          "output_text": "The river carries small stones past a quiet mill where an old engineer writes careful notes about gears, light rain, the price of bread, and the long road that leads over the hills to a busy market town.\n\nHe sits by the window, ink smudged on his fingers, the rhythm of the water a steady met",
+          "error": null,
+          "started_at": "2026-10-25T00:42:55.667084Z",
+          "benchmark_id": null,
+          "prompt_label": null,
+          "resumed_from": null,
+          "messages_sha256": "4c1359a49b60041c4e46dc2dec8be98d9559c51f7655249a35dbc64160a24c9f",
+          "output_truncated": false,
+          "non_content_output": false
+        },
+        {
+          "id": "162b57a3e65a4f9494e4b9051b785818",
+          "attempt_id": "72c1c09369e643599d1c1b219946c8a4",
+          "deployment_id": "1153a73ff5504b7ebd81e3ed0e9ac912",
+          "kind": "warmup",
+          "status": "ok",
+          "simulated": false,
+          "model": {
+            "id": "qwen3-next-80b-a3b-instruct-q3_k_m",
+            "repo": "unsloth/Qwen3-Next-80B-A3B-Instruct-GGUF",
+            "revision": "6688872b7a4e5eb8a121ceea08009530a024ba1d",
+            "quantization": "Q3_K_M",
+            "format": "gguf",
+            "files": [
+              {
+                "name": "Qwen3-Next-80B-A3B-Instruct-Q3_K_M.gguf",
+                "sha256": "7705e294047a8c285b5f86556bef81e12bc9309988a9ad7e806e81cb730a86ee"
+              }
+            ],
+            "architecture": "qwen3next",
+            "chat_template": true,
+            "context_length": 262144,
+            "max_output_tokens": 1024
+          },
+          "engine": {
+            "engine": "llama_rpc",
+            "release": "b11770",
+            "commit": "39da130fc",
+            "variant": "source-build",
+            "hosts": [
+              {
+                "node_id": "local",
+                "devices": [
+                  {
+                    "device": "CPU",
+                    "endpoint": null,
+                    "layers": 0
+                  },
+                  {
+                    "device": "CUDA0",
+                    "endpoint": null,
+                    "layers": 48
+                  }
+                ],
+                "display_name": "benchmark-host (this machine)",
+                "hostname": "benchmark-host",
+                "os": {
+                  "system": "windows",
+                  "release": "11",
+                  "machine": "x86_64"
+                },
+                "contributed_devices": [
+                  "CUDA0"
+                ],
+                "hardware": [
+                  {
+                    "id": "CPU",
+                    "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                    "backend": "cpu"
+                  },
+                  {
+                    "id": "CUDA0",
+                    "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                    "backend": "cuda"
+                  },
+                  {
+                    "id": "AMD Radeon(TM) 890M Graphics",
+                    "name": "AMD Radeon(TM) 890M Graphics",
+                    "backend": "unknown"
+                  }
+                ],
+                "engine": {
+                  "release": "b11770",
+                  "commit": "39da130fc",
+                  "variant": "source-build",
+                  "accelerator": "unknown",
+                  "rpc_proto": "8.0.0"
+                }
+              }
+            ]
+          },
+          "placement": [
+            {
+              "device": "CPU_Mapped",
+              "model_bytes": 27816110325,
+              "kv_bytes": 0,
+              "layers_est": null
+            },
+            {
+              "device": "CUDA0",
+              "model_bytes": 10477780336,
+              "kv_bytes": 100663296,
+              "layers_est": 12
+            },
+            {
+              "device": "CUDA_Host",
+              "model_bytes": 0,
+              "kv_bytes": 0,
+              "layers_est": null
+            }
+          ],
+          "transport": "tcp",
+          "ctx_size": 4096,
+          "stream": true,
+          "prompt_tokens": 12,
+          "completion_tokens": 1,
+          "ttft_ms": 2086.1513999989256,
+          "total_ms": 2088.52650001063,
+          "timings": {
+            "prompt_n": 12,
+            "prompt_ms": 2076.737,
+            "predicted_n": 1,
+            "predicted_ms": 0.001,
+            "predicted_per_second": 0.0,
+            "prompt_per_second": 5.778295470249724,
+            "cache_n": 0
+          },
+          "finish_reason": "length",
+          "sampling": {
+            "temperature": 0,
+            "max_tokens": 1
+          },
+          "cache_state": "cold",
+          "output_text": "ready",
+          "error": null,
+          "started_at": "2026-10-25T00:42:53.027281Z",
+          "benchmark_id": null,
+          "prompt_label": null,
+          "resumed_from": null,
+          "messages_sha256": null,
+          "output_truncated": false,
+          "non_content_output": false
+        }
+      ]
+    },
+    "gateway_after": {
+      "nodes": [
+        {
+          "id": "local",
+          "display_name": "benchmark-host (this machine)",
+          "is_local": true,
+          "state": "eligible",
+          "state_reason": null,
+          "worker_state": null,
+          "worker_cpu_seconds": null,
+          "heartbeat_age_s": 0.0,
+          "contribution": {
+            "devices": [
+              "CUDA0"
+            ],
+            "max_bytes": 12284067840,
+            "reserve_bytes": 6682544537,
+            "enforcement": "soft_admission",
+            "cache_enabled": false
+          },
+          "memory_pools": [
+            {
+              "id": "ram",
+              "kind": "system_ram",
+              "total_bytes": 33412722688,
+              "free_bytes": 302485504,
+              "measured_at": "2026-10-25T00:43:27.765554Z",
+              "source": "psutil",
+              "note": null
+            },
+            {
+              "id": "vram:CUDA0",
+              "kind": "discrete_vram",
+              "total_bytes": 12820938752,
+              "free_bytes": 1456472064,
+              "measured_at": "2026-10-25T00:43:27.813758Z",
+              "source": "nvidia-smi",
+              "note": null
+            }
+          ],
+          "engine_devices": [
+            {
+              "name": "CUDA0",
+              "description": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+              "total_bytes": 12819890176,
+              "free_bytes": 11561598976
+            }
+          ]
+        },
+        {
+          "id": "6dad6cf75b2e4cf197b7bc7f4d0a67e4",
+          "display_name": "mac-a",
+          "is_local": false,
+          "state": "eligible",
+          "state_reason": null,
+          "worker_state": "running",
+          "worker_cpu_seconds": 11.776371968000001,
+          "heartbeat_age_s": 2.998386,
+          "contribution": {
+            "devices": [
+              "MTL0"
+            ],
+            "max_bytes": 11274289152,
+            "reserve_bytes": 0,
+            "enforcement": "soft_admission",
+            "cache_enabled": true
+          },
+          "memory_pools": [
+            {
+              "id": "uma",
+              "kind": "unified",
+              "total_bytes": 17179869184,
+              "free_bytes": 13349715968,
+              "measured_at": "2026-10-25T00:43:24.592273Z",
+              "source": "sysctl hw.memsize + psutil",
+              "note": "CPU and GPU share this pool; counted once"
+            }
+          ],
+          "engine_devices": [
+            {
+              "name": "MTL0",
+              "description": "Apple M4",
+              "total_bytes": 11452547072,
+              "free_bytes": 11452547072
+            },
+            {
+              "name": "BLAS",
+              "description": "Accelerate",
+              "total_bytes": 0,
+              "free_bytes": 0
+            }
+          ]
+        },
+        {
+          "id": "d4e65f83c4be4a41aad722e40983b08b",
+          "display_name": "mac-b",
+          "is_local": false,
+          "state": "eligible",
+          "state_reason": null,
+          "worker_state": "running",
+          "worker_cpu_seconds": 17.603501568,
+          "heartbeat_age_s": 2.711227,
+          "contribution": {
+            "devices": [
+              "MTL0"
+            ],
+            "max_bytes": 11274289152,
+            "reserve_bytes": 0,
+            "enforcement": "soft_admission",
+            "cache_enabled": true
+          },
+          "memory_pools": [
+            {
+              "id": "uma",
+              "kind": "unified",
+              "total_bytes": 17179869184,
+              "free_bytes": 13279969280,
+              "measured_at": "2026-10-25T00:43:24.799155Z",
+              "source": "sysctl hw.memsize + psutil",
+              "note": "CPU and GPU share this pool; counted once"
+            }
+          ],
+          "engine_devices": [
+            {
+              "name": "MTL0",
+              "description": "Apple M4",
+              "total_bytes": 11452547072,
+              "free_bytes": 11452547072
+            },
+            {
+              "name": "BLAS",
+              "description": "Accelerate",
+              "total_bytes": 0,
+              "free_bytes": 0
+            }
+          ]
+        }
+      ],
+      "network": {
+        "transport": "iroh",
+        "endpoint_id": "ac7228fe76183c09bfea5810229535a44f4acec3ef111773d317bd3f690bf96a",
+        "listening": true,
+        "connections": 2,
+        "binding_speedups": {
+          "fast_bytes_lowering": true,
+          "inline_ready_wakeups": true
+        },
+        "peers": [
+          {
+            "node_id": "6dad6cf75b2e4cf197b7bc7f4d0a67e4",
+            "peer_id": "a1674d0f7f5853bfeeeb33172d0cc3661a86704719b26784f5f89ded7129ef17",
+            "connected": true,
+            "path": {
+              "remote_id": "a1674d0f7f5853bfeeeb33172d0cc3661a86704719b26784f5f89ded7129ef17",
+              "mode": "direct",
+              "rtt_ms": 6,
+              "paths": 2,
+              "selected_stats": {
+                "cwnd": 3579396,
+                "congestion_events": 0,
+                "lost_packets": 0,
+                "lost_bytes": 0,
+                "udp_tx_bytes": 16594788,
+                "udp_rx_bytes": 71429347,
+                "current_mtu": 1452
+              }
+            },
+            "rpc": {
+              "tcp_to_quic_bytes": 344336534,
+              "tcp_to_quic_chunks": 3396,
+              "quic_to_tcp_bytes": 120074241,
+              "quic_to_tcp_chunks": 6228,
+              "streams": 45,
+              "active": 0
+            }
+          },
+          {
+            "node_id": "d4e65f83c4be4a41aad722e40983b08b",
+            "peer_id": "46e60e1c168b3c989ab48d97001dcb15744e565d291621998ba3c09abb4df401",
+            "connected": true,
+            "path": {
+              "remote_id": "46e60e1c168b3c989ab48d97001dcb15744e565d291621998ba3c09abb4df401",
+              "mode": "direct",
+              "rtt_ms": 6,
+              "paths": 2,
+              "selected_stats": {
+                "cwnd": 1938755,
+                "congestion_events": 0,
+                "lost_packets": 0,
+                "lost_bytes": 0,
+                "udp_tx_bytes": 8840745,
+                "udp_rx_bytes": 61617942,
+                "current_mtu": 1452
+              }
+            },
+            "rpc": {
+              "tcp_to_quic_bytes": 524632925,
+              "tcp_to_quic_chunks": 5236,
+              "quic_to_tcp_bytes": 120075564,
+              "quic_to_tcp_chunks": 6350,
+              "streams": 45,
+              "active": 0
+            }
+          }
+        ]
+      }
+    },
+    "host": {
+      "source": "hostmon: GetPerformanceInfo (available, commit, file cache), psutil disk_io_counters (system-wide physical reads, every process), shutil.disk_usage (system drive), psutil engine process counters (ReadFile bytes exclude mmap page-fault reads), nvidia-smi (all GPUs)",
+      "platform": "windows",
+      "guards": {
+        "min_available": {
+          "limit_bytes": 0,
+          "active": false,
+          "inactive_because": "turned off"
+        },
+        "min_drive_free": {
+          "limit_bytes": 5368709120,
+          "active": true,
+          "inactive_because": null,
+          "volume": "system drive",
+          "path": "C:\\"
+        },
+        "max_commit_growth": {
+          "limit_bytes": 8589934592,
+          "active": true,
+          "inactive_because": null
+        },
+        "max_swap_growth": {
+          "limit_bytes": 2147483648,
+          "active": false,
+          "inactive_because": "this host reported no swap_used reading"
+        }
+      },
+      "interval_s": 0.5,
+      "marks": [
+        [
+          "load:start",
+          0.616
+        ],
+        [
+          "load:end",
+          18.653
+        ],
+        [
+          "chats:start",
+          18.669
+        ],
+        [
+          "chats:end",
+          44.992
+        ]
+      ],
+      "error": null,
+      "guard_tripped": null,
+      "guard_stop": null,
+      "whole_run": {
+        "t0": 0.0,
+        "t1": 52.576,
+        "samples": 101,
+        "available_min": 216997888,
+        "commit_charge_peak": 51971473408,
+        "commit_limit_peak": 52740075520,
+        "system_cache_peak": 18205585408,
+        "drive_free_min": 120221560832,
+        "engine_rss_peak": 18911223808,
+        "engine_private_peak": 12948639744,
+        "gpu_used_peak": 11068768256,
+        "swap_used_min": null,
+        "swap_used_peak": null,
+        "disk_read_bytes": 42598597632,
+        "engine_read_bytes": 0,
+        "engine_page_faults": 6389468
+      },
+      "samples": [
+        {
+          "t": 0.554,
+          "available": 18374561792,
+          "commit_charge": 35684253696,
+          "commit_limit": 52740075520,
+          "system_cache": 18143674368,
+          "disk_read_bytes": 3399059485184,
+          "drive_free": 120237973504,
+          "engine_rss": null,
+          "engine_private": null,
+          "engine_read_bytes": null,
+          "engine_page_faults": null,
+          "gpu_used": 0,
+          "swap_used": null
+        },
+        {
+          "t": 1.061,
+          "available": 18035769344,
+          "commit_charge": 36271714304,
+          "commit_limit": 52740075520,
+          "system_cache": 18179211264,
+          "disk_read_bytes": 3399199377920,
+          "drive_free": 120237297664,
+          "engine_rss": null,
+          "engine_private": null,
+          "engine_read_bytes": null,
+          "engine_page_faults": null,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 1.571,
+          "available": 15979806720,
+          "commit_charge": 38415040512,
+          "commit_limit": 52740075520,
+          "system_cache": 16393445376,
+          "disk_read_bytes": 3401114926592,
+          "drive_free": 120238592000,
+          "engine_rss": null,
+          "engine_private": null,
+          "engine_read_bytes": null,
+          "engine_page_faults": null,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 2.074,
+          "available": 12492992512,
+          "commit_charge": 41888768000,
+          "commit_limit": 52740075520,
+          "system_cache": 12906975232,
+          "disk_read_bytes": 3404205683200,
+          "drive_free": 120238493696,
+          "engine_rss": null,
+          "engine_private": null,
+          "engine_read_bytes": null,
+          "engine_page_faults": null,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 2.658,
+          "available": 9016496128,
+          "commit_charge": 45353783296,
+          "commit_limit": 52740075520,
+          "system_cache": 9430339584,
+          "disk_read_bytes": 3407765187584,
+          "drive_free": 120238374912,
+          "engine_rss": null,
+          "engine_private": null,
+          "engine_read_bytes": null,
+          "engine_page_faults": null,
+          "gpu_used": 161480704,
+          "swap_used": null
+        },
+        {
+          "t": 3.173,
+          "available": 4787478528,
+          "commit_charge": 49575526400,
+          "commit_limit": 52740075520,
+          "system_cache": 5201952768,
+          "disk_read_bytes": 3410882958848,
+          "drive_free": 120238243840,
+          "engine_rss": 378892288,
+          "engine_private": 700850176,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 111312,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 3.687,
+          "available": 2373853184,
+          "commit_charge": 51971473408,
+          "commit_limit": 52740075520,
+          "system_cache": 2786181120,
+          "disk_read_bytes": 3414000700928,
+          "drive_free": 120238243840,
+          "engine_rss": 378904576,
+          "engine_private": 700862464,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 112799,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 4.194,
+          "available": 10989506560,
+          "commit_charge": 43503235072,
+          "commit_limit": 52740075520,
+          "system_cache": 11228327936,
+          "disk_read_bytes": 3415400660992,
+          "drive_free": 120238862336,
+          "engine_rss": 378916864,
+          "engine_private": 700874752,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 112802,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 4.748,
+          "available": 18061086720,
+          "commit_charge": 46908448768,
+          "commit_limit": 52740075520,
+          "system_cache": 18205585408,
+          "disk_read_bytes": 3415401213952,
+          "drive_free": 120238362624,
+          "engine_rss": 379187200,
+          "engine_private": 11200966656,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 117875,
+          "gpu_used": 10640949248,
+          "swap_used": null
+        },
+        {
+          "t": 5.254,
+          "available": 17251766272,
+          "commit_charge": 46899912704,
+          "commit_limit": 52740075520,
+          "system_cache": 17489805312,
+          "disk_read_bytes": 3415546883072,
+          "drive_free": 120237797376,
+          "engine_rss": 1212264448,
+          "engine_private": 11201101824,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 321351,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 5.754,
+          "available": 16891342848,
+          "commit_charge": 46882713600,
+          "commit_limit": 52740075520,
+          "system_cache": 17188827136,
+          "disk_read_bytes": 3415933910016,
+          "drive_free": 120237395968,
+          "engine_rss": 1586040832,
+          "engine_private": 11201114112,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 412823,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 6.258,
+          "available": 16272318464,
+          "commit_charge": 46872846336,
+          "commit_limit": 52740075520,
+          "system_cache": 16570281984,
+          "disk_read_bytes": 3416553869824,
+          "drive_free": 120237117440,
+          "engine_rss": 2205663232,
+          "engine_private": 11201126400,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 564392,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 6.817,
+          "available": 15756656640,
+          "commit_charge": 46872674304,
+          "commit_limit": 52740075520,
+          "system_cache": 16088731648,
+          "disk_read_bytes": 3417131075072,
+          "drive_free": 120240988160,
+          "engine_rss": 2732351488,
+          "engine_private": 11201138688,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 693232,
+          "gpu_used": 10640949248,
+          "swap_used": null
+        },
+        {
+          "t": 7.321,
+          "available": 15161548800,
+          "commit_charge": 46869209088,
+          "commit_limit": 52740075520,
+          "system_cache": 15494553600,
+          "disk_read_bytes": 3417678719488,
+          "drive_free": 120240533504,
+          "engine_rss": 3328151552,
+          "engine_private": 11201150976,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 838976,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 7.831,
+          "available": 14636269568,
+          "commit_charge": 46849744896,
+          "commit_limit": 52740075520,
+          "system_cache": 14969970688,
+          "disk_read_bytes": 3418209689088,
+          "drive_free": 120240115712,
+          "engine_rss": 3857711104,
+          "engine_private": 11201167360,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 968515,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 8.334,
+          "available": 14159646720,
+          "commit_charge": 46844268544,
+          "commit_limit": 52740075520,
+          "system_cache": 14488289280,
+          "disk_read_bytes": 3418688523776,
+          "drive_free": 120239407104,
+          "engine_rss": 4334071808,
+          "engine_private": 11201179648,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 1085040,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 8.877,
+          "available": 13587001344,
+          "commit_charge": 46845796352,
+          "commit_limit": 52740075520,
+          "system_cache": 13916983296,
+          "disk_read_bytes": 3419303431168,
+          "drive_free": 120238944256,
+          "engine_rss": 4899811328,
+          "engine_private": 11201191936,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 1223432,
+          "gpu_used": 10640949248,
+          "swap_used": null
+        },
+        {
+          "t": 9.387,
+          "available": 13045800960,
+          "commit_charge": 46848110592,
+          "commit_limit": 52740075520,
+          "system_cache": 13376327680,
+          "disk_read_bytes": 3419799203328,
+          "drive_free": 120238465024,
+          "engine_rss": 5440696320,
+          "engine_private": 11201204224,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 1355743,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 9.898,
+          "available": 12498976768,
+          "commit_charge": 46840791040,
+          "commit_limit": 52740075520,
+          "system_cache": 12827459584,
+          "disk_read_bytes": 3420346155520,
+          "drive_free": 120237887488,
+          "engine_rss": 5986619392,
+          "engine_private": 11201220608,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 1489285,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 10.409,
+          "available": 11914420224,
+          "commit_charge": 46825848832,
+          "commit_limit": 52740075520,
+          "system_cache": 12243853312,
+          "disk_read_bytes": 3420928637952,
+          "drive_free": 120237588480,
+          "engine_rss": 6567092224,
+          "engine_private": 11201236992,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 1631280,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 10.968,
+          "available": 11298549760,
+          "commit_charge": 46830051328,
+          "commit_limit": 52740075520,
+          "system_cache": 11628212224,
+          "disk_read_bytes": 3421595095040,
+          "drive_free": 120237146112,
+          "engine_rss": 7182827520,
+          "engine_private": 11201249280,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 1781899,
+          "gpu_used": 10640949248,
+          "swap_used": null
+        },
+        {
+          "t": 11.472,
+          "available": 10648023040,
+          "commit_charge": 46829617152,
+          "commit_limit": 52740075520,
+          "system_cache": 10978717696,
+          "disk_read_bytes": 3422186772480,
+          "drive_free": 120236937216,
+          "engine_rss": 7819988992,
+          "engine_private": 11201273856,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 1937760,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 11.975,
+          "available": 10062286848,
+          "commit_charge": 46851092480,
+          "commit_limit": 52740075520,
+          "system_cache": 10390024192,
+          "disk_read_bytes": 3422771603968,
+          "drive_free": 120236646400,
+          "engine_rss": 8397369344,
+          "engine_private": 11201290240,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 2078997,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 12.477,
+          "available": 9485340672,
+          "commit_charge": 46981304320,
+          "commit_limit": 52740075520,
+          "system_cache": 9816043520,
+          "disk_read_bytes": 3423326712832,
+          "drive_free": 120236322816,
+          "engine_rss": 8924364800,
+          "engine_private": 11201302528,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 2207911,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 13.027,
+          "available": 9027186688,
+          "commit_charge": 46875115520,
+          "commit_limit": 52740075520,
+          "system_cache": 9358266368,
+          "disk_read_bytes": 3423851547648,
+          "drive_free": 120236122112,
+          "engine_rss": 9393618944,
+          "engine_private": 11201302528,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 2322699,
+          "gpu_used": 10640949248,
+          "swap_used": null
+        },
+        {
+          "t": 13.532,
+          "available": 8424144896,
+          "commit_charge": 46881411072,
+          "commit_limit": 52740075520,
+          "system_cache": 8743489536,
+          "disk_read_bytes": 3424439126016,
+          "drive_free": 120235741184,
+          "engine_rss": 10024779776,
+          "engine_private": 11201302528,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 2477091,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 14.033,
+          "available": 7852675072,
+          "commit_charge": 46890934272,
+          "commit_limit": 52740075520,
+          "system_cache": 8172544000,
+          "disk_read_bytes": 3425030055936,
+          "drive_free": 120235397120,
+          "engine_rss": 10612977664,
+          "engine_private": 11201302528,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 2620975,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 14.538,
+          "available": 7307710464,
+          "commit_charge": 48096354304,
+          "commit_limit": 52740075520,
+          "system_cache": 7627780096,
+          "disk_read_bytes": 3425390734848,
+          "drive_free": 120234893312,
+          "engine_rss": 11166519296,
+          "engine_private": 12387594240,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 2758927,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 15.118,
+          "available": 6540759040,
+          "commit_charge": 48092516352,
+          "commit_limit": 52740075520,
+          "system_cache": 6860144640,
+          "disk_read_bytes": 3426039720960,
+          "drive_free": 120233844736,
+          "engine_rss": 11934101504,
+          "engine_private": 12390584320,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 2947011,
+          "gpu_used": 10953424896,
+          "swap_used": null
+        },
+        {
+          "t": 15.621,
+          "available": 5989240832,
+          "commit_charge": 48091131904,
+          "commit_limit": 52740075520,
+          "system_cache": 6308712448,
+          "disk_read_bytes": 3426445698560,
+          "drive_free": 120233504768,
+          "engine_rss": 12478816256,
+          "engine_private": 12405673984,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 3080622,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 16.133,
+          "available": 5831901184,
+          "commit_charge": 48147628032,
+          "commit_limit": 52740075520,
+          "system_cache": 6151954432,
+          "disk_read_bytes": 3426577253888,
+          "drive_free": 120233279488,
+          "engine_rss": 12643979264,
+          "engine_private": 12456701952,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 3121085,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 16.643,
+          "available": 5331529728,
+          "commit_charge": 48214003712,
+          "commit_limit": 52740075520,
+          "system_cache": 5653651456,
+          "disk_read_bytes": 3427061854208,
+          "drive_free": 120233046016,
+          "engine_rss": 13104603136,
+          "engine_private": 12474445824,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 3233553,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 17.207,
+          "available": 4736733184,
+          "commit_charge": 48193146880,
+          "commit_limit": 52740075520,
+          "system_cache": 5063651328,
+          "disk_read_bytes": 3427465343488,
+          "drive_free": 120232898560,
+          "engine_rss": 13692284928,
+          "engine_private": 12476346368,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 3377495,
+          "gpu_used": 10961813504,
+          "swap_used": null
+        },
+        {
+          "t": 17.723,
+          "available": 4273836032,
+          "commit_charge": 48282578944,
+          "commit_limit": 52740075520,
+          "system_cache": 4597538816,
+          "disk_read_bytes": 3427919971328,
+          "drive_free": 120232599552,
+          "engine_rss": 14160822272,
+          "engine_private": 12569153536,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 3492515,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 18.236,
+          "available": 4021108736,
+          "commit_charge": 48263278592,
+          "commit_limit": 52740075520,
+          "system_cache": 4335169536,
+          "disk_read_bytes": 3428229643776,
+          "drive_free": 120232247296,
+          "engine_rss": 14435168256,
+          "engine_private": 12576256000,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 3559656,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 18.738,
+          "available": 4132986880,
+          "commit_charge": 48286142464,
+          "commit_limit": 52740075520,
+          "system_cache": 4338294784,
+          "disk_read_bytes": 3428236140032,
+          "drive_free": 120231784448,
+          "engine_rss": 14384300032,
+          "engine_private": 12589404160,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 3567031,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 19.305,
+          "available": 3602092032,
+          "commit_charge": 48524804096,
+          "commit_limit": 52740075520,
+          "system_cache": 3918036992,
+          "disk_read_bytes": 3428604839424,
+          "drive_free": 120231026688,
+          "engine_rss": 14923939840,
+          "engine_private": 12840501248,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 3699457,
+          "gpu_used": 11066671104,
+          "swap_used": null
+        },
+        {
+          "t": 19.808,
+          "available": 3056164864,
+          "commit_charge": 48585822208,
+          "commit_limit": 52740075520,
+          "system_cache": 3372670976,
+          "disk_read_bytes": 3429084425216,
+          "drive_free": 120230686720,
+          "engine_rss": 15456337920,
+          "engine_private": 12857909248,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 3829447,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 20.311,
+          "available": 2639220736,
+          "commit_charge": 48591654912,
+          "commit_limit": 52740075520,
+          "system_cache": 2955235328,
+          "disk_read_bytes": 3429520938496,
+          "drive_free": 120230326272,
+          "engine_rss": 15877050368,
+          "engine_private": 12860280832,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 3932161,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 20.813,
+          "available": 2183938048,
+          "commit_charge": 48586723328,
+          "commit_limit": 52740075520,
+          "system_cache": 2501922816,
+          "disk_read_bytes": 3430008504320,
+          "drive_free": 120230010880,
+          "engine_rss": 16349212672,
+          "engine_private": 12860280832,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 4047435,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 21.381,
+          "available": 1814622208,
+          "commit_charge": 48574607360,
+          "commit_limit": 52740075520,
+          "system_cache": 2132271104,
+          "disk_read_bytes": 3430532371456,
+          "drive_free": 120229597184,
+          "engine_rss": 16750022656,
+          "engine_private": 12860280832,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 4145287,
+          "gpu_used": 11068768256,
+          "swap_used": null
+        },
+        {
+          "t": 21.883,
+          "available": 1287770112,
+          "commit_charge": 48573075456,
+          "commit_limit": 52740075520,
+          "system_cache": 1606078464,
+          "disk_read_bytes": 3430973686784,
+          "drive_free": 120228945920,
+          "engine_rss": 17280086016,
+          "engine_private": 12858904576,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 4274699,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 22.387,
+          "available": 889769984,
+          "commit_charge": 48575434752,
+          "commit_limit": 52740075520,
+          "system_cache": 1208049664,
+          "disk_read_bytes": 3431432602112,
+          "drive_free": 120228483072,
+          "engine_rss": 17717321728,
+          "engine_private": 12858904576,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 4381445,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 22.888,
+          "available": 393596928,
+          "commit_charge": 48578998272,
+          "commit_limit": 52740075520,
+          "system_cache": 713797632,
+          "disk_read_bytes": 3431928742912,
+          "drive_free": 120228069376,
+          "engine_rss": 18197311488,
+          "engine_private": 12858904576,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 4498630,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 23.458,
+          "available": 628326400,
+          "commit_charge": 48592650240,
+          "commit_limit": 52740075520,
+          "system_cache": 929955840,
+          "disk_read_bytes": 3432456920064,
+          "drive_free": 120227745792,
+          "engine_rss": 17872642048,
+          "engine_private": 12858904576,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 4596036,
+          "gpu_used": 11068768256,
+          "swap_used": null
+        },
+        {
+          "t": 23.96,
+          "available": 625455104,
+          "commit_charge": 48599859200,
+          "commit_limit": 52740075520,
+          "system_cache": 927383552,
+          "disk_read_bytes": 3432865389568,
+          "drive_free": 120227323904,
+          "engine_rss": 18131304448,
+          "engine_private": 12858904576,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 4720178,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 24.463,
+          "available": 625389568,
+          "commit_charge": 48563130368,
+          "commit_limit": 52740075520,
+          "system_cache": 926441472,
+          "disk_read_bytes": 3433355264512,
+          "drive_free": 120226820096,
+          "engine_rss": 18123653120,
+          "engine_private": 12858904576,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 4835094,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 24.967,
+          "available": 625524736,
+          "commit_charge": 48562114560,
+          "commit_limit": 52740075520,
+          "system_cache": 927223808,
+          "disk_read_bytes": 3433747979776,
+          "drive_free": 120226467840,
+          "engine_rss": 18107301888,
+          "engine_private": 12858904576,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 4927757,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 25.526,
+          "available": 625471488,
+          "commit_charge": 48551968768,
+          "commit_limit": 52740075520,
+          "system_cache": 927821824,
+          "disk_read_bytes": 3434299815424,
+          "drive_free": 120225734656,
+          "engine_rss": 18112040960,
+          "engine_private": 12858904576,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 5050885,
+          "gpu_used": 11068768256,
+          "swap_used": null
+        },
+        {
+          "t": 26.028,
+          "available": 625496064,
+          "commit_charge": 48540770304,
+          "commit_limit": 52740075520,
+          "system_cache": 927830016,
+          "disk_read_bytes": 3434729941504,
+          "drive_free": 120225439744,
+          "engine_rss": 18158669824,
+          "engine_private": 12858904576,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 5158208,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 26.53,
+          "available": 625815552,
+          "commit_charge": 48495091712,
+          "commit_limit": 52740075520,
+          "system_cache": 928092160,
+          "disk_read_bytes": 3435228194816,
+          "drive_free": 120224710656,
+          "engine_rss": 18168524800,
+          "engine_private": 12858904576,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 5275943,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 27.033,
+          "available": 625295360,
+          "commit_charge": 48502403072,
+          "commit_limit": 52740075520,
+          "system_cache": 927875072,
+          "disk_read_bytes": 3435666271232,
+          "drive_free": 120224305152,
+          "engine_rss": 18152296448,
+          "engine_private": 12858904576,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 5378652,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 27.593,
+          "available": 626245632,
+          "commit_charge": 48575684608,
+          "commit_limit": 52740075520,
+          "system_cache": 930701312,
+          "disk_read_bytes": 3436069822976,
+          "drive_free": 120223772672,
+          "engine_rss": 18178977792,
+          "engine_private": 12938674176,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 5492554,
+          "gpu_used": 11068768256,
+          "swap_used": null
+        },
+        {
+          "t": 28.096,
+          "available": 625979392,
+          "commit_charge": 48591196160,
+          "commit_limit": 52740075520,
+          "system_cache": 931778560,
+          "disk_read_bytes": 3436160079872,
+          "drive_free": 120223424512,
+          "engine_rss": 18183254016,
+          "engine_private": 12948324352,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 5515654,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 28.598,
+          "available": 626077696,
+          "commit_charge": 48580993024,
+          "commit_limit": 52740075520,
+          "system_cache": 929005568,
+          "disk_read_bytes": 3436287693312,
+          "drive_free": 120223051776,
+          "engine_rss": 18186981376,
+          "engine_private": 12948336640,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 5544929,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 29.1,
+          "available": 625926144,
+          "commit_charge": 48582545408,
+          "commit_limit": 52740075520,
+          "system_cache": 929067008,
+          "disk_read_bytes": 3436491337728,
+          "drive_free": 120222638080,
+          "engine_rss": 18181615616,
+          "engine_private": 12948336640,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 5592461,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 29.664,
+          "available": 494538752,
+          "commit_charge": 48570687488,
+          "commit_limit": 52740075520,
+          "system_cache": 793350144,
+          "disk_read_bytes": 3436713215488,
+          "drive_free": 120222253056,
+          "engine_rss": 18341040128,
+          "engine_private": 12948344832,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 5640433,
+          "gpu_used": 11068768256,
+          "swap_used": null
+        },
+        {
+          "t": 30.172,
+          "available": 494243840,
+          "commit_charge": 48566480896,
+          "commit_limit": 52740075520,
+          "system_cache": 791961600,
+          "disk_read_bytes": 3436952651776,
+          "drive_free": 120221892608,
+          "engine_rss": 18345914368,
+          "engine_private": 12948344832,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 5699561,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 30.675,
+          "available": 347901952,
+          "commit_charge": 48585080832,
+          "commit_limit": 52740075520,
+          "system_cache": 648409088,
+          "disk_read_bytes": 3437178300416,
+          "drive_free": 120221560832,
+          "engine_rss": 18552922112,
+          "engine_private": 12948344832,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 5751737,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 31.177,
+          "available": 278745088,
+          "commit_charge": 48631693312,
+          "commit_limit": 52740075520,
+          "system_cache": 592039936,
+          "disk_read_bytes": 3437367027712,
+          "drive_free": 120230395904,
+          "engine_rss": 18620026880,
+          "engine_private": 12948344832,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 5795355,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 31.783,
+          "available": 325566464,
+          "commit_charge": 48899026944,
+          "commit_limit": 52740075520,
+          "system_cache": 560332800,
+          "disk_read_bytes": 3437613398528,
+          "drive_free": 120236863488,
+          "engine_rss": 18523787264,
+          "engine_private": 12867530752,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 5829794,
+          "gpu_used": 11068768256,
+          "swap_used": null
+        },
+        {
+          "t": 32.291,
+          "available": 496279552,
+          "commit_charge": 48047775744,
+          "commit_limit": 52740075520,
+          "system_cache": 640716800,
+          "disk_read_bytes": 3437863998976,
+          "drive_free": 120236781568,
+          "engine_rss": 18666909696,
+          "engine_private": 12867530752,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 5896731,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 32.804,
+          "available": 286621696,
+          "commit_charge": 48097673216,
+          "commit_limit": 52740075520,
+          "system_cache": 582623232,
+          "disk_read_bytes": 3438075653120,
+          "drive_free": 120236503040,
+          "engine_rss": 18864873472,
+          "engine_private": 12867530752,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 5945087,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 33.311,
+          "available": 340881408,
+          "commit_charge": 48126820352,
+          "commit_limit": 52740075520,
+          "system_cache": 579043328,
+          "disk_read_bytes": 3438215818240,
+          "drive_free": 120236302336,
+          "engine_rss": 18911223808,
+          "engine_private": 12948557824,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 5992190,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 33.929,
+          "available": 268599296,
+          "commit_charge": 48195055616,
+          "commit_limit": 52740075520,
+          "system_cache": 537788416,
+          "disk_read_bytes": 3438286985728,
+          "drive_free": 120235831296,
+          "engine_rss": 18903613440,
+          "engine_private": 12948561920,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 5999865,
+          "gpu_used": 11068768256,
+          "swap_used": null
+        },
+        {
+          "t": 34.432,
+          "available": 271851520,
+          "commit_charge": 48228933632,
+          "commit_limit": 52740075520,
+          "system_cache": 578416640,
+          "disk_read_bytes": 3438590984704,
+          "drive_free": 120235753472,
+          "engine_rss": 18840813568,
+          "engine_private": 12948561920,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 6020549,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 34.937,
+          "available": 273170432,
+          "commit_charge": 48412450816,
+          "commit_limit": 52740075520,
+          "system_cache": 584237056,
+          "disk_read_bytes": 3438823827456,
+          "drive_free": 120235683840,
+          "engine_rss": 18775777280,
+          "engine_private": 12948561920,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 6037050,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 35.441,
+          "available": 254693376,
+          "commit_charge": 48498868224,
+          "commit_limit": 52740075520,
+          "system_cache": 541011968,
+          "disk_read_bytes": 3439024758784,
+          "drive_free": 120235532288,
+          "engine_rss": 18717368320,
+          "engine_private": 12948561920,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 6058886,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 36.048,
+          "available": 278077440,
+          "commit_charge": 48788934656,
+          "commit_limit": 52740075520,
+          "system_cache": 614359040,
+          "disk_read_bytes": 3439263772672,
+          "drive_free": 120235237376,
+          "engine_rss": 18575507456,
+          "engine_private": 12948561920,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 6080994,
+          "gpu_used": 11068768256,
+          "swap_used": null
+        },
+        {
+          "t": 36.55,
+          "available": 289648640,
+          "commit_charge": 49450442752,
+          "commit_limit": 52740075520,
+          "system_cache": 594247680,
+          "disk_read_bytes": 3439436198400,
+          "drive_free": 120235216896,
+          "engine_rss": 18608324608,
+          "engine_private": 12948561920,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 6110018,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 37.065,
+          "available": 278081536,
+          "commit_charge": 49424936960,
+          "commit_limit": 52740075520,
+          "system_cache": 581636096,
+          "disk_read_bytes": 3439651805184,
+          "drive_free": 120235057152,
+          "engine_rss": 18579808256,
+          "engine_private": 12948561920,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 6145247,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 37.58,
+          "available": 277987328,
+          "commit_charge": 49492901888,
+          "commit_limit": 52740075520,
+          "system_cache": 588681216,
+          "disk_read_bytes": 3439805434880,
+          "drive_free": 120234811392,
+          "engine_rss": 18521010176,
+          "engine_private": 12867592192,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 6166888,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 38.209,
+          "available": 275431424,
+          "commit_charge": 49507979264,
+          "commit_limit": 52740075520,
+          "system_cache": 569856000,
+          "disk_read_bytes": 3440044278784,
+          "drive_free": 120234438656,
+          "engine_rss": 18491760640,
+          "engine_private": 12867592192,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 6200917,
+          "gpu_used": 11068768256,
+          "swap_used": null
+        },
+        {
+          "t": 38.717,
+          "available": 274829312,
+          "commit_charge": 49691099136,
+          "commit_limit": 52740075520,
+          "system_cache": 573644800,
+          "disk_read_bytes": 3440212736512,
+          "drive_free": 120234299392,
+          "engine_rss": 18475552768,
+          "engine_private": 12946788352,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 6255970,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 39.231,
+          "available": 216997888,
+          "commit_charge": 49774243840,
+          "commit_limit": 52740075520,
+          "system_cache": 519610368,
+          "disk_read_bytes": 3440329572352,
+          "drive_free": 120237445120,
+          "engine_rss": 18464997376,
+          "engine_private": 12948619264,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 6257516,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 39.736,
+          "available": 277864448,
+          "commit_charge": 49882738688,
+          "commit_limit": 52740075520,
+          "system_cache": 575320064,
+          "disk_read_bytes": 3440450866688,
+          "drive_free": 120237092864,
+          "engine_rss": 18415247360,
+          "engine_private": 12948619264,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 6276380,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 40.346,
+          "available": 278278144,
+          "commit_charge": 49867399168,
+          "commit_limit": 52740075520,
+          "system_cache": 577294336,
+          "disk_read_bytes": 3440638941696,
+          "drive_free": 120236040192,
+          "engine_rss": 18428841984,
+          "engine_private": 12948619264,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 6307751,
+          "gpu_used": 11068768256,
+          "swap_used": null
+        },
+        {
+          "t": 40.847,
+          "available": 289882112,
+          "commit_charge": 49812910080,
+          "commit_limit": 52740075520,
+          "system_cache": 581320704,
+          "disk_read_bytes": 3440728850432,
+          "drive_free": 120235790336,
+          "engine_rss": 18448478208,
+          "engine_private": 12948627456,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 6327233,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 41.357,
+          "available": 283140096,
+          "commit_charge": 49817026560,
+          "commit_limit": 52740075520,
+          "system_cache": 584015872,
+          "disk_read_bytes": 3440845133824,
+          "drive_free": 120235651072,
+          "engine_rss": 18465918976,
+          "engine_private": 12948627456,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 6346899,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 41.869,
+          "available": 277893120,
+          "commit_charge": 49816592384,
+          "commit_limit": 52740075520,
+          "system_cache": 578310144,
+          "disk_read_bytes": 3440987442688,
+          "drive_free": 120235442176,
+          "engine_rss": 18465325056,
+          "engine_private": 12948627456,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 6377071,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 42.445,
+          "available": 283668480,
+          "commit_charge": 49731891200,
+          "commit_limit": 52740075520,
+          "system_cache": 581976064,
+          "disk_read_bytes": 3441150028800,
+          "drive_free": 120234946560,
+          "engine_rss": 18488602624,
+          "engine_private": 12867612672,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 6408831,
+          "gpu_used": 11068768256,
+          "swap_used": null
+        },
+        {
+          "t": 42.96,
+          "available": 397639680,
+          "commit_charge": 48626974720,
+          "commit_limit": 52740075520,
+          "system_cache": 611594240,
+          "disk_read_bytes": 3441285295616,
+          "drive_free": 120234676224,
+          "engine_rss": 18594795520,
+          "engine_private": 12867612672,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 6442362,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 43.463,
+          "available": 318021632,
+          "commit_charge": 48693071872,
+          "commit_limit": 52740075520,
+          "system_cache": 615452672,
+          "disk_read_bytes": 3441310140416,
+          "drive_free": 120234475520,
+          "engine_rss": 18692059136,
+          "engine_private": 12948639744,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 6466148,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 43.974,
+          "available": 319877120,
+          "commit_charge": 48684093440,
+          "commit_limit": 52740075520,
+          "system_cache": 619143168,
+          "disk_read_bytes": 3441322913280,
+          "drive_free": 120234176512,
+          "engine_rss": 18696544256,
+          "engine_private": 12948639744,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 6467243,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 44.577,
+          "available": 319279104,
+          "commit_charge": 48678715392,
+          "commit_limit": 52740075520,
+          "system_cache": 618192896,
+          "disk_read_bytes": 3441362426880,
+          "drive_free": 120233897984,
+          "engine_rss": 18707116032,
+          "engine_private": 12948639744,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 6469826,
+          "gpu_used": 11068768256,
+          "swap_used": null
+        },
+        {
+          "t": 45.086,
+          "available": 292372480,
+          "commit_charge": 48633004032,
+          "commit_limit": 52740075520,
+          "system_cache": 586010624,
+          "disk_read_bytes": 3441484828160,
+          "drive_free": 120233439232,
+          "engine_rss": 18761375744,
+          "engine_private": 12948639744,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 6500780,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 45.589,
+          "available": 302825472,
+          "commit_charge": 48636522496,
+          "commit_limit": 52740075520,
+          "system_cache": 580501504,
+          "disk_read_bytes": 3441494574592,
+          "drive_free": 120232951808,
+          "engine_rss": 18761375744,
+          "engine_private": 12948639744,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 6500780,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 46.091,
+          "available": 284082176,
+          "commit_charge": 48673427456,
+          "commit_limit": 52740075520,
+          "system_cache": 559906816,
+          "disk_read_bytes": 3441514818560,
+          "drive_free": 120232685568,
+          "engine_rss": 18761375744,
+          "engine_private": 12948639744,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 6500780,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 46.654,
+          "available": 256495616,
+          "commit_charge": 48719003648,
+          "commit_limit": 52740075520,
+          "system_cache": 551735296,
+          "disk_read_bytes": 3441528659968,
+          "drive_free": 120232939520,
+          "engine_rss": 18761375744,
+          "engine_private": 12948639744,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 6500780,
+          "gpu_used": 11068768256,
+          "swap_used": null
+        },
+        {
+          "t": 47.168,
+          "available": 268705792,
+          "commit_charge": 48700764160,
+          "commit_limit": 52740075520,
+          "system_cache": 549916672,
+          "disk_read_bytes": 3441539292672,
+          "drive_free": 120234201088,
+          "engine_rss": 18761375744,
+          "engine_private": 12948639744,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 6500780,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 47.673,
+          "available": 276414464,
+          "commit_charge": 48700682240,
+          "commit_limit": 52740075520,
+          "system_cache": 560578560,
+          "disk_read_bytes": 3441549112320,
+          "drive_free": 120233631744,
+          "engine_rss": 18761375744,
+          "engine_private": 12948639744,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 6500780,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 48.175,
+          "available": 281432064,
+          "commit_charge": 48692432896,
+          "commit_limit": 52740075520,
+          "system_cache": 571580416,
+          "disk_read_bytes": 3441559398400,
+          "drive_free": 120233029632,
+          "engine_rss": 18761375744,
+          "engine_private": 12948639744,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 6500780,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 48.745,
+          "available": 286175232,
+          "commit_charge": 48690712576,
+          "commit_limit": 52740075520,
+          "system_cache": 586219520,
+          "disk_read_bytes": 3441574622208,
+          "drive_free": 120232476672,
+          "engine_rss": 18761375744,
+          "engine_private": 12948639744,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 6500780,
+          "gpu_used": 11068768256,
+          "swap_used": null
+        },
+        {
+          "t": 49.247,
+          "available": 294424576,
+          "commit_charge": 48701607936,
+          "commit_limit": 52740075520,
+          "system_cache": 583745536,
+          "disk_read_bytes": 3441585069056,
+          "drive_free": 120231911424,
+          "engine_rss": 18761375744,
+          "engine_private": 12948639744,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 6500780,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 49.748,
+          "available": 291373056,
+          "commit_charge": 48681279488,
+          "commit_limit": 52740075520,
+          "system_cache": 581283840,
+          "disk_read_bytes": 3441594505728,
+          "drive_free": 120231432192,
+          "engine_rss": 18761375744,
+          "engine_private": 12948639744,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 6500780,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 50.251,
+          "available": 302338048,
+          "commit_charge": 48684285952,
+          "commit_limit": 52740075520,
+          "system_cache": 589864960,
+          "disk_read_bytes": 3441605120000,
+          "drive_free": 120230760448,
+          "engine_rss": 18761375744,
+          "engine_private": 12948639744,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 6500780,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 50.801,
+          "available": 301555712,
+          "commit_charge": 48675143680,
+          "commit_limit": 52740075520,
+          "system_cache": 588673024,
+          "disk_read_bytes": 3441614771200,
+          "drive_free": 120230113280,
+          "engine_rss": 18761375744,
+          "engine_private": 12948639744,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 6500780,
+          "gpu_used": 11068768256,
+          "swap_used": null
+        },
+        {
+          "t": 51.306,
+          "available": 279056384,
+          "commit_charge": 48717729792,
+          "commit_limit": 52740075520,
+          "system_cache": 550244352,
+          "disk_read_bytes": 3441625808896,
+          "drive_free": 120229761024,
+          "engine_rss": 18761375744,
+          "engine_private": 12948639744,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 6500780,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 51.808,
+          "available": 307752960,
+          "commit_charge": 48692436992,
+          "commit_limit": 52740075520,
+          "system_cache": 573943808,
+          "disk_read_bytes": 3441635700736,
+          "drive_free": 120229343232,
+          "engine_rss": 18761375744,
+          "engine_private": 12948639744,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 6500780,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 52.311,
+          "available": 307224576,
+          "commit_charge": 48678359040,
+          "commit_limit": 52740075520,
+          "system_cache": 571875328,
+          "disk_read_bytes": 3441650563584,
+          "drive_free": 120228691968,
+          "engine_rss": 18761375744,
+          "engine_private": 12948639744,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 6500780,
+          "gpu_used": null,
+          "swap_used": null
+        },
+        {
+          "t": 52.576,
+          "available": 302919680,
+          "commit_charge": 48682545152,
+          "commit_limit": 52740075520,
+          "system_cache": 572878848,
+          "disk_read_bytes": 3441658082816,
+          "drive_free": 120228417536,
+          "engine_rss": 18761375744,
+          "engine_private": 12948639744,
+          "engine_read_bytes": 15895333,
+          "engine_page_faults": 6500780,
+          "gpu_used": 11068768256,
+          "swap_used": null
+        }
+      ]
+    }
+  },
+  "comparison": {
+    "predicted_decode_ms": 317.02175892853245,
+    "predicted_decode_source": "plan.moe (estimate)",
+    "measured_decode_ms_per_token_median": 49.581047619047624,
+    "measured_over_predicted": 0.156,
+    "predicted_load_ms": null,
+    "measured_load_s": 18.031,
+    "predicted_stream_bytes_per_token": null,
+    "predicted_moe_ssd_bytes_per_token_est": 328901127,
+    "predicted_moe_miss_rate_est": 0.6083191435626059,
+    "measured_disk_read_bytes_per_output_token_median": 23409744.0,
+    "measured_decode_disk_read_bytes_per_token_median": 14877655.365079366,
+    "note": "predicted_* come from the gateway's plan; measured_* from this run"
+  },
+  "status": "ok",
+  "error": null,
+  "deployment_id": "1153a73ff5504b7ebd81e3ed0e9ac912",
+  "stop": {
+    "state": "stopped",
+    "cleanup": "deployment:1153a73ff5504b7ebd81e3ed0e9ac912 pid 29488: terminated (exit code 1); released 2 lease(s)",
+    "error": null
+  },
+  "kept": false,
+  "finished_at": "2026-10-25T00:43:31.807624+00:00"
+}

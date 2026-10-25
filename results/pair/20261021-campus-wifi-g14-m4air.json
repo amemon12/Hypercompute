@@ -1,0 +1,911 @@
+{
+  "source": "gateway database (GET /api/deployments, /api/runs, /api/nodes) and coordinator llama-server logs",
+  "exported_from": "C:/Users/operator/hypercompute gateway state in ~/.hypercompute, exported 2026-10-21",
+  "network": "UW campus Wi-Fi; G14 10.19.175.205, Mac worker 10.19.252.207:47052 (no client isolation)",
+  "power_state": "not recorded (the G14 halves GPU speed on battery)",
+  "deployments": [
+    {
+      "id": "865929b98bb1468fb5f52c8ab2ce6f4c",
+      "state": "failed",
+      "created_at": "2026-10-21T04:52:14.288529Z",
+      "error": "gateway restarted while deployment was active",
+      "cleanup": "deployment:865929b98bb1468fb5f52c8ab2ce6f4c: pid 68572 no longer running",
+      "plan": {
+        "model_id": "mistral-small-3.2-24b-instruct-q4_k_m",
+        "strategy": "fastest_fit",
+        "ctx_size": 4096,
+        "engine": "llama_rpc",
+        "tier": "gpu",
+        "device_list": [
+          "CUDA0",
+          "RPC0"
+        ],
+        "tensor_split": [
+          32,
+          9
+        ],
+        "cpu_layers": 0,
+        "reasons": [
+          "strategy: fastest fit (fewest devices, local first; peers only when needed)",
+          "contributed / estimated usable across selected devices: 15.3 GiB (separate memory pools, not one fast global memory)"
+        ],
+        "warnings": []
+      },
+      "assignments": [
+        {
+          "device": "CUDA0",
+          "node_id": "local",
+          "endpoint": null,
+          "holds_output": false,
+          "weight_bytes": 10629201920,
+          "kv_bytes": 536870912,
+          "compute_bytes_est": 184549376,
+          "total_bytes_est": 11822481408,
+          "budget_bytes": 11987320832,
+          "layers": 32
+        },
+        {
+          "device": "RPC0",
+          "node_id": "4c2991743c154be896d10a0b53ba4d2b",
+          "endpoint": "10.19.252.207:47052",
+          "holds_output": true,
+          "weight_bytes": 3319316480,
+          "kv_bytes": 134217728,
+          "compute_bytes_est": 184549376,
+          "total_bytes_est": 3973627904,
+          "budget_bytes": 4428251136,
+          "layers": 8
+        }
+      ],
+      "engine_args": [
+        "-m",
+        "C:\\Users\\operator\\.hypercompute\\models\\mistral-small-3.2-24b-instruct-q4_k_m\\mistralai_Mistral-Small-3.2-24B-Instruct-2506-Q4_K_M.gguf",
+        "--alias",
+        "mistral-small-3.2-24b-instruct-q4_k_m",
+        "--rpc",
+        "10.19.252.207:47052",
+        "--device",
+        "CUDA0,RPC0",
+        "--split-mode",
+        "layer",
+        "--tensor-split",
+        "32,9",
+        "-ngl",
+        "all",
+        "--fit",
+        "off",
+        "-c",
+        "4096",
+        "-np",
+        "1",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "56940",
+        "--metrics",
+        "--no-ui",
+        "-lv",
+        "4",
+        "--log-colors",
+        "off"
+      ],
+      "participation_detail": "CUDA0: model 10137 MiB, KV 512 MiB, ~32 layers (planned 32); RPC0[10.19.252.207:47052]: model 3166 MiB, KV 128 MiB, ~8 layers (planned 8)",
+      "participation_verified": true,
+      "peer_nodes": [
+        {
+          "id": "4c2991743c154be896d10a0b53ba4d2b",
+          "os": "26.6.2",
+          "cpu": "Apple M4",
+          "devices": [
+            {
+              "id": "CPU",
+              "name": "Apple M4",
+              "backend": "cpu",
+              "total_bytes": null,
+              "source": "sysctl machdep.cpu.brand_string"
+            },
+            {
+              "id": "MTL0",
+              "name": "Apple M4 (10-core GPU)",
+              "backend": "metal",
+              "total_bytes": 12712935424,
+              "source": "llama-server --list-devices (Metal working-set)"
+            }
+          ],
+          "memory_pools": [
+            {
+              "id": "uma",
+              "kind": "unified",
+              "total_bytes": 17179869184,
+              "free_bytes": 6753796096,
+              "measured_at": "2026-10-21T05:29:33.936713Z",
+              "source": "sysctl hw.memsize + psutil",
+              "note": "CPU and GPU share this pool; counted once"
+            }
+          ],
+          "contribution": {
+            "devices": [
+              "MTL0"
+            ],
+            "max_bytes": 10737418240,
+            "reserve_bytes": 4294967296,
+            "enforcement": "soft_admission",
+            "cache_enabled": true
+          },
+          "verification": {
+            "checked_at": "2026-10-21T04:43:39.064604Z",
+            "reachable": true,
+            "engine_match": true,
+            "rpc_devices": [
+              {
+                "name": "RPC0",
+                "description": "10.19.252.207:47052",
+                "total_bytes": 12712935424,
+                "free_bytes": 12711886848
+              }
+            ],
+            "detail": "worker answered the llama.cpp RPC handshake; llama.cpp b11770, RPC 8.0.0",
+            "fix": null
+          }
+        }
+      ],
+      "rpc0_upload": {
+        "mib": 3165.57,
+        "seconds": 161.8,
+        "mib_per_s": 19.6,
+        "basis": "llama-server log: RPC0 model buffer line to n_ctx_seq line (tensor upload)"
+      },
+      "runs": [
+        {
+          "id": "95362a0229b949679bebd0d93ac9b386",
+          "kind": "chat",
+          "status": "ok",
+          "started_at": "2026-10-21T05:05:41.686618Z",
+          "ttft_ms": 595.783400000073,
+          "prompt_tokens": 750,
+          "completion_tokens": 96,
+          "error": null,
+          "timings": {
+            "prompt_n": 32,
+            "prompt_ms": 587.876,
+            "predicted_n": 96,
+            "predicted_ms": 10778.197,
+            "predicted_per_second": 8.814090148844004,
+            "prompt_per_second": 54.43324782777321,
+            "cache_n": 718
+          }
+        },
+        {
+          "id": "87e88467281d496dbaad4ad87aa3d66c",
+          "kind": "chat",
+          "status": "ok",
+          "started_at": "2026-10-21T05:05:23.455545Z",
+          "ttft_ms": 920.5664000473917,
+          "prompt_tokens": 659,
+          "completion_tokens": 60,
+          "error": null,
+          "timings": {
+            "prompt_n": 149,
+            "prompt_ms": 912.455,
+            "predicted_n": 60,
+            "predicted_ms": 5980.351,
+            "predicted_per_second": 9.865641665514282,
+            "prompt_per_second": 163.2957241726989,
+            "cache_n": 510
+          }
+        },
+        {
+          "id": "da8007dd5f5a4b03b727d96ba4c41594",
+          "kind": "chat",
+          "status": "ok",
+          "started_at": "2026-10-21T05:05:18.337624Z",
+          "ttft_ms": 684.8810999654233,
+          "prompt_tokens": 518,
+          "completion_tokens": 8,
+          "error": null,
+          "timings": {
+            "prompt_n": 8,
+            "prompt_ms": 677.246,
+            "predicted_n": 8,
+            "predicted_ms": 2020.732,
+            "predicted_per_second": 3.464091230306641,
+            "prompt_per_second": 11.81254669647366,
+            "cache_n": 510
+          }
+        },
+        {
+          "id": "1f68ad53727d474dbbf87480223c73cc",
+          "kind": "chat",
+          "status": "ok",
+          "started_at": "2026-10-21T05:04:30.661706Z",
+          "ttft_ms": 1110.1468000561,
+          "prompt_tokens": 584,
+          "completion_tokens": 57,
+          "error": null,
+          "timings": {
+            "prompt_n": 79,
+            "prompt_ms": 1099.796,
+            "predicted_n": 57,
+            "predicted_ms": 5432.089,
+            "predicted_per_second": 10.30910944205811,
+            "prompt_per_second": 71.83150329697507,
+            "cache_n": 505
+          }
+        },
+        {
+          "id": "5bc2d1a1de374d98b64fcfbe97088451",
+          "kind": "chat",
+          "status": "ok",
+          "started_at": "2026-10-21T05:03:49.204474Z",
+          "ttft_ms": 387.3793000821024,
+          "prompt_tokens": 511,
+          "completion_tokens": 19,
+          "error": null,
+          "timings": {
+            "prompt_n": 6,
+            "prompt_ms": 381.006,
+            "predicted_n": 19,
+            "predicted_ms": 2067.574,
+            "predicted_per_second": 8.70585526805812,
+            "prompt_per_second": 15.74778349947245,
+            "cache_n": 505
+          }
+        },
+        {
+          "id": "b0bf1d4aae32442ab43504453c854162",
+          "kind": "chat",
+          "status": "ok",
+          "started_at": "2026-10-21T05:03:32.852082Z",
+          "ttft_ms": 310.2828999981284,
+          "prompt_tokens": 551,
+          "completion_tokens": 17,
+          "error": null,
+          "timings": {
+            "prompt_n": 7,
+            "prompt_ms": 300.154,
+            "predicted_n": 17,
+            "predicted_ms": 1511.924,
+            "predicted_per_second": 10.58254250875044,
+            "prompt_per_second": 23.321361700993492,
+            "cache_n": 544
+          }
+        },
+        {
+          "id": "2f4ea6f222ae4c7d9d60c0b6d40510c1",
+          "kind": "chat",
+          "status": "ok",
+          "started_at": "2026-10-21T05:02:40.745764Z",
+          "ttft_ms": 427.327899960801,
+          "prompt_tokens": 527,
+          "completion_tokens": 18,
+          "error": null,
+          "timings": {
+            "prompt_n": 8,
+            "prompt_ms": 419.276,
+            "predicted_n": 18,
+            "predicted_ms": 2088.758,
+            "predicted_per_second": 8.138807846576771,
+            "prompt_per_second": 19.08051021284309,
+            "cache_n": 519
+          }
+        },
+        {
+          "id": "6cad813b79da4cf8b1ba8679dfb627bf",
+          "kind": "chat",
+          "status": "ok",
+          "started_at": "2026-10-21T05:02:01.902402Z",
+          "ttft_ms": 122.41110007744282,
+          "prompt_tokens": 512,
+          "completion_tokens": 8,
+          "error": null,
+          "timings": {
+            "prompt_n": 1,
+            "prompt_ms": 117.011,
+            "predicted_n": 8,
+            "predicted_ms": 697.141,
+            "predicted_per_second": 10.041010355150537,
+            "prompt_per_second": 8.546205057644153,
+            "cache_n": 511
+          }
+        },
+        {
+          "id": "6a501d3a8b3a4daaa5d1a082a329436d",
+          "kind": "chat",
+          "status": "ok",
+          "started_at": "2026-10-21T05:02:01.020088Z",
+          "ttft_ms": 122.30809999164194,
+          "prompt_tokens": 512,
+          "completion_tokens": 8,
+          "error": null,
+          "timings": {
+            "prompt_n": 1,
+            "prompt_ms": 115.914,
+            "predicted_n": 8,
+            "predicted_ms": 747.477,
+            "predicted_per_second": 9.364836643803088,
+            "prompt_per_second": 8.627085597943303,
+            "cache_n": 511
+          }
+        },
+        {
+          "id": "1081960f7c754e35a45697e89b975e71",
+          "kind": "chat",
+          "status": "ok",
+          "started_at": "2026-10-21T05:01:57.552868Z",
+          "ttft_ms": 2644.341499893926,
+          "prompt_tokens": 512,
+          "completion_tokens": 8,
+          "error": null,
+          "timings": {
+            "prompt_n": 512,
+            "prompt_ms": 2638.285,
+            "predicted_n": 8,
+            "predicted_ms": 797.399,
+            "predicted_per_second": 8.778541232181128,
+            "prompt_per_second": 194.06546298068633,
+            "cache_n": 0
+          }
+        },
+        {
+          "id": "9c72ed865b02440780b3a700dd3cad06",
+          "kind": "chat",
+          "status": "ok",
+          "started_at": "2026-10-21T05:00:32.654025Z",
+          "ttft_ms": 604.0112000191584,
+          "prompt_tokens": 512,
+          "completion_tokens": 8,
+          "error": null,
+          "timings": {
+            "prompt_n": 5,
+            "prompt_ms": 597.85,
+            "predicted_n": 8,
+            "predicted_ms": 782.27,
+            "predicted_per_second": 8.948317077223978,
+            "prompt_per_second": 8.363301831563101,
+            "cache_n": 507
+          }
+        },
+        {
+          "id": "6674b8203e5f43779ad2de8431159387",
+          "kind": "chat",
+          "status": "ok",
+          "started_at": "2026-10-21T04:55:10.958174Z",
+          "ttft_ms": 376.3393999543041,
+          "prompt_tokens": 525,
+          "completion_tokens": 18,
+          "error": null,
+          "timings": {
+            "prompt_n": 20,
+            "prompt_ms": 370.771,
+            "predicted_n": 18,
+            "predicted_ms": 1818.582,
+            "predicted_per_second": 9.34794251785182,
+            "prompt_per_second": 53.94165131577172,
+            "cache_n": 505
+          }
+        },
+        {
+          "id": "8a7436eacef645789dcb27e4eec1572d",
+          "kind": "warmup",
+          "status": "ok",
+          "started_at": "2026-10-21T04:55:07.954437Z",
+          "ttft_ms": 2594.008699990809,
+          "prompt_tokens": 510,
+          "completion_tokens": 2,
+          "error": null,
+          "timings": {
+            "prompt_n": 510,
+            "prompt_ms": 2577.873,
+            "predicted_n": 2,
+            "predicted_ms": 111.651,
+            "predicted_per_second": 8.956480461437874,
+            "prompt_per_second": 197.83751953645506,
+            "cache_n": 0
+          }
+        }
+      ],
+      "log_file": "llama-server-865929b98bb1468fb5f52c8ab2ce6f4c.log",
+      "log_lines": [
+        "0.00.915.118 I cmn  common_param:   - RPC0    : 10.19.252.207:47052 (12124 MiB, 12123 MiB free)",
+        "0.01.309.027 I load_tensors: loading model tensors, this can take a while... (load_mode = mmap)",
+        "0.04.213.019 I load_tensors: offloaded 41/41 layers to GPU",
+        "0.04.213.026 I load_tensors:   CPU_Mapped model buffer size =   360.00 MiB",
+        "0.04.213.030 I load_tensors:        CUDA0 model buffer size = 10136.80 MiB",
+        "0.04.213.031 I load_tensors: RPC0[10.19.252.207:47052] model buffer size =  3165.57 MiB",
+        "2.46.052.294 I llama_context: n_ctx_seq             = 4096",
+        "2.46.052.295 I llama_context: flash_attn            = auto",
+        "2.46.052.444 I llama_context:        CPU  output buffer size =     0.50 MiB",
+        "2.46.054.424 I llama_kv_cache:      CUDA0 KV buffer size =   512.00 MiB",
+        "2.50.526.432 I llama_kv_cache: RPC0[10.19.252.207:47052] KV buffer size =   128.00 MiB",
+        "2.50.646.479 I sched_reserve:      CUDA0 compute buffer size =   366.05 MiB",
+        "2.50.646.485 I sched_reserve: RPC0[10.19.252.207:47052] compute buffer size =   268.04 MiB",
+        "2.50.646.486 I sched_reserve:  CUDA_Host compute buffer size =   116.07 MiB",
+        "2.51.763.177 I srv  llama_server: model loaded",
+        "2.54.572.218 I slot print_timing: id  0 | task 0 | prompt eval time =    2577.87 ms /   510 tokens (    5.05 ms per token,   197.84 tokens per second)",
+        "2.54.572.223 I slot print_timing: id  0 | task 0 |        eval time =     111.65 ms /     2 tokens (  111.65 ms per token,     8.96 tokens per second)",
+        "2.54.574.197 I slot      release: id  0 | task 0 | stop processing: n_tokens = 511, truncated = 0",
+        "2.57.068.920 I slot print_timing: id  0 | task 3 | prompt eval time =     370.77 ms /    20 tokens (   18.54 ms per token,    53.94 tokens per second)",
+        "2.57.068.926 I slot print_timing: id  0 | task 3 |        eval time =    1818.58 ms /    18 tokens (  106.98 ms per token,     9.35 tokens per second)",
+        "2.57.068.965 I slot      release: id  0 | task 3 | stop processing: n_tokens = 542, truncated = 0",
+        "8.17.952.789 I slot print_timing: id  0 | task 22 | prompt eval time =     597.85 ms /     5 tokens (  119.57 ms per token,     8.36 tokens per second)",
+        "8.17.952.794 I slot print_timing: id  0 | task 22 |        eval time =     782.27 ms /     8 tokens (  111.75 ms per token,     8.95 tokens per second)",
+        "8.17.952.937 I slot      release: id  0 | task 22 | stop processing: n_tokens = 519, truncated = 0",
+        "9.44.905.891 I slot print_timing: id  0 | task 31 | prompt eval time =    2638.28 ms /   512 tokens (    5.15 ms per token,   194.07 tokens per second)",
+        "9.44.905.896 I slot print_timing: id  0 | task 31 |        eval time =     797.40 ms /     8 tokens (  113.91 ms per token,     8.78 tokens per second)",
+        "9.44.905.967 I slot      release: id  0 | task 31 | stop processing: n_tokens = 519, truncated = 0",
+        "9.45.802.059 I slot print_timing: id  0 | task 40 | prompt eval time =     115.91 ms /     1 tokens (  115.91 ms per token,     8.63 tokens per second)",
+        "9.45.802.071 I slot print_timing: id  0 | task 40 |        eval time =     747.48 ms /     8 tokens (  106.78 ms per token,     9.36 tokens per second)",
+        "9.45.802.144 I slot      release: id  0 | task 40 | stop processing: n_tokens = 519, truncated = 0",
+        "9.46.634.983 I slot print_timing: id  0 | task 49 | prompt eval time =     117.01 ms /     1 tokens (  117.01 ms per token,     8.55 tokens per second)",
+        "9.46.634.988 I slot print_timing: id  0 | task 49 |        eval time =     697.14 ms /     8 tokens (   99.59 ms per token,    10.04 tokens per second)",
+        "9.46.635.026 I slot      release: id  0 | task 49 | stop processing: n_tokens = 519, truncated = 0",
+        "10.27.174.349 I slot print_timing: id  0 | task 58 | prompt eval time =     419.28 ms /     8 tokens (   52.41 ms per token,    19.08 tokens per second)",
+        "10.27.174.357 I slot print_timing: id  0 | task 58 |        eval time =    2088.76 ms /    18 tokens (  122.87 ms per token,     8.14 tokens per second)",
+        "10.27.174.414 I slot      release: id  0 | task 58 | stop processing: n_tokens = 544, truncated = 0",
+        "11.18.583.062 I slot print_timing: id  0 | task 77 | prompt eval time =     300.15 ms /     7 tokens (   42.88 ms per token,    23.32 tokens per second)",
+        "11.18.583.069 I slot print_timing: id  0 | task 77 |        eval time =    1511.92 ms /    17 tokens (   94.50 ms per token,    10.58 tokens per second)",
+        "11.18.583.120 I slot      release: id  0 | task 77 | stop processing: n_tokens = 567, truncated = 0",
+        "11.35.571.193 I slot print_timing: id  0 | task 95 | prompt eval time =     381.01 ms /     6 tokens (   63.50 ms per token,    15.75 tokens per second)",
+        "11.35.571.213 I slot print_timing: id  0 | task 95 |        eval time =    2067.57 ms /    19 tokens (  114.87 ms per token,     8.71 tokens per second)",
+        "11.35.571.295 I slot      release: id  0 | task 95 | stop processing: n_tokens = 529, truncated = 0",
+        "12.21.116.087 I slot print_timing: id  0 | task 115 | prompt eval time =    1099.80 ms /    79 tokens (   13.92 ms per token,    71.83 tokens per second)",
+        "12.21.116.096 I slot print_timing: id  0 | task 115 |        eval time =    5432.09 ms /    57 tokens (   97.00 ms per token,    10.31 tokens per second)",
+        "12.21.116.217 I slot      release: id  0 | task 115 | stop processing: n_tokens = 640, truncated = 0",
+        "13.04.955.376 I slot print_timing: id  0 | task 173 | prompt eval time =     677.25 ms /     8 tokens (   84.66 ms per token,    11.81 tokens per second)",
+        "13.04.955.382 I slot print_timing: id  0 | task 173 |        eval time =    2020.73 ms /     8 tokens (  288.68 ms per token,     3.46 tokens per second)",
+        "13.04.955.449 I slot      release: id  0 | task 173 | stop processing: n_tokens = 525, truncated = 0",
+        "13.14.268.508 I slot print_timing: id  0 | task 182 | prompt eval time =     912.46 ms /   149 tokens (    6.12 ms per token,   163.30 tokens per second)",
+        "13.14.268.515 I slot print_timing: id  0 | task 182 |        eval time =    5980.35 ms /    60 tokens (  101.36 ms per token,     9.87 tokens per second)",
+        "13.14.268.560 I slot      release: id  0 | task 182 | stop processing: n_tokens = 718, truncated = 0",
+        "13.36.972.858 I slot print_timing: id  0 | task 243 | prompt eval time =     587.88 ms /    32 tokens (   18.37 ms per token,    54.43 tokens per second)",
+        "13.36.972.871 I slot print_timing: id  0 | task 243 |        eval time =   10778.20 ms /    96 tokens (  113.45 ms per token,     8.81 tokens per second)",
+        "13.36.973.005 I slot      release: id  0 | task 243 | stop processing: n_tokens = 845, truncated = 0"
+      ]
+    },
+    {
+      "id": "c476506a674d4490b42c7a0a720da26b",
+      "state": "stopped",
+      "created_at": "2026-10-21T04:32:58.948873Z",
+      "error": null,
+      "cleanup": "deployment:c476506a674d4490b42c7a0a720da26b pid 45528: terminated (exit code 1); released 2 lease(s)",
+      "plan": {
+        "model_id": "qwen2.5-14b-instruct-q6_k",
+        "strategy": "fastest_fit",
+        "ctx_size": 4096,
+        "engine": "llama_rpc",
+        "tier": "gpu",
+        "device_list": [
+          "CUDA0",
+          "RPC0"
+        ],
+        "tensor_split": [
+          46,
+          3
+        ],
+        "cpu_layers": 0,
+        "reasons": [
+          "strategy: fastest fit (fewest devices, local first; peers only when needed)",
+          "contributed / estimated usable across selected devices: 15.5 GiB (separate memory pools, not one fast global memory)"
+        ],
+        "warnings": []
+      },
+      "assignments": [
+        {
+          "device": "CUDA0",
+          "node_id": "local",
+          "endpoint": null,
+          "holds_output": false,
+          "weight_bytes": 10389635072,
+          "kv_bytes": 771751936,
+          "compute_bytes_est": 184549376,
+          "total_bytes_est": 11817795584,
+          "budget_bytes": 11987320832,
+          "layers": 46
+        },
+        {
+          "device": "RPC0",
+          "node_id": "4c2991743c154be896d10a0b53ba4d2b",
+          "endpoint": "10.19.252.207:47052",
+          "holds_output": true,
+          "weight_bytes": 1090392064,
+          "kv_bytes": 33554432,
+          "compute_bytes_est": 184549376,
+          "total_bytes_est": 1644040192,
+          "budget_bytes": 4674191360,
+          "layers": 2
+        }
+      ],
+      "engine_args": [
+        "-m",
+        "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-14b-instruct-q6_k\\qwen2.5-14b-instruct-q6_k-00001-of-00004.gguf",
+        "--alias",
+        "qwen2.5-14b-instruct-q6_k",
+        "--rpc",
+        "10.19.252.207:47052",
+        "--device",
+        "CUDA0,RPC0",
+        "--split-mode",
+        "layer",
+        "--tensor-split",
+        "46,3",
+        "-ngl",
+        "all",
+        "--fit",
+        "off",
+        "-c",
+        "4096",
+        "-np",
+        "1",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "59667",
+        "--metrics",
+        "--no-ui",
+        "-lv",
+        "4",
+        "--log-colors",
+        "off"
+      ],
+      "participation_detail": "CUDA0: model 9908 MiB, KV 736 MiB, ~46 layers (planned 46); RPC0[10.19.252.207:47052]: model 1040 MiB, KV 32 MiB, ~2 layers (planned 2)",
+      "participation_verified": true,
+      "peer_nodes": [
+        {
+          "id": "4c2991743c154be896d10a0b53ba4d2b",
+          "os": "26.6.2",
+          "cpu": "Apple M4",
+          "devices": [
+            {
+              "id": "CPU",
+              "name": "Apple M4",
+              "backend": "cpu",
+              "total_bytes": null,
+              "source": "sysctl machdep.cpu.brand_string"
+            },
+            {
+              "id": "MTL0",
+              "name": "Apple M4 (10-core GPU)",
+              "backend": "metal",
+              "total_bytes": 12712935424,
+              "source": "llama-server --list-devices (Metal working-set)"
+            }
+          ],
+          "memory_pools": [
+            {
+              "id": "uma",
+              "kind": "unified",
+              "total_bytes": 17179869184,
+              "free_bytes": 6753796096,
+              "measured_at": "2026-10-21T05:29:33.936713Z",
+              "source": "sysctl hw.memsize + psutil",
+              "note": "CPU and GPU share this pool; counted once"
+            }
+          ],
+          "contribution": {
+            "devices": [
+              "MTL0"
+            ],
+            "max_bytes": 10737418240,
+            "reserve_bytes": 4294967296,
+            "enforcement": "soft_admission",
+            "cache_enabled": true
+          },
+          "verification": {
+            "checked_at": "2026-10-21T04:43:39.064604Z",
+            "reachable": true,
+            "engine_match": true,
+            "rpc_devices": [
+              {
+                "name": "RPC0",
+                "description": "10.19.252.207:47052",
+                "total_bytes": 12712935424,
+                "free_bytes": 12711886848
+              }
+            ],
+            "detail": "worker answered the llama.cpp RPC handshake; llama.cpp b11770, RPC 8.0.0",
+            "fix": null
+          }
+        }
+      ],
+      "rpc0_upload": {
+        "mib": 1039.9,
+        "seconds": 87.2,
+        "mib_per_s": 11.9,
+        "basis": "llama-server log: RPC0 model buffer line to n_ctx_seq line (tensor upload)"
+      },
+      "runs": [
+        {
+          "id": "92d8e36f595b4c44ad014773b2279a92",
+          "kind": "chat",
+          "status": "ok",
+          "started_at": "2026-10-21T04:37:46.358792Z",
+          "ttft_ms": 678.715500049293,
+          "prompt_tokens": 35,
+          "completion_tokens": 8,
+          "error": null,
+          "timings": {
+            "prompt_n": 11,
+            "prompt_ms": 544.503,
+            "predicted_n": 8,
+            "predicted_ms": 569.212,
+            "predicted_per_second": 12.297702789118993,
+            "prompt_per_second": 20.201908896737024,
+            "cache_n": 24
+          }
+        },
+        {
+          "id": "4fc48d0a1eee450da4dd8b60036928d5",
+          "kind": "chat",
+          "status": "ok",
+          "started_at": "2026-10-21T04:34:37.058075Z",
+          "ttft_ms": 255.88509999215603,
+          "prompt_tokens": 48,
+          "completion_tokens": 23,
+          "error": null,
+          "timings": {
+            "prompt_n": 24,
+            "prompt_ms": 250.878,
+            "predicted_n": 23,
+            "predicted_ms": 1885.276,
+            "predicted_per_second": 11.669378913220134,
+            "prompt_per_second": 95.66402793389616,
+            "cache_n": 24
+          }
+        },
+        {
+          "id": "94e39336a2684138a00ad559d843f53a",
+          "kind": "warmup",
+          "status": "ok",
+          "started_at": "2026-10-21T04:34:36.561471Z",
+          "ttft_ms": 343.56860001571476,
+          "prompt_tokens": 33,
+          "completion_tokens": 2,
+          "error": null,
+          "timings": {
+            "prompt_n": 33,
+            "prompt_ms": 334.1,
+            "predicted_n": 2,
+            "predicted_ms": 89.845,
+            "predicted_per_second": 11.130279926540153,
+            "prompt_per_second": 98.77282250823106,
+            "cache_n": 0
+          }
+        }
+      ],
+      "log_file": "llama-server-c476506a674d4490b42c7a0a720da26b.log",
+      "log_lines": [
+        "0.00.431.884 I cmn  common_param:   - RPC0    : 10.19.252.207:47052 (12124 MiB, 12123 MiB free)",
+        "0.00.728.138 I load_tensors: loading model tensors, this can take a while... (load_mode = mmap)",
+        "0.03.368.534 I load_tensors: offloaded 49/49 layers to GPU",
+        "0.03.368.540 I load_tensors:   CPU_Mapped model buffer size =   609.08 MiB",
+        "0.03.368.542 I load_tensors:        CUDA0 model buffer size =  9908.33 MiB",
+        "0.03.368.543 I load_tensors: RPC0[10.19.252.207:47052] model buffer size =  1039.90 MiB",
+        "1.30.569.663 I llama_context: n_ctx_seq             = 4096",
+        "1.30.569.666 I llama_context: flash_attn            = auto",
+        "1.30.569.782 I llama_context:        CPU  output buffer size =     0.58 MiB",
+        "1.30.571.916 I llama_kv_cache:      CUDA0 KV buffer size =   736.00 MiB",
+        "1.34.667.499 I llama_kv_cache: RPC0[10.19.252.207:47052] KV buffer size =    32.00 MiB",
+        "1.34.757.841 I sched_reserve:      CUDA0 compute buffer size =   257.05 MiB",
+        "1.34.757.846 I sched_reserve: RPC0[10.19.252.207:47052] compute buffer size =   157.04 MiB",
+        "1.34.757.847 I sched_reserve:  CUDA_Host compute buffer size =   116.07 MiB",
+        "1.35.615.879 I srv  llama_server: model loaded",
+        "1.36.366.414 I slot print_timing: id  0 | task 0 | prompt eval time =     334.10 ms /    33 tokens (   10.12 ms per token,    98.77 tokens per second)",
+        "1.36.366.419 I slot print_timing: id  0 | task 0 |        eval time =      89.84 ms /     2 tokens (   89.84 ms per token,    11.13 tokens per second)",
+        "1.36.366.673 I slot      release: id  0 | task 0 | stop processing: n_tokens = 34, truncated = 0",
+        "1.38.573.236 I slot print_timing: id  0 | task 3 | prompt eval time =     250.88 ms /    24 tokens (   10.45 ms per token,    95.66 tokens per second)",
+        "1.38.573.241 I slot print_timing: id  0 | task 3 |        eval time =    1885.28 ms /    23 tokens (   85.69 ms per token,    11.67 tokens per second)",
+        "1.38.573.262 I slot      release: id  0 | task 3 | stop processing: n_tokens = 70, truncated = 0",
+        "4.46.979.678 I slot print_timing: id  0 | task 27 | prompt eval time =     544.50 ms /    11 tokens (   49.50 ms per token,    20.20 tokens per second)",
+        "4.46.979.686 I slot print_timing: id  0 | task 27 |        eval time =     569.21 ms /     8 tokens (   81.32 ms per token,    12.30 tokens per second)",
+        "4.46.979.717 I slot      release: id  0 | task 27 | stop processing: n_tokens = 42, truncated = 0"
+      ]
+    },
+    {
+      "id": "725198feec7841178cd2d57a579245f4",
+      "state": "failed",
+      "created_at": "2026-10-21T04:24:46.945359Z",
+      "error": "peer 4c299174 lost: no heartbeat for 17s",
+      "cleanup": "deployment:725198feec7841178cd2d57a579245f4 pid 28112: terminated (exit code 1); released 2 lease(s)",
+      "plan": {
+        "model_id": "qwen2.5-0.5b-instruct-q4_k_m",
+        "strategy": "all_selected",
+        "ctx_size": 2048,
+        "engine": "llama_rpc",
+        "tier": "gpu",
+        "device_list": [
+          "CUDA0",
+          "RPC0"
+        ],
+        "tensor_split": [
+          20,
+          5
+        ],
+        "cpu_layers": 0,
+        "reasons": [
+          "strategy: run together (every selected device gets at least one layer)",
+          "contributed / estimated usable across selected devices: 14.0 GiB (separate memory pools, not one fast global memory)"
+        ],
+        "warnings": [
+          "the model fits on this machine alone; splitting it adds network hops and is expected to be slower. This run demonstrates participation, not necessity."
+        ]
+      },
+      "assignments": [
+        {
+          "device": "CUDA0",
+          "node_id": "local",
+          "endpoint": null,
+          "holds_output": false,
+          "weight_bytes": 207177472,
+          "kv_bytes": 20971520,
+          "compute_bytes_est": 115343360,
+          "total_bytes_est": 815351552,
+          "budget_bytes": 11987320832,
+          "layers": 20
+        },
+        {
+          "device": "RPC0",
+          "node_id": "4c2991743c154be896d10a0b53ba4d2b",
+          "endpoint": "10.19.252.207:47052",
+          "holds_output": true,
+          "weight_bytes": 184678656,
+          "kv_bytes": 4194304,
+          "compute_bytes_est": 115343360,
+          "total_bytes_est": 639760640,
+          "budget_bytes": 3077292032,
+          "layers": 4
+        }
+      ],
+      "engine_args": [
+        "-m",
+        "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-0.5b-instruct-q4_k_m\\qwen2.5-0.5b-instruct-q4_k_m.gguf",
+        "--alias",
+        "qwen2.5-0.5b-instruct-q4_k_m",
+        "--rpc",
+        "10.19.252.207:47052",
+        "--device",
+        "CUDA0,RPC0",
+        "--split-mode",
+        "layer",
+        "--tensor-split",
+        "20,5",
+        "-ngl",
+        "all",
+        "--fit",
+        "off",
+        "-c",
+        "2048",
+        "-np",
+        "1",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "63845",
+        "--metrics",
+        "--no-ui",
+        "-lv",
+        "4",
+        "--log-colors",
+        "off"
+      ],
+      "participation_detail": "CUDA0: model 198 MiB, KV 20 MiB, ~20 layers (planned 20); RPC0[10.19.252.207:47052]: model 176 MiB, KV 4 MiB, ~4 layers (planned 4)",
+      "participation_verified": true,
+      "peer_nodes": [
+        {
+          "id": "4c2991743c154be896d10a0b53ba4d2b",
+          "os": "26.6.2",
+          "cpu": "Apple M4",
+          "devices": [
+            {
+              "id": "CPU",
+              "name": "Apple M4",
+              "backend": "cpu",
+              "total_bytes": null,
+              "source": "sysctl machdep.cpu.brand_string"
+            },
+            {
+              "id": "MTL0",
+              "name": "Apple M4 (10-core GPU)",
+              "backend": "metal",
+              "total_bytes": 12712935424,
+              "source": "llama-server --list-devices (Metal working-set)"
+            }
+          ],
+          "memory_pools": [
+            {
+              "id": "uma",
+              "kind": "unified",
+              "total_bytes": 17179869184,
+              "free_bytes": 6753796096,
+              "measured_at": "2026-10-21T05:29:33.936713Z",
+              "source": "sysctl hw.memsize + psutil",
+              "note": "CPU and GPU share this pool; counted once"
+            }
+          ],
+          "contribution": {
+            "devices": [
+              "MTL0"
+            ],
+            "max_bytes": 10737418240,
+            "reserve_bytes": 4294967296,
+            "enforcement": "soft_admission",
+            "cache_enabled": true
+          },
+          "verification": {
+            "checked_at": "2026-10-21T04:43:39.064604Z",
+            "reachable": true,
+            "engine_match": true,
+            "rpc_devices": [
+              {
+                "name": "RPC0",
+                "description": "10.19.252.207:47052",
+                "total_bytes": 12712935424,
+                "free_bytes": 12711886848
+              }
+            ],
+            "detail": "worker answered the llama.cpp RPC handshake; llama.cpp b11770, RPC 8.0.0",
+            "fix": null
+          }
+        }
+      ],
+      "rpc0_upload": {
+        "mib": 176.13,
+        "seconds": 12.9,
+        "mib_per_s": 13.7,
+        "basis": "llama-server log: RPC0 model buffer line to n_ctx_seq line (tensor upload)"
+      },
+      "runs": [
+        {
+          "id": "12af960e32094581a499a6e573d1ab61",
+          "kind": "chat",
+          "status": "cancelled",
+          "started_at": "2026-10-21T04:25:09.055452Z",
+          "ttft_ms": 757.1269000181928,
+          "prompt_tokens": null,
+          "completion_tokens": null,
+          "error": "interrupted: deployment stopped or a peer was lost",
+          "timings": null
+        },
+        {
+          "id": "9103a39bbfb948a3a9e92194d259197d",
+          "kind": "warmup",
+          "status": "ok",
+          "started_at": "2026-10-21T04:25:07.510540Z",
+          "ttft_ms": 923.0189999798313,
+          "prompt_tokens": 33,
+          "completion_tokens": 2,
+          "error": null,
+          "timings": {
+            "prompt_n": 33,
+            "prompt_ms": 919.72,
+            "predicted_n": 2,
+            "predicted_ms": 249.181,
+            "predicted_per_second": 4.013147069800667,
+            "prompt_per_second": 35.88048536511112,
+            "cache_n": 0
+          }
+        }
+      ],
+      "log_file": "llama-server-725198feec7841178cd2d57a579245f4.log",
+      "log_lines": [
+        "0.01.052.830 I cmn  common_param:   - RPC0    : 10.19.252.207:47052 (12124 MiB, 12123 MiB free)",
+        "0.01.459.328 I load_tensors: loading model tensors, this can take a while... (load_mode = mmap)",
+        "0.03.303.650 I load_tensors: offloaded 25/25 layers to GPU",
+        "0.03.303.656 I load_tensors:   CPU_Mapped model buffer size =    89.26 MiB",
+        "0.03.303.657 I load_tensors:        CUDA0 model buffer size =   197.60 MiB",
+        "0.03.303.658 I load_tensors: RPC0[10.19.252.207:47052] model buffer size =   176.13 MiB",
+        "0.16.158.944 I llama_context: n_ctx_seq             = 2048",
+        "0.16.158.947 I llama_context: flash_attn            = auto",
+        "0.16.158.999 I llama_context:        CPU  output buffer size =     0.58 MiB",
+        "0.16.159.338 I llama_kv_cache:      CUDA0 KV buffer size =    20.00 MiB",
+        "0.16.417.344 I llama_kv_cache: RPC0[10.19.252.207:47052] KV buffer size =     4.00 MiB",
+        "0.16.563.366 I sched_reserve:      CUDA0 compute buffer size =    64.55 MiB",
+        "0.16.563.371 I sched_reserve: RPC0[10.19.252.207:47052] compute buffer size =    47.04 MiB",
+        "0.16.563.372 I sched_reserve:  CUDA_Host compute buffer size =    25.57 MiB",
+        "0.17.911.067 I srv  llama_server: model loaded",
+        "0.19.489.181 I slot print_timing: id  0 | task 0 | prompt eval time =     919.72 ms /    33 tokens (   27.87 ms per token,    35.88 tokens per second)",
+        "0.19.489.188 I slot print_timing: id  0 | task 0 |        eval time =     249.18 ms /     2 tokens (  249.18 ms per token,     4.01 tokens per second)",
+        "0.19.489.224 I slot      release: id  0 | task 0 | stop processing: n_tokens = 34, truncated = 0"
+      ]
+    }
+  ]
+}

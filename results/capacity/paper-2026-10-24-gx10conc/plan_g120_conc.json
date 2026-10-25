@@ -1,0 +1,106 @@
+[
+ {
+  "label": "g120-n1-gxA-1",
+  "model": "gpt-oss-120b-mxfp4",
+  "nodes": [],
+  "args": [
+   "--prompt-tokens",
+   "128",
+   "--output-tokens",
+   "64",
+   "--warmup",
+   "1",
+   "--reps",
+   "3"
+  ],
+  "timeout_s": 3600
+ },
+ {
+  "label": "g120-n4-gxA-1",
+  "model": "gpt-oss-120b-mxfp4",
+  "nodes": [],
+  "args": [
+   "--prompt-tokens",
+   "128",
+   "--output-tokens",
+   "64",
+   "--warmup",
+   "1",
+   "--reps",
+   "3",
+   "--concurrency",
+   "4"
+  ],
+  "timeout_s": 3600
+ },
+ {
+  "label": "g120-n8-gxA-1",
+  "model": "gpt-oss-120b-mxfp4",
+  "nodes": [],
+  "args": [
+   "--prompt-tokens",
+   "128",
+   "--output-tokens",
+   "64",
+   "--warmup",
+   "1",
+   "--reps",
+   "3",
+   "--concurrency",
+   "8"
+  ],
+  "timeout_s": 3600
+ },
+ {
+  "label": "g120-n8-gxA-2",
+  "model": "gpt-oss-120b-mxfp4",
+  "nodes": [],
+  "args": [
+   "--prompt-tokens",
+   "128",
+   "--output-tokens",
+   "64",
+   "--warmup",
+   "1",
+   "--reps",
+   "3",
+   "--concurrency",
+   "8"
+  ],
+  "timeout_s": 3600
+ },
+ {
+  "label": "g120-n4-gxA-2",
+  "model": "gpt-oss-120b-mxfp4",
+  "nodes": [],
+  "args": [
+   "--prompt-tokens",
+   "128",
+   "--output-tokens",
+   "64",
+   "--warmup",
+   "1",
+   "--reps",
+   "3",
+   "--concurrency",
+   "4"
+  ],
+  "timeout_s": 3600
+ },
+ {
+  "label": "g120-n1-gxA-2",
+  "model": "gpt-oss-120b-mxfp4",
+  "nodes": [],
+  "args": [
+   "--prompt-tokens",
+   "128",
+   "--output-tokens",
+   "64",
+   "--warmup",
+   "1",
+   "--reps",
+   "3"
+  ],
+  "timeout_s": 3600
+ }
+]

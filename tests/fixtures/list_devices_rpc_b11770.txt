@@ -1,0 +1,3 @@
+Available devices:
+  CUDA0: NVIDIA GeForce RTX 5070 Ti Laptop GPU (12226 MiB, 11026 MiB free)
+  RPC0: 127.0.0.1:47052 (31864 MiB, 4572 MiB free)

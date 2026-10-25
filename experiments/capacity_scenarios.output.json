@@ -1,0 +1,384 @@
+{
+  "input_evidence": {
+    "kind": "ILLUSTRATIVE SCENARIOS, NOT BENCHMARKS",
+    "model_source": "Qwen/Qwen2.5-72B-Instruct-GGUF@7ca3bc388f97b264c4283bc9bf1055e2abc38441 Q3_K_M",
+    "verified_aggregate_tensor_bytes": 35466149888,
+    "layer_distribution": "Uniform approximation preserving total tensor bytes; actual per-layer tensor sizes MUST replace it before deployment",
+    "kv": "1024 positions,80 layers,8 KV heads,128 head dimension,fp16 K/V,batch1",
+    "activation": "Illustrative ggml RPC fp32 hidden state,8192 elements; two host-mediated crossings per peer",
+    "capacity": "Allocation allowances after OS/application reserves; future Mac allowances assumed, not measured",
+    "coefficients": "All effective compute,SSD,direct-link rates are assumptions. Relay1MiB/s and~20msRTT resemble this session measurements but vary with load. No predicted TPS is a measured result.",
+    "cache": "Warm model cost assumes OS cache confined to the stated RAM allowance; OS paging does not enforce this bound. Disk range covers retained-subset versus cyclic scan-miss cases, not a guarantee.",
+    "exclusions": "Prefill, content-dependent speed, thermals, kernel launch overhead,queueing,shared-link contention,reload/KV replay omitted. Use production admission and real benchmarks."
+  },
+  "scenarios": [
+    {
+      "name": "two_laptops_relay_warm_assumption",
+      "result": {
+        "evidence": "cost-model estimate only; not a benchmark or executable deployment",
+        "objective": "conservative decode cost times horizon, optionally plus remote cold upload",
+        "scope": "CPU prefix, optional contiguous peer spans, local CUDA suffix/output head",
+        "score_s": 1770.0080478001776,
+        "expected_decode_tokens": 128,
+        "include_cold_upload": false,
+        "estimated_decode_s_range": [
+          8.454795132553471,
+          13.828187873438887
+        ],
+        "estimated_disk_bytes_per_token_range": [
+          12114816585,
+          20769271369
+        ],
+        "remote_upload_s_est": 2829.588667869568,
+        "assignments": [
+          {
+            "device": "windows_cpu",
+            "start_layer": 0,
+            "end_layer": 49,
+            "weight_bytes": 21304536649,
+            "kv_bytes": 205520896,
+            "workspace_bytes": 268435456,
+            "resident_bytes_est": 9663676416,
+            "disk_read_bytes_low": 12114816585,
+            "disk_read_bytes_high": 20769271369,
+            "compute_s": 0.77371687207371,
+            "network_s": 0.0,
+            "disk_s_low": 7.521868115290999,
+            "disk_s_high": 12.895260856176415,
+            "cold_upload_s": 0.0
+          },
+          {
+            "device": "friend_m4",
+            "start_layer": 49,
+            "end_layer": 56,
+            "weight_bytes": 2967038767,
+            "kv_bytes": 29360128,
+            "workspace_bytes": 536870912,
+            "resident_bytes_est": 3533269807,
+            "disk_read_bytes_low": 0,
+            "disk_read_bytes_high": 0,
+            "compute_s": 0.03947528833523393,
+            "network_s": 0.0825,
+            "disk_s_low": 0.0,
+            "disk_s_high": 0.0,
+            "cold_upload_s": 2829.588667869568
+          },
+          {
+            "device": "windows_cuda",
+            "start_layer": 56,
+            "end_layer": 80,
+            "weight_bytes": 11194574472,
+            "kv_bytes": 100663296,
+            "workspace_bytes": 429496729,
+            "resident_bytes_est": 11724734497,
+            "disk_read_bytes_low": 0,
+            "disk_read_bytes_high": 0,
+            "compute_s": 0.03723485685352768,
+            "network_s": 0.0,
+            "disk_s_low": 0.0,
+            "disk_s_high": 0.0,
+            "cold_upload_s": 0.0
+          }
+        ],
+        "can_apply_to_running_engine": false,
+        "excluded_costs": [
+          "prefill",
+          "thermal changes",
+          "queueing",
+          "host model loading",
+          "KV reconstruction",
+          "shared-link contention",
+          "kernel launch overhead"
+        ]
+      }
+    },
+    {
+      "name": "four_laptops_relay_warm_assumption",
+      "result": {
+        "evidence": "cost-model estimate only; not a benchmark or executable deployment",
+        "objective": "conservative decode cost times horizon, optionally plus remote cold upload",
+        "scope": "CPU prefix, optional contiguous peer spans, local CUDA suffix/output head",
+        "score_s": 101.55563064200537,
+        "expected_decode_tokens": 128,
+        "include_cold_upload": false,
+        "estimated_decode_s_range": [
+          0.7934033643906669,
+          0.7934033643906669
+        ],
+        "estimated_disk_bytes_per_token_range": [
+          0,
+          0
+        ],
+        "remote_upload_s_est": 14956.39724445343,
+        "assignments": [
+          {
+            "device": "windows_cpu",
+            "start_layer": 0,
+            "end_layer": 19,
+            "weight_bytes": 8588656219,
+            "kv_bytes": 79691776,
+            "workspace_bytes": 268435456,
+            "resident_bytes_est": 8936783451,
+            "disk_read_bytes_low": 0,
+            "disk_read_bytes_high": 0,
+            "compute_s": 0.3000134120509028,
+            "network_s": 0.0,
+            "disk_s_low": 0.0,
+            "disk_s_high": 0.0,
+            "cold_upload_s": 0.0
+          },
+          {
+            "device": "friend_m4",
+            "start_layer": 19,
+            "end_layer": 26,
+            "weight_bytes": 2967038767,
+            "kv_bytes": 29360128,
+            "workspace_bytes": 536870912,
+            "resident_bytes_est": 3533269807,
+            "disk_read_bytes_low": 0,
+            "disk_read_bytes_high": 0,
+            "compute_s": 0.03947528833523393,
+            "network_s": 0.0825,
+            "disk_s_low": 0.0,
+            "disk_s_high": 0.0,
+            "cold_upload_s": 2829.588667869568
+          },
+          {
+            "device": "new_m4_1",
+            "start_layer": 26,
+            "end_layer": 41,
+            "weight_bytes": 6357940215,
+            "kv_bytes": 62914560,
+            "workspace_bytes": 536870912,
+            "resident_bytes_est": 6957725687,
+            "disk_read_bytes_low": 0,
+            "disk_read_bytes_high": 0,
+            "compute_s": 0.08458990357550127,
+            "network_s": 0.0825,
+            "disk_s_low": 0.0,
+            "disk_s_high": 0.0,
+            "cold_upload_s": 6063.404288291931
+          },
+          {
+            "device": "new_m4_2",
+            "start_layer": 41,
+            "end_layer": 56,
+            "weight_bytes": 6357940215,
+            "kv_bytes": 62914560,
+            "workspace_bytes": 536870912,
+            "resident_bytes_est": 6957725687,
+            "disk_read_bytes_low": 0,
+            "disk_read_bytes_high": 0,
+            "compute_s": 0.08458990357550127,
+            "network_s": 0.0825,
+            "disk_s_low": 0.0,
+            "disk_s_high": 0.0,
+            "cold_upload_s": 6063.404288291931
+          },
+          {
+            "device": "windows_cuda",
+            "start_layer": 56,
+            "end_layer": 80,
+            "weight_bytes": 11194574472,
+            "kv_bytes": 100663296,
+            "workspace_bytes": 429496729,
+            "resident_bytes_est": 11724734497,
+            "disk_read_bytes_low": 0,
+            "disk_read_bytes_high": 0,
+            "compute_s": 0.03723485685352768,
+            "network_s": 0.0,
+            "disk_s_low": 0.0,
+            "disk_s_high": 0.0,
+            "cold_upload_s": 0.0
+          }
+        ],
+        "can_apply_to_running_engine": false,
+        "excluded_costs": [
+          "prefill",
+          "thermal changes",
+          "queueing",
+          "host model loading",
+          "KV reconstruction",
+          "shared-link contention",
+          "kernel launch overhead"
+        ]
+      }
+    },
+    {
+      "name": "four_laptops_direct_warm_assumption",
+      "result": {
+        "evidence": "cost-model estimate only; not a benchmark or executable deployment",
+        "objective": "conservative decode cost times horizon, optionally plus remote cold upload",
+        "scope": "CPU prefix, optional contiguous peer spans, local CUDA suffix/output head",
+        "score_s": 71.26763064200537,
+        "expected_decode_tokens": 128,
+        "include_cold_upload": false,
+        "estimated_decode_s_range": [
+          0.556778364390667,
+          0.556778364390667
+        ],
+        "estimated_disk_bytes_per_token_range": [
+          0,
+          0
+        ],
+        "remote_upload_s_est": 149.5639724445343,
+        "assignments": [
+          {
+            "device": "windows_cpu",
+            "start_layer": 0,
+            "end_layer": 19,
+            "weight_bytes": 8588656219,
+            "kv_bytes": 79691776,
+            "workspace_bytes": 268435456,
+            "resident_bytes_est": 8936783451,
+            "disk_read_bytes_low": 0,
+            "disk_read_bytes_high": 0,
+            "compute_s": 0.3000134120509028,
+            "network_s": 0.0,
+            "disk_s_low": 0.0,
+            "disk_s_high": 0.0,
+            "cold_upload_s": 0.0
+          },
+          {
+            "device": "friend_m4",
+            "start_layer": 19,
+            "end_layer": 26,
+            "weight_bytes": 2967038767,
+            "kv_bytes": 29360128,
+            "workspace_bytes": 536870912,
+            "resident_bytes_est": 3533269807,
+            "disk_read_bytes_low": 0,
+            "disk_read_bytes_high": 0,
+            "compute_s": 0.03947528833523393,
+            "network_s": 0.003625,
+            "disk_s_low": 0.0,
+            "disk_s_high": 0.0,
+            "cold_upload_s": 28.29588667869568
+          },
+          {
+            "device": "new_m4_1",
+            "start_layer": 26,
+            "end_layer": 41,
+            "weight_bytes": 6357940215,
+            "kv_bytes": 62914560,
+            "workspace_bytes": 536870912,
+            "resident_bytes_est": 6957725687,
+            "disk_read_bytes_low": 0,
+            "disk_read_bytes_high": 0,
+            "compute_s": 0.08458990357550127,
+            "network_s": 0.003625,
+            "disk_s_low": 0.0,
+            "disk_s_high": 0.0,
+            "cold_upload_s": 60.63404288291931
+          },
+          {
+            "device": "new_m4_2",
+            "start_layer": 41,
+            "end_layer": 56,
+            "weight_bytes": 6357940215,
+            "kv_bytes": 62914560,
+            "workspace_bytes": 536870912,
+            "resident_bytes_est": 6957725687,
+            "disk_read_bytes_low": 0,
+            "disk_read_bytes_high": 0,
+            "compute_s": 0.08458990357550127,
+            "network_s": 0.003625,
+            "disk_s_low": 0.0,
+            "disk_s_high": 0.0,
+            "cold_upload_s": 60.63404288291931
+          },
+          {
+            "device": "windows_cuda",
+            "start_layer": 56,
+            "end_layer": 80,
+            "weight_bytes": 11194574472,
+            "kv_bytes": 100663296,
+            "workspace_bytes": 429496729,
+            "resident_bytes_est": 11724734497,
+            "disk_read_bytes_low": 0,
+            "disk_read_bytes_high": 0,
+            "compute_s": 0.03723485685352768,
+            "network_s": 0.0,
+            "disk_s_low": 0.0,
+            "disk_s_high": 0.0,
+            "cold_upload_s": 0.0
+          }
+        ],
+        "can_apply_to_running_engine": false,
+        "excluded_costs": [
+          "prefill",
+          "thermal changes",
+          "queueing",
+          "host model loading",
+          "KV reconstruction",
+          "shared-link contention",
+          "kernel launch overhead"
+        ]
+      }
+    },
+    {
+      "name": "four_laptops_relay_cold_128_tokens",
+      "result": {
+        "evidence": "cost-model estimate only; not a benchmark or executable deployment",
+        "objective": "conservative decode cost times horizon, optionally plus remote cold upload",
+        "scope": "CPU prefix, optional contiguous peer spans, local CUDA suffix/output head",
+        "score_s": 2004.342209888413,
+        "expected_decode_tokens": 128,
+        "include_cold_upload": true,
+        "estimated_decode_s_range": [
+          10.303759940534476,
+          15.658923514753226
+        ],
+        "estimated_disk_bytes_per_token_range": [
+          15111215480,
+          23736310136
+        ],
+        "remote_upload_s_est": 0.0,
+        "assignments": [
+          {
+            "device": "windows_cpu",
+            "start_layer": 0,
+            "end_layer": 56,
+            "weight_bytes": 24271575416,
+            "kv_bytes": 234881024,
+            "workspace_bytes": 268435456,
+            "resident_bytes_est": 9663676416,
+            "disk_read_bytes_low": 15111215480,
+            "disk_read_bytes_high": 23736310136,
+            "compute_s": 0.8842476794123649,
+            "network_s": 0.0,
+            "disk_s_low": 9.382277404268583,
+            "disk_s_high": 14.737440978487333,
+            "cold_upload_s": 0.0
+          },
+          {
+            "device": "windows_cuda",
+            "start_layer": 56,
+            "end_layer": 80,
+            "weight_bytes": 11194574472,
+            "kv_bytes": 100663296,
+            "workspace_bytes": 429496729,
+            "resident_bytes_est": 11724734497,
+            "disk_read_bytes_low": 0,
+            "disk_read_bytes_high": 0,
+            "compute_s": 0.03723485685352768,
+            "network_s": 0.0,
+            "disk_s_low": 0.0,
+            "disk_s_high": 0.0,
+            "cold_upload_s": 0.0
+          }
+        ],
+        "can_apply_to_running_engine": false,
+        "excluded_costs": [
+          "prefill",
+          "thermal changes",
+          "queueing",
+          "host model loading",
+          "KV reconstruction",
+          "shared-link contention",
+          "kernel launch overhead"
+        ]
+      }
+    }
+  ]
+}

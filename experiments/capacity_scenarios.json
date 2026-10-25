@@ -1,0 +1,325 @@
+{
+  "evidence": {
+    "kind": "ILLUSTRATIVE SCENARIOS, NOT BENCHMARKS",
+    "model_source": "Qwen/Qwen2.5-72B-Instruct-GGUF@7ca3bc388f97b264c4283bc9bf1055e2abc38441 Q3_K_M",
+    "verified_aggregate_tensor_bytes": 35466149888,
+    "layer_distribution": "Uniform approximation preserving total tensor bytes; actual per-layer tensor sizes MUST replace it before deployment",
+    "kv": "1024 positions,80 layers,8 KV heads,128 head dimension,fp16 K/V,batch1",
+    "activation": "Illustrative ggml RPC fp32 hidden state,8192 elements; two host-mediated crossings per peer",
+    "capacity": "Allocation allowances after OS/application reserves; future Mac allowances assumed, not measured",
+    "coefficients": "All effective compute,SSD,direct-link rates are assumptions. Relay1MiB/s and~20msRTT resemble this session measurements but vary with load. No predicted TPS is a measured result.",
+    "cache": "Warm model cost assumes OS cache confined to the stated RAM allowance; OS paging does not enforce this bound. Disk range covers retained-subset versus cyclic scan-miss cases, not a guarantee.",
+    "exclusions": "Prefill, content-dependent speed, thermals, kernel launch overhead,queueing,shared-link contention,reload/KV replay omitted. Use production admission and real benchmarks."
+  },
+  "model": {
+    "layer_bytes": [
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862681,
+      423862729
+    ],
+    "embedding_bytes": 535265280,
+    "output_bytes": 1021870080,
+    "kv_bytes_per_layer": 4194304,
+    "activation_bytes_per_token": 32768
+  },
+  "scenarios": [
+    {
+      "cpu": {
+        "name": "windows_cpu",
+        "pool": "windows_cpu",
+        "capacity_bytes": 9663676416,
+        "workspace_bytes": 268435456,
+        "effective_read_gib_s": 25,
+        "rtt_ms": 0,
+        "link_mib_s": 0,
+        "cached_fraction": 0
+      },
+      "local_gpu": {
+        "name": "windows_cuda",
+        "pool": "windows_cuda",
+        "capacity_bytes": 11811160064,
+        "workspace_bytes": 429496729,
+        "effective_read_gib_s": 280,
+        "rtt_ms": 0,
+        "link_mib_s": 0,
+        "cached_fraction": 0
+      },
+      "options": {
+        "disk_gib_s": 1.5,
+        "cache_mode": "os",
+        "expected_decode_tokens": 128
+      },
+      "name": "two_laptops_relay_warm_assumption",
+      "peers": [
+        {
+          "name": "friend_m4",
+          "pool": "friend_m4",
+          "capacity_bytes": 3758096384,
+          "workspace_bytes": 536870912,
+          "effective_read_gib_s": 70,
+          "rtt_ms": 20,
+          "link_mib_s": 1,
+          "cached_fraction": 0
+        }
+      ]
+    },
+    {
+      "cpu": {
+        "name": "windows_cpu",
+        "pool": "windows_cpu",
+        "capacity_bytes": 9663676416,
+        "workspace_bytes": 268435456,
+        "effective_read_gib_s": 25,
+        "rtt_ms": 0,
+        "link_mib_s": 0,
+        "cached_fraction": 0
+      },
+      "local_gpu": {
+        "name": "windows_cuda",
+        "pool": "windows_cuda",
+        "capacity_bytes": 11811160064,
+        "workspace_bytes": 429496729,
+        "effective_read_gib_s": 280,
+        "rtt_ms": 0,
+        "link_mib_s": 0,
+        "cached_fraction": 0
+      },
+      "options": {
+        "disk_gib_s": 1.5,
+        "cache_mode": "os",
+        "expected_decode_tokens": 128
+      },
+      "name": "four_laptops_relay_warm_assumption",
+      "peers": [
+        {
+          "name": "friend_m4",
+          "pool": "friend_m4",
+          "capacity_bytes": 3758096384,
+          "workspace_bytes": 536870912,
+          "effective_read_gib_s": 70,
+          "rtt_ms": 20,
+          "link_mib_s": 1,
+          "cached_fraction": 0
+        },
+        {
+          "name": "new_m4_1",
+          "pool": "new_m4_1",
+          "capacity_bytes": 6979321856,
+          "workspace_bytes": 536870912,
+          "effective_read_gib_s": 70,
+          "rtt_ms": 20,
+          "link_mib_s": 1,
+          "cached_fraction": 0
+        },
+        {
+          "name": "new_m4_2",
+          "pool": "new_m4_2",
+          "capacity_bytes": 6979321856,
+          "workspace_bytes": 536870912,
+          "effective_read_gib_s": 70,
+          "rtt_ms": 20,
+          "link_mib_s": 1,
+          "cached_fraction": 0
+        }
+      ]
+    },
+    {
+      "cpu": {
+        "name": "windows_cpu",
+        "pool": "windows_cpu",
+        "capacity_bytes": 9663676416,
+        "workspace_bytes": 268435456,
+        "effective_read_gib_s": 25,
+        "rtt_ms": 0,
+        "link_mib_s": 0,
+        "cached_fraction": 0
+      },
+      "local_gpu": {
+        "name": "windows_cuda",
+        "pool": "windows_cuda",
+        "capacity_bytes": 11811160064,
+        "workspace_bytes": 429496729,
+        "effective_read_gib_s": 280,
+        "rtt_ms": 0,
+        "link_mib_s": 0,
+        "cached_fraction": 0
+      },
+      "options": {
+        "disk_gib_s": 1.5,
+        "cache_mode": "os",
+        "expected_decode_tokens": 128
+      },
+      "name": "four_laptops_direct_warm_assumption",
+      "peers": [
+        {
+          "name": "friend_m4",
+          "pool": "friend_m4",
+          "capacity_bytes": 3758096384,
+          "workspace_bytes": 536870912,
+          "effective_read_gib_s": 70,
+          "rtt_ms": 3,
+          "link_mib_s": 100,
+          "cached_fraction": 0
+        },
+        {
+          "name": "new_m4_1",
+          "pool": "new_m4_1",
+          "capacity_bytes": 6979321856,
+          "workspace_bytes": 536870912,
+          "effective_read_gib_s": 70,
+          "rtt_ms": 3,
+          "link_mib_s": 100,
+          "cached_fraction": 0
+        },
+        {
+          "name": "new_m4_2",
+          "pool": "new_m4_2",
+          "capacity_bytes": 6979321856,
+          "workspace_bytes": 536870912,
+          "effective_read_gib_s": 70,
+          "rtt_ms": 3,
+          "link_mib_s": 100,
+          "cached_fraction": 0
+        }
+      ]
+    },
+    {
+      "cpu": {
+        "name": "windows_cpu",
+        "pool": "windows_cpu",
+        "capacity_bytes": 9663676416,
+        "workspace_bytes": 268435456,
+        "effective_read_gib_s": 25,
+        "rtt_ms": 0,
+        "link_mib_s": 0,
+        "cached_fraction": 0
+      },
+      "local_gpu": {
+        "name": "windows_cuda",
+        "pool": "windows_cuda",
+        "capacity_bytes": 11811160064,
+        "workspace_bytes": 429496729,
+        "effective_read_gib_s": 280,
+        "rtt_ms": 0,
+        "link_mib_s": 0,
+        "cached_fraction": 0
+      },
+      "options": {
+        "disk_gib_s": 1.5,
+        "cache_mode": "os",
+        "expected_decode_tokens": 128,
+        "include_cold_upload": true
+      },
+      "name": "four_laptops_relay_cold_128_tokens",
+      "peers": [
+        {
+          "name": "friend_m4",
+          "pool": "friend_m4",
+          "capacity_bytes": 3758096384,
+          "workspace_bytes": 536870912,
+          "effective_read_gib_s": 70,
+          "rtt_ms": 20,
+          "link_mib_s": 1,
+          "cached_fraction": 0
+        },
+        {
+          "name": "new_m4_1",
+          "pool": "new_m4_1",
+          "capacity_bytes": 6979321856,
+          "workspace_bytes": 536870912,
+          "effective_read_gib_s": 70,
+          "rtt_ms": 20,
+          "link_mib_s": 1,
+          "cached_fraction": 0
+        },
+        {
+          "name": "new_m4_2",
+          "pool": "new_m4_2",
+          "capacity_bytes": 6979321856,
+          "workspace_bytes": 536870912,
+          "effective_read_gib_s": 70,
+          "rtt_ms": 20,
+          "link_mib_s": 1,
+          "cached_fraction": 0
+        }
+      ]
+    }
+  ]
+}

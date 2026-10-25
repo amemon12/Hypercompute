@@ -1,0 +1,56 @@
+{
+ "kind": "storage_calibration",
+ "tool": "scripts/capacity/calibrate.py storage",
+ "model": "qwen2.5-7b-instruct-q4_k_m",
+ "file": "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-7b-instruct-q4_k_m\\qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+ "power": {
+  "state": "ac",
+  "via": "Win32_Battery.BatteryStatus",
+  "battery_status": [
+   2
+  ]
+ },
+ "started_at": "2026-10-22T06:25:56.666416+00:00",
+ "requested": {
+  "bytes": 4294967296,
+  "runs": 3,
+  "readers": 4,
+  "chunk_bytes": 8388608
+ },
+ "volume": "C:",
+ "runs": [
+  {
+   "path": "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-7b-instruct-q4_k_m\\qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+   "readers": 4,
+   "chunk_bytes": 8388608,
+   "bytes_read": 1325400064,
+   "seconds": 0.2203573000151664,
+   "supported": true,
+   "error": null,
+   "bytes_per_s": 6014777200.069058
+  },
+  {
+   "path": "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-7b-instruct-q4_k_m\\qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+   "readers": 4,
+   "chunk_bytes": 8388608,
+   "bytes_read": 1325400064,
+   "seconds": 0.22297050000634044,
+   "supported": true,
+   "error": null,
+   "bytes_per_s": 5944284396.197302
+  },
+  {
+   "path": "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-7b-instruct-q4_k_m\\qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+   "readers": 4,
+   "chunk_bytes": 8388608,
+   "bytes_read": 1325400064,
+   "seconds": 0.22098079998977482,
+   "supported": true,
+   "error": null,
+   "bytes_per_s": 5997806434.139657
+  }
+ ],
+ "bytes_read": 3976200192,
+ "error": null,
+ "median_bytes_per_s": 5997806434.139657
+}

@@ -1,0 +1,3636 @@
+{
+  "schema": "hypercompute.capacity.big/1",
+  "started_at": "2026-10-22T08:49:16.905691+00:00",
+  "requested": {
+    "model": "gpt-oss-120b-mxfp4",
+    "port": 8001,
+    "strategy": "all_selected",
+    "ctx": 4096,
+    "nodes": [],
+    "engine": null,
+    "allow_capacity_mode": true,
+    "prompt_tokens": 128,
+    "output_tokens": 64,
+    "warmup": 1,
+    "reps": 2,
+    "keep": false,
+    "plan_only": false,
+    "load_timeout_s": 5400.0,
+    "chat_timeout_s": 1800.0,
+    "poll_s": 2.0,
+    "heartbeat_wait_s": 7.5,
+    "sample_interval_s": 0.5,
+    "gpu_every": 4,
+    "min_available_gib": 0.1,
+    "min_drive_free_gib": 5.0,
+    "max_commit_growth_gib": 0.25,
+    "home": "C:\\Users\\operator\\.hypercompute\\iroh-session",
+    "results_dir": "C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity",
+    "chat_settings": {
+      "stream": true,
+      "temperature": 0,
+      "seed": 7,
+      "cache_prompt": false,
+      "ignore_eos": true
+    }
+  },
+  "runner": {
+    "git_head": "d2bb8cd5548c119ccb29acaca2ed2c229324bced",
+    "uncommitted_paths": 22,
+    "note": "the runner's checkout; the gateway runs whatever code it was started from"
+  },
+  "predicted": {
+    "plan": {
+      "id": "826194fba4a04360abf55c19ee68d866",
+      "model_id": "gpt-oss-120b-mxfp4",
+      "strategy": "all_selected",
+      "ctx_size": 4096,
+      "feasible": true,
+      "fit_label": "estimated_fit",
+      "heuristic": true,
+      "assignments": [
+        {
+          "node_id": "local",
+          "device": "CPU",
+          "endpoint": null,
+          "pool_id": "ram",
+          "layers": [],
+          "holds_output": false,
+          "weight_bytes": 47501475840,
+          "kv_bytes": 0,
+          "compute_bytes_est": 147849216,
+          "overhead_bytes_est": 67108864,
+          "total_bytes_est": 214958080,
+          "budget_bytes": 9701881959,
+          "fits": true
+        },
+        {
+          "node_id": "4c2991743c154be896d10a0b53ba4d2b",
+          "device": "RPC0",
+          "endpoint": "127.0.0.1:64076",
+          "pool_id": "uma",
+          "layers": [
+            0,
+            1,
+            2
+          ],
+          "holds_output": false,
+          "weight_bytes": 5178637824,
+          "kv_bytes": 25165824,
+          "compute_bytes_est": 147849216,
+          "overhead_bytes_est": 335544320,
+          "total_bytes_est": 5687197184,
+          "budget_bytes": 5718835200,
+          "fits": true
+        },
+        {
+          "node_id": "local",
+          "device": "CUDA0",
+          "endpoint": null,
+          "pool_id": "vram:CUDA0",
+          "layers": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35
+          ],
+          "holds_output": true,
+          "weight_bytes": 10078869504,
+          "kv_bytes": 276824064,
+          "compute_bytes_est": 147849216,
+          "overhead_bytes_est": 471859200,
+          "total_bytes_est": 10975401984,
+          "budget_bytes": 11987320832,
+          "fits": true
+        }
+      ],
+      "device_list": [
+        "RPC0",
+        "CUDA0"
+      ],
+      "tensor_split": [
+        3,
+        34
+      ],
+      "rpc_endpoints": [
+        "127.0.0.1:64076"
+      ],
+      "cpu_resident_bytes": 615329280,
+      "reasons": [
+        "strategy: run together (every selected device gets at least one layer)",
+        "contributed / estimated usable across selected devices: 16.5 GiB (separate memory pools, not one fast global memory)"
+      ],
+      "warnings": [
+        "moe_offload: attention, norms, router, shared experts, the head and the KV cache stay on the accelerators; the routed experts of 28 host layer(s) (44.2 GiB) stay on this machine's CPU, memory-mapped from the GGUF with no repacked or pinned copy (file cache, not committed RAM)",
+        "the peers hold whole layers (4.8 GiB), uploaded over the network before the first token",
+        "capacity mode (MoE): ~8.8 GiB of RAM left for the file cache against 44.2 GiB of CPU experts: an estimated 80% of the 3.1% of expert bytes a token routes to miss it, ~1.1 GiB of SSD reads per token",
+        "expected speed (slow; an estimate from priors and an assumed page-fault read rate of 1.0 GiB/s, not a measurement): ~1137 ms per token, about 0.9 tokens/s. Prompt processing of the CPU experts runs on the CPU",
+        "capacity optimizer not used (moe): gpt-oss-120b-mxfp4 is a mixture-of-experts model (128 experts, 4 per token); the optimizer's layer search does not model expert offload, so the planner's moe_offload plan is used"
+      ],
+      "candidates": [
+        {
+          "label": "this machine only",
+          "devices": [
+            "local:CUDA0"
+          ],
+          "feasible": false,
+          "reason": "CUDA0 needs ~59.3 GiB of 11.2 GiB"
+        },
+        {
+          "label": "every selected device participates",
+          "devices": [
+            "4c2991743c154be896d10a0b53ba4d2b:127.0.0.1:64076#0",
+            "local:CUDA0"
+          ],
+          "feasible": false,
+          "reason": "127.0.0.1:64076#0 needs ~48.9 GiB of 5.3 GiB"
+        },
+        {
+          "label": "every selected device + MoE experts on the host CPU",
+          "devices": [
+            "local:CPU",
+            "4c2991743c154be896d10a0b53ba4d2b:127.0.0.1:64076#0",
+            "local:CUDA0"
+          ],
+          "feasible": true,
+          "reason": "estimated fit: experts of 28 of 33 host layer(s) (44.2 GiB) stay on the CPU, file-backed; decode ~1137 ms/token (estimate)"
+        }
+      ],
+      "created_at": "2026-10-22T08:49:17.750181Z",
+      "engine": "llama_rpc",
+      "tier": "moe_offload",
+      "cpu_layers": 0,
+      "n_gpu_units": null,
+      "engine_flags": {},
+      "engine_options": {},
+      "profile_id": null,
+      "capacity_mode": true,
+      "stream": null,
+      "moe": {
+        "expert_count": 128,
+        "expert_used_count": 4,
+        "active_fraction": 0.03125,
+        "cpu_expert_layers": [
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30
+        ],
+        "cpu_expert_bytes": 47501475840,
+        "gpu_expert_bytes": 8482406400,
+        "override": "^blk\\.([3-9]|[1-2][0-9]|30)\\.ffn_(up|down|gate_up|gate)_(ch|)exps\\.=CPU",
+        "page_cache_bytes_est": 9486923879,
+        "miss_rate_est": 0.800281492075005,
+        "ssd_bytes_per_token_est": 1187954748,
+        "read_bytes_per_s": 1073741824.0,
+        "decode_ms_est": 1136.532193835002,
+        "provenance": "estimate"
+      },
+      "revision": 0,
+      "prediction": null,
+      "limits": {
+        "allow_ram_tier": true,
+        "allow_capacity_mode": true,
+        "node_ids": null,
+        "strategy": "all_selected"
+      }
+    },
+    "explain": {
+      "model_id": "gpt-oss-120b-mxfp4",
+      "workload": {
+        "ctx_size": 4096,
+        "prompt_tokens": 128,
+        "output_tokens": 64,
+        "warm": false,
+        "horizon_tokens": 2048,
+        "objective": "interactive"
+      },
+      "feasible": true,
+      "best": null,
+      "plan": {
+        "id": "4fe0f7f18fd74e619ed4542599423a04",
+        "model_id": "gpt-oss-120b-mxfp4",
+        "strategy": "fastest_fit",
+        "ctx_size": 4096,
+        "feasible": true,
+        "fit_label": "estimated_fit",
+        "heuristic": true,
+        "assignments": [
+          {
+            "node_id": "local",
+            "device": "CPU",
+            "endpoint": null,
+            "pool_id": "ram",
+            "layers": [],
+            "holds_output": false,
+            "weight_bytes": 47501475840,
+            "kv_bytes": 0,
+            "compute_bytes_est": 147849216,
+            "overhead_bytes_est": 67108864,
+            "total_bytes_est": 214958080,
+            "budget_bytes": 9701881959,
+            "fits": true
+          },
+          {
+            "node_id": "4c2991743c154be896d10a0b53ba4d2b",
+            "device": "RPC0",
+            "endpoint": "127.0.0.1:64076",
+            "pool_id": "uma",
+            "layers": [
+              0,
+              1,
+              2
+            ],
+            "holds_output": false,
+            "weight_bytes": 5178637824,
+            "kv_bytes": 25165824,
+            "compute_bytes_est": 147849216,
+            "overhead_bytes_est": 335544320,
+            "total_bytes_est": 5687197184,
+            "budget_bytes": 5718835200,
+            "fits": true
+          },
+          {
+            "node_id": "local",
+            "device": "CUDA0",
+            "endpoint": null,
+            "pool_id": "vram:CUDA0",
+            "layers": [
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31,
+              32,
+              33,
+              34,
+              35
+            ],
+            "holds_output": true,
+            "weight_bytes": 10078881024,
+            "kv_bytes": 276824064,
+            "compute_bytes_est": 147849216,
+            "overhead_bytes_est": 471859200,
+            "total_bytes_est": 10975413504,
+            "budget_bytes": 11987320832,
+            "fits": true
+          }
+        ],
+        "device_list": [
+          "RPC0",
+          "CUDA0"
+        ],
+        "tensor_split": [
+          3,
+          34
+        ],
+        "rpc_endpoints": [
+          "127.0.0.1:64076"
+        ],
+        "cpu_resident_bytes": 615329280,
+        "reasons": [
+          "strategy: fastest fit (fewest devices, local first; peers only when needed)",
+          "contributed / estimated usable across selected devices: 16.5 GiB (separate memory pools, not one fast global memory)"
+        ],
+        "warnings": [
+          "MoE placement with the peers: estimated decode ~1137 ms/token against ~1280 (priors, not measured); the other layout is in the candidates",
+          "moe_offload: attention, norms, router, shared experts, the head and the KV cache stay on the accelerators; the routed experts of 28 host layer(s) (44.2 GiB) stay on this machine's CPU, memory-mapped from the GGUF with no repacked or pinned copy (file cache, not committed RAM)",
+          "the peers hold whole layers (4.8 GiB), uploaded over the network before the first token",
+          "capacity mode (MoE): ~8.8 GiB of RAM left for the file cache against 44.2 GiB of CPU experts: an estimated 80% of the 3.1% of expert bytes a token routes to miss it, ~1.1 GiB of SSD reads per token",
+          "expected speed (slow; an estimate from priors and an assumed page-fault read rate of 1.0 GiB/s, not a measurement): ~1137 ms per token, about 0.9 tokens/s. Prompt processing of the CPU experts runs on the CPU"
+        ],
+        "candidates": [
+          {
+            "label": "this machine only",
+            "devices": [
+              "local:CUDA0"
+            ],
+            "feasible": false,
+            "reason": "CUDA0 needs ~59.3 GiB of 11.2 GiB"
+          },
+          {
+            "label": "overflow to 1 peer device(s)",
+            "devices": [
+              "4c2991743c154be896d10a0b53ba4d2b:127.0.0.1:64076#0",
+              "local:CUDA0"
+            ],
+            "feasible": false,
+            "reason": "127.0.0.1:64076#0 needs ~48.9 GiB of 5.3 GiB"
+          },
+          {
+            "label": "MoE experts on the host CPU",
+            "devices": [
+              "local:CPU",
+              "local:CUDA0"
+            ],
+            "feasible": true,
+            "reason": "estimated fit: experts of 31 of 36 host layer(s) (49.0 GiB) stay on the CPU, file-backed; decode ~1280 ms/token (estimate)"
+          },
+          {
+            "label": "1 peer device(s) + MoE experts on the host CPU",
+            "devices": [
+              "local:CPU",
+              "4c2991743c154be896d10a0b53ba4d2b:127.0.0.1:64076#0",
+              "local:CUDA0"
+            ],
+            "feasible": true,
+            "reason": "estimated fit: experts of 28 of 33 host layer(s) (44.2 GiB) stay on the CPU, file-backed; decode ~1137 ms/token (estimate)"
+          }
+        ],
+        "created_at": "2026-10-22T08:49:17.759442Z",
+        "engine": "llama_rpc",
+        "tier": "moe_offload",
+        "cpu_layers": 0,
+        "n_gpu_units": null,
+        "engine_flags": {},
+        "engine_options": {},
+        "profile_id": null,
+        "capacity_mode": true,
+        "stream": null,
+        "moe": {
+          "expert_count": 128,
+          "expert_used_count": 4,
+          "active_fraction": 0.03125,
+          "cpu_expert_layers": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30
+          ],
+          "cpu_expert_bytes": 47501475840,
+          "gpu_expert_bytes": 8482406400,
+          "override": "^blk\\.([3-9]|[1-2][0-9]|30)\\.ffn_(up|down|gate_up|gate)_(ch|)exps\\.=CPU",
+          "page_cache_bytes_est": 9486923879,
+          "miss_rate_est": 0.800281492075005,
+          "ssd_bytes_per_token_est": 1187954748,
+          "read_bytes_per_s": 1073741824.0,
+          "decode_ms_est": 1136.532224247802,
+          "provenance": "estimate"
+        },
+        "revision": 0,
+        "prediction": null,
+        "limits": null
+      },
+      "candidates": [
+        {
+          "layout": "this machine only: local:CUDA0",
+          "feasible": false,
+          "reasons": [
+            "CUDA0 needs ~59.3 GiB of 11.2 GiB"
+          ]
+        },
+        {
+          "layout": "overflow to 1 peer device(s): 4c2991743c154be896d10a0b53ba4d2b:127.0.0.1:64076#0, local:CUDA0",
+          "feasible": false,
+          "reasons": [
+            "127.0.0.1:64076#0 needs ~48.9 GiB of 5.3 GiB"
+          ]
+        },
+        {
+          "layout": "MoE experts on the host CPU: local:CPU, local:CUDA0",
+          "feasible": true,
+          "reasons": [
+            "estimated fit: experts of 31 of 36 host layer(s) (49.0 GiB) stay on the CPU, file-backed; decode ~1280 ms/token (estimate)"
+          ]
+        },
+        {
+          "layout": "1 peer device(s) + MoE experts on the host CPU: local:CPU, 4c2991743c154be896d10a0b53ba4d2b:127.0.0.1:64076#0, local:CUDA0",
+          "feasible": true,
+          "reasons": [
+            "estimated fit: experts of 28 of 33 host layer(s) (44.2 GiB) stay on the CPU, file-backed; decode ~1137 ms/token (estimate)"
+          ]
+        }
+      ],
+      "explain": [
+        "mixture-of-experts model: the optimizer's layer search does not model expert offload (routed experts on the host CPU, file-backed), so the planner's plan is used; its numbers are estimates from priors",
+        "strategy: fastest fit (fewest devices, local first; peers only when needed)",
+        "contributed / estimated usable across selected devices: 16.5 GiB (separate memory pools, not one fast global memory)",
+        "MoE placement with the peers: estimated decode ~1137 ms/token against ~1280 (priors, not measured); the other layout is in the candidates",
+        "moe_offload: attention, norms, router, shared experts, the head and the KV cache stay on the accelerators; the routed experts of 28 host layer(s) (44.2 GiB) stay on this machine's CPU, memory-mapped from the GGUF with no repacked or pinned copy (file cache, not committed RAM)",
+        "the peers hold whole layers (4.8 GiB), uploaded over the network before the first token",
+        "capacity mode (MoE): ~8.8 GiB of RAM left for the file cache against 44.2 GiB of CPU experts: an estimated 80% of the 3.1% of expert bytes a token routes to miss it, ~1.1 GiB of SSD reads per token",
+        "expected speed (slow; an estimate from priors and an assumed page-fault read rate of 1.0 GiB/s, not a measurement): ~1137 ms per token, about 0.9 tokens/s. Prompt processing of the CPU experts runs on the CPU"
+      ],
+      "rejected": [],
+      "assumptions": [
+        "mixture-of-experts model: the optimizer's layer search does not model expert offload (routed experts on the host CPU, file-backed), so the planner's plan is used; its numbers are estimates from priors",
+        "decode {'cuda': 2.64, 'metal': 10.85, 'vulkan': 2.64, 'cpu': 12.5} ms per GB read (prior)",
+        "peer round trip 4 ms per device per token (prior)",
+        "page-fault read rate 1.0 GiB/s (prior)"
+      ],
+      "measured": [],
+      "warnings": []
+    }
+  },
+  "measured": {
+    "gateway_before": {
+      "health": {
+        "status": "ok",
+        "version": "0.1.0",
+        "time": "2026-10-22T08:49:17.744206+00:00",
+        "engine": {
+          "engine": "llama_rpc",
+          "installed": true,
+          "release": "b11770",
+          "build_number": 11770,
+          "commit": "39da130fc",
+          "rpc_proto": "8.0.0",
+          "variant": "source-build",
+          "accelerator": "unknown",
+          "bin_dir": "C:\\Users\\operator\\.hypercompute\\engines\\llama-b11770-windows-x64-cuda13.4",
+          "smoke": "passed",
+          "smoke_detail": "version: 0.7.0-dev (build 11770, commit 39da130fc); devices: CUDA0",
+          "devices": [
+            {
+              "name": "CUDA0",
+              "description": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+              "total_bytes": 12819890176,
+              "free_bytes": 11561598976
+            }
+          ]
+        },
+        "engines": [
+          {
+            "engine_id": "llama_rpc",
+            "status": "implemented",
+            "streaming": true,
+            "multi_host": true,
+            "disk_offload": false,
+            "cancel": true,
+            "platforms": [
+              "macos-arm64 (Metal)",
+              "windows-x64 (CUDA/CPU)",
+              "linux (CUDA/CPU)"
+            ],
+            "notes": "llama.cpp layer split over ggml RPC; unauthenticated RPC, trusted private LAN only"
+          },
+          {
+            "engine_id": "vllm",
+            "status": "implemented",
+            "streaming": true,
+            "multi_host": false,
+            "disk_offload": false,
+            "cancel": true,
+            "platforms": [
+              "linux x86_64/aarch64 (CUDA)",
+              "windows-x64 via WSL2 (CUDA)"
+            ],
+            "notes": "one NVIDIA GPU holds the whole model; continuous batching for concurrent requests"
+          },
+          {
+            "engine_id": "exo",
+            "status": "implemented",
+            "streaming": true,
+            "multi_host": true,
+            "disk_offload": false,
+            "cancel": true,
+            "platforms": [
+              "macos-arm64"
+            ],
+            "notes": "Apple-only MLX pipeline over the LAN; unauthenticated API, trusted private LAN only"
+          },
+          {
+            "engine_id": "airllm",
+            "status": "implemented",
+            "streaming": true,
+            "multi_host": false,
+            "disk_offload": true,
+            "cancel": true,
+            "platforms": [
+              "windows-x64 (CUDA/CPU)",
+              "linux (CUDA/CPU)"
+            ],
+            "notes": "disk capacity mode: every layer is read from disk for every token"
+          },
+          {
+            "engine_id": "exo_paged",
+            "status": "planned",
+            "streaming": false,
+            "multi_host": false,
+            "disk_offload": false,
+            "cancel": false,
+            "platforms": [],
+            "notes": "phase 4 research: layer offload inside EXO"
+          }
+        ]
+      },
+      "pools": {
+        "observed_at": "2026-10-22T08:49:17.744206+00:00",
+        "host_memory": {
+          "total": 33412722688,
+          "available": 17187569664,
+          "commit_charge": 30201573376,
+          "commit_limit": 59062784000,
+          "system_cache": 18913140736,
+          "observed_at": "2026-10-22T08:49:17.744206+00:00",
+          "source": "GetPerformanceInfo",
+          "error": null
+        },
+        "pools": [
+          {
+            "node_id": "local",
+            "pool_id": "ram",
+            "kind": "system_ram",
+            "total_bytes": 33412722688,
+            "free_bytes": 17187569664,
+            "reserve_bytes": 7219415449,
+            "cap_bytes": null,
+            "admissible_bytes": 9968154215,
+            "devices": [
+              "CPU"
+            ],
+            "source": "GetPerformanceInfo (fresh snapshot)",
+            "observed_at": "2026-10-22T08:49:17.744206+00:00",
+            "age_s": 0.0
+          },
+          {
+            "node_id": "local",
+            "pool_id": "vram:CUDA0",
+            "kind": "discrete_vram",
+            "total_bytes": 12820938752,
+            "free_bytes": 12524191744,
+            "reserve_bytes": 536870912,
+            "cap_bytes": null,
+            "admissible_bytes": 11987320832,
+            "devices": [
+              "CUDA0"
+            ],
+            "source": "nvidia-smi",
+            "observed_at": "2026-10-22T08:49:09.489766+00:00",
+            "age_s": 8.3
+          },
+          {
+            "node_id": "4c2991743c154be896d10a0b53ba4d2b",
+            "pool_id": "uma",
+            "kind": "unified",
+            "total_bytes": 17179869184,
+            "free_bytes": 10013802496,
+            "reserve_bytes": 4294967296,
+            "cap_bytes": 10737418240,
+            "admissible_bytes": 5718835200,
+            "devices": [
+              "MTL0"
+            ],
+            "source": "sysctl hw.memsize + psutil",
+            "observed_at": "2026-10-22T08:49:16.365994+00:00",
+            "age_s": 1.4
+          },
+          {
+            "node_id": "local",
+            "pool_id": "ssd",
+            "kind": "storage",
+            "total_bytes": null,
+            "free_bytes": 13841870848,
+            "reserve_bytes": 0,
+            "cap_bytes": null,
+            "admissible_bytes": 13841870848,
+            "devices": [],
+            "source": "free volume space (caller observation)",
+            "observed_at": "2026-10-22T08:49:17.744206+00:00",
+            "age_s": 0.0
+          }
+        ],
+        "excluded": [],
+        "notes": [],
+        "leases": [],
+        "released": null
+      },
+      "nodes": [
+        {
+          "id": "local",
+          "display_name": "benchmark-host (this machine)",
+          "is_local": true,
+          "state": "eligible",
+          "state_reason": null,
+          "worker_state": null,
+          "worker_cpu_seconds": null,
+          "heartbeat_age_s": 0.0,
+          "contribution": {
+            "devices": [
+              "CUDA0"
+            ],
+            "max_bytes": 12284067840,
+            "reserve_bytes": 6682544537,
+            "enforcement": "soft_admission",
+            "cache_enabled": false
+          },
+          "memory_pools": [
+            {
+              "id": "ram",
+              "kind": "system_ram",
+              "total_bytes": 33412722688,
+              "free_bytes": 17536626688,
+              "measured_at": "2026-10-22T08:49:08.736424Z",
+              "source": "psutil",
+              "note": null
+            },
+            {
+              "id": "vram:CUDA0",
+              "kind": "discrete_vram",
+              "total_bytes": 12820938752,
+              "free_bytes": 12524191744,
+              "measured_at": "2026-10-22T08:49:09.489766Z",
+              "source": "nvidia-smi",
+              "note": null
+            }
+          ],
+          "engine_devices": [
+            {
+              "name": "CUDA0",
+              "description": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+              "total_bytes": 12819890176,
+              "free_bytes": 11561598976
+            }
+          ]
+        },
+        {
+          "id": "4c2991743c154be896d10a0b53ba4d2b",
+          "display_name": "Azims-MacBook-Air-5.local",
+          "is_local": false,
+          "state": "eligible",
+          "state_reason": null,
+          "worker_state": "running",
+          "worker_cpu_seconds": 68.59098214400001,
+          "heartbeat_age_s": 2.341991,
+          "contribution": {
+            "devices": [
+              "MTL0"
+            ],
+            "max_bytes": 10737418240,
+            "reserve_bytes": 4294967296,
+            "enforcement": "soft_admission",
+            "cache_enabled": true
+          },
+          "memory_pools": [
+            {
+              "id": "uma",
+              "kind": "unified",
+              "total_bytes": 17179869184,
+              "free_bytes": 10013802496,
+              "measured_at": "2026-10-22T08:49:16.365994Z",
+              "source": "sysctl hw.memsize + psutil",
+              "note": "CPU and GPU share this pool; counted once"
+            }
+          ],
+          "engine_devices": [
+            {
+              "name": "MTL0",
+              "description": "Apple M4",
+              "total_bytes": 12712935424,
+              "free_bytes": 12711886848
+            },
+            {
+              "name": "BLAS",
+              "description": "Accelerate",
+              "total_bytes": 0,
+              "free_bytes": 0
+            }
+          ]
+        }
+      ],
+      "network": {
+        "transport": "iroh",
+        "endpoint_id": "ac7228fe76183c09bfea5810229535a44f4acec3ef111773d317bd3f690bf96a",
+        "listening": true,
+        "connections": 1,
+        "peers": [
+          {
+            "node_id": "4c2991743c154be896d10a0b53ba4d2b",
+            "peer_id": "0b0d0661f2408ede5fe1ba1fa019e4d37479b4092050d104fc2dfe271677bcdc",
+            "connected": true,
+            "path": {
+              "remote_id": "0b0d0661f2408ede5fe1ba1fa019e4d37479b4092050d104fc2dfe271677bcdc",
+              "mode": "direct",
+              "rtt_ms": 9,
+              "paths": 2
+            }
+          }
+        ]
+      },
+      "source": "the gateway's own state (inventory and heartbeats are measured by the nodes; admissible is derived)"
+    },
+    "model": {
+      "status": "downloaded",
+      "verified_sha256": true,
+      "local_path": "C:\\Users\\operator\\.hypercompute\\iroh-session\\models\\gpt-oss-120b-mxfp4\\gpt-oss-120b-MXFP4.gguf",
+      "total_bytes": 63387346208,
+      "gguf": {
+        "architecture": "gpt-oss",
+        "name": "gpt-oss-120b",
+        "file_type": "MXFP4_MOE",
+        "n_layer": 36,
+        "n_embd": 2880,
+        "n_head": 64,
+        "n_head_kv": 8,
+        "context_length": 131072,
+        "vocab_size": 201088,
+        "tensor_count": 687,
+        "total_tensor_bytes": 63374323968,
+        "layer_bytes": [
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608
+        ],
+        "token_embd_bytes": 615329280,
+        "output_bytes": 615329280,
+        "output_tied": false,
+        "other_bytes": 11520,
+        "chat_template_present": true,
+        "key_length": 64,
+        "value_length": 64,
+        "expert_count": 128,
+        "expert_used_count": 4,
+        "expert_shared_count": null,
+        "layer_expert_bytes": [
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280
+        ]
+      }
+    },
+    "load": {
+      "seconds": 59.121,
+      "source": "client clock from create to the first poll that saw the final state (poll interval bounds the error)"
+    },
+    "placement": {
+      "source": "the gateway's deployment record (placement parsed from the engine's load log)",
+      "state": "ready",
+      "error": null,
+      "observed": {
+        "offloaded": "37/37",
+        "devices": [
+          {
+            "name": "CPU_Mapped",
+            "model_bytes": 48116782812,
+            "kv_bytes": 0,
+            "compute_bytes": 0,
+            "layers_est": null
+          },
+          {
+            "name": "CUDA0",
+            "model_bytes": 10078912512,
+            "kv_bytes": 167772160,
+            "compute_bytes": 101061754,
+            "layers_est": 20
+          },
+          {
+            "name": "RPC0[127.0.0.1:64076]",
+            "model_bytes": 5178633748,
+            "kv_bytes": 11534336,
+            "compute_bytes": 99373547,
+            "layers_est": 1
+          },
+          {
+            "name": "CPU",
+            "model_bytes": 0,
+            "kv_bytes": 0,
+            "compute_bytes": 87587553,
+            "layers_est": null
+          }
+        ],
+        "evidence_lines": [
+          "load_tensors: offloaded 37/37 layers to GPU",
+          "load_tensors:   CPU_Mapped model buffer size =   586.82 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+          "load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+          "load_tensors:        CUDA0 model buffer size =  9612.00 MiB",
+          "load_tensors: RPC0[127.0.0.1:64076] model buffer size =  4938.73 MiB",
+          "llama_kv_cache:      CUDA0 KV buffer size =   136.00 MiB",
+          "llama_kv_cache: RPC0[127.0.0.1:64076] KV buffer size =     8.00 MiB",
+          "llama_kv_cache:      CUDA0 KV buffer size =    24.00 MiB",
+          "llama_kv_cache: RPC0[127.0.0.1:64076] KV buffer size =     3.00 MiB",
+          "sched_reserve: RPC0[127.0.0.1:64076] compute buffer size =    94.77 MiB",
+          "sched_reserve:      CUDA0 compute buffer size =    96.38 MiB",
+          "sched_reserve:        CPU compute buffer size =    83.53 MiB"
+        ],
+        "parsed_at": "2026-10-22T08:49:59.436515Z"
+      },
+      "participation_verified": true,
+      "participation_detail": "moe_offload verified: CUDA0 model 9612 MiB (planned 9612), CPU_Mapped 45888 MiB, private host weights 0 MiB, 28 CPU expert layer(s) planned; no -ot override lines (debug level, -lv 5), so the expert placement is checked by buffer sizes: CPU experts left on the GPU would push its model buffer over the plan; CPU: model 0 MiB, KV 0 MiB, ~None layers (planned 0); RPC0[127.0.0.1:64076]: model 4939 MiB, KV 11 MiB, ~1 layers (planned 3); CUDA0: model 9612 MiB, KV 160 MiB, ~20 layers (planned 33)",
+      "engine_args": [
+        "-m",
+        "C:\\Users\\operator\\.hypercompute\\iroh-session\\models\\gpt-oss-120b-mxfp4\\gpt-oss-120b-MXFP4.gguf",
+        "--alias",
+        "gpt-oss-120b-mxfp4",
+        "--load-mode",
+        "mmap",
+        "--no-repack",
+        "--no-host",
+        "--no-op-offload",
+        "--cache-ram",
+        "0",
+        "-ot",
+        "^blk\\.([3-9]|[1-2][0-9]|30)\\.ffn_(up|down|gate_up|gate)_(ch|)exps\\.=CPU",
+        "--rpc",
+        "127.0.0.1:64076",
+        "--device",
+        "RPC0,CUDA0",
+        "--split-mode",
+        "layer",
+        "--tensor-split",
+        "3,34",
+        "-ngl",
+        "all",
+        "--fit",
+        "off",
+        "-c",
+        "4096",
+        "-np",
+        "1",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "62019",
+        "--metrics",
+        "--no-ui",
+        "-lv",
+        "4",
+        "--log-colors",
+        "off"
+      ],
+      "engine": {
+        "flags": {
+          "--load-mode": "mmap",
+          "--no-repack": true,
+          "--no-host": true,
+          "--no-op-offload": true,
+          "--cache-ram": "0",
+          "--override-tensor": [
+            "^blk\\.([3-9]|[1-2][0-9]|30)\\.ffn_(up|down|gate_up|gate)_(ch|)exps\\.=CPU"
+          ],
+          "--rpc": "127.0.0.1:64076",
+          "--device": "RPC0,CUDA0",
+          "--split-mode": "layer",
+          "--tensor-split": "3,34",
+          "--n-gpu-layers": "all",
+          "--fit": "off",
+          "--ctx-size": "4096"
+        },
+        "moe": {
+          "cpu_moe": false,
+          "n_cpu_moe": null,
+          "override_tensor": [
+            "^blk\\.([3-9]|[1-2][0-9]|30)\\.ffn_(up|down|gate_up|gate)_(ch|)exps\\.=CPU"
+          ],
+          "no_repack": true,
+          "no_host": true,
+          "no_op_offload": true,
+          "load_mode": "mmap",
+          "fit": "off"
+        }
+      },
+      "pid": 70276,
+      "tier": "moe_offload",
+      "history": [
+        {
+          "state": "planned",
+          "at": "2026-10-22T08:49:17.759442Z",
+          "detail": null
+        },
+        {
+          "state": "reserving",
+          "at": "2026-10-22T08:49:17.759442Z",
+          "detail": null
+        },
+        {
+          "state": "preparing",
+          "at": "2026-10-22T08:49:17.759442Z",
+          "detail": "re-checking peers and model file"
+        },
+        {
+          "state": "loading",
+          "at": "2026-10-22T08:49:18.371228Z",
+          "detail": "starting llama-server"
+        },
+        {
+          "state": "warming",
+          "at": "2026-10-22T08:49:59.453140Z",
+          "detail": "first request"
+        },
+        {
+          "state": "ready",
+          "at": "2026-10-22T08:50:16.358516Z",
+          "detail": "moe_offload verified: CUDA0 model 9612 MiB (planned 9612), CPU_Mapped 45888 MiB, private host weights 0 MiB, 28 CPU expert layer(s) planned; no -ot override lines (debug level, -lv 5), so the expert placement is checked by buffer sizes: CPU experts left on the GPU would push its model buffer over the plan; CPU: model 0 MiB, KV 0 MiB, ~None layers (planned 0); RPC0[127.0.0.1:64076]: model 4939 MiB, KV 11 MiB, ~1 layers (planned 3); CUDA0: model 9612 MiB, KV 160 MiB, ~20 layers (planned 33)"
+        }
+      ]
+    },
+    "engine_log": {
+      "available": true,
+      "path": "C:\\Users\\operator\\.hypercompute\\iroh-session\\coordinator\\logs\\llama-server-cf5c017865ad471c95307f174dde722c.log",
+      "source": "the engine's load log",
+      "model_buffers_mib": {
+        "CPU_Mapped": 45887.74,
+        "CUDA0": 9612.0,
+        "RPC0[127.0.0.1:64076]": 4938.73
+      },
+      "file_backed_host_mib": 45887.74,
+      "private_host_mib": 0,
+      "lines": [
+        "0.00.499.818 I llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.",
+        "0.01.087.076 I load_tensors: loading model tensors, this can take a while... (load_mode = mmap)",
+        "0.01.121.247 W llama_model_loader: tensor overrides to CPU are used with mmap enabled - consider using --load-mode none for better performance",
+        "0.05.034.498 I load_tensors: offloading output layer to GPU",
+        "0.05.034.503 I load_tensors: offloading 35 repeating layers to GPU",
+        "0.05.034.503 I load_tensors: offloaded 37/37 layers to GPU",
+        "0.05.034.510 I load_tensors:   CPU_Mapped model buffer size =   586.82 MiB",
+        "0.05.034.511 I load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+        "0.05.034.512 I load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+        "0.05.034.512 I load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+        "0.05.034.513 I load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+        "0.05.034.513 I load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+        "0.05.034.514 I load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+        "0.05.034.514 I load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+        "0.05.034.515 I load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+        "0.05.034.515 I load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+        "0.05.034.516 I load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+        "0.05.034.516 I load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+        "0.05.034.516 I load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+        "0.05.034.517 I load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+        "0.05.034.517 I load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+        "0.05.034.518 I load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+        "0.05.034.518 I load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+        "0.05.034.519 I load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+        "0.05.034.519 I load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+        "0.05.034.519 I load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+        "0.05.034.520 I load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+        "0.05.034.520 I load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+        "0.05.034.521 I load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+        "0.05.034.521 I load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+        "0.05.034.522 I load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+        "0.05.034.522 I load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+        "0.05.034.522 I load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+        "0.05.034.523 I load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+        "0.05.034.523 I load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+        "0.05.034.524 I load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+        "0.05.034.524 I load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+        "0.05.034.525 I load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+        "0.05.034.525 I load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+        "0.05.034.525 I load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+        "0.05.034.526 I load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+        "0.05.034.526 I load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+        "0.05.034.527 I load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+        "0.05.034.527 I load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+        "0.05.034.528 I load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+        "0.05.034.528 I load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+        "0.05.034.529 I load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+        "0.05.034.529 I load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+        "0.05.034.529 I load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+        "0.05.034.530 I load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+        "0.05.034.530 I load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+        "0.05.034.531 I load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+        "0.05.034.531 I load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+        "0.05.034.531 I load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+        "0.05.034.532 I load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+        "0.05.034.532 I load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+        "0.05.034.533 I load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+        "0.05.034.533 I load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+        "0.05.034.534 I load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+        "0.05.034.534 I load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+        "0.05.034.534 I load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+        "0.05.034.535 I load_tensors:   CPU_Mapped model buffer size =  1078.59 MiB",
+        "0.05.034.535 I load_tensors:   CPU_Mapped model buffer size =   539.30 MiB",
+        "0.05.034.536 I load_tensors:        CUDA0 model buffer size =  9612.00 MiB",
+        "0.05.034.537 I load_tensors: RPC0[127.0.0.1:64076] model buffer size =  4938.73 MiB",
+        "0.37.539.153 I llama_context:  CUDA_Host  output buffer size =     0.77 MiB",
+        "0.37.540.258 I llama_kv_cache:      CUDA0 KV buffer size =   136.00 MiB",
+        "0.37.762.798 I llama_kv_cache: RPC0[127.0.0.1:64076] KV buffer size =     8.00 MiB",
+        "0.37.763.703 I llama_kv_cache: size =  144.00 MiB (  4096 cells,  18 layers,  1/1 seqs), K (f16):   72.00 MiB, V (f16):   72.00 MiB",
+        "0.37.763.717 I llama_kv_cache: n_rot_k = 0, n_embd_head_k_all = 64",
+        "0.37.763.717 I llama_kv_cache: n_rot_v = 0, n_embd_head_k_all = 64",
+        "0.37.764.066 I llama_kv_cache:      CUDA0 KV buffer size =    24.00 MiB",
+        "0.37.783.287 I llama_kv_cache: RPC0[127.0.0.1:64076] KV buffer size =     3.00 MiB",
+        "0.37.783.380 I llama_kv_cache: size =   27.00 MiB (   768 cells,  18 layers,  1/1 seqs), K (f16):   13.50 MiB, V (f16):   13.50 MiB",
+        "0.37.783.410 I llama_kv_cache: n_rot_k = 0, n_embd_head_k_all = 64",
+        "0.37.783.411 I llama_kv_cache: n_rot_v = 0, n_embd_head_k_all = 64",
+        "0.37.956.036 I sched_reserve: RPC0[127.0.0.1:64076] compute buffer size =    94.77 MiB",
+        "0.37.956.043 I sched_reserve:      CUDA0 compute buffer size =    96.38 MiB",
+        "0.37.956.044 I sched_reserve:        CPU compute buffer size =    83.53 MiB"
+      ],
+      "lines_dropped": 0
+    },
+    "chats": {
+      "source": "engine timings (decode = (predicted_n - 1) / predicted_ms) and the client clock through the gateway (ttft_ms, total_ms, streaming); host fields from the monitor over each chat, disk reads system wide, bracketed by samples every interval_s",
+      "reps": [
+        {
+          "label": "warmup0",
+          "ok": false,
+          "error": "interrupted: deployment stopped or a peer was lost",
+          "ttft_ms": null,
+          "total_ms": 3473.994900006801,
+          "finish_reason": null,
+          "content_chars": 0,
+          "reasoning_chars": 0,
+          "t_start": 59.934,
+          "t_end": 63.408,
+          "host": {
+            "t0": 59.934,
+            "t1": 63.408,
+            "samples": 7,
+            "available_min": 62255104,
+            "commit_charge_peak": 41925046272,
+            "commit_limit_peak": 59062784000,
+            "system_cache_peak": 682737664,
+            "drive_free_min": 13818187776,
+            "engine_rss_peak": 19184898048,
+            "engine_private_peak": 11870101504,
+            "gpu_used_peak": 10638852096,
+            "disk_read_bytes": 4024621056,
+            "engine_read_bytes": 0,
+            "engine_page_faults": 920053
+          },
+          "disk_read_bytes_per_output_token": null,
+          "decode_disk_read_bytes_per_token": null
+        }
+      ],
+      "summary": {
+        "ok": 0,
+        "failed": 0,
+        "ttft_ms": {
+          "n": 0
+        },
+        "prompt_n": {
+          "n": 0
+        },
+        "prefill_tok_s": {
+          "n": 0
+        },
+        "decode_tok_s": {
+          "n": 0
+        },
+        "decode_ms_per_token": {
+          "n": 0
+        },
+        "disk_read_bytes_per_output_token": {
+          "n": 0
+        },
+        "decode_disk_read_bytes_per_token": {
+          "n": 0
+        }
+      }
+    },
+    "peer_worker_cpu": {
+      "source": "rpc-server process CPU seconds reported by each peer's heartbeats, read before and after the measured reps (heartbeats are every 3 s, so the window is approximate)",
+      "nodes": {
+        "4c2991743c154be896d10a0b53ba4d2b": {
+          "display_name": "Azims-MacBook-Air-5.local",
+          "before": 70.32876032,
+          "after": 70.40048128000001,
+          "delta_s": 0.072
+        }
+      }
+    },
+    "hcstream": {
+      "source": "hcstream stats file",
+      "path": "C:\\Users\\operator\\.hypercompute\\iroh-session\\coordinator\\logs\\hcstream-cf5c017865ad471c95307f174dde722c.json",
+      "before": {
+        "available": false
+      },
+      "after": {
+        "available": false
+      }
+    },
+    "gateway_runs": {
+      "source": "the gateway's run records for this deployment",
+      "runs": [
+        {
+          "id": "f7ec6f5a698b43839881f4668b6231b8",
+          "attempt_id": "8ff500a2e5cd4745bb0744db843ca6b4",
+          "deployment_id": "cf5c017865ad471c95307f174dde722c",
+          "kind": "chat",
+          "status": "cancelled",
+          "simulated": false,
+          "model": {
+            "id": "gpt-oss-120b-mxfp4",
+            "repo": "ggml-org/gpt-oss-120b-GGUF",
+            "revision": "7200b74bea78b0a2964ef9f3897eefa401e890ff",
+            "quantization": "MXFP4",
+            "format": "gguf",
+            "files": [
+              {
+                "name": "gpt-oss-120b-MXFP4.gguf",
+                "sha256": "582bd40f6886200101f4c4ed9f25f3fe80cc14c86e9e2b37746cd8904a0c622d"
+              }
+            ],
+            "architecture": "gpt-oss",
+            "chat_template": true,
+            "context_length": 131072,
+            "max_output_tokens": 1024
+          },
+          "engine": {
+            "engine": "llama_rpc",
+            "release": "b11770",
+            "commit": "39da130fc",
+            "variant": "source-build",
+            "hosts": [
+              {
+                "node_id": "local",
+                "devices": [
+                  {
+                    "device": "CPU",
+                    "endpoint": null,
+                    "layers": 0
+                  },
+                  {
+                    "device": "CUDA0",
+                    "endpoint": null,
+                    "layers": 33
+                  }
+                ],
+                "display_name": "benchmark-host (this machine)",
+                "hostname": "benchmark-host",
+                "os": {
+                  "system": "windows",
+                  "release": "11",
+                  "machine": "x86_64"
+                },
+                "contributed_devices": [
+                  "CUDA0"
+                ],
+                "hardware": [
+                  {
+                    "id": "CPU",
+                    "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                    "backend": "cpu"
+                  },
+                  {
+                    "id": "CUDA0",
+                    "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                    "backend": "cuda"
+                  },
+                  {
+                    "id": "AMD Radeon(TM) 890M Graphics",
+                    "name": "AMD Radeon(TM) 890M Graphics",
+                    "backend": "unknown"
+                  }
+                ],
+                "engine": {
+                  "release": "b11770",
+                  "commit": "39da130fc",
+                  "variant": "source-build",
+                  "accelerator": "unknown",
+                  "rpc_proto": "8.0.0"
+                }
+              },
+              {
+                "node_id": "4c2991743c154be896d10a0b53ba4d2b",
+                "devices": [
+                  {
+                    "device": "RPC0",
+                    "endpoint": "127.0.0.1:64076",
+                    "layers": 3
+                  }
+                ],
+                "display_name": "Azims-MacBook-Air-5.local",
+                "hostname": "Azims-MacBook-Air-5.local",
+                "os": {
+                  "system": "macos",
+                  "release": "26.6.2",
+                  "machine": "arm64"
+                },
+                "contributed_devices": [
+                  "MTL0"
+                ],
+                "hardware": [
+                  {
+                    "id": "CPU",
+                    "name": "Apple M4",
+                    "backend": "cpu"
+                  },
+                  {
+                    "id": "MTL0",
+                    "name": "Apple M4 (10-core GPU)",
+                    "backend": "metal"
+                  }
+                ],
+                "engine": {
+                  "release": "b11770",
+                  "commit": "39da130fc",
+                  "variant": "macos-arm64",
+                  "accelerator": "metal",
+                  "rpc_proto": "8.0.0"
+                }
+              }
+            ]
+          },
+          "placement": [
+            {
+              "device": "CPU_Mapped",
+              "model_bytes": 48116782812,
+              "kv_bytes": 0,
+              "layers_est": null
+            },
+            {
+              "device": "CUDA0",
+              "model_bytes": 10078912512,
+              "kv_bytes": 167772160,
+              "layers_est": 20
+            },
+            {
+              "device": "RPC0[127.0.0.1:64076]",
+              "model_bytes": 5178633748,
+              "kv_bytes": 11534336,
+              "layers_est": 1
+            },
+            {
+              "device": "CPU",
+              "model_bytes": 0,
+              "kv_bytes": 0,
+              "layers_est": null
+            }
+          ],
+          "transport": "tcp",
+          "ctx_size": 4096,
+          "stream": true,
+          "prompt_tokens": null,
+          "completion_tokens": null,
+          "ttft_ms": null,
+          "total_ms": 3316.5183999808505,
+          "timings": null,
+          "finish_reason": null,
+          "sampling": {
+            "temperature": 0,
+            "max_tokens": 64,
+            "seed": 7,
+            "cache_prompt": false
+          },
+          "cache_state": "unknown",
+          "output_text": "",
+          "error": "interrupted: deployment stopped or a peer was lost",
+          "started_at": "2026-10-22T08:50:16.902627Z",
+          "benchmark_id": null,
+          "prompt_label": null,
+          "resumed_from": null,
+          "messages_sha256": "6a9c5406b11c578d8b3329abdaff0dd7808141a53d61fdc8769bc634ec7a2894",
+          "output_truncated": false,
+          "non_content_output": false
+        },
+        {
+          "id": "11a30cca6357419891b8b9eb28676383",
+          "attempt_id": "509352d65fae4072a379b4659778b697",
+          "deployment_id": "cf5c017865ad471c95307f174dde722c",
+          "kind": "warmup",
+          "status": "ok",
+          "simulated": false,
+          "model": {
+            "id": "gpt-oss-120b-mxfp4",
+            "repo": "ggml-org/gpt-oss-120b-GGUF",
+            "revision": "7200b74bea78b0a2964ef9f3897eefa401e890ff",
+            "quantization": "MXFP4",
+            "format": "gguf",
+            "files": [
+              {
+                "name": "gpt-oss-120b-MXFP4.gguf",
+                "sha256": "582bd40f6886200101f4c4ed9f25f3fe80cc14c86e9e2b37746cd8904a0c622d"
+              }
+            ],
+            "architecture": "gpt-oss",
+            "chat_template": true,
+            "context_length": 131072,
+            "max_output_tokens": 1024
+          },
+          "engine": {
+            "engine": "llama_rpc",
+            "release": "b11770",
+            "commit": "39da130fc",
+            "variant": "source-build",
+            "hosts": [
+              {
+                "node_id": "local",
+                "devices": [
+                  {
+                    "device": "CPU",
+                    "endpoint": null,
+                    "layers": 0
+                  },
+                  {
+                    "device": "CUDA0",
+                    "endpoint": null,
+                    "layers": 33
+                  }
+                ],
+                "display_name": "benchmark-host (this machine)",
+                "hostname": "benchmark-host",
+                "os": {
+                  "system": "windows",
+                  "release": "11",
+                  "machine": "x86_64"
+                },
+                "contributed_devices": [
+                  "CUDA0"
+                ],
+                "hardware": [
+                  {
+                    "id": "CPU",
+                    "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+                    "backend": "cpu"
+                  },
+                  {
+                    "id": "CUDA0",
+                    "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+                    "backend": "cuda"
+                  },
+                  {
+                    "id": "AMD Radeon(TM) 890M Graphics",
+                    "name": "AMD Radeon(TM) 890M Graphics",
+                    "backend": "unknown"
+                  }
+                ],
+                "engine": {
+                  "release": "b11770",
+                  "commit": "39da130fc",
+                  "variant": "source-build",
+                  "accelerator": "unknown",
+                  "rpc_proto": "8.0.0"
+                }
+              },
+              {
+                "node_id": "4c2991743c154be896d10a0b53ba4d2b",
+                "devices": [
+                  {
+                    "device": "RPC0",
+                    "endpoint": "127.0.0.1:64076",
+                    "layers": 3
+                  }
+                ],
+                "display_name": "Azims-MacBook-Air-5.local",
+                "hostname": "Azims-MacBook-Air-5.local",
+                "os": {
+                  "system": "macos",
+                  "release": "26.6.2",
+                  "machine": "arm64"
+                },
+                "contributed_devices": [
+                  "MTL0"
+                ],
+                "hardware": [
+                  {
+                    "id": "CPU",
+                    "name": "Apple M4",
+                    "backend": "cpu"
+                  },
+                  {
+                    "id": "MTL0",
+                    "name": "Apple M4 (10-core GPU)",
+                    "backend": "metal"
+                  }
+                ],
+                "engine": {
+                  "release": "b11770",
+                  "commit": "39da130fc",
+                  "variant": "macos-arm64",
+                  "accelerator": "metal",
+                  "rpc_proto": "8.0.0"
+                }
+              }
+            ]
+          },
+          "placement": [
+            {
+              "device": "CPU_Mapped",
+              "model_bytes": 48116782812,
+              "kv_bytes": 0,
+              "layers_est": null
+            },
+            {
+              "device": "CUDA0",
+              "model_bytes": 10078912512,
+              "kv_bytes": 167772160,
+              "layers_est": 20
+            },
+            {
+              "device": "RPC0[127.0.0.1:64076]",
+              "model_bytes": 5178633748,
+              "kv_bytes": 11534336,
+              "layers_est": 1
+            },
+            {
+              "device": "CPU",
+              "model_bytes": 0,
+              "kv_bytes": 0,
+              "layers_est": null
+            }
+          ],
+          "transport": "tcp",
+          "ctx_size": 4096,
+          "stream": true,
+          "prompt_tokens": 71,
+          "completion_tokens": 1,
+          "ttft_ms": null,
+          "total_ms": 16903.291400056332,
+          "timings": {
+            "prompt_n": 71,
+            "prompt_ms": 16872.436,
+            "predicted_n": 1,
+            "predicted_ms": 0.001,
+            "predicted_per_second": 0.0,
+            "prompt_per_second": 4.208046781152407,
+            "cache_n": 0
+          },
+          "finish_reason": "length",
+          "sampling": {
+            "temperature": 0,
+            "max_tokens": 1
+          },
+          "cache_state": "cold",
+          "output_text": "",
+          "error": null,
+          "started_at": "2026-10-22T08:49:59.455142Z",
+          "benchmark_id": null,
+          "prompt_label": null,
+          "resumed_from": null,
+          "messages_sha256": null,
+          "output_truncated": false,
+          "non_content_output": false
+        }
+      ]
+    },
+    "gateway_after": {
+      "nodes": [
+        {
+          "id": "local",
+          "display_name": "benchmark-host (this machine)",
+          "is_local": true,
+          "state": "eligible",
+          "state_reason": null,
+          "worker_state": null,
+          "worker_cpu_seconds": null,
+          "heartbeat_age_s": 0.0,
+          "contribution": {
+            "devices": [
+              "CUDA0"
+            ],
+            "max_bytes": 12284067840,
+            "reserve_bytes": 6682544537,
+            "enforcement": "soft_admission",
+            "cache_enabled": false
+          },
+          "memory_pools": [
+            {
+              "id": "ram",
+              "kind": "system_ram",
+              "total_bytes": 33412722688,
+              "free_bytes": 41541632,
+              "measured_at": "2026-10-22T08:50:19.882246Z",
+              "source": "psutil",
+              "note": null
+            },
+            {
+              "id": "vram:CUDA0",
+              "kind": "discrete_vram",
+              "total_bytes": 12820938752,
+              "free_bytes": 1886388224,
+              "measured_at": "2026-10-22T08:50:20.174970Z",
+              "source": "nvidia-smi",
+              "note": null
+            }
+          ],
+          "engine_devices": [
+            {
+              "name": "CUDA0",
+              "description": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+              "total_bytes": 12819890176,
+              "free_bytes": 11561598976
+            }
+          ]
+        },
+        {
+          "id": "4c2991743c154be896d10a0b53ba4d2b",
+          "display_name": "Azims-MacBook-Air-5.local",
+          "is_local": false,
+          "state": "eligible",
+          "state_reason": null,
+          "worker_state": "running",
+          "worker_cpu_seconds": 70.40048128000001,
+          "heartbeat_age_s": 1.358275,
+          "contribution": {
+            "devices": [
+              "MTL0"
+            ],
+            "max_bytes": 10737418240,
+            "reserve_bytes": 4294967296,
+            "enforcement": "soft_admission",
+            "cache_enabled": true
+          },
+          "memory_pools": [
+            {
+              "id": "uma",
+              "kind": "unified",
+              "total_bytes": 17179869184,
+              "free_bytes": 10583212032,
+              "measured_at": "2026-10-22T08:50:27.502359Z",
+              "source": "sysctl hw.memsize + psutil",
+              "note": "CPU and GPU share this pool; counted once"
+            }
+          ],
+          "engine_devices": [
+            {
+              "name": "MTL0",
+              "description": "Apple M4",
+              "total_bytes": 12712935424,
+              "free_bytes": 12711886848
+            },
+            {
+              "name": "BLAS",
+              "description": "Accelerate",
+              "total_bytes": 0,
+              "free_bytes": 0
+            }
+          ]
+        }
+      ],
+      "network": {
+        "transport": "iroh",
+        "endpoint_id": "ac7228fe76183c09bfea5810229535a44f4acec3ef111773d317bd3f690bf96a",
+        "listening": true,
+        "connections": 1,
+        "peers": [
+          {
+            "node_id": "4c2991743c154be896d10a0b53ba4d2b",
+            "peer_id": "0b0d0661f2408ede5fe1ba1fa019e4d37479b4092050d104fc2dfe271677bcdc",
+            "connected": true,
+            "path": {
+              "remote_id": "0b0d0661f2408ede5fe1ba1fa019e4d37479b4092050d104fc2dfe271677bcdc",
+              "mode": "direct",
+              "rtt_ms": 9,
+              "paths": 2
+            }
+          }
+        ]
+      }
+    },
+    "host": {
+      "source": "hostmon: GetPerformanceInfo (available, commit, file cache), psutil disk_io_counters (system-wide physical reads, every process), shutil.disk_usage (system drive), psutil engine process counters (ReadFile bytes exclude mmap page-fault reads), nvidia-smi (all GPUs)",
+      "interval_s": 0.5,
+      "marks": [
+        [
+          "load:start",
+          0.796
+        ],
+        [
+          "load:end",
+          59.923
+        ],
+        [
+          "chats:start",
+          59.934
+        ],
+        [
+          "guard: available RAM 0.06 GiB below 0.10 GiB",
+          63.05
+        ],
+        [
+          "chats:end",
+          63.42
+        ]
+      ],
+      "error": null,
+      "guard_tripped": "available RAM 0.06 GiB below 0.10 GiB",
+      "guard_stop": {
+        "state": "stopped",
+        "cleanup": "deployment:cf5c017865ad471c95307f174dde722c pid 70276: terminated (exit code 1); released 3 lease(s)",
+        "error": null
+      },
+      "whole_run": {
+        "t0": 0.0,
+        "t1": 70.95,
+        "samples": 127,
+        "available_min": 62255104,
+        "commit_charge_peak": 45521297408,
+        "commit_limit_peak": 59062784000,
+        "system_cache_peak": 19486732288,
+        "drive_free_min": 13817008128,
+        "engine_rss_peak": 19184898048,
+        "engine_private_peak": 11870101504,
+        "gpu_used_peak": 10638852096,
+        "disk_read_bytes": 65329594368,
+        "engine_read_bytes": 0,
+        "engine_page_faults": 10979440
+      },
+      "samples": [
+        {
+          "t": 0.772,
+          "available": 17198284800,
+          "commit_charge": 30230052864,
+          "commit_limit": 59062784000,
+          "system_cache": 18905837568,
+          "disk_read_bytes": 3711774916096,
+          "drive_free": 13841870848,
+          "engine_rss": null,
+          "engine_private": null,
+          "engine_read_bytes": null,
+          "engine_page_faults": null,
+          "gpu_used": 0
+        },
+        {
+          "t": 1.274,
+          "available": 16869404672,
+          "commit_charge": 30749929472,
+          "commit_limit": 59062784000,
+          "system_cache": 18639859712,
+          "disk_read_bytes": 3711911279104,
+          "drive_free": 13841870848,
+          "engine_rss": null,
+          "engine_private": null,
+          "engine_read_bytes": null,
+          "engine_page_faults": null,
+          "gpu_used": null
+        },
+        {
+          "t": 1.783,
+          "available": 16958181376,
+          "commit_charge": 30469169152,
+          "commit_limit": 59062784000,
+          "system_cache": 18713960448,
+          "disk_read_bytes": 3711986665984,
+          "drive_free": 13841866752,
+          "engine_rss": null,
+          "engine_private": null,
+          "engine_read_bytes": null,
+          "engine_page_faults": null,
+          "gpu_used": null
+        },
+        {
+          "t": 2.289,
+          "available": 16731443200,
+          "commit_charge": 30834110464,
+          "commit_limit": 59062784000,
+          "system_cache": 18553303040,
+          "disk_read_bytes": 3712059507200,
+          "drive_free": 13841858560,
+          "engine_rss": null,
+          "engine_private": null,
+          "engine_read_bytes": null,
+          "engine_page_faults": null,
+          "gpu_used": null
+        },
+        {
+          "t": 2.843,
+          "available": 15899914240,
+          "commit_charge": 31859253248,
+          "commit_limit": 59062784000,
+          "system_cache": 17744404480,
+          "disk_read_bytes": 3712838569984,
+          "drive_free": 13841850368,
+          "engine_rss": null,
+          "engine_private": null,
+          "engine_read_bytes": null,
+          "engine_page_faults": null,
+          "gpu_used": 161480704
+        },
+        {
+          "t": 3.358,
+          "available": 12524974080,
+          "commit_charge": 35224571904,
+          "commit_limit": 59062784000,
+          "system_cache": 14368686080,
+          "disk_read_bytes": 3715511284736,
+          "drive_free": 13840801792,
+          "engine_rss": 435421184,
+          "engine_private": 805400576,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 129927,
+          "gpu_used": null
+        },
+        {
+          "t": 3.863,
+          "available": 8922361856,
+          "commit_charge": 38814298112,
+          "commit_limit": 59062784000,
+          "system_cache": 10766397440,
+          "disk_read_bytes": 3718239339008,
+          "drive_free": 13840801792,
+          "engine_rss": 435433472,
+          "engine_private": 805412864,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 131625,
+          "gpu_used": null
+        },
+        {
+          "t": 4.372,
+          "available": 5436788736,
+          "commit_charge": 42296426496,
+          "commit_limit": 59062784000,
+          "system_cache": 7278432256,
+          "disk_read_bytes": 3721008890368,
+          "drive_free": 13840801792,
+          "engine_rss": 435421184,
+          "engine_private": 805425152,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 133284,
+          "gpu_used": null
+        },
+        {
+          "t": 5.862,
+          "available": 2348785664,
+          "commit_charge": 45521297408,
+          "commit_limit": 59062784000,
+          "system_cache": 4074524672,
+          "disk_read_bytes": 3728655717888,
+          "drive_free": 13840801792,
+          "engine_rss": 435425280,
+          "engine_private": 805441536,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 134808,
+          "gpu_used": 161480704
+        },
+        {
+          "t": 6.364,
+          "available": 17077862400,
+          "commit_charge": 41301278720,
+          "commit_limit": 59062784000,
+          "system_cache": 18583019520,
+          "disk_read_bytes": 3728722465792,
+          "drive_free": 13840801792,
+          "engine_rss": 435916800,
+          "engine_private": 10904473600,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 140832,
+          "gpu_used": null
+        },
+        {
+          "t": 6.868,
+          "available": 17175121920,
+          "commit_charge": 41301065728,
+          "commit_limit": 59062784000,
+          "system_cache": 18502529024,
+          "disk_read_bytes": 3728868104704,
+          "drive_free": 13840785408,
+          "engine_rss": 538058752,
+          "engine_private": 10904514560,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 165773,
+          "gpu_used": null
+        },
+        {
+          "t": 7.393,
+          "available": 16620855296,
+          "commit_charge": 41116651520,
+          "commit_limit": 59062784000,
+          "system_cache": 17866358784,
+          "disk_read_bytes": 3729016525312,
+          "drive_free": 13840785408,
+          "engine_rss": 1261371392,
+          "engine_private": 10904526848,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 342387,
+          "gpu_used": null
+        },
+        {
+          "t": 7.937,
+          "available": 16126455808,
+          "commit_charge": 41113092096,
+          "commit_limit": 59062784000,
+          "system_cache": 17481928704,
+          "disk_read_bytes": 3729548173824,
+          "drive_free": 13840785408,
+          "engine_rss": 1736806400,
+          "engine_private": 10904539136,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 458745,
+          "gpu_used": 10240393216
+        },
+        {
+          "t": 8.448,
+          "available": 15377113088,
+          "commit_charge": 41115664384,
+          "commit_limit": 59062784000,
+          "system_cache": 16748474368,
+          "disk_read_bytes": 3730265748992,
+          "drive_free": 13840785408,
+          "engine_rss": 2471600128,
+          "engine_private": 10904551424,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 638507,
+          "gpu_used": null
+        },
+        {
+          "t": 8.952,
+          "available": 14679969792,
+          "commit_charge": 41116282880,
+          "commit_limit": 59062784000,
+          "system_cache": 16069357568,
+          "disk_read_bytes": 3730967513600,
+          "drive_free": 13840777216,
+          "engine_rss": 3154321408,
+          "engine_private": 10904563712,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 805512,
+          "gpu_used": null
+        },
+        {
+          "t": 9.466,
+          "available": 13957603328,
+          "commit_charge": 41109839872,
+          "commit_limit": 59062784000,
+          "system_cache": 15360167936,
+          "disk_read_bytes": 3731704165888,
+          "drive_free": 13840777216,
+          "engine_rss": 3867279360,
+          "engine_private": 10904576000,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 979916,
+          "gpu_used": null
+        },
+        {
+          "t": 10.024,
+          "available": 13190758400,
+          "commit_charge": 41118621696,
+          "commit_limit": 59062784000,
+          "system_cache": 14605922304,
+          "disk_read_bytes": 3732531521024,
+          "drive_free": 13840777216,
+          "engine_rss": 4597043200,
+          "engine_private": 10904588288,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 1158428,
+          "gpu_used": 10240393216
+        },
+        {
+          "t": 10.525,
+          "available": 12398084096,
+          "commit_charge": 41147047936,
+          "commit_limit": 59062784000,
+          "system_cache": 13833728000,
+          "disk_read_bytes": 3733246741504,
+          "drive_free": 13840105472,
+          "engine_rss": 5333610496,
+          "engine_private": 10904600576,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 1338604,
+          "gpu_used": null
+        },
+        {
+          "t": 11.026,
+          "available": 11726376960,
+          "commit_charge": 41237950464,
+          "commit_limit": 59062784000,
+          "system_cache": 13185282048,
+          "disk_read_bytes": 3733898351616,
+          "drive_free": 13840093184,
+          "engine_rss": 5921607680,
+          "engine_private": 10904612864,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 1482441,
+          "gpu_used": null
+        },
+        {
+          "t": 11.527,
+          "available": 11220385792,
+          "commit_charge": 41195098112,
+          "commit_limit": 59062784000,
+          "system_cache": 12685656064,
+          "disk_read_bytes": 3734440244224,
+          "drive_free": 13840269312,
+          "engine_rss": 6433390592,
+          "engine_private": 10904625152,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 1607632,
+          "gpu_used": null
+        },
+        {
+          "t": 12.081,
+          "available": 10773897216,
+          "commit_charge": 41293664256,
+          "commit_limit": 59062784000,
+          "system_cache": 12256628736,
+          "disk_read_bytes": 3735059101696,
+          "drive_free": 13840269312,
+          "engine_rss": 6918782976,
+          "engine_private": 10904641536,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 1726367,
+          "gpu_used": 10240393216
+        },
+        {
+          "t": 12.584,
+          "available": 10168254464,
+          "commit_charge": 41238929408,
+          "commit_limit": 59062784000,
+          "system_cache": 11664936960,
+          "disk_read_bytes": 3735612891648,
+          "drive_free": 13840252928,
+          "engine_rss": 7518498816,
+          "engine_private": 10904653824,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 1873071,
+          "gpu_used": null
+        },
+        {
+          "t": 13.087,
+          "available": 9531432960,
+          "commit_charge": 41268338688,
+          "commit_limit": 59062784000,
+          "system_cache": 11044212736,
+          "disk_read_bytes": 3736284079616,
+          "drive_free": 13840252928,
+          "engine_rss": 8133173248,
+          "engine_private": 10904666112,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 2023431,
+          "gpu_used": null
+        },
+        {
+          "t": 13.589,
+          "available": 8865017856,
+          "commit_charge": 41253613568,
+          "commit_limit": 59062784000,
+          "system_cache": 10390646784,
+          "disk_read_bytes": 3737000855552,
+          "drive_free": 13840252928,
+          "engine_rss": 8797302784,
+          "engine_private": 10904678400,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 2185886,
+          "gpu_used": null
+        },
+        {
+          "t": 14.143,
+          "available": 8177516544,
+          "commit_charge": 41246056448,
+          "commit_limit": 59062784000,
+          "system_cache": 9712300032,
+          "disk_read_bytes": 3737776736256,
+          "drive_free": 13840236544,
+          "engine_rss": 9485864960,
+          "engine_private": 10904694784,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 2354322,
+          "gpu_used": 10240393216
+        },
+        {
+          "t": 14.657,
+          "available": 7640768512,
+          "commit_charge": 41148481536,
+          "commit_limit": 59062784000,
+          "system_cache": 9180758016,
+          "disk_read_bytes": 3738344681472,
+          "drive_free": 13840240640,
+          "engine_rss": 9995358208,
+          "engine_private": 10904707072,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 2478951,
+          "gpu_used": null
+        },
+        {
+          "t": 15.17,
+          "available": 7167840256,
+          "commit_charge": 41153847296,
+          "commit_limit": 59062784000,
+          "system_cache": 8712249344,
+          "disk_read_bytes": 3738937270272,
+          "drive_free": 13840257024,
+          "engine_rss": 10468282368,
+          "engine_private": 10904707072,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 2594638,
+          "gpu_used": null
+        },
+        {
+          "t": 15.68,
+          "available": 7095046144,
+          "commit_charge": 41092120576,
+          "commit_limit": 59062784000,
+          "system_cache": 8638164992,
+          "disk_read_bytes": 3739110200320,
+          "drive_free": 13839966208,
+          "engine_rss": 10543558656,
+          "engine_private": 10904707072,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 2613802,
+          "gpu_used": null
+        },
+        {
+          "t": 16.241,
+          "available": 6877257728,
+          "commit_charge": 41177833472,
+          "commit_limit": 59062784000,
+          "system_cache": 8459325440,
+          "disk_read_bytes": 3739341567488,
+          "drive_free": 13839896576,
+          "engine_rss": 10685976576,
+          "engine_private": 10904707072,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 2648933,
+          "gpu_used": 10240393216
+        },
+        {
+          "t": 16.744,
+          "available": 6900973568,
+          "commit_charge": 40980885504,
+          "commit_limit": 59062784000,
+          "system_cache": 8454881280,
+          "disk_read_bytes": 3739549233664,
+          "drive_free": 13837201408,
+          "engine_rss": 10817552384,
+          "engine_private": 10904707072,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 2681056,
+          "gpu_used": null
+        },
+        {
+          "t": 17.246,
+          "available": 6745346048,
+          "commit_charge": 40994123776,
+          "commit_limit": 59062784000,
+          "system_cache": 8350613504,
+          "disk_read_bytes": 3739730927616,
+          "drive_free": 13834264576,
+          "engine_rss": 10933637120,
+          "engine_private": 10904707072,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 2709397,
+          "gpu_used": null
+        },
+        {
+          "t": 17.748,
+          "available": 6597767168,
+          "commit_charge": 40994488320,
+          "commit_limit": 59062784000,
+          "system_cache": 8217583616,
+          "disk_read_bytes": 3739970711552,
+          "drive_free": 13834264576,
+          "engine_rss": 11066642432,
+          "engine_private": 10904707072,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 2741869,
+          "gpu_used": null
+        },
+        {
+          "t": 18.314,
+          "available": 6511927296,
+          "commit_charge": 40990392320,
+          "commit_limit": 59062784000,
+          "system_cache": 8149880832,
+          "disk_read_bytes": 3740118375424,
+          "drive_free": 13833117696,
+          "engine_rss": 11132792832,
+          "engine_private": 10904707072,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 2758019,
+          "gpu_used": 10240393216
+        },
+        {
+          "t": 18.818,
+          "available": 6344364032,
+          "commit_charge": 41010499584,
+          "commit_limit": 59062784000,
+          "system_cache": 7990988800,
+          "disk_read_bytes": 3740363706368,
+          "drive_free": 13833216000,
+          "engine_rss": 11269079040,
+          "engine_private": 10904707072,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 2791291,
+          "gpu_used": null
+        },
+        {
+          "t": 19.328,
+          "available": 6216208384,
+          "commit_charge": 41028775936,
+          "commit_limit": 59062784000,
+          "system_cache": 7883124736,
+          "disk_read_bytes": 3740624386048,
+          "drive_free": 13833175040,
+          "engine_rss": 11370115072,
+          "engine_private": 10904707072,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 2815959,
+          "gpu_used": null
+        },
+        {
+          "t": 19.844,
+          "available": 6092976128,
+          "commit_charge": 41035386880,
+          "commit_limit": 59062784000,
+          "system_cache": 7717441536,
+          "disk_read_bytes": 3740902559744,
+          "drive_free": 13833175040,
+          "engine_rss": 11490365440,
+          "engine_private": 10904707072,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 2845317,
+          "gpu_used": null
+        },
+        {
+          "t": 20.41,
+          "available": 5867241472,
+          "commit_charge": 41163485184,
+          "commit_limit": 59062784000,
+          "system_cache": 7542571008,
+          "disk_read_bytes": 3741217773056,
+          "drive_free": 13833175040,
+          "engine_rss": 11611148288,
+          "engine_private": 10904707072,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 2874805,
+          "gpu_used": 10240393216
+        },
+        {
+          "t": 20.912,
+          "available": 5783134208,
+          "commit_charge": 41148878848,
+          "commit_limit": 59062784000,
+          "system_cache": 7484952576,
+          "disk_read_bytes": 3741430181376,
+          "drive_free": 13833170944,
+          "engine_rss": 11694923776,
+          "engine_private": 10904707072,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 2895258,
+          "gpu_used": null
+        },
+        {
+          "t": 21.419,
+          "available": 5669105664,
+          "commit_charge": 41144745984,
+          "commit_limit": 59062784000,
+          "system_cache": 7376809984,
+          "disk_read_bytes": 3741737003008,
+          "drive_free": 13833158656,
+          "engine_rss": 11807186944,
+          "engine_private": 10904707072,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 2922666,
+          "gpu_used": null
+        },
+        {
+          "t": 21.933,
+          "available": 5468946432,
+          "commit_charge": 41200304128,
+          "commit_limit": 59062784000,
+          "system_cache": 7185727488,
+          "disk_read_bytes": 3742020547072,
+          "drive_free": 13833158656,
+          "engine_rss": 11939241984,
+          "engine_private": 10904707072,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 2954906,
+          "gpu_used": null
+        },
+        {
+          "t": 22.484,
+          "available": 5287600128,
+          "commit_charge": 41298657280,
+          "commit_limit": 59062784000,
+          "system_cache": 7018123264,
+          "disk_read_bytes": 3742227770368,
+          "drive_free": 13833158656,
+          "engine_rss": 12069003264,
+          "engine_private": 10904707072,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 2986586,
+          "gpu_used": 10240393216
+        },
+        {
+          "t": 22.991,
+          "available": 5051621376,
+          "commit_charge": 41584128000,
+          "commit_limit": 59062784000,
+          "system_cache": 6797869056,
+          "disk_read_bytes": 3742411100672,
+          "drive_free": 13832957952,
+          "engine_rss": 12205723648,
+          "engine_private": 10904707072,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 3019965,
+          "gpu_used": null
+        },
+        {
+          "t": 23.506,
+          "available": 4987105280,
+          "commit_charge": 41608785920,
+          "commit_limit": 59062784000,
+          "system_cache": 6737764352,
+          "disk_read_bytes": 3742477170688,
+          "drive_free": 13832327168,
+          "engine_rss": 12242997248,
+          "engine_private": 10906185728,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 3029787,
+          "gpu_used": null
+        },
+        {
+          "t": 24.009,
+          "available": 4963811328,
+          "commit_charge": 41611812864,
+          "commit_limit": 59062784000,
+          "system_cache": 6726881280,
+          "disk_read_bytes": 3742556339200,
+          "drive_free": 13832327168,
+          "engine_rss": 12258127872,
+          "engine_private": 10904707072,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 3034608,
+          "gpu_used": null
+        },
+        {
+          "t": 24.56,
+          "available": 4817829888,
+          "commit_charge": 41608392704,
+          "commit_limit": 59062784000,
+          "system_cache": 6602539008,
+          "disk_read_bytes": 3742757671936,
+          "drive_free": 13832318976,
+          "engine_rss": 12384210944,
+          "engine_private": 10904707072,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 3065751,
+          "gpu_used": 10240393216
+        },
+        {
+          "t": 25.063,
+          "available": 4663914496,
+          "commit_charge": 41641406464,
+          "commit_limit": 59062784000,
+          "system_cache": 6416416768,
+          "disk_read_bytes": 3743004296704,
+          "drive_free": 13832310784,
+          "engine_rss": 12519149568,
+          "engine_private": 10904707072,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 3098695,
+          "gpu_used": null
+        },
+        {
+          "t": 25.578,
+          "available": 4502179840,
+          "commit_charge": 41631059968,
+          "commit_limit": 59062784000,
+          "system_cache": 6317817856,
+          "disk_read_bytes": 3743216075776,
+          "drive_free": 13832306688,
+          "engine_rss": 12661559296,
+          "engine_private": 10904707072,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 3133463,
+          "gpu_used": null
+        },
+        {
+          "t": 26.091,
+          "available": 4343570432,
+          "commit_charge": 41623519232,
+          "commit_limit": 59062784000,
+          "system_cache": 6170402816,
+          "disk_read_bytes": 3743397676032,
+          "drive_free": 13832306688,
+          "engine_rss": 12808536064,
+          "engine_private": 10904707072,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 3169346,
+          "gpu_used": null
+        },
+        {
+          "t": 26.658,
+          "available": 4269883392,
+          "commit_charge": 41632247808,
+          "commit_limit": 59062784000,
+          "system_cache": 6096117760,
+          "disk_read_bytes": 3743514487808,
+          "drive_free": 13832306688,
+          "engine_rss": 12869570560,
+          "engine_private": 10904707072,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 3184247,
+          "gpu_used": 10240393216
+        },
+        {
+          "t": 27.172,
+          "available": 4100694016,
+          "commit_charge": 41638305792,
+          "commit_limit": 59062784000,
+          "system_cache": 5937602560,
+          "disk_read_bytes": 3743745212928,
+          "drive_free": 13832306688,
+          "engine_rss": 13027119104,
+          "engine_private": 10904707072,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 3222711,
+          "gpu_used": null
+        },
+        {
+          "t": 27.674,
+          "available": 3938484224,
+          "commit_charge": 41628508160,
+          "commit_limit": 59062784000,
+          "system_cache": 5777240064,
+          "disk_read_bytes": 3743902839296,
+          "drive_free": 13832306688,
+          "engine_rss": 13174415360,
+          "engine_private": 10904707072,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 3258672,
+          "gpu_used": null
+        },
+        {
+          "t": 28.177,
+          "available": 3799683072,
+          "commit_charge": 41614843904,
+          "commit_limit": 59062784000,
+          "system_cache": 5637513216,
+          "disk_read_bytes": 3744051270144,
+          "drive_free": 13832306688,
+          "engine_rss": 13321117696,
+          "engine_private": 10904707072,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 3294488,
+          "gpu_used": null
+        },
+        {
+          "t": 28.749,
+          "available": 3849261056,
+          "commit_charge": 41613516800,
+          "commit_limit": 59062784000,
+          "system_cache": 5553979392,
+          "disk_read_bytes": 3744154344960,
+          "drive_free": 13832306688,
+          "engine_rss": 13404561408,
+          "engine_private": 10904707072,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 3314860,
+          "gpu_used": 10240393216
+        },
+        {
+          "t": 29.255,
+          "available": 3701989376,
+          "commit_charge": 41606352896,
+          "commit_limit": 59062784000,
+          "system_cache": 5407678464,
+          "disk_read_bytes": 3744296484352,
+          "drive_free": 13832306688,
+          "engine_rss": 13564469248,
+          "engine_private": 10904707072,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 3353900,
+          "gpu_used": null
+        },
+        {
+          "t": 29.767,
+          "available": 3569152000,
+          "commit_charge": 41600466944,
+          "commit_limit": 59062784000,
+          "system_cache": 5259440128,
+          "disk_read_bytes": 3744447000064,
+          "drive_free": 13832306688,
+          "engine_rss": 13714092032,
+          "engine_private": 10904707072,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 3390429,
+          "gpu_used": null
+        },
+        {
+          "t": 30.269,
+          "available": 3496607744,
+          "commit_charge": 41686196224,
+          "commit_limit": 59062784000,
+          "system_cache": 5052923904,
+          "disk_read_bytes": 3744587203072,
+          "drive_free": 13832171520,
+          "engine_rss": 13848489984,
+          "engine_private": 10904707072,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 3423241,
+          "gpu_used": null
+        },
+        {
+          "t": 30.819,
+          "available": 3335835648,
+          "commit_charge": 41731829760,
+          "commit_limit": 59062784000,
+          "system_cache": 4894834688,
+          "disk_read_bytes": 3744707314176,
+          "drive_free": 13832138752,
+          "engine_rss": 13963313152,
+          "engine_private": 10904707072,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 3451274,
+          "gpu_used": 10240393216
+        },
+        {
+          "t": 31.325,
+          "available": 3326078976,
+          "commit_charge": 41721716736,
+          "commit_limit": 59062784000,
+          "system_cache": 4880572416,
+          "disk_read_bytes": 3744715350528,
+          "drive_free": 13832138752,
+          "engine_rss": 13971243008,
+          "engine_private": 10904707072,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 3454293,
+          "gpu_used": null
+        },
+        {
+          "t": 31.826,
+          "available": 3290021888,
+          "commit_charge": 41725059072,
+          "commit_limit": 59062784000,
+          "system_cache": 4845162496,
+          "disk_read_bytes": 3744771658240,
+          "drive_free": 13832138752,
+          "engine_rss": 14027423744,
+          "engine_private": 10904985600,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 3469137,
+          "gpu_used": null
+        },
+        {
+          "t": 32.337,
+          "available": 3133931520,
+          "commit_charge": 41736335360,
+          "commit_limit": 59062784000,
+          "system_cache": 4689100800,
+          "disk_read_bytes": 3744916218368,
+          "drive_free": 13829275648,
+          "engine_rss": 14170423296,
+          "engine_private": 10904985600,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 3504049,
+          "gpu_used": null
+        },
+        {
+          "t": 32.964,
+          "available": 2963386368,
+          "commit_charge": 41760661504,
+          "commit_limit": 59062784000,
+          "system_cache": 4519907328,
+          "disk_read_bytes": 3745093427712,
+          "drive_free": 13829275648,
+          "engine_rss": 14316191744,
+          "engine_private": 10904985600,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 3539637,
+          "gpu_used": 10240393216
+        },
+        {
+          "t": 33.479,
+          "available": 2759794688,
+          "commit_charge": 42185490432,
+          "commit_limit": 59062784000,
+          "system_cache": 4170899456,
+          "disk_read_bytes": 3745277181440,
+          "drive_free": 13829275648,
+          "engine_rss": 14474969088,
+          "engine_private": 10904985600,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 3578401,
+          "gpu_used": null
+        },
+        {
+          "t": 33.987,
+          "available": 3008745472,
+          "commit_charge": 41505009664,
+          "commit_limit": 59062784000,
+          "system_cache": 4044546048,
+          "disk_read_bytes": 3745381184512,
+          "drive_free": 13829271552,
+          "engine_rss": 14561771520,
+          "engine_private": 10904985600,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 3599593,
+          "gpu_used": null
+        },
+        {
+          "t": 34.503,
+          "available": 2749292544,
+          "commit_charge": 41809125376,
+          "commit_limit": 59062784000,
+          "system_cache": 4017524736,
+          "disk_read_bytes": 3745466233856,
+          "drive_free": 13829271552,
+          "engine_rss": 14636580864,
+          "engine_private": 10904985600,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 3617857,
+          "gpu_used": null
+        },
+        {
+          "t": 35.062,
+          "available": 2563158016,
+          "commit_charge": 41943740416,
+          "commit_limit": 59062784000,
+          "system_cache": 3936288768,
+          "disk_read_bytes": 3745612464640,
+          "drive_free": 13829238784,
+          "engine_rss": 14765277184,
+          "engine_private": 10904985600,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 3649277,
+          "gpu_used": 10240393216
+        },
+        {
+          "t": 35.574,
+          "available": 2539335680,
+          "commit_charge": 41806450688,
+          "commit_limit": 59062784000,
+          "system_cache": 3891052544,
+          "disk_read_bytes": 3745992677376,
+          "drive_free": 13829238784,
+          "engine_rss": 14914715648,
+          "engine_private": 10904985600,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 3685761,
+          "gpu_used": null
+        },
+        {
+          "t": 36.078,
+          "available": 2397380608,
+          "commit_charge": 41827799040,
+          "commit_limit": 59062784000,
+          "system_cache": 3722289152,
+          "disk_read_bytes": 3746128595968,
+          "drive_free": 13829238784,
+          "engine_rss": 15049261056,
+          "engine_private": 10904985600,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 3718609,
+          "gpu_used": null
+        },
+        {
+          "t": 36.581,
+          "available": 2503745536,
+          "commit_charge": 41792561152,
+          "commit_limit": 59062784000,
+          "system_cache": 3692105728,
+          "disk_read_bytes": 3746205359616,
+          "drive_free": 13829238784,
+          "engine_rss": 15125794816,
+          "engine_private": 10904985600,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 3737294,
+          "gpu_used": null
+        },
+        {
+          "t": 37.13,
+          "available": 2399985664,
+          "commit_charge": 41789394944,
+          "commit_limit": 59062784000,
+          "system_cache": 3643371520,
+          "disk_read_bytes": 3746330750464,
+          "drive_free": 13829238784,
+          "engine_rss": 15235272704,
+          "engine_private": 10904985600,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 3764022,
+          "gpu_used": 10240393216
+        },
+        {
+          "t": 37.635,
+          "available": 2233368576,
+          "commit_charge": 41786040320,
+          "commit_limit": 59062784000,
+          "system_cache": 3475427328,
+          "disk_read_bytes": 3746485669376,
+          "drive_free": 13829238784,
+          "engine_rss": 15403372544,
+          "engine_private": 10904985600,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 3805062,
+          "gpu_used": null
+        },
+        {
+          "t": 38.138,
+          "available": 2099597312,
+          "commit_charge": 41759014912,
+          "commit_limit": 59062784000,
+          "system_cache": 3337789440,
+          "disk_read_bytes": 3746631781888,
+          "drive_free": 13828190208,
+          "engine_rss": 15549067264,
+          "engine_private": 10904985600,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 3840631,
+          "gpu_used": null
+        },
+        {
+          "t": 38.641,
+          "available": 2058772480,
+          "commit_charge": 41727090688,
+          "commit_limit": 59062784000,
+          "system_cache": 3216957440,
+          "disk_read_bytes": 3746772938240,
+          "drive_free": 13828190208,
+          "engine_rss": 15689814016,
+          "engine_private": 10904985600,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 3874994,
+          "gpu_used": null
+        },
+        {
+          "t": 39.182,
+          "available": 2043539456,
+          "commit_charge": 41864867840,
+          "commit_limit": 59062784000,
+          "system_cache": 3193073664,
+          "disk_read_bytes": 3746778058240,
+          "drive_free": 13828190208,
+          "engine_rss": 15675961344,
+          "engine_private": 11029311488,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 3877824,
+          "gpu_used": 10382999552
+        },
+        {
+          "t": 39.687,
+          "available": 1998839808,
+          "commit_charge": 42353287168,
+          "commit_limit": 59062784000,
+          "system_cache": 3159560192,
+          "disk_read_bytes": 3746785175040,
+          "drive_free": 13828177920,
+          "engine_rss": 15726530560,
+          "engine_private": 11498467328,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 3890315,
+          "gpu_used": null
+        },
+        {
+          "t": 40.192,
+          "available": 1303744512,
+          "commit_charge": 41837809664,
+          "commit_limit": 59062784000,
+          "system_cache": 2410545152,
+          "disk_read_bytes": 3747764536832,
+          "drive_free": 13828177920,
+          "engine_rss": 16726188032,
+          "engine_private": 11551776768,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 4134712,
+          "gpu_used": null
+        },
+        {
+          "t": 40.699,
+          "available": 678686720,
+          "commit_charge": 41669443584,
+          "commit_limit": 59062784000,
+          "system_cache": 1751269376,
+          "disk_read_bytes": 3748622923264,
+          "drive_free": 13828173824,
+          "engine_rss": 17551122432,
+          "engine_private": 11552313344,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 4336708,
+          "gpu_used": null
+        },
+        {
+          "t": 41.262,
+          "available": 341929984,
+          "commit_charge": 41684156416,
+          "commit_limit": 59062784000,
+          "system_cache": 1412780032,
+          "disk_read_bytes": 3749341346304,
+          "drive_free": 13828173824,
+          "engine_rss": 17610563584,
+          "engine_private": 11553050624,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 4498201,
+          "gpu_used": 10531897344
+        },
+        {
+          "t": 41.777,
+          "available": 633581568,
+          "commit_charge": 41676169216,
+          "commit_limit": 59062784000,
+          "system_cache": 1571950592,
+          "disk_read_bytes": 3750240916480,
+          "drive_free": 13828173824,
+          "engine_rss": 17511100416,
+          "engine_private": 11557515264,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 4712068,
+          "gpu_used": null
+        },
+        {
+          "t": 42.287,
+          "available": 634646528,
+          "commit_charge": 41655095296,
+          "commit_limit": 59062784000,
+          "system_cache": 1572655104,
+          "disk_read_bytes": 3751124153344,
+          "drive_free": 13828173824,
+          "engine_rss": 17526583296,
+          "engine_private": 11560960000,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 4923086,
+          "gpu_used": null
+        },
+        {
+          "t": 42.8,
+          "available": 734117888,
+          "commit_charge": 41673043968,
+          "commit_limit": 59062784000,
+          "system_cache": 1563947008,
+          "disk_read_bytes": 3751200674304,
+          "drive_free": 13828173824,
+          "engine_rss": 17532960768,
+          "engine_private": 11562844160,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 4938980,
+          "gpu_used": null
+        },
+        {
+          "t": 43.364,
+          "available": 633987072,
+          "commit_charge": 41940996096,
+          "commit_limit": 59062784000,
+          "system_cache": 1531469824,
+          "disk_read_bytes": 3751474426880,
+          "drive_free": 13828173824,
+          "engine_rss": 17801695232,
+          "engine_private": 11812720640,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 5025585,
+          "gpu_used": 10636754944
+        },
+        {
+          "t": 43.872,
+          "available": 632655872,
+          "commit_charge": 41892929536,
+          "commit_limit": 59062784000,
+          "system_cache": 1497382912,
+          "disk_read_bytes": 3752222487552,
+          "drive_free": 13828173824,
+          "engine_rss": 17874305024,
+          "engine_private": 11812773888,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 5221069,
+          "gpu_used": null
+        },
+        {
+          "t": 44.384,
+          "available": 634351616,
+          "commit_charge": 41872789504,
+          "commit_limit": 59062784000,
+          "system_cache": 1497186304,
+          "disk_read_bytes": 3753016689664,
+          "drive_free": 13828173824,
+          "engine_rss": 17876201472,
+          "engine_private": 11812827136,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 5409167,
+          "gpu_used": null
+        },
+        {
+          "t": 44.885,
+          "available": 634200064,
+          "commit_charge": 41874386944,
+          "commit_limit": 59062784000,
+          "system_cache": 1496948736,
+          "disk_read_bytes": 3753694823424,
+          "drive_free": 13828173824,
+          "engine_rss": 17871925248,
+          "engine_private": 11812880384,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 5571133,
+          "gpu_used": null
+        },
+        {
+          "t": 45.436,
+          "available": 632713216,
+          "commit_charge": 41877622784,
+          "commit_limit": 59062784000,
+          "system_cache": 1496207360,
+          "disk_read_bytes": 3754529072128,
+          "drive_free": 13828173824,
+          "engine_rss": 17871933440,
+          "engine_private": 11812933632,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 5753766,
+          "gpu_used": 10636754944
+        },
+        {
+          "t": 45.939,
+          "available": 633061376,
+          "commit_charge": 41878376448,
+          "commit_limit": 59062784000,
+          "system_cache": 1496657920,
+          "disk_read_bytes": 3755296699392,
+          "drive_free": 13828173824,
+          "engine_rss": 17862750208,
+          "engine_private": 11812986880,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 5954727,
+          "gpu_used": null
+        },
+        {
+          "t": 46.451,
+          "available": 634540032,
+          "commit_charge": 41861705728,
+          "commit_limit": 59062784000,
+          "system_cache": 1496428544,
+          "disk_read_bytes": 3756013229056,
+          "drive_free": 13825241088,
+          "engine_rss": 17871241216,
+          "engine_private": 11805687808,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 6124325,
+          "gpu_used": null
+        },
+        {
+          "t": 46.952,
+          "available": 635875328,
+          "commit_charge": 41865437184,
+          "commit_limit": 59062784000,
+          "system_cache": 1498599424,
+          "disk_read_bytes": 3756758823936,
+          "drive_free": 13825241088,
+          "engine_rss": 17861218304,
+          "engine_private": 11805741056,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 6302533,
+          "gpu_used": null
+        },
+        {
+          "t": 47.514,
+          "available": 634507264,
+          "commit_charge": 41866043392,
+          "commit_limit": 59062784000,
+          "system_cache": 1465069568,
+          "disk_read_bytes": 3757508162560,
+          "drive_free": 13822304256,
+          "engine_rss": 17893933056,
+          "engine_private": 11805847552,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 6465816,
+          "gpu_used": 10636754944
+        },
+        {
+          "t": 48.015,
+          "available": 634863616,
+          "commit_charge": 41866465280,
+          "commit_limit": 59062784000,
+          "system_cache": 1463775232,
+          "disk_read_bytes": 3758144283648,
+          "drive_free": 13819371520,
+          "engine_rss": 17892659200,
+          "engine_private": 11805904896,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 6633650,
+          "gpu_used": null
+        },
+        {
+          "t": 48.517,
+          "available": 287637504,
+          "commit_charge": 41866129408,
+          "commit_limit": 59062784000,
+          "system_cache": 1089359872,
+          "disk_read_bytes": 3758868775936,
+          "drive_free": 13819371520,
+          "engine_rss": 18268143616,
+          "engine_private": 11805958144,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 6806737,
+          "gpu_used": null
+        },
+        {
+          "t": 49.019,
+          "available": 286490624,
+          "commit_charge": 41866113024,
+          "commit_limit": 59062784000,
+          "system_cache": 1088352256,
+          "disk_read_bytes": 3759598564352,
+          "drive_free": 13819371520,
+          "engine_rss": 18264858624,
+          "engine_private": 11806015488,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 6979663,
+          "gpu_used": null
+        },
+        {
+          "t": 49.579,
+          "available": 579096576,
+          "commit_charge": 41867235328,
+          "commit_limit": 59062784000,
+          "system_cache": 1109598208,
+          "disk_read_bytes": 3760389162496,
+          "drive_free": 13819371520,
+          "engine_rss": 18242998272,
+          "engine_private": 11806068736,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 7143231,
+          "gpu_used": 10636754944
+        },
+        {
+          "t": 50.082,
+          "available": 287473664,
+          "commit_charge": 41864138752,
+          "commit_limit": 59062784000,
+          "system_cache": 817872896,
+          "disk_read_bytes": 3761158090240,
+          "drive_free": 13819371520,
+          "engine_rss": 18526949376,
+          "engine_private": 11806121984,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 7346415,
+          "gpu_used": null
+        },
+        {
+          "t": 50.584,
+          "available": 287514624,
+          "commit_charge": 41861697536,
+          "commit_limit": 59062784000,
+          "system_cache": 784859136,
+          "disk_read_bytes": 3761868557824,
+          "drive_free": 13819371520,
+          "engine_rss": 18572611584,
+          "engine_private": 11806228480,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 7515895,
+          "gpu_used": null
+        },
+        {
+          "t": 51.087,
+          "available": 285011968,
+          "commit_charge": 41858498560,
+          "commit_limit": 59062784000,
+          "system_cache": 782467072,
+          "disk_read_bytes": 3762608348672,
+          "drive_free": 13819371520,
+          "engine_rss": 18574909440,
+          "engine_private": 11806228480,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 7692707,
+          "gpu_used": null
+        },
+        {
+          "t": 51.647,
+          "available": 285388800,
+          "commit_charge": 41861869568,
+          "commit_limit": 59062784000,
+          "system_cache": 783577088,
+          "disk_read_bytes": 3763462865920,
+          "drive_free": 13819371520,
+          "engine_rss": 18566238208,
+          "engine_private": 11806281728,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 7875250,
+          "gpu_used": 10636754944
+        },
+        {
+          "t": 52.155,
+          "available": 286769152,
+          "commit_charge": 41859637248,
+          "commit_limit": 59062784000,
+          "system_cache": 783699968,
+          "disk_read_bytes": 3764245684736,
+          "drive_free": 13819342848,
+          "engine_rss": 18566664192,
+          "engine_private": 11806388224,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 8078703,
+          "gpu_used": null
+        },
+        {
+          "t": 52.66,
+          "available": 287469568,
+          "commit_charge": 41860952064,
+          "commit_limit": 59062784000,
+          "system_cache": 782503936,
+          "disk_read_bytes": 3764888830464,
+          "drive_free": 13819342848,
+          "engine_rss": 18600366080,
+          "engine_private": 11806441472,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 8231919,
+          "gpu_used": null
+        },
+        {
+          "t": 53.163,
+          "available": 286744576,
+          "commit_charge": 41861431296,
+          "commit_limit": 59062784000,
+          "system_cache": 781783040,
+          "disk_read_bytes": 3765611491840,
+          "drive_free": 13818294272,
+          "engine_rss": 18591805440,
+          "engine_private": 11806494720,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 8403875,
+          "gpu_used": null
+        },
+        {
+          "t": 53.722,
+          "available": 287694848,
+          "commit_charge": 41857748992,
+          "commit_limit": 59062784000,
+          "system_cache": 783597568,
+          "disk_read_bytes": 3766427377664,
+          "drive_free": 13818212352,
+          "engine_rss": 18602053632,
+          "engine_private": 11806547968,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 8575033,
+          "gpu_used": 10636754944
+        },
+        {
+          "t": 54.233,
+          "available": 286965760,
+          "commit_charge": 41854820352,
+          "commit_limit": 59062784000,
+          "system_cache": 782651392,
+          "disk_read_bytes": 3767207723008,
+          "drive_free": 13818212352,
+          "engine_rss": 18497269760,
+          "engine_private": 11806601216,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 8782128,
+          "gpu_used": null
+        },
+        {
+          "t": 54.744,
+          "available": 287723520,
+          "commit_charge": 41855070208,
+          "commit_limit": 59062784000,
+          "system_cache": 783269888,
+          "disk_read_bytes": 3767963435008,
+          "drive_free": 13818212352,
+          "engine_rss": 18561871872,
+          "engine_private": 11806654464,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 8962818,
+          "gpu_used": null
+        },
+        {
+          "t": 55.253,
+          "available": 287920128,
+          "commit_charge": 41857523712,
+          "commit_limit": 59062784000,
+          "system_cache": 783024128,
+          "disk_read_bytes": 3768763248640,
+          "drive_free": 13818212352,
+          "engine_rss": 18520203264,
+          "engine_private": 11806707712,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 9153686,
+          "gpu_used": null
+        },
+        {
+          "t": 55.806,
+          "available": 287604736,
+          "commit_charge": 41859088384,
+          "commit_limit": 59062784000,
+          "system_cache": 781467648,
+          "disk_read_bytes": 3769581985792,
+          "drive_free": 13818212352,
+          "engine_rss": 18554617856,
+          "engine_private": 11806707712,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 9335352,
+          "gpu_used": 10636754944
+        },
+        {
+          "t": 56.31,
+          "available": 285569024,
+          "commit_charge": 41860177920,
+          "commit_limit": 59062784000,
+          "system_cache": 780402688,
+          "disk_read_bytes": 3770311331840,
+          "drive_free": 13818212352,
+          "engine_rss": 18507579392,
+          "engine_private": 11806707712,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 9525337,
+          "gpu_used": null
+        },
+        {
+          "t": 56.811,
+          "available": 292347904,
+          "commit_charge": 41878638592,
+          "commit_limit": 59062784000,
+          "system_cache": 784084992,
+          "disk_read_bytes": 3770813521920,
+          "drive_free": 13818212352,
+          "engine_rss": 18546069504,
+          "engine_private": 11833556992,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 9649497,
+          "gpu_used": null
+        },
+        {
+          "t": 57.314,
+          "available": 287666176,
+          "commit_charge": 41890230272,
+          "commit_limit": 59062784000,
+          "system_cache": 752672768,
+          "disk_read_bytes": 3770945884160,
+          "drive_free": 13818212352,
+          "engine_rss": 18588618752,
+          "engine_private": 11844878336,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 9680299,
+          "gpu_used": null
+        },
+        {
+          "t": 57.907,
+          "available": 287571968,
+          "commit_charge": 41899872256,
+          "commit_limit": 59062784000,
+          "system_cache": 749760512,
+          "disk_read_bytes": 3771865024512,
+          "drive_free": 13818212352,
+          "engine_rss": 18595622912,
+          "engine_private": 11845091328,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 9875795,
+          "gpu_used": 10636754944
+        },
+        {
+          "t": 58.409,
+          "available": 305192960,
+          "commit_charge": 41898446848,
+          "commit_limit": 59062784000,
+          "system_cache": 729403392,
+          "disk_read_bytes": 3772253375488,
+          "drive_free": 13818195968,
+          "engine_rss": 18596089856,
+          "engine_private": 11847573504,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 9990633,
+          "gpu_used": null
+        },
+        {
+          "t": 58.913,
+          "available": 287571968,
+          "commit_charge": 41916874752,
+          "commit_limit": 59062784000,
+          "system_cache": 714145792,
+          "disk_read_bytes": 3772681377280,
+          "drive_free": 13818195968,
+          "engine_rss": 18579615744,
+          "engine_private": 11866243072,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 10096154,
+          "gpu_used": null
+        },
+        {
+          "t": 59.415,
+          "available": 306348032,
+          "commit_charge": 41929908224,
+          "commit_limit": 59062784000,
+          "system_cache": 682061824,
+          "disk_read_bytes": 3773067318272,
+          "drive_free": 13818187776,
+          "engine_rss": 18606858240,
+          "engine_private": 11870101504,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 10189314,
+          "gpu_used": null
+        },
+        {
+          "t": 59.966,
+          "available": 301453312,
+          "commit_charge": 41902526464,
+          "commit_limit": 59062784000,
+          "system_cache": 682737664,
+          "disk_read_bytes": 3773081984512,
+          "drive_free": 13818187776,
+          "engine_rss": 18606858240,
+          "engine_private": 11870101504,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 10189314,
+          "gpu_used": 10638852096
+        },
+        {
+          "t": 60.469,
+          "available": 286322688,
+          "commit_charge": 41925046272,
+          "commit_limit": 59062784000,
+          "system_cache": 618045440,
+          "disk_read_bytes": 3773184305664,
+          "drive_free": 13818318848,
+          "engine_rss": 18651869184,
+          "engine_private": 11863703552,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 10213507,
+          "gpu_used": null
+        },
+        {
+          "t": 60.977,
+          "available": 288788480,
+          "commit_charge": 41864306688,
+          "commit_limit": 59062784000,
+          "system_cache": 617824256,
+          "disk_read_bytes": 3774010732032,
+          "drive_free": 13818318848,
+          "engine_rss": 18699599872,
+          "engine_private": 11863703552,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 10413636,
+          "gpu_used": null
+        },
+        {
+          "t": 61.482,
+          "available": 287625216,
+          "commit_charge": 41860669440,
+          "commit_limit": 59062784000,
+          "system_cache": 586919936,
+          "disk_read_bytes": 3774843137024,
+          "drive_free": 13818318848,
+          "engine_rss": 18735099904,
+          "engine_private": 11863703552,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 10610771,
+          "gpu_used": null
+        },
+        {
+          "t": 62.042,
+          "available": 288088064,
+          "commit_charge": 41847398400,
+          "commit_limit": 59062784000,
+          "system_cache": 586031104,
+          "disk_read_bytes": 3775639872000,
+          "drive_free": 13818318848,
+          "engine_rss": 18742775808,
+          "engine_private": 11863621632,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 10783320,
+          "gpu_used": 10638852096
+        },
+        {
+          "t": 62.545,
+          "available": 287674368,
+          "commit_charge": 41844416512,
+          "commit_limit": 59062784000,
+          "system_cache": 555343872,
+          "disk_read_bytes": 3776415142912,
+          "drive_free": 13818318848,
+          "engine_rss": 18769928192,
+          "engine_private": 11863621632,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 10989339,
+          "gpu_used": null
+        },
+        {
+          "t": 63.05,
+          "available": 62255104,
+          "commit_charge": 41859883008,
+          "commit_limit": 59062784000,
+          "system_cache": 213868544,
+          "disk_read_bytes": 3777019005440,
+          "drive_free": 13818318848,
+          "engine_rss": 19184898048,
+          "engine_private": 11863621632,
+          "engine_read_bytes": 22933821,
+          "engine_page_faults": 11109367,
+          "gpu_used": null
+        },
+        {
+          "t": 66.069,
+          "available": 19923922944,
+          "commit_charge": 29922893824,
+          "commit_limit": 59062784000,
+          "system_cache": 19481509888,
+          "disk_read_bytes": 3777091939328,
+          "drive_free": 13818310656,
+          "engine_rss": null,
+          "engine_private": null,
+          "engine_read_bytes": null,
+          "engine_page_faults": null,
+          "gpu_used": null
+        },
+        {
+          "t": 67.348,
+          "available": 19930521600,
+          "commit_charge": 29901185024,
+          "commit_limit": 59062784000,
+          "system_cache": 19481767936,
+          "disk_read_bytes": 3777098559488,
+          "drive_free": 13818310656,
+          "engine_rss": null,
+          "engine_private": null,
+          "engine_read_bytes": null,
+          "engine_page_faults": null,
+          "gpu_used": 0
+        },
+        {
+          "t": 67.852,
+          "available": 19825950720,
+          "commit_charge": 29902344192,
+          "commit_limit": 59062784000,
+          "system_cache": 19482533888,
+          "disk_read_bytes": 3777098560000,
+          "drive_free": 13818310656,
+          "engine_rss": null,
+          "engine_private": null,
+          "engine_read_bytes": null,
+          "engine_page_faults": null,
+          "gpu_used": null
+        },
+        {
+          "t": 68.354,
+          "available": 19822739456,
+          "commit_charge": 29898194944,
+          "commit_limit": 59062784000,
+          "system_cache": 19482566656,
+          "disk_read_bytes": 3777099150336,
+          "drive_free": 13817262080,
+          "engine_rss": null,
+          "engine_private": null,
+          "engine_read_bytes": null,
+          "engine_page_faults": null,
+          "gpu_used": null
+        },
+        {
+          "t": 68.858,
+          "available": 19825926144,
+          "commit_charge": 29895421952,
+          "commit_limit": 59062784000,
+          "system_cache": 19482570752,
+          "disk_read_bytes": 3777099334656,
+          "drive_free": 13817262080,
+          "engine_rss": null,
+          "engine_private": null,
+          "engine_read_bytes": null,
+          "engine_page_faults": null,
+          "gpu_used": null
+        },
+        {
+          "t": 70.088,
+          "available": 19826044928,
+          "commit_charge": 29895168000,
+          "commit_limit": 59062784000,
+          "system_cache": 19482640384,
+          "disk_read_bytes": 3777100243968,
+          "drive_free": 13817262080,
+          "engine_rss": null,
+          "engine_private": null,
+          "engine_read_bytes": null,
+          "engine_page_faults": null,
+          "gpu_used": 0
+        },
+        {
+          "t": 70.589,
+          "available": 19822706688,
+          "commit_charge": 29884432384,
+          "commit_limit": 59062784000,
+          "system_cache": 19439570944,
+          "disk_read_bytes": 3777104376832,
+          "drive_free": 13817008128,
+          "engine_rss": null,
+          "engine_private": null,
+          "engine_read_bytes": null,
+          "engine_page_faults": null,
+          "gpu_used": null
+        },
+        {
+          "t": 70.95,
+          "available": 19828535296,
+          "commit_charge": 29880713216,
+          "commit_limit": 59062784000,
+          "system_cache": 19486732288,
+          "disk_read_bytes": 3777104510464,
+          "drive_free": 13817008128,
+          "engine_rss": null,
+          "engine_private": null,
+          "engine_read_bytes": null,
+          "engine_page_faults": null,
+          "gpu_used": null
+        }
+      ]
+    }
+  },
+  "comparison": {
+    "predicted_decode_ms": 1136.532193835002,
+    "predicted_decode_source": "plan.moe (estimate)",
+    "measured_decode_ms_per_token_median": null,
+    "measured_over_predicted": null,
+    "predicted_load_ms": null,
+    "measured_load_s": 59.121,
+    "predicted_stream_bytes_per_token": null,
+    "predicted_moe_ssd_bytes_per_token_est": 1187954748,
+    "predicted_moe_miss_rate_est": 0.800281492075005,
+    "measured_disk_read_bytes_per_output_token_median": null,
+    "measured_decode_disk_read_bytes_per_token_median": null,
+    "note": "predicted_* come from the gateway's plan; measured_* from this run"
+  },
+  "status": "aborted_by_guard",
+  "error": null,
+  "deployment_id": "cf5c017865ad471c95307f174dde722c",
+  "stop": {
+    "state": "stopped",
+    "cleanup": "deployment:cf5c017865ad471c95307f174dde722c pid 70276: terminated (exit code 1); released 3 lease(s)",
+    "error": null
+  },
+  "kept": false,
+  "finished_at": "2026-10-22T08:50:27.913705+00:00"
+}

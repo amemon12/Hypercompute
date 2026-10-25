@@ -1,0 +1,50 @@
+[
+ {
+  "label": "120b-gxA-1",
+  "model": "gpt-oss-120b-mxfp4",
+  "nodes": [],
+  "args": [
+   "--prompt-tokens",
+   "128",
+   "--output-tokens",
+   "64",
+   "--warmup",
+   "1",
+   "--reps",
+   "3"
+  ],
+  "timeout_s": 5400
+ },
+ {
+  "label": "120b-gxA-2",
+  "model": "gpt-oss-120b-mxfp4",
+  "nodes": [],
+  "args": [
+   "--prompt-tokens",
+   "128",
+   "--output-tokens",
+   "64",
+   "--warmup",
+   "1",
+   "--reps",
+   "3"
+  ],
+  "timeout_s": 5400
+ },
+ {
+  "label": "120b-gxA-3",
+  "model": "gpt-oss-120b-mxfp4",
+  "nodes": [],
+  "args": [
+   "--prompt-tokens",
+   "128",
+   "--output-tokens",
+   "64",
+   "--warmup",
+   "1",
+   "--reps",
+   "3"
+  ],
+  "timeout_s": 5400
+ }
+]

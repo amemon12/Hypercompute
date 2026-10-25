@@ -1,0 +1,503 @@
+{
+  "schema": "hypercompute.capacity.bench/1",
+  "status": "failed",
+  "started_at": "2026-10-22T06:26:58.212547+00:00",
+  "finished_at": "2026-10-22T06:27:00.265033+00:00",
+  "case": {
+    "label": "cal-qwen2.5-0.5b-instruct-q4_k_m-cpu-norepack-t12",
+    "model_paths": [
+      "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-0.5b-instruct-q4_k_m\\qwen2.5-0.5b-instruct-q4_k_m.gguf"
+    ],
+    "engine": {
+      "devices": [],
+      "tensor_split": [],
+      "ngl": 0,
+      "ctx": 2048,
+      "threads": 12,
+      "load_mode": "mmap",
+      "flags": [
+        "--no-repack",
+        "--cache-ram",
+        "0"
+      ]
+    },
+    "stream": null,
+    "rpc_endpoints": [],
+    "rpc_path_class": "local"
+  },
+  "workload": {
+    "prompt": "You are a careful assistant. Explain, in plain sentences, why a laptop that reads part of a language model from its SSD for every token is slower than one that keeps every layer in memory, and what changes when a second computer with spare memory joins over a network.",
+    "prompt_tokens": 512,
+    "output_tokens": 64,
+    "reps": 3,
+    "warmup": 1,
+    "reuse_output_tokens": 1,
+    "seed": 7,
+    "temperature": 0.0,
+    "top_k": 1,
+    "request_timeout_s": 1800,
+    "load_timeout_s": 900
+  },
+  "host": {
+    "system": "Windows",
+    "release": "11",
+    "version": "10.0.26200",
+    "machine": "AMD64",
+    "processor": "AMD64 Family 26 Model 36 Stepping 0, AuthenticAMD",
+    "python": "3.12.10",
+    "cpu_logical": 24,
+    "cpu_physical": 12,
+    "ram_total_bytes": 33412722688,
+    "ram_available_bytes": 11062763520,
+    "power": {
+      "source": "ac",
+      "percent": 14,
+      "via": "psutil.sensors_battery"
+    }
+  },
+  "llama_cpp": {
+    "release": "b11770",
+    "variant": "windows-x64-cuda13.4",
+    "accelerator": "cuda",
+    "engine_dir": "C:\\Users\\operator\\.hypercompute\\engines\\llama-b11770-windows-x64-cuda13.4",
+    "source": "pinned-release",
+    "build": 11770,
+    "commit": "39da130fc",
+    "build_source": "llama-server log"
+  },
+  "model": {
+    "model_id": "qwen2.5-0.5b-instruct-q4_k_m",
+    "shards": [
+      {
+        "path": "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-0.5b-instruct-q4_k_m\\qwen2.5-0.5b-instruct-q4_k_m.gguf",
+        "size": 491400032,
+        "mtime_ns": 1792546567859131600
+      }
+    ],
+    "bytes": 491400032,
+    "fingerprint": "1882222dbcdee64cb779fc0b162e066cd89dc56ed26473469a59a2163f117f93",
+    "architecture": "qwen2",
+    "file_type": "Q4_K_M",
+    "n_layer": 24
+  },
+  "preflight": {
+    "port": 52025,
+    "port_listener": null,
+    "available_ram_bytes": 11058393088,
+    "predicted": {
+      "total_bytes": 1047591936,
+      "parts": [
+        [
+          "cpu unit weights",
+          391962624
+        ],
+        [
+          "token_embd",
+          93592576
+        ],
+        [
+          "kv cache (cpu blocks)",
+          25165824
+        ],
+        [
+          "compute prior",
+          536870912
+        ]
+      ],
+      "provenance": "estimate"
+    },
+    "free_disk_bytes": 45219885056,
+    "disk_path": "C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity"
+  },
+  "refused": [],
+  "launch": {
+    "argv": [
+      "C:\\Users\\operator\\.hypercompute\\engines\\llama-b11770-windows-x64-cuda13.4\\llama-server.exe",
+      "-m",
+      "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-0.5b-instruct-q4_k_m\\qwen2.5-0.5b-instruct-q4_k_m.gguf",
+      "--load-mode",
+      "mmap",
+      "--no-repack",
+      "--cache-ram",
+      "0",
+      "--device",
+      "none",
+      "-ngl",
+      "0",
+      "--fit",
+      "off",
+      "-c",
+      "2048",
+      "-np",
+      "1",
+      "-t",
+      "12",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "52025",
+      "--no-ui",
+      "-lv",
+      "4",
+      "--log-colors",
+      "off"
+    ],
+    "port": 52025,
+    "bin_dir": "C:\\Users\\operator\\.hypercompute\\engines\\llama-b11770-windows-x64-cuda13.4",
+    "log": "C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T062658Z-bench-cal-qwen2.5-0.5b-instruct-q4_k_m-cpu-norepack-t12\\llama-server-52025.log",
+    "env_removed": []
+  },
+  "load": {
+    "ok": true,
+    "seconds": 1.361,
+    "error": null,
+    "log_lines": [
+      "0.00.816.732 I cmn  common_param: common_params_print_info: build 11770 (39da130fc) with Clang 20.1.8 for Windows x86_64",
+      "0.00.873.945 I cmn  common_param: system_info: n_threads = 12 (n_threads_batch = 12) / 24 | CUDA : ARCHS = 750,800,860,890,900,1200,1210 | USE_GRAPHS = 1 | FA_QUANTS = q4_0-q4_0,q8_0-q8_0,f16-f16,bf16-bf16 | BLACKWELL_NATIVE_FP4 = 1 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | AVX512 = 1 | AVX512_VBMI = 1 | AVX512_VNNI = 1 | AVX512_BF16 = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 |",
+      "0.00.878.320 I srv    load_model: loading model 'C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-0.5b-instruct-q4_k_m\\qwen2.5-0.5b-instruct-q4_k_m.gguf'",
+      "0.00.878.324 I srv    load_model: local path 'C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-0.5b-instruct-q4_k_m\\qwen2.5-0.5b-instruct-q4_k_m.gguf'",
+      "0.01.077.161 I load_tensors: loading model tensors, this can take a while... (load_mode = mmap)",
+      "0.01.160.836 I load_tensors: offloading 0 repeating layers to GPU",
+      "0.01.160.844 I load_tensors: offloaded 0/25 layers to GPU",
+      "0.01.160.848 I load_tensors:   CPU_Mapped model buffer size =   462.96 MiB",
+      "0.01.166.903 I llama_kv_cache:        CPU KV buffer size =    24.00 MiB",
+      "0.01.169.003 I llama_kv_cache: size =   24.00 MiB (  2048 cells,  24 layers,  1/1 seqs), K (f16):   12.00 MiB, V (f16):   12.00 MiB",
+      "0.01.169.009 I llama_kv_cache: n_rot_k = 0, n_embd_head_k_all = 64",
+      "0.01.169.010 I llama_kv_cache: n_rot_v = 0, n_embd_head_k_all = 64",
+      "0.01.169.017 I sched_reserve: reserving ...",
+      "0.01.173.640 I sched_reserve:        CPU compute buffer size =    39.27 MiB",
+      "0.01.173.644 I sched_reserve: graph: nodes = 825, splits = 1, input objects = 4, input tensors = 9",
+      "0.01.173.645 I sched_reserve: reserve took 4.63 ms, sched copies = 1",
+      "0.01.274.775 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 2048, kv_unified = 'false'",
+      "0.01.275.266 I slot   load_model: id  0 | task -1 | new slot, n_ctx = 2048",
+      "0.01.275.530 I srv    load_model: prompt cache is disabled - use `--cache-ram N` to enable it",
+      "0.01.275.534 I srv    load_model: for more info see https://github.com/ggml-org/llama.cpp/pull/16391",
+      "0.01.275.535 I srv    load_model: context checkpoints enabled, max = 32, min spacing = 8192",
+      "0.01.295.907 I srv  llama_server: model loaded"
+    ],
+    "build": {
+      "build": 11770,
+      "commit": "39da130fc",
+      "build_source": "llama-server log"
+    },
+    "memory": {
+      "loaded_at_s": 1.354,
+      "samples": 13,
+      "seconds": 1.255,
+      "working_set_peak": 650051584,
+      "working_set_median": 197513216,
+      "private_peak": 741326848,
+      "sys_available_min": 10418814976,
+      "page_faults": 172878,
+      "proc_read_bytes": 15870483,
+      "sys_disk_read_bytes": 487843328
+    },
+    "log_tail": []
+  },
+  "reps": [
+    {
+      "index": 0,
+      "warmup": true,
+      "ok": false,
+      "phases": [
+        {
+          "phase": "uncached",
+          "ok": false,
+          "error": "building the prompt: BenchError: could not build a 512-token prompt",
+          "wall_ms": null,
+          "ttft_ms": null,
+          "timings": null,
+          "cache_prompt": null,
+          "prompt_head": "",
+          "io": {}
+        },
+        {
+          "phase": "prefix_prime",
+          "ok": false,
+          "error": "building the prompt: BenchError: could not build a 512-token prompt",
+          "wall_ms": null,
+          "ttft_ms": null,
+          "timings": null,
+          "cache_prompt": null,
+          "prompt_head": "",
+          "io": {}
+        },
+        {
+          "phase": "prefix_reuse",
+          "ok": false,
+          "error": "building the prompt: BenchError: could not build a 512-token prompt",
+          "wall_ms": null,
+          "ttft_ms": null,
+          "timings": null,
+          "cache_prompt": null,
+          "prompt_head": "",
+          "io": {}
+        }
+      ],
+      "gpu": null,
+      "power": {
+        "source": "ac",
+        "percent": 14,
+        "via": "psutil.sensors_battery"
+      },
+      "rpc": null,
+      "started_at": "2026-10-22T06:27:00.144504+00:00"
+    },
+    {
+      "index": 1,
+      "warmup": false,
+      "ok": false,
+      "phases": [
+        {
+          "phase": "uncached",
+          "ok": false,
+          "error": "building the prompt: BenchError: could not build a 512-token prompt",
+          "wall_ms": null,
+          "ttft_ms": null,
+          "timings": null,
+          "cache_prompt": null,
+          "prompt_head": "",
+          "io": {}
+        },
+        {
+          "phase": "prefix_prime",
+          "ok": false,
+          "error": "building the prompt: BenchError: could not build a 512-token prompt",
+          "wall_ms": null,
+          "ttft_ms": null,
+          "timings": null,
+          "cache_prompt": null,
+          "prompt_head": "",
+          "io": {}
+        },
+        {
+          "phase": "prefix_reuse",
+          "ok": false,
+          "error": "building the prompt: BenchError: could not build a 512-token prompt",
+          "wall_ms": null,
+          "ttft_ms": null,
+          "timings": null,
+          "cache_prompt": null,
+          "prompt_head": "",
+          "io": {}
+        }
+      ],
+      "gpu": null,
+      "power": {
+        "source": "ac",
+        "percent": 14,
+        "via": "psutil.sensors_battery"
+      },
+      "rpc": null,
+      "started_at": "2026-10-22T06:27:00.161235+00:00"
+    },
+    {
+      "index": 2,
+      "warmup": false,
+      "ok": false,
+      "phases": [
+        {
+          "phase": "uncached",
+          "ok": false,
+          "error": "building the prompt: BenchError: could not build a 512-token prompt",
+          "wall_ms": null,
+          "ttft_ms": null,
+          "timings": null,
+          "cache_prompt": null,
+          "prompt_head": "",
+          "io": {}
+        },
+        {
+          "phase": "prefix_prime",
+          "ok": false,
+          "error": "building the prompt: BenchError: could not build a 512-token prompt",
+          "wall_ms": null,
+          "ttft_ms": null,
+          "timings": null,
+          "cache_prompt": null,
+          "prompt_head": "",
+          "io": {}
+        },
+        {
+          "phase": "prefix_reuse",
+          "ok": false,
+          "error": "building the prompt: BenchError: could not build a 512-token prompt",
+          "wall_ms": null,
+          "ttft_ms": null,
+          "timings": null,
+          "cache_prompt": null,
+          "prompt_head": "",
+          "io": {}
+        }
+      ],
+      "gpu": null,
+      "power": {
+        "source": "ac",
+        "percent": 14,
+        "via": "psutil.sensors_battery"
+      },
+      "rpc": null,
+      "started_at": "2026-10-22T06:27:00.161235+00:00"
+    },
+    {
+      "index": 3,
+      "warmup": false,
+      "ok": false,
+      "phases": [
+        {
+          "phase": "uncached",
+          "ok": false,
+          "error": "building the prompt: BenchError: could not build a 512-token prompt",
+          "wall_ms": null,
+          "ttft_ms": null,
+          "timings": null,
+          "cache_prompt": null,
+          "prompt_head": "",
+          "io": {}
+        },
+        {
+          "phase": "prefix_prime",
+          "ok": false,
+          "error": "building the prompt: BenchError: could not build a 512-token prompt",
+          "wall_ms": null,
+          "ttft_ms": null,
+          "timings": null,
+          "cache_prompt": null,
+          "prompt_head": "",
+          "io": {}
+        },
+        {
+          "phase": "prefix_reuse",
+          "ok": false,
+          "error": "building the prompt: BenchError: could not build a 512-token prompt",
+          "wall_ms": null,
+          "ttft_ms": null,
+          "timings": null,
+          "cache_prompt": null,
+          "prompt_head": "",
+          "io": {}
+        }
+      ],
+      "gpu": null,
+      "power": {
+        "source": "ac",
+        "percent": 14,
+        "via": "psutil.sensors_battery"
+      },
+      "rpc": null,
+      "started_at": "2026-10-22T06:27:00.171678+00:00"
+    }
+  ],
+  "summary": {
+    "n_reps": 3,
+    "n_warmup": 1,
+    "n_reps_ok": 0,
+    "metrics": {},
+    "failures": [
+      {
+        "rep": 0,
+        "warmup": true,
+        "phase": "uncached",
+        "error": "building the prompt: BenchError: could not build a 512-token prompt"
+      },
+      {
+        "rep": 0,
+        "warmup": true,
+        "phase": "prefix_prime",
+        "error": "building the prompt: BenchError: could not build a 512-token prompt"
+      },
+      {
+        "rep": 0,
+        "warmup": true,
+        "phase": "prefix_reuse",
+        "error": "building the prompt: BenchError: could not build a 512-token prompt"
+      },
+      {
+        "rep": 1,
+        "warmup": false,
+        "phase": "uncached",
+        "error": "building the prompt: BenchError: could not build a 512-token prompt"
+      },
+      {
+        "rep": 1,
+        "warmup": false,
+        "phase": "prefix_prime",
+        "error": "building the prompt: BenchError: could not build a 512-token prompt"
+      },
+      {
+        "rep": 1,
+        "warmup": false,
+        "phase": "prefix_reuse",
+        "error": "building the prompt: BenchError: could not build a 512-token prompt"
+      },
+      {
+        "rep": 2,
+        "warmup": false,
+        "phase": "uncached",
+        "error": "building the prompt: BenchError: could not build a 512-token prompt"
+      },
+      {
+        "rep": 2,
+        "warmup": false,
+        "phase": "prefix_prime",
+        "error": "building the prompt: BenchError: could not build a 512-token prompt"
+      },
+      {
+        "rep": 2,
+        "warmup": false,
+        "phase": "prefix_reuse",
+        "error": "building the prompt: BenchError: could not build a 512-token prompt"
+      },
+      {
+        "rep": 3,
+        "warmup": false,
+        "phase": "uncached",
+        "error": "building the prompt: BenchError: could not build a 512-token prompt"
+      },
+      {
+        "rep": 3,
+        "warmup": false,
+        "phase": "prefix_prime",
+        "error": "building the prompt: BenchError: could not build a 512-token prompt"
+      },
+      {
+        "rep": 3,
+        "warmup": false,
+        "phase": "prefix_reuse",
+        "error": "building the prompt: BenchError: could not build a 512-token prompt"
+      }
+    ]
+  },
+  "stop": {
+    "exit_code": 1,
+    "stop_s": 0.089,
+    "children": 0,
+    "children_alive": [],
+    "child_alive_after_stop": false,
+    "error": null,
+    "pressure_guard_tripped": false,
+    "sampler_error": null,
+    "memory_whole_run": {
+      "samples": 15,
+      "seconds": 1.461,
+      "working_set_peak": 794664960,
+      "working_set_median": 197513216,
+      "private_peak": 741740544,
+      "sys_available_min": 10293022720,
+      "page_faults": 208210,
+      "proc_read_bytes": 15870483,
+      "sys_disk_read_bytes": 489895424
+    },
+    "available_after_stop": 11088793600
+  },
+  "error": null,
+  "provenance": {
+    "load, reps, summary": "measured on this host during this run",
+    "preflight.predicted": "estimate: GGUF unit sizes plus KV sizing plus a compute prior, used only to refuse a run",
+    "ttft_ms": "measured client side over loopback with streaming; no gateway in the path",
+    "gpu": "nvidia-smi snapshot after the uncached phase, not a peak",
+    "decode_tok_s": "(predicted_n - 1) / predicted_ms from engine timings, the engine's own predicted_per_second",
+    "*_read_bytes_per_token": "all reads of the uncached phase (prefill and decode) over predicted_n",
+    "hcstream_bytes_per_pass": "hcstream bytes_read over its forward-pass count (decode bytes per token)"
+  }
+}

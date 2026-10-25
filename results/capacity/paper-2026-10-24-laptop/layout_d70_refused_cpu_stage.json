@@ -1,0 +1,22 @@
+[
+ {
+  "node_id": "local",
+  "device": "CPU",
+  "layers": 21
+ },
+ {
+  "node_id": "6dad6cf75b2e4cf197b7bc7f4d0a67e4",
+  "device": "MTL0",
+  "layers": 20
+ },
+ {
+  "node_id": "d4e65f83c4be4a41aad722e40983b08b",
+  "device": "MTL0",
+  "layers": 20
+ },
+ {
+  "node_id": "local",
+  "device": "CUDA0",
+  "layers": 19
+ }
+]

@@ -1,0 +1,993 @@
+{
+  "schema": "hypercompute.capacity.big/1",
+  "started_at": "2026-10-22T08:39:17.158093+00:00",
+  "requested": {
+    "model": "gpt-oss-120b-mxfp4",
+    "port": 8001,
+    "strategy": "all_selected",
+    "ctx": 4096,
+    "nodes": [],
+    "engine": null,
+    "allow_capacity_mode": true,
+    "prompt_tokens": 128,
+    "output_tokens": 64,
+    "warmup": 1,
+    "reps": 3,
+    "keep": false,
+    "plan_only": true,
+    "load_timeout_s": 7200.0,
+    "chat_timeout_s": 1800.0,
+    "poll_s": 2.0,
+    "heartbeat_wait_s": 7.5,
+    "sample_interval_s": 0.5,
+    "gpu_every": 4,
+    "min_available_gib": 1.0,
+    "min_drive_free_gib": 5.0,
+    "max_commit_growth_gib": 0.25,
+    "home": "C:\\Users\\operator\\.hypercompute\\iroh-session",
+    "results_dir": "C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity",
+    "chat_settings": {
+      "stream": true,
+      "temperature": 0,
+      "seed": 7,
+      "cache_prompt": false,
+      "ignore_eos": true
+    }
+  },
+  "runner": {
+    "git_head": "d2bb8cd5548c119ccb29acaca2ed2c229324bced",
+    "uncommitted_paths": 20,
+    "note": "the runner's checkout; the gateway runs whatever code it was started from"
+  },
+  "predicted": {
+    "plan": {
+      "id": "03350530d8514d0a9d90fd4a9fd3ee14",
+      "model_id": "gpt-oss-120b-mxfp4",
+      "strategy": "all_selected",
+      "ctx_size": 4096,
+      "feasible": true,
+      "fit_label": "estimated_fit",
+      "heuristic": true,
+      "assignments": [
+        {
+          "node_id": "local",
+          "device": "CPU",
+          "endpoint": null,
+          "pool_id": "ram",
+          "layers": [],
+          "holds_output": false,
+          "weight_bytes": 47501475840,
+          "kv_bytes": 0,
+          "compute_bytes_est": 147849216,
+          "overhead_bytes_est": 67108864,
+          "total_bytes_est": 214958080,
+          "budget_bytes": 6899660903,
+          "fits": true
+        },
+        {
+          "node_id": "4c2991743c154be896d10a0b53ba4d2b",
+          "device": "RPC0",
+          "endpoint": "127.0.0.1:64076",
+          "pool_id": "uma",
+          "layers": [
+            0,
+            1,
+            2
+          ],
+          "holds_output": false,
+          "weight_bytes": 5178637824,
+          "kv_bytes": 25165824,
+          "compute_bytes_est": 147849216,
+          "overhead_bytes_est": 335544320,
+          "total_bytes_est": 5687197184,
+          "budget_bytes": 6059655168,
+          "fits": true
+        },
+        {
+          "node_id": "local",
+          "device": "CUDA0",
+          "endpoint": null,
+          "pool_id": "vram:CUDA0",
+          "layers": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35
+          ],
+          "holds_output": true,
+          "weight_bytes": 10078869504,
+          "kv_bytes": 276824064,
+          "compute_bytes_est": 147849216,
+          "overhead_bytes_est": 471859200,
+          "total_bytes_est": 10975401984,
+          "budget_bytes": 11987320832,
+          "fits": true
+        }
+      ],
+      "device_list": [
+        "RPC0",
+        "CUDA0"
+      ],
+      "tensor_split": [
+        3,
+        34
+      ],
+      "rpc_endpoints": [
+        "127.0.0.1:64076"
+      ],
+      "cpu_resident_bytes": 615329280,
+      "reasons": [
+        "strategy: run together (every selected device gets at least one layer)",
+        "contributed / estimated usable across selected devices: 16.8 GiB (separate memory pools, not one fast global memory)"
+      ],
+      "warnings": [
+        "moe_offload: attention, norms, router, shared experts, the head and the KV cache stay on the accelerators; the routed experts of 28 host layer(s) (44.2 GiB) stay on this machine's CPU, memory-mapped from the GGUF with no repacked or pinned copy (file cache, not committed RAM)",
+        "the peers hold whole layers (4.8 GiB), uploaded over the network before the first token",
+        "capacity mode (MoE): ~6.2 GiB of RAM left for the file cache against 44.2 GiB of CPU experts: an estimated 86% of the 3.1% of expert bytes a token routes to miss it, ~1.2 GiB of SSD reads per token",
+        "expected speed (slow; an estimate from priors and an assumed page-fault read rate of 1.0 GiB/s, not a measurement): ~1218 ms per token, about 0.8 tokens/s. Prompt processing of the CPU experts runs on the CPU",
+        "capacity optimizer not used (moe): gpt-oss-120b-mxfp4 is a mixture-of-experts model (128 experts, 4 per token); the optimizer's layer search does not model expert offload, so the planner's moe_offload plan is used"
+      ],
+      "candidates": [
+        {
+          "label": "this machine only",
+          "devices": [
+            "local:CUDA0"
+          ],
+          "feasible": false,
+          "reason": "CUDA0 needs ~59.3 GiB of 11.2 GiB"
+        },
+        {
+          "label": "every selected device participates",
+          "devices": [
+            "4c2991743c154be896d10a0b53ba4d2b:127.0.0.1:64076#0",
+            "local:CUDA0"
+          ],
+          "feasible": false,
+          "reason": "127.0.0.1:64076#0 needs ~48.9 GiB of 5.6 GiB"
+        },
+        {
+          "label": "every selected device + MoE experts on the host CPU",
+          "devices": [
+            "local:CPU",
+            "4c2991743c154be896d10a0b53ba4d2b:127.0.0.1:64076#0",
+            "local:CUDA0"
+          ],
+          "feasible": true,
+          "reason": "estimated fit: experts of 28 of 33 host layer(s) (44.2 GiB) stay on the CPU, file-backed; decode ~1218 ms/token (estimate)"
+        }
+      ],
+      "created_at": "2026-10-22T08:39:18.271108Z",
+      "engine": "llama_rpc",
+      "tier": "moe_offload",
+      "cpu_layers": 0,
+      "n_gpu_units": null,
+      "engine_flags": {},
+      "engine_options": {},
+      "profile_id": null,
+      "capacity_mode": true,
+      "stream": null,
+      "moe": {
+        "expert_count": 128,
+        "expert_used_count": 4,
+        "active_fraction": 0.03125,
+        "cpu_expert_layers": [
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30
+        ],
+        "cpu_expert_bytes": 47501475840,
+        "gpu_expert_bytes": 8482406400,
+        "override": "^blk\\.([3-9]|[1-2][0-9]|30)\\.ffn_(up|down|gate_up|gate)_(ch|)exps\\.=CPU",
+        "page_cache_bytes_est": 6684702823,
+        "miss_rate_est": 0.8592737866605199,
+        "ssd_bytes_per_token_est": 1275524156,
+        "read_bytes_per_s": 1073741824.0,
+        "decode_ms_est": 1218.0875603511154,
+        "provenance": "estimate"
+      },
+      "revision": 0,
+      "prediction": null,
+      "limits": {
+        "allow_ram_tier": true,
+        "allow_capacity_mode": true,
+        "node_ids": null,
+        "strategy": "all_selected"
+      }
+    },
+    "explain": {
+      "model_id": "gpt-oss-120b-mxfp4",
+      "workload": {
+        "ctx_size": 4096,
+        "prompt_tokens": 128,
+        "output_tokens": 64,
+        "warm": false,
+        "horizon_tokens": 2048,
+        "objective": "interactive"
+      },
+      "feasible": true,
+      "best": null,
+      "plan": {
+        "id": "26a38ac4efb94432af0e2f91f5b4b588",
+        "model_id": "gpt-oss-120b-mxfp4",
+        "strategy": "fastest_fit",
+        "ctx_size": 4096,
+        "feasible": true,
+        "fit_label": "estimated_fit",
+        "heuristic": true,
+        "assignments": [
+          {
+            "node_id": "local",
+            "device": "CPU",
+            "endpoint": null,
+            "pool_id": "ram",
+            "layers": [],
+            "holds_output": false,
+            "weight_bytes": 47501475840,
+            "kv_bytes": 0,
+            "compute_bytes_est": 147849216,
+            "overhead_bytes_est": 67108864,
+            "total_bytes_est": 214958080,
+            "budget_bytes": 6899660903,
+            "fits": true
+          },
+          {
+            "node_id": "4c2991743c154be896d10a0b53ba4d2b",
+            "device": "RPC0",
+            "endpoint": "127.0.0.1:64076",
+            "pool_id": "uma",
+            "layers": [
+              0,
+              1,
+              2
+            ],
+            "holds_output": false,
+            "weight_bytes": 5178637824,
+            "kv_bytes": 25165824,
+            "compute_bytes_est": 147849216,
+            "overhead_bytes_est": 335544320,
+            "total_bytes_est": 5687197184,
+            "budget_bytes": 6059655168,
+            "fits": true
+          },
+          {
+            "node_id": "local",
+            "device": "CUDA0",
+            "endpoint": null,
+            "pool_id": "vram:CUDA0",
+            "layers": [
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31,
+              32,
+              33,
+              34,
+              35
+            ],
+            "holds_output": true,
+            "weight_bytes": 10078881024,
+            "kv_bytes": 276824064,
+            "compute_bytes_est": 147849216,
+            "overhead_bytes_est": 471859200,
+            "total_bytes_est": 10975413504,
+            "budget_bytes": 11987320832,
+            "fits": true
+          }
+        ],
+        "device_list": [
+          "RPC0",
+          "CUDA0"
+        ],
+        "tensor_split": [
+          3,
+          34
+        ],
+        "rpc_endpoints": [
+          "127.0.0.1:64076"
+        ],
+        "cpu_resident_bytes": 615329280,
+        "reasons": [
+          "strategy: fastest fit (fewest devices, local first; peers only when needed)",
+          "contributed / estimated usable across selected devices: 16.8 GiB (separate memory pools, not one fast global memory)"
+        ],
+        "warnings": [
+          "MoE placement with the peers: estimated decode ~1218 ms/token against ~1362 (priors, not measured); the other layout is in the candidates",
+          "moe_offload: attention, norms, router, shared experts, the head and the KV cache stay on the accelerators; the routed experts of 28 host layer(s) (44.2 GiB) stay on this machine's CPU, memory-mapped from the GGUF with no repacked or pinned copy (file cache, not committed RAM)",
+          "the peers hold whole layers (4.8 GiB), uploaded over the network before the first token",
+          "capacity mode (MoE): ~6.2 GiB of RAM left for the file cache against 44.2 GiB of CPU experts: an estimated 86% of the 3.1% of expert bytes a token routes to miss it, ~1.2 GiB of SSD reads per token",
+          "expected speed (slow; an estimate from priors and an assumed page-fault read rate of 1.0 GiB/s, not a measurement): ~1218 ms per token, about 0.8 tokens/s. Prompt processing of the CPU experts runs on the CPU"
+        ],
+        "candidates": [
+          {
+            "label": "this machine only",
+            "devices": [
+              "local:CUDA0"
+            ],
+            "feasible": false,
+            "reason": "CUDA0 needs ~59.3 GiB of 11.2 GiB"
+          },
+          {
+            "label": "overflow to 1 peer device(s)",
+            "devices": [
+              "4c2991743c154be896d10a0b53ba4d2b:127.0.0.1:64076#0",
+              "local:CUDA0"
+            ],
+            "feasible": false,
+            "reason": "127.0.0.1:64076#0 needs ~48.9 GiB of 5.6 GiB"
+          },
+          {
+            "label": "MoE experts on the host CPU",
+            "devices": [
+              "local:CPU",
+              "local:CUDA0"
+            ],
+            "feasible": true,
+            "reason": "estimated fit: experts of 31 of 36 host layer(s) (49.0 GiB) stay on the CPU, file-backed; decode ~1362 ms/token (estimate)"
+          },
+          {
+            "label": "1 peer device(s) + MoE experts on the host CPU",
+            "devices": [
+              "local:CPU",
+              "4c2991743c154be896d10a0b53ba4d2b:127.0.0.1:64076#0",
+              "local:CUDA0"
+            ],
+            "feasible": true,
+            "reason": "estimated fit: experts of 28 of 33 host layer(s) (44.2 GiB) stay on the CPU, file-backed; decode ~1218 ms/token (estimate)"
+          }
+        ],
+        "created_at": "2026-10-22T08:39:18.748062Z",
+        "engine": "llama_rpc",
+        "tier": "moe_offload",
+        "cpu_layers": 0,
+        "n_gpu_units": null,
+        "engine_flags": {},
+        "engine_options": {},
+        "profile_id": null,
+        "capacity_mode": true,
+        "stream": null,
+        "moe": {
+          "expert_count": 128,
+          "expert_used_count": 4,
+          "active_fraction": 0.03125,
+          "cpu_expert_layers": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30
+          ],
+          "cpu_expert_bytes": 47501475840,
+          "gpu_expert_bytes": 8482406400,
+          "override": "^blk\\.([3-9]|[1-2][0-9]|30)\\.ffn_(up|down|gate_up|gate)_(ch|)exps\\.=CPU",
+          "page_cache_bytes_est": 6684702823,
+          "miss_rate_est": 0.8592737866605199,
+          "ssd_bytes_per_token_est": 1275524156,
+          "read_bytes_per_s": 1073741824.0,
+          "decode_ms_est": 1218.0875907639154,
+          "provenance": "estimate"
+        },
+        "revision": 0,
+        "prediction": null,
+        "limits": null
+      },
+      "candidates": [
+        {
+          "layout": "this machine only: local:CUDA0",
+          "feasible": false,
+          "reasons": [
+            "CUDA0 needs ~59.3 GiB of 11.2 GiB"
+          ]
+        },
+        {
+          "layout": "overflow to 1 peer device(s): 4c2991743c154be896d10a0b53ba4d2b:127.0.0.1:64076#0, local:CUDA0",
+          "feasible": false,
+          "reasons": [
+            "127.0.0.1:64076#0 needs ~48.9 GiB of 5.6 GiB"
+          ]
+        },
+        {
+          "layout": "MoE experts on the host CPU: local:CPU, local:CUDA0",
+          "feasible": true,
+          "reasons": [
+            "estimated fit: experts of 31 of 36 host layer(s) (49.0 GiB) stay on the CPU, file-backed; decode ~1362 ms/token (estimate)"
+          ]
+        },
+        {
+          "layout": "1 peer device(s) + MoE experts on the host CPU: local:CPU, 4c2991743c154be896d10a0b53ba4d2b:127.0.0.1:64076#0, local:CUDA0",
+          "feasible": true,
+          "reasons": [
+            "estimated fit: experts of 28 of 33 host layer(s) (44.2 GiB) stay on the CPU, file-backed; decode ~1218 ms/token (estimate)"
+          ]
+        }
+      ],
+      "explain": [
+        "mixture-of-experts model: the optimizer's layer search does not model expert offload (routed experts on the host CPU, file-backed), so the planner's plan is used; its numbers are estimates from priors",
+        "strategy: fastest fit (fewest devices, local first; peers only when needed)",
+        "contributed / estimated usable across selected devices: 16.8 GiB (separate memory pools, not one fast global memory)",
+        "MoE placement with the peers: estimated decode ~1218 ms/token against ~1362 (priors, not measured); the other layout is in the candidates",
+        "moe_offload: attention, norms, router, shared experts, the head and the KV cache stay on the accelerators; the routed experts of 28 host layer(s) (44.2 GiB) stay on this machine's CPU, memory-mapped from the GGUF with no repacked or pinned copy (file cache, not committed RAM)",
+        "the peers hold whole layers (4.8 GiB), uploaded over the network before the first token",
+        "capacity mode (MoE): ~6.2 GiB of RAM left for the file cache against 44.2 GiB of CPU experts: an estimated 86% of the 3.1% of expert bytes a token routes to miss it, ~1.2 GiB of SSD reads per token",
+        "expected speed (slow; an estimate from priors and an assumed page-fault read rate of 1.0 GiB/s, not a measurement): ~1218 ms per token, about 0.8 tokens/s. Prompt processing of the CPU experts runs on the CPU"
+      ],
+      "rejected": [],
+      "assumptions": [
+        "mixture-of-experts model: the optimizer's layer search does not model expert offload (routed experts on the host CPU, file-backed), so the planner's plan is used; its numbers are estimates from priors",
+        "decode {'cuda': 2.64, 'metal': 10.85, 'vulkan': 2.64, 'cpu': 12.5} ms per GB read (prior)",
+        "peer round trip 4 ms per device per token (prior)",
+        "page-fault read rate 1.0 GiB/s (prior)"
+      ],
+      "measured": [],
+      "warnings": []
+    }
+  },
+  "measured": {
+    "gateway_before": {
+      "health": {
+        "status": "ok",
+        "version": "0.1.0",
+        "time": "2026-10-22T08:39:18.019834+00:00",
+        "engine": {
+          "engine": "llama_rpc",
+          "installed": true,
+          "release": "b11770",
+          "build_number": 11770,
+          "commit": "39da130fc",
+          "rpc_proto": "8.0.0",
+          "variant": "source-build",
+          "accelerator": "unknown",
+          "bin_dir": "C:\\Users\\operator\\.hypercompute\\engines\\llama-b11770-windows-x64-cuda13.4",
+          "smoke": "passed",
+          "smoke_detail": "version: 0.7.0-dev (build 11770, commit 39da130fc); devices: CUDA0",
+          "devices": [
+            {
+              "name": "CUDA0",
+              "description": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+              "total_bytes": 12819890176,
+              "free_bytes": 11561598976
+            }
+          ]
+        },
+        "engines": [
+          {
+            "engine_id": "llama_rpc",
+            "status": "implemented",
+            "streaming": true,
+            "multi_host": true,
+            "disk_offload": false,
+            "cancel": true,
+            "platforms": [
+              "macos-arm64 (Metal)",
+              "windows-x64 (CUDA/CPU)",
+              "linux (CUDA/CPU)"
+            ],
+            "notes": "llama.cpp layer split over ggml RPC; unauthenticated RPC, trusted private LAN only"
+          },
+          {
+            "engine_id": "vllm",
+            "status": "implemented",
+            "streaming": true,
+            "multi_host": false,
+            "disk_offload": false,
+            "cancel": true,
+            "platforms": [
+              "linux x86_64/aarch64 (CUDA)",
+              "windows-x64 via WSL2 (CUDA)"
+            ],
+            "notes": "one NVIDIA GPU holds the whole model; continuous batching for concurrent requests"
+          },
+          {
+            "engine_id": "exo",
+            "status": "implemented",
+            "streaming": true,
+            "multi_host": true,
+            "disk_offload": false,
+            "cancel": true,
+            "platforms": [
+              "macos-arm64"
+            ],
+            "notes": "Apple-only MLX pipeline over the LAN; unauthenticated API, trusted private LAN only"
+          },
+          {
+            "engine_id": "airllm",
+            "status": "implemented",
+            "streaming": true,
+            "multi_host": false,
+            "disk_offload": true,
+            "cancel": true,
+            "platforms": [
+              "windows-x64 (CUDA/CPU)",
+              "linux (CUDA/CPU)"
+            ],
+            "notes": "disk capacity mode: every layer is read from disk for every token"
+          },
+          {
+            "engine_id": "exo_paged",
+            "status": "planned",
+            "streaming": false,
+            "multi_host": false,
+            "disk_offload": false,
+            "cancel": false,
+            "platforms": [],
+            "notes": "phase 4 research: layer offload inside EXO"
+          }
+        ]
+      },
+      "pools": {
+        "observed_at": "2026-10-22T08:39:18.019834+00:00",
+        "host_memory": {
+          "total": 33412722688,
+          "available": 15187668992,
+          "commit_charge": 41880518656,
+          "commit_limit": 59062784000,
+          "system_cache": 15090626560,
+          "observed_at": "2026-10-22T08:39:18.019834+00:00",
+          "source": "GetPerformanceInfo",
+          "error": null
+        },
+        "pools": [
+          {
+            "node_id": "local",
+            "pool_id": "ram",
+            "kind": "system_ram",
+            "total_bytes": 33412722688,
+            "free_bytes": 15187668992,
+            "reserve_bytes": 7219415449,
+            "cap_bytes": null,
+            "admissible_bytes": 7968253543,
+            "devices": [
+              "CPU"
+            ],
+            "source": "GetPerformanceInfo (fresh snapshot)",
+            "observed_at": "2026-10-22T08:39:18.019834+00:00",
+            "age_s": 0.0
+          },
+          {
+            "node_id": "local",
+            "pool_id": "vram:CUDA0",
+            "kind": "discrete_vram",
+            "total_bytes": 12820938752,
+            "free_bytes": 12524191744,
+            "reserve_bytes": 536870912,
+            "cap_bytes": null,
+            "admissible_bytes": 11987320832,
+            "devices": [
+              "CUDA0"
+            ],
+            "source": "nvidia-smi",
+            "observed_at": "2026-10-22T08:39:09.566153+00:00",
+            "age_s": 8.5
+          },
+          {
+            "node_id": "4c2991743c154be896d10a0b53ba4d2b",
+            "pool_id": "uma",
+            "kind": "unified",
+            "total_bytes": 17179869184,
+            "free_bytes": 10354622464,
+            "reserve_bytes": 4294967296,
+            "cap_bytes": 10737418240,
+            "admissible_bytes": 6059655168,
+            "devices": [
+              "MTL0"
+            ],
+            "source": "sysctl hw.memsize + psutil",
+            "observed_at": "2026-10-22T08:39:18.700146+00:00",
+            "age_s": 0.0
+          },
+          {
+            "node_id": "local",
+            "pool_id": "ssd",
+            "kind": "storage",
+            "total_bytes": null,
+            "free_bytes": 14068035584,
+            "reserve_bytes": 0,
+            "cap_bytes": null,
+            "admissible_bytes": 14068035584,
+            "devices": [],
+            "source": "free volume space (caller observation)",
+            "observed_at": "2026-10-22T08:39:18.019834+00:00",
+            "age_s": 0.0
+          }
+        ],
+        "excluded": [],
+        "notes": [],
+        "leases": [],
+        "released": null
+      },
+      "nodes": [
+        {
+          "id": "local",
+          "display_name": "benchmark-host (this machine)",
+          "is_local": true,
+          "state": "eligible",
+          "state_reason": null,
+          "worker_state": null,
+          "worker_cpu_seconds": null,
+          "heartbeat_age_s": 0.0,
+          "contribution": {
+            "devices": [
+              "CUDA0"
+            ],
+            "max_bytes": 12284067840,
+            "reserve_bytes": 6682544537,
+            "enforcement": "soft_admission",
+            "cache_enabled": false
+          },
+          "memory_pools": [
+            {
+              "id": "ram",
+              "kind": "system_ram",
+              "total_bytes": 33412722688,
+              "free_bytes": 14734405632,
+              "measured_at": "2026-10-22T08:39:09.515810Z",
+              "source": "psutil",
+              "note": null
+            },
+            {
+              "id": "vram:CUDA0",
+              "kind": "discrete_vram",
+              "total_bytes": 12820938752,
+              "free_bytes": 12524191744,
+              "measured_at": "2026-10-22T08:39:09.566153Z",
+              "source": "nvidia-smi",
+              "note": null
+            }
+          ],
+          "engine_devices": [
+            {
+              "name": "CUDA0",
+              "description": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+              "total_bytes": 12819890176,
+              "free_bytes": 11561598976
+            }
+          ]
+        },
+        {
+          "id": "4c2991743c154be896d10a0b53ba4d2b",
+          "display_name": "Azims-MacBook-Air-5.local",
+          "is_local": false,
+          "state": "eligible",
+          "state_reason": null,
+          "worker_state": "running",
+          "worker_cpu_seconds": 47.26025216,
+          "heartbeat_age_s": 0.287822,
+          "contribution": {
+            "devices": [
+              "MTL0"
+            ],
+            "max_bytes": 10737418240,
+            "reserve_bytes": 4294967296,
+            "enforcement": "soft_admission",
+            "cache_enabled": true
+          },
+          "memory_pools": [
+            {
+              "id": "uma",
+              "kind": "unified",
+              "total_bytes": 17179869184,
+              "free_bytes": 10354622464,
+              "measured_at": "2026-10-22T08:39:18.700146Z",
+              "source": "sysctl hw.memsize + psutil",
+              "note": "CPU and GPU share this pool; counted once"
+            }
+          ],
+          "engine_devices": [
+            {
+              "name": "MTL0",
+              "description": "Apple M4",
+              "total_bytes": 12712935424,
+              "free_bytes": 12711886848
+            },
+            {
+              "name": "BLAS",
+              "description": "Accelerate",
+              "total_bytes": 0,
+              "free_bytes": 0
+            }
+          ]
+        }
+      ],
+      "network": {
+        "transport": "iroh",
+        "endpoint_id": "ac7228fe76183c09bfea5810229535a44f4acec3ef111773d317bd3f690bf96a",
+        "listening": true,
+        "connections": 1,
+        "peers": [
+          {
+            "node_id": "4c2991743c154be896d10a0b53ba4d2b",
+            "peer_id": "0b0d0661f2408ede5fe1ba1fa019e4d37479b4092050d104fc2dfe271677bcdc",
+            "connected": true,
+            "path": {
+              "remote_id": "0b0d0661f2408ede5fe1ba1fa019e4d37479b4092050d104fc2dfe271677bcdc",
+              "mode": "direct",
+              "rtt_ms": 7,
+              "paths": 2
+            }
+          }
+        ]
+      },
+      "source": "the gateway's own state (inventory and heartbeats are measured by the nodes; admissible is derived)"
+    },
+    "model": {
+      "status": "downloaded",
+      "verified_sha256": true,
+      "local_path": "C:\\Users\\operator\\.hypercompute\\iroh-session\\models\\gpt-oss-120b-mxfp4\\gpt-oss-120b-MXFP4.gguf",
+      "total_bytes": 63387346208,
+      "gguf": {
+        "architecture": "gpt-oss",
+        "name": "gpt-oss-120b",
+        "file_type": "MXFP4_MOE",
+        "n_layer": 36,
+        "n_embd": 2880,
+        "n_head": 64,
+        "n_head_kv": 8,
+        "context_length": 131072,
+        "vocab_size": 201088,
+        "tensor_count": 687,
+        "total_tensor_bytes": 63374323968,
+        "layer_bytes": [
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608,
+          1726212608
+        ],
+        "token_embd_bytes": 615329280,
+        "output_bytes": 615329280,
+        "output_tied": false,
+        "other_bytes": 11520,
+        "chat_template_present": true,
+        "key_length": 64,
+        "value_length": 64,
+        "expert_count": 128,
+        "expert_used_count": 4,
+        "expert_shared_count": null,
+        "layer_expert_bytes": [
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280,
+          1696481280
+        ]
+      }
+    },
+    "host": {
+      "source": "hostmon: GetPerformanceInfo (available, commit, file cache), psutil disk_io_counters (system-wide physical reads, every process), shutil.disk_usage (system drive), psutil engine process counters (ReadFile bytes exclude mmap page-fault reads), nvidia-smi (all GPUs)",
+      "interval_s": 0.5,
+      "marks": [],
+      "error": null,
+      "guard_tripped": null,
+      "guard_stop": null,
+      "whole_run": {
+        "t0": 0.0,
+        "t1": 1.527,
+        "samples": 3,
+        "available_min": 15205453824,
+        "commit_charge_peak": 41883648000,
+        "commit_limit_peak": 59062784000,
+        "system_cache_peak": 15090479104,
+        "drive_free_min": 14068035584,
+        "engine_rss_peak": null,
+        "engine_private_peak": null,
+        "gpu_used_peak": 0,
+        "disk_read_bytes": 2863104,
+        "engine_read_bytes": null,
+        "engine_page_faults": null
+      },
+      "samples": [
+        {
+          "t": 0.775,
+          "available": 15277416448,
+          "commit_charge": 41883648000,
+          "commit_limit": 59062784000,
+          "system_cache": 15090479104,
+          "disk_read_bytes": 3656381595648,
+          "drive_free": 14068035584,
+          "engine_rss": null,
+          "engine_private": null,
+          "engine_read_bytes": null,
+          "engine_page_faults": null,
+          "gpu_used": 0
+        },
+        {
+          "t": 1.284,
+          "available": 15206211584,
+          "commit_charge": 41880584192,
+          "commit_limit": 59062784000,
+          "system_cache": 15088795648,
+          "disk_read_bytes": 3656384446464,
+          "drive_free": 14068035584,
+          "engine_rss": null,
+          "engine_private": null,
+          "engine_read_bytes": null,
+          "engine_page_faults": null,
+          "gpu_used": null
+        },
+        {
+          "t": 1.527,
+          "available": 15205453824,
+          "commit_charge": 41880436736,
+          "commit_limit": 59062784000,
+          "system_cache": 14986575872,
+          "disk_read_bytes": 3656384458752,
+          "drive_free": 14068035584,
+          "engine_rss": null,
+          "engine_private": null,
+          "engine_read_bytes": null,
+          "engine_page_faults": null,
+          "gpu_used": null
+        }
+      ]
+    }
+  },
+  "status": "plan_only",
+  "error": null,
+  "deployment_id": null,
+  "stop": null,
+  "kept": false,
+  "finished_at": "2026-10-22T08:39:18.748062+00:00"
+}

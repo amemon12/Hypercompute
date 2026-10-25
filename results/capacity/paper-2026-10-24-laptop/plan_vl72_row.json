@@ -1,0 +1,28 @@
+[
+ {
+  "label": "vl72-g14P2-1",
+  "model": "qwen2.5-vl-72b-instruct-q4_k_m",
+  "nodes": [
+   "6dad6cf75b2e4cf197b7bc7f4d0a67e4",
+   "d4e65f83c4be4a41aad722e40983b08b"
+  ],
+  "args": [
+   "--prompt-tokens",
+   "64",
+   "--output-tokens",
+   "32",
+   "--warmup",
+   "1",
+   "--reps",
+   "2",
+   "--load-timeout",
+   "3600",
+   "--max-commit-growth-gib",
+   "24",
+   "--seed-peers",
+   "--seed-timeout",
+   "3600"
+  ],
+  "timeout_s": 9000
+ }
+]

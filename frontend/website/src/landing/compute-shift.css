@@ -1,0 +1,101 @@
+.compute-shift {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 0.7fr) 48px minmax(0, 1.8fr);
+  align-items: center;
+  gap: clamp(18px, 3vw, 44px);
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  color: var(--compute-shift-ink, #1649cc);
+}
+
+.compute-shift__model,
+.compute-shift__computers {
+  min-width: 0;
+  text-align: center;
+}
+
+.compute-shift__model-art,
+.compute-shift__computer-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.compute-shift__model-art {
+  max-width: 240px;
+  margin-inline: auto;
+}
+
+.compute-shift__handoff {
+  display: block;
+  width: 48px;
+  height: 24px;
+  margin-bottom: 30px;
+  opacity: 0.65;
+}
+
+.compute-shift__outline {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.compute-shift__label {
+  display: block;
+  margin: 14px 0 0;
+  font: inherit;
+  font-size: clamp(12px, 1.1vw, 14px);
+  line-height: 1.5;
+  color: inherit;
+}
+
+@media (max-width: 620px) {
+  .compute-shift {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  .compute-shift__model-art {
+    width: 160px;
+  }
+
+  .compute-shift__handoff {
+    width: 32px;
+    height: 16px;
+    margin: 2px auto;
+    transform: rotate(90deg);
+  }
+
+  .compute-shift__label {
+    margin-top: 10px;
+    font-size: 12px;
+  }
+}
+
+/* The complete diagram remains visible when scroll timelines are unavailable. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .compute-shift {
+      view-timeline-name: --compute-shift;
+      view-timeline-axis: block;
+    }
+
+    .compute-shift__allocation {
+      animation: compute-shift-arrive linear both;
+      animation-timeline: --compute-shift;
+      animation-range: entry 20% cover 45%;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+
+    @keyframes compute-shift-arrive {
+      from { transform: translateY(10px); }
+      to { transform: translateY(0); }
+    }
+  }
+}

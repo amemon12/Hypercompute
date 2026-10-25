@@ -1,0 +1,185 @@
+{
+ "_source": "results/capacity/20261024T214408Z-big-kimi-k2.6-iq1_s/run.json (R6 Kimi-K2.6 1T pooled run, GX10 host + 4 peers); rpc endpoints redacted",
+ "deployment_id": "a634549658474289a0756bbf0e0f11f8",
+ "plan": {
+  "id": "3e585929b9b049ae9b88beb844c9639b",
+  "model_id": "kimi-k2.6-iq1_s",
+  "strategy": "all_selected",
+  "ctx_size": 4096,
+  "feasible": true,
+  "tier": "moe_offload",
+  "device_list": [
+   "RPC2",
+   "RPC3",
+   "RPC1",
+   "RPC0",
+   "CUDA0"
+  ],
+  "tensor_split": [
+   3,
+   2,
+   3,
+   3,
+   51
+  ],
+  "rpc_endpoints": [
+   "peer-0",
+   "peer-1",
+   "peer-2",
+   "peer-3"
+  ],
+  "cpu_resident_bytes": 385351680,
+  "cpu_layers": 0,
+  "created_at": "2026-10-24T21:44:08.552601Z",
+  "engine": "llama_rpc",
+  "assignments": [
+   {
+    "node_id": "local",
+    "device": "CPU",
+    "layers": [],
+    "holds_output": false,
+    "weight_bytes": 90106232832,
+    "file_backed": false
+   },
+   {
+    "node_id": "4c2991743c154be896d10a0b53ba4d2b",
+    "device": "RPC2",
+    "layers": [
+     0,
+     1,
+     2
+    ],
+    "holds_output": false,
+    "weight_bytes": 7395843072,
+    "file_backed": false
+   },
+   {
+    "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+    "device": "RPC3",
+    "layers": [
+     3,
+     4
+    ],
+    "holds_output": false,
+    "weight_bytes": 7087844352,
+    "file_backed": false
+   },
+   {
+    "node_id": "6dad6cf75b2e4cf197b7bc7f4d0a67e4",
+    "device": "RPC1",
+    "layers": [
+     5,
+     6,
+     7
+    ],
+    "holds_output": false,
+    "weight_bytes": 10631766528,
+    "file_backed": false
+   },
+   {
+    "node_id": "d4e65f83c4be4a41aad722e40983b08b",
+    "device": "RPC0",
+    "layers": [
+     8,
+     9,
+     10
+    ],
+    "holds_output": false,
+    "weight_bytes": 10191364608,
+    "file_backed": false
+   },
+   {
+    "node_id": "local",
+    "device": "CUDA0",
+    "layers": [
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22,
+     23,
+     24,
+     25,
+     26,
+     27,
+     28,
+     29,
+     30,
+     31,
+     32,
+     33,
+     34,
+     35,
+     36,
+     37,
+     38,
+     39,
+     40,
+     41,
+     42,
+     43,
+     44,
+     45,
+     46,
+     47,
+     48,
+     49,
+     50,
+     51,
+     52,
+     53,
+     54,
+     55,
+     56,
+     57,
+     58,
+     59,
+     60
+    ],
+    "holds_output": true,
+    "weight_bytes": 81599560704,
+    "file_backed": false
+   }
+  ],
+  "moe": {
+   "cpu_expert_layers": [
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60
+   ],
+   "cpu_expert_bytes": 90106232832,
+   "gpu_expert_bytes": 75969331200
+  }
+ }
+}

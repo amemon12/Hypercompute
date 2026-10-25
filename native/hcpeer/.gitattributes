@@ -1,0 +1,2 @@
+# Mach-O files are binary: never let autocrlf or a diff driver touch them.
+*.dylib binary

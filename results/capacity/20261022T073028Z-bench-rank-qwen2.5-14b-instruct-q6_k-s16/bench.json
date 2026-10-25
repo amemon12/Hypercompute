@@ -1,0 +1,346 @@
+{
+  "schema": "hypercompute.capacity.bench/1",
+  "status": "failed",
+  "started_at": "2026-10-22T07:30:28.670817+00:00",
+  "finished_at": "2026-10-22T07:30:39.719399+00:00",
+  "case": {
+    "label": "rank-qwen2.5-14b-instruct-q6_k-s16",
+    "model_paths": [
+      "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-14b-instruct-q6_k\\qwen2.5-14b-instruct-q6_k-00001-of-00004.gguf",
+      "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-14b-instruct-q6_k\\qwen2.5-14b-instruct-q6_k-00002-of-00004.gguf",
+      "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-14b-instruct-q6_k\\qwen2.5-14b-instruct-q6_k-00003-of-00004.gguf",
+      "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-14b-instruct-q6_k\\qwen2.5-14b-instruct-q6_k-00004-of-00004.gguf"
+    ],
+    "engine": {
+      "devices": [
+        "CUDA0"
+      ],
+      "tensor_split": [
+        33
+      ],
+      "ngl": 33,
+      "ctx": 2048,
+      "threads": 12,
+      "load_mode": "mmap",
+      "flags": [
+        "--no-repack",
+        "--no-op-offload",
+        "--cache-ram",
+        "0"
+      ]
+    },
+    "stream": {
+      "resident_units": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        11,
+        14
+      ],
+      "streamed_units": [
+        7,
+        8,
+        9,
+        10,
+        12,
+        13,
+        15
+      ],
+      "slots": 2,
+      "options": {
+        "readers": 4,
+        "chunk_bytes": 8388608,
+        "no_prefetch": true,
+        "on_io_error": "abort",
+        "stats_interval_ms": 500,
+        "fault_read_error_after_bytes": 0,
+        "fault_read_delay_us": 0
+      }
+    },
+    "rpc_endpoints": [],
+    "rpc_path_class": "local"
+  },
+  "workload": {
+    "prompt": "You are a careful assistant. Explain, in plain sentences, why a laptop that reads part of a language model from its SSD for every token is slower than one that keeps every layer in memory, and what changes when a second computer with spare memory joins over a network.",
+    "prompt_tokens": 512,
+    "output_tokens": 64,
+    "reps": 3,
+    "warmup": 1,
+    "reuse_output_tokens": 1,
+    "seed": 7,
+    "temperature": 0.0,
+    "top_k": 1,
+    "request_timeout_s": 1800,
+    "load_timeout_s": 900
+  },
+  "host": {
+    "system": "Windows",
+    "release": "11",
+    "version": "10.0.26200",
+    "machine": "AMD64",
+    "processor": "AMD64 Family 26 Model 36 Stepping 0, AuthenticAMD",
+    "python": "3.12.10",
+    "cpu_logical": 24,
+    "cpu_physical": 12,
+    "ram_total_bytes": 33412722688,
+    "ram_available_bytes": 9500794880,
+    "power": {
+      "source": "ac",
+      "percent": 41,
+      "via": "psutil.sensors_battery"
+    }
+  },
+  "llama_cpp": {
+    "release": "b11770",
+    "variant": "windows-x64-cuda13.4",
+    "accelerator": "cuda",
+    "engine_dir": "C:\\Users\\operator\\.hypercompute\\engines\\llama-b11770-windows-x64-cuda13.4",
+    "source": "pinned-release",
+    "build": 11770,
+    "commit": "39da130fc",
+    "build_source": "llama-server log"
+  },
+  "model": {
+    "model_id": "qwen2.5-14b-instruct-q6_k",
+    "shards": [
+      {
+        "path": "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-14b-instruct-q6_k\\qwen2.5-14b-instruct-q6_k-00001-of-00004.gguf",
+        "size": 3985204096,
+        "mtime_ns": 1792556797516648800
+      },
+      {
+        "path": "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-14b-instruct-q6_k\\qwen2.5-14b-instruct-q6_k-00002-of-00004.gguf",
+        "size": 3945074624,
+        "mtime_ns": 1792556921432872800
+      },
+      {
+        "path": "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-14b-instruct-q6_k\\qwen2.5-14b-instruct-q6_k-00003-of-00004.gguf",
+        "size": 3497613920,
+        "mtime_ns": 1792557019130472400
+      },
+      {
+        "path": "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-14b-instruct-q6_k\\qwen2.5-14b-instruct-q6_k-00004-of-00004.gguf",
+        "size": 696791424,
+        "mtime_ns": 1792557044614693500
+      }
+    ],
+    "bytes": 12124684064,
+    "fingerprint": "b880ec42c440b27ccdeada26be0d201f59c6ad57ea8dcd2a3b95aa52ba7541b3",
+    "architecture": "qwen2",
+    "file_type": "Q6_K",
+    "n_layer": 48
+  },
+  "preflight": {
+    "port": 53724,
+    "port_listener": null,
+    "available_ram_bytes": 9525682176,
+    "predicted": {
+      "total_bytes": 3794292736,
+      "parts": [
+        [
+          "hcstream resident",
+          2032803840
+        ],
+        [
+          "hcstream slots",
+          451731456
+        ],
+        [
+          "cpu unit weights",
+          0
+        ],
+        [
+          "token_embd",
+          638668800
+        ],
+        [
+          "kv cache (cpu blocks)",
+          134217728
+        ],
+        [
+          "compute prior",
+          536870912
+        ]
+      ],
+      "provenance": "estimate"
+    },
+    "free_disk_bytes": 46105137152,
+    "disk_path": "C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity"
+  },
+  "refused": [],
+  "launch": {
+    "overlay": "C:\\Users\\operator\\.hypercompute\\overlays\\llama-b11770-windows-x64-cuda13.4-hcstream-820dee92a8ee",
+    "proxy_sha256": "820dee92a8ee84cca2ccc25d13c8e70e27fa0e3a7c92a3d16548961faac91ffc",
+    "config": "C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T073028Z-bench-rank-qwen2.5-14b-instruct-q6_k-s16\\hcstream-53724.cfg",
+    "stats_path": "C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T073028Z-bench-rank-qwen2.5-14b-instruct-q6_k-s16\\hcstream-stats-53724.json",
+    "stream_plan": {
+      "resident_layers": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        11,
+        14
+      ],
+      "stream_layers": [
+        7,
+        8,
+        9,
+        10,
+        12,
+        13,
+        15
+      ],
+      "slots": 2,
+      "slot_bytes": 225865728,
+      "resident_bytes": 2032803840,
+      "stream_bytes_per_pass": 1581060096,
+      "committed_bytes": 2484535296
+    },
+    "argv": [
+      "C:\\Users\\operator\\.hypercompute\\overlays\\llama-b11770-windows-x64-cuda13.4-hcstream-820dee92a8ee\\llama-server.exe",
+      "-m",
+      "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-14b-instruct-q6_k\\qwen2.5-14b-instruct-q6_k-00001-of-00004.gguf",
+      "--load-mode",
+      "mmap",
+      "--no-repack",
+      "--no-op-offload",
+      "--cache-ram",
+      "0",
+      "--device",
+      "CUDA0",
+      "--split-mode",
+      "layer",
+      "--tensor-split",
+      "33",
+      "-ngl",
+      "33",
+      "--fit",
+      "off",
+      "-c",
+      "2048",
+      "-np",
+      "1",
+      "-t",
+      "12",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "53724",
+      "--no-ui",
+      "-lv",
+      "4",
+      "--log-colors",
+      "off"
+    ],
+    "port": 53724,
+    "bin_dir": "C:\\Users\\operator\\.hypercompute\\overlays\\llama-b11770-windows-x64-cuda13.4-hcstream-820dee92a8ee",
+    "log": "C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T073028Z-bench-rank-qwen2.5-14b-instruct-q6_k-s16\\llama-server-53724.log",
+    "env_removed": []
+  },
+  "load": {
+    "ok": false,
+    "seconds": 10.035,
+    "error": "llama-server exited during load (exit code 1)",
+    "log_lines": [
+      "hcstream: enabled (192 tensors, 7 streamed layers, 2 slots, prefetch off)",
+      "0.00.890.803 I cmn  common_param: common_params_print_info: build 11770 (39da130fc) with Clang 20.1.8 for Windows x86_64",
+      "0.00.973.514 I cmn  common_param: system_info: n_threads = 12 (n_threads_batch = 12) / 24 | CUDA : ARCHS = 750,800,860,890,900,1200,1210 | USE_GRAPHS = 1 | FA_QUANTS = q4_0-q4_0,q8_0-q8_0,f16-f16,bf16-bf16 | BLACKWELL_NATIVE_FP4 = 1 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | AVX512 = 1 | AVX512_VBMI = 1 | AVX512_VNNI = 1 | AVX512_BF16 = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 |",
+      "0.00.980.656 I srv    load_model: loading model 'C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-14b-instruct-q6_k\\qwen2.5-14b-instruct-q6_k-00001-of-00004.gguf'",
+      "0.00.980.673 I srv    load_model: local path 'C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-14b-instruct-q6_k\\qwen2.5-14b-instruct-q6_k-00001-of-00004.gguf'",
+      "0.01.251.179 I load_tensors: loading model tensors, this can take a while... (load_mode = mmap)",
+      "0.01.277.453 I load_tensors: offloading output layer to GPU",
+      "0.01.277.459 I load_tensors: offloading 32 repeating layers to GPU",
+      "0.01.277.459 I load_tensors: offloaded 33/49 layers to GPU",
+      "0.01.277.467 I load_tensors:   CPU_Mapped model buffer size =  3794.92 MiB",
+      "0.01.277.468 I load_tensors:   CPU_Mapped model buffer size =   260.54 MiB",
+      "0.01.277.469 I load_tensors:        CUDA0 model buffer size =  7501.85 MiB"
+    ],
+    "build": {
+      "build": 11770,
+      "commit": "39da130fc",
+      "build_source": "llama-server log"
+    },
+    "memory": {
+      "loaded_at_s": 10.027,
+      "samples": 86,
+      "seconds": 8.981,
+      "working_set_peak": 7782670336,
+      "working_set_median": 3512098816,
+      "private_peak": 8531312640,
+      "sys_available_min": 2087493632,
+      "page_faults": 1918674,
+      "proc_read_bytes": 15906159,
+      "sys_disk_read_bytes": 6182689792
+    },
+    "log_tail": [
+      "0.01.251.140 I print_info: FIM PRE token         = 151659 '<|fim_prefix|>'",
+      "0.01.251.141 I print_info: FIM SUF token         = 151661 '<|fim_suffix|>'",
+      "0.01.251.142 I print_info: FIM MID token         = 151660 '<|fim_middle|>'",
+      "0.01.251.142 I print_info: FIM PAD token         = 151662 '<|fim_pad|>'",
+      "0.01.251.142 I print_info: FIM REP token         = 151663 '<|repo_name|>'",
+      "0.01.251.142 I print_info: FIM SEP token         = 151664 '<|file_sep|>'",
+      "0.01.251.143 I print_info: EOG token             = 128247 '</s>'",
+      "0.01.251.144 I print_info: EOG token             = 151643 '<|endoftext|>'",
+      "0.01.251.144 I print_info: EOG token             = 151645 '<|im_end|>'",
+      "0.01.251.144 I print_info: EOG token             = 151662 '<|fim_pad|>'",
+      "0.01.251.145 I print_info: EOG token             = 151663 '<|repo_name|>'",
+      "0.01.251.145 I print_info: EOG token             = 151664 '<|file_sep|>'",
+      "0.01.251.145 I print_info: max token length      = 256",
+      "0.01.251.179 I load_tensors: loading model tensors, this can take a while... (load_mode = mmap)",
+      "0.01.277.453 I load_tensors: offloading output layer to GPU",
+      "0.01.277.459 I load_tensors: offloading 32 repeating layers to GPU",
+      "0.01.277.459 I load_tensors: offloaded 33/49 layers to GPU",
+      "0.01.277.467 I load_tensors:   CPU_Mapped model buffer size =  3794.92 MiB",
+      "0.01.277.468 I load_tensors:   CPU_Mapped model buffer size =   260.54 MiB",
+      "0.01.277.469 I load_tensors:        CUDA0 model buffer size =  7501.85 MiB"
+    ]
+  },
+  "reps": [],
+  "summary": {
+    "n_reps": 0,
+    "n_warmup": 0,
+    "n_reps_ok": 0,
+    "metrics": {},
+    "failures": []
+  },
+  "stop": {
+    "exit_code": 1,
+    "stop_s": 0.0,
+    "children": 0,
+    "children_alive": [],
+    "child_alive_after_stop": false,
+    "error": null,
+    "pressure_guard_tripped": true,
+    "sampler_error": null,
+    "memory_whole_run": {
+      "samples": 86,
+      "seconds": 8.981,
+      "working_set_peak": 7782670336,
+      "working_set_median": 3512098816,
+      "private_peak": 8531312640,
+      "sys_available_min": 2087493632,
+      "page_faults": 1918674,
+      "proc_read_bytes": 15906159,
+      "sys_disk_read_bytes": 6182689792
+    },
+    "available_after_stop": 10628894720
+  },
+  "error": null,
+  "provenance": {
+    "load, reps, summary": "measured on this host during this run",
+    "preflight.predicted": "estimate: GGUF unit sizes plus KV sizing plus a compute prior, used only to refuse a run",
+    "ttft_ms": "measured client side over loopback with streaming; no gateway in the path",
+    "gpu": "nvidia-smi snapshot after the uncached phase, not a peak",
+    "decode_tok_s": "(predicted_n - 1) / predicted_ms from engine timings, the engine's own predicted_per_second",
+    "*_read_bytes_per_token": "all reads of the uncached phase (prefill and decode) over predicted_n",
+    "hcstream_bytes_per_pass": "hcstream bytes_read over its forward-pass count (decode bytes per token)"
+  }
+}

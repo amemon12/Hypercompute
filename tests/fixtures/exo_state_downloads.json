@@ -1,0 +1,134 @@
+{
+  "9b1f0c2e7d4a4e1fa3c5b7d9e1f2a3b4": [
+    {
+      "DownloadCompleted": {
+        "nodeId": "9b1f0c2e7d4a4e1fa3c5b7d9e1f2a3b4",
+        "shardMetadata": {
+          "PipelineShardMetadata": {
+            "modelCard": {
+              "modelId": "mlx-community/Llama-3.2-1B-Instruct-4bit",
+              "storageSize": {
+                "inBytes": 729808896
+              },
+              "nLayers": 16,
+              "hiddenSize": 2048,
+              "supportsTensor": true,
+              "numKeyValueHeads": 8,
+              "tasks": [
+                "TextGeneration"
+              ],
+              "components": null,
+              "family": "llama",
+              "quantization": "4bit",
+              "baseModel": "Llama 3.2 1B",
+              "capabilities": [
+                "text"
+              ],
+              "backends": [
+                "MlxMetal",
+                "MlxCuda",
+                "MlxCpu"
+              ],
+              "reasoningDialect": "none",
+              "contextLength": 131072,
+              "usesCfg": false,
+              "trustRemoteCode": true,
+              "isCustom": false,
+              "vision": null,
+              "samplingDefaults": {
+                "temperature": 0.6,
+                "topP": 0.9,
+                "thinking": null,
+                "nonThinking": null
+              }
+            },
+            "deviceRank": 0,
+            "worldSize": 2,
+            "immediateException": false,
+            "shouldTimeout": null,
+            "startLayer": 0,
+            "endLayer": 9,
+            "nLayers": 16
+          }
+        },
+        "modelDirectory": "/Users/friend-a/.exo/models/mlx-community--Llama-3.2-1B-Instruct-4bit",
+        "total": {
+          "inBytes": 729808896
+        },
+        "readOnly": false
+      }
+    }
+  ],
+  "4c2d8e6f1a3b5c7d9e0f1a2b3c4d5e6": [
+    {
+      "DownloadOngoing": {
+        "nodeId": "4c2d8e6f1a3b5c7d9e0f1a2b3c4d5e6",
+        "shardMetadata": {
+          "PipelineShardMetadata": {
+            "modelCard": {
+              "modelId": "mlx-community/Llama-3.2-1B-Instruct-4bit",
+              "storageSize": {
+                "inBytes": 729808896
+              },
+              "nLayers": 16,
+              "hiddenSize": 2048,
+              "supportsTensor": true,
+              "numKeyValueHeads": 8,
+              "tasks": [
+                "TextGeneration"
+              ],
+              "components": null,
+              "family": "llama",
+              "quantization": "4bit",
+              "baseModel": "Llama 3.2 1B",
+              "capabilities": [
+                "text"
+              ],
+              "backends": [
+                "MlxMetal",
+                "MlxCuda",
+                "MlxCpu"
+              ],
+              "reasoningDialect": "none",
+              "contextLength": 131072,
+              "usesCfg": false,
+              "trustRemoteCode": true,
+              "isCustom": false,
+              "vision": null,
+              "samplingDefaults": {
+                "temperature": 0.6,
+                "topP": 0.9,
+                "thinking": null,
+                "nonThinking": null
+              }
+            },
+            "deviceRank": 1,
+            "worldSize": 2,
+            "immediateException": false,
+            "shouldTimeout": null,
+            "startLayer": 9,
+            "endLayer": 16,
+            "nLayers": 16
+          }
+        },
+        "modelDirectory": "/Users/friend-b/.exo/models/mlx-community--Llama-3.2-1B-Instruct-4bit",
+        "downloadProgress": {
+          "total": {
+            "inBytes": 729808896
+          },
+          "downloaded": {
+            "inBytes": 364904448
+          },
+          "downloadedThisSession": {
+            "inBytes": 364904448
+          },
+          "completedFiles": 5,
+          "totalFiles": 8,
+          "speed": 12500000.0,
+          "etaMs": 29192,
+          "files": {}
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,454 @@
+{
+ "scout:calhacks13": {
+  "findings": [
+   {
+    "point": "Cal Hacks 13.0 is happening right now. It runs October 23 to 25, 2026 at the Palace of Fine Arts, 3601 Lyon St, San Francisco. MLH lists it as an in-person 2027-season member event with status in_progress (2026-10-23T17:00Z to 2026-10-25T19:00Z). Today is Oct 24, so the 13.0 details are published and 12.0 is only needed for comparison.",
+    "source": "https://www.calhacks.io/ ; https://www.mlh.com/seasons/2027/events"
+   },
+   {
+    "point": "Devpost schedule (PDT): submissions open October 23 at 6:00pm and close October 25 at 9:00am, and winners are announced October 25 at 4:00pm. When scraped around 3 PM PDT Oct 24 the page said \"18 more hours to deadline\" and showed 633 registered participants. The Hive live schedule for Sun 10/25 is breakfast 8:00 AM, PROJECT SUBMISSION DEADLINE 8:50 AM, JUDGING 10:30 AM, lunch 12:30 PM, PROJECT GALLERY & HACKER MIXER 1:00 PM, CLOSING CEREMONY 2:00 PM, WINNERS' PHOTOS 4:00 PM. Day 1 had check-in at 1:30 PM and the opening ceremony at 4:00 PM. There is no separate hacking-start event; it is effectively the 6 PM submission-open time.",
+    "source": "https://cal-hacks-13-0.devpost.com/details/dates ; https://hive.hackberkeley.org/schedule"
+   },
+   {
+    "point": "Devpost requirements, verbatim: \"Get to the venue by October 25th @ 8 AM PST. You must've had been accepted and checked in as a hacker to submit.\" / \"You must submit your hack by October 25th @ 9 AM PST with your teammates! This is a hard deadline.\" / \"Include an image of your project and GitHub repository for any code to be considered.\" / \"All work must be done during the hackathon\" / \"You will have three minutes to pitch and two minutes for judges to ask questions.\" / \"You must have a pre-recorded or live demonstration.\" (Their \"PST\" means PDT, since DST is still in effect.)",
+    "source": "https://cal-hacks-13-0.devpost.com/"
+   },
+   {
+    "point": "PRIOR-WORK RULE (Hive live-site FAQ, updated Oct 22), verbatim: \"No, you cannot submit a project that has been previously worked on or submitted to another hackathon. Ideation of a project is okay before the hackathon, but all implementation must occur during the hacking period. We have strict measures in place to detect cheating or prior work, and any violations will result in disqualification from receiving a prize.\"",
+    "source": "https://hive.hackberkeley.org/faq"
+   },
+   {
+    "point": "PRIOR-WORK RULE (main site FAQ), verbatim: \"You cannot work on a project you started before the hackathon. Ideation before the hackathon is allowed, but all implementation must occur during the hackathon.\" The 13.0 Devpost Rules tab has only the Code of Conduct, which links to https://hackberkeley.org/conduct.pdf. That PDF covers harassment only and has no IP or prior-code clauses. No published rule explicitly allows disclosed pre-existing code.",
+    "source": "https://www.calhacks.io/ ; https://cal-hacks-13-0.devpost.com/rules ; https://hackberkeley.org/conduct.pdf"
+   },
+   {
+    "point": "How pre-built tools are treated: Cal Hacks itself publishes nothing on third-party libraries. It is an MLH member event (MLH is a listed partner and runs MLH prize tracks). MLH's standard rules, which organizers may adopt or fork, say: \"6. All work on a project should be done during the period of the hackathon.\" / \"9. Teams can work on an idea that they have worked on before (as long as they do not re-use code or other project materials).\" / \"10. Teams can use libraries, frameworks, or open-source code in their projects. Working on a project before the event and open-sourcing it for the sole purpose of using the code during the event is against the spirit of the rules and is not allowed.\" On AI tools, teams may use them but \"should be honest and transparent about the AI code tools they used.\" Reading these together, public third-party OSS like llama.cpp RPC or the iroh crate is fine. The team's own earlier Hypercompute code (PR #3, branch codex/iroh-transport) is not, even if it is published or disclosed.",
+    "source": "https://github.com/MLH/mlh-policies/blob/main/standard-hackathon-rules.md (last commit 2026-03-19)"
+   },
+   {
+    "point": "Team size conflict. Devpost says \"Team required: 2 to 4 members.\" The Hive FAQ says \"Teams can be anywhere between 1-4 people,\" there is a Best Solo Hack prize, and the main site says \"Up to 4 people can be part of a single team.\" Eligibility, verbatim: \"open to undergraduate and graduate students as well as new grads of under 1 year\" and \"Those who graduated prior to Fall 2025 will not qualify.\" On walk-ins: \"only hackers who were accepted and confirmed by the deadlines will be allowed in the venue. We will not make exceptions.\" The Hive FAQ adds that late check-in is open at the info desk until Sunday.",
+    "source": "https://cal-hacks-13-0.devpost.com/ ; https://hive.hackberkeley.org/faq ; https://www.calhacks.io/"
+   },
+   {
+    "point": "13.0 judging criteria (Devpost), with no weights published. Application: \"feasible real-world use... who they help, what problem they solve.\" Intentionality: \"intuitive, engaging experience... guided by clear first principles.\" Functionality: \"live demo that runs smoothly free of major bugs. Submissions should also include a clear, meaningful video demo on devpost for sponsors evaluating asynchronously.\" Creativity: \"original thinking... unexpected combinations of ideas or technologies.\" Technical Complexity: \"command of the frameworks and infrastructure behind their project, with sound architectural choices and engineering depth.\" The Hive FAQ summary is \"impact, functionality, technical complexity, and creativity.\"",
+    "source": "https://cal-hacks-13-0.devpost.com/ ; https://hive.hackberkeley.org/faq"
+   },
+   {
+    "point": "Judging format is table/expo judging. The Hive FAQ says: \"Judges will be going around to your table to see what you've made (e.g. a demo!) and listen to your presentation. All presentations must be 5 minutes or under, as judges only have 5 minutes to spend at a table.\" No finalist stage is published for 13.0. Precedent: the 12.0 1st-overall winner wrote about worrying they \"didn't make it to the final judging rounds,\" which points to multi-round expo judging. The sister UC Berkeley AI Hackathon 2026 used \"Finalists - Top 10 Teams.\"",
+    "source": "https://hive.hackberkeley.org/faq ; https://blog.dylanlu.com/cal-hacks-12/ ; https://live.hackberkeley.org/"
+   },
+   {
+    "point": "Submission fields. The Hive FAQ says: \"All submissions must include a 2-3 sentence elevator pitch / summary, team location (your table number), and the team name.\" The Devpost gallery filter shows a custom question, \"Which of the following AI tools did you use this weekend?\", with options including Anthropic, Hugging Face, DeepSeek, OpenRouter and Llama. There is no general limit on video length. Track-specific video rules: Fetch.ai wants a 3 to 5 minute demo video plus a public GitHub repo; Cartesia wants a 2-minute demo-first presentation; Hyphenate wants a video that opens with \"their moment.\"",
+    "source": "https://hive.hackberkeley.org/faq ; https://cal-hacks-13-0.devpost.com/project-gallery ; https://www.fetch.ai/events/hackathons/calhacks-13-0/hackpack ; https://hive.hackberkeley.org/prizes"
+   },
+   {
+    "point": "Prize pool: $159,822 in cash on Devpost, up from $58,100 at 12.0. Cal Hacks track prizes: First Overall ($3,600 cash, MacBook Air 13\" M5 per member), Second (Switch 2), Third (Google Intelligent Eyewear), Most Creative, Most Technically Complex (NuPhy Air60 HE), Best Hardware Hack (Bambu Lab A1 Mini), People-First, Planet-First, Best Beginner, Best Solo, Hacker's Choice. Anchor sponsors are Anthropic, Annapurna Labs, SpacetimeDB and Hyphenate.",
+    "source": "https://cal-hacks-13-0.devpost.com/ ; https://hive.hackberkeley.org/prizes"
+   },
+   {
+    "point": "Sponsor prizes relevant to AI infra or distributed systems. Annapurna Labs (AWS Trainium, an anchor sponsor) has a prize entry that still reads \"Coming soon!\"; it also ran a workshop and a networking event on Oct 24. Spacetime ($2048/$1024/$512) wants Spacetime as \"the core real-time backend... live shared state, multiplayer interaction... AI agent coordination,\" which fits 'multiplayer computing' thematically but only if Spacetime is used meaningfully. MLH Best Use of Vultr (cloud GPUs), MLH DigitalOcean (GPU/Gradient AI) and MLH Best Use of Gen AI (names Hugging Face) are also open. Bitdeer AI Model Studio is a cloud inference platform. Anthropic Claude for Public Benefit ($5000 in credits plus 1 yr Max 20x) is judged on a named community, a real problem, \"it works,\" and thoughtful use of Claude.",
+    "source": "https://hive.hackberkeley.org/prizes ; https://cal-hacks-13-0.devpost.com/"
+   },
+   {
+    "point": "Sponsors that are absent. There is no NVIDIA, Apple, Hugging Face (as a sponsor), Iroh/n0 or edge/local-AI prize. ASUS and Seeed Studio appear only as partner logos on calhacks.io, with no prize. Runpod is a Bronze sponsor with no listed prize. Cal Hacks says it will lend hardware: \"We will provide hardware that you can borrow for your projects.\"",
+    "source": "https://www.calhacks.io/ ; https://cal-hacks-13-0.devpost.com/"
+   },
+   {
+    "point": "12.0 baseline (Oct 24 to 26, 2025, same venue). $58,100 cash, 2156 Devpost participants, about 695 projects and 3000+ hackers per the winner. Requirements were \"All work must be done during the hackathon,\" a 2-minute pitch plus 2 minutes of Q&A, and a recorded video stored locally. Criteria were Application, Functionality/Quality, Creativity and Technical Complexity, with no weights. The 1st Overall winner was FaceTimeOS, a voice computer-use agent over FaceTime. The winner's advice was to build a demo-first UI with a hardcoded fallback.",
+    "source": "https://cal-hacks-12-0.devpost.com/ ; https://blog.dylanlu.com/cal-hacks-12/"
+   }
+  ],
+  "summary": "Cal Hacks 13.0 is happening now, October 23 to 25, 2026, at the Palace of Fine Arts in San Francisco. Submissions on Devpost (cal-hacks-13-0.devpost.com) close Sun Oct 25 at 9:00 AM PDT; the Hive schedule lists 8:50 AM. Judging starts at 10:30 AM, the project gallery at 1 PM and the closing ceremony at 2 PM, with winners at 4 PM. When I checked around 3 PM PDT Oct 24, about 18 hours were left. Judging is at your table: 5 minutes per table, split into a 3-minute pitch and 2 minutes of questions. The criteria are Application, Intentionality, Functionality, Creativity and Technical Complexity, with no weights published. No finalist stage is published for 13.0, but 12.0 appears to have had later judging rounds.\n\nTHE BLOCKER: Cal Hacks bans prior work in so many words. The Hive FAQ says \"you cannot submit a project that has been previously worked on... all implementation must occur during the hacking period,\" and that they have \"strict measures in place to detect cheating or prior work.\" Violations mean disqualification from prizes. Nothing in the rules allows disclosed pre-existing code. Under MLH's standard rules (Cal Hacks is an MLH member event), public third-party libraries like llama.cpp RPC and iroh are allowed. The team's own code is not, and publishing it just to reuse it is expressly banned. The existing Hypercompute codebase (PR #3) and its October 22 to 24 measurements (R1 to R6 and the Kimi-K2.6 rows) were built before the start and cannot be submitted as the hack. The only compliant path is to reuse the idea and rebuild during the event on public open-source code. Entry also requires being accepted and checked in, with no walk-ins. Devpost says teams of 2 to 4 people while the Hive FAQ allows 1 to 4. Eligibility is students or grads of less than a year. The organizer must confirm whether operator is registered.\n\nPrize fit: no NVIDIA, Apple, Hugging Face, Iroh/n0 or edge-AI prizes exist, and ASUS is only a partner logo. The best general targets are 1st Overall and Most Technically Complex, plus Best Hardware Hack because physical machines are pooled. The best sponsor angles are Annapurna Labs (its AI-hardware prize still says \"Coming soon\"), Spacetime (only if it actually serves as the multiplayer backend) and the MLH Gen AI, Vultr and DigitalOcean tracks.\n\nA note on framing: the Functionality criterion rewards a smooth live demo. The Kimi data supports leading with prefill and time-to-answer (pooled 3.30 vs 2.19 alone, SSD reads 254 vs 671 MiB/token). Decode is slower pooled (1.54 vs 1.80 tok/s), so exaggerated speed claims would not hold up under judges' questions.\n\nRaw page captures are in C:\\Users\\operator\\AppData\\Local\\Temp\\claude\\C--\\33c9e5b2-ade6-449a-b9ce-e5e801ae75aa\\scratchpad\\calhacks (rules.html, details_dates.html, updates.html, gallery.html, conduct.pdf, hive_*.html)."
+ },
+ "scout:inventory": {
+  "summary": "SCOUT 1 inventory of Hypercompute (read-only; nothing edited, committed, SSH'd or served). Repo C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport, branch codex/iroh-transport. Another session committed while I read, so HEAD moved from d7aa2ca through 983e2b4 to 349469c. That adds the Kimi section to PAPER-RUNS (lines 253-286) and docs/research/CHECKPOINT-2026-10-24.md. History is 48 commits, every one between 2026-10-20 and 2026-10-24. Draft PR #3 is open with 33 commits against main.\n\n\"Problem speed\" is read here as prompt (prefill) speed, time to first token (TTFT) and total time to a finished answer. That is the honest lead, because pooling helps on all three every time it has been measured. Prefill gains with 95% intervals: 120B 2.99x, 671B 2.42x, Kimi 1T 1.51x, 235B 1.61x. TTFT and total time were not in the paper's stats. I computed them from the ttft_ms and total_ms fields in each run.json, using stats.py's method (ratio of means, 10,000 bootstrap resamples, seed 7). The script is C:\\Users\\operator\\AppData\\Local\\Temp\\claude\\C--\\33c9e5b2-ade6-449a-b9ce-e5e801ae75aa\\scratchpad\\ttft_stats.py. Results:\n- 120B, G14 + 3 Macs: first token 36.2 s to 13.4 s (2.7x faster). Full 128-in/64-out answer 54.4 s to 27.9 s (1.95x).\n- 671B, GX10 + 4 peers: first token 24.7 s to 10.4 s (2.4x). Full answer 41.8 s to 31.2 s, 25% less time even though decode is slower.\n- Kimi 1T, GX10 + 4 peers: first token 28.3 s to 19.1 s (1.48x). Full answer 45.5 s to 39.2 s, 14% less.\n\nThe hard caveat is decode. With the GX10 as host, single-request decode is slower when pooled: 0.83x for the 671B and 0.86x for Kimi, and both intervals exclude 1. On the G14 host, decode improves for the 120B (1.27x) but is only at parity for the 235B in steady state (1.08x, interval 0.98-1.18). Concurrency is not measured yet; that feature is uncommitted work in the tree. Every host also runs these models alone by paging experts from its SSD, so \"impossible on one machine\" is false. The peer SSD tier, a Mac host, EXO and a dense-model \"bigger\" proof have never run. The README and hcpeer-macos.md are out of date. Details and sources are in the findings below.",
+  "findings": [
+   {
+    "point": "SPEED LEAD, how to read 'problem speed': it means prompt (prefill) throughput, time to first token (TTFT) and total time to a finished answer, not decode tok/s. Pooling helps all three in every pooled comparison measured: 120B on the G14 host with 1 or 3 Macs, 235B with 3 Macs, and the 671B and Kimi 1T on the GX10 host with 4 peers.",
+    "source": "docs/research/PAPER-RUNS-2026-10-22.md R1, R2, R6; TTFT/total from run.json measured.chats.reps[].ttft_ms and total_ms (client clock through the gateway)"
+   },
+   {
+    "point": "SPEED, 120B, G14 + 3 Macs vs G14 alone (9 vs 9 reps, about 129-131 prompt and 64 output tokens). TTFT mean 36.17 s to 13.44 s, ratio 0.371 [0.325, 0.424], about 2.7x faster first token. Total time 54.44 s to 27.93 s, 0.513 [0.453, 0.577], about 1.95x faster full answer. Prefill 3.68 to 11.03 tok/s, 2.99x [2.64, 3.35].",
+    "source": "TTFT/total: my bootstrap (stats.py method, seed 7, 10k) over run.json of index_120b.jsonl runs 120b-local-1..3 and 120b-3mac-1..3, scratchpad ttft_stats.py; prefill: PAPER-RUNS R2 table line 114"
+   },
+   {
+    "point": "SPEED, 120B, G14 + 1 Mac vs alone (6 vs 9 reps). TTFT 36.17 s to 23.97 s, 0.663 [0.627, 0.696]. Total 54.44 s to 38.81 s, 0.713 [0.678, 0.750]. Prefill 1.48x [1.41, 1.57].",
+    "source": "my bootstrap over results/capacity/paper-2026-10-22/index_120b.jsonl run.json files; PAPER-RUNS R2 line 115"
+   },
+   {
+    "point": "SPEED, 235B (Qwen3-235B-A22B), G14 + 3 Macs vs alone, all 13 vs 13 reps. TTFT 44.34 s to 28.49 s, 0.643 [0.604, 0.685], 1.56x faster. Total 0.768 [0.698, 0.840]. Steady state (runs 3-6, 9 vs 9): TTFT 0.641 [0.595, 0.695], total 0.788 [0.739, 0.845]. Prefill 1.61x [1.51, 1.71]; steady state 1.61x [1.48, 1.74].",
+    "source": "my bootstrap over index_235b.jsonl + index_235b_tight.jsonl run.json; PAPER-RUNS R1 pooled table lines 62-66"
+   },
+   {
+    "point": "SPEED, DeepSeek-V3.1 671B, GX10 + G14 + 3 Macs vs GX10 alone (4 vs 4 reps, 64 prompt, 32 output). TTFT 24.67 s to 10.36 s, 0.420 [0.373, 0.462], 2.4x faster first token. Total 41.84 s to 31.20 s, 0.746 [0.694, 0.797], 25% less time to answer despite slower decode. Prefill 2.63 to 6.36 tok/s, 2.42x [2.19, 2.72].",
+    "source": "my bootstrap over results/capacity/paper-2026-10-24/index_671b_gx.jsonl run.json; PAPER-RUNS R6 line 238; CHECKPOINT-2026-10-24.md line 10"
+   },
+   {
+    "point": "SPEED, Kimi-K2.6 1T, GX10 + 4 peers vs GX10 alone (4 vs 4 reps, 64 prompt, 32 output). TTFT 28.25 s to 19.08 s, 0.675 [0.629, 0.728], 1.48x faster. Total 45.48 s to 39.23 s, 0.863 [0.818, 0.912], 14% faster. Prefill 2.19 to 3.30 tok/s, 1.51x [1.41, 1.59].",
+    "source": "my bootstrap over paper-2026-10-24/index_kimi_gx.jsonl run.json; PAPER-RUNS line 271; summary_kimi_gx.md"
+   },
+   {
+    "point": "SPEED, break-even ESTIMATE (my arithmetic, linear extrapolation from about 64-token prompts; not measured). Pooled reaches a full answer sooner whenever output tokens < about 1.96 x prompt tokens on the 671B, and < about 1.64 x prompt tokens on Kimi. On the 671B, each prompt token saves 0.223 s (1/2.63 - 1/6.36) and each output token costs 0.114 s (1/1.497 - 1/1.805). On Kimi it is 0.154 s saved against 0.094 s cost. Check: this predicts 10.9 s and 6.6 s saved at the measured workloads, against 10.6 s and 6.25 s measured. Long prompts (512 to 2k tokens) are not measured; prefill rate at large batch may differ for both configs.",
+    "source": "derived from PAPER-RUNS R6 means; CHECKPOINT-2026-10-23 'Next' item 4 lists the 512-token TTFT run as not yet done"
+   },
+   {
+    "point": "SPEED, SSD work removed per generated token. 120B with 3 Macs: 275 to 41 MiB, 0.15x [0.12, 0.19], 7x less. With 1 Mac: 0.54x. 235B: 0.46x [0.39, 0.54]. 671B on GX10 + 4 peers: 684 to 37 MiB, 0.054x [0.026, 0.097], 95% less, about 18x. Kimi: 671 to 254 MiB, 0.38x [0.37, 0.40]. These are system-wide physical reads, not per process.",
+    "source": "PAPER-RUNS R1 line 66, R2 line 114, R6 lines 238 and 271; method line 30"
+   },
+   {
+    "point": "SPEED, decode wins exist only on the G14 (weak) host. 120B with 3 Macs: 3.296 to 4.198 tok/s, 1.27x [1.10, 1.46]. With 1 Mac: 4.130, 1.25x [1.11, 1.41]. Going from 1 to 3 Macs adds no decode: 1.02x [0.86, 1.20], though prefill doubles (2.02x). Earlier 2-rep pair run: 4.05 to 4.52 tok/s, TTFT 30.8 s to 21.2 s, prefill 4.17 to 6.28.",
+    "source": "PAPER-RUNS R2 lines 113-116; results/capacity/20261022T0900Z-gptoss120b-summary.md"
+   },
+   {
+    "point": "SPEED, cold start. Managed peers fetch their own layers from Hugging Face instead of from the host. Each Mac pulls 13-45 MB/s from HF against an 8.6 MiB/s host link, about 5x. A 3-Mac 120B cold start took 566 s of seeding plus a 126 s load, against an ESTIMATED 2400 s pushing the same bytes from the host. Warm caches: the 235B pooled load fell from 2289 s cold to 130-175 s. The Kimi pooled re-seed check took 5 s on a warm cache.",
+    "source": "PAPER-RUNS R2 lines 128-130, R1.3 lines 293-296, Kimi table line 265; CHECKPOINT-2026-10-23 line 38"
+   },
+   {
+    "point": "SPEED, transport. The Iroh bridge speedups (commit 751f00b) measured on loopback only: bulk 10.0 to 200.9 MiB/s (20x); an 11,520-byte activation round trip 4.55 ms to 0.59 ms median (7.7x). A review rerun gave 10.3 to 262.9 MiB/s and 2.84 to 0.44 ms. Never benchmarked between two machines in isolation.",
+    "source": "results/capacity/20261022T205040Z-bridge-bench-after/bench.json, 20261022T210338Z-bridge-bench-review-rerun/bench.json; ULTRAPLAN lines 76-82"
+   },
+   {
+    "point": "FEATURE: multiplayer sessions. The host runs the gateway and the only llama-server. Friends run `hypercompute join` with a one-time code that expires in 15 min and is stored only as a keyed hash, or with an Iroh ticket plus code. Heartbeats run every 3 s. A friend becomes usable only after a real llama.cpp RPC handshake, and a run counts as pooled only if the engine's load log shows the friend received layers. Friends keep local Stop, pause, resume and leave, and a friend's worker stops on its own after 5 min without the host.",
+    "source": "README.md lines 72-81, 324-347, 503-520"
+   },
+   {
+    "point": "FEATURE: encrypted Iroh QUIC tunnel. Contributor control traffic and llama.cpp RPC run over authenticated, encrypted QUIC with NAT traversal and relay fallback. No VPN or Tailscale account is needed, and the peer's RPC worker binds to loopback only. /api/network reports per-peer path mode (direct or relay), RTT, cwnd, loss and bridge byte counters.",
+    "source": "docs/iroh-networking.md lines 1-25; commit 2b92117; R6 network paragraph in PAPER-RUNS"
+   },
+   {
+    "point": "FEATURE: cross-vendor, cross-OS model split on unmodified llama.cpp b11770 RPC (sha256-pinned binaries). Windows CUDA (RTX 5070 Ti), macOS Metal (M4) and Linux GB10 CUDA sm_121 serve one model together. In the R6 Kimi run, one CUDA0 host plus 4 RPC devices (3 Macs and the G14 as a CUDA peer) all carried layers.",
+    "source": "README tech stack line 136; PAPER-RUNS R6 setup lines 181-195; run.json 20261024T214408Z placement.observed.devices"
+   },
+   {
+    "point": "FEATURE: MoE-aware planner (tier moe_offload). Dense parts, head and KV go on the GPU. Routed experts of host layers stay memory-mapped from the GGUF on SSD. Peers take whole layers. GB10 and Mac unified memory are budgeted as one pool. Explicit layouts are accepted (--layout). The head sits on the last device so logits never cross Wi-Fi. It also has a tier ladder (gpu, then gpu_ram, then gpu_disk, then AirLLM) and a measured tuner with saved profiles.",
+    "source": "README lines 83-125, 428-432; CHECKPOINT-2026-10-22 table; commits aee69e4, 28c9da5, 9fd2456, 2b5b0ac, af33dc6"
+   },
+   {
+    "point": "FEATURE: placement optimizer. Exact dynamic programming plus Pareto sets; it agreed with a brute-force oracle on 3,000 random cases. On the 7B and 14B, its predicted layout ranking matched the measured order.",
+    "source": "docs/research/hybrid-capacity-implementation.md build-status table; CHECKPOINT-2026-10-22 'Placement optimizer' row; commit d2bb8cd"
+   },
+   {
+    "point": "FEATURE: managed peers with a peer SSD tier. Peers seed a content-addressed RPC cache from Hugging Face by HTTP range requests, with a --max-disk cap. hcpeer is a patched macOS rpc-server that memory-maps cached tensors from the peer's own SSD, cross-compiled with zig on Windows. Its S1 gate on a real Mac (R3) produced byte-identical greedy text. On the 7B: stock 17.89 tok/s, hcpeer mapped 17.96 tok/s, 3.63 GiB mapped, 0 copy fallbacks, 0 swap.",
+    "source": "PAPER-RUNS R3 lines 132-149; commits a073e8f, 9cf03db, 28c9da5"
+   },
+   {
+    "point": "FEATURE: hcstream, a Windows proxy ggml.dll that gives stock llama.cpp a bounded CPU weight footprint by streaming layers from SSD with unbuffered reads into slot buffers. Its native gate passed 11 of 11 cases with tokens identical to stock.",
+    "source": "native/hcstream/hcstream.c header; results/capacity/20261022T050332Z-validate (cited in CHECKPOINT-2026-10-22 and hybrid-capacity-implementation.md)"
+   },
+   {
+    "point": "FEATURE: gateway and app. FastAPI with SQLite (WAL) plus JSONL run records, an OpenAI-compatible /v1/chat/completions on localhost with an owner token, SSE streaming with interrupt and resume, all-or-nothing memory leases, a deployment lifecycle state machine with clean failure on peer loss, pause or leave, and revisioned replacement. A replan controller exists but is off unless HYPERCOMPUTE_REPLAN=1. Dashboard in React 18 + TypeScript. Optional engines: vLLM in WSL2 (many users), AirLLM (disk), EXO (Mac-only, never run).",
+    "source": "README lines 132-145, 349-415, 436-455; CHECKPOINT-2026-10-22 table"
+   },
+   {
+    "point": "FEATURE: research-grade measurement harness. Pieces: the run_big driver, a matrix runner that waits for the GPU to drain plus 20 s of heartbeats, and summarize.py/stats.py (ratio of means with a 95% percentile bootstrap). It records SSD bytes per token, per-peer bridge bytes and Mac memory, swap, battery and thermal state over SSH. Every published number comes from a run.json.",
+    "source": "PAPER-RUNS method lines 28-32, R1.3; scripts/capacity/paper/stats.py"
+   },
+   {
+    "point": "CODE SIZE at HEAD (first-party, vendored third_party excluded). backend: 78 .py files, 26,698 lines. tests: 76 .py files, 26,282 lines, 1,399 test functions (parametrized into about 2,000 cases). frontend/src: 44 files, 6,286 lines. scripts: 53 files, 10,880 lines. native: 10 files, 6,071 lines, of which 3,210 are a patched copy of llama.cpp's ggml-rpc.cpp. docs: 41 .md files, 15,066 lines. PR #3 diff is +928,126/-289 across 588 files, mostly vendored sources and results JSON.",
+    "source": "git ls-files and git grep line counts at 349469c; gh pr view 3"
+   },
+   {
+    "point": "GIT HISTORY: `git log --oneline | wc -l` = 48 at 349469c. It was 46 when this scout started; the Kimi docs (983e2b4) and CHECKPOINT-2026-10-24 (349469c) landed while I read. `--since=2026-10-01` also gives 48, because the whole repo is 5 days old. Commits per day: Oct 20 3, Oct 21 18, Oct 22 17, Oct 23 5, Oct 24 5. PR #3 is a draft, OPEN, titled 'Iroh transport and running 100B-class models across devices', 33 commits against main, created 2026-10-22. Local HEAD equals origin.",
+    "source": "git log --format=%ad --date=short | uniq -c; gh pr view 3 --json"
+   },
+   {
+    "point": "TEST SUITE: the repo records 1999 passed at 2b5b0ac, and earlier 1870 passed, 4 skipped at a073e8f..f14e58a. The '2000 passed, 4 skipped on 2026-10-24' figure from the brief appears nowhere in the repo, and I did not re-run the suite. The working tree has uncommitted edits to 4 test files (+142 lines, 9 new test functions: test_capacity_loop, test_explicit_layout, test_inference_slots, test_split_order). This looks like the in-flight concurrency feature.",
+    "source": "docs/research/CHECKPOINT-2026-10-23.md lines 7 and 53; git status / git diff --stat; CHECKPOINT-2026-10-24 Next item 1"
+   },
+   {
+    "point": "HARDWARE. GX10 (rented): NVIDIA GB10, Grace 10x X925 + 10x A725 with a Blackwell sm_121 GPU, 121.6 GiB unified memory, 916 GB NVMe, DGX OS 7.5, no wired link. G14: Ryzen AI 9 HX 370, RTX 5070 Ti Laptop 12 GiB, 31.1 GiB RAM, 1 TB NVMe, Windows 11. Three MacBook Air M4 (Mac16,12), 16 GiB each. R6 contribution caps: mac-a 11.5, mac-b 11.5, mac-azim 7.5 and G14 9 GiB (39.5 GiB of peers). GX10 CUDA0 budget 79.06 GiB, with a 24.3 GiB reserve.",
+    "source": "PAPER-RUNS setup table lines 9-14 and R6 lines 186-194"
+   },
+   {
+    "point": "gpt-oss-120b (MXFP4, 59.03 GiB, 116.8B, 4 of 128 experts active), G14 alone, R2, 9 reps, 128/64. Decode mean 3.296 tok/s (run medians 2.98-3.50). Prefill 3.68. SSD 265-287 MiB/token (mean 275). Load 38-44 s. TTFT mean 36.2 s, total 54.4 s.",
+    "source": "PAPER-RUNS R2 lines 98-116; summary_120b.md; TTFT from run.json via my script"
+   },
+   {
+    "point": "gpt-oss-120b, G14 + 1 Mac: decode 4.130 (1.25x), prefill 5.45 (1.48x), SSD 143-153 MiB/token, load 72-80 s. G14 + 3 Macs: decode 4.198 (1.27x), prefill 11.03 (2.99x), SSD 32-56 MiB/token, load 126-167 s (126 s after 566 s of seeding on the cold start). Intervals are in the speed findings above.",
+    "source": "PAPER-RUNS R2; results/capacity/paper-2026-10-22/summary_120b.md"
+   },
+   {
+    "point": "gpt-oss-120b, GX10 alone (tier gpu, all 36 layers on CUDA0), 9 reps. Decode mean 56.00 tok/s (median 56.17). Prefill 382.0 tok/s. SSD 0. Load 46-50 s. TTFT about 0.42 s, total about 1.49 s for 64 tokens. That is 17x decode and 104x prefill over the G14 alone, which is a host change, not pooling. GX10 + peers on the 120B was not run.",
+    "source": "PAPER-RUNS R6 lines 206-217; summary_120b_gxA.md; run.json ttft via my script"
+   },
+   {
+    "point": "Qwen3-235B-A22B (UD-Q2_K_XL, 82.67 GiB), G14 alone. All 13 reps: decode 1.194, prefill 1.431, SSD 738 MiB/token. Steady state (9 reps): 1.294, 1.450, 647. Load 44-54 s. TTFT about 44.3 s. Cold-to-warm drift: decode 0.88 to 1.29 as the page cache filled. The 10-23 hotspot-night alone runs gave 1.24-1.64 tok/s medians.",
+    "source": "PAPER-RUNS R1 lines 46-66, R5; summary_235b_all.md, summary_235b_hs.md"
+   },
+   {
+    "point": "Qwen3-235B, G14 + 3 Macs. All reps: decode 1.337, 1.12x [1.00, 1.26]. Steady state: 1.396, 1.08x [0.98, 1.18]. Prefill 2.300, 1.61x. SSD 338, 0.46x. Load 2289 s cold, 130-175 s warm. TTFT about 28.5 s. Placement: each Mac holds 7-8 whole layers (19.3 GiB total), the G14 GPU 10.2 GiB, 53.1 GiB of experts file-backed. GX10 runs of the 235B do not exist.",
+    "source": "PAPER-RUNS R1 lines 36-77"
+   },
+   {
+    "point": "DeepSeek-V3.1 671B (UD-TQ1_0, one 170.5 GB file, 37B active, 256 experts with 8 used), G14 alone, R4, 2 reps, 64/32. Decode 0.481 tok/s, prefill 0.747, SSD 2485 MiB/token, load 50 s, TTFT about 88.7 s, total about 153 s. The layout doc predicted 0.48 tok/s before the run. G14 + Macs was never run: layouts B and C exist only as estimates (B 0.66/0.58 tok/s, C 0.85/0.66).",
+    "source": "PAPER-RUNS R4 lines 151-166; summary_671b.md; docs/research/deepseek-671b-layouts.md lines 9-11"
+   },
+   {
+    "point": "DeepSeek-V3.1 671B, GX10 alone: decode 1.805 (run medians 1.825 and 1.785), prefill 2.63, SSD 684 MiB/token, load 239/256 s; that is 3.8x the G14 alone. GX10 + G14 + 3 Macs: decode 1.497, 0.83x [0.77, 0.90]; prefill 6.36, 2.42x; SSD 37, 0.054x; load 503/517 s after 1416/856 s of seeding. Pooled placement: peers held layers 0-13 (30.9 GiB), CUDA0 layers 14-60 (76.5 GiB), 51.0 GiB of experts still file-backed on the host.",
+    "source": "PAPER-RUNS R6 lines 219-252; summary_671b_gx.md"
+   },
+   {
+    "point": "Kimi-K2.6 (bartowski IQ1_S, 193.16 GiB in six parts, 1026B params, 32B active), GX10 alone: decode 1.799 (run medians 1.823 and 1.775), prefill 2.19, SSD 671 MiB/token, load 257/266 s. GX10 + G14 + 3 Macs: decode 1.540, 0.86x [0.82, 0.89]; prefill 3.30, 1.51x; SSD 254, 0.38x; load 367 s after 676 s of seeding, then 369 s after 5 s (warm). All four peers were direct (RTT 6-51 ms). Pooled placement: peers 32.9 GiB (layers 0-10), CUDA0 76.0 GiB (layers 11-60), 83.9 GiB of experts still file-backed. G14-hosted Kimi was never run.",
+    "source": "PAPER-RUNS lines 253-277; summary_kimi_gx.md; index_kimi_gx.jsonl"
+   },
+   {
+    "point": "Kimi coherence check. On the kept GX10-alone deployment (temperature 0, thinking off), it wrote a correct, documented iterative Fibonacci function with input validation (run 20261024T215444Z). Caveat: the generated text is not archived. That run.json holds only a 16-token benchmark, and a grep of results/ finds 'Fibonacci' only in the doc. No quality benchmark exists for the 1-bit quants (IQ1_S, TQ1_0).",
+    "source": "PAPER-RUNS lines 278-279; results/capacity/20261024T215444Z-big-kimi-k2.6-iq1_s/run.json; scripts/capacity/paper/gx10/coherence.py"
+   },
+   {
+    "point": "Smaller and earlier measurements, all on the G14. Qwen2.5 7B alone: 87 tok/s, 31 ms TTFT; with a CPU peer: 26 tok/s, 195 ms. 14B Q6_K with 4 layers in RAM: 27.5 tok/s. vLLM AWQ 7B with 16 users: 1,048 tok/s total against 381 for llama.cpp (862 through the gateway). First physical pair over campus Wi-Fi, MVP build: 14B 11.7-12.3 tok/s, Mistral 24B median 9.1 tok/s. Iroh relay link: RTT median 17.5-36.9 ms, goodput 1.58-1.59 MB/s.",
+    "source": "README 'Measured so far' lines 530-552; results/pair/20261021-campus-wifi-g14-m4air.json; hybrid-capacity-implementation.md link-relay rows"
+   },
+   {
+    "point": "Planner accuracy is poor. Its MoE estimate is about 4x pessimistic: measured_over_predicted is 0.25-0.26 alone and 0.43-0.59 pooled. It ranked the pooled 671B about 1.77x ahead of the GX10 alone, the reverse of the measured 0.83x, because its speed constants come from the G14. Do not quote planner predictions as results.",
+    "source": "PAPER-RUNS R6 lines 249-252 and 276-277; run.json comparison block (Kimi gx4-2: 0.444)"
+   },
+   {
+    "point": "NOT TRUE: 'pooling makes generation faster' in general. With the GX10 as host, pooled single-request decode is slower: 671B 0.83x [0.77, 0.90] and Kimi 0.86x [0.82, 0.89], both intervals excluding 1. On the G14 host, 235B steady-state decode is 1.08x [0.98, 1.18], which includes parity. The cause is one blocking round trip per peer per token: about 97 ms per Mac stage on Wi-Fi, of which only 8-37 ms is RTT and about 8 ms Metal compute.",
+    "source": "PAPER-RUNS R1.2 lines 79-87, R6 lines 244-248; CHECKPOINT-2026-10-23 line 39; peer-ssd-tier-candidates.md section 2"
+   },
+   {
+    "point": "NOT MEASURED: concurrency or multi-user throughput with pooling. The N-slot feature (-np N -kvu, run_big --concurrency) is uncommitted, and the concurrency rows ({671B, Kimi} x {alone, pooled} x N in {1, 4, 8}) are still listed as next steps. The only multi-user number (vLLM, 1,048 tok/s at 16 users) is from a single G14 on a 7B.",
+    "source": "docs/research/CHECKPOINT-2026-10-24.md 'Next' items 1 and 3; git status (4 modified test files); README line 544"
+   },
+   {
+    "point": "NOT TRUE: 'impossible on any single machine'. The G14 alone runs the 671B (0.48 tok/s), and the GX10 alone runs both the 671B and Kimi 1T at about 1.8 tok/s by paging experts from SSD. Nothing fits in memory alone: 671B is 158.8 GiB and Kimi 193 GiB against the GX10's 121.6 GiB. But even pooled, the host still pages 51 to 84 GiB of experts from SSD. ULTRAPLAN explicitly says never to claim 'impossible on one laptop' for the G14.",
+    "source": "PAPER-RUNS R4, R6; ULTRAPLAN line 496"
+   },
+   {
+    "point": "NOT RUN: the peer SSD tier inside a pooled big-model run. hcpeer was gated only on 0.5B and 7B models on a single Mac. The 235B C1 SSD-tier run failed on the hotspot night. The 671B layouts B and C never ran. In R6, peers lent memory only. Also never run: a Mac as host, EXO, vLLM across machines, and the Apple-only dense-model 'bigger' proof (ULTRAPLAN D13).",
+    "source": "PAPER-RUNS R3, R4 line 164-166, R5; ULTRAPLAN D13 and Phase 1.2; README engines table (EXO NOT RUN); IMPLEMENTATION_STATUS.md EXO row"
+   },
+   {
+    "point": "NOT MEASURED: long prompts. All TTFT and prefill numbers use short prompts: 58-68 tokens for the 235B, 671B and Kimi, and 125-133 for the 120B. Outputs are 32 or 64 tokens with ignore_eos. The planned 512-token TTFT comparison has not run, so any long-document speed claim is extrapolation.",
+    "source": "run.json prompt_n/predicted_n via my script; CHECKPOINT-2026-10-23 'Next' item 4"
+   },
+   {
+    "point": "SMALL SAMPLES AND CONFOUNDS. The 671B and Kimi comparisons are 4 vs 4 reps from 2 runs each. The 671B pooled reps mix two layouts, and mac-azim was on the Iroh relay (47-84 ms) for those runs; the cause is unresolved and it is the only peer on macOS 26. On 10-22, a code workflow shared the G14 during 120B runs D2 through A3. The GX10 120B rows ran during a 30 MiB/s download. The rented GX10 has an idle Nemotron 30B snap service.",
+    "source": "PAPER-RUNS R2 lines 124-127, R6 lines 196-204, 223-226, 253-258, 285-286"
+   },
+   {
+    "point": "COSTS OF POOLING. Load to ready is longer pooled: 671B 503-517 s vs 239-256 s; Kimi 367-369 s vs 257-266 s; 235B 130-175 s warm vs 44-54 s. A first pooled load also needs seeding: 676-1416 s on the GX10, and 2289 s for the cold 235B over the 8.6 MiB/s Wi-Fi link. The network is fragile. Apartment or guest Wi-Fi with client isolation and endpoint-dependent NAT forced relay at about 1 MiB/s, and a peer dropped mid-load. A stale peer catalog makes the host push layers itself at about 4 MiB/s.",
+    "source": "PAPER-RUNS R1.3, R5 lines 168-179, Kimi operational note lines 280-284; CHECKPOINT-2026-10-24 Resume item 4"
+   },
+   {
+    "point": "STALE DOCS to fix before judges read the repo. README.md still says 'Not yet run between two physical machines' (line 15), '578 protocol tests' (lines 144 and 596), the GX10 profile as 'Planned, needs hardware' (line 621), and that splitting buys 'memory capacity, not speed' (line 78). docs/research/hcpeer-macos.md still says 'It has not run on a Mac', which R3 superseded. README also says no license is chosen (all rights reserved) and the repo is private.",
+    "source": "README.md lines 11-17, 78, 144, 596, 621, 639-640; hcpeer-macos.md lines 3-5; PAPER-RUNS R3"
+   },
+   {
+    "point": "HACKATHON ELIGIBILITY RISK (for the rules scout to verify). The whole codebase and all measurements predate CalHacks: commits 2026-10-20 to 2026-10-24, and the GX10 runs of 2026-10-24. If CalHacks requires work to be done during the event, this is prior work that must be disclosed or built on.",
+    "source": "git log --date=short (first commit cb6026e 2026-10-20)"
+   },
+   {
+    "point": "SECURITY FRAMING. Iroh mode is authenticated and encrypted end to end, with the peer's RPC worker on loopback. LAN mode's llama.cpp RPC has no authentication, so anyone who reaches a friend's worker port can use that GPU. CVE-2026-34159, an unauthenticated RPC memory read and write, was fixed in b8492; b11770 probably includes the fix, but that is INFERRED, not verified. The host gets broad access to the peer process, so the trust model is friends only.",
+    "source": "README Security model lines 503-520; ULTRAPLAN constraints lines 136-139"
+   }
+  ]
+ },
+ "scout:landscape": {
+  "summary": "Hypercompute is not the first at any one thing it does. Exo, prima.cpp, Mesh-LLM, Parallax, cake and plain llama.cpp RPC already pool mixed hardware. Exo, llama.cpp RPC and prima.cpp have already run 671B, 770B and 1T models across several machines. Mesh-LLM already ships an encrypted Iroh QUIC pool with Windows, macOS and Linux installers, and its peers pull only their own layer pieces from Hugging Face. prima.cpp already pages MoE experts from SSD across two machines (Hy4 preview 770B at 1.5 TPS, August 2026). Every \"first ever\" claim in those directions is false.\n\nWhat we can defend is the combination, which no project I found has shown:\n- One pool across three operating systems: a Linux GB10 host (CUDA 13), a Windows RTX 5070 Ti laptop and three macOS M4 Airs.\n- Stock, unmodified llama.cpp binaries, wrapped in an authenticated, encrypted Iroh tunnel that gets through NAT.\n- Peers fetch only their own tensors as byte ranges straight from the stock Hugging Face GGUF into ggml-rpc's cache. There is no repacking. Mesh-LLM needs pre-built layer packages and a patched llama.cpp; prima needs the full 229 GB file on every machine.\n- A MoE-aware split: peers take whole layers, and the host keeps the routed experts memory-mapped from its NVMe.\n- Measured 671B and 1T runs with bootstrap confidence intervals, including the cases where pooling lost.\n\nOn speed, the honest lead is prompt speed and time to answer, not decode. I read \"problem speed\" as prefill and time-to-answer. Against the same host running alone, the pool raised prefill in every measured config:\n- 235B: 1.61x [1.48, 1.74]\n- 120B with 3 Macs: 2.99x [2.64, 3.35]\n- 671B: 2.42x [2.19, 2.72]\n- 1T: 1.51x [1.41, 1.59]\n\nIt also cut the host's SSD reads by 54% to 95%. Decode on the GX10 host was slower pooled: 0.83x for the 671B and 0.86x for the 1T. From the measured means, the warm pool returns a full answer sooner whenever the prompt is longer than about 0.5x (671B) or 0.6x (1T) the answer. At 64 prompt and 32 output tokens that is about 25% faster for the 671B (31.5 s vs 42.0 s) and about 15% faster for the 1T (40.2 s vs 47.0 s). That is my arithmetic from the means, measured only at 64-token prompts.\n\nCompetitors with bigger memory beat us outright:\n- Exo ran the 671B on 8 M4 Pro Mac minis with 512 GB at 5.37 tok/s, 2.91 s to first token.\n- Kimi K2 Thinking ran at about 28 to 30 tok/s on four Mac Studios (about $40k).\n- Two DGX Sparks decode Qwen3-235B at 11.7 to 12.5 tok/s.\n\nAgainst hackathon pooled-LLM projects (PiHive at Hack the North 2026, REVIVE at HackPrinceton 2026, EdgeSplit, pooled.run, a prima mesh demo at a YC hackathon), the biggest model I found was 35B. Our 671B and 1T runs are an order of magnitude above that bar. I found no Cal Hacks project in this space.\n\nRisks to say out loud on stage:\n- The GX10 is rented, and it runs both giant models alone.\n- Cold pooled start takes 17 to 32 minutes with seeding, against about 4 to 4.5 minutes alone.\n- The peer SSD tier (hcpeer) has passed a correctness gate only on a 7B model. Its big layout did not run.\n- The planner predicted the pool would be 1.77x faster than the GX10 alone. It was measured at 0.83x.",
+  "findings": [
+   {
+    "point": "EXO (exo-explore/exo, Apache-2.0, ~48k stars). What it does: pools Apple Silicon (MLX ring or JACCL RDMA) and Linux nodes, with automatic placement and an OpenAI API. Largest consumer demo: DeepSeek V3 671B 4-bit on 8x M4 Pro 64GB Mac minis (512 GB total), 5.37 tok/s and 2.91 s to first token. On the same cluster, Llama 3.1 405B ran at 0.88 tok/s with a 29.71 s TTFT (Dec 26, 2024). Windows is not supported: pyproject environments are darwin and linux only. Delta: exo beats us on absolute decode and TTFT for the 671B, but it needs every weight in RAM across Macs, and it cannot take a Windows CUDA laptop.",
+    "source": "https://blog.exolabs.net/day-2 ; repo audit docs/research/later_engines_and_prior_art.md section A (pyproject line 188)"
+   },
+   {
+    "point": "EXO 1.0 with RDMA over Thunderbolt 5 (macOS 26.2+), tested by Jeff Geerling on 4 Mac Studio M3 Ultras (1.5 TB unified memory, about $40k), Dec 18, 2025. Qwen3 235B reached about 32 tok/s on 4 nodes. Kimi K2 Thinking (1T, 32B active) ran at about 28-30 tok/s. AppleInsider gives the per-node numbers: llama.cpp RPC fell from 20.4 tok/s on 1 node to 15.2 on 4, while exo RDMA rose to 31.9. So a 1T model pooled across machines is already done, roughly 18x faster than our 1.54 tok/s pooled Kimi. Do not claim the first 1T pool.",
+    "source": "https://www.jeffgeerling.com/blog/2025/15-tb-vram-on-mac-studio-rdma-over-thunderbolt-5/ ; https://appleinsider.com/articles/25/12/20/ai-calculations-on-mac-cluster-gets-a-big-boost-from-new-rdma-support-on-thunderbolt-5"
+   },
+   {
+    "point": "EXO already mixed NVIDIA and Apple. Its v0 README (2024) says 'Unify your existing devices into one powerful GPU: iPhone, iPad, Android, Mac, NVIDIA' and documents a 'macOS + Linux' cluster where MLX and tinygrad interoperate. EXO 1.0 (Oct 15, 2025) put DGX Spark prefill together with M3 Ultra decode: 2.8x end-to-end on Llama-3.1 8B, with Spark prefill 3.8x faster than the M3 Ultra. Split prefill and decode across mixed hardware is therefore published prior art. A Reddit user reported trouble reproducing it. A 'first CUDA + Metal pool' claim is false.",
+    "source": "https://github.com/exo-explore/exo/blob/v0.0.15-alpha/README.md ; https://blog.exolabs.net/nvidia-dgx-spark ; https://www.reddit.com/r/LocalLLaMA/comments/1rbrqa4/i_tried_to_reproduce_exos_dgx_spark_mac_studio/"
+   },
+   {
+    "point": "Mesh-LLM (Mesh-LLM/mesh-llm, Apache-2.0, about 3.5k stars, created Feb 11, 2026) is the closest competitor. It runs a QUIC end-to-end encrypted transport over Iroh, with relays that forward packets they cannot read. It ships Windows (PowerShell), macOS and Linux installers. Its Skippy stage splits run on a patched llama.cpp. Peers fetch only the GGUF fragments their stage needs from Hugging Face layer packages (hf://meshllm/...-layers, including Qwen3-235B, Kimi-K3 and DeepSeek-V4-Pro). Discovery is a public mesh over Nostr or invite tokens. Its benchmarks show decode falling with splits: GLM-4.7-Flash 17 GB went from 68 tok/s solo to 21 on 2 nodes and 12-13 on 3 over Wi-Fi. Its MoE expert sharding is marked experimental: 'most results show this doesn't perform as well as one would hope'. Its Flash-MoE SSD backend is single-node only. Delta: Hypercompute runs stock, unmodified llama.cpp binaries and seeds from any Hugging Face GGUF without repacking. It also pairs peer layers with host-side routed-expert file-backing, and it has measured 671B and 1T runs across GB10, an RTX laptop and Macs. 'First encrypted Iroh LLM pool' or 'first peers-fetch-own-shards' would be false.",
+    "source": "https://github.com/Mesh-LLM/mesh-llm (README, mesh/docs/BENCHMARKS.md, ROADMAP.md 'MoE expert sharding', skippy/docs/SKIPPY_SPLITS.md, mesh/docs/plugins/flash-moe.md) ; https://huggingface.co/meshllm"
+   },
+   {
+    "point": "Mesh-LLM's largest documented split run used datacenter-class hardware, not consumer devices. It paired one 4x96 GB node with one 48 GB node over a direct path of about 5 ms on Iroh/QUIC and reached 14.98 generated tok/s. Its docs call this 'a runnable research topology'. I found no published Mesh-LLM run of a 671B+ model on laptops.",
+    "source": "https://github.com/Mesh-LLM/mesh-llm/blob/main/skippy/docs/SKIPPY_SPLITS.md"
+   },
+   {
+    "point": "prima.cpp (OpenCPIL/prima.cpp, MIT, ICLR 2026 poster) is a distributed fork of llama.cpp. It uses piped-ring parallelism with prefetch, mmap paging from disk, and the Halda scheduler, which weighs each device's compute, disk speed, memory and OS. Paper result: Llama 3-70B at 674 ms/token (about 1.5 tok/s) on 4 home devices: a Mac M1, two Linux PCs with an RTX 3070 and a 2080 Ti, and a HarmonyOS phone under Termux. The same table puts llama.cpp at 10120 ms and has exo and dllama running out of memory. The paper says prima.cpp is 'the first distributed inference system for consumer home clusters, with mixed CPUs/GPUs, insufficient RAM/VRAM, slow disks, Wi-Fi links, heterogeneous OSs'. That collides directly with any Hypercompute 'first' claim. Windows is not supported: 'Windows support will be added in future update'.",
+    "source": "https://arxiv.org/html/2504.08791v3 ; https://iclr.cc/virtual/2026/poster/10008093 ; https://github.com/OpenCPIL/prima.cpp"
+   },
+   {
+    "point": "PRIMA Hy4 preview 770B (Aug 30-31, 2026) is the strongest counterexample to a 'first MoE + SSD across machines' claim. The model is a 770B MoE with 256 routed experts plus 1 shared and about 49B active. The IQ1 file is 229,412,839,872 bytes. It ran on two machines: a server with 4x RTX A4000 and 32 GB RAM, and a laptop with an RTX 4090 Laptop GPU and 32 GB RAM. They sat on separate networks joined by Wi-Fi, VPN and a remote LAN, about 50 ms RTT, with a 27 Mbps uplink. It used tiered hot/cold experts: hot on GPU, cold in host RAM or SSD, learned caching, prefetch from SSD, and mmap. Throughput was 1.5 TPS against 0.17 for the laptop alone and 0.37 for the server alone, so pooling sped up decode 8.8x. Limits: the full file must be on each machine, it runs only on Linux with CUDA (Macs not yet supported), and its listeners have 'no TLS or client authentication'. Delta: our peers hold only their layers (6.6-9.9 GiB of 193 GiB for the 1T) on three operating systems inside an encrypted tunnel. However, our pooled decode was slower than our host alone, while theirs was 8.8x faster.",
+    "source": "https://opencpil.github.io/prima.cpp/blog/hunyuan4-770b-local-devices ; https://opencpil.github.io/prima.cpp/blog/inside-hy4-770b-experiment (content in github.com/OpenCPIL/prima.cpp web branch, index.html)"
+   },
+   {
+    "point": "Petals (bigscience-workshop/petals, MIT, about 10.7k stars) does BitTorrent-style volunteer inference over the internet. The README says Llama 3.1 up to 405B is supported, with single-batch inference 'up to 6 tokens/sec for Llama 2 (70B)' and 'up to 4 tokens/sec for Falcon (180B)'. The NeurIPS 2023 paper reports up to 10x faster than offloading for BLOOM-176B and Llama 2 70B. The repo was last pushed 2024-09-07, so it is effectively dormant. Delta: Petals is a public swarm of trusted volunteers on a PyTorch/HF stack. It already did internet-scale pooling of a 176B-405B model, so we must not claim 'first over the internet'.",
+    "source": "https://github.com/bigscience-workshop/petals ; https://arxiv.org/abs/2312.08361 ; https://proceedings.neurips.cc/paper_files/paper/2023/hash/28bf1419b9a1f908c15f6195f58cb865-Abstract.html"
+   },
+   {
+    "point": "llama.cpp RPC (ggml-rpc-server) is our own engine. It splits weights and KV cache across any mix of backends in proportion to each device's memory. Its README warns it is 'fragile and insecure. Never run the RPC server on an open network', and it has no authentication. kjaiswal's benchmarks already mixed Apple Metal (M2 Ultra) with NVIDIA GB10 (DGX Spark) over 10GbE. On Qwen2.5-7B, prefill rose from 76.1 to 317.7 tok/s (4.2x) while decode fell from 91.8 to 52.7. On the 72B, decode fell about 50%. Their verdict: 'RPC's real value isn't speed, it's capacity'. Delta: Hypercompute wraps RPC in an authenticated, encrypted Iroh tunnel and manages peers and seeding. The mixed-backend prefill gain itself is prior art.",
+    "source": "https://github.com/ggml-org/llama.cpp/blob/master/tools/rpc/README.md ; https://github.com/kjaiswal/llama-cpp-distributed-benchmarks"
+   },
+   {
+    "point": "distributed-llama (b4rtaz, MIT, about 3.1k stars) does tensor parallelism on CPU, plus experimental Vulkan, on Linux, macOS and Windows. Limits: only 2^n nodes, at most as many nodes as the model has KV heads, and q40/q80 only. Llama 3.3 70B ran at 6.51 tok/s on 4x Mac Mini M4 Pro 24GB over Thunderbolt 5 and 6.04 over 10GbE. Llama 3.1 405B ran at 0.23 tok/s on 4 Google Cloud VMs. Qwen3 30B-A3B MoE is supported. Delta: no mixed GPU backends, so the RTX and Metal GPUs would sit idle. Its largest demo is on cloud VMs, not consumer devices.",
+    "source": "https://github.com/b4rtaz/distributed-llama ; https://github.com/b4rtaz/distributed-llama/discussions/147 ; https://github.com/b4rtaz/distributed-llama/discussions/113"
+   },
+   {
+    "point": "AirLLM (lyogavin/airllm, Apache-2.0, about 40.6k stars) streams layers and experts from disk on a single node. It claims 'Kimi K3 (2.8T)' in 3.72 GB of VRAM on one RTX 6000 Ada, DeepSeek-V3 671B in about 12 GB, and Llama 3.1 405B in 8 GB. Speed is non-interactive. Issue #330 reports Qwen2.5-32B at 13.3 s/token on a Linux GB10, and issue #364 reports a 3B model at 28.6 s/token on Windows with an RTX 5060 Ti. Secondary reports cite about 292 s/token for K3. This kills any 'largest model on consumer hardware' claim, because AirLLM claims 2.8T on one card. Our edge is speed (0.48-1.8 tok/s against seconds-to-minutes per token) and pooling.",
+    "source": "https://github.com/lyogavin/airllm ; https://github.com/lyogavin/airllm/issues/330 ; https://github.com/lyogavin/airllm/issues/364 ; https://dev.to/umesh_malik/run-70b-llm-on-4gb-gpu-airllms-real-tradeoff-19oh"
+   },
+   {
+    "point": "vLLM pipeline parallel targets datacenter multi-node serving. It runs over Ray or multiprocessing. The docs say to 'Ensure that every node provides an identical execution environment, including the model path and Python packages', recommend containers, and want InfiniBand-class networking for tensor parallelism. Its docs do not cover macOS, Windows or mixed hardware. I found no consumer-hardware giant-model numbers. On two DGX Sparks, a forum user saw Ray fail with 'Current node has no GPU available'. Delta: vLLM cannot pool a Mac and a Windows laptop at all.",
+    "source": "https://docs.vllm.ai/en/latest/serving/parallelism_scaling.html ; https://forums.developer.nvidia.com/t/dgx-spark-multi-node-llm-inference-report-for-qwen3-235b-model/355126"
+   },
+   {
+    "point": "NVIDIA DGX Spark clustering: NVIDIA's product page says one Spark handles 'Up to 200B parameters' and two handle 'Up to 400B parameters' (resellers say 405B at FP4). Up to 4 Sparks connect through ConnectX-7 QSFP at up to 200 Gb/s over a direct cable. NVIDIA reports Qwen3 235B NVFP4 with TRT-LLM on dual Spark at 11.73 tok/s generation and 23,477 tok/s prompt (Oct 24, 2025). A forum thread questions those numbers. A forum user got about 12.5 tok/s on the same setup with llama.cpp RPC. Delta: two Sparks (same GB10 silicon as our GX10) decode a 235B roughly 8-9x faster than our pooled 235B (about 1.4 tok/s on the G14 host). The selling point of Spark clustering is identical boxes on a 200G cable; ours is a mixed pool over Wi-Fi.",
+    "source": "https://www.nvidia.com/en-us/products/workstations/dgx-spark/ ; https://developer.nvidia.com/blog/how-nvidia-dgx-sparks-performance-enables-intensive-ai-tasks ; https://forums.developer.nvidia.com/t/question-on-inference-performance-results-of-qwen3-235b-a22b-on-2x-dgx-spark/355053 ; https://forums.developer.nvidia.com/t/dgx-spark-multi-node-llm-inference-report-for-qwen3-235b-model/355126"
+   },
+   {
+    "point": "Apple MLX distributed backends: ring (TCP, plus Thunderbolt rings), JACCL ('Starting from macOS 26.2, RDMA over thunderbolt is available', for Thunderbolt 5 Macs), MPI, and NCCL for CUDA. Its docs say nothing about mixing Mac and non-Mac devices or about encrypting traffic. Reported numbers: DeepSeek-V3-0324 4-bit at more than 20 tok/s on a single 512GB M3 Ultra (Awni Hannun). The distributed guide runs DeepSeek R1 4-bit on three 192GB M2 Ultras. Delta: MLX is for Apple clusters, it uses its own format rather than GGUF, and it has no Windows support.",
+    "source": "https://ml-explore.github.io/mlx/build/html/usage/distributed.html ; https://apple.slashdot.org/story/25/03/25/2054214/deepseek-v3-now-runs-at-20-tokens-per-second-on-mac-studio ; https://simonwillison.net/2025/Jan/22/mlx-distributed"
+   },
+   {
+    "point": "Parallax (GradientHQ/parallax, Apache-2.0, about 1.4k stars) is a 'fully decentralized inference engine'. It does pipeline-parallel sharding over Lattica P2P, with SGLang or vLLM on GPUs and MLX on Macs. It ships a Windows installer app and runs on Linux and macOS from source, so mixed Windows GPU plus Mac pooling already exists. Its paper testbed was 5 RTX 5090 and 2 RTX 4090 machines in separate data centers serving Qwen3-32B. The README lists DeepSeek-V3.2 and Kimi-K2, but I found no published speeds for those on consumer devices.",
+    "source": "https://github.com/GradientHQ/parallax ; https://github.com/GradientHQ/parallax/blob/main/docs/user_guide/install.md ; https://arxiv.org/pdf/2509.26182"
+   },
+   {
+    "point": "Other mixed-OS prior art. cake (evilsocket, Rust/candle) shards models across 'iOS, Android, macOS, Linux, Windows' with CUDA, Metal and Vulkan, under a FAIR license that is not OSI. kluster-llm (MIT, Sep 2026) claims Windows/Linux/macOS pooling over llama.cpp RPC and warns that RPC has no authentication. ClusterKit (Go) claims macOS or Windows. LocalAI p2p uses llama.cpp RPC with libp2p and EdgeVPN tokens, but has no Windows binary and cannot add workers after inference starts. GPUStack supports Linux workers only. A 'first Windows + Mac pool' claim is false.",
+    "source": "https://github.com/evilsocket/cake ; repo audit docs/research/later_engines_and_prior_art.md section C (kluster-llm, ClusterKit, LocalAI, GPUStack)"
+   },
+   {
+    "point": "Single-node MoE expert offload is a standard technique. llama.cpp ships '-cmoe, --cpu-moe' and '-ncmoe, --n-cpu-moe N', which keep MoE weights in the CPU, and '-ot' tensor overrides. KTransformers ran DeepSeek R1/V3 671B on a 24 GB GPU plus 382 GB DRAM at about 286 tok/s prefill and about 14 tok/s decode, using Intel AMX. flash-moe (danveloper) streams Qwen3.5-397B-A17B experts from SSD on a 48 GB MacBook Pro at 4.36 tok/s (4-bit experts). Unsloth's 1.58-bit DeepSeek-R1 at 131 GB runs from mmap on consumer PCs: Unsloth claims 2-3 tok/s on a 4090, and users report 0.33-1.5. So '671B on one gaming laptop' (our G14 at 0.48 tok/s) is not novel. 'Expert offload' and 'SSD expert paging' are not novel ideas. Only our cross-machine, cross-OS combination is distinctive.",
+    "source": "https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md ; https://technode.com/2025/02/17/tsinghua-universitys-ktransformers-enables-full-powered-deepseek-r1-with-low-cost-graphics-card/ ; https://lilting.ch/en/articles/flash-moe-qwen35-397b-metal-inference ; https://simonwillison.net/2026/mar/18/llm-in-a-flash ; https://lr.psf.lt/r/selfhosted/comments/1ic8zil/yes_you_can_run_deepseekr1_locally_on_your_device/m9pugf4"
+   },
+   {
+    "point": "Hackathon prior art for pooled-device LLMs tops out around 30-35B. PiHive (Hack the North 2026) ran distributed-llama on 9 Raspberry Pi 5s with Qwen3-30B-A3B, with cloud fallback; it won 'MLH: Best Use of Snowflake API', a sponsor prize. REVIVE (HackPrinceton 2026) pooled a phone, a laptop and a Raspberry Pi with llama.cpp to run Qwen3-4B at about 15 tok/s; it appears in Devpost's winners-only filter, prize not captured. EdgeSplit (OpenAI Build Week) did prefill on a CUDA laptop and decode on an Android phone, cutting TTFT 60-80% on 0.6B and 1B models. GemmaStudy used an exo USB4 Mac mesh. HiveMind and K.I.W.I. (P2P GPU swarms) have unknown outcomes. pooled.run (Nehanth/pooled, 607 stars, Sep 2026) runs WebGPU and WebRTC in browser tabs and served Qwen 3.6 35B MoE (about 22.5 GB) across a Mac and an iPhone, with the same 'friends open one link' pitch. A 'prima mesh demo' was built at a YC hackathon (Sep 27, 2026), outcome unknown. I found no Cal Hacks project in this space. Fair claim: 'roughly 20x larger than any pooled-device hackathon project we found' (671B and 1T against 35B), scoped to what we searched.",
+    "source": "https://devpost.com/software/primacore ; https://devpost.com/software/revive-gpb86v ; https://devpost.com/software/edgesplit ; https://devpost.com/software/gemmastudy ; https://devpost.com/software/hivemind-do25bt ; https://devpost.com/software/devai-copilot ; https://github.com/Nehanth/pooled ; https://github.com/p13i/prima.cpp-yc-hackathon ; https://devpost.com/software/search?query=is%3Awinner%20distributed%20llm%20inference"
+   },
+   {
+    "point": "Defensible Hypercompute delta 1, mixed pool: one llama.cpp RPC graph spanning a Linux GB10 host (DGX OS, CUDA 13, sm_121, 121.6 GiB unified), a Windows 11 RTX 5070 Ti laptop peer, and three macOS M4 Air peers on Metal. Peers reached the host over Iroh QUIC through NAT, direct when possible and relayed otherwise (mac-azim stayed on the relay at 47-84 ms in the R6 671B rows). Among the projects checked, exo (no Windows), prima (no Windows, MoE path Linux CUDA only), distributed-llama (no mixed GPU backends) and vLLM (identical environments) cannot form this pool. Mesh-LLM, Parallax and cake could in principle, but I found none of them publishing a 671B+ run on such a pool.",
+    "source": "C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\docs\\research\\PAPER-RUNS-2026-10-22.md (R6 setup and network)"
+   },
+   {
+    "point": "Defensible Hypercompute delta 2, seeding: each peer downloads only its own tensors as HTTP byte ranges from the stock Hugging Face GGUF. It writes them into ggml-rpc's FNV-1a-keyed cache (<LLAMA_CACHE>/rpc/<hash>), verified, fsynced and renamed, so unmodified ggml-rpc-server b11770 serves them with no repacking. Measured: a Mac pulls 45 MB/s from Hugging Face against 8.6 MiB/s pushed from the host. The 120B three-Mac cold start took 566 s of seeding against an estimated 2400 s of host push. Mesh-LLM needs pre-built layer packages on its own Hugging Face org plus a patched llama.cpp, and prima needs the whole 229 GB file on every machine.",
+    "source": "C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\backend\\hypercompute\\agent\\seed_cache.py (module docstring, _stream_range) ; PAPER-RUNS-2026-10-22.md R1.3 and R2"
+   },
+   {
+    "point": "Defensible Hypercompute delta 3, MoE-aware tiering: under the moe_offload tier, peers hold whole layers while the host GPU keeps attention, norms, router, shared experts, head and KV, and the remaining routed experts stay memory-mapped from the host's NVMe. Measured cuts in host SSD reads per decoded token: 671B from 684 to 37 MiB, ratio 0.054 [0.026, 0.097], about 95% fewer. 1T from 671 to 254 MiB, ratio 0.38 [0.37, 0.40]. 120B with 3 Macs from 275 to 41 MiB, ratio 0.15. 235B from 738 to 338 MiB, ratio 0.46. Caveat: prima's learned hot/cold expert cache with SSD prefetch is more sophisticated. Ours is static per-layer placement.",
+    "source": "C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\docs\\research\\PAPER-RUNS-2026-10-22.md (R1, R2, R6 tables)"
+   },
+   {
+    "point": "Speed lead, framed honestly as 'problem speed' (prompt processing and time-to-answer) against the same host alone. Prefill ratios with 95% bootstrap intervals: 235B 1.61x [1.48, 1.74] (G14 + 3 Macs). 120B 2.99x [2.64, 3.35] (G14 + 3 Macs; 11.03 against 3.68 tok/s). 671B 2.42x [2.19, 2.72] (GX10 + G14 + 3 Macs; 6.36 against 2.63). 1T Kimi-K2.6 1.51x [1.41, 1.59] (3.30 against 2.19). Prefill improved in every configuration measured.",
+    "source": "C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\docs\\research\\PAPER-RUNS-2026-10-22.md ; results/capacity/paper-2026-10-24/summary_kimi_gx.md"
+   },
+   {
+    "point": "Time-to-answer, derived from measured means (my arithmetic, not a measured end-to-end row). A warm pool finishes the whole answer sooner whenever prompt tokens exceed about 0.51x the output tokens for the 671B, or about 0.61x for the 1T. At the benchmark shape of 64 prompt and 32 output tokens, the 671B takes 31.5 s pooled against 42.0 s alone (about 25% faster), and the 1T takes 40.2 s against 47.0 s (about 15% faster). Most chat, RAG and coding prompts are longer than their answers. Caveats: prefill was measured only at 64-token prompts, and this excludes load and seeding.",
+    "source": "derived from PAPER-RUNS-2026-10-22.md R6 (671B: prefill 6.36 vs 2.63, decode 1.497 vs 1.805; Kimi: prefill 3.30 vs 2.19, decode 1.540 vs 1.799)"
+   },
+   {
+    "point": "Do not claim pooling speeds up decode in general. On the GX10 host, pooled decode was slower: 671B 0.83x [0.77, 0.90] (1.497 against 1.805 tok/s) and 1T 0.86x [0.82, 0.89] (1.540 against 1.799). The 235B at steady state was 1.08x [0.98, 1.18], an interval that includes parity. The only clear decode win is gpt-oss-120b on the G14 host: 1.27x [1.10, 1.46] with 3 Macs and 1.25x with 1 Mac. The cause is one blocking RPC round trip per peer per token (R1.2). That matches exo and llama.cpp RPC scaling (15.2 tok/s on 4 nodes against 20.4 on 1), kjaiswal's finding (decode about 2x slower) and Mesh-LLM's (68, then 21, then 12 tok/s). PRIMA did get an 8.8x decode gain at 770B, but against a 32 GB-RAM laptop baseline.",
+    "source": "PAPER-RUNS-2026-10-22.md R1, R1.2, R2, R6 ; https://appleinsider.com/articles/25/12/20/ai-calculations-on-mac-cluster-gets-a-big-boost-from-new-rdma-support-on-thunderbolt-5 ; https://github.com/Mesh-LLM/mesh-llm/blob/main/mesh/docs/BENCHMARKS.md"
+   },
+   {
+    "point": "FLAG, false or unverifiable 'first' and 'only' claims to avoid. (1) First to run 671B, 770B or 1T across consumer devices: false. Exo ran 671B on 8 Mac minis (Dec 2024) and Kimi K2 1T on 4 Mac Studios (Dec 2025); PRIMA ran 770B across 2 machines (Aug 2026). (2) First CUDA + Metal pool: false (exo v0, exo 1.0 with Spark + M3 Ultra, kjaiswal RPC, cake, Parallax, Mesh-LLM). (3) First Windows + Mac pool: false (Mesh-LLM, Parallax, cake, kluster-llm). (4) First encrypted P2P or NAT-traversing LLM pool: false (Mesh-LLM on Iroh QUIC, Petals, Parallax with Lattica, pooled.run with WebRTC). (5) First where peers fetch their own shards from Hugging Face: false (Mesh-LLM layer packages). (6) First MoE expert placement with SSD paging across machines: false (PRIMA tiered-local-cold-hot, Aug 2026). (7) Largest model on consumer hardware: false (AirLLM claims a 2.8T model on one card). (8) Faster than exo or Spark clusters: false in absolute terms (5.37 against about 1.5 tok/s on the 671B; Spark pair 11.7 against about 1.4 tok/s on the 235B). (9) The 'first' slot is already claimed: prima.cpp's ICLR 2026 paper calls itself 'the first distributed inference system for consumer home clusters... heterogeneous OSs'. Safe wording: 'the only system we found that has shown...' plus the specific combination, with our numbers and CIs.",
+    "source": "sources listed in the findings above (exo blog day-2, Jeff Geerling, OpenCPIL prima.cpp blog, Mesh-LLM repo, AirLLM README, arXiv 2504.08791)"
+   },
+   {
+    "point": "FLAG, demo-honesty risks. (a) The GX10 is a rented GB10 box (121.6 GiB) that runs both the 671B (1.8 tok/s) and the 1T (1.8 tok/s) alone. The 4 peers add about 33 GiB of 193 GiB for the 1T. The real 'friends' laptops' story is the G14 (0.48 tok/s alone on the 671B) and the 235B and 120B pools. (b) Pooled cold start is much slower: the 671B took 1416 s seeding plus 503 s load, and the 1T took 676 s plus 367 s, against 239-266 s alone. With warm caches the 1T took 5 s seeding plus 369 s load. (c) The planner predicted pooled 1.77x ahead of the GX10 alone; measured was 0.83x, with measured_over_predicted 0.25-0.59. Do not present the planner as optimal. (d) The peer SSD tier (hcpeer mmap) has passed only a byte-identical correctness gate on 7B and 0.5B models, at 17.89 against 17.96 tok/s. Its 671B layout C and the 235B C1 run did not complete. (e) The 1T is a 1-bit IQ1_S quant, with coherence shown by one Fibonacci-function check. (f) The GX10 alone serves gpt-oss-120b at 56 tok/s decode and 382 tok/s prefill. That figure came from swapping the host, not from pooling, and the doc says so.",
+    "source": "PAPER-RUNS-2026-10-22.md R3, R4, R5, R6 ; results/capacity/paper-2026-10-24/summary_kimi_gx.md"
+   }
+  ]
+ },
+ "scout:winners": {
+  "summary": "I scraped every Cal Hacks Devpost gallery from 1.0 (2014) to 12.0 (2025), plus HackerEarth for 5.0, Cal Hacks' Medium posts, press coverage, and the live 13.0 pages. The full winner data (prizes, team members, tech stack, links) is in JSON at C:\\Users\\operator\\AppData\\Local\\Temp\\claude\\C--\\33c9e5b2-ade6-449a-b9ce-e5e801ae75aa\\scratchpad\\calhacks\\data\\. Every submission from 10.0 to 12.0 is in ...\\scratchpad\\calhacks\\galleries\\, and the infra-keyword scan is in ...\\galleries\\infra_hits.txt.\n\nCoverage: I found 1.0, 2.0 (no overall prize by design), 3.0, 4.0, 5.0 (HackerEarth), 6.0, 8.0, 9.0, 10.0, 11.0 and 12.0. I found no 7.0 (2020) results anywhere. That year Cal Hacks ran the virtual hack:now instead. The Cal Hacks-run UC Berkeley AI Hackathons (2023 to 2026) are included as a reference point.\n\nPatterns:\n(1) Overall winners are consumer-facing ideas you can explain in one sentence, with a live, often physical demo. 11 of 28 top-3 slots went to hardware, wearables or brain-computer interfaces (mind-controlled drone, Myo armbands, EEG music, a sensor teddy bear). 19 of 25 top-3 teams with known sizes had 4 people. Since 2023 every top-3 winner has been an AI-wrapped real-time or voice experience, usually with a health, kids or social framing.\n(2) Infra or systems work has won overall only once, with something physical and tied to the news: Kanashi (3.0, 2016) was a Raspberry Pi botnet blocker built right after the Mirai/Dyn attack. Pure compute or inference infrastructure has never placed top-3. Infra projects win sponsor challenges that have objective metrics instead. The clearest case is Duck Duck Goose: a solo DuckDB query planner that won AppLovin's $10k with about a 1300x speedup (45 s to 30 ms).\n(3) The \"pool idle machines into one supercomputer\" pitch has already been made at Cal Hacks at least 3 times and won nothing: Airpool and HPC: High Phone Computing at 11.0, and latentra at 12.0, which turned campus laptops into an AI supercomputer via LocalAI P2P.\n(4) Format: expo-table judging, then a final sponsor/judge round. 11.0 and 12.0 gave 2 minutes to pitch plus 2 of Q&A; 13.0 gives 3 plus 2. A pre-recorded or live demo is required, plus a Devpost video for sponsors who judge asynchronously. 13.0 criteria are Application, Intentionality, Functionality, Creativity and Technical Complexity. The 12.0 Wi-Fi failed, and the 12.0 winner's write-up says to keep a hardcoded fallback demo and a dedicated UI and demo owner.\n\nHow Hypercompute stands:\n- Eligibility blocker. Cal Hacks 13.0 is happening now (Oct 23 to 25, 2026). Submissions close Oct 25 at 9 AM PDT. Applications closed Sept 20 and there are no walk-ins. The FAQ says you cannot work on a project started before the hackathon; only ideation beforehand is allowed. The prior Hypercompute branch and PR #3 therefore can't be the submission.\n- Fit. The best-fitting 13.0 prizes are the new Most Technically Complex Hack and Best Solo Hack, plus Hacker's Choice and possibly MLH Vultr. No Annapurna or Trainium prize appears on the 13.0 Devpost list. 12.0's \"Best Use of Annapurna\" was listed as TBD and no winner was posted.\n- Speed. Past wins reward a single, before/after speed multiplier against a baseline, so \"problem speed\" (prompt/prefill speed and time-to-answer) should be framed that way. From the brief's numbers, pooled prefill is 3.30 vs 2.19 tok/s (1.51x) and SSD paging is 254 vs 671 MiB/token (2.6x less). Pooled decode is about 14% slower (1.54 vs 1.80 tok/s). At these rates, a 1T-model answer takes minutes inside a 3-minute pitch, which is a live-demo risk.",
+  "findings": [
+   {
+    "point": "Cal Hacks 1.0 (Oct 4-5, 2014; 186 Devpost submissions; 1,493 registered hackers). Best Overall: MindDrone, a quadcopter piloted by natural motion and thought control (Myo, Arduino, Python). It also won Most Technically Challenging and Most Awesome. Devpost lists 4 members; Berkeley News says a team of five. Why it won: live hardware and BCI spectacle. Notable tracks: Nextile Shurt (motion-capture shirt) won Best Hardware; EmoCar (mind-controlled rover); Splash (Bluetooth mesh messaging protocol) won Best ML and a Teespring prize, an early networking/infra project taking sponsor prizes.",
+    "source": "https://calhacks.devpost.com/project-gallery ; https://devpost.com/software/mydrone ; https://news.berkeley.edu/2014/10/07/photo-slideshow-student-inventors-do-battle-at-cal-hacks/ ; https://medium.com/cal-hacks/cal-hacks-1-0-f64936141b19"
+   },
+   {
+    "point": "Cal Hacks 2.0 (Oct 10-11, 2015; 176 submissions; about 2,100 hackers from 143 schools, then billed as the largest hackathon ever). No overall prize by design. Organizers removed 'massive cash prizes' and the 'Top 10' ceremony in favor of a science-fair expo and livestream. Only sponsor prizes were given. Examples: Dataless (internet over SMS, team 3; Free Ventures and Best Use of AWS), Triton (cloud-architecture build/deploy platform, solo; Illumio Data Viz), Robot Recycler (Kinect and Arduino, team 4; Best Overall Use of Microsoft). The recap highlights 'mind controlled golf carts'.",
+    "source": "https://cal-hacks2.devpost.com/project-gallery ; https://medium.com/cal-hacks/back-to-the-hacks-de90beca3c8a ; https://medium.com/cal-hacks/what-a-time-to-be-hacking-b861fc8bf6b2"
+   },
+   {
+    "point": "Cal Hacks 3.0 (2016; 226 submissions).\n- 1st: Kanashi, a Raspberry Pi network monitor (Go/gopacket) that inspects outbound packets, blocks Mirai-style botnet traffic and texts the owner. Team of 4. It was explicitly inspired by the Oct 2016 Dyn DDoS. This is the only clearly infra/security project to win overall: physical box, timely news hook, live dashboard.\n- 2nd: WebVR-Playground (browser VR, team 3).\n- 3rd: Teslapathic, controlling a Tesla with your mind (OpenBCI and Arduino, team 4).\n- Best Hardware: Take a Picasso (robotic sketch artist).",
+    "source": "https://calhacks3.devpost.com/project-gallery ; https://devpost.com/software/kanashi ; https://devpost.com/software/teslapathic"
+   },
+   {
+    "point": "Cal Hacks 4.0 (Oct 7-8, 2017; 228 submissions; 1st prize was DJI Phantom drones plus $1000 from the 1517 Fund).\n- 1st: Megafind, live lecture transcription with keyword links and an end-of-lecture digest. Team of 4; also won Best Education and a Facebook prize.\n- 2nd: SpotMe (Myo armband lifting-form tracker, team 3).\n- 3rd: parkBAND (Myo-based Parkinson's progression tracking, team 4).\n- Best Hardware: TickIn (Bluetooth attendance).\n- Notable: Greg, a CUDA photogrammetry 3D scanner, won a Fellowship slot. 4.0 also had a 'Best Continuation Hack' track for pre-existing projects (Invidia), which 13.0 does not have.",
+    "source": "https://calhacks4.devpost.com/project-gallery ; https://devpost.com/software/megafind ; https://medium.com/cal-hacks/cal-hacks-new-programs-4-0-617bb970b602"
+   },
+   {
+    "point": "Cal Hacks 5.0 (Nov 3-4, 2018; HackerEarth, not Devpost; about 2,000 hackers; teams of 1-4).\n- 1st: NavAR by team JASK (AR navigation; also Best Mobile Hack).\n- 2nd: Robot teleoperation with Kinect (hardware).\n- 3rd: SyncUp (also won the Google Cloud Platform prize).\n- Best Hardware: Spoach (Speech Coach).\n- Notable: FireSight won the Qualcomm IoT prize (fire detection).\nProject descriptions and team sizes are behind a HackerEarth login, so they are unverified.",
+    "source": "https://www.hackerearth.com/challenges/hackathon/cal-hacks-50/ ; https://brave.com/blog/brave-sponsors-cal-hacks/"
+   },
+   {
+    "point": "Cal Hacks 6.0 (Oct 26-27, 2019; 221 submissions; 1st prize was an iPad Pro).\n- 1st: Cosine, DocuSign plus ML analytics that heatmap what signers actually read in legal documents. Team of 4. It stacked sponsor prizes: it also won Microsoft and DocuSign.\n- 2nd: stegasaurus (steganography private-messaging tool, team 4); a security tool placing.\n- 3rd: BobaFetch (boba-delivery robot with Arduino, Raspberry Pi and CockroachDB, team 4); also won Best Hardware.",
+    "source": "https://cal-hacks-6.devpost.com/project-gallery ; https://devpost.com/software/cosine-bgxpea ; https://devpost.com/software/bobafetch"
+   },
+   {
+    "point": "Cal Hacks 7.0 (2020): I found no results on Devpost, HackerEarth or the web. In 2020 Cal Hacks ran hack:now instead (virtual, COVID-themed, Apr 24-26, 2020, 220 submissions). Its winners include Converse (IVR chatbot on a real phone number, Community Track Grand Prize), Sync (Productivity Grand Prize), dAIgnostic (COVID lung-scan labeling, Health Grand Prize), Factly (Best Runner Up) and Instok (Best Continuation Hack). Juno, a serverless deployment tool for data scientists, won Unusual Ventures' Academy.",
+    "source": "https://hack-now.devpost.com/project-gallery ; https://blog.ycombinator.com/participate-in-cal-hacks-hacknow-and-win-prizes-including-summer-mentorship-or-a-yc-interview/"
+   },
+   {
+    "point": "Cal Hacks 8.0 (Oct 22-24, 2021; 121 submissions).\n- 1st: Bump!, a geolocation social app for nudging nearby friends (team 4).\n- 2nd: EDU.IO, decentralized education video streaming plus an NFT exchange (team 4; also Eluvio and CockroachDB prizes).\n- 3rd: InstaPresent (auto-generated presentations, team 2).\n- Best Hardware: LaptopVR (solo).\n- Infra-ish: CLOCKCHAIN, smart-contract performance benchmarking via a blockchain-agnostic assembly interpreter in Rust, won only Best Finance Hack.",
+    "source": "https://cal-hacks-8.devpost.com/project-gallery ; https://devpost.com/software/bump-uoljre ; https://devpost.com/software/clockchain"
+   },
+   {
+    "point": "Cal Hacks 9.0 (Oct 15-16, 2022; 211 submissions).\n- 1st: PulseBud, real-time seizure prediction on a smartwatch (LSTM, FHIR, React Native; team 4).\n- 2nd: LendIt (IoT smart-locker lending, team 4; also Ripple).\n- 3rd: Ptolemy (blockchain validator data via Sonr DID, team 4).\n- Tracks: Hack for Health (SeerAR), Hack for Fun (Moodz), Hack on Web3 (Bounty).",
+    "source": "https://calhacks90.devpost.com/project-gallery ; https://devpost.com/software/pulsebud ; https://www.ischool.berkeley.edu/news/2022/mims-students-win-award-cal-hacks-mood-mapping-app"
+   },
+   {
+    "point": "Cal Hacks 10.0 (Oct 27-29, 2023; Metreon SF; 240 submissions; co-host MindsDB).\n- 1st: Nexus, real-time voice chat that pairs users by interest (Convex, 100ms). Oregon State team of 4. The team said communicating the idea to judges was key.\n- 2nd: Speech Master (ML public-speaking coach using Hume, team 4).\n- 3rd: Virality Pro (AI marketing-video system, team 4).\n- AI/infra tracks: Best Use of Intel Developer Cloud went to 3 teams (TuneAI, Ivee, MindScape EEG). The Mask (latent-diffusion image detection standard, Rust/CUDA, solo) won AI x Crypto.",
+    "source": "https://cal-hacks-10.devpost.com/project-gallery ; https://engineering.oregonstate.edu/all-stories/oregon-state-team-wins-top-prize-cal-hacks-competition ; https://community.intel.com/t5/Blogs/Tech-Innovation/Artificial-Intelligence-AI/Top-AI-Projects-Developed-on-Intel-Developer-Cloud-at-Cal-Hacks/post/1544760"
+   },
+   {
+    "point": "Cal Hacks 11.0 (Oct 19-20, 2024; Metreon; 352 submissions; about 1,500 students; $188,960 prizes; co-hosts Google and Fetch.ai).\n- 1st: Duet, EEG brainwaves turned into live AI-composed music (Emotiv headset, Gemini, Sonic Pi, SingleStore). Team of 4 who met on Slack. They got the EEG by emailing SF startups before the event. Framing: music expression for kids with developmental disabilities.\n- 2nd: GhostWriter (listens to TA office hours and auto-updates course docs; team 2; Groq and Deepgram).\n- 3rd: SnackSnap (Gemini-verified recycling feeds a digital pet, team 2).\n- Best Hardware: PulseWalk (haptic shoe).\n- Inference-sponsor tracks: Hyperbolic 'AI Inference Application Bounty' (Watchdog, Teddy.AI, CLaiM) and Groq (Noq).",
+    "source": "https://cal-hacks-11-0.devpost.com/project-gallery ; https://devpost.com/software/duet-0tbkxe ; https://stanforddaily.com/2024/11/20/stanford-students-win-cal-hacks/"
+   },
+   {
+    "point": "Cal Hacks 12.0 (Oct 24-26, 2025; Palace of Fine Arts; 699 submissions; about 3,000 hackers; co-hosts Claude, Fetch.ai, AppLovin and Amazon Annapurna Labs).\n- 1st: FaceTimeOS. You FaceTime or iMessage your Mac and a voice computer-use agent (Agent S3, Claude, Fish Audio, Groq) does the task, then sends a screenshot back. Team of 3.\n- 2nd: Ted.AI (teddy bear with hug/heart-rate sensors plus an LLM for kids' mental wellness, team 4; also LiveKit Most Creative).\n- 3rd: Project No Cap (real-time misinformation verification, team 4).\n- Best Hardware: Hardware Context Protocol ('MCP for hardware' driving a voice-activated chef robot). Most Creative: Bob (AR glasses for physical work).\n- AppLovin Query Planner $10k: Duck Duck Goose, solo, about 1300x faster than baseline (45 s to 30 ms on an M3 Pro).\n- 'Best Use of Annapurna' was listed as TBD and no Devpost winner was posted.",
+    "source": "https://cal-hacks-12-0.devpost.com/project-gallery ; https://devpost.com/software/facetime-macos-ai-agent ; https://devpost.com/software/duck-duck-goose-jelxr9 ; https://live.calhacks.io/prizes ; https://blog.dylanlu.com/cal-hacks-12/"
+   },
+   {
+    "point": "The 12.0 winner's own playbook (Dylan Lu):\n- Pick an idea cooler than last year's Devpost winners.\n- Balance a niche twist with broad applicability.\n- Have one teammate own UI and demo.\n- Keep a hardcoded fallback. They removed unreliable clicking so the demo video looked solid.\n- They finished the demo video 30 minutes before demos.\nThey had few judge visits and left early, yet still won. The Wi-Fi failed at 12.0, which the organizers acknowledge on the 13.0 FAQ.",
+    "source": "https://blog.dylanlu.com/cal-hacks-12/ ; https://www.calhacks.io/"
+   },
+   {
+    "point": "UC Berkeley AI Hackathon (Cal Hacks-run, June), grand prizes:\n- 2023: four $50k SkyDeck investments to Metropolis.ai, Prosper AI, ALIGNED (a 'GitHub for LLM hallucinations' using Falcon-40B and Argo) and CureGenie.\n- 2024: Dispatch AI (empathic 911 agent; $25k SkyDeck; 1st of 293).\n- 2025: pFOG (ESP32 Parkinson's gait device), ChipChat (natural language to Verilog to fabrication file) and Cameron (any camera as an AI agent).\n- 2026: Lucid Voice (on-device Apple Silicon/MLX voice-cloned speech aid), IronBook, Theracat (ESP32 plush plus band for anxiety) and Paper Cuts (built with AWS Trainium).\nTakeaway: on-device or hardware-accelerated inference wins when wrapped in a human story.",
+    "source": "https://uc-berkeley-ai-hackathon.devpost.com/project-gallery ; https://uc-berkeley-ai-hackathon-2024.devpost.com/project-gallery ; https://uc-berkeley-ai-hackathon-2025.devpost.com/project-gallery ; https://ai-hackathon-2026.devpost.com/project-gallery ; https://devpost.com/software/lucid-voice"
+   },
+   {
+    "point": "Pattern, overall vs. tracks. Overall top-3 favors consumer or social-impact ideas you can explain in one sentence, with a live interactive or physical demo:\n- 11 of 28 top-3 slots (39%) went to hardware, wearables or BCI: MindDrone, Kanashi, Teslapathic, SpotMe, parkBAND, Kinect robot teleop, BobaFetch, PulseBud, LendIt, Duet, Ted.AI.\n- 4 of 10 first places involved hardware.\n- Since 2023 every top-3 winner is an AI-wrapped real-time or voice experience, often framed around health, kids or accessibility.\n- Top-3 projects often stack sponsor prizes too (Megafind, Cosine).\n- Sponsor tracks reward 'best use of X' and, for infra, objective benchmarks.",
+    "source": "C:\\Users\\operator\\AppData\\Local\\Temp\\claude\\C--\\33c9e5b2-ade6-449a-b9ce-e5e801ae75aa\\scratchpad\\calhacks\\data\\*.json (scraped from the Devpost galleries above)"
+   },
+   {
+    "point": "Pattern, team size and odds:\n- 19 of 25 top-3 teams with known sizes had 4 members. 2-3 person teams placed in 4.0, 8.0 and 11.0, and FaceTimeOS (3) won 12.0.\n- About 10-19% of submissions win some prize, and that rate stays roughly flat as events grow (12.0: 102 of 699 = 14.6%; 11.0: 62/352 = 17.6%; 10.0: 40/240 = 16.7%).\n- Top-3 overall odds at 12.0 were 3/699, about 0.4%.\n- 13.0 adds 'Most Technically Complex Hack' and 'Best Solo Hack'.",
+    "source": "https://cal-hacks-12-0.devpost.com/project-gallery ; https://cal-hacks-11-0.devpost.com/project-gallery ; https://cal-hacks-10.devpost.com/project-gallery ; https://cal-hacks-13-0.devpost.com/"
+   },
+   {
+    "point": "Pattern, infra and systems projects. Only Kanashi (3.0) won overall with a pure infra/security project. Security and blockchain-infra projects took 2nd/3rd a few times (stegasaurus, EDU.IO, Ptolemy).\n\nIn the 10.0-12.0 galleries, 30 submissions matched compute/infra keywords and 8 won anything, almost all sponsor prizes: Duck Duck Goose (AppLovin), Krates and Brydge (YC track), Argus (Conway), plus Curserve (Rust agentic-coding server engine, Crater). None were overall winners.",
+    "source": "C:\\Users\\operator\\AppData\\Local\\Temp\\claude\\C--\\33c9e5b2-ade6-449a-b9ce-e5e801ae75aa\\scratchpad\\calhacks\\galleries\\infra_hits.txt ; https://devpost.com/software/krates ; https://devpost.com/software/curserve"
+   },
+   {
+    "point": "Direct prior art: pooled or distributed compute has been pitched at Cal Hacks and won nothing:\n- Airpool (11.0): decentralized network sharing unused GPUs and CPUs.\n- HPC: High Phone Computing (11.0): distributed training on iPhones.\n- latentra (12.0): 'Turn college campuses into AI supercomputers', pooling idle laptops via LocalAI P2P with an Electron app and a credits system. This is nearly identical in framing to Hypercompute.\n- Also unplaced at 12.0: Suchi (AI compute scheduler), InferX (pruning/SVD/quantization speedups) and 'AWS Annapurna LLM-Ops' (an inference stack built around Annapurna).\n- Outside Cal Hacks, Roko (a Petals swarm across laptops) got only honorable mentions or bronze at LIVE AI Ivy Plus 2025, and admitted high latency.\nJudges have heard 'pool idle machines' before. What none of these showed was a model that provably cannot run on one machine, running live with hard numbers.",
+    "source": "https://devpost.com/software/latentra ; https://devpost.com/software/airpool ; https://devpost.com/software/hpc-high-phone-computing ; https://devpost.com/software/suchi ; https://devpost.com/software/inferx ; https://devpost.com/software/production-llm-inference-with-production-observability-stack ; https://devpost.com/software/roko-bhtl5p"
+   },
+   {
+    "point": "Demo and judging format:\n- 2015 onward: expo-style table judging.\n- 11.0/12.0: 2 minutes to pitch plus 2 of Q&A; table number required; Devpost entry needs an image and GitHub repo; 12.0 required a locally stored recorded demo video.\n- 13.0: 3 minutes plus 2 of Q&A, with a pre-recorded or live demo, plus a Devpost video for sponsors who judge asynchronously.\n- A final judging round has sponsors listen to pitches and ask questions before choosing winners.\n- Judging criteria were Application, Functionality/Quality, Creativity and Technical Complexity in 10.0-12.0. 13.0 adds Intentionality and asks for 'a live demo that runs smoothly' plus 'engineering depth beyond basic implementation'.",
+    "source": "https://cal-hacks-13-0.devpost.com/ ; https://cal-hacks-12-0.devpost.com/ ; https://cal-hacks-11-0.devpost.com/ ; https://www.dailycal.org/news/campus/world-s-largest-collegiate-hackathon-thousands-of-students-join-12th-annual-cal-hacks/article_9eddbcfc-e3ae-4226-aba0-9a77ea9b8f4f.html"
+   },
+   {
+    "point": "Eligibility blocker for Cal Hacks 13.0, which is happening now.\n- Dates: Oct 23-25, 2026 at the Palace of Fine Arts. Hard submission deadline Oct 25 at 9:00 AM PDT; hackers must be at the venue by 8 AM.\n- Who can submit: only accepted, checked-in hackers. Applications closed Sept 20 and there are no walk-ins. College students or new grads under 1 year; teams of 2-4 on Devpost (the FAQ says up to 4).\n- The FAQ says: 'You cannot work on a project you started before the hackathon. Ideation before the hackathon is allowed, but all implementation must occur during the hackathon.' The Devpost page says: 'All work must be done during the hackathon.'\nSo the existing Hypercompute branch (codex/iroh-transport, PR #3) and its prior benchmark runs cannot be presented as the Cal Hacks build. Unlike 4.0 (2017) and hack:now (2020), 13.0 has no continuation track.",
+    "source": "https://www.calhacks.io/ ; https://cal-hacks-13-0.devpost.com/"
+   },
+   {
+    "point": "Cal Hacks 13.0 prize fit for a systems project (presenting sponsors: Anthropic, Annapurna Labs, SpacetimeDB, Hyphenate; $159,822 total):\n- Best fits: Cal Hacks 'Most Technically Complex Hack' (new), 'Best Solo Hack' (new), 'Hacker's Choice', and MLH 'Best Use of Vultr' (cloud GPUs, 'infrastructure no longer the bottleneck').\n- No Annapurna or Trainium prize appears on the 13.0 Devpost prize list. Runpod and ASUS are listed as sponsors or partners without Devpost prizes.\n- Large cash tracks are finance or agent focused: Hyphenate $16k, Convex $5k, Visa $5k, Mana $5k, Anthropic Claude for Public Benefit $4,998.\n- 1st Overall is $3,600 plus a MacBook Air or Framework laptop per member.",
+    "source": "https://cal-hacks-13-0.devpost.com/ ; https://www.calhacks.io/"
+   },
+   {
+    "point": "Framing 'problem speed' against what Cal Hacks rewards. Judges rewarded one clear multiplier against a stated baseline: Duck Duck Goose's '~1300x (45 s to 30 ms)' won $10k.\n\nThe brief's Kimi-K2.6 1T numbers support leading with prompt/prefill speed and time-to-answer:\n- Pooled prefill 3.30 vs 2.19 tok/s alone (1.51x faster).\n- SSD paging 254 vs 671 MiB/token (2.6x less).\n- But pooled decode is slower (1.54 vs 1.80 tok/s, about -14%). Overclaiming end-to-end speed would not survive 2 minutes of Q&A.\n\nAt these rates, even a short answer from the 1T model takes tens of seconds to minutes inside a 3-minute pitch slot. Recent winners all demoed in real time. A pre-recorded run of the 1T model, alongside a fast live path, matches what past winners did: video fallbacks and hardcoded demos.",
+    "source": "Brief-provided results (results/capacity/paper-2026-10-24/summary_kimi_gx.md, not re-verified here) ; https://devpost.com/software/duck-duck-goose-jelxr9 ; https://blog.dylanlu.com/cal-hacks-12/"
+   },
+   {
+    "point": "Raw data for the parent workflow:\n- Per-edition winner JSON (name, tagline, prizes, team members and size, built-with, links, other events): C:\\Users\\operator\\AppData\\Local\\Temp\\claude\\C--\\33c9e5b2-ade6-449a-b9ce-e5e801ae75aa\\scratchpad\\calhacks\\data\\ (calhacks.json = 1.0, cal-hacks2, calhacks3, calhacks4, cal-hacks-6, cal-hacks-8, calhacks90, cal-hacks-10, cal-hacks-11-0, cal-hacks-12-0, plus 4 AI Hackathon files). hack:now is in ...\\scratchpad\\calhacks\\data2\\hack-now.json.\n- Every 10.0-12.0 submission with a winner flag: ...\\scratchpad\\calhacks\\galleries\\.\n- Scraper scripts: ...\\scratchpad\\scripts\\devpost_winners.py, gallery_dump.py and desc.py.",
+    "source": "local scratchpad files"
+   }
+  ]
+ }
+}

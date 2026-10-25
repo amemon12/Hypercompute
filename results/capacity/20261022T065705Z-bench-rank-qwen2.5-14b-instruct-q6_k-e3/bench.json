@@ -1,0 +1,148 @@
+{
+  "schema": "hypercompute.capacity.bench/1",
+  "status": "dry_run",
+  "started_at": "2026-10-22T06:57:05.037629+00:00",
+  "finished_at": "2026-10-22T06:57:05.662249+00:00",
+  "case": {
+    "label": "rank-qwen2.5-14b-instruct-q6_k-e3",
+    "model_paths": [
+      "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-14b-instruct-q6_k\\qwen2.5-14b-instruct-q6_k-00001-of-00004.gguf",
+      "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-14b-instruct-q6_k\\qwen2.5-14b-instruct-q6_k-00002-of-00004.gguf",
+      "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-14b-instruct-q6_k\\qwen2.5-14b-instruct-q6_k-00003-of-00004.gguf",
+      "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-14b-instruct-q6_k\\qwen2.5-14b-instruct-q6_k-00004-of-00004.gguf"
+    ],
+    "engine": {
+      "devices": [
+        "CUDA0"
+      ],
+      "tensor_split": [
+        46
+      ],
+      "ngl": 46,
+      "ctx": 2048,
+      "threads": 12,
+      "load_mode": "none",
+      "flags": [
+        "--no-host",
+        "--no-repack",
+        "--cache-ram",
+        "0"
+      ]
+    },
+    "stream": null,
+    "rpc_endpoints": [],
+    "rpc_path_class": "local"
+  },
+  "workload": {
+    "prompt": "You are a careful assistant. Explain, in plain sentences, why a laptop that reads part of a language model from its SSD for every token is slower than one that keeps every layer in memory, and what changes when a second computer with spare memory joins over a network.",
+    "prompt_tokens": 512,
+    "output_tokens": 64,
+    "reps": 3,
+    "warmup": 1,
+    "reuse_output_tokens": 1,
+    "seed": 7,
+    "temperature": 0.0,
+    "top_k": 1,
+    "request_timeout_s": 1800,
+    "load_timeout_s": 900
+  },
+  "host": {
+    "system": "Windows",
+    "release": "11",
+    "version": "10.0.26200",
+    "machine": "AMD64",
+    "processor": "AMD64 Family 26 Model 36 Stepping 0, AuthenticAMD",
+    "python": "3.12.10",
+    "cpu_logical": 24,
+    "cpu_physical": 12,
+    "ram_total_bytes": 33412722688,
+    "ram_available_bytes": 10852483072,
+    "power": {
+      "source": "battery",
+      "percent": 28,
+      "via": "psutil.sensors_battery"
+    }
+  },
+  "llama_cpp": {},
+  "model": {
+    "model_id": "qwen2.5-14b-instruct-q6_k",
+    "shards": [
+      {
+        "path": "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-14b-instruct-q6_k\\qwen2.5-14b-instruct-q6_k-00001-of-00004.gguf",
+        "size": 3985204096,
+        "mtime_ns": 1792556797516648800
+      },
+      {
+        "path": "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-14b-instruct-q6_k\\qwen2.5-14b-instruct-q6_k-00002-of-00004.gguf",
+        "size": 3945074624,
+        "mtime_ns": 1792556921432872800
+      },
+      {
+        "path": "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-14b-instruct-q6_k\\qwen2.5-14b-instruct-q6_k-00003-of-00004.gguf",
+        "size": 3497613920,
+        "mtime_ns": 1792557019130472400
+      },
+      {
+        "path": "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-14b-instruct-q6_k\\qwen2.5-14b-instruct-q6_k-00004-of-00004.gguf",
+        "size": 696791424,
+        "mtime_ns": 1792557044614693500
+      }
+    ],
+    "bytes": 12124684064,
+    "fingerprint": "b880ec42c440b27ccdeada26be0d201f59c6ad57ea8dcd2a3b95aa52ba7541b3",
+    "architecture": "qwen2",
+    "file_type": "Q6_K",
+    "n_layer": 48
+  },
+  "preflight": {
+    "port": 62429,
+    "port_listener": null,
+    "available_ram_bytes": 10869911552,
+    "predicted": {
+      "total_bytes": 1878302720,
+      "parts": [
+        [
+          "cpu unit weights",
+          677597184
+        ],
+        [
+          "token_embd",
+          638668800
+        ],
+        [
+          "kv cache (cpu blocks)",
+          25165824
+        ],
+        [
+          "compute prior",
+          536870912
+        ]
+      ],
+      "provenance": "estimate"
+    },
+    "free_disk_bytes": 45435105280,
+    "disk_path": "C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity"
+  },
+  "refused": [],
+  "launch": {},
+  "load": null,
+  "reps": [],
+  "summary": {
+    "n_reps": 0,
+    "n_warmup": 0,
+    "n_reps_ok": 0,
+    "metrics": {},
+    "failures": []
+  },
+  "stop": {},
+  "error": null,
+  "provenance": {
+    "load, reps, summary": "measured on this host during this run",
+    "preflight.predicted": "estimate: GGUF unit sizes plus KV sizing plus a compute prior, used only to refuse a run",
+    "ttft_ms": "measured client side over loopback with streaming; no gateway in the path",
+    "gpu": "nvidia-smi snapshot after the uncached phase, not a peak",
+    "decode_tok_s": "(predicted_n - 1) / predicted_ms from engine timings, the engine's own predicted_per_second",
+    "*_read_bytes_per_token": "all reads of the uncached phase (prefill and decode) over predicted_n",
+    "hcstream_bytes_per_pass": "hcstream bytes_read over its forward-pass count (decode bytes per token)"
+  }
+}

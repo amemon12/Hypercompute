@@ -1,0 +1,877 @@
+{
+  "started_at": "2026-10-21T10:56:35.943294+00:00",
+  "args": {
+    "port": 8000,
+    "model": "qwen2.5-7b-instruct-awq",
+    "strategy": "local_only",
+    "node": null,
+    "engine": "vllm",
+    "objective": "throughput",
+    "ctx": 4096,
+    "prompt": "Name three planets and one fact about each, briefly.",
+    "bench": true,
+    "reps": 3,
+    "keep": true,
+    "label": "gw-vllm-awq"
+  },
+  "nodes": [
+    {
+      "id": "local",
+      "display_name": "benchmark-host (this machine)",
+      "is_local": true,
+      "session_id": null,
+      "state": "eligible",
+      "state_reason": null,
+      "joined_at": "2026-10-21T10:38:32.499671Z",
+      "last_heartbeat_at": "2026-10-21T10:56:25.263529Z",
+      "heartbeat_age_s": 0.0,
+      "inventory": {
+        "hostname": "benchmark-host",
+        "os": {
+          "system": "windows",
+          "release": "11",
+          "version": "10.0.26200",
+          "machine": "x86_64"
+        },
+        "cpu": {
+          "model": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+          "physical_cores": 12,
+          "logical_cores": 24
+        },
+        "memory_pools": [
+          {
+            "id": "ram",
+            "kind": "system_ram",
+            "total_bytes": 33412722688,
+            "free_bytes": 16576573440,
+            "measured_at": "2026-10-21T10:56:24.510260Z",
+            "source": "psutil",
+            "note": null
+          },
+          {
+            "id": "vram:CUDA0",
+            "kind": "discrete_vram",
+            "total_bytes": 12820938752,
+            "free_bytes": 12524191744,
+            "measured_at": "2026-10-21T10:56:25.263529Z",
+            "source": "nvidia-smi",
+            "note": null
+          }
+        ],
+        "devices": [
+          {
+            "id": "CPU",
+            "kind": "cpu",
+            "name": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+            "vendor": null,
+            "pool_id": "ram",
+            "backend": "cpu",
+            "total_bytes": null,
+            "free_bytes": null,
+            "driver_version": null,
+            "compute_capability": null,
+            "source": "cpu model probe"
+          },
+          {
+            "id": "CUDA0",
+            "kind": "gpu",
+            "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+            "vendor": "NVIDIA",
+            "pool_id": "vram:CUDA0",
+            "backend": "cuda",
+            "total_bytes": 12820938752,
+            "free_bytes": 12524191744,
+            "driver_version": "591.84",
+            "compute_capability": "12.0",
+            "source": "nvidia-smi"
+          },
+          {
+            "id": "AMD Radeon(TM) 890M Graphics",
+            "kind": "igpu",
+            "name": "AMD Radeon(TM) 890M Graphics",
+            "vendor": null,
+            "pool_id": "ram",
+            "backend": "unknown",
+            "total_bytes": null,
+            "free_bytes": null,
+            "driver_version": "32.0.13062.3005",
+            "compute_capability": null,
+            "source": "Win32_VideoController (AdapterRAM not trusted)"
+          }
+        ],
+        "disk_free_bytes": 23626670080,
+        "network": [
+          {
+            "name": "Ethernet",
+            "ipv4": [
+              "192.168.56.1"
+            ],
+            "is_up": true,
+            "speed_mbps": 1000,
+            "kind": "virtual"
+          },
+          {
+            "name": "Wi-Fi 3",
+            "ipv4": [
+              "169.254.150.175"
+            ],
+            "is_up": false,
+            "speed_mbps": null,
+            "kind": "wifi"
+          },
+          {
+            "name": "Wi-Fi 5",
+            "ipv4": [
+              "169.254.129.29"
+            ],
+            "is_up": false,
+            "speed_mbps": null,
+            "kind": "wifi"
+          },
+          {
+            "name": "Wi-Fi",
+            "ipv4": [
+              "10.4.6.255"
+            ],
+            "is_up": true,
+            "speed_mbps": 573,
+            "kind": "wifi"
+          },
+          {
+            "name": "Bluetooth Network Connection",
+            "ipv4": [
+              "169.254.85.255"
+            ],
+            "is_up": false,
+            "speed_mbps": 3,
+            "kind": "other"
+          },
+          {
+            "name": "vEthernet (WSL (Hyper-V firewall))",
+            "ipv4": [
+              "172.18.48.1"
+            ],
+            "is_up": true,
+            "speed_mbps": 4294,
+            "kind": "virtual"
+          },
+          {
+            "name": "Loopback Pseudo-Interface 1",
+            "ipv4": [
+              "127.0.0.1"
+            ],
+            "is_up": true,
+            "speed_mbps": 1073,
+            "kind": "loopback"
+          }
+        ],
+        "engine": {
+          "engine": "llama_rpc",
+          "installed": true,
+          "release": "b11770",
+          "build_number": 11770,
+          "commit": "39da130fc",
+          "rpc_proto": "8.0.0",
+          "variant": "windows-x64-cuda13.4",
+          "accelerator": "cuda",
+          "bin_dir": "C:\\Users\\operator\\.hypercompute\\engines\\llama-b11770-windows-x64-cuda13.4",
+          "smoke": "passed",
+          "smoke_detail": "version: 0.7.0-dev (build 11770, commit 39da130fc); devices: CUDA0",
+          "devices": [
+            {
+              "name": "CUDA0",
+              "description": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+              "total_bytes": 12819890176,
+              "free_bytes": 11561598976
+            }
+          ]
+        },
+        "collected_at": "2026-10-21T10:38:32.466990Z",
+        "diagnostics": [
+          {
+            "level": "warning",
+            "code": "windows_public_network",
+            "message": "Network 'Wi-Fi' uses the Windows Public profile; inbound connections to the worker are blocked by default.",
+            "fix": "Allow ggml-rpc-server.exe when Windows asks, or add the scoped firewall rule that `hypercompute join` prints."
+          }
+        ],
+        "extra_engines": [
+          {
+            "engine": "airllm",
+            "installed": true,
+            "status": "installed",
+            "version": "bc47e0d474abf03f491f7547085bd85a2c6f0b1b",
+            "endpoint": null,
+            "detail": "torch 2.11.0+cu128 on cuda:0 (NVIDIA GeForce RTX 5070 Ti Laptop GPU); disk capacity mode, seconds to minutes per token"
+          },
+          {
+            "engine": "vllm",
+            "installed": true,
+            "status": "installed",
+            "version": "0.32.0",
+            "endpoint": null,
+            "detail": "vLLM 0.32.0 (torch 2.13.0+cu130) in WSL2 distro Ubuntu, NVIDIA GeForce RTX 5070 Ti Laptop GPU sm_120, venv /home/operator/.hypercompute-vllm/venv"
+          },
+          {
+            "engine": "exo",
+            "installed": false,
+            "status": "unsupported",
+            "version": null,
+            "endpoint": null,
+            "detail": "EXO cannot run on Windows (it imports the Unix-only `resource` module and supports only darwin/linux environments); this machine serves through llama.cpp"
+          }
+        ]
+      },
+      "contribution": {
+        "devices": [
+          "CUDA0"
+        ],
+        "max_bytes": 12284067840,
+        "reserve_bytes": 6682544537,
+        "enforcement": "soft_admission",
+        "cache_enabled": false
+      },
+      "worker": null,
+      "worker_state": null,
+      "worker_cpu_seconds": null,
+      "verification": null,
+      "deployments": []
+    },
+    {
+      "id": "4c2991743c154be896d10a0b53ba4d2b",
+      "display_name": "Azims-MacBook-Air-5.local",
+      "is_local": false,
+      "session_id": "0c95bfad85b34757afe1637662658d8c",
+      "state": "stale",
+      "state_reason": "gateway restarted; waiting for heartbeat",
+      "joined_at": "2026-10-21T04:32:17.488212Z",
+      "last_heartbeat_at": "2026-10-21T05:29:34.143827Z",
+      "heartbeat_age_s": 19621.799467,
+      "inventory": {
+        "hostname": "Azims-MacBook-Air-5.local",
+        "os": {
+          "system": "macos",
+          "release": "26.6.2",
+          "version": "Darwin Kernel Version 25.6.0: Fri Jul 31 19:11:03 PDT 2026; root:xnu-12377.161.14~5/RELEASE_ARM64_T8132",
+          "machine": "arm64"
+        },
+        "cpu": {
+          "model": "Apple M4",
+          "physical_cores": 10,
+          "logical_cores": 10
+        },
+        "memory_pools": [
+          {
+            "id": "uma",
+            "kind": "unified",
+            "total_bytes": 17179869184,
+            "free_bytes": 6753796096,
+            "measured_at": "2026-10-21T05:29:33.936713Z",
+            "source": "sysctl hw.memsize + psutil",
+            "note": "CPU and GPU share this pool; counted once"
+          }
+        ],
+        "devices": [
+          {
+            "id": "CPU",
+            "kind": "cpu",
+            "name": "Apple M4",
+            "vendor": "Apple",
+            "pool_id": "uma",
+            "backend": "cpu",
+            "total_bytes": null,
+            "free_bytes": null,
+            "driver_version": null,
+            "compute_capability": null,
+            "source": "sysctl machdep.cpu.brand_string"
+          },
+          {
+            "id": "MTL0",
+            "kind": "gpu",
+            "name": "Apple M4 (10-core GPU)",
+            "vendor": "Apple",
+            "pool_id": "uma",
+            "backend": "metal",
+            "total_bytes": 12712935424,
+            "free_bytes": 12711886848,
+            "driver_version": null,
+            "compute_capability": null,
+            "source": "llama-server --list-devices (Metal working-set)"
+          }
+        ],
+        "disk_free_bytes": 42038693888,
+        "network": [
+          {
+            "name": "lo0",
+            "ipv4": [
+              "127.0.0.1"
+            ],
+            "is_up": true,
+            "speed_mbps": null,
+            "kind": "loopback"
+          },
+          {
+            "name": "en0",
+            "ipv4": [
+              "10.19.252.207"
+            ],
+            "is_up": true,
+            "speed_mbps": null,
+            "kind": "ethernet"
+          },
+          {
+            "name": "en68",
+            "ipv4": [
+              "169.254.134.162"
+            ],
+            "is_up": true,
+            "speed_mbps": 100,
+            "kind": "ethernet"
+          },
+          {
+            "name": "anpi0",
+            "ipv4": [],
+            "is_up": true,
+            "speed_mbps": 100,
+            "kind": "other"
+          },
+          {
+            "name": "anpi1",
+            "ipv4": [],
+            "is_up": true,
+            "speed_mbps": null,
+            "kind": "other"
+          },
+          {
+            "name": "en3",
+            "ipv4": [],
+            "is_up": true,
+            "speed_mbps": 100,
+            "kind": "ethernet"
+          },
+          {
+            "name": "en4",
+            "ipv4": [],
+            "is_up": true,
+            "speed_mbps": null,
+            "kind": "ethernet"
+          },
+          {
+            "name": "en1",
+            "ipv4": [],
+            "is_up": true,
+            "speed_mbps": null,
+            "kind": "ethernet"
+          },
+          {
+            "name": "en2",
+            "ipv4": [],
+            "is_up": true,
+            "speed_mbps": null,
+            "kind": "ethernet"
+          },
+          {
+            "name": "bridge0",
+            "ipv4": [],
+            "is_up": true,
+            "speed_mbps": null,
+            "kind": "virtual"
+          },
+          {
+            "name": "ap1",
+            "ipv4": [],
+            "is_up": true,
+            "speed_mbps": null,
+            "kind": "other"
+          },
+          {
+            "name": "awdl0",
+            "ipv4": [],
+            "is_up": true,
+            "speed_mbps": null,
+            "kind": "virtual"
+          },
+          {
+            "name": "llw0",
+            "ipv4": [],
+            "is_up": true,
+            "speed_mbps": null,
+            "kind": "virtual"
+          },
+          {
+            "name": "en6",
+            "ipv4": [],
+            "is_up": true,
+            "speed_mbps": null,
+            "kind": "ethernet"
+          },
+          {
+            "name": "en70",
+            "ipv4": [],
+            "is_up": false,
+            "speed_mbps": null,
+            "kind": "ethernet"
+          },
+          {
+            "name": "en8",
+            "ipv4": [],
+            "is_up": true,
+            "speed_mbps": null,
+            "kind": "ethernet"
+          },
+          {
+            "name": "utun0",
+            "ipv4": [],
+            "is_up": true,
+            "speed_mbps": null,
+            "kind": "virtual"
+          },
+          {
+            "name": "utun1",
+            "ipv4": [],
+            "is_up": true,
+            "speed_mbps": null,
+            "kind": "virtual"
+          },
+          {
+            "name": "utun2",
+            "ipv4": [],
+            "is_up": true,
+            "speed_mbps": null,
+            "kind": "virtual"
+          },
+          {
+            "name": "utun3",
+            "ipv4": [],
+            "is_up": true,
+            "speed_mbps": null,
+            "kind": "virtual"
+          },
+          {
+            "name": "utun4",
+            "ipv4": [],
+            "is_up": true,
+            "speed_mbps": null,
+            "kind": "virtual"
+          },
+          {
+            "name": "utun5",
+            "ipv4": [],
+            "is_up": true,
+            "speed_mbps": null,
+            "kind": "virtual"
+          },
+          {
+            "name": "utun6",
+            "ipv4": [],
+            "is_up": true,
+            "speed_mbps": null,
+            "kind": "virtual"
+          }
+        ],
+        "engine": {
+          "engine": "llama_rpc",
+          "installed": true,
+          "release": "b11770",
+          "build_number": 11770,
+          "commit": "39da130fc",
+          "rpc_proto": "8.0.0",
+          "variant": "macos-arm64",
+          "accelerator": "metal",
+          "bin_dir": "/Users/azimmemon/.hypercompute/engines/llama-b11770-macos-arm64/llama-b11770",
+          "smoke": "passed",
+          "smoke_detail": "version: 0.7.0-dev (build 11770, commit 39da130fc); devices: MTL0, BLAS",
+          "devices": [
+            {
+              "name": "MTL0",
+              "description": "Apple M4",
+              "total_bytes": 12712935424,
+              "free_bytes": 12711886848
+            },
+            {
+              "name": "BLAS",
+              "description": "Accelerate",
+              "total_bytes": 0,
+              "free_bytes": 0
+            }
+          ]
+        },
+        "collected_at": "2026-10-21T04:32:13.675578Z",
+        "diagnostics": [],
+        "extra_engines": []
+      },
+      "contribution": {
+        "devices": [
+          "MTL0"
+        ],
+        "max_bytes": 10737418240,
+        "reserve_bytes": 4294967296,
+        "enforcement": "soft_admission",
+        "cache_enabled": true
+      },
+      "worker": {
+        "host": "10.19.252.207",
+        "port": 47052
+      },
+      "worker_state": "running",
+      "worker_cpu_seconds": 22.436584447999998,
+      "verification": {
+        "checked_at": "2026-10-21T04:43:39.064604Z",
+        "reachable": true,
+        "engine_match": true,
+        "rpc_devices": [
+          {
+            "name": "RPC0",
+            "description": "10.19.252.207:47052",
+            "total_bytes": 12712935424,
+            "free_bytes": 12711886848
+          }
+        ],
+        "detail": "worker answered the llama.cpp RPC handshake; llama.cpp b11770, RPC 8.0.0",
+        "fix": null
+      },
+      "deployments": []
+    }
+  ],
+  "plan": {
+    "id": "a9eee53cbc3246828067ab00188feb30",
+    "model_id": "qwen2.5-7b-instruct-awq",
+    "strategy": "local_only",
+    "ctx_size": 4096,
+    "feasible": true,
+    "fit_label": "estimated_fit",
+    "heuristic": true,
+    "assignments": [
+      {
+        "node_id": "local",
+        "device": "CUDA0",
+        "endpoint": null,
+        "pool_id": "vram:CUDA0",
+        "layers": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27
+        ],
+        "holds_output": true,
+        "weight_bytes": 5570829760,
+        "kv_bytes": 4229192994,
+        "compute_bytes_est": 1610612736,
+        "overhead_bytes_est": 0,
+        "total_bytes_est": 11410635490,
+        "budget_bytes": 11450449920,
+        "fits": true
+      }
+    ],
+    "device_list": [],
+    "tensor_split": [],
+    "rpc_endpoints": [],
+    "cpu_resident_bytes": 0,
+    "reasons": [
+      "vLLM 0.32.0 on CUDA0 (NVIDIA GeForce RTX 5070 Ti Laptop GPU): needs ~6.9 GiB (5.2 GiB weights + 224 MiB KV for 4096 tokens + 1.5 GiB runtime) of 10.6 GiB reserved at --gpu-memory-utilization 0.89 (11.7 GiB of 11.9 GiB free now)"
+    ],
+    "warnings": [
+      "vLLM downloads Qwen/Qwen2.5-7B-Instruct-AWQ at revision b25037543e93 itself, inside WSL2 (Ubuntu), into /home/operator/.hypercompute-vllm/hf on the first start (~5.2 GiB; C: (holds WSL2 distro Ubuntu's virtual disk) has 22.0 GiB free); later starts reuse it. The first start also compiles CUDA graphs and kernels, so expect several minutes."
+    ],
+    "candidates": [
+      {
+        "label": "vLLM on this machine's GPU",
+        "devices": [
+          "local:CUDA0"
+        ],
+        "feasible": true,
+        "reason": "estimated fit"
+      }
+    ],
+    "created_at": "2026-10-21T10:56:36.029276Z",
+    "engine": "vllm",
+    "tier": "gpu",
+    "cpu_layers": 0,
+    "n_gpu_units": null,
+    "engine_flags": {},
+    "engine_options": {
+      "engine": "vllm",
+      "version": "0.32.0",
+      "pin": "vllm==0.32.0 torch==2.13.0+cu130",
+      "platform": "wsl2",
+      "distro": "Ubuntu",
+      "model": "Qwen/Qwen2.5-7B-Instruct-AWQ",
+      "revision": "b25037543e9394b818fdfca67ab2a00ecc7dd641",
+      "served_model_name": "qwen2.5-7b-instruct-awq",
+      "device": "CUDA0",
+      "gpu_index": 0,
+      "gpu_name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+      "port": 60929,
+      "gpu_memory_utilization": 0.89,
+      "max_model_len": 4096,
+      "max_num_seqs": 16,
+      "need_bytes": 7416323520,
+      "reserved_bytes": 11410635490,
+      "kv_bytes_per_token": 57344,
+      "kv_basis": "28 layers x 4 KV heads x 128 dims, fp16 K and V",
+      "hf_home": "/home/operator/.hypercompute-vllm/hf",
+      "engine_managed": true,
+      "args": [
+        "serve",
+        "Qwen/Qwen2.5-7B-Instruct-AWQ",
+        "--revision",
+        "b25037543e9394b818fdfca67ab2a00ecc7dd641",
+        "--served-model-name",
+        "qwen2.5-7b-instruct-awq",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "60929",
+        "--gpu-memory-utilization",
+        "0.89",
+        "--max-model-len",
+        "4096",
+        "--max-num-seqs",
+        "16",
+        "--generation-config",
+        "vllm",
+        "--disable-uvicorn-access-log"
+      ],
+      "env": {
+        "HF_HOME": "/home/operator/.hypercompute-vllm/hf",
+        "PYTHONUNBUFFERED": "1",
+        "CUDA_DEVICE_ORDER": "PCI_BUS_ID",
+        "CUDA_VISIBLE_DEVICES": "0",
+        "VLLM_API_KEY": "<per-deployment key, set at launch>"
+      },
+      "download_bytes": 5570829760,
+      "disk_free_bytes": 23648325632
+    },
+    "profile_id": null,
+    "capacity_mode": false
+  },
+  "load_seconds": 97.64,
+  "deployment": {
+    "id": "14cb336239164b93a6f60f56898064c0",
+    "plan": {
+      "id": "a9eee53cbc3246828067ab00188feb30",
+      "model_id": "qwen2.5-7b-instruct-awq",
+      "strategy": "local_only",
+      "ctx_size": 4096,
+      "feasible": true,
+      "fit_label": "estimated_fit",
+      "heuristic": true,
+      "assignments": [
+        {
+          "node_id": "local",
+          "device": "CUDA0",
+          "endpoint": null,
+          "pool_id": "vram:CUDA0",
+          "layers": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27
+          ],
+          "holds_output": true,
+          "weight_bytes": 5570829760,
+          "kv_bytes": 4229192994,
+          "compute_bytes_est": 1610612736,
+          "overhead_bytes_est": 0,
+          "total_bytes_est": 11410635490,
+          "budget_bytes": 11450449920,
+          "fits": true
+        }
+      ],
+      "device_list": [],
+      "tensor_split": [],
+      "rpc_endpoints": [],
+      "cpu_resident_bytes": 0,
+      "reasons": [
+        "vLLM 0.32.0 on CUDA0 (NVIDIA GeForce RTX 5070 Ti Laptop GPU): needs ~6.9 GiB (5.2 GiB weights + 224 MiB KV for 4096 tokens + 1.5 GiB runtime) of 10.6 GiB reserved at --gpu-memory-utilization 0.89 (11.7 GiB of 11.9 GiB free now)"
+      ],
+      "warnings": [
+        "vLLM downloads Qwen/Qwen2.5-7B-Instruct-AWQ at revision b25037543e93 itself, inside WSL2 (Ubuntu), into /home/operator/.hypercompute-vllm/hf on the first start (~5.2 GiB; C: (holds WSL2 distro Ubuntu's virtual disk) has 22.0 GiB free); later starts reuse it. The first start also compiles CUDA graphs and kernels, so expect several minutes."
+      ],
+      "candidates": [
+        {
+          "label": "vLLM on this machine's GPU",
+          "devices": [
+            "local:CUDA0"
+          ],
+          "feasible": true,
+          "reason": "estimated fit"
+        }
+      ],
+      "created_at": "2026-10-21T10:56:36.029276Z",
+      "engine": "vllm",
+      "tier": "gpu",
+      "cpu_layers": 0,
+      "n_gpu_units": null,
+      "engine_flags": {},
+      "engine_options": {
+        "engine": "vllm",
+        "version": "0.32.0",
+        "pin": "vllm==0.32.0 torch==2.13.0+cu130",
+        "platform": "wsl2",
+        "distro": "Ubuntu",
+        "model": "Qwen/Qwen2.5-7B-Instruct-AWQ",
+        "revision": "b25037543e9394b818fdfca67ab2a00ecc7dd641",
+        "served_model_name": "qwen2.5-7b-instruct-awq",
+        "device": "CUDA0",
+        "gpu_index": 0,
+        "gpu_name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+        "port": 60929,
+        "gpu_memory_utilization": 0.89,
+        "max_model_len": 4096,
+        "max_num_seqs": 16,
+        "need_bytes": 7416323520,
+        "reserved_bytes": 11410635490,
+        "kv_bytes_per_token": 57344,
+        "kv_basis": "28 layers x 4 KV heads x 128 dims, fp16 K and V",
+        "hf_home": "/home/operator/.hypercompute-vllm/hf",
+        "engine_managed": true,
+        "args": [
+          "serve",
+          "Qwen/Qwen2.5-7B-Instruct-AWQ",
+          "--revision",
+          "b25037543e9394b818fdfca67ab2a00ecc7dd641",
+          "--served-model-name",
+          "qwen2.5-7b-instruct-awq",
+          "--host",
+          "127.0.0.1",
+          "--port",
+          "60929",
+          "--gpu-memory-utilization",
+          "0.89",
+          "--max-model-len",
+          "4096",
+          "--max-num-seqs",
+          "16",
+          "--generation-config",
+          "vllm",
+          "--disable-uvicorn-access-log"
+        ],
+        "env": {
+          "HF_HOME": "/home/operator/.hypercompute-vllm/hf",
+          "PYTHONUNBUFFERED": "1",
+          "CUDA_DEVICE_ORDER": "PCI_BUS_ID",
+          "CUDA_VISIBLE_DEVICES": "0",
+          "VLLM_API_KEY": "<per-deployment key, set at launch>"
+        },
+        "download_bytes": 5570829760,
+        "disk_free_bytes": 23648325632
+      },
+      "profile_id": null,
+      "capacity_mode": false
+    },
+    "state": "failed",
+    "history": [
+      {
+        "state": "planned",
+        "at": "2026-10-21T10:56:36.045986Z",
+        "detail": null
+      },
+      {
+        "state": "reserving",
+        "at": "2026-10-21T10:56:36.046435Z",
+        "detail": null
+      },
+      {
+        "state": "preparing",
+        "at": "2026-10-21T10:56:36.046435Z",
+        "detail": "re-checking peers and model file"
+      },
+      {
+        "state": "loading",
+        "at": "2026-10-21T10:56:36.095898Z",
+        "detail": "starting vLLM server"
+      },
+      {
+        "state": "failed",
+        "at": "2026-10-21T10:58:13.362934Z",
+        "detail": "vLLM failed to start: less GPU memory was free than --gpu-memory-utilization reserves ((EngineCore pid=609) INFO 10-21 03:57:41 [gpu_worker.py:1034] Free memory on device (10.77/11.94 GiB) on startup. Desired GPU memory utilization is (0.89, 10.63 GiB). Actual usage is 5.45 GiB for consumed memory (weights + non-torch), 1.06 GiB for peak activation, and 0.03 GiB for CUDAGraph memory. )"
+      }
+    ],
+    "error": "vLLM failed to start: less GPU memory was free than --gpu-memory-utilization reserves ((EngineCore pid=609) INFO 10-21 03:57:41 [gpu_worker.py:1034] Free memory on device (10.77/11.94 GiB) on startup. Desired GPU memory utilization is (0.89, 10.63 GiB). Actual usage is 5.45 GiB for consumed memory (weights + non-torch), 1.06 GiB for peak activation, and 0.03 GiB for CUDAGraph memory. )",
+    "cleanup": "vLLM in WSL (Ubuntu): killed; deployment:14cb336239164b93a6f60f56898064c0 pid 38812: already_exited (exit code 9); released 1 lease(s)",
+    "progress": "warming up",
+    "engine_args": [
+      "wsl.exe",
+      "-d",
+      "Ubuntu",
+      "--",
+      "vllm",
+      "serve",
+      "Qwen/Qwen2.5-7B-Instruct-AWQ",
+      "--revision",
+      "b25037543e9394b818fdfca67ab2a00ecc7dd641",
+      "--served-model-name",
+      "qwen2.5-7b-instruct-awq",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "60929",
+      "--gpu-memory-utilization",
+      "0.89",
+      "--max-model-len",
+      "4096",
+      "--max-num-seqs",
+      "16",
+      "--generation-config",
+      "vllm",
+      "--disable-uvicorn-access-log"
+    ],
+    "upstream_port": 60929,
+    "pid": 38812,
+    "placement": null,
+    "participation_verified": false,
+    "participation_detail": null,
+    "created_at": "2026-10-21T10:56:36.045986Z",
+    "idempotency_key": "62acbef5e37a40e3ae6e0cf39116b022",
+    "purpose": "run"
+  }
+}

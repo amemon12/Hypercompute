@@ -1,0 +1,27 @@
+Google Fonts CSS source:
+https://fonts.googleapis.com/css2?family=Anton&family=Geist:wght@400;500&family=IBM+Plex+Mono:wght@400&display=swap
+
+anton-latin-400.woff2
+https://fonts.gstatic.com/s/anton/v27/1Ptgg87LROyAm3Kz-C8CSKlv.woff2
+
+geist-latin-400-500.woff2
+https://fonts.gstatic.com/s/geist/v5/gyByhwUxId8gMEwcGFWNOITd.woff2
+
+ibm-plex-mono-latin-400.woff2
+https://fonts.gstatic.com/s/ibmplexmono/v20/-F63fjptAgt5VM-kVkqdyU8n1i8q131nj-o.woff2
+
+anton-OFL.txt
+https://raw.githubusercontent.com/google/fonts/main/ofl/anton/OFL.txt
+
+geist-OFL.txt
+https://raw.githubusercontent.com/google/fonts/main/ofl/geist/OFL.txt
+
+ibm-plex-mono-OFL.txt
+https://raw.githubusercontent.com/google/fonts/main/ofl/ibmplexmono/OFL.txt
+
+Geist 400 and 500 use the same official WOFF2 file. No files were visually altered.
+
+Geist Black (900) outline source for the footer wordmark:
+https://fonts.googleapis.com/css2?family=Geist:wght@900&display=swap
+https://fonts.gstatic.com/s/geist/v5/gyBhhwUxId8gMGYQMKR3pzfaWI_RNeQ4nQ.ttf
+Downloaded 2026-10-21. SIL Open Font License; see geist-OFL.txt.

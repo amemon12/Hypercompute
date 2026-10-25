@@ -1,0 +1,101 @@
+{
+ "kind": "link_probe",
+ "tool": "scripts/capacity/probe_link.py",
+ "protocol": "llama.cpp RPC 8.x (b11770)",
+ "endpoint": "127.0.0.1:52110",
+ "path_class": "relay",
+ "node_id": "4c2991743c154be896d10a0b53ba4d2b",
+ "requested": {
+  "bytes": 8388608,
+  "chunk_bytes": 4194304,
+  "samples": 20,
+  "device": 0,
+  "timeout_s": 60.0
+ },
+ "payload": "os.urandom, fresh bytes per chunk, generated before the clock starts; SET_TENSOR cache_flag 0",
+ "ok": true,
+ "error": null,
+ "rtt": {
+  "endpoint": "127.0.0.1:52110",
+  "path_class": "relay",
+  "server_version": [
+   8,
+   0,
+   0
+  ],
+  "device": 0,
+  "samples_ms": [
+   26.143800001591444,
+   41.49259999394417,
+   19.562199944630265,
+   17.437199945561588,
+   17.61460001580417,
+   17.01019995380193,
+   15.86510008201003,
+   20.587699953466654,
+   18.869300023652613,
+   16.853499924764037,
+   17.221400048583746,
+   16.572499996982515,
+   21.81649999693036,
+   16.998100094497204,
+   16.995099955238402,
+   25.064899935387075,
+   16.144199995324016,
+   19.704599981196225,
+   18.219000077806413,
+   17.255299957469106
+  ],
+  "median_ms": 17.52589998068288,
+  "p90_ms": 25.064899935387075,
+  "free_bytes": 12712378368,
+  "total_bytes": 12713115648,
+  "measured_at": "2026-10-22T05:42:44.856308+00:00"
+ },
+ "goodput": {
+  "endpoint": "127.0.0.1:52110",
+  "path_class": "relay",
+  "device": 0,
+  "total_bytes": 8388608,
+  "chunk_bytes": 4194304,
+  "chunks": 2,
+  "elapsed_s": 5.323366199969314,
+  "rtt_subtracted_ms": 17.52589998068288,
+  "transfer_s": 5.305840299988631,
+  "bytes_per_s": 1581014.0384394862,
+  "free_confirmed": true,
+  "measured_at": "2026-10-22T05:42:50.245633+00:00",
+  "payload": "os.urandom, fresh bytes per chunk"
+ },
+ "link_profile": {
+  "path": "relay",
+  "rtt_ms": {
+   "value": 17.52589998068288,
+   "unit": "ms",
+   "provenance": "measured",
+   "measured_at": "2026-10-22T05:42:44.856308+00:00",
+   "samples": 20,
+   "note": "median of 20 GET_DEVICE_MEMORY round trips over llama.cpp RPC 8.0.0 to 127.0.0.1:52110, path class relay; p90 25.065 ms"
+  },
+  "goodput_bytes_per_s": {
+   "value": 1581014.0384394862,
+   "unit": "bytes/s",
+   "provenance": "measured",
+   "measured_at": "2026-10-22T05:42:50.245633+00:00",
+   "samples": 1,
+   "note": "8388608 random bytes in 2 SET_TENSOR chunks to 127.0.0.1:52110, path class relay; bytes / (fence - start - 17.526 ms median RTT)"
+  },
+  "round_trips_per_token": {
+   "value": 2.0,
+   "unit": "round trips",
+   "provenance": "prior",
+   "measured_at": null,
+   "samples": 0,
+   "note": "assumed: 2 RPC exchanges per remote stage per token"
+  }
+ },
+ "stored": [
+  "link.rtt_ms -> C:\\Users\\operator\\.hypercompute\\capacity\\measurements.json",
+  "link.goodput_bytes_per_s -> C:\\Users\\operator\\.hypercompute\\capacity\\measurements.json"
+ ]
+}

@@ -1,0 +1,1006 @@
+{
+  "schema": "hypercompute.capacity.bench/1",
+  "status": "ok",
+  "started_at": "2026-10-22T07:24:47.674521+00:00",
+  "finished_at": "2026-10-22T07:28:51.521439+00:00",
+  "case": {
+    "label": "rank-qwen2.5-7b-instruct-q4_k_m-d",
+    "model_paths": [
+      "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-7b-instruct-q4_k_m\\qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+      "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-7b-instruct-q4_k_m\\qwen2.5-7b-instruct-q4_k_m-00002-of-00002.gguf"
+    ],
+    "engine": {
+      "devices": [],
+      "tensor_split": [],
+      "ngl": 0,
+      "ctx": 2048,
+      "threads": 12,
+      "load_mode": "mmap",
+      "flags": [
+        "--no-repack",
+        "--no-op-offload",
+        "--cache-ram",
+        "0"
+      ]
+    },
+    "stream": {
+      "resident_units": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        28
+      ],
+      "streamed_units": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27
+      ],
+      "slots": 2,
+      "options": {
+        "readers": 4,
+        "chunk_bytes": 8388608,
+        "no_prefetch": true,
+        "on_io_error": "abort",
+        "stats_interval_ms": 500,
+        "fault_read_error_after_bytes": 0,
+        "fault_read_delay_us": 0
+      }
+    },
+    "rpc_endpoints": [],
+    "rpc_path_class": "local"
+  },
+  "workload": {
+    "prompt": "You are a careful assistant. Explain, in plain sentences, why a laptop that reads part of a language model from its SSD for every token is slower than one that keeps every layer in memory, and what changes when a second computer with spare memory joins over a network.",
+    "prompt_tokens": 512,
+    "output_tokens": 64,
+    "reps": 3,
+    "warmup": 1,
+    "reuse_output_tokens": 1,
+    "seed": 7,
+    "temperature": 0.0,
+    "top_k": 1,
+    "request_timeout_s": 1800,
+    "load_timeout_s": 900
+  },
+  "host": {
+    "system": "Windows",
+    "release": "11",
+    "version": "10.0.26200",
+    "machine": "AMD64",
+    "processor": "AMD64 Family 26 Model 36 Stepping 0, AuthenticAMD",
+    "python": "3.12.10",
+    "cpu_logical": 24,
+    "cpu_physical": 12,
+    "ram_total_bytes": 33412722688,
+    "ram_available_bytes": 9110745088,
+    "power": {
+      "source": "ac",
+      "percent": 32,
+      "via": "psutil.sensors_battery"
+    }
+  },
+  "llama_cpp": {
+    "release": "b11770",
+    "variant": "windows-x64-cuda13.4",
+    "accelerator": "cuda",
+    "engine_dir": "C:\\Users\\operator\\.hypercompute\\engines\\llama-b11770-windows-x64-cuda13.4",
+    "source": "pinned-release",
+    "build": 11770,
+    "commit": "39da130fc",
+    "build_source": "llama-server log"
+  },
+  "model": {
+    "model_id": "qwen2.5-7b-instruct-q4_k_m",
+    "shards": [
+      {
+        "path": "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-7b-instruct-q4_k_m\\qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+        "size": 3993201344,
+        "mtime_ns": 1792548531519864900
+      },
+      {
+        "path": "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-7b-instruct-q4_k_m\\qwen2.5-7b-instruct-q4_k_m-00002-of-00002.gguf",
+        "size": 689872288,
+        "mtime_ns": 1792548550869876900
+      }
+    ],
+    "bytes": 4683073632,
+    "fingerprint": "e4508dcc0c9ac26acdf6bc7a70d8aa3b60d1736a3d2f8ae645ef6a88fd69a6f4",
+    "architecture": "qwen2",
+    "file_type": "Q4_K_M",
+    "n_layer": 28
+  },
+  "preflight": {
+    "port": 49770,
+    "port_listener": null,
+    "available_ram_bytes": 9122627584,
+    "predicted": {
+      "total_bytes": 2844741632,
+      "parts": [
+        [
+          "hcstream resident",
+          1585623040
+        ],
+        [
+          "hcstream slots",
+          298246144
+        ],
+        [
+          "cpu unit weights",
+          0
+        ],
+        [
+          "token_embd",
+          306561024
+        ],
+        [
+          "kv cache (cpu blocks)",
+          117440512
+        ],
+        [
+          "compute prior",
+          536870912
+        ]
+      ],
+      "provenance": "estimate"
+    },
+    "free_disk_bytes": 46123028480,
+    "disk_path": "C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity"
+  },
+  "refused": [],
+  "launch": {
+    "overlay": "C:\\Users\\operator\\.hypercompute\\overlays\\llama-b11770-windows-x64-cuda13.4-hcstream-820dee92a8ee",
+    "proxy_sha256": "820dee92a8ee84cca2ccc25d13c8e70e27fa0e3a7c92a3d16548961faac91ffc",
+    "config": "C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T072447Z-bench-rank-qwen2.5-7b-instruct-q4_k_m-d\\hcstream-49770.cfg",
+    "stats_path": "C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T072447Z-bench-rank-qwen2.5-7b-instruct-q4_k_m-d\\hcstream-stats-49770.json",
+    "stream_plan": {
+      "resident_layers": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        28
+      ],
+      "stream_layers": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27
+      ],
+      "slots": 2,
+      "slot_bytes": 149123072,
+      "resident_bytes": 1585623040,
+      "stream_bytes_per_pass": 2785075200,
+      "committed_bytes": 1883869184
+    },
+    "argv": [
+      "C:\\Users\\operator\\.hypercompute\\overlays\\llama-b11770-windows-x64-cuda13.4-hcstream-820dee92a8ee\\llama-server.exe",
+      "-m",
+      "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-7b-instruct-q4_k_m\\qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+      "--load-mode",
+      "mmap",
+      "--no-repack",
+      "--no-op-offload",
+      "--cache-ram",
+      "0",
+      "--device",
+      "none",
+      "-ngl",
+      "0",
+      "--fit",
+      "off",
+      "-c",
+      "2048",
+      "-np",
+      "1",
+      "-t",
+      "12",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "49770",
+      "--no-ui",
+      "-lv",
+      "4",
+      "--log-colors",
+      "off"
+    ],
+    "port": 49770,
+    "bin_dir": "C:\\Users\\operator\\.hypercompute\\overlays\\llama-b11770-windows-x64-cuda13.4-hcstream-820dee92a8ee",
+    "log": "C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T072447Z-bench-rank-qwen2.5-7b-instruct-q4_k_m-d\\llama-server-49770.log",
+    "env_removed": []
+  },
+  "load": {
+    "ok": true,
+    "seconds": 3.031,
+    "error": null,
+    "log_lines": [
+      "hcstream: enabled (338 tensors, 20 streamed layers, 2 slots, prefetch off)",
+      "0.00.834.723 I cmn  common_param: common_params_print_info: build 11770 (39da130fc) with Clang 20.1.8 for Windows x86_64",
+      "0.00.892.809 I cmn  common_param: system_info: n_threads = 12 (n_threads_batch = 12) / 24 | CUDA : ARCHS = 750,800,860,890,900,1200,1210 | USE_GRAPHS = 1 | FA_QUANTS = q4_0-q4_0,q8_0-q8_0,f16-f16,bf16-bf16 | BLACKWELL_NATIVE_FP4 = 1 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | AVX512 = 1 | AVX512_VBMI = 1 | AVX512_VNNI = 1 | AVX512_BF16 = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 |",
+      "0.00.899.741 I srv    load_model: loading model 'C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-7b-instruct-q4_k_m\\qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf'",
+      "0.00.899.747 I srv    load_model: local path 'C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-7b-instruct-q4_k_m\\qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf'",
+      "0.01.101.347 I load_tensors: loading model tensors, this can take a while... (load_mode = mmap)",
+      "0.01.106.200 I load_tensors: offloading 0 repeating layers to GPU",
+      "0.01.106.203 I load_tensors: offloaded 0/29 layers to GPU",
+      "0.01.106.206 I load_tensors:   CPU_Mapped model buffer size =  3802.54 MiB",
+      "0.01.106.207 I load_tensors:   CPU_Mapped model buffer size =   657.91 MiB",
+      "0.01.110.373 I llama_kv_cache:        CPU KV buffer size =   112.00 MiB",
+      "0.01.117.723 I llama_kv_cache: size =  112.00 MiB (  2048 cells,  28 layers,  1/1 seqs), K (f16):   56.00 MiB, V (f16):   56.00 MiB",
+      "0.01.117.736 I llama_kv_cache: n_rot_k = 0, n_embd_head_k_all = 128",
+      "0.01.117.736 I llama_kv_cache: n_rot_v = 0, n_embd_head_k_all = 128",
+      "0.01.117.749 I sched_reserve: reserving ...",
+      "0.01.120.645 I sched_reserve:        CPU compute buffer size =   148.02 MiB",
+      "0.01.120.649 I sched_reserve: graph: nodes = 961, splits = 1, input objects = 4, input tensors = 9",
+      "0.01.120.650 I sched_reserve: reserve took 2.90 ms, sched copies = 1",
+      "hcstream: attached: 20 streamed layers in 2 slots of 149123072 bytes, readers 4, chunk 8388608",
+      "0.02.981.903 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 2048, kv_unified = 'false'",
+      "0.02.981.939 I slot   load_model: id  0 | task -1 | new slot, n_ctx = 2048",
+      "0.02.981.987 I srv    load_model: prompt cache is disabled - use `--cache-ram N` to enable it",
+      "0.02.981.988 I srv    load_model: for more info see https://github.com/ggml-org/llama.cpp/pull/16391",
+      "0.02.981.988 I srv    load_model: context checkpoints enabled, max = 32, min spacing = 8192",
+      "0.02.988.440 I srv  llama_server: model loaded"
+    ],
+    "build": {
+      "build": 11770,
+      "commit": "39da130fc",
+      "build_source": "llama-server log"
+    },
+    "memory": {
+      "loaded_at_s": 3.025,
+      "samples": 29,
+      "seconds": 2.948,
+      "working_set_peak": 2381631488,
+      "working_set_median": 1897373696,
+      "private_peak": 2854023168,
+      "sys_available_min": 6721691648,
+      "page_faults": 596295,
+      "proc_read_bytes": 6990873877,
+      "sys_disk_read_bytes": 7011558912
+    },
+    "log_tail": []
+  },
+  "reps": [
+    {
+      "index": 0,
+      "warmup": true,
+      "ok": true,
+      "phases": [
+        {
+          "phase": "uncached",
+          "ok": true,
+          "error": null,
+          "wall_ms": 51015.39,
+          "ttft_ms": 4410.79,
+          "timings": {
+            "prompt_n": 512,
+            "prompt_ms": 4408.806,
+            "predicted_n": 64,
+            "predicted_ms": 46604.142,
+            "cache_n": 0
+          },
+          "cache_prompt": false,
+          "prompt_head": "[58, 9995, 220, 15, 15, 15, 15, 220, 20, 20, 22, 21, 24, 20, 17,",
+          "io": {
+            "seconds": 51.4167,
+            "proc_read_bytes": 178244726784,
+            "sys_disk_read_bytes": 178257149952,
+            "page_faults": 38439,
+            "working_set_peak": 2540056576,
+            "private_peak": 2867916800,
+            "hcstream": {
+              "bytes_read": 178244726784,
+              "read_ns": 159437873900,
+              "stall_ns": 42409872700,
+              "layer_loads": 1280,
+              "sync_loads": 0,
+              "prefetch_loads": 1280,
+              "prefetch_hits": 1279,
+              "passes": 64,
+              "io_errors": 0,
+              "mmap_fallbacks": 0
+            }
+          }
+        },
+        {
+          "phase": "prefix_prime",
+          "ok": true,
+          "error": null,
+          "wall_ms": 4056.422,
+          "ttft_ms": null,
+          "timings": {
+            "prompt_n": 512,
+            "prompt_ms": 4053.855,
+            "predicted_n": 1,
+            "predicted_ms": 0.001,
+            "cache_n": 0
+          },
+          "cache_prompt": false,
+          "prompt_head": "[58, 9995, 220, 15, 15, 15, 15, 220, 20, 20, 22, 21, 24, 20, 17,",
+          "io": {
+            "seconds": 4.5345,
+            "proc_read_bytes": 2785073856,
+            "sys_disk_read_bytes": 2804021248,
+            "page_faults": 478,
+            "working_set_peak": 2540265472,
+            "private_peak": 2868109312,
+            "hcstream": {
+              "bytes_read": 2785073856,
+              "read_ns": 2595249300,
+              "stall_ns": 666534600,
+              "layer_loads": 20,
+              "sync_loads": 0,
+              "prefetch_loads": 20,
+              "prefetch_hits": 19,
+              "passes": 1,
+              "io_errors": 0,
+              "mmap_fallbacks": 0
+            }
+          }
+        },
+        {
+          "phase": "prefix_reuse",
+          "ok": true,
+          "error": null,
+          "wall_ms": 720.041,
+          "ttft_ms": null,
+          "timings": {
+            "prompt_n": 1,
+            "prompt_ms": 716.92,
+            "predicted_n": 1,
+            "predicted_ms": 0.001,
+            "cache_n": 511
+          },
+          "cache_prompt": true,
+          "prompt_head": "[58, 9995, 220, 15, 15, 15, 15, 220, 20, 20, 22, 21, 24, 20, 17,",
+          "io": {
+            "seconds": 1.0166,
+            "proc_read_bytes": 2785073856,
+            "sys_disk_read_bytes": 2785092608,
+            "page_faults": 448,
+            "working_set_peak": 2540195840,
+            "private_peak": 2867994624,
+            "hcstream": {
+              "bytes_read": 2785073856,
+              "read_ns": 2510518800,
+              "stall_ns": 641844400,
+              "layer_loads": 20,
+              "sync_loads": 0,
+              "prefetch_loads": 20,
+              "prefetch_hits": 19,
+              "passes": 1,
+              "io_errors": 0,
+              "mmap_fallbacks": 0
+            }
+          }
+        }
+      ],
+      "gpu": null,
+      "power": {
+        "source": "ac",
+        "percent": 34,
+        "via": "psutil.sensors_battery"
+      },
+      "rpc": null,
+      "started_at": "2026-10-22T07:24:51.372506+00:00"
+    },
+    {
+      "index": 1,
+      "warmup": false,
+      "ok": true,
+      "phases": [
+        {
+          "phase": "uncached",
+          "ok": true,
+          "error": null,
+          "wall_ms": 55906.032,
+          "ttft_ms": 4172.447,
+          "timings": {
+            "prompt_n": 512,
+            "prompt_ms": 4170.603,
+            "predicted_n": 64,
+            "predicted_ms": 51732.962,
+            "cache_n": 0
+          },
+          "cache_prompt": false,
+          "prompt_head": "[58, 9995, 220, 15, 15, 15, 16, 220, 16, 19, 24, 15, 23, 22, 22,",
+          "io": {
+            "seconds": 56.2803,
+            "proc_read_bytes": 178244726784,
+            "sys_disk_read_bytes": 179385738240,
+            "page_faults": 448,
+            "working_set_peak": 2540265472,
+            "private_peak": 2868068352,
+            "hcstream": {
+              "bytes_read": 178244726784,
+              "read_ns": 169741858400,
+              "stall_ns": 45080694600,
+              "layer_loads": 1280,
+              "sync_loads": 0,
+              "prefetch_loads": 1280,
+              "prefetch_hits": 1279,
+              "passes": 64,
+              "io_errors": 0,
+              "mmap_fallbacks": 0
+            }
+          }
+        },
+        {
+          "phase": "prefix_prime",
+          "ok": true,
+          "error": null,
+          "wall_ms": 4313.897,
+          "ttft_ms": null,
+          "timings": {
+            "prompt_n": 512,
+            "prompt_ms": 4311.68,
+            "predicted_n": 1,
+            "predicted_ms": 0.001,
+            "cache_n": 0
+          },
+          "cache_prompt": false,
+          "prompt_head": "[58, 9995, 220, 15, 15, 15, 16, 220, 16, 19, 24, 15, 23, 22, 22,",
+          "io": {
+            "seconds": 4.5639,
+            "proc_read_bytes": 2785073856,
+            "sys_disk_read_bytes": 2847026176,
+            "page_faults": 448,
+            "working_set_peak": 2540294144,
+            "private_peak": 2868097024,
+            "hcstream": {
+              "bytes_read": 2785073856,
+              "read_ns": 2506902200,
+              "stall_ns": 640719500,
+              "layer_loads": 20,
+              "sync_loads": 0,
+              "prefetch_loads": 20,
+              "prefetch_hits": 19,
+              "passes": 1,
+              "io_errors": 0,
+              "mmap_fallbacks": 0
+            }
+          }
+        },
+        {
+          "phase": "prefix_reuse",
+          "ok": true,
+          "error": null,
+          "wall_ms": 721.313,
+          "ttft_ms": null,
+          "timings": {
+            "prompt_n": 1,
+            "prompt_ms": 718.712,
+            "predicted_n": 1,
+            "predicted_ms": 0.001,
+            "cache_n": 511
+          },
+          "cache_prompt": true,
+          "prompt_head": "[58, 9995, 220, 15, 15, 15, 16, 220, 16, 19, 24, 15, 23, 22, 22,",
+          "io": {
+            "seconds": 1.0007,
+            "proc_read_bytes": 2785073856,
+            "sys_disk_read_bytes": 2793286656,
+            "page_faults": 447,
+            "working_set_peak": 2540294144,
+            "private_peak": 2868097024,
+            "hcstream": {
+              "bytes_read": 2785073856,
+              "read_ns": 2494894400,
+              "stall_ns": 638713400,
+              "layer_loads": 20,
+              "sync_loads": 0,
+              "prefetch_loads": 20,
+              "prefetch_hits": 19,
+              "passes": 1,
+              "io_errors": 0,
+              "mmap_fallbacks": 0
+            }
+          }
+        }
+      ],
+      "gpu": null,
+      "power": {
+        "source": "ac",
+        "percent": 37,
+        "via": "psutil.sensors_battery"
+      },
+      "rpc": null,
+      "started_at": "2026-10-22T07:25:49.478946+00:00"
+    },
+    {
+      "index": 2,
+      "warmup": false,
+      "ok": true,
+      "phases": [
+        {
+          "phase": "uncached",
+          "ok": true,
+          "error": null,
+          "wall_ms": 52457.504,
+          "ttft_ms": 4205.091,
+          "timings": {
+            "prompt_n": 512,
+            "prompt_ms": 4203.719,
+            "predicted_n": 64,
+            "predicted_ms": 48251.671,
+            "cache_n": 0
+          },
+          "cache_prompt": false,
+          "prompt_head": "[58, 9995, 220, 15, 15, 15, 17, 220, 18, 19, 22, 19, 22, 24, 24,",
+          "io": {
+            "seconds": 52.5057,
+            "proc_read_bytes": 178244726784,
+            "sys_disk_read_bytes": 178695253504,
+            "page_faults": 456,
+            "working_set_peak": 2540314624,
+            "private_peak": 2868097024,
+            "hcstream": {
+              "bytes_read": 178244726784,
+              "read_ns": 161200905400,
+              "stall_ns": 42847415000,
+              "layer_loads": 1280,
+              "sync_loads": 0,
+              "prefetch_loads": 1280,
+              "prefetch_hits": 1278,
+              "passes": 64,
+              "io_errors": 0,
+              "mmap_fallbacks": 0
+            }
+          }
+        },
+        {
+          "phase": "prefix_prime",
+          "ok": true,
+          "error": null,
+          "wall_ms": 4260.727,
+          "ttft_ms": null,
+          "timings": {
+            "prompt_n": 512,
+            "prompt_ms": 4258.333,
+            "predicted_n": 1,
+            "predicted_ms": 0.001,
+            "cache_n": 0
+          },
+          "cache_prompt": false,
+          "prompt_head": "[58, 9995, 220, 15, 15, 15, 17, 220, 18, 19, 22, 19, 22, 24, 24,",
+          "io": {
+            "seconds": 4.5511,
+            "proc_read_bytes": 2785073856,
+            "sys_disk_read_bytes": 2785168384,
+            "page_faults": 466,
+            "working_set_peak": 2540412928,
+            "private_peak": 2868256768,
+            "hcstream": {
+              "bytes_read": 2785073856,
+              "read_ns": 2560198200,
+              "stall_ns": 655564500,
+              "layer_loads": 20,
+              "sync_loads": 0,
+              "prefetch_loads": 20,
+              "prefetch_hits": 19,
+              "passes": 1,
+              "io_errors": 0,
+              "mmap_fallbacks": 0
+            }
+          }
+        },
+        {
+          "phase": "prefix_reuse",
+          "ok": true,
+          "error": null,
+          "wall_ms": 692.484,
+          "ttft_ms": null,
+          "timings": {
+            "prompt_n": 1,
+            "prompt_ms": 690.462,
+            "predicted_n": 1,
+            "predicted_ms": 0.001,
+            "cache_n": 511
+          },
+          "cache_prompt": true,
+          "prompt_head": "[58, 9995, 220, 15, 15, 15, 17, 220, 18, 19, 22, 19, 22, 24, 24,",
+          "io": {
+            "seconds": 1.0076,
+            "proc_read_bytes": 2785073856,
+            "sys_disk_read_bytes": 2785074176,
+            "page_faults": 447,
+            "working_set_peak": 2540412928,
+            "private_peak": 2868256768,
+            "hcstream": {
+              "bytes_read": 2785073856,
+              "read_ns": 2374955500,
+              "stall_ns": 613762300,
+              "layer_loads": 20,
+              "sync_loads": 0,
+              "prefetch_loads": 20,
+              "prefetch_hits": 19,
+              "passes": 1,
+              "io_errors": 0,
+              "mmap_fallbacks": 0
+            }
+          }
+        }
+      ],
+      "gpu": null,
+      "power": {
+        "source": "ac",
+        "percent": 38,
+        "via": "psutil.sensors_battery"
+      },
+      "rpc": null,
+      "started_at": "2026-10-22T07:26:52.832093+00:00"
+    },
+    {
+      "index": 3,
+      "warmup": false,
+      "ok": true,
+      "phases": [
+        {
+          "phase": "uncached",
+          "ok": true,
+          "error": null,
+          "wall_ms": 51330.778,
+          "ttft_ms": 4066.35,
+          "timings": {
+            "prompt_n": 512,
+            "prompt_ms": 4064.43,
+            "predicted_n": 64,
+            "predicted_ms": 47263.747,
+            "cache_n": 0
+          },
+          "cache_prompt": false,
+          "prompt_head": "[58, 9995, 220, 15, 15, 15, 18, 220, 21, 18, 20, 18, 16, 21, 19,",
+          "io": {
+            "seconds": 51.7973,
+            "proc_read_bytes": 178244726784,
+            "sys_disk_read_bytes": 178390660608,
+            "page_faults": 447,
+            "working_set_peak": 2540453888,
+            "private_peak": 2868297728,
+            "hcstream": {
+              "bytes_read": 178244726784,
+              "read_ns": 161205097600,
+              "stall_ns": 42853163700,
+              "layer_loads": 1280,
+              "sync_loads": 0,
+              "prefetch_loads": 1280,
+              "prefetch_hits": 1278,
+              "passes": 64,
+              "io_errors": 0,
+              "mmap_fallbacks": 0
+            }
+          }
+        },
+        {
+          "phase": "prefix_prime",
+          "ok": true,
+          "error": null,
+          "wall_ms": 4114.467,
+          "ttft_ms": null,
+          "timings": {
+            "prompt_n": 512,
+            "prompt_ms": 4111.929,
+            "predicted_n": 1,
+            "predicted_ms": 0.001,
+            "cache_n": 0
+          },
+          "cache_prompt": false,
+          "prompt_head": "[58, 9995, 220, 15, 15, 15, 18, 220, 21, 18, 20, 18, 16, 21, 19,",
+          "io": {
+            "seconds": 4.5803,
+            "proc_read_bytes": 2785073856,
+            "sys_disk_read_bytes": 2785074176,
+            "page_faults": 447,
+            "working_set_peak": 2540478464,
+            "private_peak": 2868322304,
+            "hcstream": {
+              "bytes_read": 2785073856,
+              "read_ns": 2526879100,
+              "stall_ns": 647171200,
+              "layer_loads": 20,
+              "sync_loads": 0,
+              "prefetch_loads": 20,
+              "prefetch_hits": 19,
+              "passes": 1,
+              "io_errors": 0,
+              "mmap_fallbacks": 0
+            }
+          }
+        },
+        {
+          "phase": "prefix_reuse",
+          "ok": true,
+          "error": null,
+          "wall_ms": 707.945,
+          "ttft_ms": null,
+          "timings": {
+            "prompt_n": 1,
+            "prompt_ms": 705.404,
+            "predicted_n": 1,
+            "predicted_ms": 0.001,
+            "cache_n": 511
+          },
+          "cache_prompt": true,
+          "prompt_head": "[58, 9995, 220, 15, 15, 15, 18, 220, 21, 18, 20, 18, 16, 21, 19,",
+          "io": {
+            "seconds": 1.0003,
+            "proc_read_bytes": 2785073856,
+            "sys_disk_read_bytes": 2785102848,
+            "page_faults": 448,
+            "working_set_peak": 2540482560,
+            "private_peak": 2868322304,
+            "hcstream": {
+              "bytes_read": 2785073856,
+              "read_ns": 2455887700,
+              "stall_ns": 628534800,
+              "layer_loads": 20,
+              "sync_loads": 0,
+              "prefetch_loads": 20,
+              "prefetch_hits": 19,
+              "passes": 1,
+              "io_errors": 0,
+              "mmap_fallbacks": 0
+            }
+          }
+        }
+      ],
+      "gpu": null,
+      "power": {
+        "source": "ac",
+        "percent": 39,
+        "via": "psutil.sensors_battery"
+      },
+      "rpc": null,
+      "started_at": "2026-10-22T07:27:52.414797+00:00"
+    }
+  ],
+  "summary": {
+    "n_reps": 3,
+    "n_warmup": 1,
+    "n_reps_ok": 3,
+    "metrics": {
+      "hcstream_bytes_per_pass": {
+        "n": 3,
+        "median": 2785073856.0,
+        "low": 2785073856.0,
+        "high": 2785073856.0,
+        "spread": "min/max"
+      },
+      "prefill_tokens": {
+        "n": 3,
+        "median": 512.0,
+        "low": 512.0,
+        "high": 512.0,
+        "spread": "min/max"
+      },
+      "prefill_ms": {
+        "n": 3,
+        "median": 4170.603,
+        "low": 4064.43,
+        "high": 4203.719,
+        "spread": "min/max"
+      },
+      "prefill_tok_s": {
+        "n": 3,
+        "median": 122.76402237278398,
+        "low": 121.79691363766226,
+        "high": 125.97092335210597,
+        "spread": "min/max"
+      },
+      "ttft_ms": {
+        "n": 3,
+        "median": 4172.447,
+        "low": 4066.35,
+        "high": 4205.091,
+        "spread": "min/max"
+      },
+      "decode_tokens": {
+        "n": 3,
+        "median": 64.0,
+        "low": 64.0,
+        "high": 64.0,
+        "spread": "min/max"
+      },
+      "decode_steps": {
+        "n": 3,
+        "median": 63.0,
+        "low": 63.0,
+        "high": 63.0,
+        "spread": "min/max"
+      },
+      "decode_ms": {
+        "n": 3,
+        "median": 48251.671,
+        "low": 47263.747,
+        "high": 51732.962,
+        "spread": "min/max"
+      },
+      "decode_tok_s": {
+        "n": 3,
+        "median": 1.305654264284443,
+        "low": 1.2177922462665098,
+        "high": 1.3329455237647578,
+        "spread": "min/max"
+      },
+      "decode_ms_per_token": {
+        "n": 3,
+        "median": 765.8995396825397,
+        "low": 750.2182063492064,
+        "high": 821.158126984127,
+        "spread": "min/max"
+      },
+      "uncached_wall_ms": {
+        "n": 3,
+        "median": 52457.504,
+        "low": 51330.778,
+        "high": 55906.032,
+        "spread": "min/max"
+      },
+      "proc_read_bytes": {
+        "n": 3,
+        "median": 178244726784.0,
+        "low": 178244726784.0,
+        "high": 178244726784.0,
+        "spread": "min/max"
+      },
+      "sys_disk_read_bytes": {
+        "n": 3,
+        "median": 178695253504.0,
+        "low": 178390660608.0,
+        "high": 179385738240.0,
+        "spread": "min/max"
+      },
+      "proc_read_bytes_per_token": {
+        "n": 3,
+        "median": 2785073856.0,
+        "low": 2785073856.0,
+        "high": 2785073856.0,
+        "spread": "min/max"
+      },
+      "sys_disk_read_bytes_per_token": {
+        "n": 3,
+        "median": 2792113336.0,
+        "low": 2787354072.0,
+        "high": 2802902160.0,
+        "spread": "min/max"
+      },
+      "hcstream_bytes_read": {
+        "n": 3,
+        "median": 178244726784.0,
+        "low": 178244726784.0,
+        "high": 178244726784.0,
+        "spread": "min/max"
+      },
+      "hcstream_bytes_per_token": {
+        "n": 3,
+        "median": 2785073856.0,
+        "low": 2785073856.0,
+        "high": 2785073856.0,
+        "spread": "min/max"
+      },
+      "page_faults": {
+        "n": 3,
+        "median": 448.0,
+        "low": 447.0,
+        "high": 456.0,
+        "spread": "min/max"
+      },
+      "reuse_cache_n": {
+        "n": 3,
+        "median": 511.0,
+        "low": 511.0,
+        "high": 511.0,
+        "spread": "min/max"
+      },
+      "reuse_prompt_n": {
+        "n": 3,
+        "median": 1.0,
+        "low": 1.0,
+        "high": 1.0,
+        "spread": "min/max"
+      },
+      "reuse_prompt_ms": {
+        "n": 3,
+        "median": 705.404,
+        "low": 690.462,
+        "high": 718.712,
+        "spread": "min/max"
+      },
+      "reuse_wall_ms": {
+        "n": 3,
+        "median": 707.945,
+        "low": 692.484,
+        "high": 721.313,
+        "spread": "min/max"
+      },
+      "working_set_peak": {
+        "n": 3,
+        "median": 2540412928.0,
+        "low": 2540294144.0,
+        "high": 2540482560.0,
+        "spread": "min/max"
+      },
+      "private_peak": {
+        "n": 3,
+        "median": 2868256768.0,
+        "low": 2868097024.0,
+        "high": 2868322304.0,
+        "spread": "min/max"
+      }
+    },
+    "failures": []
+  },
+  "stop": {
+    "exit_code": 1,
+    "stop_s": 0.207,
+    "children": 0,
+    "children_alive": [],
+    "child_alive_after_stop": false,
+    "error": null,
+    "pressure_guard_tripped": false,
+    "sampler_error": null,
+    "memory_whole_run": {
+      "samples": 2286,
+      "seconds": 243.169,
+      "working_set_peak": 2540482560,
+      "working_set_median": 2540265472,
+      "private_peak": 2868322304,
+      "sys_available_min": 4614144000,
+      "page_faults": 640135,
+      "proc_read_bytes": 742562302741,
+      "sys_disk_read_bytes": 744447943168
+    },
+    "available_after_stop": 9351028736
+  },
+  "error": null,
+  "provenance": {
+    "load, reps, summary": "measured on this host during this run",
+    "preflight.predicted": "estimate: GGUF unit sizes plus KV sizing plus a compute prior, used only to refuse a run",
+    "ttft_ms": "measured client side over loopback with streaming; no gateway in the path",
+    "gpu": "nvidia-smi snapshot after the uncached phase, not a peak",
+    "decode_tok_s": "(predicted_n - 1) / predicted_ms from engine timings, the engine's own predicted_per_second",
+    "*_read_bytes_per_token": "all reads of the uncached phase (prefill and decode) over predicted_n",
+    "hcstream_bytes_per_pass": "hcstream bytes_read over its forward-pass count (decode bytes per token)"
+  }
+}

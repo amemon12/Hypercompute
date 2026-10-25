@@ -1,0 +1,4657 @@
+{
+ "schema": "hypercompute.capacity.big/1",
+ "started_at": "2026-10-24T17:21:44.718031+00:00",
+ "requested": {
+  "model": "gpt-oss-120b-mxfp4",
+  "port": 8001,
+  "strategy": "local_only",
+  "ctx": 4096,
+  "nodes": [],
+  "engine": null,
+  "allow_capacity_mode": true,
+  "prompt_tokens": 128,
+  "output_tokens": 64,
+  "warmup": 1,
+  "reps": 3,
+  "keep": false,
+  "plan_only": false,
+  "load_timeout_s": 7200.0,
+  "chat_timeout_s": 1800.0,
+  "poll_s": 2.0,
+  "heartbeat_wait_s": 7.5,
+  "sample_interval_s": 0.5,
+  "gpu_every": 4,
+  "min_available_gib": 0.0,
+  "min_drive_free_gib": 5.0,
+  "max_commit_growth_gib": 0.25,
+  "max_swap_growth_gib": 2.0,
+  "seed_peers": false,
+  "seed_timeout_s": 3600.0,
+  "seed_poll_s": 5.0,
+  "replan_after_s": 480.0,
+  "layout": null,
+  "home": "/home/asus/.hypercompute",
+  "results_dir": "/home/asus/hypercompute/results/capacity",
+  "chat_settings": {
+   "stream": true,
+   "temperature": 0,
+   "seed": 7,
+   "cache_prompt": false,
+   "ignore_eos": true
+  }
+ },
+ "runner": {
+  "git_head": "bef20200c7be7e6a0bc180df7a11f602fc97df82",
+  "uncommitted_paths": 6,
+  "note": "the runner's checkout; the gateway runs whatever code it was started from"
+ },
+ "predicted": {
+  "plan": {
+   "id": "2702fba8fa5640c8b05804f583438147",
+   "model_id": "gpt-oss-120b-mxfp4",
+   "strategy": "local_only",
+   "ctx_size": 4096,
+   "feasible": true,
+   "fit_label": "estimated_fit",
+   "heuristic": true,
+   "assignments": [
+    {
+     "node_id": "local",
+     "device": "CUDA0",
+     "endpoint": null,
+     "pool_id": "uma",
+     "layers": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35
+     ],
+     "holds_output": true,
+     "weight_bytes": 62758994688,
+     "kv_bytes": 301989888,
+     "compute_bytes_est": 147849216,
+     "overhead_bytes_est": 471859200,
+     "total_bytes_est": 63680692992,
+     "budget_bytes": 84886034022,
+     "fits": true,
+     "file_backed": false
+    }
+   ],
+   "device_list": [
+    "CUDA0"
+   ],
+   "tensor_split": [
+    37
+   ],
+   "rpc_endpoints": [],
+   "cpu_resident_bytes": 615329280,
+   "reasons": [
+    "strategy: this machine only",
+    "contributed / estimated usable across selected devices: 79.1 GiB (separate memory pools, not one fast global memory)"
+   ],
+   "warnings": [
+    "capacity optimizer not used (moe): gpt-oss-120b-mxfp4 is a mixture-of-experts model (128 experts, 4 per token); the optimizer's layer search does not model expert offload, so the planner's moe_offload plan is used"
+   ],
+   "candidates": [
+    {
+     "label": "this machine only",
+     "devices": [
+      "local:CUDA0"
+     ],
+     "feasible": true,
+     "reason": "estimated fit; predicted decode ~165.7 ms/token (priors)"
+    }
+   ],
+   "created_at": "2026-10-24T17:21:45.015967Z",
+   "engine": "llama_rpc",
+   "tier": "gpu",
+   "cpu_layers": 0,
+   "n_gpu_units": null,
+   "engine_flags": {},
+   "engine_options": {},
+   "profile_id": null,
+   "capacity_mode": false,
+   "stream": null,
+   "moe": null,
+   "revision": 0,
+   "prediction": null,
+   "limits": {
+    "allow_ram_tier": true,
+    "allow_capacity_mode": true,
+    "node_ids": null,
+    "strategy": "local_only"
+   },
+   "layout": null
+  },
+  "explain": {
+   "model_id": "gpt-oss-120b-mxfp4",
+   "workload": {
+    "ctx_size": 4096,
+    "prompt_tokens": 128,
+    "output_tokens": 64,
+    "warm": false,
+    "horizon_tokens": 2048,
+    "objective": "interactive"
+   },
+   "feasible": true,
+   "best": null,
+   "plan": {
+    "id": "e7ac844b9c4541549b3b8be4eba0c9e8",
+    "model_id": "gpt-oss-120b-mxfp4",
+    "strategy": "fastest_fit",
+    "ctx_size": 4096,
+    "feasible": true,
+    "fit_label": "estimated_fit",
+    "heuristic": true,
+    "assignments": [
+     {
+      "node_id": "local",
+      "device": "CUDA0",
+      "endpoint": null,
+      "pool_id": "uma",
+      "layers": [
+       0,
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13,
+       14,
+       15,
+       16,
+       17,
+       18,
+       19,
+       20,
+       21,
+       22,
+       23,
+       24,
+       25,
+       26,
+       27,
+       28,
+       29,
+       30,
+       31,
+       32,
+       33,
+       34,
+       35
+      ],
+      "holds_output": true,
+      "weight_bytes": 62758994688,
+      "kv_bytes": 301989888,
+      "compute_bytes_est": 147849216,
+      "overhead_bytes_est": 471859200,
+      "total_bytes_est": 63680692992,
+      "budget_bytes": 84886034022,
+      "fits": true,
+      "file_backed": false
+     }
+    ],
+    "device_list": [
+     "CUDA0"
+    ],
+    "tensor_split": [
+     37
+    ],
+    "rpc_endpoints": [],
+    "cpu_resident_bytes": 615329280,
+    "reasons": [
+     "strategy: fastest fit (fewest devices, local first; peers only when needed)",
+     "contributed / estimated usable across selected devices: 114.1 GiB (separate memory pools, not one fast global memory)"
+    ],
+    "warnings": [],
+    "candidates": [
+     {
+      "label": "this machine only",
+      "devices": [
+       "local:CUDA0"
+      ],
+      "feasible": true,
+      "reason": "estimated fit; predicted decode ~165.7 ms/token (priors)"
+     }
+    ],
+    "created_at": "2026-10-24T17:21:45.062918Z",
+    "engine": "llama_rpc",
+    "tier": "gpu",
+    "cpu_layers": 0,
+    "n_gpu_units": null,
+    "engine_flags": {},
+    "engine_options": {},
+    "profile_id": null,
+    "capacity_mode": false,
+    "stream": null,
+    "moe": null,
+    "revision": 0,
+    "prediction": null,
+    "limits": null,
+    "layout": null
+   },
+   "candidates": [
+    {
+     "layout": "this machine only: local:CUDA0",
+     "feasible": true,
+     "reasons": [
+      "estimated fit; predicted decode ~165.7 ms/token (priors)"
+     ]
+    }
+   ],
+   "explain": [
+    "mixture-of-experts model: the optimizer's layer search does not model expert offload (routed experts on the host CPU, file-backed), so the planner's plan is used; its numbers are estimates from priors",
+    "strategy: fastest fit (fewest devices, local first; peers only when needed)",
+    "contributed / estimated usable across selected devices: 114.1 GiB (separate memory pools, not one fast global memory)"
+   ],
+   "rejected": [],
+   "assumptions": [
+    "mixture-of-experts model: the optimizer's layer search does not model expert offload (routed experts on the host CPU, file-backed), so the planner's plan is used; its numbers are estimates from priors",
+    "decode {'cuda': 2.64, 'metal': 10.85, 'vulkan': 2.64, 'cpu': 12.5} ms per GB read (prior)",
+    "peer round trip 4 ms per device per token (prior)"
+   ],
+   "measured": [],
+   "warnings": []
+  }
+ },
+ "measured": {
+  "gateway_before": {
+   "health": {
+    "status": "ok",
+    "version": "0.1.0",
+    "time": "2026-10-24T17:21:44.755922+00:00",
+    "engine": {
+     "engine": "llama_rpc",
+     "installed": true,
+     "release": "b11770",
+     "build_number": 11770,
+     "commit": "39da130fc",
+     "rpc_proto": "8.0.0",
+     "variant": "source-build",
+     "accelerator": "unknown",
+     "bin_dir": "/home/asus/.hypercompute/src/llama.cpp/build-hypercompute/bin",
+     "smoke": "passed",
+     "smoke_detail": "version: 0.7.0-dev (build 11770, commit 39da130fc); devices: CUDA0",
+     "devices": [
+      {
+       "name": "CUDA0",
+       "description": "NVIDIA GB10",
+       "total_bytes": 130593849344,
+       "free_bytes": 126198218752
+      }
+     ]
+    },
+    "engines": [
+     {
+      "engine_id": "llama_rpc",
+      "status": "implemented",
+      "streaming": true,
+      "multi_host": true,
+      "disk_offload": false,
+      "cancel": true,
+      "platforms": [
+       "macos-arm64 (Metal)",
+       "windows-x64 (CUDA/CPU)",
+       "linux (CUDA/CPU)"
+      ],
+      "notes": "llama.cpp layer split over ggml RPC; unauthenticated RPC, trusted private LAN only"
+     },
+     {
+      "engine_id": "vllm",
+      "status": "implemented",
+      "streaming": true,
+      "multi_host": false,
+      "disk_offload": false,
+      "cancel": true,
+      "platforms": [
+       "linux x86_64/aarch64 (CUDA)",
+       "windows-x64 via WSL2 (CUDA)"
+      ],
+      "notes": "one NVIDIA GPU holds the whole model; continuous batching for concurrent requests"
+     },
+     {
+      "engine_id": "exo",
+      "status": "implemented",
+      "streaming": true,
+      "multi_host": true,
+      "disk_offload": false,
+      "cancel": true,
+      "platforms": [
+       "macos-arm64"
+      ],
+      "notes": "Apple-only MLX pipeline over the LAN; unauthenticated API, trusted private LAN only"
+     },
+     {
+      "engine_id": "airllm",
+      "status": "implemented",
+      "streaming": true,
+      "multi_host": false,
+      "disk_offload": true,
+      "cancel": true,
+      "platforms": [
+       "windows-x64 (CUDA/CPU)",
+       "linux (CUDA/CPU)"
+      ],
+      "notes": "disk capacity mode: every layer is read from disk for every token"
+     },
+     {
+      "engine_id": "exo_paged",
+      "status": "planned",
+      "streaming": false,
+      "multi_host": false,
+      "disk_offload": false,
+      "cancel": false,
+      "platforms": [],
+      "notes": "phase 4 research: layer offload inside EXO"
+     }
+    ]
+   },
+   "pools": {
+    "observed_at": "2026-10-24T17:21:44.798932+00:00",
+    "host_memory": {
+     "total": 130593898496,
+     "available": 127125082112,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "observed_at": "2026-10-24T17:21:44.798936+00:00",
+     "source": "psutil.virtual_memory",
+     "error": null
+    },
+    "pools": [
+     {
+      "node_id": "local",
+      "pool_id": "uma",
+      "kind": "unified",
+      "total_bytes": 130593898496,
+      "free_bytes": 127125082112,
+      "reserve_bytes": 26655650611,
+      "cap_bytes": null,
+      "admissible_bytes": 100469431501,
+      "devices": [
+       "CPU",
+       "CUDA0"
+      ],
+      "source": "psutil.virtual_memory (fresh snapshot)",
+      "observed_at": "2026-10-24T17:21:44.798936+00:00",
+      "age_s": 0.0
+     },
+     {
+      "node_id": "6dad6cf75b2e4cf197b7bc7f4d0a67e4",
+      "pool_id": "uma",
+      "kind": "unified",
+      "total_bytes": 17179869184,
+      "free_bytes": 10420224000,
+      "reserve_bytes": 0,
+      "cap_bytes": 12348030976,
+      "admissible_bytes": 10420224000,
+      "devices": [
+       "MTL0"
+      ],
+      "source": "sysctl hw.memsize + psutil",
+      "observed_at": "2026-10-24T17:21:44.286424+00:00",
+      "age_s": 0.5
+     },
+     {
+      "node_id": "d4e65f83c4be4a41aad722e40983b08b",
+      "pool_id": "uma",
+      "kind": "unified",
+      "total_bytes": 17179869184,
+      "free_bytes": 9513795584,
+      "reserve_bytes": 0,
+      "cap_bytes": 12348030976,
+      "admissible_bytes": 9513795584,
+      "devices": [
+       "MTL0"
+      ],
+      "source": "sysctl hw.memsize + psutil",
+      "observed_at": "2026-10-24T17:21:42.061844+00:00",
+      "age_s": 2.7
+     },
+     {
+      "node_id": "4c2991743c154be896d10a0b53ba4d2b",
+      "pool_id": "uma",
+      "kind": "unified",
+      "total_bytes": 17179869184,
+      "free_bytes": 9570861056,
+      "reserve_bytes": 0,
+      "cap_bytes": 8053063680,
+      "admissible_bytes": 8053063680,
+      "devices": [
+       "MTL0"
+      ],
+      "source": "sysctl hw.memsize + psutil",
+      "observed_at": "2026-10-24T17:21:42.179407+00:00",
+      "age_s": 2.6
+     },
+     {
+      "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+      "pool_id": "vram:CUDA0",
+      "kind": "discrete_vram",
+      "total_bytes": 12820938752,
+      "free_bytes": 12363759616,
+      "reserve_bytes": 536870912,
+      "cap_bytes": 9663676416,
+      "admissible_bytes": 9663676416,
+      "devices": [
+       "CUDA0"
+      ],
+      "source": "nvidia-smi",
+      "observed_at": "2026-10-24T17:21:43.664050+00:00",
+      "age_s": 1.1
+     },
+     {
+      "node_id": "local",
+      "pool_id": "ssd",
+      "kind": "storage",
+      "total_bytes": null,
+      "free_bytes": 728673878016,
+      "reserve_bytes": 0,
+      "cap_bytes": null,
+      "admissible_bytes": 728673878016,
+      "devices": [],
+      "source": "free volume space (caller observation)",
+      "observed_at": "2026-10-24T17:21:44.798932+00:00",
+      "age_s": 0.0
+     }
+    ],
+    "excluded": [
+     {
+      "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+      "pool_id": "ram",
+      "reason": "not contributed: no contributed device allocates from it"
+     }
+    ],
+    "notes": [],
+    "leases": [],
+    "released": null
+   },
+   "nodes": [
+    {
+     "id": "local",
+     "display_name": "gx10-49d1 (this machine)",
+     "is_local": true,
+     "state": "eligible",
+     "state_reason": null,
+     "worker_state": null,
+     "worker_cpu_seconds": null,
+     "heartbeat_age_s": 0.0,
+     "contribution": {
+      "devices": [
+       "CUDA0"
+      ],
+      "max_bytes": 84886034022,
+      "reserve_bytes": 26118779699,
+      "enforcement": "soft_admission",
+      "cache_enabled": false
+     },
+     "memory_pools": [
+      {
+       "id": "uma",
+       "kind": "unified",
+       "total_bytes": 130593898496,
+       "free_bytes": 127169036288,
+       "measured_at": "2026-10-24T17:21:39.937573Z",
+       "source": "psutil",
+       "note": "GB10 CPU/GPU unified memory; counted once"
+      }
+     ],
+     "engine_devices": [
+      {
+       "name": "CUDA0",
+       "description": "NVIDIA GB10",
+       "total_bytes": 130593849344,
+       "free_bytes": 126198218752
+      }
+     ]
+    },
+    {
+     "id": "6dad6cf75b2e4cf197b7bc7f4d0a67e4",
+     "display_name": "mac-a",
+     "is_local": false,
+     "state": "eligible",
+     "state_reason": null,
+     "worker_state": "running",
+     "worker_cpu_seconds": 0.49598684800000004,
+     "heartbeat_age_s": 0.470643,
+     "contribution": {
+      "devices": [
+       "MTL0"
+      ],
+      "max_bytes": 12348030976,
+      "reserve_bytes": 0,
+      "enforcement": "soft_admission",
+      "cache_enabled": true
+     },
+     "memory_pools": [
+      {
+       "id": "uma",
+       "kind": "unified",
+       "total_bytes": 17179869184,
+       "free_bytes": 10420224000,
+       "measured_at": "2026-10-24T17:21:44.286424Z",
+       "source": "sysctl hw.memsize + psutil",
+       "note": "CPU and GPU share this pool; counted once"
+      }
+     ],
+     "engine_devices": [
+      {
+       "name": "MTL0",
+       "description": "Apple M4",
+       "total_bytes": 11452547072,
+       "free_bytes": 11452547072
+      },
+      {
+       "name": "BLAS",
+       "description": "Accelerate",
+       "total_bytes": 0,
+       "free_bytes": 0
+      }
+     ]
+    },
+    {
+     "id": "d4e65f83c4be4a41aad722e40983b08b",
+     "display_name": "mac-b",
+     "is_local": false,
+     "state": "eligible",
+     "state_reason": null,
+     "worker_state": "running",
+     "worker_cpu_seconds": 0.4759816,
+     "heartbeat_age_s": 2.747143,
+     "contribution": {
+      "devices": [
+       "MTL0"
+      ],
+      "max_bytes": 12348030976,
+      "reserve_bytes": 0,
+      "enforcement": "soft_admission",
+      "cache_enabled": true
+     },
+     "memory_pools": [
+      {
+       "id": "uma",
+       "kind": "unified",
+       "total_bytes": 17179869184,
+       "free_bytes": 9513795584,
+       "measured_at": "2026-10-24T17:21:42.061844Z",
+       "source": "sysctl hw.memsize + psutil",
+       "note": "CPU and GPU share this pool; counted once"
+      }
+     ],
+     "engine_devices": [
+      {
+       "name": "MTL0",
+       "description": "Apple M4",
+       "total_bytes": 11452547072,
+       "free_bytes": 11452547072
+      },
+      {
+       "name": "BLAS",
+       "description": "Accelerate",
+       "total_bytes": 0,
+       "free_bytes": 0
+      }
+     ]
+    },
+    {
+     "id": "4c2991743c154be896d10a0b53ba4d2b",
+     "display_name": "mac-azim",
+     "is_local": false,
+     "state": "eligible",
+     "state_reason": null,
+     "worker_state": "running",
+     "worker_cpu_seconds": 0.561931408,
+     "heartbeat_age_s": 2.605365,
+     "contribution": {
+      "devices": [
+       "MTL0"
+      ],
+      "max_bytes": 8053063680,
+      "reserve_bytes": 0,
+      "enforcement": "soft_admission",
+      "cache_enabled": true
+     },
+     "memory_pools": [
+      {
+       "id": "uma",
+       "kind": "unified",
+       "total_bytes": 17179869184,
+       "free_bytes": 9570861056,
+       "measured_at": "2026-10-24T17:21:42.179407Z",
+       "source": "sysctl hw.memsize + psutil",
+       "note": "CPU and GPU share this pool; counted once"
+      }
+     ],
+     "engine_devices": [
+      {
+       "name": "MTL0",
+       "description": "Apple M4",
+       "total_bytes": 12712935424,
+       "free_bytes": 12711886848
+      },
+      {
+       "name": "BLAS",
+       "description": "Accelerate",
+       "total_bytes": 0,
+       "free_bytes": 0
+      }
+     ]
+    },
+    {
+     "id": "8f169e3549fc41fbb14f6876a19d704c",
+     "display_name": "g14",
+     "is_local": false,
+     "state": "eligible",
+     "state_reason": null,
+     "worker_state": "running",
+     "worker_cpu_seconds": 0.25,
+     "heartbeat_age_s": 2.224652,
+     "contribution": {
+      "devices": [
+       "CUDA0"
+      ],
+      "max_bytes": 9663676416,
+      "reserve_bytes": 6682544537,
+      "enforcement": "soft_admission",
+      "cache_enabled": true
+     },
+     "memory_pools": [
+      {
+       "id": "ram",
+       "kind": "system_ram",
+       "total_bytes": 33412722688,
+       "free_bytes": 12637937664,
+       "measured_at": "2026-10-24T17:21:43.620359Z",
+       "source": "psutil",
+       "note": null
+      },
+      {
+       "id": "vram:CUDA0",
+       "kind": "discrete_vram",
+       "total_bytes": 12820938752,
+       "free_bytes": 12363759616,
+       "measured_at": "2026-10-24T17:21:43.664050Z",
+       "source": "nvidia-smi",
+       "note": null
+      }
+     ],
+     "engine_devices": [
+      {
+       "name": "CUDA0",
+       "description": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+       "total_bytes": 12819890176,
+       "free_bytes": 11561598976
+      }
+     ]
+    }
+   ],
+   "network": {
+    "transport": "iroh",
+    "endpoint_id": "<redacted>",
+    "listening": true,
+    "connections": 4,
+    "binding_speedups": {
+     "fast_bytes_lowering": true,
+     "inline_ready_wakeups": true
+    },
+    "peers": [
+     {
+      "node_id": "6dad6cf75b2e4cf197b7bc7f4d0a67e4",
+      "peer_id": "<redacted>",
+      "connected": true,
+      "path": {
+       "remote_id": "<redacted>",
+       "mode": "direct",
+       "rtt_ms": 54,
+       "paths": 2,
+       "selected_stats": {
+        "cwnd": 12000,
+        "congestion_events": 0,
+        "lost_packets": 0,
+        "lost_bytes": 0,
+        "udp_tx_bytes": 9618,
+        "udp_rx_bytes": 18738,
+        "current_mtu": 1452
+       }
+      },
+      "rpc": {
+       "tcp_to_quic_bytes": 88,
+       "tcp_to_quic_chunks": 4,
+       "quic_to_tcp_bytes": 108,
+       "quic_to_tcp_chunks": 4,
+       "streams": 2,
+       "active": 0
+      }
+     },
+     {
+      "node_id": "d4e65f83c4be4a41aad722e40983b08b",
+      "peer_id": "<redacted>",
+      "connected": true,
+      "path": {
+       "remote_id": "<redacted>",
+       "mode": "direct",
+       "rtt_ms": 31,
+       "paths": 2,
+       "selected_stats": {
+        "cwnd": 12000,
+        "congestion_events": 0,
+        "lost_packets": 0,
+        "lost_bytes": 0,
+        "udp_tx_bytes": 9234,
+        "udp_rx_bytes": 13121,
+        "current_mtu": 1452
+       }
+      },
+      "rpc": {
+       "tcp_to_quic_bytes": 88,
+       "tcp_to_quic_chunks": 4,
+       "quic_to_tcp_bytes": 108,
+       "quic_to_tcp_chunks": 4,
+       "streams": 2,
+       "active": 0
+      }
+     },
+     {
+      "node_id": "4c2991743c154be896d10a0b53ba4d2b",
+      "peer_id": "<redacted>",
+      "connected": true,
+      "path": {
+       "remote_id": "<redacted>",
+       "mode": "relay",
+       "rtt_ms": 104,
+       "paths": 1,
+       "selected_stats": {
+        "cwnd": 12000,
+        "congestion_events": 0,
+        "lost_packets": 0,
+        "lost_bytes": 0,
+        "udp_tx_bytes": 45822,
+        "udp_rx_bytes": 169667,
+        "current_mtu": 1452
+       }
+      },
+      "rpc": {
+       "tcp_to_quic_bytes": 176,
+       "tcp_to_quic_chunks": 8,
+       "quic_to_tcp_bytes": 216,
+       "quic_to_tcp_chunks": 8,
+       "streams": 4,
+       "active": 0
+      }
+     },
+     {
+      "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+      "peer_id": "<redacted>",
+      "connected": true,
+      "path": {
+       "remote_id": "<redacted>",
+       "mode": "direct",
+       "rtt_ms": 67,
+       "paths": 2,
+       "selected_stats": {
+        "cwnd": 12000,
+        "congestion_events": 0,
+        "lost_packets": 0,
+        "lost_bytes": 0,
+        "udp_tx_bytes": 24571,
+        "udp_rx_bytes": 98531,
+        "current_mtu": 1452
+       }
+      },
+      "rpc": {
+       "tcp_to_quic_bytes": 88,
+       "tcp_to_quic_chunks": 4,
+       "quic_to_tcp_bytes": 108,
+       "quic_to_tcp_chunks": 4,
+       "streams": 2,
+       "active": 0
+      }
+     }
+    ]
+   },
+   "source": "the gateway's own state (inventory and heartbeats are measured by the nodes; admissible is derived)"
+  },
+  "model": {
+   "status": "downloaded",
+   "verified_sha256": true,
+   "local_path": "/home/asus/.hypercompute/models/gpt-oss-120b-mxfp4/gpt-oss-120b-MXFP4.gguf",
+   "total_bytes": 63387346208,
+   "gguf": {
+    "architecture": "gpt-oss",
+    "name": "gpt-oss-120b",
+    "file_type": "MXFP4_MOE",
+    "n_layer": 36,
+    "n_embd": 2880,
+    "n_head": 64,
+    "n_head_kv": 8,
+    "context_length": 131072,
+    "vocab_size": 201088,
+    "tensor_count": 687,
+    "total_tensor_bytes": 63374323968,
+    "layer_bytes": [
+     1726212608,
+     1726212608,
+     1726212608,
+     1726212608,
+     1726212608,
+     1726212608,
+     1726212608,
+     1726212608,
+     1726212608,
+     1726212608,
+     1726212608,
+     1726212608,
+     1726212608,
+     1726212608,
+     1726212608,
+     1726212608,
+     1726212608,
+     1726212608,
+     1726212608,
+     1726212608,
+     1726212608,
+     1726212608,
+     1726212608,
+     1726212608,
+     1726212608,
+     1726212608,
+     1726212608,
+     1726212608,
+     1726212608,
+     1726212608,
+     1726212608,
+     1726212608,
+     1726212608,
+     1726212608,
+     1726212608,
+     1726212608
+    ],
+    "token_embd_bytes": 615329280,
+    "output_bytes": 615340800,
+    "output_tied": false,
+    "other_bytes": 0,
+    "chat_template_present": true,
+    "key_length": 64,
+    "value_length": 64,
+    "expert_count": 128,
+    "expert_used_count": 4,
+    "expert_shared_count": null,
+    "layer_expert_bytes": [
+     1696481280,
+     1696481280,
+     1696481280,
+     1696481280,
+     1696481280,
+     1696481280,
+     1696481280,
+     1696481280,
+     1696481280,
+     1696481280,
+     1696481280,
+     1696481280,
+     1696481280,
+     1696481280,
+     1696481280,
+     1696481280,
+     1696481280,
+     1696481280,
+     1696481280,
+     1696481280,
+     1696481280,
+     1696481280,
+     1696481280,
+     1696481280,
+     1696481280,
+     1696481280,
+     1696481280,
+     1696481280,
+     1696481280,
+     1696481280,
+     1696481280,
+     1696481280,
+     1696481280,
+     1696481280,
+     1696481280,
+     1696481280
+    ]
+   }
+  },
+  "load": {
+   "seconds": 48.092,
+   "source": "client clock from create to the first poll that saw the final state (poll interval bounds the error)"
+  },
+  "placement": {
+   "source": "the gateway's deployment record (placement parsed from the engine's load log)",
+   "state": "ready",
+   "error": null,
+   "observed": {
+    "offloaded": "37/37",
+    "devices": [
+     {
+      "name": "CUDA0",
+      "model_bytes": 62759035207,
+      "kv_bytes": 179306496,
+      "compute_bytes": 99373547,
+      "layers_est": 21
+     },
+     {
+      "name": "CUDA_Host",
+      "model_bytes": 615325368,
+      "kv_bytes": 0,
+      "compute_bytes": 28605153,
+      "layers_est": null
+     }
+    ],
+    "evidence_lines": [
+     "load_tensors: offloaded 37/37 layers to GPU",
+     "load_tensors:        CUDA0 model buffer size = 59851.68 MiB",
+     "load_tensors:    CUDA_Host model buffer size =   586.82 MiB",
+     "llama_kv_cache:      CUDA0 KV buffer size =   144.00 MiB",
+     "llama_kv_cache:      CUDA0 KV buffer size =    27.00 MiB",
+     "sched_reserve:      CUDA0 compute buffer size =    94.77 MiB",
+     "sched_reserve:  CUDA_Host compute buffer size =    27.28 MiB"
+    ],
+    "parsed_at": "2026-10-24T17:22:31.539701Z"
+   },
+   "participation_verified": false,
+   "participation_detail": "local-only deployment (no peers in the plan); CUDA0: model 59852 MiB, KV 171 MiB, ~21 layers (planned 36)",
+   "engine_args": [
+    "-m",
+    "/home/asus/.hypercompute/models/gpt-oss-120b-mxfp4/gpt-oss-120b-MXFP4.gguf",
+    "--alias",
+    "gpt-oss-120b-mxfp4",
+    "--device",
+    "CUDA0",
+    "--split-mode",
+    "layer",
+    "--tensor-split",
+    "37",
+    "-ngl",
+    "all",
+    "--fit",
+    "off",
+    "-c",
+    "4096",
+    "-np",
+    "1",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "40643",
+    "--metrics",
+    "--no-ui",
+    "-lv",
+    "4",
+    "--log-colors",
+    "off"
+   ],
+   "engine": {
+    "flags": {
+     "--device": "CUDA0",
+     "--split-mode": "layer",
+     "--tensor-split": "37",
+     "--n-gpu-layers": "all",
+     "--fit": "off",
+     "--ctx-size": "4096"
+    },
+    "moe": {
+     "cpu_moe": false,
+     "n_cpu_moe": null,
+     "override_tensor": [],
+     "no_repack": false,
+     "no_host": false,
+     "no_op_offload": false,
+     "load_mode": null,
+     "fit": "off"
+    }
+   },
+   "pid": 142302,
+   "tier": "gpu",
+   "history": [
+    {
+     "state": "planned",
+     "at": "2026-10-24T17:21:45.105396Z",
+     "detail": null
+    },
+    {
+     "state": "reserving",
+     "at": "2026-10-24T17:21:45.109620Z",
+     "detail": null
+    },
+    {
+     "state": "preparing",
+     "at": "2026-10-24T17:21:45.114666Z",
+     "detail": "re-checking peers and model file"
+    },
+    {
+     "state": "loading",
+     "at": "2026-10-24T17:21:45.117554Z",
+     "detail": "starting llama-server"
+    },
+    {
+     "state": "warming",
+     "at": "2026-10-24T17:22:31.542186Z",
+     "detail": "first request"
+    },
+    {
+     "state": "ready",
+     "at": "2026-10-24T17:22:32.133895Z",
+     "detail": "local-only deployment (no peers in the plan); CUDA0: model 59852 MiB, KV 171 MiB, ~21 layers (planned 36)"
+    }
+   ]
+  },
+  "engine_log": {
+   "available": true,
+   "path": "/home/asus/.hypercompute/coordinator/logs/llama-server-13d3b4a5a87841ffb65f3d52c45c512c.log",
+   "source": "the engine's load log",
+   "model_buffers_mib": {
+    "CUDA0": 59851.68,
+    "CUDA_Host": 586.82
+   },
+   "file_backed_host_mib": 0.0,
+   "private_host_mib": 586.82,
+   "metal_mapped_mib": 0,
+   "metal_private_mib": 0,
+   "lines": [
+    "0.00.332.984 I llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.",
+    "0.00.651.805 I load_tensors: loading model tensors, this can take a while... (load_mode = none)",
+    "0.02.884.587 I load_tensors: offloading output layer to GPU",
+    "0.02.884.592 I load_tensors: offloading 35 repeating layers to GPU",
+    "0.02.884.593 I load_tensors: offloaded 37/37 layers to GPU",
+    "0.02.884.599 I load_tensors:        CUDA0 model buffer size = 59851.68 MiB",
+    "0.02.884.601 I load_tensors:    CUDA_Host model buffer size =   586.82 MiB",
+    "0.46.246.090 I llama_context:  CUDA_Host  output buffer size =     0.77 MiB",
+    "0.46.252.325 I llama_kv_cache:      CUDA0 KV buffer size =   144.00 MiB",
+    "0.46.253.090 I llama_kv_cache: size =  144.00 MiB (  4096 cells,  18 layers,  1/1 seqs), K (f16):   72.00 MiB, V (f16):   72.00 MiB",
+    "0.46.253.093 I llama_kv_cache: n_rot_k = 0, n_embd_head_k_all = 64",
+    "0.46.253.093 I llama_kv_cache: n_rot_v = 0, n_embd_head_k_all = 64",
+    "0.46.254.428 I llama_kv_cache:      CUDA0 KV buffer size =    27.00 MiB",
+    "0.46.254.619 I llama_kv_cache: size =   27.00 MiB (   768 cells,  18 layers,  1/1 seqs), K (f16):   13.50 MiB, V (f16):   13.50 MiB",
+    "0.46.254.621 I llama_kv_cache: n_rot_k = 0, n_embd_head_k_all = 64",
+    "0.46.254.621 I llama_kv_cache: n_rot_v = 0, n_embd_head_k_all = 64",
+    "0.46.272.770 I sched_reserve:      CUDA0 compute buffer size =    94.77 MiB",
+    "0.46.272.774 I sched_reserve:  CUDA_Host compute buffer size =    27.28 MiB"
+   ],
+   "lines_dropped": 0
+  },
+  "chats": {
+   "source": "engine timings (decode = (predicted_n - 1) / predicted_ms) and the client clock through the gateway (ttft_ms, total_ms, streaming); host fields from the monitor over each chat, disk reads system wide, bracketed by samples every interval_s",
+   "reps": [
+    {
+     "label": "warmup0",
+     "ok": true,
+     "error": null,
+     "ttft_ms": 443.798773000708,
+     "total_ms": 1510.7017549999,
+     "finish_reason": "length",
+     "content_chars": 0,
+     "reasoning_chars": 239,
+     "t_start": 48.552,
+     "t_end": 50.063,
+     "prompt_n": 178,
+     "prompt_ms": 369.973,
+     "predicted_n": 64,
+     "predicted_ms": 1124.551,
+     "cache_n": 0,
+     "prefill_tok_s": 481.1161895597787,
+     "decode_tok_s": 56.02235914600583,
+     "decode_ms_per_token": 17.85001587301587,
+     "host": {
+      "t0": 48.552,
+      "t1": 50.063,
+      "samples": 3,
+      "available_min": 61744259072,
+      "commit_charge_peak": null,
+      "commit_limit_peak": null,
+      "system_cache_peak": null,
+      "drive_free_min": 725500846080,
+      "engine_rss_peak": 1354506240,
+      "engine_private_peak": 115123859456,
+      "gpu_used_peak": null,
+      "swap_used_min": null,
+      "swap_used_peak": null,
+      "disk_read_bytes": 421888,
+      "engine_read_bytes": 0,
+      "engine_page_faults": 0
+     },
+     "disk_read_bytes_per_output_token": 6592.0,
+     "decode_disk_read_bytes_per_token": 6696.6349206349205
+    },
+    {
+     "label": "warmup1",
+     "ok": true,
+     "error": null,
+     "ttft_ms": 439.7258580002017,
+     "total_ms": 1501.6025370005082,
+     "finish_reason": "length",
+     "content_chars": 0,
+     "reasoning_chars": 277,
+     "t_start": 50.063,
+     "t_end": 51.565,
+     "prompt_n": 152,
+     "prompt_ms": 356.69,
+     "predicted_n": 64,
+     "predicted_ms": 1119.404,
+     "cache_n": 0,
+     "prefill_tok_s": 426.1403459586756,
+     "decode_tok_s": 56.27994897284626,
+     "decode_ms_per_token": 17.76831746031746,
+     "host": {
+      "t0": 50.063,
+      "t1": 51.565,
+      "samples": 3,
+      "available_min": 61716344832,
+      "commit_charge_peak": null,
+      "commit_limit_peak": null,
+      "system_cache_peak": null,
+      "drive_free_min": 725423165440,
+      "engine_rss_peak": 1372962816,
+      "engine_private_peak": 115142189056,
+      "gpu_used_peak": null,
+      "swap_used_min": null,
+      "swap_used_peak": null,
+      "disk_read_bytes": 913408,
+      "engine_read_bytes": 0,
+      "engine_page_faults": 0
+     },
+     "disk_read_bytes_per_output_token": 14272.0,
+     "decode_disk_read_bytes_per_token": 7996.952380952381
+    },
+    {
+     "label": "warmup2",
+     "ok": true,
+     "error": null,
+     "ttft_ms": 407.09923400027037,
+     "total_ms": 1474.8063730003196,
+     "finish_reason": "length",
+     "content_chars": 0,
+     "reasoning_chars": 253,
+     "t_start": 51.565,
+     "t_end": 53.04,
+     "prompt_n": 127,
+     "prompt_ms": 332.33,
+     "predicted_n": 64,
+     "predicted_ms": 1124.625,
+     "cache_n": 0,
+     "prefill_tok_s": 382.15027231968224,
+     "decode_tok_s": 56.01867289096366,
+     "decode_ms_per_token": 17.851190476190474,
+     "host": {
+      "t0": 51.565,
+      "t1": 53.04,
+      "samples": 3,
+      "available_min": 61673791488,
+      "commit_charge_peak": null,
+      "commit_limit_peak": null,
+      "system_cache_peak": null,
+      "drive_free_min": 725343469568,
+      "engine_rss_peak": 1392705536,
+      "engine_private_peak": 115161808896,
+      "gpu_used_peak": null,
+      "swap_used_min": null,
+      "swap_used_peak": null,
+      "disk_read_bytes": 61440,
+      "engine_read_bytes": 0,
+      "engine_page_faults": 0
+     },
+     "disk_read_bytes_per_output_token": 960.0,
+     "decode_disk_read_bytes_per_token": 715.1746031746031
+    },
+    {
+     "label": "rep0",
+     "ok": true,
+     "error": null,
+     "ttft_ms": 417.4105820002296,
+     "total_ms": 1480.4067969998869,
+     "finish_reason": "length",
+     "content_chars": 0,
+     "reasoning_chars": 251,
+     "t_start": 53.04,
+     "t_end": 54.52,
+     "prompt_n": 126,
+     "prompt_ms": 336.471,
+     "predicted_n": 64,
+     "predicted_ms": 1119.543,
+     "cache_n": 0,
+     "prefill_tok_s": 374.4750662018421,
+     "decode_tok_s": 56.272961377990846,
+     "decode_ms_per_token": 17.77052380952381,
+     "host": {
+      "t0": 53.04,
+      "t1": 54.52,
+      "samples": 3,
+      "available_min": 61625077760,
+      "commit_charge_peak": null,
+      "commit_limit_peak": null,
+      "system_cache_peak": null,
+      "drive_free_min": 725270061056,
+      "engine_rss_peak": 1424310272,
+      "engine_private_peak": 115193311232,
+      "gpu_used_peak": null,
+      "swap_used_min": null,
+      "swap_used_peak": null,
+      "disk_read_bytes": 73728,
+      "engine_read_bytes": 0,
+      "engine_page_faults": 0
+     },
+     "disk_read_bytes_per_output_token": 1152.0,
+     "decode_disk_read_bytes_per_token": 910.2222222222222
+    },
+    {
+     "label": "rep1",
+     "ok": true,
+     "error": null,
+     "ttft_ms": 404.6680360006576,
+     "total_ms": 1467.8531500003373,
+     "finish_reason": "length",
+     "content_chars": 0,
+     "reasoning_chars": 245,
+     "t_start": 54.52,
+     "t_end": 55.988,
+     "prompt_n": 126,
+     "prompt_ms": 324.215,
+     "predicted_n": 64,
+     "predicted_ms": 1120.868,
+     "cache_n": 0,
+     "prefill_tok_s": 388.63100103326497,
+     "decode_tok_s": 56.206440008993034,
+     "decode_ms_per_token": 17.791555555555554,
+     "host": {
+      "t0": 54.52,
+      "t1": 55.988,
+      "samples": 3,
+      "available_min": 61590065152,
+      "commit_charge_peak": null,
+      "commit_limit_peak": null,
+      "system_cache_peak": null,
+      "drive_free_min": 725187215360,
+      "engine_rss_peak": 1442873344,
+      "engine_private_peak": 115211776000,
+      "gpu_used_peak": null,
+      "swap_used_min": null,
+      "swap_used_peak": null,
+      "disk_read_bytes": 53248,
+      "engine_read_bytes": 0,
+      "engine_page_faults": 0
+     },
+     "disk_read_bytes_per_output_token": 832.0,
+     "decode_disk_read_bytes_per_token": 585.1428571428571
+    },
+    {
+     "label": "rep2",
+     "ok": true,
+     "error": null,
+     "ttft_ms": 411.4178030004041,
+     "total_ms": 1478.457767000691,
+     "finish_reason": "length",
+     "content_chars": 0,
+     "reasoning_chars": 249,
+     "t_start": 55.988,
+     "t_end": 57.467,
+     "prompt_n": 128,
+     "prompt_ms": 331.191,
+     "predicted_n": 64,
+     "predicted_ms": 1124.123,
+     "cache_n": 0,
+     "prefill_tok_s": 386.483932232458,
+     "decode_tok_s": 56.04368916924571,
+     "decode_ms_per_token": 17.843222222222224,
+     "host": {
+      "t0": 55.988,
+      "t1": 57.467,
+      "samples": 3,
+      "available_min": 61573324800,
+      "commit_charge_peak": null,
+      "commit_limit_peak": null,
+      "system_cache_peak": null,
+      "drive_free_min": 725125345280,
+      "engine_rss_peak": 1463844864,
+      "engine_private_peak": 115232632832,
+      "gpu_used_peak": null,
+      "swap_used_min": null,
+      "swap_used_peak": null,
+      "disk_read_bytes": 10870784,
+      "engine_read_bytes": 0,
+      "engine_page_faults": 0
+     },
+     "disk_read_bytes_per_output_token": 169856.0,
+     "decode_disk_read_bytes_per_token": 172552.12698412698
+    }
+   ],
+   "summary": {
+    "ok": 3,
+    "failed": 0,
+    "ttft_ms": {
+     "n": 3,
+     "median": 411.4178030004041,
+     "min": 404.6680360006576,
+     "max": 417.4105820002296
+    },
+    "prompt_n": {
+     "n": 3,
+     "median": 126,
+     "min": 126,
+     "max": 128
+    },
+    "prefill_tok_s": {
+     "n": 3,
+     "median": 386.483932232458,
+     "min": 374.4750662018421,
+     "max": 388.63100103326497
+    },
+    "decode_tok_s": {
+     "n": 3,
+     "median": 56.206440008993034,
+     "min": 56.04368916924571,
+     "max": 56.272961377990846
+    },
+    "decode_ms_per_token": {
+     "n": 3,
+     "median": 17.791555555555554,
+     "min": 17.77052380952381,
+     "max": 17.843222222222224
+    },
+    "disk_read_bytes_per_output_token": {
+     "n": 3,
+     "median": 1152.0,
+     "min": 832.0,
+     "max": 169856.0
+    },
+    "decode_disk_read_bytes_per_token": {
+     "n": 3,
+     "median": 910.2222222222222,
+     "min": 585.1428571428571,
+     "max": 172552.12698412698
+    }
+   }
+  },
+  "peer_worker_cpu": {
+   "source": "rpc-server process CPU seconds reported by each peer's heartbeats, read before and after the measured reps (heartbeats are every 3 s, so the window is approximate)",
+   "nodes": {
+    "6dad6cf75b2e4cf197b7bc7f4d0a67e4": {
+     "display_name": "mac-a",
+     "before": 0.544564336,
+     "after": 0.560357648,
+     "delta_s": 0.016
+    },
+    "d4e65f83c4be4a41aad722e40983b08b": {
+     "display_name": "mac-b",
+     "before": 0.5275944960000001,
+     "after": 0.543313696,
+     "delta_s": 0.016
+    },
+    "4c2991743c154be896d10a0b53ba4d2b": {
+     "display_name": "mac-azim",
+     "before": 0.6206540159999999,
+     "after": 0.640049112,
+     "delta_s": 0.019
+    },
+    "8f169e3549fc41fbb14f6876a19d704c": {
+     "display_name": "g14",
+     "before": 0.28125,
+     "after": 0.28125,
+     "delta_s": 0.0
+    }
+   }
+  },
+  "hcstream": {
+   "source": "hcstream stats file",
+   "path": "/home/asus/.hypercompute/coordinator/logs/hcstream-13d3b4a5a87841ffb65f3d52c45c512c.json",
+   "before": {
+    "available": false
+   },
+   "after": {
+    "available": false
+   }
+  },
+  "gateway_runs": {
+   "source": "the gateway's run records for this deployment",
+   "runs": [
+    {
+     "id": "91bb3ecb3dc04a70a8c08f72ad171f9e",
+     "attempt_id": "7030db507509495fb05d1f120cf5c7f0",
+     "deployment_id": "13d3b4a5a87841ffb65f3d52c45c512c",
+     "kind": "chat",
+     "status": "ok",
+     "simulated": false,
+     "model": {
+      "id": "gpt-oss-120b-mxfp4",
+      "repo": "ggml-org/gpt-oss-120b-GGUF",
+      "revision": "7200b74bea78b0a2964ef9f3897eefa401e890ff",
+      "quantization": "MXFP4",
+      "format": "gguf",
+      "files": [
+       {
+        "name": "gpt-oss-120b-MXFP4.gguf",
+        "sha256": "582bd40f6886200101f4c4ed9f25f3fe80cc14c86e9e2b37746cd8904a0c622d"
+       }
+      ],
+      "architecture": "gpt-oss",
+      "chat_template": true,
+      "context_length": 131072,
+      "max_output_tokens": 1024
+     },
+     "engine": {
+      "engine": "llama_rpc",
+      "release": "b11770",
+      "commit": "39da130fc",
+      "variant": "source-build",
+      "hosts": [
+       {
+        "node_id": "local",
+        "devices": [
+         {
+          "device": "CUDA0",
+          "endpoint": null,
+          "layers": 36
+         }
+        ],
+        "display_name": "gx10-49d1 (this machine)",
+        "hostname": "gx10-49d1",
+        "os": {
+         "system": "linux",
+         "release": "7.0.0-1019-nvidia",
+         "machine": "arm64"
+        },
+        "contributed_devices": [
+         "CUDA0"
+        ],
+        "hardware": [
+         {
+          "id": "CPU",
+          "name": "aarch64",
+          "backend": "cpu"
+         },
+         {
+          "id": "CUDA0",
+          "name": "NVIDIA GB10",
+          "backend": "cuda"
+         }
+        ],
+        "engine": {
+         "release": "b11770",
+         "commit": "39da130fc",
+         "variant": "source-build",
+         "accelerator": "unknown",
+         "rpc_proto": "8.0.0"
+        }
+       }
+      ]
+     },
+     "placement": [
+      {
+       "device": "CUDA0",
+       "model_bytes": 62759035207,
+       "kv_bytes": 179306496,
+       "layers_est": 21
+      },
+      {
+       "device": "CUDA_Host",
+       "model_bytes": 615325368,
+       "kv_bytes": 0,
+       "layers_est": null
+      }
+     ],
+     "transport": "tcp",
+     "ctx_size": 4096,
+     "stream": true,
+     "prompt_tokens": 128,
+     "completion_tokens": 64,
+     "ttft_ms": 405.45110200037016,
+     "total_ms": 1473.0766580005366,
+     "timings": {
+      "prompt_n": 128,
+      "prompt_ms": 331.191,
+      "predicted_n": 64,
+      "predicted_ms": 1124.123,
+      "predicted_per_second": 56.04368916924571,
+      "prompt_per_second": 386.483932232458,
+      "cache_n": 0
+     },
+     "finish_reason": "length",
+     "sampling": {
+      "temperature": 0,
+      "max_tokens": 64,
+      "seed": 7,
+      "cache_prompt": false
+     },
+     "cache_state": "cold",
+     "output_text": "The user says: \"Run r2-7bd3c7. Continue this text in plain English: the river carries small stones past a quiet mill where an old engineer writes careful notes about gears light rain the price of ...\". They want continuation. The phrase \"Run r2-7bd3",
+     "error": null,
+     "started_at": "2026-10-24T17:22:40.727360Z",
+     "benchmark_id": null,
+     "prompt_label": null,
+     "resumed_from": null,
+     "messages_sha256": "7458503486b1a44f8a9881ec876c8ba20ebcd5da891c418a4df0d3d0b2d113a0",
+     "output_truncated": false,
+     "non_content_output": true
+    },
+    {
+     "id": "7bf57686c7f0478bb48fcfe4b5511968",
+     "attempt_id": "537b97d37e4c472a86ab0d022ff6116a",
+     "deployment_id": "13d3b4a5a87841ffb65f3d52c45c512c",
+     "kind": "chat",
+     "status": "ok",
+     "simulated": false,
+     "model": {
+      "id": "gpt-oss-120b-mxfp4",
+      "repo": "ggml-org/gpt-oss-120b-GGUF",
+      "revision": "7200b74bea78b0a2964ef9f3897eefa401e890ff",
+      "quantization": "MXFP4",
+      "format": "gguf",
+      "files": [
+       {
+        "name": "gpt-oss-120b-MXFP4.gguf",
+        "sha256": "582bd40f6886200101f4c4ed9f25f3fe80cc14c86e9e2b37746cd8904a0c622d"
+       }
+      ],
+      "architecture": "gpt-oss",
+      "chat_template": true,
+      "context_length": 131072,
+      "max_output_tokens": 1024
+     },
+     "engine": {
+      "engine": "llama_rpc",
+      "release": "b11770",
+      "commit": "39da130fc",
+      "variant": "source-build",
+      "hosts": [
+       {
+        "node_id": "local",
+        "devices": [
+         {
+          "device": "CUDA0",
+          "endpoint": null,
+          "layers": 36
+         }
+        ],
+        "display_name": "gx10-49d1 (this machine)",
+        "hostname": "gx10-49d1",
+        "os": {
+         "system": "linux",
+         "release": "7.0.0-1019-nvidia",
+         "machine": "arm64"
+        },
+        "contributed_devices": [
+         "CUDA0"
+        ],
+        "hardware": [
+         {
+          "id": "CPU",
+          "name": "aarch64",
+          "backend": "cpu"
+         },
+         {
+          "id": "CUDA0",
+          "name": "NVIDIA GB10",
+          "backend": "cuda"
+         }
+        ],
+        "engine": {
+         "release": "b11770",
+         "commit": "39da130fc",
+         "variant": "source-build",
+         "accelerator": "unknown",
+         "rpc_proto": "8.0.0"
+        }
+       }
+      ]
+     },
+     "placement": [
+      {
+       "device": "CUDA0",
+       "model_bytes": 62759035207,
+       "kv_bytes": 179306496,
+       "layers_est": 21
+      },
+      {
+       "device": "CUDA_Host",
+       "model_bytes": 615325368,
+       "kv_bytes": 0,
+       "layers_est": null
+      }
+     ],
+     "transport": "tcp",
+     "ctx_size": 4096,
+     "stream": true,
+     "prompt_tokens": 126,
+     "completion_tokens": 64,
+     "ttft_ms": 399.0455329994802,
+     "total_ms": 1462.885615000232,
+     "timings": {
+      "prompt_n": 126,
+      "prompt_ms": 324.215,
+      "predicted_n": 64,
+      "predicted_ms": 1120.868,
+      "predicted_per_second": 56.206440008993034,
+      "prompt_per_second": 388.631001033265,
+      "cache_n": 0
+     },
+     "finish_reason": "length",
+     "sampling": {
+      "temperature": 0,
+      "max_tokens": 64,
+      "seed": 7,
+      "cache_prompt": false
+     },
+     "cache_state": "cold",
+     "output_text": "The user says: \"Run r1-e9109b. Continue this text in plain English: the river carries ... the river carries small stones past\". They want continuation of the text. The phrase \"Run r1-e9109b.\" might be a command to run some code or something, but",
+     "error": null,
+     "started_at": "2026-10-24T17:22:39.259007Z",
+     "benchmark_id": null,
+     "prompt_label": null,
+     "resumed_from": null,
+     "messages_sha256": "10fe1827aecb36101c7a3d48d494007e6c2c10b2408ad5261e99fc6962cc2acb",
+     "output_truncated": false,
+     "non_content_output": true
+    },
+    {
+     "id": "9a1da08f851f4975bedc97b56994ea92",
+     "attempt_id": "c5fcb77eb8a241aeb71cba37c25780c7",
+     "deployment_id": "13d3b4a5a87841ffb65f3d52c45c512c",
+     "kind": "chat",
+     "status": "ok",
+     "simulated": false,
+     "model": {
+      "id": "gpt-oss-120b-mxfp4",
+      "repo": "ggml-org/gpt-oss-120b-GGUF",
+      "revision": "7200b74bea78b0a2964ef9f3897eefa401e890ff",
+      "quantization": "MXFP4",
+      "format": "gguf",
+      "files": [
+       {
+        "name": "gpt-oss-120b-MXFP4.gguf",
+        "sha256": "582bd40f6886200101f4c4ed9f25f3fe80cc14c86e9e2b37746cd8904a0c622d"
+       }
+      ],
+      "architecture": "gpt-oss",
+      "chat_template": true,
+      "context_length": 131072,
+      "max_output_tokens": 1024
+     },
+     "engine": {
+      "engine": "llama_rpc",
+      "release": "b11770",
+      "commit": "39da130fc",
+      "variant": "source-build",
+      "hosts": [
+       {
+        "node_id": "local",
+        "devices": [
+         {
+          "device": "CUDA0",
+          "endpoint": null,
+          "layers": 36
+         }
+        ],
+        "display_name": "gx10-49d1 (this machine)",
+        "hostname": "gx10-49d1",
+        "os": {
+         "system": "linux",
+         "release": "7.0.0-1019-nvidia",
+         "machine": "arm64"
+        },
+        "contributed_devices": [
+         "CUDA0"
+        ],
+        "hardware": [
+         {
+          "id": "CPU",
+          "name": "aarch64",
+          "backend": "cpu"
+         },
+         {
+          "id": "CUDA0",
+          "name": "NVIDIA GB10",
+          "backend": "cuda"
+         }
+        ],
+        "engine": {
+         "release": "b11770",
+         "commit": "39da130fc",
+         "variant": "source-build",
+         "accelerator": "unknown",
+         "rpc_proto": "8.0.0"
+        }
+       }
+      ]
+     },
+     "placement": [
+      {
+       "device": "CUDA0",
+       "model_bytes": 62759035207,
+       "kv_bytes": 179306496,
+       "layers_est": 21
+      },
+      {
+       "device": "CUDA_Host",
+       "model_bytes": 615325368,
+       "kv_bytes": 0,
+       "layers_est": null
+      }
+     ],
+     "transport": "tcp",
+     "ctx_size": 4096,
+     "stream": true,
+     "prompt_tokens": 126,
+     "completion_tokens": 64,
+     "ttft_ms": 411.0681329993895,
+     "total_ms": 1474.599410999872,
+     "timings": {
+      "prompt_n": 126,
+      "prompt_ms": 336.471,
+      "predicted_n": 64,
+      "predicted_ms": 1119.543,
+      "predicted_per_second": 56.272961377990846,
+      "prompt_per_second": 374.4750662018421,
+      "cache_n": 0
+     },
+     "finish_reason": "length",
+     "sampling": {
+      "temperature": 0,
+      "max_tokens": 64,
+      "seed": 7,
+      "cache_prompt": false
+     },
+     "cache_state": "cold",
+     "output_text": "The user says: \"Run r0-c5111a. Continue this text in plain English: the river carries ... the river carries small stones past\". They want continuation of the text. The phrase \"Run r0-c5111a.\" might be a command? Possibly they want the model to execute",
+     "error": null,
+     "started_at": "2026-10-24T17:22:37.779166Z",
+     "benchmark_id": null,
+     "prompt_label": null,
+     "resumed_from": null,
+     "messages_sha256": "232b9b054bd080f0ab4996b0508db4c40fa97747e71571c3eaa4e9961986257a",
+     "output_truncated": false,
+     "non_content_output": true
+    },
+    {
+     "id": "0a1f703761794901937910e7d6d8e9fe",
+     "attempt_id": "0a444629d56c4ca3b2a4f617fe673510",
+     "deployment_id": "13d3b4a5a87841ffb65f3d52c45c512c",
+     "kind": "chat",
+     "status": "ok",
+     "simulated": false,
+     "model": {
+      "id": "gpt-oss-120b-mxfp4",
+      "repo": "ggml-org/gpt-oss-120b-GGUF",
+      "revision": "7200b74bea78b0a2964ef9f3897eefa401e890ff",
+      "quantization": "MXFP4",
+      "format": "gguf",
+      "files": [
+       {
+        "name": "gpt-oss-120b-MXFP4.gguf",
+        "sha256": "582bd40f6886200101f4c4ed9f25f3fe80cc14c86e9e2b37746cd8904a0c622d"
+       }
+      ],
+      "architecture": "gpt-oss",
+      "chat_template": true,
+      "context_length": 131072,
+      "max_output_tokens": 1024
+     },
+     "engine": {
+      "engine": "llama_rpc",
+      "release": "b11770",
+      "commit": "39da130fc",
+      "variant": "source-build",
+      "hosts": [
+       {
+        "node_id": "local",
+        "devices": [
+         {
+          "device": "CUDA0",
+          "endpoint": null,
+          "layers": 36
+         }
+        ],
+        "display_name": "gx10-49d1 (this machine)",
+        "hostname": "gx10-49d1",
+        "os": {
+         "system": "linux",
+         "release": "7.0.0-1019-nvidia",
+         "machine": "arm64"
+        },
+        "contributed_devices": [
+         "CUDA0"
+        ],
+        "hardware": [
+         {
+          "id": "CPU",
+          "name": "aarch64",
+          "backend": "cpu"
+         },
+         {
+          "id": "CUDA0",
+          "name": "NVIDIA GB10",
+          "backend": "cuda"
+         }
+        ],
+        "engine": {
+         "release": "b11770",
+         "commit": "39da130fc",
+         "variant": "source-build",
+         "accelerator": "unknown",
+         "rpc_proto": "8.0.0"
+        }
+       }
+      ]
+     },
+     "placement": [
+      {
+       "device": "CUDA0",
+       "model_bytes": 62759035207,
+       "kv_bytes": 179306496,
+       "layers_est": 21
+      },
+      {
+       "device": "CUDA_Host",
+       "model_bytes": 615325368,
+       "kv_bytes": 0,
+       "layers_est": null
+      }
+     ],
+     "transport": "tcp",
+     "ctx_size": 4096,
+     "stream": true,
+     "prompt_tokens": 127,
+     "completion_tokens": 64,
+     "ttft_ms": 400.84299499994813,
+     "total_ms": 1469.1513409998151,
+     "timings": {
+      "prompt_n": 127,
+      "prompt_ms": 332.33,
+      "predicted_n": 64,
+      "predicted_ms": 1124.625,
+      "predicted_per_second": 56.01867289096366,
+      "prompt_per_second": 382.15027231968224,
+      "cache_n": 0
+     },
+     "finish_reason": "length",
+     "sampling": {
+      "temperature": 0,
+      "max_tokens": 64,
+      "seed": 7,
+      "cache_prompt": false
+     },
+     "cache_state": "cold",
+     "output_text": "The user says: \"Run w2-9d659b. Continue this text in plain English: the river carries small stones past a quiet mill where an old engineer writes careful notes about gears light rain the ...\". They want continuation of the text. The phrase \"Run w2-9d659",
+     "error": null,
+     "started_at": "2026-10-24T17:22:36.304253Z",
+     "benchmark_id": null,
+     "prompt_label": null,
+     "resumed_from": null,
+     "messages_sha256": "ae6ad3695f96b5878b5c5c7e292f0574fe6ae5775c7079a93f6bc1ee08562da2",
+     "output_truncated": false,
+     "non_content_output": true
+    },
+    {
+     "id": "768f8c3e705546a590e79e4e88a2d32f",
+     "attempt_id": "886b449f74f44613a91c9f6ee2520ba3",
+     "deployment_id": "13d3b4a5a87841ffb65f3d52c45c512c",
+     "kind": "chat",
+     "status": "ok",
+     "simulated": false,
+     "model": {
+      "id": "gpt-oss-120b-mxfp4",
+      "repo": "ggml-org/gpt-oss-120b-GGUF",
+      "revision": "7200b74bea78b0a2964ef9f3897eefa401e890ff",
+      "quantization": "MXFP4",
+      "format": "gguf",
+      "files": [
+       {
+        "name": "gpt-oss-120b-MXFP4.gguf",
+        "sha256": "582bd40f6886200101f4c4ed9f25f3fe80cc14c86e9e2b37746cd8904a0c622d"
+       }
+      ],
+      "architecture": "gpt-oss",
+      "chat_template": true,
+      "context_length": 131072,
+      "max_output_tokens": 1024
+     },
+     "engine": {
+      "engine": "llama_rpc",
+      "release": "b11770",
+      "commit": "39da130fc",
+      "variant": "source-build",
+      "hosts": [
+       {
+        "node_id": "local",
+        "devices": [
+         {
+          "device": "CUDA0",
+          "endpoint": null,
+          "layers": 36
+         }
+        ],
+        "display_name": "gx10-49d1 (this machine)",
+        "hostname": "gx10-49d1",
+        "os": {
+         "system": "linux",
+         "release": "7.0.0-1019-nvidia",
+         "machine": "arm64"
+        },
+        "contributed_devices": [
+         "CUDA0"
+        ],
+        "hardware": [
+         {
+          "id": "CPU",
+          "name": "aarch64",
+          "backend": "cpu"
+         },
+         {
+          "id": "CUDA0",
+          "name": "NVIDIA GB10",
+          "backend": "cuda"
+         }
+        ],
+        "engine": {
+         "release": "b11770",
+         "commit": "39da130fc",
+         "variant": "source-build",
+         "accelerator": "unknown",
+         "rpc_proto": "8.0.0"
+        }
+       }
+      ]
+     },
+     "placement": [
+      {
+       "device": "CUDA0",
+       "model_bytes": 62759035207,
+       "kv_bytes": 179306496,
+       "layers_est": 21
+      },
+      {
+       "device": "CUDA_Host",
+       "model_bytes": 615325368,
+       "kv_bytes": 0,
+       "layers_est": null
+      }
+     ],
+     "transport": "tcp",
+     "ctx_size": 4096,
+     "stream": true,
+     "prompt_tokens": 152,
+     "completion_tokens": 64,
+     "ttft_ms": 426.369543999499,
+     "total_ms": 1489.0062329996,
+     "timings": {
+      "prompt_n": 152,
+      "prompt_ms": 356.69,
+      "predicted_n": 64,
+      "predicted_ms": 1119.404,
+      "predicted_per_second": 56.27994897284626,
+      "prompt_per_second": 426.1403459586756,
+      "cache_n": 0
+     },
+     "finish_reason": "length",
+     "sampling": {
+      "temperature": 0,
+      "max_tokens": 64,
+      "seed": 7,
+      "cache_prompt": false
+     },
+     "cache_state": "cold",
+     "output_text": "The user says: \"Run w1-151c1e. Continue this text in plain English: the river carries small stones past a quiet mill where an old engineer writes careful notes about gears light rain the price of bread and the long road that leads over the hills to a busy market town the river",
+     "error": null,
+     "started_at": "2026-10-24T17:22:34.809606Z",
+     "benchmark_id": null,
+     "prompt_label": null,
+     "resumed_from": null,
+     "messages_sha256": "257523f22bc2f6c17bff2e18803bdd0e52ecc5ff09ea65103d02c5150b664b1f",
+     "output_truncated": false,
+     "non_content_output": true
+    },
+    {
+     "id": "2b04b1361ff34b28a0c77fd9c4f153b0",
+     "attempt_id": "48b7dc576e9a468c8dde69268a96d2e3",
+     "deployment_id": "13d3b4a5a87841ffb65f3d52c45c512c",
+     "kind": "chat",
+     "status": "ok",
+     "simulated": false,
+     "model": {
+      "id": "gpt-oss-120b-mxfp4",
+      "repo": "ggml-org/gpt-oss-120b-GGUF",
+      "revision": "7200b74bea78b0a2964ef9f3897eefa401e890ff",
+      "quantization": "MXFP4",
+      "format": "gguf",
+      "files": [
+       {
+        "name": "gpt-oss-120b-MXFP4.gguf",
+        "sha256": "582bd40f6886200101f4c4ed9f25f3fe80cc14c86e9e2b37746cd8904a0c622d"
+       }
+      ],
+      "architecture": "gpt-oss",
+      "chat_template": true,
+      "context_length": 131072,
+      "max_output_tokens": 1024
+     },
+     "engine": {
+      "engine": "llama_rpc",
+      "release": "b11770",
+      "commit": "39da130fc",
+      "variant": "source-build",
+      "hosts": [
+       {
+        "node_id": "local",
+        "devices": [
+         {
+          "device": "CUDA0",
+          "endpoint": null,
+          "layers": 36
+         }
+        ],
+        "display_name": "gx10-49d1 (this machine)",
+        "hostname": "gx10-49d1",
+        "os": {
+         "system": "linux",
+         "release": "7.0.0-1019-nvidia",
+         "machine": "arm64"
+        },
+        "contributed_devices": [
+         "CUDA0"
+        ],
+        "hardware": [
+         {
+          "id": "CPU",
+          "name": "aarch64",
+          "backend": "cpu"
+         },
+         {
+          "id": "CUDA0",
+          "name": "NVIDIA GB10",
+          "backend": "cuda"
+         }
+        ],
+        "engine": {
+         "release": "b11770",
+         "commit": "39da130fc",
+         "variant": "source-build",
+         "accelerator": "unknown",
+         "rpc_proto": "8.0.0"
+        }
+       }
+      ]
+     },
+     "placement": [
+      {
+       "device": "CUDA0",
+       "model_bytes": 62759035207,
+       "kv_bytes": 179306496,
+       "layers_est": 21
+      },
+      {
+       "device": "CUDA_Host",
+       "model_bytes": 615325368,
+       "kv_bytes": 0,
+       "layers_est": null
+      }
+     ],
+     "transport": "tcp",
+     "ctx_size": 4096,
+     "stream": true,
+     "prompt_tokens": 178,
+     "completion_tokens": 64,
+     "ttft_ms": 441.3173490002009,
+     "total_ms": 1508.9513969996915,
+     "timings": {
+      "prompt_n": 178,
+      "prompt_ms": 369.973,
+      "predicted_n": 64,
+      "predicted_ms": 1124.551,
+      "predicted_per_second": 56.02235914600583,
+      "prompt_per_second": 481.1161895597787,
+      "cache_n": 0
+     },
+     "finish_reason": "length",
+     "sampling": {
+      "temperature": 0,
+      "max_tokens": 64,
+      "seed": 7,
+      "cache_prompt": false
+     },
+     "cache_state": "cold",
+     "output_text": "The user says: \"Run w0-50aba8. Continue this text in plain English: the river carries small stones past ...\". They want continuation of the given text. The instruction: \"Run w0-50aba8.\" Possibly a command to run a model? But we are ChatGPT",
+     "error": null,
+     "started_at": "2026-10-24T17:22:33.287951Z",
+     "benchmark_id": null,
+     "prompt_label": null,
+     "resumed_from": null,
+     "messages_sha256": "9004bcedf317333e3eafb071ac4f7de292f3b2d01922b468cf5c8994b1369928",
+     "output_truncated": false,
+     "non_content_output": true
+    },
+    {
+     "id": "39792f46de614934bb913e3b38a78228",
+     "attempt_id": "1df6bfe5f7664173960390d7315978c5",
+     "deployment_id": "13d3b4a5a87841ffb65f3d52c45c512c",
+     "kind": "warmup",
+     "status": "ok",
+     "simulated": false,
+     "model": {
+      "id": "gpt-oss-120b-mxfp4",
+      "repo": "ggml-org/gpt-oss-120b-GGUF",
+      "revision": "7200b74bea78b0a2964ef9f3897eefa401e890ff",
+      "quantization": "MXFP4",
+      "format": "gguf",
+      "files": [
+       {
+        "name": "gpt-oss-120b-MXFP4.gguf",
+        "sha256": "582bd40f6886200101f4c4ed9f25f3fe80cc14c86e9e2b37746cd8904a0c622d"
+       }
+      ],
+      "architecture": "gpt-oss",
+      "chat_template": true,
+      "context_length": 131072,
+      "max_output_tokens": 1024
+     },
+     "engine": {
+      "engine": "llama_rpc",
+      "release": "b11770",
+      "commit": "39da130fc",
+      "variant": "source-build",
+      "hosts": [
+       {
+        "node_id": "local",
+        "devices": [
+         {
+          "device": "CUDA0",
+          "endpoint": null,
+          "layers": 36
+         }
+        ],
+        "display_name": "gx10-49d1 (this machine)",
+        "hostname": "gx10-49d1",
+        "os": {
+         "system": "linux",
+         "release": "7.0.0-1019-nvidia",
+         "machine": "arm64"
+        },
+        "contributed_devices": [
+         "CUDA0"
+        ],
+        "hardware": [
+         {
+          "id": "CPU",
+          "name": "aarch64",
+          "backend": "cpu"
+         },
+         {
+          "id": "CUDA0",
+          "name": "NVIDIA GB10",
+          "backend": "cuda"
+         }
+        ],
+        "engine": {
+         "release": "b11770",
+         "commit": "39da130fc",
+         "variant": "source-build",
+         "accelerator": "unknown",
+         "rpc_proto": "8.0.0"
+        }
+       }
+      ]
+     },
+     "placement": [
+      {
+       "device": "CUDA0",
+       "model_bytes": 62759035207,
+       "kv_bytes": 179306496,
+       "layers_est": 21
+      },
+      {
+       "device": "CUDA_Host",
+       "model_bytes": 615325368,
+       "kv_bytes": 0,
+       "layers_est": null
+      }
+     ],
+     "transport": "tcp",
+     "ctx_size": 4096,
+     "stream": true,
+     "prompt_tokens": 71,
+     "completion_tokens": 8,
+     "ttft_ms": 514.2496380003649,
+     "total_ms": 585.0984440003231,
+     "timings": {
+      "prompt_n": 71,
+      "prompt_ms": 445.529,
+      "predicted_n": 8,
+      "predicted_ms": 131.722,
+      "predicted_per_second": 53.14222377431256,
+      "prompt_per_second": 159.36111902928877,
+      "cache_n": 0
+     },
+     "finish_reason": "length",
+     "sampling": {
+      "temperature": 0,
+      "max_tokens": 8
+     },
+     "cache_state": "cold",
+     "output_text": "The user says: \"",
+     "error": null,
+     "started_at": "2026-10-24T17:22:31.544846Z",
+     "benchmark_id": null,
+     "prompt_label": null,
+     "resumed_from": null,
+     "messages_sha256": null,
+     "output_truncated": false,
+     "non_content_output": true
+    }
+   ]
+  },
+  "gateway_after": {
+   "nodes": [
+    {
+     "id": "local",
+     "display_name": "gx10-49d1 (this machine)",
+     "is_local": true,
+     "state": "eligible",
+     "state_reason": null,
+     "worker_state": null,
+     "worker_cpu_seconds": null,
+     "heartbeat_age_s": 0.0,
+     "contribution": {
+      "devices": [
+       "CUDA0"
+      ],
+      "max_bytes": 84886034022,
+      "reserve_bytes": 26118779699,
+      "enforcement": "soft_admission",
+      "cache_enabled": false
+     },
+     "memory_pools": [
+      {
+       "id": "uma",
+       "kind": "unified",
+       "total_bytes": 130593898496,
+       "free_bytes": 61601935360,
+       "measured_at": "2026-10-24T17:22:40.047596Z",
+       "source": "psutil",
+       "note": "GB10 CPU/GPU unified memory; counted once"
+      }
+     ],
+     "engine_devices": [
+      {
+       "name": "CUDA0",
+       "description": "NVIDIA GB10",
+       "total_bytes": 130593849344,
+       "free_bytes": 126198218752
+      }
+     ]
+    },
+    {
+     "id": "6dad6cf75b2e4cf197b7bc7f4d0a67e4",
+     "display_name": "mac-a",
+     "is_local": false,
+     "state": "eligible",
+     "state_reason": null,
+     "worker_state": "running",
+     "worker_cpu_seconds": 0.560357648,
+     "heartbeat_age_s": 3.016732,
+     "contribution": {
+      "devices": [
+       "MTL0"
+      ],
+      "max_bytes": 12348030976,
+      "reserve_bytes": 0,
+      "enforcement": "soft_admission",
+      "cache_enabled": true
+     },
+     "memory_pools": [
+      {
+       "id": "uma",
+       "kind": "unified",
+       "total_bytes": 17179869184,
+       "free_bytes": 10428727296,
+       "measured_at": "2026-10-24T17:22:46.588636Z",
+       "source": "sysctl hw.memsize + psutil",
+       "note": "CPU and GPU share this pool; counted once"
+      }
+     ],
+     "engine_devices": [
+      {
+       "name": "MTL0",
+       "description": "Apple M4",
+       "total_bytes": 11452547072,
+       "free_bytes": 11452547072
+      },
+      {
+       "name": "BLAS",
+       "description": "Accelerate",
+       "total_bytes": 0,
+       "free_bytes": 0
+      }
+     ]
+    },
+    {
+     "id": "d4e65f83c4be4a41aad722e40983b08b",
+     "display_name": "mac-b",
+     "is_local": false,
+     "state": "eligible",
+     "state_reason": null,
+     "worker_state": "running",
+     "worker_cpu_seconds": 0.543313696,
+     "heartbeat_age_s": 1.977124,
+     "contribution": {
+      "devices": [
+       "MTL0"
+      ],
+      "max_bytes": 12348030976,
+      "reserve_bytes": 0,
+      "enforcement": "soft_admission",
+      "cache_enabled": true
+     },
+     "memory_pools": [
+      {
+       "id": "uma",
+       "kind": "unified",
+       "total_bytes": 17179869184,
+       "free_bytes": 9518825472,
+       "measured_at": "2026-10-24T17:22:47.614376Z",
+       "source": "sysctl hw.memsize + psutil",
+       "note": "CPU and GPU share this pool; counted once"
+      }
+     ],
+     "engine_devices": [
+      {
+       "name": "MTL0",
+       "description": "Apple M4",
+       "total_bytes": 11452547072,
+       "free_bytes": 11452547072
+      },
+      {
+       "name": "BLAS",
+       "description": "Accelerate",
+       "total_bytes": 0,
+       "free_bytes": 0
+      }
+     ]
+    },
+    {
+     "id": "4c2991743c154be896d10a0b53ba4d2b",
+     "display_name": "mac-azim",
+     "is_local": false,
+     "state": "eligible",
+     "state_reason": null,
+     "worker_state": "running",
+     "worker_cpu_seconds": 0.640049112,
+     "heartbeat_age_s": 1.130624,
+     "contribution": {
+      "devices": [
+       "MTL0"
+      ],
+      "max_bytes": 8053063680,
+      "reserve_bytes": 0,
+      "enforcement": "soft_admission",
+      "cache_enabled": true
+     },
+     "memory_pools": [
+      {
+       "id": "uma",
+       "kind": "unified",
+       "total_bytes": 17179869184,
+       "free_bytes": 9562701824,
+       "measured_at": "2026-10-24T17:22:48.439549Z",
+       "source": "sysctl hw.memsize + psutil",
+       "note": "CPU and GPU share this pool; counted once"
+      }
+     ],
+     "engine_devices": [
+      {
+       "name": "MTL0",
+       "description": "Apple M4",
+       "total_bytes": 12712935424,
+       "free_bytes": 12711886848
+      },
+      {
+       "name": "BLAS",
+       "description": "Accelerate",
+       "total_bytes": 0,
+       "free_bytes": 0
+      }
+     ]
+    },
+    {
+     "id": "8f169e3549fc41fbb14f6876a19d704c",
+     "display_name": "g14",
+     "is_local": false,
+     "state": "eligible",
+     "state_reason": null,
+     "worker_state": "running",
+     "worker_cpu_seconds": 0.28125,
+     "heartbeat_age_s": 1.084798,
+     "contribution": {
+      "devices": [
+       "CUDA0"
+      ],
+      "max_bytes": 9663676416,
+      "reserve_bytes": 6682544537,
+      "enforcement": "soft_admission",
+      "cache_enabled": true
+     },
+     "memory_pools": [
+      {
+       "id": "ram",
+       "kind": "system_ram",
+       "total_bytes": 33412722688,
+       "free_bytes": 12689305600,
+       "measured_at": "2026-10-24T17:22:49.543529Z",
+       "source": "psutil",
+       "note": null
+      },
+      {
+       "id": "vram:CUDA0",
+       "kind": "discrete_vram",
+       "total_bytes": 12820938752,
+       "free_bytes": 12363759616,
+       "measured_at": "2026-10-24T17:22:49.575274Z",
+       "source": "nvidia-smi",
+       "note": null
+      }
+     ],
+     "engine_devices": [
+      {
+       "name": "CUDA0",
+       "description": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+       "total_bytes": 12819890176,
+       "free_bytes": 11561598976
+      }
+     ]
+    }
+   ],
+   "network": {
+    "transport": "iroh",
+    "endpoint_id": "<redacted>",
+    "listening": true,
+    "connections": 4,
+    "binding_speedups": {
+     "fast_bytes_lowering": true,
+     "inline_ready_wakeups": true
+    },
+    "peers": [
+     {
+      "node_id": "6dad6cf75b2e4cf197b7bc7f4d0a67e4",
+      "peer_id": "<redacted>",
+      "connected": true,
+      "path": {
+       "remote_id": "<redacted>",
+       "mode": "direct",
+       "rtt_ms": 55,
+       "paths": 2,
+       "selected_stats": {
+        "cwnd": 12000,
+        "congestion_events": 0,
+        "lost_packets": 0,
+        "lost_bytes": 0,
+        "udp_tx_bytes": 9105,
+        "udp_rx_bytes": 18982,
+        "current_mtu": 1452
+       }
+      },
+      "rpc": {
+       "tcp_to_quic_bytes": 88,
+       "tcp_to_quic_chunks": 4,
+       "quic_to_tcp_bytes": 108,
+       "quic_to_tcp_chunks": 4,
+       "streams": 2,
+       "active": 0
+      }
+     },
+     {
+      "node_id": "d4e65f83c4be4a41aad722e40983b08b",
+      "peer_id": "<redacted>",
+      "connected": true,
+      "path": {
+       "remote_id": "<redacted>",
+       "mode": "direct",
+       "rtt_ms": 63,
+       "paths": 2,
+       "selected_stats": {
+        "cwnd": 12000,
+        "congestion_events": 0,
+        "lost_packets": 0,
+        "lost_bytes": 0,
+        "udp_tx_bytes": 9258,
+        "udp_rx_bytes": 15698,
+        "current_mtu": 1452
+       }
+      },
+      "rpc": {
+       "tcp_to_quic_bytes": 88,
+       "tcp_to_quic_chunks": 4,
+       "quic_to_tcp_bytes": 108,
+       "quic_to_tcp_chunks": 4,
+       "streams": 2,
+       "active": 0
+      }
+     },
+     {
+      "node_id": "4c2991743c154be896d10a0b53ba4d2b",
+      "peer_id": "<redacted>",
+      "connected": true,
+      "path": {
+       "remote_id": "<redacted>",
+       "mode": "relay",
+       "rtt_ms": 148,
+       "paths": 1,
+       "selected_stats": {
+        "cwnd": 12000,
+        "congestion_events": 0,
+        "lost_packets": 0,
+        "lost_bytes": 0,
+        "udp_tx_bytes": 55147,
+        "udp_rx_bytes": 201558,
+        "current_mtu": 1452
+       }
+      },
+      "rpc": {
+       "tcp_to_quic_bytes": 176,
+       "tcp_to_quic_chunks": 8,
+       "quic_to_tcp_bytes": 216,
+       "quic_to_tcp_chunks": 8,
+       "streams": 4,
+       "active": 0
+      }
+     },
+     {
+      "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+      "peer_id": "<redacted>",
+      "connected": true,
+      "path": {
+       "remote_id": "<redacted>",
+       "mode": "direct",
+       "rtt_ms": 57,
+       "paths": 2,
+       "selected_stats": {
+        "cwnd": 12000,
+        "congestion_events": 0,
+        "lost_packets": 0,
+        "lost_bytes": 0,
+        "udp_tx_bytes": 10114,
+        "udp_rx_bytes": 21236,
+        "current_mtu": 1452
+       }
+      },
+      "rpc": {
+       "tcp_to_quic_bytes": 88,
+       "tcp_to_quic_chunks": 4,
+       "quic_to_tcp_bytes": 108,
+       "quic_to_tcp_chunks": 4,
+       "streams": 2,
+       "active": 0
+      }
+     }
+    ]
+   }
+  },
+  "host": {
+   "source": "hostmon: GetPerformanceInfo (available, commit, file cache), psutil disk_io_counters (system-wide physical reads, every process), shutil.disk_usage (system drive), psutil engine process counters (ReadFile bytes exclude mmap page-fault reads), nvidia-smi (all GPUs)",
+   "platform": "linux",
+   "guards": {
+    "min_available": {
+     "limit_bytes": 0,
+     "active": false,
+     "inactive_because": "turned off"
+    },
+    "min_drive_free": {
+     "limit_bytes": 5368709120,
+     "active": true,
+     "inactive_because": null,
+     "volume": "system drive",
+     "path": "/"
+    },
+    "max_commit_growth": {
+     "limit_bytes": 268435456,
+     "active": false,
+     "inactive_because": "this host reported no commit_limit reading"
+    },
+    "max_swap_growth": {
+     "limit_bytes": 2147483648,
+     "active": false,
+     "inactive_because": "this host reported no swap_used reading"
+    }
+   },
+   "interval_s": 0.5,
+   "marks": [
+    [
+     "load:start",
+     0.37
+    ],
+    [
+     "load:end",
+     48.509
+    ],
+    [
+     "chats:start",
+     48.552
+    ],
+    [
+     "chats:end",
+     57.467
+    ]
+   ],
+   "error": null,
+   "guard_tripped": null,
+   "guard_stop": null,
+   "whole_run": {
+    "t0": 0.0,
+    "t1": 65.074,
+    "samples": 129,
+    "available_min": 61573324800,
+    "commit_charge_peak": null,
+    "commit_limit_peak": null,
+    "system_cache_peak": null,
+    "drive_free_min": 724632510464,
+    "engine_rss_peak": 1463844864,
+    "engine_private_peak": 115232632832,
+    "gpu_used_peak": null,
+    "swap_used_min": null,
+    "swap_used_peak": null,
+    "disk_read_bytes": 62779785216,
+    "engine_read_bytes": 62764871680,
+    "engine_page_faults": 0
+   },
+   "samples": [
+    {
+     "t": 0.018,
+     "available": 127124463616,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 244559711232,
+     "drive_free": 728677023744,
+     "engine_rss": null,
+     "engine_private": null,
+     "engine_read_bytes": null,
+     "engine_page_faults": null,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 0.519,
+     "available": 126994182144,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 244560141312,
+     "drive_free": 728643465216,
+     "engine_rss": 180744192,
+     "engine_private": 9727782912,
+     "engine_read_bytes": 24576,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 1.021,
+     "available": 126632792064,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 244573404160,
+     "drive_free": 728611999744,
+     "engine_rss": 381530112,
+     "engine_private": 15104385024,
+     "engine_read_bytes": 13262848,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 1.521,
+     "available": 107793186816,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 244573412352,
+     "drive_free": 728576344064,
+     "engine_rss": 388972544,
+     "engine_private": 77992890368,
+     "engine_read_bytes": 13262848,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 2.873,
+     "available": 85792677888,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 244573424640,
+     "drive_free": 728494555136,
+     "engine_rss": 388997120,
+     "engine_private": 78059999232,
+     "engine_read_bytes": 13262848,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 3.373,
+     "available": 62359310336,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 244676185088,
+     "drive_free": 728456806400,
+     "engine_rss": 1008914432,
+     "engine_private": 79268093952,
+     "engine_read_bytes": 116023296,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 3.874,
+     "available": 62458150912,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 245534854144,
+     "drive_free": 728422203392,
+     "engine_rss": 1008943104,
+     "engine_private": 79335202816,
+     "engine_read_bytes": 974917632,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 4.375,
+     "available": 62445535232,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 245612456960,
+     "drive_free": 728393891840,
+     "engine_rss": 1008967680,
+     "engine_private": 79402311680,
+     "engine_read_bytes": 1052512256,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 4.893,
+     "available": 62447017984,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 245699226624,
+     "drive_free": 728349851648,
+     "engine_rss": 1008992256,
+     "engine_private": 79469420544,
+     "engine_read_bytes": 1136136192,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 5.393,
+     "available": 62398431232,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 245787810816,
+     "drive_free": 728320491520,
+     "engine_rss": 1009016832,
+     "engine_private": 79536529408,
+     "engine_read_bytes": 1227866112,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 5.894,
+     "available": 62460608512,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 245868620800,
+     "drive_free": 728280645632,
+     "engine_rss": 1009041408,
+     "engine_private": 79603638272,
+     "engine_read_bytes": 1308667904,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 6.395,
+     "available": 62440333312,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 245948460032,
+     "drive_free": 728244994048,
+     "engine_rss": 1009065984,
+     "engine_private": 79670747136,
+     "engine_read_bytes": 1388490752,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 6.911,
+     "available": 62405627904,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 246029962240,
+     "drive_free": 728215633920,
+     "engine_rss": 1009090560,
+     "engine_private": 79737856000,
+     "engine_read_bytes": 1466306560,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 7.412,
+     "available": 62441455616,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 246722083840,
+     "drive_free": 728185225216,
+     "engine_rss": 1009115136,
+     "engine_private": 79804964864,
+     "engine_read_bytes": 2161942528,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 7.912,
+     "available": 62441381888,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 247615691776,
+     "drive_free": 728147476480,
+     "engine_rss": 1009139712,
+     "engine_private": 79872073728,
+     "engine_read_bytes": 3055419392,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 8.413,
+     "available": 62455353344,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 248496028672,
+     "drive_free": 728114970624,
+     "engine_rss": 1009164288,
+     "engine_private": 79939182592,
+     "engine_read_bytes": 3936018432,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 8.931,
+     "available": 62444384256,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 249496873984,
+     "drive_free": 728082464768,
+     "engine_rss": 1009188864,
+     "engine_private": 80006291456,
+     "engine_read_bytes": 4903673856,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 9.432,
+     "available": 62437343232,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 250576149504,
+     "drive_free": 728049958912,
+     "engine_rss": 1009213440,
+     "engine_private": 80073400320,
+     "engine_read_bytes": 6015451136,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 9.933,
+     "available": 62456958976,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 251542989824,
+     "drive_free": 728021647360,
+     "engine_rss": 1009242112,
+     "engine_private": 80140509184,
+     "engine_read_bytes": 6982246400,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 10.434,
+     "available": 62453821440,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 252577459200,
+     "drive_free": 727985995776,
+     "engine_rss": 1009266688,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 8016678912,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 10.953,
+     "available": 62454943744,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 253642411008,
+     "drive_free": 727948247040,
+     "engine_rss": 1009201152,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 9047146496,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 11.454,
+     "available": 62457077760,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 254692146176,
+     "drive_free": 727915741184,
+     "engine_rss": 1009201152,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 10131484672,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 11.955,
+     "available": 62458400768,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 255771565056,
+     "drive_free": 727883235328,
+     "engine_rss": 1009201152,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 11210903552,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 12.456,
+     "available": 62449668096,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 256806988800,
+     "drive_free": 727852826624,
+     "engine_rss": 1009201152,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 12246183936,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 12.976,
+     "available": 62460633088,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 257843190784,
+     "drive_free": 727814029312,
+     "engine_rss": 1009201152,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 13245161472,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 13.476,
+     "available": 62429081600,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 258877029376,
+     "drive_free": 727775232000,
+     "engine_rss": 1008939008,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 14316445696,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 13.977,
+     "available": 62455820288,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 259914042368,
+     "drive_free": 727741677568,
+     "engine_rss": 1008939008,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 15353057280,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 14.478,
+     "available": 62453690368,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 260911549440,
+     "drive_free": 727710220288,
+     "engine_rss": 1008939008,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 16350826496,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 14.995,
+     "available": 62447411200,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 261899856896,
+     "drive_free": 727687151616,
+     "engine_rss": 1008939008,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 17307152384,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 15.496,
+     "available": 62424805376,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 262881504256,
+     "drive_free": 727663034368,
+     "engine_rss": 1008939008,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 18320887808,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 15.997,
+     "available": 62458155008,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 263787928576,
+     "drive_free": 727634722816,
+     "engine_rss": 1008939008,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 19227181056,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 16.498,
+     "available": 62450020352,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 264645979136,
+     "drive_free": 727602216960,
+     "engine_rss": 1008939008,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 20085043200,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 17.015,
+     "available": 62451634176,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 265607998464,
+     "drive_free": 727568662528,
+     "engine_rss": 1008939008,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 21018742784,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 17.516,
+     "available": 62455169024,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 266485582848,
+     "drive_free": 727531962368,
+     "engine_rss": 1008939008,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 21924507648,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 18.017,
+     "available": 62458544128,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 267401313280,
+     "drive_free": 727499456512,
+     "engine_rss": 1008939008,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 22840369152,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 18.518,
+     "available": 62439899136,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 268299598848,
+     "drive_free": 727473242112,
+     "engine_rss": 1008939008,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 23738773504,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 19.036,
+     "available": 62399102976,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 269304556544,
+     "drive_free": 727434444800,
+     "engine_rss": 1008939008,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 24713453568,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 19.537,
+     "available": 62457094144,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 270226910208,
+     "drive_free": 727406133248,
+     "engine_rss": 1008939008,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 25665941504,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 20.038,
+     "available": 62464540672,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 271128423424,
+     "drive_free": 727369433088,
+     "engine_rss": 1008939008,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 26567696384,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 20.539,
+     "available": 62457315328,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 272060533760,
+     "drive_free": 727340072960,
+     "engine_rss": 1008939008,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 27499544576,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 21.056,
+     "available": 62453141504,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 272971250688,
+     "drive_free": 727302324224,
+     "engine_rss": 1008939008,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 28382736384,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 21.557,
+     "available": 62461706240,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 273924799488,
+     "drive_free": 727263526912,
+     "engine_rss": 1008939008,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 29363789824,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 22.057,
+     "available": 62458900480,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 274837904384,
+     "drive_free": 727226826752,
+     "engine_rss": 1008939008,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 30277025792,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 22.559,
+     "available": 62457556992,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 275770268672,
+     "drive_free": 727193272320,
+     "engine_rss": 1008939008,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 31209254912,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 23.075,
+     "available": 62458191872,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 276722539520,
+     "drive_free": 727156572160,
+     "engine_rss": 1008939008,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 32134004736,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 23.576,
+     "available": 62458499072,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 277634788352,
+     "drive_free": 727120920576,
+     "engine_rss": 1008939008,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 33073733632,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 24.077,
+     "available": 62458175488,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 278582705152,
+     "drive_free": 727085268992,
+     "engine_rss": 1008939008,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 34021650432,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 24.577,
+     "available": 62454968320,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 279475731456,
+     "drive_free": 727054860288,
+     "engine_rss": 1008939008,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 34914676736,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 25.094,
+     "available": 62457040896,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 280442235904,
+     "drive_free": 727016062976,
+     "engine_rss": 1008939008,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 35855601664,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 25.595,
+     "available": 62436474880,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 281421155328,
+     "drive_free": 726999285760,
+     "engine_rss": 1008939008,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 36859932672,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 26.096,
+     "available": 62430453760,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 282302409728,
+     "drive_free": 726963634176,
+     "engine_rss": 1008939008,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 37741162496,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 26.596,
+     "available": 62439260160,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 283162229760,
+     "drive_free": 726929031168,
+     "engine_rss": 1008939008,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 38600712192,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 27.114,
+     "available": 62439419904,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 284088822784,
+     "drive_free": 726893379584,
+     "engine_rss": 1008939008,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 39494275072,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 27.615,
+     "available": 62441431040,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 284991929344,
+     "drive_free": 726859825152,
+     "engine_rss": 1008939008,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 40430673920,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 28.115,
+     "available": 62456270848,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 285894441984,
+     "drive_free": 726830465024,
+     "engine_rss": 1008939008,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 41332908032,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 28.616,
+     "available": 62441656320,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 286773652480,
+     "drive_free": 726794813440,
+     "engine_rss": 1008939008,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 42212380672,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 29.133,
+     "available": 62455263232,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 287720918016,
+     "drive_free": 726767550464,
+     "engine_rss": 1008939008,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 43128811520,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 29.634,
+     "available": 62459949056,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 288618851328,
+     "drive_free": 726732947456,
+     "engine_rss": 1008939008,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 44057407488,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 30.135,
+     "available": 62456995840,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 289567288320,
+     "drive_free": 726707781632,
+     "engine_rss": 1008873472,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 45005844480,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 30.635,
+     "available": 62403244032,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 290419047424,
+     "drive_free": 726675275776,
+     "engine_rss": 1008873472,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 45857472512,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 31.154,
+     "available": 62448676864,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 291025652736,
+     "drive_free": 726641721344,
+     "engine_rss": 1008873472,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 46441914368,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 31.655,
+     "available": 62434648064,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 291748092928,
+     "drive_free": 726609215488,
+     "engine_rss": 1008873472,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 47186636800,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 32.156,
+     "available": 62442287104,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 292377897984,
+     "drive_free": 726579855360,
+     "engine_rss": 1008873472,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 47816278016,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 32.656,
+     "available": 62463856640,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 292967062528,
+     "drive_free": 726550495232,
+     "engine_rss": 1008873472,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 48405696512,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 33.175,
+     "available": 62464811008,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 293539347456,
+     "drive_free": 726517989376,
+     "engine_rss": 1008873472,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 48957009920,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 33.676,
+     "available": 62460772352,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 294089542656,
+     "drive_free": 726482337792,
+     "engine_rss": 1008873472,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 49528045568,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 34.177,
+     "available": 62458167296,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 294631287808,
+     "drive_free": 726448783360,
+     "engine_rss": 1008873472,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 50069762048,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 34.678,
+     "available": 62451589120,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 295173516288,
+     "drive_free": 726421520384,
+     "engine_rss": 1008873472,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 50612121600,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 35.196,
+     "available": 62445252608,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 295758150656,
+     "drive_free": 726386917376,
+     "engine_rss": 1008873472,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 51177062400,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 35.697,
+     "available": 62463967232,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 296384535552,
+     "drive_free": 726359654400,
+     "engine_rss": 1008873472,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 51822706688,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 36.198,
+     "available": 62457749504,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 297070763008,
+     "drive_free": 726336585728,
+     "engine_rss": 1008873472,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 52509327360,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 36.698,
+     "available": 62456102912,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 297760898048,
+     "drive_free": 726301982720,
+     "engine_rss": 1008873472,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 53199462400,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 37.215,
+     "available": 62450331648,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 298440850432,
+     "drive_free": 726265282560,
+     "engine_rss": 1008873472,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 53857513472,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 37.716,
+     "available": 62457221120,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 299042290688,
+     "drive_free": 726232776704,
+     "engine_rss": 1008873472,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 54480842752,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 38.217,
+     "available": 62439444480,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 299119111168,
+     "drive_free": 726208659456,
+     "engine_rss": 1008873472,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 54557650944,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 38.717,
+     "available": 62448132096,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 299193936896,
+     "drive_free": 726166716416,
+     "engine_rss": 1008873472,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 54632456192,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 39.234,
+     "available": 62466338816,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 299271011328,
+     "drive_free": 726131064832,
+     "engine_rss": 1008873472,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 54706642944,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 39.736,
+     "available": 62445715456,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 299346119680,
+     "drive_free": 726098558976,
+     "engine_rss": 1008873472,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 54784634880,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 40.236,
+     "available": 62423818240,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 299417181184,
+     "drive_free": 726070247424,
+     "engine_rss": 1008873472,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 54855544832,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 40.737,
+     "available": 62460194816,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 299555724288,
+     "drive_free": 726034591744,
+     "engine_rss": 1008873472,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 54994219008,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 41.254,
+     "available": 62446977024,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 300174990336,
+     "drive_free": 726005231616,
+     "engine_rss": 1008873472,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 55593562112,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 41.755,
+     "available": 62444666880,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 300844211200,
+     "drive_free": 725979017216,
+     "engine_rss": 1008873472,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 56282030080,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 42.256,
+     "available": 62446694400,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 301466508288,
+     "drive_free": 725942312960,
+     "engine_rss": 1008877568,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 56904564736,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 42.756,
+     "available": 62452199424,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 302134033408,
+     "drive_free": 725908758528,
+     "engine_rss": 1008877568,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 57571958784,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 43.273,
+     "available": 62442987520,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 302752381952,
+     "drive_free": 725878349824,
+     "engine_rss": 1008025600,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 58171301888,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 43.774,
+     "available": 62451122176,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 303348501504,
+     "drive_free": 725843746816,
+     "engine_rss": 1007566848,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 58786406400,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 44.275,
+     "available": 62450733056,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 303938632704,
+     "drive_free": 725810192384,
+     "engine_rss": 1007566848,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 59376537600,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 44.775,
+     "available": 62450180096,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 304516037632,
+     "drive_free": 725778735104,
+     "engine_rss": 1007566848,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 59954061312,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 45.292,
+     "available": 62450814976,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 305107934208,
+     "drive_free": 725744132096,
+     "engine_rss": 1007566848,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 60529152000,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 45.792,
+     "available": 62441799680,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 305845808128,
+     "drive_free": 725713723392,
+     "engine_rss": 1007566848,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 61283655680,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 46.293,
+     "available": 62442651648,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 306612775936,
+     "drive_free": 725695897600,
+     "engine_rss": 1007566848,
+     "engine_private": 80207618048,
+     "engine_read_bytes": 62050746368,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 46.794,
+     "available": 62038769664,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 307247324160,
+     "drive_free": 725666533376,
+     "engine_rss": 1111212032,
+     "engine_private": 114788749312,
+     "engine_read_bytes": 62685020160,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 47.318,
+     "available": 61759438848,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 307327220736,
+     "drive_free": 725646606336,
+     "engine_rss": 1349640192,
+     "engine_private": 115119112192,
+     "engine_read_bytes": 62764896256,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 47.819,
+     "available": 61751111680,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 307327265792,
+     "drive_free": 725615144960,
+     "engine_rss": 1349640192,
+     "engine_private": 115119112192,
+     "engine_read_bytes": 62764896256,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 48.321,
+     "available": 61749805056,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 307327294464,
+     "drive_free": 725585784832,
+     "engine_rss": 1349640192,
+     "engine_private": 115119112192,
+     "engine_read_bytes": 62764896256,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 48.822,
+     "available": 61764042752,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 307327294464,
+     "drive_free": 725557469184,
+     "engine_rss": 1354485760,
+     "engine_private": 115123859456,
+     "engine_read_bytes": 62764896256,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 49.346,
+     "available": 61765259264,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 307327294464,
+     "drive_free": 725527060480,
+     "engine_rss": 1354489856,
+     "engine_private": 115123859456,
+     "engine_read_bytes": 62764896256,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 49.848,
+     "available": 61744259072,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 307327306752,
+     "drive_free": 725500846080,
+     "engine_rss": 1354506240,
+     "engine_private": 115123859456,
+     "engine_read_bytes": 62764896256,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 50.35,
+     "available": 61719855104,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 307327716352,
+     "drive_free": 725474545664,
+     "engine_rss": 1372958720,
+     "engine_private": 115142189056,
+     "engine_read_bytes": 62764896256,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 50.851,
+     "available": 61716344832,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 307328175104,
+     "drive_free": 725449379840,
+     "engine_rss": 1372962816,
+     "engine_private": 115142189056,
+     "engine_read_bytes": 62764896256,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 51.374,
+     "available": 61718061056,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 307328203776,
+     "drive_free": 725423165440,
+     "engine_rss": 1372962816,
+     "engine_private": 115142189056,
+     "engine_read_bytes": 62764896256,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 51.876,
+     "available": 61673791488,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 307328220160,
+     "drive_free": 725401141248,
+     "engine_rss": 1392705536,
+     "engine_private": 115161808896,
+     "engine_read_bytes": 62764896256,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 52.378,
+     "available": 61678485504,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 307328228352,
+     "drive_free": 725369683968,
+     "engine_rss": 1392705536,
+     "engine_private": 115161808896,
+     "engine_read_bytes": 62764896256,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 52.879,
+     "available": 61676331008,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 307328248832,
+     "drive_free": 725343469568,
+     "engine_rss": 1392705536,
+     "engine_private": 115161808896,
+     "engine_read_bytes": 62764896256,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 53.406,
+     "available": 61641474048,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 307328265216,
+     "drive_free": 725316198400,
+     "engine_rss": 1419665408,
+     "engine_private": 115188584448,
+     "engine_read_bytes": 62764896256,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 53.907,
+     "available": 61631172608,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 307328277504,
+     "drive_free": 725288935424,
+     "engine_rss": 1424310272,
+     "engine_private": 115193311232,
+     "engine_read_bytes": 62764896256,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 54.409,
+     "available": 61625077760,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 307328306176,
+     "drive_free": 725270061056,
+     "engine_rss": 1424310272,
+     "engine_private": 115193311232,
+     "engine_read_bytes": 62764896256,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 54.91,
+     "available": 61593042944,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 307328322560,
+     "drive_free": 725242789888,
+     "engine_rss": 1442873344,
+     "engine_private": 115211776000,
+     "engine_read_bytes": 62764896256,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 55.435,
+     "available": 61590286336,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 307328322560,
+     "drive_free": 725210284032,
+     "engine_rss": 1442873344,
+     "engine_private": 115211776000,
+     "engine_read_bytes": 62764896256,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 55.936,
+     "available": 61590065152,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 307328343040,
+     "drive_free": 725187215360,
+     "engine_rss": 1442873344,
+     "engine_private": 115211776000,
+     "engine_read_bytes": 62764896256,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 56.438,
+     "available": 61573324800,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 307328359424,
+     "drive_free": 725171482624,
+     "engine_rss": 1463844864,
+     "engine_private": 115232632832,
+     "engine_read_bytes": 62764896256,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 56.939,
+     "available": 61582090240,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 307328371712,
+     "drive_free": 725147365376,
+     "engine_rss": 1463844864,
+     "engine_private": 115232632832,
+     "engine_read_bytes": 62764896256,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 57.463,
+     "available": 61658558464,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 307328371712,
+     "drive_free": 725125345280,
+     "engine_rss": 1463844864,
+     "engine_private": 115232632832,
+     "engine_read_bytes": 62764896256,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 57.964,
+     "available": 61606748160,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 307339213824,
+     "drive_free": 725095981056,
+     "engine_rss": 1463844864,
+     "engine_private": 115232632832,
+     "engine_read_bytes": 62764896256,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 58.465,
+     "available": 61596721152,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 307339353088,
+     "drive_free": 725066620928,
+     "engine_rss": 1463844864,
+     "engine_private": 115232632832,
+     "engine_read_bytes": 62764896256,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 58.966,
+     "available": 61596454912,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 307339365376,
+     "drive_free": 725037260800,
+     "engine_rss": 1463844864,
+     "engine_private": 115232632832,
+     "engine_read_bytes": 62764896256,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 59.482,
+     "available": 61596864512,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 307339365376,
+     "drive_free": 725005803520,
+     "engine_rss": 1463844864,
+     "engine_private": 115232632832,
+     "engine_read_bytes": 62764896256,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 59.983,
+     "available": 61600690176,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 307339377664,
+     "drive_free": 724971200512,
+     "engine_rss": 1463844864,
+     "engine_private": 115232632832,
+     "engine_read_bytes": 62764896256,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 60.484,
+     "available": 61601222656,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 307339377664,
+     "drive_free": 724935548928,
+     "engine_rss": 1463844864,
+     "engine_private": 115232632832,
+     "engine_read_bytes": 62764896256,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 60.985,
+     "available": 61588115456,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 307339398144,
+     "drive_free": 724905140224,
+     "engine_rss": 1463844864,
+     "engine_private": 115232632832,
+     "engine_read_bytes": 62764896256,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 61.503,
+     "available": 61593444352,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 307339398144,
+     "drive_free": 724871585792,
+     "engine_rss": 1463844864,
+     "engine_private": 115232632832,
+     "engine_read_bytes": 62764896256,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 62.004,
+     "available": 61580234752,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 307339410432,
+     "drive_free": 724833837056,
+     "engine_rss": 1463844864,
+     "engine_private": 115232632832,
+     "engine_read_bytes": 62764896256,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 62.505,
+     "available": 61657505792,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 307339414528,
+     "drive_free": 724807622656,
+     "engine_rss": 1463844864,
+     "engine_private": 115232632832,
+     "engine_read_bytes": 62764896256,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 63.006,
+     "available": 61663948800,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 307339426816,
+     "drive_free": 724768825344,
+     "engine_rss": 1463844864,
+     "engine_private": 115232632832,
+     "engine_read_bytes": 62764896256,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 63.524,
+     "available": 61664096256,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 307339426816,
+     "drive_free": 724736319488,
+     "engine_rss": 1463844864,
+     "engine_private": 115232632832,
+     "engine_read_bytes": 62764896256,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 64.025,
+     "available": 61644623872,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 307339447296,
+     "drive_free": 724709056512,
+     "engine_rss": 1463844864,
+     "engine_private": 115232632832,
+     "engine_read_bytes": 62764896256,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 64.526,
+     "available": 61653975040,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 307339447296,
+     "drive_free": 724671307776,
+     "engine_rss": 1463844864,
+     "engine_private": 115232632832,
+     "engine_read_bytes": 62764896256,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 65.027,
+     "available": 61648494592,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 307339484160,
+     "drive_free": 724635656192,
+     "engine_rss": 1463844864,
+     "engine_private": 115232632832,
+     "engine_read_bytes": 62764896256,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 65.074,
+     "available": 61648560128,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 307339496448,
+     "drive_free": 724632510464,
+     "engine_rss": 1463844864,
+     "engine_private": 115232632832,
+     "engine_read_bytes": 62764896256,
+     "engine_page_faults": 0,
+     "gpu_used": null,
+     "swap_used": null
+    }
+   ]
+  }
+ },
+ "comparison": {
+  "predicted_decode_ms": null,
+  "predicted_decode_source": null,
+  "measured_decode_ms_per_token_median": 17.791555555555554,
+  "measured_over_predicted": null,
+  "predicted_load_ms": null,
+  "measured_load_s": 48.092,
+  "predicted_stream_bytes_per_token": null,
+  "predicted_moe_ssd_bytes_per_token_est": null,
+  "predicted_moe_miss_rate_est": null,
+  "measured_disk_read_bytes_per_output_token_median": 1152.0,
+  "measured_decode_disk_read_bytes_per_token_median": 910.2222222222222,
+  "note": "predicted_* come from the gateway's plan; measured_* from this run"
+ },
+ "status": "ok",
+ "error": null,
+ "deployment_id": "13d3b4a5a87841ffb65f3d52c45c512c",
+ "stop": {
+  "state": "stopped",
+  "cleanup": "deployment:13d3b4a5a87841ffb65f3d52c45c512c pid 142302: graceful (exit code 0); released 1 lease(s)",
+  "error": null
+ },
+ "kept": false,
+ "finished_at": "2026-10-24T17:22:50.784114+00:00"
+}

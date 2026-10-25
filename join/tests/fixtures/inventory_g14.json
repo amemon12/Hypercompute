@@ -1,0 +1,82 @@
+{
+  "hostname": "g14",
+  "os": {
+    "system": "windows",
+    "release": "fixture",
+    "version": "fixture",
+    "machine": "x86_64"
+  },
+  "cpu": {
+    "model": null,
+    "physical_cores": null,
+    "logical_cores": null
+  },
+  "memory_pools": [
+    {
+      "id": "ram",
+      "kind": "system_ram",
+      "total_bytes": 33414845562,
+      "free_bytes": 19327352832,
+      "measured_at": "2026-10-24T12:00:00Z",
+      "source": "psutil"
+    },
+    {
+      "id": "vram:CUDA0",
+      "kind": "discrete_vram",
+      "total_bytes": 12820477378,
+      "free_bytes": 11274289152,
+      "measured_at": "2026-10-24T12:00:00Z",
+      "source": "nvidia-smi"
+    }
+  ],
+  "devices": [
+    {
+      "id": "CPU",
+      "kind": "cpu",
+      "name": "laptop CPU",
+      "vendor": null,
+      "pool_id": "ram",
+      "backend": "cpu",
+      "total_bytes": null,
+      "free_bytes": null,
+      "source": "fixture"
+    },
+    {
+      "id": "CUDA0",
+      "kind": "gpu",
+      "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+      "vendor": "NVIDIA",
+      "pool_id": "vram:CUDA0",
+      "backend": "cuda",
+      "total_bytes": 12820477378,
+      "free_bytes": null,
+      "source": "fixture"
+    }
+  ],
+  "disk_free_bytes": 57982058496,
+  "network": [],
+  "engine": {
+    "engine": "llama_rpc",
+    "installed": true,
+    "release": "b11770",
+    "build_number": 11770,
+    "commit": null,
+    "rpc_proto": "8.0.0",
+    "variant": "windows-x64-cuda13.4",
+    "accelerator": "cuda",
+    "bin_dir": null,
+    "smoke": "passed",
+    "smoke_detail": "llama-server --list-devices ran",
+    "devices": [
+      {
+        "name": "CUDA0",
+        "description": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+        "total_bytes": 12820477378,
+        "free_bytes": 11274289152
+      }
+    ]
+  },
+  "collected_at": "2026-10-24T12:00:00Z",
+  "diagnostics": [],
+  "extra_engines": []
+}

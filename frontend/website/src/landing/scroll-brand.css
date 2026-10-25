@@ -1,0 +1,17 @@
+#hc-home .hc-brand-word{display:inline-flex;align-items:center;height:44px;white-space:nowrap}
+#hc-home .hc-brand-prefix,#hc-home .hc-brand-suffix{display:block;overflow:hidden;transition:max-width .62s cubic-bezier(.65,0,.2,1)}
+#hc-home .hc-brand-prefix{max-width:3.3em}
+#hc-home .hc-brand-suffix{max-width:3.5em}
+#hc-home .hc-brand-prefix>span,#hc-home .hc-brand-suffix>span{display:block;transition:transform .62s cubic-bezier(.65,0,.2,1),opacity .25s ease .12s}
+#hc-home .hc-brand-core{position:relative;display:inline-flex;align-items:center;justify-content:center;flex:none;width:.56em;height:44px;transition:width .62s cubic-bezier(.65,0,.2,1)}
+#hc-home .hc-brand-o{transition:opacity .16s ease .3s}
+#hc-home .hc-brand-die{position:absolute;left:50%;top:50%;width:.53em;height:.62em;border:.1em solid currentColor;border-radius:50%;opacity:0;transform:translate(-50%,-50%);transition:width .38s ease,height .38s ease,border-radius .38s ease,opacity .15s ease}
+#hc-home .hc-brand-pins{position:absolute;left:50%;top:50%;width:40px;height:44px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:square;opacity:0;transform:translate(-50%,-50%) scale(.6);transition:opacity .15s ease,transform .28s ease}
+#hc-home .hc-logo[data-compact=true] .hc-brand-prefix,#hc-home .hc-logo[data-compact=true] .hc-brand-suffix{max-width:0}
+#hc-home .hc-logo[data-compact=true] .hc-brand-prefix>span{transform:translateX(100%);opacity:0;transition-delay:0s}
+#hc-home .hc-logo[data-compact=true] .hc-brand-suffix>span{transform:translateX(-100%);opacity:0;transition-delay:0s}
+#hc-home .hc-logo[data-compact=true] .hc-brand-core{width:40px}
+#hc-home .hc-logo[data-compact=true] .hc-brand-o{opacity:0;transition-delay:.14s}
+#hc-home .hc-logo[data-compact=true] .hc-brand-die{width:24px;height:24px;border-radius:3px;opacity:1;transition-delay:.16s}
+#hc-home .hc-logo[data-compact=true] .hc-brand-pins{opacity:1;transform:translate(-50%,-50%) scale(1);transition-delay:.32s}
+@media(prefers-reduced-motion:reduce){#hc-home .hc-brand-word *{transition:none!important}}

@@ -1,0 +1,882 @@
+{
+ "source": "results/capacity/20261024T211526Z-big-kimi-k2.6-iq1_s/run.json (codex/iroh-transport), trimmed",
+ "plan": {
+  "id": "720c859425324ac1beff46a5fa3026b7",
+  "model_id": "kimi-k2.6-iq1_s",
+  "strategy": "all_selected",
+  "ctx_size": 4096,
+  "feasible": true,
+  "fit_label": "estimated_fit",
+  "assignments": [
+   {
+    "node_id": "local",
+    "device": "CPU",
+    "endpoint": null,
+    "pool_id": "uma",
+    "layers": [],
+    "holds_output": false,
+    "weight_bytes": 90106232832,
+    "kv_bytes": 0,
+    "compute_bytes_est": 218103808,
+    "overhead_bytes_est": 67108864,
+    "total_bytes_est": 285212672,
+    "budget_bytes": 100297882829,
+    "fits": true,
+    "file_backed": false
+   },
+   {
+    "node_id": "4c2991743c154be896d10a0b53ba4d2b",
+    "device": "RPC2",
+    "endpoint": "127.0.0.1:36833",
+    "pool_id": "uma",
+    "layers": [
+     0,
+     1,
+     2
+    ],
+    "holds_output": false,
+    "weight_bytes": 7395843072,
+    "kv_bytes": 26738688,
+    "compute_bytes_est": 218103808,
+    "overhead_bytes_est": 335544320,
+    "total_bytes_est": 7976229888,
+    "budget_bytes": 8053063680,
+    "fits": true,
+    "file_backed": false
+   },
+   {
+    "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+    "device": "RPC3",
+    "endpoint": "127.0.0.1:41797",
+    "pool_id": "vram:CUDA0",
+    "layers": [
+     3,
+     4
+    ],
+    "holds_output": false,
+    "weight_bytes": 7087844352,
+    "kv_bytes": 17825792,
+    "compute_bytes_est": 218103808,
+    "overhead_bytes_est": 538968064,
+    "total_bytes_est": 7862742016,
+    "budget_bytes": 9663676416,
+    "fits": true,
+    "file_backed": false
+   },
+   {
+    "node_id": "6dad6cf75b2e4cf197b7bc7f4d0a67e4",
+    "device": "RPC1",
+    "endpoint": "127.0.0.1:36477",
+    "pool_id": "uma",
+    "layers": [
+     5,
+     6,
+     7
+    ],
+    "holds_output": false,
+    "weight_bytes": 10631766528,
+    "kv_bytes": 26738688,
+    "compute_bytes_est": 218103808,
+    "overhead_bytes_est": 335544320,
+    "total_bytes_est": 11212153344,
+    "budget_bytes": 11452547072,
+    "fits": true,
+    "file_backed": false
+   },
+   {
+    "node_id": "d4e65f83c4be4a41aad722e40983b08b",
+    "device": "RPC0",
+    "endpoint": "127.0.0.1:33707",
+    "pool_id": "uma",
+    "layers": [
+     8,
+     9,
+     10
+    ],
+    "holds_output": false,
+    "weight_bytes": 10191364608,
+    "kv_bytes": 26738688,
+    "compute_bytes_est": 218103808,
+    "overhead_bytes_est": 335544320,
+    "total_bytes_est": 10771751424,
+    "budget_bytes": 11452547072,
+    "fits": true,
+    "file_backed": false
+   },
+   {
+    "node_id": "local",
+    "device": "CUDA0",
+    "endpoint": null,
+    "pool_id": "uma",
+    "layers": [
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22,
+     23,
+     24,
+     25,
+     26,
+     27,
+     28,
+     29,
+     30,
+     31,
+     32,
+     33,
+     34,
+     35,
+     36,
+     37,
+     38,
+     39,
+     40,
+     41,
+     42,
+     43,
+     44,
+     45,
+     46,
+     47,
+     48,
+     49,
+     50,
+     51,
+     52,
+     53,
+     54,
+     55,
+     56,
+     57,
+     58,
+     59,
+     60
+    ],
+    "holds_output": true,
+    "weight_bytes": 81599560704,
+    "kv_bytes": 445644800,
+    "compute_bytes_est": 218103808,
+    "overhead_bytes_est": 471859200,
+    "total_bytes_est": 82735168512,
+    "budget_bytes": 84886034022,
+    "fits": true,
+    "file_backed": false
+   }
+  ],
+  "tier": "moe_offload",
+  "capacity_mode": true,
+  "cpu_layers": 0,
+  "prediction": null,
+  "created_at": "2026-10-24T21:26:42.493341Z",
+  "reasons": [
+   "strategy: run together (every selected device gets at least one layer)",
+   "contributed / estimated usable across selected devices: 116.9 GiB (separate memory pools, not one fast global memory)"
+  ],
+  "moe": {
+   "decode_ms_est": 1490.9518621468337
+  },
+  "warnings": [
+   "moe_offload: attention, norms, router, shared experts, the head and the KV cache stay on the accelerators; the routed experts of 27 host layer(s) (83.9 GiB) stay on this machine's CPU, memory-mapped from the GGUF with no repacked or pinned copy (file cache, not committed RAM)"
+  ]
+ },
+ "nodes": [
+  {
+   "id": "local",
+   "display_name": "gx10-49d1 (this machine)",
+   "is_local": true,
+   "state": "eligible",
+   "state_reason": null,
+   "worker_state": null,
+   "worker_cpu_seconds": null,
+   "heartbeat_age_s": 0.0,
+   "contribution": {
+    "devices": [
+     "CUDA0"
+    ],
+    "max_bytes": 84886034022,
+    "reserve_bytes": 26118779699,
+    "enforcement": "soft_admission",
+    "cache_enabled": false
+   },
+   "memory_pools": [
+    {
+     "id": "uma",
+     "kind": "unified",
+     "total_bytes": 130593898496,
+     "free_bytes": 127373840384,
+     "measured_at": "2026-10-24T21:15:25.342609Z",
+     "source": "psutil",
+     "note": "GB10 CPU/GPU unified memory; counted once"
+    }
+   ],
+   "engine_devices": [
+    {
+     "name": "CUDA0",
+     "description": "NVIDIA GB10",
+     "total_bytes": 130593849344,
+     "free_bytes": 126998282240
+    }
+   ]
+  },
+  {
+   "id": "6dad6cf75b2e4cf197b7bc7f4d0a67e4",
+   "display_name": "mac-a",
+   "is_local": false,
+   "state": "eligible",
+   "state_reason": null,
+   "worker_state": "running",
+   "worker_cpu_seconds": 0.198572456,
+   "heartbeat_age_s": 0.978288,
+   "contribution": {
+    "devices": [
+     "MTL0"
+    ],
+    "max_bytes": 12348030976,
+    "reserve_bytes": 0,
+    "enforcement": "soft_admission",
+    "cache_enabled": true
+   },
+   "memory_pools": [
+    {
+     "id": "uma",
+     "kind": "unified",
+     "total_bytes": 17179869184,
+     "free_bytes": 13247512576,
+     "measured_at": "2026-10-24T21:15:25.196115Z",
+     "source": "sysctl hw.memsize + psutil",
+     "note": "CPU and GPU share this pool; counted once"
+    }
+   ],
+   "engine_devices": [
+    {
+     "name": "MTL0",
+     "description": "Apple M4",
+     "total_bytes": 11452547072,
+     "free_bytes": 11452547072
+    },
+    {
+     "name": "BLAS",
+     "description": "Accelerate",
+     "total_bytes": 0,
+     "free_bytes": 0
+    }
+   ]
+  },
+  {
+   "id": "d4e65f83c4be4a41aad722e40983b08b",
+   "display_name": "mac-b",
+   "is_local": false,
+   "state": "eligible",
+   "state_reason": null,
+   "worker_state": "running",
+   "worker_cpu_seconds": 0.18588253999999999,
+   "heartbeat_age_s": 0.984153,
+   "contribution": {
+    "devices": [
+     "MTL0"
+    ],
+    "max_bytes": 12348030976,
+    "reserve_bytes": 0,
+    "enforcement": "soft_admission",
+    "cache_enabled": true
+   },
+   "memory_pools": [
+    {
+     "id": "uma",
+     "kind": "unified",
+     "total_bytes": 17179869184,
+     "free_bytes": 13475774464,
+     "measured_at": "2026-10-24T21:15:25.175784Z",
+     "source": "sysctl hw.memsize + psutil",
+     "note": "CPU and GPU share this pool; counted once"
+    }
+   ],
+   "engine_devices": [
+    {
+     "name": "MTL0",
+     "description": "Apple M4",
+     "total_bytes": 11452547072,
+     "free_bytes": 11452547072
+    },
+    {
+     "name": "BLAS",
+     "description": "Accelerate",
+     "total_bytes": 0,
+     "free_bytes": 0
+    }
+   ]
+  },
+  {
+   "id": "4c2991743c154be896d10a0b53ba4d2b",
+   "display_name": "mac-azim",
+   "is_local": false,
+   "state": "eligible",
+   "state_reason": null,
+   "worker_state": "running",
+   "worker_cpu_seconds": 0.201421208,
+   "heartbeat_age_s": 0.989625,
+   "contribution": {
+    "devices": [
+     "MTL0"
+    ],
+    "max_bytes": 8053063680,
+    "reserve_bytes": 0,
+    "enforcement": "soft_admission",
+    "cache_enabled": true
+   },
+   "memory_pools": [
+    {
+     "id": "uma",
+     "kind": "unified",
+     "total_bytes": 17179869184,
+     "free_bytes": 11704205312,
+     "measured_at": "2026-10-24T21:15:25.165250Z",
+     "source": "sysctl hw.memsize + psutil",
+     "note": "CPU and GPU share this pool; counted once"
+    }
+   ],
+   "engine_devices": [
+    {
+     "name": "MTL0",
+     "description": "Apple M4",
+     "total_bytes": 12712935424,
+     "free_bytes": 12711886848
+    },
+    {
+     "name": "BLAS",
+     "description": "Accelerate",
+     "total_bytes": 0,
+     "free_bytes": 0
+    }
+   ]
+  },
+  {
+   "id": "8f169e3549fc41fbb14f6876a19d704c",
+   "display_name": "g14",
+   "is_local": false,
+   "state": "eligible",
+   "state_reason": null,
+   "worker_state": "running",
+   "worker_cpu_seconds": 0.15625,
+   "heartbeat_age_s": 0.952243,
+   "contribution": {
+    "devices": [
+     "CUDA0"
+    ],
+    "max_bytes": 9663676416,
+    "reserve_bytes": 6682544537,
+    "enforcement": "soft_admission",
+    "cache_enabled": true
+   },
+   "memory_pools": [
+    {
+     "id": "ram",
+     "kind": "system_ram",
+     "total_bytes": 33412722688,
+     "free_bytes": 12666130432,
+     "measured_at": "2026-10-24T21:15:26.718981Z",
+     "source": "psutil",
+     "note": null
+    },
+    {
+     "id": "vram:CUDA0",
+     "kind": "discrete_vram",
+     "total_bytes": 12820938752,
+     "free_bytes": 12363759616,
+     "measured_at": "2026-10-24T21:15:26.757513Z",
+     "source": "nvidia-smi",
+     "note": null
+    }
+   ],
+   "engine_devices": [
+    {
+     "name": "CUDA0",
+     "description": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+     "total_bytes": 12819890176,
+     "free_bytes": 11561598976
+    }
+   ]
+  }
+ ],
+ "network": {
+  "transport": "iroh",
+  "endpoint_id": "<redacted>",
+  "listening": true,
+  "connections": 4,
+  "binding_speedups": {
+   "fast_bytes_lowering": true,
+   "inline_ready_wakeups": true
+  },
+  "peers": [
+   {
+    "node_id": "d4e65f83c4be4a41aad722e40983b08b",
+    "peer_id": "<redacted>",
+    "connected": true,
+    "path": {
+     "remote_id": "<redacted>",
+     "mode": "direct",
+     "rtt_ms": 17,
+     "paths": 2,
+     "selected_stats": {
+      "cwnd": 12000,
+      "congestion_events": 0,
+      "lost_packets": 0,
+      "lost_bytes": 0,
+      "udp_tx_bytes": 16068,
+      "udp_rx_bytes": 41635,
+      "current_mtu": 1452
+     }
+    },
+    "rpc": {
+     "tcp_to_quic_bytes": 88,
+     "tcp_to_quic_chunks": 4,
+     "quic_to_tcp_bytes": 108,
+     "quic_to_tcp_chunks": 4,
+     "streams": 2,
+     "active": 0
+    }
+   },
+   {
+    "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+    "peer_id": "<redacted>",
+    "connected": true,
+    "path": {
+     "remote_id": "<redacted>",
+     "mode": "direct",
+     "rtt_ms": 17,
+     "paths": 2,
+     "selected_stats": {
+      "cwnd": 12000,
+      "congestion_events": 0,
+      "lost_packets": 0,
+      "lost_bytes": 0,
+      "udp_tx_bytes": 12110,
+      "udp_rx_bytes": 27107,
+      "current_mtu": 1452
+     }
+    },
+    "rpc": {
+     "tcp_to_quic_bytes": 88,
+     "tcp_to_quic_chunks": 4,
+     "quic_to_tcp_bytes": 108,
+     "quic_to_tcp_chunks": 4,
+     "streams": 2,
+     "active": 0
+    }
+   },
+   {
+    "node_id": "4c2991743c154be896d10a0b53ba4d2b",
+    "peer_id": "<redacted>",
+    "connected": true,
+    "path": {
+     "remote_id": "<redacted>",
+     "mode": "direct",
+     "rtt_ms": 18,
+     "paths": 2,
+     "selected_stats": {
+      "cwnd": 12000,
+      "congestion_events": 0,
+      "lost_packets": 0,
+      "lost_bytes": 0,
+      "udp_tx_bytes": 17194,
+      "udp_rx_bytes": 42986,
+      "current_mtu": 1452
+     }
+    },
+    "rpc": {
+     "tcp_to_quic_bytes": 88,
+     "tcp_to_quic_chunks": 4,
+     "quic_to_tcp_bytes": 108,
+     "quic_to_tcp_chunks": 4,
+     "streams": 2,
+     "active": 0
+    }
+   },
+   {
+    "node_id": "6dad6cf75b2e4cf197b7bc7f4d0a67e4",
+    "peer_id": "<redacted>",
+    "connected": true,
+    "path": {
+     "remote_id": "<redacted>",
+     "mode": "direct",
+     "rtt_ms": 20,
+     "paths": 2,
+     "selected_stats": {
+      "cwnd": 12000,
+      "congestion_events": 0,
+      "lost_packets": 0,
+      "lost_bytes": 0,
+      "udp_tx_bytes": 8371,
+      "udp_rx_bytes": 14071,
+      "current_mtu": 1452
+     }
+    },
+    "rpc": {
+     "tcp_to_quic_bytes": 88,
+     "tcp_to_quic_chunks": 4,
+     "quic_to_tcp_bytes": 108,
+     "quic_to_tcp_chunks": 4,
+     "streams": 2,
+     "active": 0
+    }
+   }
+  ]
+ },
+ "deployment": {
+  "id": "recorded",
+  "state": "ready",
+  "plan": {
+   "id": "720c859425324ac1beff46a5fa3026b7",
+   "model_id": "kimi-k2.6-iq1_s",
+   "strategy": "all_selected",
+   "ctx_size": 4096,
+   "feasible": true,
+   "fit_label": "estimated_fit",
+   "assignments": [
+    {
+     "node_id": "local",
+     "device": "CPU",
+     "endpoint": null,
+     "pool_id": "uma",
+     "layers": [],
+     "holds_output": false,
+     "weight_bytes": 90106232832,
+     "kv_bytes": 0,
+     "compute_bytes_est": 218103808,
+     "overhead_bytes_est": 67108864,
+     "total_bytes_est": 285212672,
+     "budget_bytes": 100297882829,
+     "fits": true,
+     "file_backed": false
+    },
+    {
+     "node_id": "4c2991743c154be896d10a0b53ba4d2b",
+     "device": "RPC2",
+     "endpoint": "127.0.0.1:36833",
+     "pool_id": "uma",
+     "layers": [
+      0,
+      1,
+      2
+     ],
+     "holds_output": false,
+     "weight_bytes": 7395843072,
+     "kv_bytes": 26738688,
+     "compute_bytes_est": 218103808,
+     "overhead_bytes_est": 335544320,
+     "total_bytes_est": 7976229888,
+     "budget_bytes": 8053063680,
+     "fits": true,
+     "file_backed": false
+    },
+    {
+     "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+     "device": "RPC3",
+     "endpoint": "127.0.0.1:41797",
+     "pool_id": "vram:CUDA0",
+     "layers": [
+      3,
+      4
+     ],
+     "holds_output": false,
+     "weight_bytes": 7087844352,
+     "kv_bytes": 17825792,
+     "compute_bytes_est": 218103808,
+     "overhead_bytes_est": 538968064,
+     "total_bytes_est": 7862742016,
+     "budget_bytes": 9663676416,
+     "fits": true,
+     "file_backed": false
+    },
+    {
+     "node_id": "6dad6cf75b2e4cf197b7bc7f4d0a67e4",
+     "device": "RPC1",
+     "endpoint": "127.0.0.1:36477",
+     "pool_id": "uma",
+     "layers": [
+      5,
+      6,
+      7
+     ],
+     "holds_output": false,
+     "weight_bytes": 10631766528,
+     "kv_bytes": 26738688,
+     "compute_bytes_est": 218103808,
+     "overhead_bytes_est": 335544320,
+     "total_bytes_est": 11212153344,
+     "budget_bytes": 11452547072,
+     "fits": true,
+     "file_backed": false
+    },
+    {
+     "node_id": "d4e65f83c4be4a41aad722e40983b08b",
+     "device": "RPC0",
+     "endpoint": "127.0.0.1:33707",
+     "pool_id": "uma",
+     "layers": [
+      8,
+      9,
+      10
+     ],
+     "holds_output": false,
+     "weight_bytes": 10191364608,
+     "kv_bytes": 26738688,
+     "compute_bytes_est": 218103808,
+     "overhead_bytes_est": 335544320,
+     "total_bytes_est": 10771751424,
+     "budget_bytes": 11452547072,
+     "fits": true,
+     "file_backed": false
+    },
+    {
+     "node_id": "local",
+     "device": "CUDA0",
+     "endpoint": null,
+     "pool_id": "uma",
+     "layers": [
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60
+     ],
+     "holds_output": true,
+     "weight_bytes": 81599560704,
+     "kv_bytes": 445644800,
+     "compute_bytes_est": 218103808,
+     "overhead_bytes_est": 471859200,
+     "total_bytes_est": 82735168512,
+     "budget_bytes": 84886034022,
+     "fits": true,
+     "file_backed": false
+    }
+   ],
+   "tier": "moe_offload",
+   "capacity_mode": true,
+   "cpu_layers": 0,
+   "prediction": null,
+   "created_at": "2026-10-24T21:26:42.493341Z",
+   "reasons": [
+    "strategy: run together (every selected device gets at least one layer)",
+    "contributed / estimated usable across selected devices: 116.9 GiB (separate memory pools, not one fast global memory)"
+   ],
+   "moe": {
+    "decode_ms_est": 1490.9518621468337
+   },
+   "warnings": [
+    "moe_offload: attention, norms, router, shared experts, the head and the KV cache stay on the accelerators; the routed experts of 27 host layer(s) (83.9 GiB) stay on this machine's CPU, memory-mapped from the GGUF with no repacked or pinned copy (file cache, not committed RAM)"
+   ]
+  },
+  "placement": {
+   "offloaded": "62/62",
+   "devices": [
+    {
+     "name": "CPU_Mapped",
+     "model_bytes": 90491584512,
+     "kv_bytes": 0,
+     "compute_bytes": 0,
+     "layers_est": null
+    },
+    {
+     "name": "CUDA0",
+     "model_bytes": 81599576145,
+     "kv_bytes": 235929600,
+     "compute_bytes": 371468533,
+     "layers_est": 50
+    },
+    {
+     "name": "RPC0[127.0.0.1:33707]",
+     "model_bytes": 10191361802,
+     "kv_bytes": 14155776,
+     "compute_bytes": 426990632,
+     "layers_est": 3
+    },
+    {
+     "name": "RPC0[127.0.0.1:36477]",
+     "model_bytes": 10631763722,
+     "kv_bytes": 14155776,
+     "compute_bytes": 426990632,
+     "layers_est": 3
+    },
+    {
+     "name": "RPC0[127.0.0.1:36833]",
+     "model_bytes": 7395847700,
+     "kv_bytes": 14155776,
+     "compute_bytes": 441681182,
+     "layers_est": 3
+    },
+    {
+     "name": "RPC0[127.0.0.1:41797]",
+     "model_bytes": 7087849472,
+     "kv_bytes": 9437184,
+     "compute_bytes": 268445941,
+     "layers_est": 2
+    },
+    {
+     "name": "CPU",
+     "model_bytes": 0,
+     "kv_bytes": 0,
+     "compute_bytes": 251668725,
+     "layers_est": null
+    }
+   ],
+   "evidence_lines": [
+    "load_tensors: offloaded 62/62 layers to GPU",
+    "load_tensors:   CPU_Mapped model buffer size =   367.50 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1176.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1176.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1176.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1176.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1176.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1176.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1176.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:   CPU_Mapped model buffer size =  1050.00 MiB",
+    "load_tensors:        CUDA0 model buffer size = 77819.42 MiB",
+    "load_tensors: RPC0[127.0.0.1:33707] model buffer size =  9719.24 MiB",
+    "load_tensors: RPC0[127.0.0.1:36477] model buffer size = 10139.24 MiB",
+    "load_tensors: RPC0[127.0.0.1:36833] model buffer size =  7053.23 MiB",
+    "load_tensors: RPC0[127.0.0.1:41797] model buffer size =  6759.50 MiB",
+    "llama_kv_cache:      CUDA0 KV buffer size =   225.00 MiB",
+    "llama_kv_cache: RPC0[127.0.0.1:33707] KV buffer size =    13.50 MiB",
+    "llama_kv_cache: RPC0[127.0.0.1:36477] KV buffer size =    13.50 MiB",
+    "llama_kv_cache: RPC0[127.0.0.1:36833] KV buffer size =    13.50 MiB",
+    "llama_kv_cache: RPC0[127.0.0.1:41797] KV buffer size =     9.00 MiB",
+    "sched_reserve: RPC0[127.0.0.1:36833] compute buffer size =   421.22 MiB",
+    "sched_reserve: RPC0[127.0.0.1:41797] compute buffer size =   256.01 MiB",
+    "sched_reserve: RPC0[127.0.0.1:36477] compute buffer size =   407.21 MiB",
+    "sched_reserve: RPC0[127.0.0.1:33707] compute buffer size =   407.21 MiB",
+    "sched_reserve:      CUDA0 compute buffer size =   354.26 MiB",
+    "sched_reserve:        CPU compute buffer size =   240.01 MiB"
+   ],
+   "parsed_at": "2026-10-24T21:32:39.824224Z"
+  },
+  "participation_verified": true,
+  "participation_detail": "moe_offload verified: CUDA0 model 77819 MiB (planned 77819), CPU_Mapped 86300 MiB, private host weights 0 MiB, 27 CPU expert layer(s) planned; no -ot override lines (debug level, -lv 5), so the expert placement is checked by buffer sizes: CPU experts left on the GPU would push its model buffer over the plan; CPU: model 0 MiB, KV 0 MiB, ~None layers (planned 0); RPC0[127.0.0.1:36833]: model 7053 MiB, KV 14 MiB, ~3 layers (planned 3); RPC0[127.0.0.1:41797]: model 6760 MiB, KV 9 MiB, ~2 layers (planned 2); RPC0[127.0.0.1:36477]: model 10139 MiB, KV 14 MiB, ~3 layers (planned 3); RPC0[127.0.0.1:33707]: model 9719 MiB, KV 14 MiB, ~3 layers (planned 3); CUDA0: model 77819 MiB, KV 225 MiB, ~50 layers (planned 50)"
+ }
+}

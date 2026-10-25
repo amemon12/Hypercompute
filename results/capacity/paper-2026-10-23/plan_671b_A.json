@@ -1,0 +1,20 @@
+[
+ {
+  "label": "671b-local-1",
+  "model": "deepseek-v3.1-ud-tq1_0",
+  "nodes": [],
+  "args": [
+   "--prompt-tokens",
+   "64",
+   "--output-tokens",
+   "32",
+   "--warmup",
+   "1",
+   "--reps",
+   "2",
+   "--load-timeout",
+   "3600"
+  ],
+  "timeout_s": 7200
+ }
+]

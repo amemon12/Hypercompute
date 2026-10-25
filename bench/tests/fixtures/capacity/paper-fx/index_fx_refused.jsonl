@@ -1,0 +1,1 @@
+{"model": "fx-model-q4", "args": [], "label": "fx-hP2-3-refused", "nodes": ["mac-a", "mac-b"], "exit": 2, "wall_s": 6.0, "result_dir": "fx4-big-fx"}

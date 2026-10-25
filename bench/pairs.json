@@ -1,0 +1,1962 @@
+{
+ "about": "Headline pairs for hcbench.py report. Index paths are relative to results/capacity/. Every expect value is copied from docs/pitch/NUMBERS.md (section in numbers_ref) as printed there; the report recomputes it from the run records and flags any difference.",
+ "conditions": {
+  "L7": {
+   "host": "G14 (RTX 5070 Ti Laptop GPU, 11.94 GiB VRAM, 31.12 GiB RAM, Windows 11)",
+   "peers": "mac-a, mac-b (MacBook Air M4 16 GiB, 10.5 GiB cap each)",
+   "network": "home network, both Macs direct over Iroh, RTT 5 to 8 ms before each pooled row",
+   "detail": "Home network. Both Macs direct over Iroh in every pooled row. RTT 5 to 8 ms in the snapshots before each pooled row, 8 to 46 ms after it. Pooled rows wait until both peers are direct under 30 ms.",
+   "source": "NUMBERS condition keys; PR R7, 2026-10-25 UTC"
+  },
+  "G6": {
+   "host": "ASUS Ascent GX10 (GB10, 121.6 GiB unified memory)",
+   "peers": "G14 (CUDA, 9 GiB cap), mac-a, mac-b (11.5 GiB caps), mac-azim (7.5 GiB cap)",
+   "network": "home Wi-Fi, one subnet; 671B pooled rows: mac-azim on the Iroh relay at 48 to 103 ms; 1T pooled rows: all four direct, 5 to 55 ms",
+   "detail": "Home Wi-Fi, one subnet, no wired link. 671B pooled rows: mac-azim on the Iroh relay at 48 to 103 ms, the other three direct at 5 to 36 ms. 1T pooled rows: all four direct, 5 to 55 ms.",
+   "source": "NUMBERS condition keys; PR R6, 2026-10-24"
+  },
+  "B1": {
+   "host": "G14 (as in L7)",
+   "peers": "mac-azim, mac-a, mac-b (7.5 GiB cap each)",
+   "network": "building Wi-Fi, laptops on different subnets, Iroh direct through NAT",
+   "detail": "Building Wi-Fi, laptops on different subnets, Iroh direct through NAT. The run.json snapshots of the pooled rows show 7 to 64 ms for the Macs in each pool.",
+   "source": "NUMBERS condition keys; PR R1, R2, 2026-10-22 to 23"
+  },
+  "GXA": {
+   "host": "ASUS Ascent GX10 (GB10, 121.6 GiB unified memory)",
+   "peers": "none",
+   "network": "none",
+   "detail": "The GX10 alone, no peers. A Nemotron 30B service was installed on the rented unit (NUMBERS 3c, 3d).",
+   "source": "NUMBERS 3a, 3c; PR R6, R6.y"
+  },
+  "G14A": {
+   "host": "G14 (as in L7)",
+   "peers": "none",
+   "network": "none",
+   "detail": "The G14 alone, no peers.",
+   "source": "NUMBERS condition keys; PR R4, 2026-10-23"
+  },
+  "G3": {
+   "host": "ASUS Ascent GX10 (GB10, 121.6 GiB unified memory)",
+   "peers": "G14 (CUDA0, 9 GiB cap), mac-a and mac-b (MTL0, 11.5 GiB caps)",
+   "network": "home network, all three peers direct over Iroh, RTT 5 to 16 ms before each pooled row",
+   "detail": "Home network. The G14, mac-a and mac-b direct over Iroh in every pooled row. RTT 5 to 16 ms in the index and run.json snapshots before each completed pooled row, up to 52 ms after it. Every pooled row seeded its peers from Hugging Face with --seed-peers. Alone rows are the GX10 with no peers in the plan.",
+   "source": "NUMBERS condition keys, 3e; PR R8, 2026-10-25"
+  }
+ },
+ "families": [
+  {
+   "id": "laptops",
+   "title": "Laptops: the G14 alone vs the G14 with MacBook Airs",
+   "intro": "A is the G14 alone, B the G14 with MacBook Air peers over Iroh, N = 1. L7 rows are the home network with two Macs, one row per side (PR R7). B1 rows are building Wi-Fi with one or three Macs (PR R1, R2). r2-3v1 compares two pools: 1 Mac (A) against 3 Macs (B)."
+  },
+  {
+   "id": "gx10",
+   "title": "GX10 host: alone vs with four peers",
+   "intro": "A is the GX10 alone, B the GX10 with the G14 and three MacBook Airs as peers, N = 1, 64/32, 2 rows per side, order A P A P, every pooled row seeded with --seed-peers (NUMBERS 3b). The 671B pooled reps mix two layouts and one peer was on the relay."
+  },
+  {
+   "id": "concurrency",
+   "title": "Concurrency: N chats at once",
+   "intro": "Laptop rows: the G14 alone (A) against the G14 with mac-a and mac-b (B) at the same N, -np N -kvu, 3 batches per row, pooled rows on the R7.3 layout (NUMBERS 1d). GX10 rows: the GX10 alone at N (B) against N = 1 (A); 120B rows interleaved n1 n4 n8 n8 n4 n1 with 3 batches each, 1T and 671B one row per N with 2 batches each (NUMBERS 3c). Pooled concurrency on the GX10 is in allpool-conc (NUMBERS 3e)."
+  },
+  {
+   "id": "allpool",
+   "title": "Every machine at once: the GX10 alone vs the GX10 with the G14, mac-a and mac-b",
+   "intro": "A is the GX10 alone, B the GX10 with the G14, mac-a and mac-b as peers (condition G3), N = 1, one row per side, every pooled row seeded with --seed-peers (NUMBERS 3e, PR R8). Maverick 400B at 128/64 with 3 reps per row, Kimi 1T at 64/32 with 2 reps. The 1T alone row is kimi-n1-gxA-1 from R6.y, about 4 h before its pooled row on the same GX10."
+  },
+  {
+   "id": "allpool-conc",
+   "title": "Every machine at once, N chats at once",
+   "intro": "The GX10 alone (A) against the GX10 with the G14, mac-a and mac-b (B) at the same N, -np N -kvu, one row per side (condition G3, NUMBERS 3e, PR R8). Maverick 400B at 128/64 with 3 batches per row, Kimi 1T at 64/32 with 2 batches; the 1T alone row is kimi-n8-gxA-1 from R6.y. Every batch ended ok, but some chats missed the server's first iteration in both the alone and the pooled rows."
+  }
+ ],
+ "pairs": [
+  {
+   "id": "d70",
+   "family": "laptops",
+   "kind": "pooled_vs_alone",
+   "condition": "L7",
+   "model": "Llama 3.3 70B Instruct Q4_K_M",
+   "prompt_answer": "64/32",
+   "n": 1,
+   "a_prefix": "d70-g14A",
+   "b_prefix": "d70-g14P2",
+   "indexes": [
+    "paper-2026-10-24-laptop/index_d70.jsonl"
+   ],
+   "only_labels": null,
+   "mode": "reps",
+   "metrics": [
+    "decode",
+    "prefill",
+    "first_token",
+    "answer",
+    "ssd"
+   ],
+   "numbers_ref": "1a",
+   "expect": {
+    "decode": {
+     "a": "0.165",
+     "b": "0.898",
+     "ratio": "5.444",
+     "lo": "5.423",
+     "hi": "5.464"
+    },
+    "prefill": {
+     "a": "6.361",
+     "b": "12.514",
+     "ratio": "1.967",
+     "lo": "1.896",
+     "hi": "2.043"
+    },
+    "first_token": {
+     "a": "10.02",
+     "b": "5.01",
+     "ratio": "0.500",
+     "lo": "0.480",
+     "hi": "0.523"
+    },
+    "answer": {
+     "a": "197.91",
+     "b": "39.53",
+     "ratio": "0.200",
+     "lo": "0.199",
+     "hi": "0.201"
+    },
+    "ssd": {
+     "a": "23454",
+     "b": "2761",
+     "ratio": "0.118",
+     "lo": "0.118",
+     "hi": "0.118"
+    }
+   }
+  },
+  {
+   "id": "g120",
+   "family": "laptops",
+   "kind": "pooled_vs_alone",
+   "condition": "L7",
+   "model": "gpt-oss-120b MXFP4",
+   "prompt_answer": "128/64",
+   "n": 1,
+   "a_prefix": "g120-g14A",
+   "b_prefix": "g120-g14P2",
+   "indexes": [
+    "paper-2026-10-24-laptop/index_g120.jsonl"
+   ],
+   "only_labels": null,
+   "mode": "reps",
+   "metrics": [
+    "decode",
+    "prefill",
+    "first_token",
+    "answer",
+    "ssd"
+   ],
+   "numbers_ref": "1b",
+   "expect": {
+    "decode": {
+     "a": "3.829",
+     "b": "8.740",
+     "ratio": "2.283",
+     "lo": "2.000",
+     "hi": "2.538"
+    },
+    "prefill": {
+     "a": "3.836",
+     "b": "29.764",
+     "ratio": "7.759",
+     "lo": "6.945",
+     "hi": "8.855"
+    },
+    "first_token": {
+     "a": "34.23",
+     "b": "4.83",
+     "ratio": "0.141",
+     "lo": "0.120",
+     "hi": "0.161"
+    },
+    "answer": {
+     "a": "49.88",
+     "b": "11.67",
+     "ratio": "0.234",
+     "lo": "0.214",
+     "hi": "0.262"
+    },
+    "ssd": {
+     "a": "238.3",
+     "b": "6.4",
+     "ratio": "0.027",
+     "lo": "0.017",
+     "hi": "0.034"
+    }
+   }
+  },
+  {
+   "id": "vl72",
+   "family": "laptops",
+   "kind": "pooled_vs_alone",
+   "condition": "L7",
+   "model": "Qwen2.5-VL 72B Instruct Q4_K_M, text only",
+   "prompt_answer": "64/32",
+   "n": 1,
+   "a_prefix": "vl72-g14A",
+   "b_prefix": "vl72-g14P2",
+   "indexes": [
+    "paper-2026-10-24-laptop/index_vl72.jsonl"
+   ],
+   "only_labels": null,
+   "mode": "reps",
+   "metrics": [
+    "decode",
+    "prefill",
+    "first_token",
+    "answer",
+    "ssd"
+   ],
+   "numbers_ref": "1c",
+   "expect": {
+    "decode": {
+     "a": "0.141",
+     "b": "0.365",
+     "ratio": "2.592",
+     "lo": "2.571",
+     "hi": "2.613"
+    },
+    "prefill": {
+     "a": "4.642",
+     "b": "7.221",
+     "ratio": "1.555",
+     "lo": "1.506",
+     "hi": "1.608"
+    },
+    "first_token": {
+     "a": "13.70",
+     "b": "9.10",
+     "ratio": "0.664",
+     "lo": "0.643",
+     "hi": "0.686"
+    },
+    "answer": {
+     "a": "233.60",
+     "b": "93.93",
+     "ratio": "0.402",
+     "lo": "0.398",
+     "hi": "0.406"
+    },
+    "ssd": {
+     "a": "26896",
+     "b": "8956",
+     "ratio": "0.333",
+     "lo": "0.333",
+     "hi": "0.333"
+    }
+   }
+  },
+  {
+   "id": "n80",
+   "family": "laptops",
+   "kind": "pooled_vs_alone",
+   "condition": "L7",
+   "model": "Qwen3-Next-80B-A3B Q3_K_M",
+   "prompt_answer": "128/64",
+   "n": 1,
+   "a_prefix": "n80-g14A",
+   "b_prefix": "n80-g14P2",
+   "indexes": [
+    "paper-2026-10-24-laptop/index_n80.jsonl"
+   ],
+   "only_labels": null,
+   "mode": "reps",
+   "metrics": [
+    "decode",
+    "prefill",
+    "first_token",
+    "answer",
+    "ssd"
+   ],
+   "numbers_ref": "2",
+   "expect": {
+    "decode": {
+     "a": "21.373",
+     "b": "10.005",
+     "ratio": "0.468",
+     "lo": "0.362",
+     "hi": "0.611"
+    },
+    "prefill": {
+     "a": "84.348",
+     "b": "29.513",
+     "ratio": "0.350",
+     "lo": "0.304",
+     "hi": "0.400"
+    },
+    "first_token": {
+     "a": "1.56",
+     "b": "4.31",
+     "ratio": "2.771",
+     "lo": "2.447",
+     "hi": "3.183"
+    },
+    "answer": {
+     "a": "4.76",
+     "b": "10.65",
+     "ratio": "2.240",
+     "lo": "1.869",
+     "hi": "2.771"
+    },
+    "ssd": {
+     "a": "9.974",
+     "b": "5.398",
+     "ratio": "0.541",
+     "lo": "0.198",
+     "hi": "1.383"
+    }
+   }
+  },
+  {
+   "id": "r2-3mac",
+   "family": "laptops",
+   "kind": "pooled_vs_alone",
+   "condition": "B1",
+   "model": "gpt-oss-120b MXFP4",
+   "prompt_answer": "128/64",
+   "n": 1,
+   "a_prefix": "120b-local",
+   "b_prefix": "120b-3mac",
+   "indexes": [
+    "paper-2026-10-22/index_120b.jsonl"
+   ],
+   "only_labels": [
+    "120b-local-1",
+    "120b-local-2",
+    "120b-local-3",
+    "120b-3mac-1",
+    "120b-3mac-2",
+    "120b-3mac-3"
+   ],
+   "mode": "reps",
+   "metrics": [
+    "decode",
+    "prefill",
+    "first_token",
+    "answer",
+    "ssd"
+   ],
+   "numbers_ref": "4",
+   "expect": {
+    "decode": {
+     "a": "3.296",
+     "b": "4.198",
+     "ratio": "1.274",
+     "lo": "1.105",
+     "hi": "1.464"
+    },
+    "prefill": {
+     "a": "3.682",
+     "b": "11.026",
+     "ratio": "2.994",
+     "lo": "2.639",
+     "hi": "3.349"
+    },
+    "first_token": {
+     "a": "36.17",
+     "b": "13.44",
+     "ratio": "0.371",
+     "lo": "0.325",
+     "hi": "0.424"
+    },
+    "answer": {
+     "a": "54.44",
+     "b": "27.93",
+     "ratio": "0.513",
+     "lo": "0.453",
+     "hi": "0.577"
+    },
+    "ssd": {
+     "a": "275.0",
+     "b": "41.4",
+     "ratio": "0.151",
+     "lo": "0.117",
+     "hi": "0.188"
+    }
+   }
+  },
+  {
+   "id": "r2-1mac",
+   "family": "laptops",
+   "kind": "pooled_vs_alone",
+   "condition": "B1",
+   "model": "gpt-oss-120b MXFP4",
+   "prompt_answer": "128/64",
+   "n": 1,
+   "peers": "mac-azim (7.5 GiB cap)",
+   "a_prefix": "120b-local",
+   "b_prefix": "120b-1mac",
+   "indexes": [
+    "paper-2026-10-22/index_120b.jsonl"
+   ],
+   "only_labels": [
+    "120b-local-1",
+    "120b-local-2",
+    "120b-local-3",
+    "120b-1mac-1",
+    "120b-1mac-2"
+   ],
+   "mode": "reps",
+   "metrics": [
+    "decode",
+    "prefill",
+    "first_token",
+    "answer",
+    "ssd"
+   ],
+   "numbers_ref": "4",
+   "expect": {
+    "decode": {
+     "a": "3.296",
+     "b": "4.130",
+     "ratio": "1.253",
+     "lo": "1.106",
+     "hi": "1.407"
+    },
+    "prefill": {
+     "a": "3.682",
+     "b": "5.454",
+     "ratio": "1.481",
+     "lo": "1.408",
+     "hi": "1.567"
+    },
+    "first_token": {
+     "a": "36.17",
+     "b": "23.97",
+     "ratio": "0.663",
+     "lo": "0.627",
+     "hi": "0.696"
+    },
+    "answer": {
+     "a": "54.44",
+     "b": "38.81",
+     "ratio": "0.713",
+     "lo": "0.678",
+     "hi": "0.750"
+    },
+    "ssd": {
+     "a": "275.0",
+     "b": "147.6",
+     "ratio": "0.537",
+     "lo": "0.516",
+     "hi": "0.558"
+    }
+   }
+  },
+  {
+   "id": "r2-3v1",
+   "family": "laptops",
+   "kind": "pooled_vs_pooled",
+   "condition": "B1",
+   "model": "gpt-oss-120b MXFP4",
+   "prompt_answer": "128/64",
+   "n": 1,
+   "peers": "A: mac-azim; B: mac-azim, mac-a, mac-b",
+   "a_prefix": "120b-1mac",
+   "b_prefix": "120b-3mac",
+   "indexes": [
+    "paper-2026-10-22/index_120b.jsonl"
+   ],
+   "only_labels": [
+    "120b-1mac-1",
+    "120b-1mac-2",
+    "120b-3mac-1",
+    "120b-3mac-2",
+    "120b-3mac-3"
+   ],
+   "mode": "reps",
+   "metrics": [
+    "decode"
+   ],
+   "numbers_ref": "2",
+   "expect": {
+    "decode": {
+     "a": "4.130",
+     "b": "4.198",
+     "ratio": "1.016",
+     "lo": "0.860",
+     "hi": "1.199"
+    }
+   }
+  },
+  {
+   "id": "r1-235b",
+   "family": "laptops",
+   "kind": "pooled_vs_alone",
+   "condition": "B1",
+   "model": "Qwen3-235B-A22B UD-Q2_K_XL, steady state",
+   "prompt_answer": "64/64",
+   "n": 1,
+   "a_prefix": "235b-local",
+   "b_prefix": "235b-3mac",
+   "indexes": [
+    "paper-2026-10-22/index_235b.jsonl",
+    "paper-2026-10-22/index_235b_tight.jsonl"
+   ],
+   "only_labels": [
+    "235b-local-3",
+    "235b-local-4",
+    "235b-local-5",
+    "235b-3mac-4",
+    "235b-3mac-5",
+    "235b-3mac-6"
+   ],
+   "mode": "reps",
+   "metrics": [
+    "decode",
+    "prefill",
+    "first_token",
+    "answer",
+    "ssd"
+   ],
+   "numbers_ref": "2, 4",
+   "expect": {
+    "decode": {
+     "a": "1.294",
+     "b": "1.396",
+     "ratio": "1.079",
+     "lo": "0.976",
+     "hi": "1.184"
+    },
+    "prefill": {
+     "a": "1.450",
+     "b": "2.333",
+     "ratio": "1.609",
+     "lo": "1.481",
+     "hi": "1.742"
+    },
+    "first_token": {
+     "a": "43.50",
+     "b": "27.86",
+     "ratio": "0.641",
+     "lo": "0.595",
+     "hi": "0.695"
+    },
+    "answer": {
+     "a": "92.91",
+     "b": "73.25",
+     "ratio": "0.788",
+     "lo": "0.739",
+     "hi": "0.845"
+    },
+    "ssd": {
+     "a": "646.8",
+     "b": "295.8",
+     "ratio": "0.457",
+     "lo": "0.423",
+     "hi": "0.489"
+    }
+   }
+  },
+  {
+   "id": "671b",
+   "family": "gx10",
+   "kind": "pooled_vs_alone",
+   "condition": "G6",
+   "model": "DeepSeek-V3.1 671B UD-TQ1_0",
+   "prompt_answer": "64/32",
+   "n": 1,
+   "a_prefix": "671b-gxA",
+   "b_prefix": "671b-gx4",
+   "indexes": [
+    "paper-2026-10-24/index_671b_gx.jsonl"
+   ],
+   "only_labels": null,
+   "mode": "reps",
+   "metrics": [
+    "decode",
+    "prefill",
+    "first_token",
+    "answer",
+    "ssd"
+   ],
+   "numbers_ref": "3b",
+   "expect": {
+    "decode": {
+     "a": "1.805",
+     "b": "1.497",
+     "ratio": "0.830",
+     "lo": "0.769",
+     "hi": "0.903"
+    },
+    "prefill": {
+     "a": "2.631",
+     "b": "6.362",
+     "ratio": "2.418",
+     "lo": "2.194",
+     "hi": "2.721"
+    },
+    "first_token": {
+     "a": "24.67",
+     "b": "10.36",
+     "ratio": "0.420",
+     "lo": "0.373",
+     "hi": "0.462"
+    },
+    "answer": {
+     "a": "41.84",
+     "b": "31.20",
+     "ratio": "0.746",
+     "lo": "0.694",
+     "hi": "0.797"
+    },
+    "ssd": {
+     "a": "683.6",
+     "b": "37.1",
+     "ratio": "0.054",
+     "lo": "0.026",
+     "hi": "0.097"
+    }
+   }
+  },
+  {
+   "id": "kimi",
+   "family": "gx10",
+   "kind": "pooled_vs_alone",
+   "condition": "G6",
+   "model": "Kimi-K2.6 1T IQ1_S",
+   "prompt_answer": "64/32",
+   "n": 1,
+   "a_prefix": "kimi-gxA",
+   "b_prefix": "kimi-gx4",
+   "indexes": [
+    "paper-2026-10-24/index_kimi_gx.jsonl"
+   ],
+   "only_labels": null,
+   "mode": "reps",
+   "metrics": [
+    "decode",
+    "prefill",
+    "first_token",
+    "answer",
+    "ssd"
+   ],
+   "numbers_ref": "3b",
+   "expect": {
+    "decode": {
+     "a": "1.799",
+     "b": "1.540",
+     "ratio": "0.856",
+     "lo": "0.818",
+     "hi": "0.886"
+    },
+    "prefill": {
+     "a": "2.188",
+     "b": "3.298",
+     "ratio": "1.507",
+     "lo": "1.412",
+     "hi": "1.587"
+    },
+    "first_token": {
+     "a": "28.25",
+     "b": "19.08",
+     "ratio": "0.675",
+     "lo": "0.629",
+     "hi": "0.728"
+    },
+    "answer": {
+     "a": "45.48",
+     "b": "39.23",
+     "ratio": "0.863",
+     "lo": "0.818",
+     "hi": "0.912"
+    },
+    "ssd": {
+     "a": "671.0",
+     "b": "254.1",
+     "ratio": "0.379",
+     "lo": "0.365",
+     "hi": "0.397"
+    }
+   }
+  },
+  {
+   "id": "g120-batches",
+   "family": "concurrency",
+   "kind": "pooled_vs_alone",
+   "condition": "L7",
+   "model": "gpt-oss-120b MXFP4",
+   "prompt_answer": "128/64",
+   "n": 1,
+   "a_prefix": "g120-g14A",
+   "b_prefix": "g120-g14P2",
+   "indexes": [
+    "paper-2026-10-24-laptop/index_g120.jsonl"
+   ],
+   "only_labels": null,
+   "mode": "batches",
+   "metrics": [
+    "aggregate_decode",
+    "step",
+    "ssd_step",
+    "first_token",
+    "answer"
+   ],
+   "numbers_ref": "1d",
+   "expect": {
+    "aggregate_decode": {
+     "a": "3.829",
+     "b": "8.740",
+     "ratio": "2.283",
+     "lo": "2.000",
+     "hi": "2.538"
+    },
+    "step": {
+     "a": "261.638",
+     "b": "115.550",
+     "ratio": "0.442",
+     "lo": "0.394",
+     "hi": "0.499"
+    },
+    "ssd_step": {
+     "a": "238.3",
+     "b": "6.4",
+     "ratio": "0.027",
+     "lo": "0.017",
+     "hi": "0.034"
+    },
+    "first_token": {
+     "a": "34.23",
+     "b": "4.83",
+     "ratio": "0.141",
+     "lo": "0.120",
+     "hi": "0.161"
+    }
+   }
+  },
+  {
+   "id": "g120n4",
+   "family": "concurrency",
+   "kind": "pooled_vs_alone",
+   "condition": "L7",
+   "model": "gpt-oss-120b MXFP4",
+   "prompt_answer": "128/64",
+   "n": 4,
+   "a_prefix": "g120n4-g14A",
+   "b_prefix": "g120n4-g14P2",
+   "indexes": [
+    "paper-2026-10-24-laptop/index_g120n4.jsonl"
+   ],
+   "only_labels": null,
+   "mode": "batches",
+   "metrics": [
+    "aggregate_decode",
+    "step",
+    "ssd_step",
+    "first_token",
+    "answer"
+   ],
+   "numbers_ref": "1d",
+   "expect": {
+    "aggregate_decode": {
+     "a": "8.095",
+     "b": "11.854",
+     "ratio": "1.464",
+     "lo": "1.295",
+     "hi": "1.674"
+    },
+    "step": {
+     "a": "494.299",
+     "b": "340.621",
+     "ratio": "0.689",
+     "lo": "0.597",
+     "hi": "0.769"
+    },
+    "ssd_step": {
+     "a": "354.1",
+     "b": "59.3",
+     "ratio": "0.168",
+     "lo": "0.135",
+     "hi": "0.197"
+    },
+    "first_token": {
+     "a": "45.99",
+     "b": "21.17",
+     "ratio": "0.460",
+     "lo": "0.390",
+     "hi": "0.523"
+    },
+    "answer": {
+     "a": "75.70",
+     "b": "41.53",
+     "ratio": "0.549",
+     "lo": "0.469",
+     "hi": "0.619"
+    }
+   }
+  },
+  {
+   "id": "g120n8",
+   "family": "concurrency",
+   "kind": "pooled_vs_alone",
+   "condition": "L7",
+   "model": "gpt-oss-120b MXFP4",
+   "prompt_answer": "128/64",
+   "n": 8,
+   "a_prefix": "g120n8-g14A",
+   "b_prefix": "g120n8-g14P2",
+   "indexes": [
+    "paper-2026-10-24-laptop/index_g120n8.jsonl"
+   ],
+   "only_labels": null,
+   "mode": "batches",
+   "metrics": [
+    "aggregate_decode",
+    "step",
+    "ssd_step",
+    "first_token",
+    "answer"
+   ],
+   "numbers_ref": "1d",
+   "expect": {
+    "aggregate_decode": {
+     "a": "12.187",
+     "b": "16.445",
+     "ratio": "1.349",
+     "lo": "1.246",
+     "hi": "1.479"
+    },
+    "step": {
+     "a": "659.556",
+     "b": "489.300",
+     "ratio": "0.742",
+     "lo": "0.677",
+     "hi": "0.811"
+    },
+    "ssd_step": {
+     "a": "438.0",
+     "b": "75.0",
+     "ratio": "0.171",
+     "lo": "0.140",
+     "hi": "0.201"
+    },
+    "first_token": {
+     "a": "59.80",
+     "b": "30.80",
+     "ratio": "0.515",
+     "lo": "0.496",
+     "hi": "0.535"
+    },
+    "answer": {
+     "a": "99.62",
+     "b": "59.77",
+     "ratio": "0.600",
+     "lo": "0.569",
+     "hi": "0.633"
+    }
+   }
+  },
+  {
+   "id": "g120gx-n4",
+   "family": "concurrency",
+   "kind": "n_vs_n1",
+   "condition": "GXA",
+   "model": "gpt-oss-120b MXFP4",
+   "prompt_answer": "128/64",
+   "n": 4,
+   "a_prefix": "g120-n1-gxA",
+   "b_prefix": "g120-n4-gxA",
+   "indexes": [
+    "paper-2026-10-24-gx10conc/index_g120_conc.jsonl"
+   ],
+   "only_labels": null,
+   "mode": "batches",
+   "metrics": [
+    "aggregate_decode",
+    "step",
+    "ssd_step",
+    "first_token",
+    "answer"
+   ],
+   "numbers_ref": "3c",
+   "expect": {
+    "aggregate_decode": {
+     "a": "54.621",
+     "b": "111.861",
+     "ratio": "2.048",
+     "lo": "1.973",
+     "hi": "2.140"
+    },
+    "step": {
+     "a": "18.31",
+     "b": "35.85"
+    },
+    "first_token": {
+     "a": "0.42",
+     "b": "0.69"
+    },
+    "answer": {
+     "a": "1.52"
+    }
+   }
+  },
+  {
+   "id": "g120gx-n8",
+   "family": "concurrency",
+   "kind": "n_vs_n1",
+   "condition": "GXA",
+   "model": "gpt-oss-120b MXFP4",
+   "prompt_answer": "128/64",
+   "n": 8,
+   "a_prefix": "g120-n1-gxA",
+   "b_prefix": "g120-n8-gxA",
+   "indexes": [
+    "paper-2026-10-24-gx10conc/index_g120_conc.jsonl"
+   ],
+   "only_labels": null,
+   "mode": "batches",
+   "metrics": [
+    "aggregate_decode",
+    "step",
+    "ssd_step",
+    "first_token",
+    "answer"
+   ],
+   "numbers_ref": "3c",
+   "expect": {
+    "aggregate_decode": {
+     "a": "54.621",
+     "b": "149.156",
+     "ratio": "2.731",
+     "lo": "2.583",
+     "hi": "2.901"
+    },
+    "step": {
+     "a": "18.31",
+     "b": "54.12",
+     "ratio": "2.956",
+     "lo": "2.781",
+     "hi": "3.112"
+    },
+    "first_token": {
+     "a": "0.42",
+     "b": "1.00"
+    },
+    "answer": {
+     "a": "1.52",
+     "b": "4.30",
+     "ratio": "2.833",
+     "lo": "2.703",
+     "hi": "2.950"
+    }
+   }
+  },
+  {
+   "id": "kimigx-n4",
+   "family": "concurrency",
+   "kind": "n_vs_n1",
+   "condition": "GXA",
+   "model": "Kimi-K2.6 1T IQ1_S",
+   "prompt_answer": "64/32",
+   "n": 4,
+   "a_prefix": "kimi-n1-gxA",
+   "b_prefix": "kimi-n4-gxA",
+   "indexes": [
+    "paper-2026-10-24-gx10conc/index_gx10_conc2.jsonl"
+   ],
+   "only_labels": null,
+   "mode": "batches",
+   "metrics": [
+    "aggregate_decode",
+    "step",
+    "ssd_step",
+    "first_token",
+    "answer"
+   ],
+   "numbers_ref": "3c",
+   "expect": {
+    "aggregate_decode": {
+     "a": "1.779",
+     "b": "3.250",
+     "ratio": "1.826",
+     "lo": "1.633",
+     "hi": "2.021"
+    },
+    "step": {
+     "a": "562.0",
+     "b": "1244.5",
+     "ratio": "2.214",
+     "lo": "1.980",
+     "hi": "2.450"
+    },
+    "first_token": {
+     "a": "27.01",
+     "b": "45.21"
+    },
+    "answer": {
+     "a": "44.42"
+    }
+   }
+  },
+  {
+   "id": "kimigx-n8",
+   "family": "concurrency",
+   "kind": "n_vs_n1",
+   "condition": "GXA",
+   "model": "Kimi-K2.6 1T IQ1_S",
+   "prompt_answer": "64/32",
+   "n": 8,
+   "a_prefix": "kimi-n1-gxA",
+   "b_prefix": "kimi-n8-gxA",
+   "indexes": [
+    "paper-2026-10-24-gx10conc/index_gx10_conc2.jsonl"
+   ],
+   "only_labels": null,
+   "mode": "batches",
+   "metrics": [
+    "aggregate_decode",
+    "step",
+    "ssd_step",
+    "first_token",
+    "answer"
+   ],
+   "numbers_ref": "3c",
+   "expect": {
+    "aggregate_decode": {
+     "a": "1.779",
+     "b": "4.640",
+     "ratio": "2.608",
+     "lo": "2.372",
+     "hi": "2.844"
+    },
+    "step": {
+     "a": "562.0",
+     "b": "1745.0",
+     "ratio": "3.105",
+     "lo": "2.825",
+     "hi": "3.387"
+    },
+    "first_token": {
+     "a": "27.01",
+     "b": "66.90"
+    },
+    "answer": {
+     "a": "44.42",
+     "b": "119.34",
+     "ratio": "2.686",
+     "lo": "2.579",
+     "hi": "2.794"
+    }
+   }
+  },
+  {
+   "id": "ds671gx-n4",
+   "family": "concurrency",
+   "kind": "n_vs_n1",
+   "condition": "GXA",
+   "model": "DeepSeek-V3.1 671B UD-TQ1_0",
+   "prompt_answer": "64/32",
+   "n": 4,
+   "a_prefix": "ds671-n1-gxA",
+   "b_prefix": "ds671-n4-gxA",
+   "indexes": [
+    "paper-2026-10-24-gx10conc/index_gx10_conc2.jsonl"
+   ],
+   "only_labels": null,
+   "mode": "batches",
+   "metrics": [
+    "aggregate_decode",
+    "step",
+    "ssd_step",
+    "first_token",
+    "answer"
+   ],
+   "numbers_ref": "3c",
+   "expect": {
+    "aggregate_decode": {
+     "a": "1.792",
+     "b": "3.444",
+     "ratio": "1.922",
+     "lo": "1.875",
+     "hi": "1.970"
+    },
+    "step": {
+     "a": "558.2",
+     "b": "1171.3",
+     "ratio": "2.098",
+     "lo": "2.047",
+     "hi": "2.151"
+    },
+    "first_token": {
+     "a": "23.49",
+     "b": "37.70"
+    },
+    "answer": {
+     "a": "40.77"
+    }
+   }
+  },
+  {
+   "id": "ds671gx-n8",
+   "family": "concurrency",
+   "kind": "n_vs_n1",
+   "condition": "GXA",
+   "model": "DeepSeek-V3.1 671B UD-TQ1_0",
+   "prompt_answer": "64/32",
+   "n": 8,
+   "a_prefix": "ds671-n1-gxA",
+   "b_prefix": "ds671-n8-gxA",
+   "indexes": [
+    "paper-2026-10-24-gx10conc/index_gx10_conc2.jsonl"
+   ],
+   "only_labels": null,
+   "mode": "batches",
+   "metrics": [
+    "aggregate_decode",
+    "step",
+    "ssd_step",
+    "first_token",
+    "answer"
+   ],
+   "numbers_ref": "3c",
+   "expect": {
+    "aggregate_decode": {
+     "a": "1.792",
+     "b": "5.547",
+     "ratio": "3.096",
+     "lo": "2.525",
+     "hi": "3.686"
+    },
+    "step": {
+     "a": "558.2",
+     "b": "1497.9",
+     "ratio": "2.683",
+     "lo": "2.189",
+     "hi": "3.195"
+    },
+    "first_token": {
+     "a": "23.49",
+     "b": "47.63"
+    },
+    "answer": {
+     "a": "40.77",
+     "b": "92.66",
+     "ratio": "2.273",
+     "lo": "2.026",
+     "hi": "2.532"
+    }
+   }
+  },
+  {
+   "id": "mav-g3",
+   "family": "allpool",
+   "kind": "pooled_vs_alone",
+   "condition": "G3",
+   "model": "Llama 4 Maverick 400B UD-Q2_K_XL",
+   "prompt_answer": "128/64",
+   "n": 1,
+   "a_prefix": "mav-n1-gxA",
+   "b_prefix": "mav-n1-gx3",
+   "indexes": [
+    "paper-2026-10-25-gx10sweep/index_mav.jsonl",
+    "paper-2026-10-25-gx10sweep/index_allpool.jsonl"
+   ],
+   "only_labels": null,
+   "mode": "reps",
+   "metrics": [
+    "decode",
+    "prefill",
+    "first_token",
+    "answer",
+    "ssd"
+   ],
+   "numbers_ref": "3e",
+   "expect": {
+    "decode": {
+     "a": "9.785",
+     "b": "4.277",
+     "ratio": "0.437",
+     "lo": "0.400",
+     "hi": "0.477"
+    },
+    "prefill": {
+     "a": "60.440",
+     "b": "32.844",
+     "ratio": "0.543",
+     "lo": "0.353",
+     "hi": "0.791"
+    },
+    "first_token": {
+     "a": "2.41",
+     "b": "3.94",
+     "ratio": "1.637",
+     "lo": "1.264",
+     "hi": "2.852"
+    },
+    "answer": {
+     "a": "8.86",
+     "b": "18.71",
+     "ratio": "2.111",
+     "lo": "1.956",
+     "hi": "2.280"
+    },
+    "ssd": {
+     "a": "53.1",
+     "b": "13.8",
+     "ratio": "0.260",
+     "lo": "0.166",
+     "hi": "0.448"
+    }
+   }
+  },
+  {
+   "id": "mav-g3-n4",
+   "family": "allpool-conc",
+   "kind": "pooled_vs_alone",
+   "condition": "G3",
+   "model": "Llama 4 Maverick 400B UD-Q2_K_XL",
+   "prompt_answer": "128/64",
+   "n": 4,
+   "a_prefix": "mav-n4-gxA",
+   "b_prefix": "mav-n4-gx3",
+   "indexes": [
+    "paper-2026-10-25-gx10sweep/index_mav.jsonl",
+    "paper-2026-10-25-gx10sweep/index_allpool.jsonl"
+   ],
+   "only_labels": null,
+   "mode": "batches",
+   "metrics": [
+    "aggregate_decode",
+    "step",
+    "ssd_step",
+    "first_token",
+    "answer"
+   ],
+   "numbers_ref": "3e",
+   "expect": {
+    "aggregate_decode": {
+     "a": "29.859",
+     "b": "9.826",
+     "ratio": "0.329",
+     "lo": "0.314",
+     "hi": "0.348"
+    },
+    "step": {
+     "a": "134.372",
+     "b": "407.790",
+     "ratio": "3.035",
+     "lo": "2.879",
+     "hi": "3.184"
+    },
+    "ssd_step": {
+     "a": "69.8",
+     "b": "25.0",
+     "ratio": "0.358",
+     "lo": "0.246",
+     "hi": "0.538"
+    },
+    "first_token": {
+     "a": "4.51",
+     "b": "10.70",
+     "ratio": "2.374",
+     "lo": "1.884",
+     "hi": "2.940"
+    },
+    "answer": {
+     "a": "12.90",
+     "b": "36.39",
+     "ratio": "2.821",
+     "lo": "2.607",
+     "hi": "3.046"
+    }
+   }
+  },
+  {
+   "id": "mav-g3-n8",
+   "family": "allpool-conc",
+   "kind": "pooled_vs_alone",
+   "condition": "G3",
+   "model": "Llama 4 Maverick 400B UD-Q2_K_XL",
+   "prompt_answer": "128/64",
+   "n": 8,
+   "a_prefix": "mav-n8-gxA",
+   "b_prefix": "mav-n8-gx3",
+   "indexes": [
+    "paper-2026-10-25-gx10sweep/index_mav.jsonl",
+    "paper-2026-10-25-gx10sweep/index_allpool.jsonl"
+   ],
+   "only_labels": null,
+   "mode": "batches",
+   "metrics": [
+    "aggregate_decode",
+    "step",
+    "ssd_step",
+    "first_token",
+    "answer"
+   ],
+   "numbers_ref": "3e",
+   "expect": {
+    "aggregate_decode": {
+     "a": "43.362",
+     "b": "15.071",
+     "ratio": "0.348",
+     "lo": "0.329",
+     "hi": "0.370"
+    },
+    "step": {
+     "a": "185.158",
+     "b": "533.290",
+     "ratio": "2.880",
+     "lo": "2.713",
+     "hi": "3.044"
+    },
+    "ssd_step": {
+     "a": "94.9",
+     "b": "40.9",
+     "ratio": "0.431",
+     "lo": "0.143",
+     "hi": "0.923"
+    },
+    "first_token": {
+     "a": "8.02",
+     "b": "23.12",
+     "ratio": "2.881",
+     "lo": "2.352",
+     "hi": "3.464"
+    },
+    "answer": {
+     "a": "19.53",
+     "b": "57.01",
+     "ratio": "2.918",
+     "lo": "2.569",
+     "hi": "3.250"
+    }
+   }
+  },
+  {
+   "id": "kimi-g3",
+   "family": "allpool",
+   "kind": "pooled_vs_alone",
+   "condition": "G3",
+   "model": "Kimi-K2.6 1T IQ1_S",
+   "prompt_answer": "64/32",
+   "n": 1,
+   "a_prefix": "kimi-n1-gxA",
+   "b_prefix": "kimi-n1-gx3",
+   "indexes": [
+    "paper-2026-10-24-gx10conc/index_gx10_conc2.jsonl",
+    "paper-2026-10-25-gx10sweep/index_allpool.jsonl"
+   ],
+   "only_labels": null,
+   "mode": "reps",
+   "metrics": [
+    "decode",
+    "prefill",
+    "first_token",
+    "answer",
+    "ssd"
+   ],
+   "numbers_ref": "3e",
+   "expect": {
+    "decode": {
+     "a": "1.779",
+     "b": "1.774",
+     "ratio": "0.997",
+     "lo": "0.964",
+     "hi": "1.030"
+    },
+    "prefill": {
+     "a": "2.178",
+     "b": "3.132",
+     "ratio": "1.438",
+     "lo": "1.396",
+     "hi": "1.480"
+    },
+    "first_token": {
+     "a": "27.01",
+     "b": "20.22",
+     "ratio": "0.748",
+     "lo": "0.720",
+     "hi": "0.777"
+    },
+    "answer": {
+     "a": "44.42",
+     "b": "37.70",
+     "ratio": "0.849",
+     "lo": "0.819",
+     "hi": "0.878"
+    },
+    "ssd": {
+     "a": "657.3",
+     "b": "333.8",
+     "ratio": "0.508",
+     "lo": "0.423",
+     "hi": "0.598"
+    }
+   }
+  },
+  {
+   "id": "ds671-g3-interleaved",
+   "family": "allpool",
+   "kind": "pooled_vs_alone",
+   "condition": "G3",
+   "model": "DeepSeek-V3.1 671B UD-TQ1_0",
+   "prompt_answer": "64/32",
+   "n": 1,
+   "a_prefix": "ds671e-gxA",
+   "b_prefix": "ds671e-gxP3",
+   "indexes": [
+    "paper-2026-10-25-e2e/index_ds671e.jsonl"
+   ],
+   "only_labels": null,
+   "mode": "reps",
+   "metrics": [
+    "decode",
+    "prefill",
+    "first_token",
+    "answer",
+    "ssd"
+   ],
+   "numbers_ref": "3e",
+   "expect": {
+    "decode": {
+     "a": "1.761",
+     "b": "1.771",
+     "ratio": "1.006",
+     "lo": "0.926",
+     "hi": "1.081"
+    },
+    "prefill": {
+     "a": "2.654",
+     "b": "4.206",
+     "ratio": "1.585",
+     "lo": "1.471",
+     "hi": "1.706"
+    },
+    "first_token": {
+     "a": "25.02",
+     "b": "15.77",
+     "ratio": "0.630",
+     "lo": "0.579",
+     "hi": "0.681"
+    },
+    "answer": {
+     "a": "42.63",
+     "b": "33.37",
+     "ratio": "0.783",
+     "lo": "0.745",
+     "hi": "0.844"
+    },
+    "ssd": {
+     "a": "698.3",
+     "b": "260.6",
+     "ratio": "0.373",
+     "lo": "0.355",
+     "hi": "0.393"
+    }
+   }
+  },
+  {
+   "id": "kimi-g3-n8",
+   "family": "allpool-conc",
+   "kind": "pooled_vs_alone",
+   "condition": "G3",
+   "model": "Kimi-K2.6 1T IQ1_S",
+   "prompt_answer": "64/32",
+   "n": 8,
+   "a_prefix": "kimi-n8-gxA",
+   "b_prefix": "kimi-n8-gx3",
+   "indexes": [
+    "paper-2026-10-24-gx10conc/index_gx10_conc2.jsonl",
+    "paper-2026-10-25-gx10sweep/index_allpool.jsonl"
+   ],
+   "only_labels": null,
+   "mode": "batches",
+   "metrics": [
+    "aggregate_decode",
+    "step",
+    "ssd_step",
+    "first_token",
+    "answer"
+   ],
+   "numbers_ref": "3e",
+   "expect": {
+    "aggregate_decode": {
+     "a": "4.640",
+     "b": "4.986",
+     "ratio": "1.075",
+     "lo": "0.975",
+     "hi": "1.194"
+    },
+    "step": {
+     "a": "1745.038",
+     "b": "1615.040",
+     "ratio": "0.926",
+     "lo": "0.838",
+     "hi": "1.031"
+    },
+    "ssd_step": {
+     "a": "1891.7",
+     "b": "787.9",
+     "ratio": "0.417",
+     "lo": "0.331",
+     "hi": "0.526"
+    },
+    "first_token": {
+     "a": "66.90",
+     "b": "60.66",
+     "ratio": "0.907",
+     "lo": "0.902",
+     "hi": "0.911"
+    },
+    "answer": {
+     "a": "119.34",
+     "b": "117.22",
+     "ratio": "0.982",
+     "lo": "0.873",
+     "hi": "1.101"
+    }
+   }
+  }
+ ],
+ "singles": [
+  {
+   "id": "g14-671b",
+   "family": "laptops",
+   "condition": "G14A",
+   "model": "DeepSeek-V3.1 671B UD-TQ1_0",
+   "prompt_answer": "64/32",
+   "n": 1,
+   "prefix": "671b-local",
+   "indexes": [
+    "paper-2026-10-23/index_671b.jsonl"
+   ],
+   "only_labels": null,
+   "numbers_ref": "3b",
+   "note": "One row, cross-session; the GX10 comparison is a host change with no interval, do not pitch it",
+   "expect": {
+    "decode": {
+     "a": "0.481"
+    },
+    "prefill": {
+     "a": "0.747"
+    },
+    "first_token": {
+     "a": "88.68"
+    },
+    "answer": {
+     "a": "153.13"
+    },
+    "ssd": {
+     "a": "2484.9"
+    }
+   }
+  },
+  {
+   "id": "gx10-120b",
+   "family": "gx10",
+   "condition": "GXA",
+   "model": "gpt-oss-120b MXFP4",
+   "prompt_answer": "128/64",
+   "n": 1,
+   "prefix": "120b-gxA",
+   "indexes": [
+    "paper-2026-10-24/index_120b_gxA.jsonl"
+   ],
+   "only_labels": null,
+   "numbers_ref": "3a",
+   "note": "Internal context only: NUMBERS 3a says do not use the 56 tok/s in the pitch. The 671B download ran during these rows",
+   "expect": {
+    "decode": {
+     "a": "56.00"
+    },
+    "prefill": {
+     "a": "382.05"
+    },
+    "first_token": {
+     "a": "0.42"
+    },
+    "answer": {
+     "a": "1.49"
+    },
+    "ssd": {
+     "a": "0.021"
+    }
+   }
+  },
+  {
+   "id": "gx10-gm27",
+   "family": "gx10",
+   "condition": "GXA",
+   "model": "Gemma 3 27B IT Q4_K_M",
+   "prompt_answer": "128/64",
+   "n": 1,
+   "prefix": "gm27-n1-gxA",
+   "indexes": [
+    "paper-2026-10-25-gx10sweep/index_gm27.jsonl"
+   ],
+   "only_labels": null,
+   "numbers_ref": "3f",
+   "note": "One row, 3 reps, the whole model on CUDA0. Host numbers, not pooling",
+   "expect": {
+    "decode": {
+     "a": "12.341"
+    },
+    "prefill": {
+     "a": "396.670"
+    },
+    "first_token": {
+     "a": "0.35"
+    },
+    "answer": {
+     "a": "5.46"
+    }
+   }
+  },
+  {
+   "id": "gx10-qwq32",
+   "family": "gx10",
+   "condition": "GXA",
+   "model": "QwQ 32B Q4_K_M",
+   "prompt_answer": "128/64",
+   "n": 1,
+   "prefix": "qwq32-n1-gxA",
+   "indexes": [
+    "paper-2026-10-25-gx10sweep/index_qwq32.jsonl"
+   ],
+   "only_labels": null,
+   "numbers_ref": "3f",
+   "note": "One row, 3 reps, the whole model on CUDA0. Host numbers, not pooling",
+   "expect": {
+    "decode": {
+     "a": "10.643"
+    },
+    "prefill": {
+     "a": "621.054"
+    },
+    "first_token": {
+     "a": "0.23"
+    },
+    "answer": {
+     "a": "6.15"
+    }
+   }
+  }
+ ],
+ "row_checks": [
+  {
+   "index": "paper-2026-10-24-laptop/index_d70.jsonl",
+   "label": "d70-g14A-1",
+   "numbers_ref": "1a",
+   "expect": {
+    "load_s": "42.3"
+   }
+  },
+  {
+   "index": "paper-2026-10-24-laptop/index_d70.jsonl",
+   "label": "d70-g14P2-1",
+   "numbers_ref": "1a",
+   "expect": {
+    "load_s": "96.2",
+    "seed_s": "852"
+   }
+  },
+  {
+   "index": "paper-2026-10-24-laptop/index_d70.jsonl",
+   "label": "d70-g14A-2",
+   "numbers_ref": "1a",
+   "expect": {
+    "status": "aborted_by_guard"
+   }
+  },
+  {
+   "index": "paper-2026-10-24-laptop/index_g120.jsonl",
+   "label": "g120-g14A-1",
+   "numbers_ref": "1b",
+   "expect": {
+    "load_s": "40.1"
+   }
+  },
+  {
+   "index": "paper-2026-10-24-laptop/index_g120.jsonl",
+   "label": "g120-g14P2-1",
+   "numbers_ref": "1b",
+   "expect": {
+    "load_s": "112.2",
+    "seed_s": "761"
+   }
+  },
+  {
+   "index": "paper-2026-10-24-laptop/index_vl72.jsonl",
+   "label": "vl72-g14A-1",
+   "numbers_ref": "1c",
+   "expect": {
+    "load_s": "34.1"
+   }
+  },
+  {
+   "index": "paper-2026-10-24-laptop/index_vl72.jsonl",
+   "label": "vl72-g14P2-1",
+   "numbers_ref": "1c",
+   "expect": {
+    "load_s": "100.2",
+    "seed_s": "847"
+   }
+  },
+  {
+   "index": "paper-2026-10-24-laptop/index_n80.jsonl",
+   "label": "n80-g14A-1",
+   "numbers_ref": "2",
+   "expect": {
+    "load_s": "22.0"
+   }
+  },
+  {
+   "index": "paper-2026-10-24-laptop/index_n80.jsonl",
+   "label": "n80-g14A-2",
+   "numbers_ref": "2",
+   "expect": {
+    "load_s": "18.0"
+   }
+  },
+  {
+   "index": "paper-2026-10-24-laptop/index_n80.jsonl",
+   "label": "n80-g14P2-1",
+   "numbers_ref": "2",
+   "expect": {
+    "load_s": "180.4",
+    "seed_s": "5"
+   }
+  },
+  {
+   "index": "paper-2026-10-24-laptop/index_g120n4.jsonl",
+   "label": "g120n4-g14A-1",
+   "numbers_ref": "1d",
+   "expect": {
+    "load_s": "44.1"
+   }
+  },
+  {
+   "index": "paper-2026-10-24-laptop/index_g120n4.jsonl",
+   "label": "g120n4-g14P2-1",
+   "numbers_ref": "1d",
+   "expect": {
+    "load_s": "128.2",
+    "seed_s": "80"
+   }
+  },
+  {
+   "index": "paper-2026-10-24-laptop/index_g120n8.jsonl",
+   "label": "g120n8-g14A-1",
+   "numbers_ref": "1d",
+   "expect": {
+    "load_s": "40.1"
+   }
+  },
+  {
+   "index": "paper-2026-10-24-laptop/index_g120n8.jsonl",
+   "label": "g120n8-g14P2-1",
+   "numbers_ref": "1d",
+   "expect": {
+    "load_s": "122.2",
+    "seed_s": "10"
+   }
+  },
+  {
+   "index": "paper-2026-10-24/index_671b_gx.jsonl",
+   "label": "671b-gxA-1",
+   "numbers_ref": "3b",
+   "expect": {
+    "load_s": "239"
+   }
+  },
+  {
+   "index": "paper-2026-10-24/index_671b_gx.jsonl",
+   "label": "671b-gxA-2",
+   "numbers_ref": "3b",
+   "expect": {
+    "load_s": "256"
+   }
+  },
+  {
+   "index": "paper-2026-10-24/index_671b_gx.jsonl",
+   "label": "671b-gx4-1",
+   "numbers_ref": "3b",
+   "expect": {
+    "load_s": "503",
+    "seed_s": "1416"
+   }
+  },
+  {
+   "index": "paper-2026-10-24/index_671b_gx.jsonl",
+   "label": "671b-gx4-2",
+   "numbers_ref": "3b",
+   "expect": {
+    "load_s": "517",
+    "seed_s": "856"
+   }
+  },
+  {
+   "index": "paper-2026-10-24/index_kimi_gx.jsonl",
+   "label": "kimi-gxA-1",
+   "numbers_ref": "3b",
+   "expect": {
+    "load_s": "257"
+   }
+  },
+  {
+   "index": "paper-2026-10-24/index_kimi_gx.jsonl",
+   "label": "kimi-gxA-2",
+   "numbers_ref": "3b",
+   "expect": {
+    "load_s": "266"
+   }
+  },
+  {
+   "index": "paper-2026-10-24/index_kimi_gx.jsonl",
+   "label": "kimi-gx4-1",
+   "numbers_ref": "3b",
+   "expect": {
+    "load_s": "367",
+    "seed_s": "676"
+   }
+  },
+  {
+   "index": "paper-2026-10-24/index_kimi_gx.jsonl",
+   "label": "kimi-gx4-2",
+   "numbers_ref": "3b",
+   "expect": {
+    "load_s": "369",
+    "seed_s": "5"
+   }
+  },
+  {
+   "index": "paper-2026-10-24-gx10conc/index_gx10_ml123.jsonl",
+   "label": "ml123-gxA-1",
+   "numbers_ref": "3d",
+   "expect": {
+    "status": "load_failed",
+    "load_s": "2465"
+   }
+  },
+  {
+   "index": "paper-2026-10-24-gx10conc/index_gx10_ml123.jsonl",
+   "label": "ml123-gxA-2",
+   "numbers_ref": "3d",
+   "expect": {
+    "exit": "137",
+    "wall_s": "3031"
+   }
+  },
+  {
+   "index": "paper-2026-10-25-gx10sweep/index_mav.jsonl",
+   "label": "mav-n1-gxA-1",
+   "numbers_ref": "3e",
+   "expect": {
+    "load_s": "198.8"
+   }
+  },
+  {
+   "index": "paper-2026-10-25-gx10sweep/index_mav.jsonl",
+   "label": "mav-n4-gxA-1",
+   "numbers_ref": "3e",
+   "expect": {
+    "load_s": "210.4"
+   }
+  },
+  {
+   "index": "paper-2026-10-25-gx10sweep/index_mav.jsonl",
+   "label": "mav-n8-gxA-1",
+   "numbers_ref": "3e",
+   "expect": {
+    "load_s": "214.4"
+   }
+  },
+  {
+   "index": "paper-2026-10-25-gx10sweep/index_allpool.jsonl",
+   "label": "mav-n1-gx3-1",
+   "numbers_ref": "3e",
+   "expect": {
+    "load_s": "276.5",
+    "seed_s": "405"
+   }
+  },
+  {
+   "index": "paper-2026-10-25-gx10sweep/index_allpool.jsonl",
+   "label": "mav-n4-gx3-1",
+   "numbers_ref": "3e",
+   "expect": {
+    "load_s": "242.4",
+    "seed_s": "10"
+   }
+  },
+  {
+   "index": "paper-2026-10-25-gx10sweep/index_allpool.jsonl",
+   "label": "mav-n8-gx3-1",
+   "numbers_ref": "3e",
+   "expect": {
+    "load_s": "254.4",
+    "seed_s": "10"
+   }
+  },
+  {
+   "index": "paper-2026-10-24-gx10conc/index_gx10_conc2.jsonl",
+   "label": "kimi-n1-gxA-1",
+   "numbers_ref": "3e",
+   "expect": {
+    "load_s": "274.5"
+   }
+  },
+  {
+   "index": "paper-2026-10-24-gx10conc/index_gx10_conc2.jsonl",
+   "label": "kimi-n8-gxA-1",
+   "numbers_ref": "3e",
+   "expect": {
+    "load_s": "268.5"
+   }
+  },
+  {
+   "index": "paper-2026-10-25-gx10sweep/index_allpool.jsonl",
+   "label": "kimi-n1-gx3-1",
+   "numbers_ref": "3e",
+   "expect": {
+    "load_s": "308.8",
+    "seed_s": "255"
+   }
+  },
+  {
+   "index": "paper-2026-10-25-gx10sweep/index_allpool.jsonl",
+   "label": "kimi-n8-gx3-1",
+   "numbers_ref": "3e",
+   "expect": {
+    "load_s": "334.6",
+    "seed_s": "225"
+   }
+  },
+  {
+   "index": "paper-2026-10-25-gx10sweep/index_allpool.jsonl",
+   "label": "ds671-n1-gx3-1",
+   "numbers_ref": "3e",
+   "expect": {
+    "status": "load_failed",
+    "load_s": "1077.4",
+    "seed_s": "1236"
+   }
+  },
+  {
+   "index": "paper-2026-10-25-gx10sweep/index_gm27.jsonl",
+   "label": "gm27-n1-gxA-1",
+   "numbers_ref": "3f",
+   "expect": {
+    "load_s": "14.1"
+   }
+  },
+  {
+   "index": "paper-2026-10-25-gx10sweep/index_qwq32.jsonl",
+   "label": "qwq32-n1-gxA-1",
+   "numbers_ref": "3f",
+   "expect": {
+    "load_s": "4.0"
+   }
+  }
+ ]
+}

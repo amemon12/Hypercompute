@@ -1,0 +1,793 @@
+# Curated model manifest. Copy to configs/models.yaml to customize; the gateway reads models.yaml
+# when present, else this file. Every entry pins repo + revision + per-file sha256 so a run record
+# identifies the exact artifact. Hashes and sizes come from the Hugging Face API (lfs.oid).
+models:
+  - id: qwen2.5-0.5b-instruct-q4_k_m
+    display_name: Qwen2.5 0.5B Instruct (Q4_K_M)
+    family: qwen2
+    params_b: 0.63
+    quantization: Q4_K_M
+    logical_id: qwen2.5-0.5b-instruct
+    repo: Qwen/Qwen2.5-0.5B-Instruct-GGUF
+    revision: 9217f5db79a29953eb74d5343926648285ec7e67
+    license: apache-2.0
+    role: plumbing
+    default_ctx: 4096
+    max_output_tokens: 512
+    notes: Small, ungated. Proves join/placement/streaming plumbing; fits any single device, so a split is a participation test, not a capacity claim.
+    files:
+      - name: qwen2.5-0.5b-instruct-q4_k_m.gguf
+        url: https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct-GGUF/resolve/9217f5db79a29953eb74d5343926648285ec7e67/qwen2.5-0.5b-instruct-q4_k_m.gguf
+        sha256: 74a4da8c9fdbcd15bd1f6d01d621410d31c6fc00986f5eb687824e7b93d7a9db
+        size_bytes: 491400032
+
+  - id: qwen2.5-7b-instruct-q4_k_m
+    display_name: Qwen2.5 7B Instruct (Q4_K_M)
+    family: qwen2
+    params_b: 7.6
+    quantization: Q4_K_M
+    logical_id: qwen2.5-7b-instruct
+    repo: Qwen/Qwen2.5-7B-Instruct-GGUF
+    revision: bb5d59e06d9551d752d08b292a50eb208b07ab1f
+    license: apache-2.0
+    role: standard
+    default_ctx: 4096
+    max_output_tokens: 1024
+    notes: Two-part GGUF (llama.cpp loads part 1 and finds part 2). Fits a 12 GiB GPU alone; useful for measured local-vs-distributed comparisons.
+    files:
+      - name: qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf
+        url: https://huggingface.co/Qwen/Qwen2.5-7B-Instruct-GGUF/resolve/bb5d59e06d9551d752d08b292a50eb208b07ab1f/qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf
+        sha256: dfce12e3862a5283ccfb88221b48480e58745165de856439950d0f22590580db
+        size_bytes: 3993201344
+      - name: qwen2.5-7b-instruct-q4_k_m-00002-of-00002.gguf
+        url: https://huggingface.co/Qwen/Qwen2.5-7B-Instruct-GGUF/resolve/bb5d59e06d9551d752d08b292a50eb208b07ab1f/qwen2.5-7b-instruct-q4_k_m-00002-of-00002.gguf
+        sha256: 539cf93f78e887edea1c04e2d7d8cdaca9d01dae9c9025bcb8accbe29df3d72a
+        size_bytes: 689872288
+
+  # Capacity candidates sized for the first real pair (G14 RTX 5070 Ti 12 GiB + M4 MacBook Air 16 GiB).
+  - id: qwen2.5-14b-instruct-q6_k
+    display_name: Qwen2.5 14B Instruct (Q6_K)
+    family: qwen2
+    params_b: 14.8
+    quantization: Q6_K
+    logical_id: qwen2.5-14b-instruct
+    repo: Qwen/Qwen2.5-14B-Instruct-GGUF
+    revision: b466e1f8c07172155743e8e1307507d8a4f91fbd
+    license: apache-2.0
+    role: capacity_candidate
+    default_ctx: 4096
+    max_output_tokens: 1024
+    notes: "Pair capacity demo for RTX 5070 Ti 12 GiB + M4 Air 16 GiB: 11.3 GiB of weights plus KV and runtime overhead do not fit the 5070 Ti's resident GPU budget (~10.6 GiB usable), so ~2 GiB of layers go to the Mac's Metal GPU. The G14 could still run it alone with CPU offload, so this is not a 'cannot run anywhere' claim. (11.3 GiB, 4-part GGUF, downloaded to the host only)"
+    files:
+      - name: qwen2.5-14b-instruct-q6_k-00001-of-00004.gguf
+        url: https://huggingface.co/Qwen/Qwen2.5-14B-Instruct-GGUF/resolve/b466e1f8c07172155743e8e1307507d8a4f91fbd/qwen2.5-14b-instruct-q6_k-00001-of-00004.gguf
+        sha256: f8f1d7fa692f12d9cf2862ab7e6b3ff5e6ee9c3427819237c517f7aad8acfa6b
+        size_bytes: 3985204096
+      - name: qwen2.5-14b-instruct-q6_k-00002-of-00004.gguf
+        url: https://huggingface.co/Qwen/Qwen2.5-14B-Instruct-GGUF/resolve/b466e1f8c07172155743e8e1307507d8a4f91fbd/qwen2.5-14b-instruct-q6_k-00002-of-00004.gguf
+        sha256: cd882b7dd357b1092e44efba7d9cdc8baa0203705d6089ca69dc6998bfeffa0e
+        size_bytes: 3945074624
+      - name: qwen2.5-14b-instruct-q6_k-00003-of-00004.gguf
+        url: https://huggingface.co/Qwen/Qwen2.5-14B-Instruct-GGUF/resolve/b466e1f8c07172155743e8e1307507d8a4f91fbd/qwen2.5-14b-instruct-q6_k-00003-of-00004.gguf
+        sha256: 0cbe30479f75c8e40a420c14b5ac50d5e1d9dd43ac594c5756972ca8a6d5395a
+        size_bytes: 3497613920
+      - name: qwen2.5-14b-instruct-q6_k-00004-of-00004.gguf
+        url: https://huggingface.co/Qwen/Qwen2.5-14B-Instruct-GGUF/resolve/b466e1f8c07172155743e8e1307507d8a4f91fbd/qwen2.5-14b-instruct-q6_k-00004-of-00004.gguf
+        sha256: 73af4ed0b85ad55fcedebfde2a14af056db5cf2981e7ee7a18178dd4eea3e09b
+        size_bytes: 696791424
+
+  - id: qwen2.5-14b-instruct-q8_0
+    display_name: Qwen2.5 14B Instruct (Q8_0)
+    family: qwen2
+    params_b: 14.8
+    quantization: Q8_0
+    logical_id: qwen2.5-14b-instruct
+    repo: Qwen/Qwen2.5-14B-Instruct-GGUF
+    revision: b466e1f8c07172155743e8e1307507d8a4f91fbd
+    license: apache-2.0
+    role: capacity_candidate
+    default_ctx: 4096
+    max_output_tokens: 1024
+    notes: "Stretch capacity demo: 14.6 GiB of weights exceed both the 5070 Ti's VRAM and the M4 Air's Metal working set (~10.7 GiB), so neither GPU holds it alone; together it needs ~4.5 GiB on the Mac. Needs the Mac to have ~9-10 GiB free (close other apps). (14.6 GiB, 4-part GGUF, downloaded to the host only)"
+    files:
+      - name: qwen2.5-14b-instruct-q8_0-00001-of-00004.gguf
+        url: https://huggingface.co/Qwen/Qwen2.5-14B-Instruct-GGUF/resolve/b466e1f8c07172155743e8e1307507d8a4f91fbd/qwen2.5-14b-instruct-q8_0-00001-of-00004.gguf
+        sha256: e09f3aef8f7fee2840d958a993b932133790aacb494af0e7b0014eba5240d9f5
+        size_bytes: 3975711104
+      - name: qwen2.5-14b-instruct-q8_0-00002-of-00004.gguf
+        url: https://huggingface.co/Qwen/Qwen2.5-14B-Instruct-GGUF/resolve/b466e1f8c07172155743e8e1307507d8a4f91fbd/qwen2.5-14b-instruct-q8_0-00002-of-00004.gguf
+        sha256: fa8ae95d203b6ebcf2e3e8afaa9f400577e706cf3561e47d9eebb317d5642acb
+        size_bytes: 3953267776
+      - name: qwen2.5-14b-instruct-q8_0-00003-of-00004.gguf
+        url: https://huggingface.co/Qwen/Qwen2.5-14B-Instruct-GGUF/resolve/b466e1f8c07172155743e8e1307507d8a4f91fbd/qwen2.5-14b-instruct-q8_0-00003-of-00004.gguf
+        sha256: b64f5050b3e33293d3ad4d2843a38f8eb418bed16545316f3010c08fcdb0b0c4
+        size_bytes: 3986695424
+      - name: qwen2.5-14b-instruct-q8_0-00004-of-00004.gguf
+        url: https://huggingface.co/Qwen/Qwen2.5-14B-Instruct-GGUF/resolve/b466e1f8c07172155743e8e1307507d8a4f91fbd/qwen2.5-14b-instruct-q8_0-00004-of-00004.gguf
+        sha256: 12e4ce99c972b709a27e7587406393578f6085791bef693dd5834bceb46bbdd6
+        size_bytes: 3785923680
+
+  # Capacity candidate, chosen after inventory: 19.9 GB of weights does not fit the G14's
+  # ~11 GiB free RTX 5070 Ti VRAM, and the G14 had only ~4 GiB free host RAM when measured. Split with a
+  # Mac (>= 24 GB unified memory recommended) it can become resident on GPUs. NOT downloaded or validated.
+  - id: qwen2.5-32b-instruct-q4_k_m
+    display_name: Qwen2.5 32B Instruct (Q4_K_M)
+    family: qwen2
+    params_b: 32.8
+    quantization: Q4_K_M
+    logical_id: qwen2.5-32b-instruct
+    repo: Qwen/Qwen2.5-32B-Instruct-GGUF
+    revision: a15e3cc10f8bbb2c0af6f8f1f34a32e3b060c09d
+    license: apache-2.0
+    role: capacity_candidate
+    default_ctx: 4096
+    max_output_tokens: 1024
+    notes: Capacity demo candidate. Requires ~20 GB disk on the coordinator only (workers receive tensors over RPC).
+    files:
+      - name: qwen2.5-32b-instruct-q4_k_m-00001-of-00005.gguf
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct-GGUF/resolve/a15e3cc10f8bbb2c0af6f8f1f34a32e3b060c09d/qwen2.5-32b-instruct-q4_k_m-00001-of-00005.gguf
+        sha256: 403434e5c845452c013661d586b97d5a53cf207462d180a07c301eafa9390d05
+        size_bytes: 3961498272
+      - name: qwen2.5-32b-instruct-q4_k_m-00002-of-00005.gguf
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct-GGUF/resolve/a15e3cc10f8bbb2c0af6f8f1f34a32e3b060c09d/qwen2.5-32b-instruct-q4_k_m-00002-of-00005.gguf
+        sha256: 7371e5c5d717a8c20f526dbfce5d3f201dc3f02140d1c836314cd0756e02e8d7
+        size_bytes: 3948996064
+      - name: qwen2.5-32b-instruct-q4_k_m-00003-of-00005.gguf
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct-GGUF/resolve/a15e3cc10f8bbb2c0af6f8f1f34a32e3b060c09d/qwen2.5-32b-instruct-q4_k_m-00003-of-00005.gguf
+        sha256: f023ccc294c3bd3b2eac5b2dd40dea3aa4ca1d06c7460ead67c36386cd62e8fc
+        size_bytes: 3993478688
+      - name: qwen2.5-32b-instruct-q4_k_m-00004-of-00005.gguf
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct-GGUF/resolve/a15e3cc10f8bbb2c0af6f8f1f34a32e3b060c09d/qwen2.5-32b-instruct-q4_k_m-00004-of-00005.gguf
+        sha256: 05fe76d941454390cd7aa0de3b342f83a1d1226a959479af85bbfae7cd93e771
+        size_bytes: 3950347744
+      - name: qwen2.5-32b-instruct-q4_k_m-00005-of-00005.gguf
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct-GGUF/resolve/a15e3cc10f8bbb2c0af6f8f1f34a32e3b060c09d/qwen2.5-32b-instruct-q4_k_m-00005-of-00005.gguf
+        sha256: 8c2e8ecc686129c37821bd9f3b3e251e6ae80deadd3d3348f7e3e84492a63c24
+        size_bytes: 3997015616
+
+  # AirLLM (disk capacity mode): full-precision HF checkpoints streamed from disk layer by layer.
+  - id: qwen2.5-0.5b-instruct-hf
+    display_name: Qwen2.5 0.5B Instruct (HF bf16, AirLLM)
+    family: qwen2
+    params_b: 0.49
+    quantization: bf16
+    format: hf
+    engines: [airllm]
+    logical_id: qwen2.5-0.5b-instruct
+    repo: Qwen/Qwen2.5-0.5B-Instruct
+    revision: 7ae557604adf67be50417f59c2c2f167def9a775
+    license: apache-2.0
+    role: plumbing
+    default_ctx: 4096
+    max_output_tokens: 256
+    notes: "AirLLM validation model: one 0.99 GB bf16 safetensors file with tied embeddings, split into 26 per-layer files on first start. Proves the disk tier end to end at seconds per token; it fits any GPU, so it is not a capacity claim."
+    files:
+      - name: config.json
+        path: config.json
+        url: https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct/resolve/7ae557604adf67be50417f59c2c2f167def9a775/config.json
+        sha256: 18e18afcaccafade98daf13a54092927904649e1dd4eba8299ab717d5d94ff45
+        size_bytes: 659
+      - name: generation_config.json
+        path: generation_config.json
+        url: https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct/resolve/7ae557604adf67be50417f59c2c2f167def9a775/generation_config.json
+        sha256: e558847a8b4402616f1273797b015104dc266fe4b520056fca88823ba8f8ebe6
+        size_bytes: 242
+      - name: merges.txt
+        path: merges.txt
+        url: https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct/resolve/7ae557604adf67be50417f59c2c2f167def9a775/merges.txt
+        sha256: 599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3
+        size_bytes: 1671839
+      - name: model.safetensors
+        path: model.safetensors
+        url: https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct/resolve/7ae557604adf67be50417f59c2c2f167def9a775/model.safetensors
+        sha256: fdf756fa7fcbe7404d5c60e26bff1a0c8b8aa1f72ced49e7dd0210fe288fb7fe
+        size_bytes: 988097824
+      - name: tokenizer.json
+        path: tokenizer.json
+        url: https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct/resolve/7ae557604adf67be50417f59c2c2f167def9a775/tokenizer.json
+        sha256: c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539
+        size_bytes: 7031645
+      - name: tokenizer_config.json
+        path: tokenizer_config.json
+        url: https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct/resolve/7ae557604adf67be50417f59c2c2f167def9a775/tokenizer_config.json
+        sha256: 5b5d4f65d0acd3b2d56a35b56d374a36cbc1c8fa5cf3b3febbbfabf22f359583
+        size_bytes: 7305
+      - name: vocab.json
+        path: vocab.json
+        url: https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct/resolve/7ae557604adf67be50417f59c2c2f167def9a775/vocab.json
+        sha256: ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910
+        size_bytes: 2776833
+
+  - id: qwen2.5-32b-instruct-hf
+    display_name: Qwen2.5 32B Instruct (HF bf16, AirLLM)
+    family: qwen2
+    params_b: 32.8
+    quantization: bf16
+    format: hf
+    engines: [airllm]
+    logical_id: qwen2.5-32b-instruct
+    repo: Qwen/Qwen2.5-32B-Instruct
+    revision: 5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd
+    license: apache-2.0
+    role: capacity_candidate
+    default_ctx: 4096
+    max_output_tokens: 128
+    notes: "Full-precision disk-tier capacity candidate: 65.5 GB of bf16 weights in 17 shards fit no single GPU or RAM pool here, so AirLLM streams every layer from disk for every token (reported 13 s/token from page cache on GB10, minutes per token from a Windows NVMe). Needs about 131 GB of disk for the download plus the per-layer split."
+    files:
+      - name: config.json
+        path: config.json
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/config.json
+        sha256: 9c6772f138ef9e5b3d1c18f2c87e451bbc01f5f1a4eabb36f9bf4f53829b903e
+        size_bytes: 663
+      - name: generation_config.json
+        path: generation_config.json
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/generation_config.json
+        sha256: ea35dfb6fc5051b01114f9b995820d55dab01ed33ee490f6378b442af82c09f9
+        size_bytes: 242
+      - name: merges.txt
+        path: merges.txt
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/merges.txt
+        sha256: 599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3
+        size_bytes: 1671839
+      - name: model-00001-of-00017.safetensors
+        path: model-00001-of-00017.safetensors
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/model-00001-of-00017.safetensors
+        sha256: fa006a0382517a4e9a8781d8e7d3405cd6bdd1b9100fb344d73f925b7da9341c
+        size_bytes: 3916539832
+      - name: model-00002-of-00017.safetensors
+        path: model-00002-of-00017.safetensors
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/model-00002-of-00017.safetensors
+        sha256: 0d7f28a4ba7135c2c8365016170cfa25723f65ec41e32ec9a3c81746e4395615
+        size_bytes: 3900847496
+      - name: model-00003-of-00017.safetensors
+        path: model-00003-of-00017.safetensors
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/model-00003-of-00017.safetensors
+        sha256: 8f4b7b811a7ecf117c179ac9413b7a746f2fc0707a41ae4b2efd0282e73bed85
+        size_bytes: 3900847480
+      - name: model-00004-of-00017.safetensors
+        path: model-00004-of-00017.safetensors
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/model-00004-of-00017.safetensors
+        sha256: de8ab9cb81e6798031d2cf9ef6d15a0034b77fceeba3d4e011647943c8b99afb
+        size_bytes: 3900847544
+      - name: model-00005-of-00017.safetensors
+        path: model-00005-of-00017.safetensors
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/model-00005-of-00017.safetensors
+        sha256: fa86494f0074cc36c610aa54e7bde03edefc57a9be7636216277bd5ed8b8bfda
+        size_bytes: 3900847544
+      - name: model-00006-of-00017.safetensors
+        path: model-00006-of-00017.safetensors
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/model-00006-of-00017.safetensors
+        sha256: c8fa152bd8a23bab2c0cfca43ff9f586bccd82b1cb67f2f84231f31d0f3cab47
+        size_bytes: 3900847544
+      - name: model-00007-of-00017.safetensors
+        path: model-00007-of-00017.safetensors
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/model-00007-of-00017.safetensors
+        sha256: 5e33e16319d18d1e180187d9f858deddbbaf06d950abc88941bf027d1439c7bc
+        size_bytes: 3900847544
+      - name: model-00008-of-00017.safetensors
+        path: model-00008-of-00017.safetensors
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/model-00008-of-00017.safetensors
+        sha256: 8561b86737884397772bb990b38c0efe896f66ed27815ca207ddc8ec7965ffe4
+        size_bytes: 3900847544
+      - name: model-00009-of-00017.safetensors
+        path: model-00009-of-00017.safetensors
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/model-00009-of-00017.safetensors
+        sha256: 47f562bf77d986b53c5390b01a30a77576c3eed69191b484cf88b53bb64bce19
+        size_bytes: 3900847544
+      - name: model-00010-of-00017.safetensors
+        path: model-00010-of-00017.safetensors
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/model-00010-of-00017.safetensors
+        sha256: 359450e2c9e261751b5803fcdd1d0a040029a6119a271dd8592d7bb37fa722b5
+        size_bytes: 3900847544
+      - name: model-00011-of-00017.safetensors
+        path: model-00011-of-00017.safetensors
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/model-00011-of-00017.safetensors
+        sha256: 836f0570f5694ce1d55f505064190e2688926dad4f033384ae519d96faaad670
+        size_bytes: 3900847544
+      - name: model-00012-of-00017.safetensors
+        path: model-00012-of-00017.safetensors
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/model-00012-of-00017.safetensors
+        sha256: 5307431e385a177375a5aa887eb1c546f3413dd2e2269c291672f11f752842b4
+        size_bytes: 3900847544
+      - name: model-00013-of-00017.safetensors
+        path: model-00013-of-00017.safetensors
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/model-00013-of-00017.safetensors
+        sha256: 9b2657db02572dd4370186b35c0e0fa70218d7e2ec1190e4dc4a755c5cbd430e
+        size_bytes: 3900847544
+      - name: model-00014-of-00017.safetensors
+        path: model-00014-of-00017.safetensors
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/model-00014-of-00017.safetensors
+        sha256: b5f1f8af3b6bbf734790985590752fb815dd69566cf05ee578d70af74ace1d4c
+        size_bytes: 3900847544
+      - name: model-00015-of-00017.safetensors
+        path: model-00015-of-00017.safetensors
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/model-00015-of-00017.safetensors
+        sha256: 8cdfcbf8913e10056c981db2db817f92c8601998deb9eabcae14fade98d76c14
+        size_bytes: 3900847544
+      - name: model-00016-of-00017.safetensors
+        path: model-00016-of-00017.safetensors
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/model-00016-of-00017.safetensors
+        sha256: 977b3d2ca7f97dc3b518ed5087ddc43ccf7afb371190828f2334d7e4c81224ee
+        size_bytes: 3900847544
+      - name: model-00017-of-00017.safetensors
+        path: model-00017-of-00017.safetensors
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/model-00017-of-00017.safetensors
+        sha256: 2853695483f9c61a8bd8b109025b3c591214a0362992fa844537f09acc81bd03
+        size_bytes: 3098588976
+      - name: model.safetensors.index.json
+        path: model.safetensors.index.json
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/model.safetensors.index.json
+        sha256: 0183543f2e6e40d3d1e863ed0b2a8c9cdaf2ee4045ce724a45cea30e9995a0af
+        size_bytes: 63248
+      - name: tokenizer.json
+        path: tokenizer.json
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/tokenizer.json
+        sha256: c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539
+        size_bytes: 7031645
+      - name: tokenizer_config.json
+        path: tokenizer_config.json
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/tokenizer_config.json
+        sha256: 5b5d4f65d0acd3b2d56a35b56d374a36cbc1c8fa5cf3b3febbbfabf22f359583
+        size_bytes: 7305
+      - name: vocab.json
+        path: vocab.json
+        url: https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/vocab.json
+        sha256: ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910
+        size_bytes: 2776833
+
+  # vLLM (one NVIDIA GPU, Linux or WSL2): vLLM downloads repo@revision itself inside WSL.
+  - id: qwen2.5-7b-instruct-awq
+    display_name: Qwen2.5 7B Instruct (AWQ 4-bit, vLLM)
+    family: qwen2
+    params_b: 7.6
+    quantization: AWQ-4bit
+    format: hf
+    engines: [vllm]
+    logical_id: qwen2.5-7b-instruct
+    repo: Qwen/Qwen2.5-7B-Instruct-AWQ
+    revision: b25037543e9394b818fdfca67ab2a00ecc7dd641
+    license: apache-2.0
+    size_bytes: 5570829760
+    role: standard
+    default_ctx: 4096
+    max_output_tokens: 1024
+    notes: "Official Qwen AWQ (group size 128, Marlin kernels on sm_120). vLLM downloads it inside WSL2 on the first start (5.19 GiB). For objective=throughput: same single-user speed as the Q4_K_M GGUF, several times the throughput with concurrent requests."
+    files: []
+
+  # EXO (Apple MLX). Each Mac's EXO downloads the repo itself, so there are no files to verify here.
+  - id: qwen2.5-7b-instruct-mlx-4bit
+    display_name: Qwen2.5 7B Instruct (MLX 4-bit)
+    family: qwen2
+    params_b: 7.6
+    quantization: 4bit
+    format: mlx
+    engines: [exo]
+    logical_id: qwen2.5-7b-instruct
+    size_bytes: 4284346255
+    repo: mlx-community/Qwen2.5-7B-Instruct-4bit
+    revision: c26a38f6a37d0a51b4e9a1eb3026530fa35d9fed
+    license: apache-2.0
+    role: standard
+    default_ctx: 4096
+    max_output_tokens: 1024
+    notes: "EXO on Apple Silicon (fits a 16 GB M4 Air). EXO downloads main itself on every Mac (4295889861 bytes); main matched the pinned sha on 2026-10-20, but EXO does not enforce a revision."
+    files: []
+
+  - id: qwen3-0.6b-mlx-4bit
+    display_name: Qwen3 0.6B (MLX 4-bit)
+    family: qwen3
+    params_b: 0.6
+    quantization: 4bit
+    format: mlx
+    engines: [exo]
+    logical_id: qwen3-0.6b
+    size_bytes: 335450584
+    repo: mlx-community/Qwen3-0.6B-4bit
+    revision: 73e3e38d981303bc594367cd910ea6eb48349da8
+    license: apache-2.0
+    role: plumbing
+    default_ctx: 4096
+    max_output_tokens: 256
+    notes: "Single-Mac EXO smoke test (a built-in EXO model card). Send enable_thinking false for latency tests."
+    files: []
+
+  # Big mixture-of-experts candidates (80-120B total, 3-12B active). Sizes, sha256 (lfs.oid) and revisions come from
+  # GET https://huggingface.co/api/models/<repo>/tree/main?recursive=1 and the repo sha on 2026-10-22. params_b is the
+  # HF GGUF metadata total. Only the host downloads these; peers receive the tensors they hold over llama RPC.
+  # The downloader refuses unless the models volume has the remaining bytes plus 2 GiB free.
+  - id: gpt-oss-120b-mxfp4
+    display_name: gpt-oss 120B (MXFP4)
+    family: gpt-oss
+    params_b: 116.83
+    quantization: MXFP4
+    logical_id: gpt-oss-120b
+    repo: ggml-org/gpt-oss-120b-GGUF
+    revision: 7200b74bea78b0a2964ef9f3897eefa401e890ff
+    license: apache-2.0
+    role: capacity_candidate
+    default_ctx: 4096
+    max_output_tokens: 1024
+    notes: "MoE (gpt-oss): 36 blocks, 128 experts, 4 used per token, expert tensors MXFP4 (GGUF header). One 59.03 GiB file; needs 61.03 GiB free on the models volume. Expert tensors kept on the CPU must stay file-backed (mmap, --no-repack) on Windows. Harmony chat format: a reply may carry reasoning_content."
+    files:
+      - name: gpt-oss-120b-MXFP4.gguf
+        url: https://huggingface.co/ggml-org/gpt-oss-120b-GGUF/resolve/7200b74bea78b0a2964ef9f3897eefa401e890ff/gpt-oss-120b-MXFP4.gguf
+        sha256: 582bd40f6886200101f4c4ed9f25f3fe80cc14c86e9e2b37746cd8904a0c622d
+        size_bytes: 63387346208
+
+  - id: qwen3-next-80b-a3b-instruct-q4_k_m
+    display_name: Qwen3-Next 80B-A3B Instruct (Q4_K_M)
+    family: qwen3next
+    params_b: 79.67
+    quantization: Q4_K_M
+    logical_id: qwen3-next-80b-a3b-instruct
+    repo: Qwen/Qwen3-Next-80B-A3B-Instruct-GGUF
+    revision: 4c8630cf7af926a9c5095cb4bbbbc65d36e20f77
+    license: apache-2.0
+    role: capacity_candidate
+    default_ctx: 4096
+    max_output_tokens: 1024
+    notes: "Official Qwen quantization. MoE (qwen3next, hybrid linear attention): 48 blocks, 512 experts, 10 used per token (GGUF header). Uses the legacy blk.N.ssm_in layout, which llama.cpp b11770 still loads (src/models/qwen3next.cpp). One 45.09 GiB file; needs 47.09 GiB free on the models volume."
+    files:
+      - name: Qwen3-Next-80B-A3B-Instruct-Q4_K_M.gguf
+        url: https://huggingface.co/Qwen/Qwen3-Next-80B-A3B-Instruct-GGUF/resolve/4c8630cf7af926a9c5095cb4bbbbc65d36e20f77/Qwen3-Next-80B-A3B-Instruct-Q4_K_M.gguf
+        sha256: d103b2733ec1012a52d01edda66b7e5c24ae50508c9f99f5297ea459ef3c061a
+        size_bytes: 48410988384
+
+  - id: qwen3-next-80b-a3b-instruct-q3_k_m
+    display_name: Qwen3-Next 80B-A3B Instruct (Q3_K_M, unsloth)
+    family: qwen3next
+    params_b: 79.67
+    quantization: Q3_K_M
+    logical_id: qwen3-next-80b-a3b-instruct
+    repo: unsloth/Qwen3-Next-80B-A3B-Instruct-GGUF
+    revision: 6688872b7a4e5eb8a121ceea08009530a024ba1d
+    license: apache-2.0
+    role: capacity_candidate
+    default_ctx: 4096
+    max_output_tokens: 1024
+    notes: "Community imatrix quantization (unsloth), the smallest of these candidates: one 35.67 GiB file, needs 37.67 GiB free on the models volume. Same architecture (48 blocks, 512 experts, 10 used) as the official Q4_K_M but the blk.N.attn_qkv + attn_gate layout; lower precision."
+    files:
+      - name: Qwen3-Next-80B-A3B-Instruct-Q3_K_M.gguf
+        url: https://huggingface.co/unsloth/Qwen3-Next-80B-A3B-Instruct-GGUF/resolve/6688872b7a4e5eb8a121ceea08009530a024ba1d/Qwen3-Next-80B-A3B-Instruct-Q3_K_M.gguf
+        sha256: 7705e294047a8c285b5f86556bef81e12bc9309988a9ad7e806e81cb730a86ee
+        size_bytes: 38299874080
+
+  - id: glm-4.5-air-q4_k_m
+    display_name: GLM-4.5-Air (Q4_K_M)
+    family: glm4moe
+    params_b: 106.85
+    quantization: Q4_K_M
+    logical_id: glm-4.5-air
+    repo: ggml-org/GLM-4.5-Air-GGUF
+    revision: 6d3b6301efec560414534beafe6a5cb2bf5940fa
+    license: mit
+    role: capacity_candidate
+    default_ctx: 4096
+    max_output_tokens: 1024
+    notes: "MoE (glm4moe): 46 blocks (the first dense), 128 experts, 8 used per token (GGUF header). Two-part GGUF: part 1 holds only metadata and 0 tensors (8.9 MiB), part 2 all 780 tensors (59.25 GiB); llama.cpp loads part 1 and finds part 2. Needs 61.26 GiB free on the models volume."
+    files:
+      - name: GLM-4.5-Air-Q4_K_M-00001-of-00002.gguf
+        url: https://huggingface.co/ggml-org/GLM-4.5-Air-GGUF/resolve/6d3b6301efec560414534beafe6a5cb2bf5940fa/GLM-4.5-Air-Q4_K_M-00001-of-00002.gguf
+        sha256: f1c043df1877b7364fd8df129d010164010ead36333438e649ef8b412e57fd51
+        size_bytes: 9308768
+      - name: GLM-4.5-Air-Q4_K_M-00002-of-00002.gguf
+        url: https://huggingface.co/ggml-org/GLM-4.5-Air-GGUF/resolve/6d3b6301efec560414534beafe6a5cb2bf5940fa/GLM-4.5-Air-Q4_K_M-00002-of-00002.gguf
+        sha256: 524c7dc97b8206bdbc584fde130c909a4e927f1c7b2f973255fc9af9b9fc3b4b
+        size_bytes: 63624271808
+
+  - id: qwen3-235b-a22b-instruct-2507-ud-q2_k_xl
+    display_name: Qwen3 235B-A22B Instruct 2507 (UD-Q2_K_XL, unsloth)
+    family: qwen3moe
+    params_b: 235.09
+    quantization: UD-Q2_K_XL
+    logical_id: qwen3-235b-a22b-instruct-2507
+    repo: unsloth/Qwen3-235B-A22B-Instruct-2507-GGUF
+    revision: 437d6915c5c512869e4cf8b16b840bbe3fb172bc
+    license: apache-2.0
+    role: capacity_candidate
+    default_ctx: 4096
+    max_output_tokens: 1024
+    notes: "Unsloth dynamic 2-bit. MoE (qwen3moe): 94 blocks, 128 experts, 8 used per token (GGUF header). Two-part GGUF: part 1 holds 638 tensors (46.56 GiB), part 2 the other 493 (36.11 GiB); llama.cpp loads part 1 and finds part 2. Needs 84.67 GiB free on the models volume."
+    files:
+      - name: Qwen3-235B-A22B-Instruct-2507-UD-Q2_K_XL-00001-of-00002.gguf
+        url: https://huggingface.co/unsloth/Qwen3-235B-A22B-Instruct-2507-GGUF/resolve/437d6915c5c512869e4cf8b16b840bbe3fb172bc/UD-Q2_K_XL/Qwen3-235B-A22B-Instruct-2507-UD-Q2_K_XL-00001-of-00002.gguf
+        sha256: f1c17a179cdfe393d381ece4f6e2c6393342eacb3cd82990f26908edeceb9ba7
+        size_bytes: 49991773312
+      - name: Qwen3-235B-A22B-Instruct-2507-UD-Q2_K_XL-00002-of-00002.gguf
+        url: https://huggingface.co/unsloth/Qwen3-235B-A22B-Instruct-2507-GGUF/resolve/437d6915c5c512869e4cf8b16b840bbe3fb172bc/UD-Q2_K_XL/Qwen3-235B-A22B-Instruct-2507-UD-Q2_K_XL-00002-of-00002.gguf
+        sha256: 7c955f3676def5d48bb016fdc670a2ff01c0696f0ac5653059aac335ef5899f6
+        size_bytes: 38775922176
+
+  # Size, sha256 (lfs.oid), license and the HF GGUF total (671026419200, also the element count of the header's 1086
+  # tensors: the model card's 671B without the MTP layer) from the HF API at the pinned revision on 2026-10-23.
+  - id: deepseek-v3.1-ud-tq1_0
+    display_name: DeepSeek-V3.1 (UD-TQ1_0, unsloth)
+    family: deepseek2
+    params_b: 671.03
+    quantization: UD-TQ1_0
+    logical_id: deepseek-v3.1
+    repo: unsloth/DeepSeek-V3.1-GGUF
+    revision: feb73effeee56ec0e5733a38c825d8fec1d76314
+    license: mit
+    role: capacity_candidate
+    default_ctx: 4096
+    max_output_tokens: 1024
+    notes: "Unsloth dynamic quantization. MoE (deepseek2, MLA attention): 61 blocks, the first 3 dense (leading_dense_block_count 3), 256 routed experts, 8 used per token, 1 shared expert (ffn_*_shexp, dense) (GGUF header). Despite the name no tensor is TQ1_0: F32, Q8_0, Q4_K, Q5_K, Q6_K, IQ4_XS, IQ3_S, IQ3_XXS, IQ2_XXS and IQ1_S (general.file_type 24 is IQ1_S); 1086 tensors, the routed experts 94% of the bytes. MLA KV cache: head_count_kv 1, key_length 576, value_length 512 (key_length_mla 192, value_length_mla 128). One 158.79 GiB file; needs 160.79 GiB free on the models volume."
+    files:
+      - name: DeepSeek-V3.1-UD-TQ1_0.gguf
+        url: https://huggingface.co/unsloth/DeepSeek-V3.1-GGUF/resolve/feb73effeee56ec0e5733a38c825d8fec1d76314/DeepSeek-V3.1-UD-TQ1_0.gguf
+        sha256: b66917dec6d7a9e9e923dbd083a0c98526baddf49e8f9a47116f6b86d283d363
+        size_bytes: 170499768256
+
+  # Sizes and sha256 (lfs.oid) from the HF tree API, the parameter total (1026408232448) from the HF GGUF summary and
+  # every other fact from the six shard headers (HTTP range reads), all at the pinned revision on 2026-10-24.
+  - id: kimi-k2.6-iq1_s
+    display_name: Kimi K2.6 (IQ1_S, bartowski)
+    family: deepseek2
+    params_b: 1026.41
+    quantization: IQ1_S
+    logical_id: kimi-k2.6
+    repo: bartowski/moonshotai_Kimi-K2.6-GGUF
+    revision: ed96b238ae6fde4bc0a3918d4d314fc72dc90be8
+    license: modified-mit
+    role: capacity_candidate
+    default_ctx: 4096
+    max_output_tokens: 1024
+    notes: "imatrix 1-bit quantization of moonshotai/Kimi-K2.6. MoE (deepseek2, MLA attention): 61 blocks, the first dense (leading_dense_block_count 1), 384 routed experts, 8 used per token, 1 shared expert, expert_feed_forward_length 2048 (GGUF header). MLA KV cache: head_count 64, head_count_kv 1, key_length 576, value_length 512 (key_length_mla 192, value_length_mla 128). Tensor types F32, Q8_0, Q6_K, Q5_K, Q4_K, Q2_K, IQ4_NL, IQ1_M and IQ1_S, all valid at the pinned engine and none rejected by Metal; no TQ1_0. Six-part GGUF (1096 tensors: 224, 204, 212, 214, 200 and 42 per part) in the repo folder moonshotai_Kimi-K2.6-IQ1_S; llama.cpp loads part 1 and finds the rest. 193.16 GiB; needs 195.16 GiB free on the models volume. A 1-bit quant of a model released as INT4: check coherence before measuring."
+    files:
+      - name: moonshotai_Kimi-K2.6-IQ1_S-00001-of-00006.gguf
+        url: https://huggingface.co/bartowski/moonshotai_Kimi-K2.6-GGUF/resolve/ed96b238ae6fde4bc0a3918d4d314fc72dc90be8/moonshotai_Kimi-K2.6-IQ1_S/moonshotai_Kimi-K2.6-IQ1_S-00001-of-00006.gguf
+        sha256: 8edf72ba18ce1416928d211285932def50e01655f1802be1d0d7f41c1944dfce
+        size_bytes: 39947266784
+      - name: moonshotai_Kimi-K2.6-IQ1_S-00002-of-00006.gguf
+        url: https://huggingface.co/bartowski/moonshotai_Kimi-K2.6-GGUF/resolve/ed96b238ae6fde4bc0a3918d4d314fc72dc90be8/moonshotai_Kimi-K2.6-IQ1_S/moonshotai_Kimi-K2.6-IQ1_S-00002-of-00006.gguf
+        sha256: 236b091b6edeb92200ff5742e55132f380bf61344445dbe12f039610f6f5bc5c
+        size_bytes: 39605253728
+      - name: moonshotai_Kimi-K2.6-IQ1_S-00003-of-00006.gguf
+        url: https://huggingface.co/bartowski/moonshotai_Kimi-K2.6-GGUF/resolve/ed96b238ae6fde4bc0a3918d4d314fc72dc90be8/moonshotai_Kimi-K2.6-IQ1_S/moonshotai_Kimi-K2.6-IQ1_S-00003-of-00006.gguf
+        sha256: bafe1c6ab066e01fa4a8f81a01a39edd14faf57800b42173cccf993a28385844
+        size_bytes: 39645171264
+      - name: moonshotai_Kimi-K2.6-IQ1_S-00004-of-00006.gguf
+        url: https://huggingface.co/bartowski/moonshotai_Kimi-K2.6-GGUF/resolve/ed96b238ae6fde4bc0a3918d4d314fc72dc90be8/moonshotai_Kimi-K2.6-IQ1_S/moonshotai_Kimi-K2.6-IQ1_S-00004-of-00006.gguf
+        sha256: 5aaae0f4d6dfc33efa1682ce88b43e2b9dfa9f68047f2f9e3e33187d60bd1c05
+        size_bytes: 39656210112
+      - name: moonshotai_Kimi-K2.6-IQ1_S-00005-of-00006.gguf
+        url: https://huggingface.co/bartowski/moonshotai_Kimi-K2.6-GGUF/resolve/ed96b238ae6fde4bc0a3918d4d314fc72dc90be8/moonshotai_Kimi-K2.6-IQ1_S/moonshotai_Kimi-K2.6-IQ1_S-00005-of-00006.gguf
+        sha256: 76de7e45194cd9f75796e25c65c6db1d2fbc831cc5e3165f88b7e1e0b6b87755
+        size_bytes: 39218955584
+      - name: moonshotai_Kimi-K2.6-IQ1_S-00006-of-00006.gguf
+        url: https://huggingface.co/bartowski/moonshotai_Kimi-K2.6-GGUF/resolve/ed96b238ae6fde4bc0a3918d4d314fc72dc90be8/moonshotai_Kimi-K2.6-IQ1_S/moonshotai_Kimi-K2.6-IQ1_S-00006-of-00006.gguf
+        sha256: 1185b5eed2bc73197643cfd3d115da0295a9d4469d101a8a14d961fc962f24e2
+        size_bytes: 9332090656
+
+  # Sizes and sha256 (lfs.oid) from the HF tree API, the parameter total (122610069504) from the HF GGUF summary and
+  # the other facts from the four shard headers, all at the pinned revision on 2026-10-24.
+  - id: mistral-large-2411-q8_0
+    display_name: Mistral Large 2411 (Q8_0, bartowski)
+    family: llama
+    params_b: 122.61
+    quantization: Q8_0
+    logical_id: mistral-large-2411
+    repo: bartowski/Mistral-Large-Instruct-2411-GGUF
+    revision: cc2729f0da879f162f8d2a7e74c7324bab6e51b7
+    license: mrl
+    role: capacity_candidate
+    default_ctx: 4096
+    max_output_tokens: 1024
+    notes: "Dense (llama architecture; Mistral Research License, non-commercial): 88 blocks, embedding 12288, 96 heads with 8 KV heads, feed_forward_length 28672, vocab 32768 (GGUF header). Every tensor Q8_0 or F32. Four-part GGUF (795 tensors) in the repo folder Mistral-Large-Instruct-2411-Q8_0; llama.cpp loads part 1 and finds the rest. 121.33 GiB, just past what a 121.6 GiB GB10 can hold, so one GB10 alone must page part of a dense model, which every token reads, from SSD. Needs 123.33 GiB free on the models volume."
+    files:
+      - name: Mistral-Large-Instruct-2411-Q8_0-00001-of-00004.gguf
+        url: https://huggingface.co/bartowski/Mistral-Large-Instruct-2411-GGUF/resolve/cc2729f0da879f162f8d2a7e74c7324bab6e51b7/Mistral-Large-Instruct-2411-Q8_0/Mistral-Large-Instruct-2411-Q8_0-00001-of-00004.gguf
+        sha256: f27e8339e750cc12a4194beb959a4f0211b881a35178974fb84dacd81823db19
+        size_bytes: 39817316224
+      - name: Mistral-Large-Instruct-2411-Q8_0-00002-of-00004.gguf
+        url: https://huggingface.co/bartowski/Mistral-Large-Instruct-2411-GGUF/resolve/cc2729f0da879f162f8d2a7e74c7324bab6e51b7/Mistral-Large-Instruct-2411-Q8_0/Mistral-Large-Instruct-2411-Q8_0-00002-of-00004.gguf
+        sha256: a8ffe7a17fd364a1f452e0fb0862d69175219f6af4a8b170ed879ee673b18f78
+        size_bytes: 39709620544
+      - name: Mistral-Large-Instruct-2411-Q8_0-00003-of-00004.gguf
+        url: https://huggingface.co/bartowski/Mistral-Large-Instruct-2411-GGUF/resolve/cc2729f0da879f162f8d2a7e74c7324bab6e51b7/Mistral-Large-Instruct-2411-Q8_0/Mistral-Large-Instruct-2411-Q8_0-00003-of-00004.gguf
+        sha256: 8674397e05802b284641f0bb95153f9a262e94bdcba25fd6968af57d1640f2e0
+        size_bytes: 39709620544
+      - name: Mistral-Large-Instruct-2411-Q8_0-00004-of-00004.gguf
+        url: https://huggingface.co/bartowski/Mistral-Large-Instruct-2411-GGUF/resolve/cc2729f0da879f162f8d2a7e74c7324bab6e51b7/Mistral-Large-Instruct-2411-Q8_0/Mistral-Large-Instruct-2411-Q8_0-00004-of-00004.gguf
+        sha256: 7ce161c60c1f8eaf768bd30990bcf028417d32dc768828381b9cb4d29e8d9b2c
+        size_bytes: 11043819488
+
+  # Sizes and sha256 (lfs.oid) from the HF tree API at the pinned revisions, re-checked by a second reviewer on
+  # 2026-10-24 (laptop-pool sweep: a dense 24B at Q4_K_M and Q8_0, and a dense 70B at Q4_K_M).
+  - id: mistral-small-3.2-24b-instruct-2506-q4_k_m
+    display_name: Mistral Small 3.2 24B Instruct 2506 (Q4_K_M)
+    family: llama
+    params_b: 23.6
+    quantization: Q4_K_M
+    logical_id: mistral-small-3.2-24b-instruct-2506
+    repo: bartowski/mistralai_Mistral-Small-3.2-24B-Instruct-2506-GGUF
+    revision: b3592d09be469bedab6be51f577824b3b6b76ba1
+    license: apache-2.0
+    role: capacity_candidate
+    default_ctx: 4096
+    max_output_tokens: 1024
+    notes: "Laptop sweep falsifier: about 3 GiB spills past the G14 GPU, so pooling should barely help. Header architecture llama, 40 blocks. Text only, mmproj not used."
+    files:
+      - name: mistralai_Mistral-Small-3.2-24B-Instruct-2506-Q4_K_M.gguf
+        url: https://huggingface.co/bartowski/mistralai_Mistral-Small-3.2-24B-Instruct-2506-GGUF/resolve/b3592d09be469bedab6be51f577824b3b6b76ba1/mistralai_Mistral-Small-3.2-24B-Instruct-2506-Q4_K_M.gguf
+        sha256: 80f5bda68f156f12650ca03a0a2dbfae06a215ac41caa773b8631a479f82415e
+        size_bytes: 14333915264
+  - id: mistral-small-3.2-24b-instruct-2506-q8_0
+    display_name: Mistral Small 3.2 24B Instruct 2506 (Q8_0)
+    family: llama
+    params_b: 23.6
+    quantization: Q8_0
+    logical_id: mistral-small-3.2-24b-instruct-2506
+    repo: bartowski/mistralai_Mistral-Small-3.2-24B-Instruct-2506-GGUF
+    revision: b3592d09be469bedab6be51f577824b3b6b76ba1
+    license: apache-2.0
+    role: capacity_candidate
+    default_ctx: 4096
+    max_output_tokens: 1024
+    notes: "Laptop decode candidate: about 13 GiB spills to G14 CPU alone, fully GPU-resident with two 16 GB Airs. Needs about 25 GB coordinator disk."
+    files:
+      - name: mistralai_Mistral-Small-3.2-24B-Instruct-2506-Q8_0.gguf
+        url: https://huggingface.co/bartowski/mistralai_Mistral-Small-3.2-24B-Instruct-2506-GGUF/resolve/b3592d09be469bedab6be51f577824b3b6b76ba1/mistralai_Mistral-Small-3.2-24B-Instruct-2506-Q8_0.gguf
+        sha256: 980c4969d46bf016ef78de4206bd74a66a6ca7de18152cb603a7b0c4d348bc55
+        size_bytes: 25054785664
+  - id: llama-3.3-70b-instruct-q4_k_m
+    display_name: Llama 3.3 70B Instruct (Q4_K_M)
+    family: llama
+    params_b: 70.6
+    quantization: Q4_K_M
+    logical_id: llama-3.3-70b-instruct
+    repo: bartowski/Llama-3.3-70B-Instruct-GGUF
+    revision: b6c5c9f176f3279204034e1d16d393105e95cb88
+    license: llama3.3
+    role: capacity_candidate
+    default_ctx: 4096
+    max_output_tokens: 1024
+    notes: "Capacity candidate: 39.6 GiB exceeds G14 GPU plus free RAM, so alone pages from SSD. Needs about 42.5 GB coordinator disk (delete other sweep models first). Built with Llama."
+    files:
+      - name: Llama-3.3-70B-Instruct-Q4_K_M.gguf
+        url: https://huggingface.co/bartowski/Llama-3.3-70B-Instruct-GGUF/resolve/b6c5c9f176f3279204034e1d16d393105e95cb88/Llama-3.3-70B-Instruct-Q4_K_M.gguf
+        sha256: 32df3baccb556f9840059b2528b2dee4d3d516b24afdfb9d0c56ff5f63e3a664
+        size_bytes: 42520398816
+
+  # Vision-language and reasoning models for the laptop sweep. Sizes and sha256 (lfs.oid) from the HF tree API at
+  # the pinned revisions on 2026-10-24; architectures from the HF GGUF summary. The VLMs list their vision projector
+  # (mmproj, same tree API and revision): it downloads with the model and llama-server loads it on the coordinator
+  # once verified (docs/VISION.md); a model downloaded before that stays text-only until `models pull` fetches it.
+  - id: qwen2.5-vl-72b-instruct-q4_k_m
+    display_name: Qwen2.5 VL 72B Instruct (Q4_K_M, unsloth)
+    family: qwen2vl
+    params_b: 72.71
+    quantization: Q4_K_M
+    logical_id: qwen2.5-vl-72b-instruct
+    repo: unsloth/Qwen2.5-VL-72B-Instruct-GGUF
+    revision: 924acccaaefe1cd2569c717379d20d68be50df06
+    license: qwen
+    role: capacity_candidate
+    default_ctx: 4096
+    max_output_tokens: 1024
+    notes: "Dense vision-language model (qwen2vl). The vision projector mmproj-F16.gguf (1.41 GB) runs on the coordinator; the language model splits as usual. 44.16 GiB; needs 47.47 GiB free with the projector."
+    files:
+      - name: Qwen2.5-VL-72B-Instruct-Q4_K_M.gguf
+        url: https://huggingface.co/unsloth/Qwen2.5-VL-72B-Instruct-GGUF/resolve/924acccaaefe1cd2569c717379d20d68be50df06/Qwen2.5-VL-72B-Instruct-Q4_K_M.gguf
+        sha256: ec42ea2c536aec5510af2ddd3125e81d494833de070255e933867f65dae8ec21
+        size_bytes: 47415714208
+    mmproj:
+      name: mmproj-F16.gguf
+      url: https://huggingface.co/unsloth/Qwen2.5-VL-72B-Instruct-GGUF/resolve/924acccaaefe1cd2569c717379d20d68be50df06/mmproj-F16.gguf
+      sha256: add333fada915332370b62d3fb1b6fc21e3615002f667e96f241d85213e1956d
+      size_bytes: 1410223552
+  - id: deepseek-r1-distill-llama-70b-q4_k_m
+    display_name: DeepSeek R1 Distill Llama 70B (Q4_K_M, bartowski)
+    family: llama
+    params_b: 70.55
+    quantization: Q4_K_M
+    logical_id: deepseek-r1-distill-llama-70b
+    repo: bartowski/DeepSeek-R1-Distill-Llama-70B-GGUF
+    revision: 1842c5f7280f933ead58adf8afd078672c9f6cd0
+    license: mit
+    role: capacity_candidate
+    default_ctx: 4096
+    max_output_tokens: 1024
+    notes: "Dense reasoning model (llama architecture, distilled from DeepSeek-R1). 39.60 GiB; needs 41.60 GiB free."
+    files:
+      - name: DeepSeek-R1-Distill-Llama-70B-Q4_K_M.gguf
+        url: https://huggingface.co/bartowski/DeepSeek-R1-Distill-Llama-70B-GGUF/resolve/1842c5f7280f933ead58adf8afd078672c9f6cd0/DeepSeek-R1-Distill-Llama-70B-Q4_K_M.gguf
+        sha256: 181a82a1d6d2fa24fe4db83a68eee030384986bdbdd4773ba76424e3a6eb9fd8
+        size_bytes: 42520395936
+  - id: gemma-3-27b-it-q4_k_m
+    display_name: Gemma 3 27B IT (Q4_K_M, bartowski)
+    family: gemma3
+    params_b: 27.01
+    quantization: Q4_K_M
+    logical_id: gemma-3-27b-it
+    repo: bartowski/google_gemma-3-27b-it-GGUF
+    revision: 4a05c54413bd0d87d77a97af403266f69cec0ee6
+    license: gemma
+    role: capacity_candidate
+    default_ctx: 4096
+    max_output_tokens: 1024
+    notes: "Dense vision-language model (gemma3). The vision projector (0.86 GB, f16) runs on the coordinator; the language model splits as usual. 15.41 GiB; needs 18.21 GiB free with the projector."
+    files:
+      - name: google_gemma-3-27b-it-Q4_K_M.gguf
+        url: https://huggingface.co/bartowski/google_gemma-3-27b-it-GGUF/resolve/4a05c54413bd0d87d77a97af403266f69cec0ee6/google_gemma-3-27b-it-Q4_K_M.gguf
+        sha256: 4e83142e3ad3719ac61334f70a956dcc60bbba8adb29de5114161310bb9f7170
+        size_bytes: 16546404992
+    mmproj:
+      name: mmproj-google_gemma-3-27b-it-f16.gguf
+      url: https://huggingface.co/bartowski/google_gemma-3-27b-it-GGUF/resolve/4a05c54413bd0d87d77a97af403266f69cec0ee6/mmproj-google_gemma-3-27b-it-f16.gguf
+      sha256: 54cb61c842fe49ac3c89bc1a614a2778163eb49f3dec2b90ff688b4c0392cb48
+      size_bytes: 857739168
+  - id: qwq-32b-q4_k_m
+    display_name: QwQ 32B (Q4_K_M, bartowski)
+    family: qwen2
+    params_b: 32.76
+    quantization: Q4_K_M
+    logical_id: qwq-32b
+    repo: bartowski/Qwen_QwQ-32B-GGUF
+    revision: 390cc7b31baedc55a4d094802995e75f40b4a86d
+    license: apache-2.0
+    role: capacity_candidate
+    default_ctx: 4096
+    max_output_tokens: 1024
+    notes: "Dense reasoning model (qwen2 architecture). 18.49 GiB; needs 20.49 GiB free."
+    files:
+      - name: Qwen_QwQ-32B-Q4_K_M.gguf
+        url: https://huggingface.co/bartowski/Qwen_QwQ-32B-GGUF/resolve/390cc7b31baedc55a4d094802995e75f40b4a86d/Qwen_QwQ-32B-Q4_K_M.gguf
+        sha256: 87cc1894a68008856cde6ff24bfb9b99488a0d18c2e0a2b1ddeabd43cd0498e0
+        size_bytes: 19851336512
+  - id: llama-4-scout-17b-16e-instruct-q4_k_m
+    display_name: Llama 4 Scout 17B-16E Instruct (Q4_K_M, unsloth)
+    family: llama4
+    params_b: 107.77
+    quantization: Q4_K_M
+    logical_id: llama-4-scout-17b-16e-instruct
+    repo: unsloth/Llama-4-Scout-17B-16E-Instruct-GGUF
+    revision: 72a6853f56a66dc13a3a4b6bdc9cf7ee4c364b47
+    license: llama4
+    role: capacity_candidate
+    default_ctx: 4096
+    max_output_tokens: 1024
+    notes: "Mixture-of-experts vision-language model (llama4, 16 experts, about 17B active); the language model only, on text prompts. Two-part GGUF in the repo folder Q4_K_M; llama.cpp loads part 1 and finds part 2. 60.87 GiB; needs 62.87 GiB free."
+    files:
+      - name: Llama-4-Scout-17B-16E-Instruct-Q4_K_M-00001-of-00002.gguf
+        url: https://huggingface.co/unsloth/Llama-4-Scout-17B-16E-Instruct-GGUF/resolve/72a6853f56a66dc13a3a4b6bdc9cf7ee4c364b47/Q4_K_M/Llama-4-Scout-17B-16E-Instruct-Q4_K_M-00001-of-00002.gguf
+        sha256: fbe956902467171ed7c0c326e5d868771a84d46468d407abecd0f289297313f9
+        size_bytes: 49848379744
+      - name: Llama-4-Scout-17B-16E-Instruct-Q4_K_M-00002-of-00002.gguf
+        url: https://huggingface.co/unsloth/Llama-4-Scout-17B-16E-Instruct-GGUF/resolve/72a6853f56a66dc13a3a4b6bdc9cf7ee4c364b47/Q4_K_M/Llama-4-Scout-17B-16E-Instruct-Q4_K_M-00002-of-00002.gguf
+        sha256: e7330ae14527f08e8a44a6a573b45084052b8822c4b8a5179c5cad9cd6f6f795
+        size_bytes: 15511520608
+
+  # Sizes and sha256 (lfs.oid) from the HF tree API, the parameter total (400711848960) from the HF GGUF summary, at
+  # the pinned revision on 2026-10-25. The in-person demo candidate: larger than the GX10's 121 GiB of unified memory.
+  - id: llama-4-maverick-17b-128e-instruct-ud-q2_k_xl
+    display_name: Llama 4 Maverick 17B-128E Instruct (UD-Q2_K_XL, unsloth)
+    family: llama4
+    params_b: 400.71
+    quantization: UD-Q2_K_XL
+    logical_id: llama-4-maverick-17b-128e-instruct
+    repo: unsloth/Llama-4-Maverick-17B-128E-Instruct-GGUF
+    revision: 41032e5471dd6ea5b349062d978626215d6c5bba
+    license: llama4
+    role: capacity_candidate
+    default_ctx: 4096
+    max_output_tokens: 1024
+    notes: "Mixture-of-experts vision-language model (llama4, 128 routed experts plus a shared expert, about 17B active); the language model only, on text prompts. Four-part GGUF in the repo folder UD-Q2_K_XL; llama.cpp loads part 1 and finds the rest. 142.17 GiB; needs 144.17 GiB free."
+    files:
+      - name: Llama-4-Maverick-17B-128E-Instruct-UD-Q2_K_XL-00001-of-00004.gguf
+        url: https://huggingface.co/unsloth/Llama-4-Maverick-17B-128E-Instruct-GGUF/resolve/41032e5471dd6ea5b349062d978626215d6c5bba/UD-Q2_K_XL/Llama-4-Maverick-17B-128E-Instruct-UD-Q2_K_XL-00001-of-00004.gguf
+        sha256: 721bace943652a9b893838ee688529b0d1ef70c1d10ad37b7658ee5e46470a23
+        size_bytes: 48273178400
+      - name: Llama-4-Maverick-17B-128E-Instruct-UD-Q2_K_XL-00002-of-00004.gguf
+        url: https://huggingface.co/unsloth/Llama-4-Maverick-17B-128E-Instruct-GGUF/resolve/41032e5471dd6ea5b349062d978626215d6c5bba/UD-Q2_K_XL/Llama-4-Maverick-17B-128E-Instruct-UD-Q2_K_XL-00002-of-00004.gguf
+        sha256: bc223b709a313b31b090bdfe23e7d231dc6a9a11e8e9e47c32b862bc74ea9a0b
+        size_bytes: 48933981120
+      - name: Llama-4-Maverick-17B-128E-Instruct-UD-Q2_K_XL-00003-of-00004.gguf
+        url: https://huggingface.co/unsloth/Llama-4-Maverick-17B-128E-Instruct-GGUF/resolve/41032e5471dd6ea5b349062d978626215d6c5bba/UD-Q2_K_XL/Llama-4-Maverick-17B-128E-Instruct-UD-Q2_K_XL-00003-of-00004.gguf
+        sha256: 3cb0867a00f942c0a9897a8d6e94d0910ac72fed390996e03fce70e9bdfb8ed7
+        size_bytes: 48821381920
+      - name: Llama-4-Maverick-17B-128E-Instruct-UD-Q2_K_XL-00004-of-00004.gguf
+        url: https://huggingface.co/unsloth/Llama-4-Maverick-17B-128E-Instruct-GGUF/resolve/41032e5471dd6ea5b349062d978626215d6c5bba/UD-Q2_K_XL/Llama-4-Maverick-17B-128E-Instruct-UD-Q2_K_XL-00004-of-00004.gguf
+        sha256: 71e59ecae6fe9e6577e8aa751fbc39816aa8e26218d271f4a178d47a2ccbe32e
+        size_bytes: 6627349152

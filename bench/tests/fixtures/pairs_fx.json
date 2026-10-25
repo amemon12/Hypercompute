@@ -1,0 +1,121 @@
+{
+ "about": "Fixture pairs for bench/tests/test_hcbench_report.py.",
+ "conditions": {
+  "FX": {
+   "host": "fixture host",
+   "peers": "mac-a, mac-b",
+   "network": "fixture network",
+   "detail": "Fixture network detail.",
+   "source": "bench/tests/fixtures"
+  }
+ },
+ "families": [
+  {
+   "id": "fam",
+   "title": "Fixture family",
+   "intro": "Fixture rows."
+  }
+ ],
+ "pairs": [
+  {
+   "id": "fx",
+   "family": "fam",
+   "kind": "pooled_vs_alone",
+   "condition": "FX",
+   "model": "Fixture model",
+   "prompt_answer": "64/32",
+   "n": 1,
+   "a_prefix": "fx-hA",
+   "b_prefix": "fx-hP2",
+   "indexes": [
+    "paper-fx/index_fx.jsonl"
+   ],
+   "only_labels": null,
+   "mode": "reps",
+   "metrics": [
+    "decode",
+    "prefill",
+    "first_token",
+    "answer",
+    "ssd"
+   ],
+   "numbers_ref": "fx1",
+   "expect": {
+    "decode": {
+     "a": "3.000",
+     "b": "6.000",
+     "ratio": "2.000",
+     "lo": "1.500",
+     "hi": "3.000"
+    },
+    "first_token": {
+     "a": "2.00",
+     "b": "0.50"
+    }
+   }
+  },
+  {
+   "id": "fxn4",
+   "family": "fam",
+   "kind": "n_vs_n1",
+   "condition": "FX",
+   "model": "Fixture model",
+   "prompt_answer": "64/32",
+   "n": 4,
+   "a_prefix": "fx-hA",
+   "b_prefix": "fxn4-hA",
+   "indexes": [
+    "paper-fx/index_fx.jsonl"
+   ],
+   "only_labels": null,
+   "mode": "batches",
+   "metrics": [
+    "aggregate_decode",
+    "step",
+    "ssd_step",
+    "first_token",
+    "answer"
+   ],
+   "numbers_ref": "fx2",
+   "expect": {
+    "aggregate_decode": {
+     "a": "3.000",
+     "b": "10.000",
+     "ratio": "3.333"
+    }
+   }
+  }
+ ],
+ "singles": [
+  {
+   "id": "fx-alone",
+   "family": "fam",
+   "condition": "FX",
+   "model": "Fixture model",
+   "prompt_answer": "64/32",
+   "n": 1,
+   "prefix": "fx-hA",
+   "indexes": [
+    "paper-fx/index_fx.jsonl"
+   ],
+   "only_labels": null,
+   "numbers_ref": "fx3",
+   "expect": {
+    "decode": {
+     "a": "3.000"
+    }
+   }
+  }
+ ],
+ "row_checks": [
+  {
+   "index": "paper-fx/index_fx.jsonl",
+   "label": "fx-hA-1",
+   "numbers_ref": "fx4",
+   "expect": {
+    "load_s": "12.3",
+    "status": "ok"
+   }
+  }
+ ]
+}

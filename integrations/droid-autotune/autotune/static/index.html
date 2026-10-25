@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Droid Autotune</title>
+<style>
+:root {
+  --bg: #0d0f12; --panel: #15181d; --panel2: #1b1f26; --line: #272c35; --text: #e6e8eb; --dim: #8b93a1;
+  --accent: #f97316; --ok: #34d399; --bad: #f87171; --warn: #fbbf24; --info: #60a5fa; --violet: #a78bfa;
+  --mono: ui-monospace, "SF Mono", "Cascadia Mono", Consolas, monospace;
+  --sans: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: light) {
+  :root { --bg: #f5f6f8; --panel: #ffffff; --panel2: #f0f2f5; --line: #dde1e7; --text: #16191d; --dim: #5d6573; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.45 var(--sans); }
+header { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; padding: 14px 20px;
+  border-bottom: 1px solid var(--line); background: var(--panel); position: sticky; top: 0; z-index: 2; }
+h1 { font-size: 17px; margin: 0; letter-spacing: .2px; }
+h1 small { color: var(--dim); font-weight: 400; margin-left: 8px; }
+h2 { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--dim); margin: 0 0 10px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-left: auto; }
+.chip { border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; font-size: 12px; color: var(--dim);
+  background: var(--panel2); white-space: nowrap; }
+.chip b { color: var(--text); font-weight: 600; }
+.dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; vertical-align: 1px; }
+main { display: grid; grid-template-columns: 340px minmax(0, 1fr); gap: 16px; padding: 16px 20px; }
+@media (max-width: 900px) { main { grid-template-columns: 1fr; padding: 12px 16px; } }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px; margin-bottom: 16px; }
+.node { display: grid; grid-template-columns: 1fr auto; gap: 2px 8px; padding: 8px 0; border-top: 1px solid var(--line); }
+.node:first-of-type { border-top: 0; }
+.node .sub { grid-column: 1 / -1; color: var(--dim); font: 12px var(--mono); }
+.badge { display: inline-block; font-size: 11px; padding: 1px 8px; border-radius: 6px; font-weight: 600;
+  border: 1px solid currentColor; white-space: nowrap; }
+.s-running, .s-applying { color: var(--info); } .s-awaiting_approval { color: var(--accent); }
+.s-applied, .s-approved, .s-eligible { color: var(--ok); } .s-failed, .s-apply_failed { color: var(--bad); }
+.s-no_change, .s-rejected, .s-superseded, .s-cancelled, .s-left, .s-verifying, .s-stale { color: var(--dim); }
+.log { font: 12px var(--mono); color: var(--dim); max-height: 220px; overflow: auto; }
+.log div { padding: 2px 0; } .log b { color: var(--text); font-weight: 500; }
+.runs button { all: unset; display: grid; grid-template-columns: 1fr auto; gap: 2px 8px; width: 100%; cursor: pointer;
+  padding: 8px; border-radius: 8px; box-sizing: border-box; }
+.runs button:hover, .runs button.sel { background: var(--panel2); }
+.runs .t { font: 11px var(--mono); color: var(--dim); }
+button.act { border: 1px solid var(--line); background: var(--panel2); color: var(--text); padding: 7px 14px;
+  border-radius: 8px; cursor: pointer; font: 600 13px var(--sans); }
+button.act:hover { border-color: var(--dim); } button.act:disabled { opacity: .45; cursor: default; }
+button.primary { background: var(--accent); border-color: var(--accent); color: #111; }
+button.danger { color: var(--bad); }
+.runhead { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.runhead h3 { margin: 0; font-size: 18px; }
+.meta { color: var(--dim); font-size: 12px; margin-top: 6px; display: flex; flex-wrap: wrap; gap: 4px 16px; }
+.meta span b { color: var(--text); font-weight: 500; }
+.touch { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; }
+.touch div { background: var(--panel2); border-radius: 8px; padding: 10px; }
+.touch .k { color: var(--dim); font-size: 11px; text-transform: uppercase; letter-spacing: .06em; }
+.touch .v { font: 600 15px var(--mono); margin-top: 2px; word-break: break-word; }
+pre.plan { white-space: pre-wrap; word-break: break-word; font: 13px/1.5 var(--mono); background: var(--panel2);
+  padding: 12px; border-radius: 8px; margin: 0; max-height: 360px; overflow: auto; }
+.scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; color: var(--dim); font-weight: 500; font-size: 11px; text-transform: uppercase;
+  letter-spacing: .05em; padding: 6px 8px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+td { padding: 7px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+td.num { font-family: var(--mono); white-space: nowrap; }
+.up { color: var(--ok); } .down { color: var(--bad); } .same { color: var(--dim); }
+.cand { border: 1px solid var(--line); border-radius: 10px; padding: 12px; margin-top: 12px; }
+.cand.rec { border-color: var(--accent); }
+.cand h4 { margin: 0 0 4px; font-size: 15px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.why { color: var(--dim); margin: 4px 0 10px; }
+.summary { display: flex; flex-wrap: wrap; gap: 6px 18px; font: 12px var(--mono); margin: 10px 0; color: var(--dim); }
+.summary b { color: var(--text); }
+.verdict { padding: 8px 0; border-top: 1px solid var(--line); }
+.verdict .code { font: 12px var(--mono); }
+.verdict .fix { color: var(--dim); font-size: 12px; }
+.step { display: grid; grid-template-columns: 74px 92px 1fr; gap: 8px; padding: 6px 0; border-top: 1px solid var(--line); }
+.step .t { font: 11px var(--mono); color: var(--dim); padding-top: 2px; }
+.step .kind { font: 600 11px var(--mono); text-transform: uppercase; padding-top: 2px; }
+.k-droid, .k-session, .k-plan { color: var(--violet); } .k-tool, .k-verdict { color: var(--info); }
+.k-guard, .k-permission { color: var(--warn); } .k-owner, .k-apply { color: var(--accent); }
+.k-proposal, .k-trigger, .k-context { color: var(--ok); }
+details summary { cursor: pointer; } details pre { font: 11px/1.4 var(--mono); white-space: pre-wrap;
+  word-break: break-word; background: var(--panel2); padding: 8px; border-radius: 6px; max-height: 300px; overflow: auto; }
+.empty { color: var(--dim); padding: 24px 0; text-align: center; }
+.banner { border: 1px dashed var(--warn); color: var(--warn); border-radius: 8px; padding: 8px 12px; margin-bottom: 12px; }
+.err { color: var(--bad); }
+.card p, .card div { overflow-wrap: anywhere; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Droid autotune <small>Factory Droid proposes layouts, the planner checks them, you approve</small></h1>
+  <div class="chips" id="chips"></div>
+</header>
+<main>
+  <aside>
+    <section class="card"><h2>Pool</h2><div id="pool"></div></section>
+    <section class="card">
+      <h2>Trigger</h2>
+      <div id="pending" class="meta"></div>
+      <div class="log" id="watchlog"></div>
+      <p><button class="act" id="trigger">Run now</button></p>
+    </section>
+    <section class="card"><h2>Runs</h2><div class="runs" id="runs"></div></section>
+  </aside>
+  <section id="detail"><div class="card empty">No run yet. A peer joining or leaving starts one, or press Run now.</div></section>
+</main>
+<script>
+"use strict";
+const TOKEN = "__AUTOTUNE_TOKEN__";
+let selected = null, lastState = null, lastRunText = null, lastStateText = null;
+
+function h(tag, attrs, ...kids) {
+  const el = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs || {})) {
+    if (v === null || v === undefined || v === false) continue;
+    if (k === "class") el.className = v; else if (k.startsWith("on")) el.addEventListener(k.slice(2), v);
+    else el.setAttribute(k, v === true ? "" : v);
+  }
+  for (const kid of kids.flat()) {
+    if (kid === null || kid === undefined || kid === false) continue;
+    el.append(kid instanceof Node ? kid : document.createTextNode(String(kid)));
+  }
+  return el;
+}
+const gib = b => (b === null || b === undefined) ? "-" : (b / 2 ** 30).toFixed(1);
+const time = iso => iso ? new Date(iso).toLocaleTimeString([], {hour: "2-digit", minute: "2-digit", second: "2-digit"}) : "";
+const badge = s => h("span", {class: `badge s-${s}`}, String(s).replace(/_/g, " "));
+const arrow = (a, b, lowerBetter) => {
+  if (a === null || a === undefined || b === null || b === undefined) return "same";
+  if (a === b) return "same";
+  return (lowerBetter ? b < a : b > a) ? "up" : "down";
+};
+
+async function api(path, opts = {}) {
+  const r = await fetch(path, {...opts, headers: {"Content-Type": "application/json", "X-Autotune-Owner": TOKEN,
+                                                  ...(opts.headers || {})}});
+  const body = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(body.detail || r.statusText);
+  return body;
+}
+
+function chips(st) {
+  const g = st.gateway, d = st.droid;
+  const color = ok => ok === true ? "var(--ok)" : ok === false ? "var(--bad)" : "var(--dim)";
+  const runner = st.runner === "droid" ? "Factory Droid SDK" : "scripted, not Droid";
+  document.getElementById("chips").replaceChildren(
+    h("span", {class: "chip", title: g.detail}, h("span", {class: "dot", style: `background:${color(g.ok)}`}),
+      "gateway ", h("b", {}, g.url)),
+    h("span", {class: "chip", title: d.detail}, h("span", {class: "dot", style: `background:${color(d.ready)}`}),
+      "runner ", h("b", {}, runner), ` (${d.mode} mode)`),
+    h("span", {class: "chip"}, "caps ", h("b", {}, `${st.limits.max_checks} checks, ${st.limits.max_calls} calls, ` +
+      `${st.limits.timeout_s} s`)),
+    h("span", {class: "chip"}, "settle ", h("b", {}, `${st.limits.settle_s} s`)));
+}
+
+function pool(st) {
+  const el = document.getElementById("pool");
+  if (!st.pool.length) { el.replaceChildren(h("div", {class: "empty"}, st.gateway.detail || "waiting for the gateway")); return; }
+  el.replaceChildren(...st.pool.map(n => h("div", {class: "node"},
+    h("div", {}, h("b", {}, n.name), " ", h("span", {class: "t"}, n.local ? "host" : "peer")),
+    badge(n.state),
+    h("div", {class: "sub"}, `${n.devices.join(", ") || "no devices"}` +
+      (n.path ? `  ${n.path}${n.rtt_ms !== null ? " " + n.rtt_ms.toFixed(0) + " ms" : ""}` : "") +
+      (n.local ? "" : `  ${n.id.slice(0, 8)}`)))));
+}
+
+function watch(st) {
+  document.getElementById("pending").replaceChildren(st.pending ? h("span", {}, "pending: ", h("b", {}, st.pending)) :
+    h("span", {}, "watching GET /api/nodes and /api/network"));
+  const log = document.getElementById("watchlog");
+  log.replaceChildren(...st.watch_log.slice().reverse().map(e => h("div", {}, time(e.at), " ", h("b", {}, e.action),
+    " ", e.detail.replace(/^\w+:\s*/, ""))));
+}
+
+function runs(st) {
+  const el = document.getElementById("runs");
+  if (!st.runs.length) { el.replaceChildren(h("div", {class: "empty"}, "none yet")); return; }
+  if (!selected || !st.runs.some(r => r.id === selected)) selected = st.runs[0].id;
+  el.replaceChildren(...st.runs.map(r => h("button", {class: r.id === selected ? "sel" : "", onclick: () => {
+      selected = r.id; lastRunText = null; runs(lastState); refreshRun(); }},
+    h("div", {}, r.reason || "run"), badge(r.state),
+    h("div", {class: "t"}, `${time(r.created_at)}  ${r.runner === "droid" ? "Droid" : "scripted"}  ${r.model_id || ""}`))));
+}
+
+function touched(run) {
+  const lock = [...run.steps].reverse().find(s => s.kind === "guard" && s.title === "toolset locked");
+  const checks = run.steps.filter(s => s.kind === "verdict" && !s.title.startsWith("service")).length;
+  const denied = run.steps.filter(s => s.kind === "permission" && s.title.startsWith("denied")).length;
+  const allowed = run.steps.filter(s => s.kind === "permission" && s.title.startsWith("allowed")).length;
+  const tools = lock ? lock.detail.kept.map(t => t.split(/_{2,}|[.:/]/).pop()).join(", ") : "3 MCP tools";
+  return h("div", {class: "card"}, h("h2", {}, "What Droid could touch"), h("div", {class: "touch"},
+    h("div", {}, h("div", {class: "k"}, "tools"), h("div", {class: "v"}, tools)),
+    h("div", {}, h("div", {class: "k"}, "removed built-ins"), h("div", {class: "v"}, lock ? String(lock.detail.removed) : "-")),
+    h("div", {}, h("div", {class: "k"}, "planner checks"), h("div", {class: "v"}, `${checks} / ${lastState.limits.max_checks}`)),
+    h("div", {}, h("div", {class: "k"}, "permissions"), h("div", {class: "v"}, `${allowed} allowed, ${denied} denied`)),
+    h("div", {}, h("div", {class: "k"}, "writes"), h("div", {class: "v"}, "none without you"))));
+}
+
+function diffTable(d) {
+  return h("div", {class: "scroll"}, h("table", {},
+    h("thead", {}, h("tr", {}, ["machine", "device", "layers", "range", "est GiB", "budget GiB", "fits"].map(x => h("th", {}, x)))),
+    h("tbody", {}, d.rows.map(r => h("tr", {},
+      h("td", {}, r.node_name), h("td", {class: "num"}, r.device),
+      h("td", {class: `num ${r.layers_before === r.layers_after ? "same" : ""}`}, `${r.layers_before} -> ${r.layers_after}`),
+      h("td", {class: "num"}, `${r.range_before} -> ${r.range_after}`),
+      h("td", {class: "num"}, `${gib(r.bytes_before)} -> ${gib(r.bytes_after)}`),
+      h("td", {class: "num"}, gib(r.budget_bytes)),
+      h("td", {class: r.fits_after ? "up" : "down"}, r.fits_after ? "yes" : "no"))))));
+}
+
+function summary(d, measured) {
+  const ms = v => v === null || v === undefined ? "-" : `${v.toFixed(0)} ms`;
+  const mib = v => v === null || v === undefined ? "-" : `${(v / 2 ** 20).toFixed(0)} MiB`;
+  const parts = [
+    ["hops/token", `${d.hops_before ?? "-"} -> ${d.hops_after}`, arrow(d.hops_before, d.hops_after, true)],
+    ["machines", `${d.machines_before} -> ${d.machines_after}`, "same"],
+    ["tier", `${d.tier_before ?? "-"} -> ${d.tier_after}`, "same"],
+    [`planner decode est${d.decode_source ? " (" + d.decode_source + ")" : ""}`,
+      `${ms(d.decode_ms_before)} -> ${ms(d.decode_ms_after)}`, arrow(d.decode_ms_before, d.decode_ms_after, true)],
+    ["SSD/token est", `${mib(d.ssd_bytes_before)} -> ${mib(d.ssd_bytes_after)}`, arrow(d.ssd_bytes_before, d.ssd_bytes_after, true)],
+  ];
+  if (measured && measured.summaries && measured.summaries.length) {
+    const s = measured.summaries.find(x => x.prompt_label === "short") || measured.summaries[0];
+    parts.push(["measured now", `${(s.decode_tokens_per_s.median ?? 0).toFixed(2)} tok/s`, "same"]);
+  }
+  return h("div", {class: "summary"}, parts.map(([k, v, c]) => h("span", {}, `${k} `, h("b", {class: c}, v))));
+}
+
+function stageText(run, stages) {
+  const name = id => (run.node_names || {})[id] || (id === "local" ? "local" : id.slice(0, 8));
+  return stages.map(s => `${name(s.node_id)} ${s.device} x${s.layers}`).join("  ->  ");
+}
+
+function candidates(run) {
+  const p = run.proposal;
+  if (!p) return null;
+  const approvable = ["awaiting_approval", "no_change"].includes(run.state);
+  const box = h("div", {class: "card"}, h("h2", {}, "Droid's proposal"),
+    h("div", {}, h("span", {class: `badge ${p.recommendation === "apply" ? "s-awaiting_approval" : "s-no_change"}`},
+      `recommends ${p.recommendation}`), " ", p.summary));
+  p.candidates.forEach((c, i) => {
+    const v = run.verdicts[run.candidate_verdicts[i]];
+    const d = run.diffs[i];
+    const rec = p.recommendation === "apply" && p.recommended_index === i;
+    const stages = stageText(run, c.stages);
+    box.append(h("div", {class: `cand ${rec ? "rec" : ""}`},
+      h("h4", {}, `${i + 1}. ${c.label}`, rec ? h("span", {class: "badge s-awaiting_approval"}, "recommended") : null,
+        v ? h("span", {class: `badge ${v.accepted ? "s-applied" : "s-failed"}`}, v.accepted ? "planner accepted" : `refused ${v.code || ""}`) : null,
+        v && v.checked_by === "service" ? h("span", {class: "badge s-no_change"}, "re-checked by service") : null,
+        d && d.unchanged ? h("span", {class: "badge s-no_change"}, "same as the current layout") : null),
+      h("div", {class: "summary"}, h("span", {}, "stages ", h("b", {}, stages))),
+      v && !v.accepted ? h("div", {class: "err"}, v.reason) : null,
+      d ? summary(d, run.measured) : null,
+      d ? diffTable(d) : null,
+      h("div", {class: "why"}, h("b", {}, "Droid's rationale: "), c.rationale),
+      d && approvable && !d.unchanged ? h("p", {}, h("button", {class: "act primary", onclick: () => act(`/api/runs/${run.id}/approve`, {index: i})},
+        run.deployment_id ? "Approve and apply" : "Approve (plan-only)")) : null));
+  });
+  if (approvable) box.append(h("p", {}, h("button", {class: "act danger", onclick: () => act(`/api/runs/${run.id}/reject`)},
+    "Reject, keep the current layout")));
+  return box;
+}
+
+function verdicts(run) {
+  if (!run.verdicts.length) return null;
+  return h("div", {class: "card"}, h("h2", {}, `Planner verdicts (${run.verdicts.length})`), run.verdicts.map(v =>
+    h("div", {class: "verdict"},
+      h("div", {}, h("b", {}, v.label || "layout"), " ", h("span", {class: `badge ${v.accepted ? "s-applied" : "s-failed"}`},
+        v.accepted ? "accepted" : "refused"), " ", h("span", {class: "code"}, v.code || v.tier || ""),
+        v.checked_by === "service" ? " (service)" : ""),
+      h("div", {class: "code"}, stageText(run, v.stages)),
+      h("div", {}, v.reason), v.fix ? h("div", {class: "fix"}, `fix: ${v.fix}`) : null)));
+}
+
+function timeline(run) {
+  return h("div", {class: "card"}, h("h2", {}, `Steps (${run.steps.length})`), run.steps.map(s => h("div", {class: "step"},
+    h("div", {class: "t"}, time(s.at)), h("div", {class: `kind k-${s.kind}`}, s.kind),
+    Object.keys(s.detail || {}).length ? h("details", {"data-seq": s.seq}, h("summary", {}, s.title), h("pre", {}, JSON.stringify(s.detail, null, 1)))
+      : h("div", {}, s.title))));
+}
+
+function applied(run) {
+  const a = run.applied;
+  if (!a) return null;
+  if (!a.deployment_id) return h("p", {}, "approved: ", h("b", {}, a.note || "plan-only"));
+  const ok = run.state === "applied";
+  return h("p", {class: ok ? "up" : "err"}, ok ? "applied: deployment " : "not applied: deployment ",
+    h("b", {}, `${a.deployment_id.slice(0, 8)} is ${a.state}`), a.error ? ` (${a.error})` : "");
+}
+
+function renderRun(run) {
+  const head = h("div", {class: "card"},
+    h("div", {class: "runhead"}, h("h3", {}, run.trigger.reason || "run"), badge(run.state),
+      run.state === "running" ? h("button", {class: "act danger", onclick: () => act(`/api/runs/${run.id}/cancel`)}, "Cancel") : null),
+    h("div", {class: "meta"},
+      h("span", {}, "runner ", h("b", {}, run.runner === "droid" ? "Factory Droid (droid-sdk)" : "scripted, not Droid")),
+      h("span", {}, "model ", h("b", {}, run.model_id || "-")),
+      h("span", {}, "deployment ", h("b", {}, run.deployment_id ? run.deployment_id.slice(0, 8) : "none (plan-only)")),
+      h("span", {}, "started ", h("b", {}, time(run.created_at))),
+      run.usage ? h("span", {}, "tokens ", h("b", {}, `${run.usage.input_tokens ?? "-"} in, ${run.usage.output_tokens ?? "-"} out`)) : null),
+    run.error ? h("p", {class: "err"}, run.error) : null,
+    applied(run));
+  const parts = [head];
+  if (run.runner !== "droid") parts.unshift(h("div", {class: "banner"}, "This run used the scripted runner: no Droid session ran."));
+  parts.push(touched(run));
+  if (run.plan_text) parts.push(h("div", {class: "card"}, h("h2", {}, run.plan_title || "Droid's plan"), h("pre", {class: "plan"}, run.plan_text)));
+  parts.push(candidates(run), verdicts(run), timeline(run));
+  const detail = document.getElementById("detail");
+  const open = new Set([...detail.querySelectorAll("details[open]")].map(d => d.dataset.seq));
+  detail.replaceChildren(...parts.filter(Boolean));
+  detail.querySelectorAll("details").forEach(d => { if (open.has(d.dataset.seq)) d.open = true; });
+}
+
+async function act(path, body) {
+  try { await api(path, {method: "POST", body: JSON.stringify(body || {})}); }
+  catch (e) { alert(e.message); }
+  await refresh();
+}
+
+async function refreshRun() {
+  if (!selected) return;
+  try {
+    const run = await api(`/api/runs/${selected}`);
+    const text = JSON.stringify(run);
+    if (text !== lastRunText) { lastRunText = text; renderRun(run); }  // unchanged: keep the DOM the owner is using
+  } catch (e) { /* the run list will catch up */ }
+}
+
+async function refresh() {
+  try {
+    lastState = await api("/api/state");
+    const text = JSON.stringify(lastState);
+    if (text !== lastStateText) { lastStateText = text; chips(lastState); pool(lastState); watch(lastState); runs(lastState); }
+    await refreshRun();
+  } catch (e) {
+    document.getElementById("chips").replaceChildren(h("span", {class: "chip err"}, `autotune unreachable: ${e.message}`));
+  }
+}
+
+document.getElementById("trigger").addEventListener("click", () => act("/api/trigger"));
+refresh();
+setInterval(refresh, 1500);
+</script>
+</body>
+</html>

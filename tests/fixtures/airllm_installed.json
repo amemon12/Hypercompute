@@ -1,0 +1,24 @@
+{
+  "python": "3.12.10",
+  "torch": "2.11.0+cu128",
+  "torch_cuda": "12.8",
+  "cuda_available": true,
+  "device": "cuda:0",
+  "device_name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+  "capability": "12.0",
+  "arch_ok": true,
+  "airllm_commit": "bc47e0d474abf03f491f7547085bd85a2c6f0b1b",
+  "packages": {
+    "airllm": "4.0.0",
+    "transformers": "5.16.1",
+    "accelerate": "1.15.0",
+    "safetensors": "0.8.0",
+    "huggingface-hub": "1.33.0",
+    "tokenizers": "0.23.3"
+  },
+  "engine": "airllm",
+  "commit": "bc47e0d474abf03f491f7547085bd85a2c6f0b1b",
+  "torch_index": "cu128",
+  "venv": "C:\\Users\\example\\.hypercompute\\engines\\airllm\\venv",
+  "installed_at": "2026-10-20T17:30:00+00:00"
+}

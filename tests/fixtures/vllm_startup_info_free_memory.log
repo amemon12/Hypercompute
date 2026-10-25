@@ -1,0 +1,1 @@
+(EngineCore pid=609) INFO 10-21 03:57:41 [gpu_worker.py:1034] Free memory on device (10.77/11.94 GiB) on startup. Desired GPU memory utilization is (0.89, 10.63 GiB). Actual usage is 5.45 GiB for consumed memory (weights + non-torch), 1.06 GiB for peak activation, and 0.03 GiB for CUDAGraph memory.

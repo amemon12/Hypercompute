@@ -1,0 +1,144 @@
+{
+ "schema": "hypercompute.capacity.big/1",
+ "started_at": "2026-10-24T20:53:41.116003+00:00",
+ "requested": {
+  "model": "kimi-k2.6-iq1_s",
+  "port": 8001,
+  "strategy": "local_only",
+  "ctx": 4096,
+  "nodes": [],
+  "engine": null,
+  "allow_capacity_mode": true,
+  "prompt_tokens": 64,
+  "output_tokens": 32,
+  "warmup": 1,
+  "reps": 2,
+  "keep": false,
+  "plan_only": false,
+  "load_timeout_s": 3600.0,
+  "chat_timeout_s": 1800.0,
+  "poll_s": 2.0,
+  "heartbeat_wait_s": 7.5,
+  "sample_interval_s": 0.5,
+  "gpu_every": 4,
+  "min_available_gib": 0.0,
+  "min_drive_free_gib": 5.0,
+  "max_commit_growth_gib": 0.25,
+  "max_swap_growth_gib": 2.0,
+  "seed_peers": false,
+  "seed_timeout_s": 3600.0,
+  "seed_poll_s": 5.0,
+  "replan_after_s": 480.0,
+  "layout": null,
+  "home": "/home/asus/.hypercompute",
+  "results_dir": "/home/asus/hypercompute/results/capacity",
+  "chat_settings": {
+   "stream": true,
+   "temperature": 0,
+   "seed": 7,
+   "cache_prompt": false,
+   "ignore_eos": true
+  }
+ },
+ "runner": {
+  "git_head": "bef20200c7be7e6a0bc180df7a11f602fc97df82",
+  "uncommitted_paths": 17,
+  "note": "the runner's checkout; the gateway runs whatever code it was started from"
+ },
+ "predicted": {},
+ "measured": {
+  "host": {
+   "source": "hostmon: GetPerformanceInfo (available, commit, file cache), psutil disk_io_counters (system-wide physical reads, every process), shutil.disk_usage (system drive), psutil engine process counters (ReadFile bytes exclude mmap page-fault reads), nvidia-smi (all GPUs)",
+   "platform": "linux",
+   "guards": {
+    "min_available": {
+     "limit_bytes": 0,
+     "active": false,
+     "inactive_because": "turned off"
+    },
+    "min_drive_free": {
+     "limit_bytes": 5368709120,
+     "active": true,
+     "inactive_because": null,
+     "volume": "system drive",
+     "path": "/"
+    },
+    "max_commit_growth": {
+     "limit_bytes": 268435456,
+     "active": false,
+     "inactive_because": "this host reported no commit_limit reading"
+    },
+    "max_swap_growth": {
+     "limit_bytes": 2147483648,
+     "active": false,
+     "inactive_because": "this host reported no swap_used reading"
+    }
+   },
+   "interval_s": 0.5,
+   "marks": [],
+   "error": null,
+   "guard_tripped": null,
+   "guard_stop": null,
+   "whole_run": {
+    "t0": 0.0,
+    "t1": 0.258,
+    "samples": 2,
+    "available_min": 127034281984,
+    "commit_charge_peak": null,
+    "commit_limit_peak": null,
+    "system_cache_peak": null,
+    "drive_free_min": 414885519360,
+    "engine_rss_peak": null,
+    "engine_private_peak": null,
+    "gpu_used_peak": null,
+    "swap_used_min": null,
+    "swap_used_peak": null,
+    "disk_read_bytes": 12288,
+    "engine_read_bytes": null,
+    "engine_page_faults": null
+   },
+   "samples": [
+    {
+     "t": 0.028,
+     "available": 127034281984,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 1960626407424,
+     "drive_free": 414885519360,
+     "engine_rss": null,
+     "engine_private": null,
+     "engine_read_bytes": null,
+     "engine_page_faults": null,
+     "gpu_used": null,
+     "swap_used": null
+    },
+    {
+     "t": 0.258,
+     "available": 127051177984,
+     "commit_charge": null,
+     "commit_limit": null,
+     "system_cache": null,
+     "disk_read_bytes": 1960626419712,
+     "drive_free": 414885519360,
+     "engine_rss": null,
+     "engine_private": null,
+     "engine_read_bytes": null,
+     "engine_page_faults": null,
+     "gpu_used": null,
+     "swap_used": null
+    }
+   ]
+  }
+ },
+ "status": "refused",
+ "error": {
+  "type": "RunRefused",
+  "message": "model 'kimi-k2.6-iq1_s' is not in the gateway's catalog",
+  "fix": "start the host with HYPERCOMPUTE_CONFIG_DIR set to the worktree's configs directory"
+ },
+ "deployment_id": null,
+ "stop": null,
+ "kept": false,
+ "finished_at": "2026-10-24T20:53:41.379313+00:00"
+}

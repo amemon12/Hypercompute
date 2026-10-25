@@ -1,0 +1,7 @@
+Asset: gpu-hardware-cutout.png
+Source: gpu-retro-paper.png, supplied by the user.
+Method: OpenAI built-in image_gen, background-extraction edit with transparent_background=true.
+The hardware is a conceptual illustration. It is not a photograph or a specification of a shipping product.
+
+Final prompt:
+Use case: background-extraction. Edit target: the supplied retro GPU website illustration. Extract ONLY the complete GPU hardware drawing as a standalone transparent PNG asset for this website. Remove all surrounding ivory paper background, green geometric shape, registration crosses, black looping lines, distributed inference engine caption, dots, borders, and other decoration outside the hardware. Keep the GPU itself unchanged: same straight-on orientation and proportions, black hand-drawn ink outlines, copper circuitry, warm ivory casing, masking tape strips, left exposed Apple M5 Ultra chip and center RTX 5090 chip, right fan. Keep exact chip text and Apple symbol, all circuit/fan details, tape, the entire left bracket and lower PCIe connector. Preserve opaque ivory fills inside the hardware and tape. Outside silhouette must be genuinely transparent alpha, no shadow, no checkerboard, no white rectangle. Crop canvas close around GPU with a small even transparent margin. Wide landscape asset. Do not redraw or stylize the GPU differently.

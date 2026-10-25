@@ -1,0 +1,74 @@
+{
+  "hostname": "mac-air",
+  "os": {
+    "system": "macos",
+    "release": "fixture",
+    "version": "fixture",
+    "machine": "arm64"
+  },
+  "cpu": {
+    "model": null,
+    "physical_cores": null,
+    "logical_cores": null
+  },
+  "memory_pools": [
+    {
+      "id": "uma",
+      "kind": "unified",
+      "total_bytes": 17179869184,
+      "free_bytes": 6442450944,
+      "measured_at": "2026-10-24T12:00:00Z",
+      "source": "sysctl hw.memsize"
+    }
+  ],
+  "devices": [
+    {
+      "id": "CPU",
+      "kind": "cpu",
+      "name": "Apple M4",
+      "vendor": null,
+      "pool_id": "uma",
+      "backend": "cpu",
+      "total_bytes": null,
+      "free_bytes": null,
+      "source": "fixture"
+    },
+    {
+      "id": "MTL0",
+      "kind": "igpu",
+      "name": "Apple M4",
+      "vendor": "Apple",
+      "pool_id": "uma",
+      "backend": "metal",
+      "total_bytes": 12884901888,
+      "free_bytes": null,
+      "source": "fixture"
+    }
+  ],
+  "disk_free_bytes": 214748364800,
+  "network": [],
+  "engine": {
+    "engine": "llama_rpc",
+    "installed": true,
+    "release": "b11770",
+    "build_number": 11770,
+    "commit": null,
+    "rpc_proto": "8.0.0",
+    "variant": "macos-arm64",
+    "accelerator": "metal",
+    "bin_dir": null,
+    "smoke": "passed",
+    "smoke_detail": "llama-server --list-devices ran",
+    "devices": [
+      {
+        "name": "MTL0",
+        "description": "Apple M4",
+        "total_bytes": 12884901888,
+        "free_bytes": 12884901888
+      }
+    ]
+  },
+  "collected_at": "2026-10-24T12:00:00Z",
+  "diagnostics": [],
+  "extra_engines": []
+}

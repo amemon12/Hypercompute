@@ -1,0 +1,23 @@
+models:
+  # vLLM variant of qwen2.5-7b-instruct. Facts from https://huggingface.co/api/models/Qwen/Qwen2.5-7B-Instruct-AWQ?blobs=true
+  # (fetched 2026-10-21): main = b25037543e9394b818fdfca67ab2a00ecc7dd641 (lastModified 2024-10-09), license
+  # apache-2.0, not gated, two safetensors shards 3996422976 + 1574406784 = 5570829760 bytes (all 12 repo files:
+  # 5582400357). engine_managed: no files, because vLLM downloads repo@revision itself inside WSL2/Linux into its own
+  # HF_HOME and never reads a Hypercompute copy; size_bytes sizes the VRAM estimate and the first-start download.
+  - id: qwen2.5-7b-instruct-awq
+    display_name: Qwen2.5 7B Instruct (AWQ 4-bit, vLLM)
+    family: qwen2
+    params_b: 7.6
+    quantization: AWQ-4bit
+    format: hf
+    engines: [vllm]
+    logical_id: qwen2.5-7b-instruct
+    repo: Qwen/Qwen2.5-7B-Instruct-AWQ
+    revision: b25037543e9394b818fdfca67ab2a00ecc7dd641
+    license: apache-2.0
+    size_bytes: 5570829760
+    role: standard
+    default_ctx: 4096
+    max_output_tokens: 1024
+    notes: "Official Qwen AWQ (group size 128, Marlin kernels on sm_120). vLLM downloads it inside WSL2 on the first start (5.19 GiB). For objective=throughput: same single-user speed as the Q4_K_M GGUF, several times the throughput with concurrent requests."
+    files: []

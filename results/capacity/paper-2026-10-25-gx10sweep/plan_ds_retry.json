@@ -1,0 +1,27 @@
+[
+ {
+  "label": "ds671-n1-gx3-2",
+  "model": "deepseek-v3.1-ud-tq1_0",
+  "nodes": [
+   "6dad6cf75b2e4cf197b7bc7f4d0a67e4",
+   "d4e65f83c4be4a41aad722e40983b08b",
+   "8f169e3549fc41fbb14f6876a19d704c"
+  ],
+  "args": [
+   "--prompt-tokens",
+   "64",
+   "--output-tokens",
+   "32",
+   "--warmup",
+   "1",
+   "--reps",
+   "2",
+   "--load-timeout",
+   "3600",
+   "--seed-peers",
+   "--seed-timeout",
+   "3600"
+  ],
+  "timeout_s": 9000
+ }
+]

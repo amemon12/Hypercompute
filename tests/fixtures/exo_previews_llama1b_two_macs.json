@@ -1,0 +1,306 @@
+{
+  "previews": [
+    {
+      "model_id": "mlx-community/Llama-3.2-1B-Instruct-4bit",
+      "sharding": "Pipeline",
+      "instance_meta": "MlxRing",
+      "instance": {
+        "MlxRingInstance": {
+          "instanceId": "5d0c6a3e-8f1b-4a52-9c3d-2e7f4b1a6c90",
+          "shardAssignments": {
+            "modelId": "mlx-community/Llama-3.2-1B-Instruct-4bit",
+            "runnerToShard": {
+              "a1e5c3d2-7b4f-4e8a-9d1c-3f6b2a8e5c74": {
+                "PipelineShardMetadata": {
+                  "modelCard": {
+                    "modelId": "mlx-community/Llama-3.2-1B-Instruct-4bit",
+                    "storageSize": {
+                      "inBytes": 729808896
+                    },
+                    "nLayers": 16,
+                    "hiddenSize": 2048,
+                    "supportsTensor": true,
+                    "numKeyValueHeads": 8,
+                    "tasks": [
+                      "TextGeneration"
+                    ],
+                    "components": null,
+                    "family": "llama",
+                    "quantization": "4bit",
+                    "baseModel": "Llama 3.2 1B",
+                    "capabilities": [
+                      "text"
+                    ],
+                    "backends": [
+                      "MlxMetal",
+                      "MlxCuda",
+                      "MlxCpu"
+                    ],
+                    "reasoningDialect": "none",
+                    "contextLength": 131072,
+                    "usesCfg": false,
+                    "trustRemoteCode": true,
+                    "isCustom": false,
+                    "vision": null,
+                    "samplingDefaults": {
+                      "temperature": 0.6,
+                      "topP": 0.9,
+                      "thinking": null,
+                      "nonThinking": null
+                    }
+                  },
+                  "deviceRank": 0,
+                  "worldSize": 2,
+                  "immediateException": false,
+                  "shouldTimeout": null,
+                  "startLayer": 0,
+                  "endLayer": 9,
+                  "nLayers": 16
+                }
+              },
+              "b7f2d9e1-3c6a-4d5b-8e2f-1a9c7b3d6e05": {
+                "PipelineShardMetadata": {
+                  "modelCard": {
+                    "modelId": "mlx-community/Llama-3.2-1B-Instruct-4bit",
+                    "storageSize": {
+                      "inBytes": 729808896
+                    },
+                    "nLayers": 16,
+                    "hiddenSize": 2048,
+                    "supportsTensor": true,
+                    "numKeyValueHeads": 8,
+                    "tasks": [
+                      "TextGeneration"
+                    ],
+                    "components": null,
+                    "family": "llama",
+                    "quantization": "4bit",
+                    "baseModel": "Llama 3.2 1B",
+                    "capabilities": [
+                      "text"
+                    ],
+                    "backends": [
+                      "MlxMetal",
+                      "MlxCuda",
+                      "MlxCpu"
+                    ],
+                    "reasoningDialect": "none",
+                    "contextLength": 131072,
+                    "usesCfg": false,
+                    "trustRemoteCode": true,
+                    "isCustom": false,
+                    "vision": null,
+                    "samplingDefaults": {
+                      "temperature": 0.6,
+                      "topP": 0.9,
+                      "thinking": null,
+                      "nonThinking": null
+                    }
+                  },
+                  "deviceRank": 1,
+                  "worldSize": 2,
+                  "immediateException": false,
+                  "shouldTimeout": null,
+                  "startLayer": 9,
+                  "endLayer": 16,
+                  "nLayers": 16
+                }
+              }
+            },
+            "nodeToRunner": {
+              "9b1f0c2e7d4a4e1fa3c5b7d9e1f2a3b4": "a1e5c3d2-7b4f-4e8a-9d1c-3f6b2a8e5c74",
+              "4c2d8e6f1a3b5c7d9e0f1a2b3c4d5e6": "b7f2d9e1-3c6a-4d5b-8e2f-1a9c7b3d6e05"
+            }
+          },
+          "hostsByNode": {
+            "9b1f0c2e7d4a4e1fa3c5b7d9e1f2a3b4": [
+              {
+                "ip": "0.0.0.0",
+                "port": 51234
+              },
+              {
+                "ip": "192.168.1.30",
+                "port": 51234
+              }
+            ],
+            "4c2d8e6f1a3b5c7d9e0f1a2b3c4d5e6": [
+              {
+                "ip": "0.0.0.0",
+                "port": 51234
+              },
+              {
+                "ip": "192.168.1.31",
+                "port": 51234
+              }
+            ]
+          },
+          "ephemeralPort": 51234
+        }
+      },
+      "memory_delta_by_node": {
+        "4c2d8e6f1a3b5c7d9e0f1a2b3c4d5e6": 364904448,
+        "9b1f0c2e7d4a4e1fa3c5b7d9e1f2a3b4": 364904448
+      },
+      "error": null
+    },
+    {
+      "model_id": "mlx-community/Llama-3.2-1B-Instruct-4bit",
+      "sharding": "Pipeline",
+      "instance_meta": "MlxJaccl",
+      "instance": null,
+      "memory_delta_by_node": null,
+      "error": "Requested RDMA (MlxJaccl) but no RDMA-connected cycles available"
+    },
+    {
+      "model_id": "mlx-community/Llama-3.2-1B-Instruct-4bit",
+      "sharding": "Tensor",
+      "instance_meta": "MlxRing",
+      "instance": {
+        "MlxRingInstance": {
+          "instanceId": "0e9a7c5b-3d1f-4b6a-8c2e-7f5d3b1a9e48",
+          "shardAssignments": {
+            "modelId": "mlx-community/Llama-3.2-1B-Instruct-4bit",
+            "runnerToShard": {
+              "c3a8e1f6-2d4b-4c7e-9a5f-8b1d6e3c2a07": {
+                "TensorShardMetadata": {
+                  "modelCard": {
+                    "modelId": "mlx-community/Llama-3.2-1B-Instruct-4bit",
+                    "storageSize": {
+                      "inBytes": 729808896
+                    },
+                    "nLayers": 16,
+                    "hiddenSize": 2048,
+                    "supportsTensor": true,
+                    "numKeyValueHeads": 8,
+                    "tasks": [
+                      "TextGeneration"
+                    ],
+                    "components": null,
+                    "family": "llama",
+                    "quantization": "4bit",
+                    "baseModel": "Llama 3.2 1B",
+                    "capabilities": [
+                      "text"
+                    ],
+                    "backends": [
+                      "MlxMetal",
+                      "MlxCuda",
+                      "MlxCpu"
+                    ],
+                    "reasoningDialect": "none",
+                    "contextLength": 131072,
+                    "usesCfg": false,
+                    "trustRemoteCode": true,
+                    "isCustom": false,
+                    "vision": null,
+                    "samplingDefaults": {
+                      "temperature": 0.6,
+                      "topP": 0.9,
+                      "thinking": null,
+                      "nonThinking": null
+                    }
+                  },
+                  "deviceRank": 0,
+                  "worldSize": 2,
+                  "immediateException": false,
+                  "shouldTimeout": null,
+                  "startLayer": 0,
+                  "endLayer": 16,
+                  "nLayers": 16
+                }
+              },
+              "d9b4f2a7-6e1c-4a8d-b3f5-2c7e9a1d4b60": {
+                "TensorShardMetadata": {
+                  "modelCard": {
+                    "modelId": "mlx-community/Llama-3.2-1B-Instruct-4bit",
+                    "storageSize": {
+                      "inBytes": 729808896
+                    },
+                    "nLayers": 16,
+                    "hiddenSize": 2048,
+                    "supportsTensor": true,
+                    "numKeyValueHeads": 8,
+                    "tasks": [
+                      "TextGeneration"
+                    ],
+                    "components": null,
+                    "family": "llama",
+                    "quantization": "4bit",
+                    "baseModel": "Llama 3.2 1B",
+                    "capabilities": [
+                      "text"
+                    ],
+                    "backends": [
+                      "MlxMetal",
+                      "MlxCuda",
+                      "MlxCpu"
+                    ],
+                    "reasoningDialect": "none",
+                    "contextLength": 131072,
+                    "usesCfg": false,
+                    "trustRemoteCode": true,
+                    "isCustom": false,
+                    "vision": null,
+                    "samplingDefaults": {
+                      "temperature": 0.6,
+                      "topP": 0.9,
+                      "thinking": null,
+                      "nonThinking": null
+                    }
+                  },
+                  "deviceRank": 1,
+                  "worldSize": 2,
+                  "immediateException": false,
+                  "shouldTimeout": null,
+                  "startLayer": 0,
+                  "endLayer": 16,
+                  "nLayers": 16
+                }
+              }
+            },
+            "nodeToRunner": {
+              "9b1f0c2e7d4a4e1fa3c5b7d9e1f2a3b4": "c3a8e1f6-2d4b-4c7e-9a5f-8b1d6e3c2a07",
+              "4c2d8e6f1a3b5c7d9e0f1a2b3c4d5e6": "d9b4f2a7-6e1c-4a8d-b3f5-2c7e9a1d4b60"
+            }
+          },
+          "hostsByNode": {
+            "9b1f0c2e7d4a4e1fa3c5b7d9e1f2a3b4": [
+              {
+                "ip": "0.0.0.0",
+                "port": 52011
+              },
+              {
+                "ip": "192.168.1.30",
+                "port": 52011
+              }
+            ],
+            "4c2d8e6f1a3b5c7d9e0f1a2b3c4d5e6": [
+              {
+                "ip": "0.0.0.0",
+                "port": 52011
+              },
+              {
+                "ip": "192.168.1.31",
+                "port": 52011
+              }
+            ]
+          },
+          "ephemeralPort": 52011
+        }
+      },
+      "memory_delta_by_node": {
+        "4c2d8e6f1a3b5c7d9e0f1a2b3c4d5e6": 364904448,
+        "9b1f0c2e7d4a4e1fa3c5b7d9e1f2a3b4": 364904448
+      },
+      "error": null
+    },
+    {
+      "model_id": "mlx-community/Llama-3.2-1B-Instruct-4bit",
+      "sharding": "Tensor",
+      "instance_meta": "MlxJaccl",
+      "instance": null,
+      "memory_delta_by_node": null,
+      "error": "Requested RDMA (MlxJaccl) but no RDMA-connected cycles available"
+    }
+  ]
+}

@@ -1,0 +1,5545 @@
+{
+  "exported_at": "20261021T111741Z",
+  "deployments": [
+    {
+      "id": "f03980cfe3e94ea1882b717c36a0721e",
+      "model": "qwen2.5-7b-instruct-awq",
+      "strategy": "local_only",
+      "devices": [],
+      "final_state": "stopped",
+      "error": null,
+      "cleanup": "vLLM in WSL (Ubuntu): graceful; deployment:f03980cfe3e94ea1882b717c36a0721e pid 44600: already_exited (exit code 0); released 1 lease(s)",
+      "participation_verified": true,
+      "history": [
+        [
+          "planned",
+          "2026-10-21T11:00:44.050836Z",
+          null
+        ],
+        [
+          "reserving",
+          "2026-10-21T11:00:44.050836Z",
+          null
+        ],
+        [
+          "preparing",
+          "2026-10-21T11:00:44.066866Z",
+          "re-checking peers and model file"
+        ],
+        [
+          "loading",
+          "2026-10-21T11:00:44.120421Z",
+          "starting vLLM server"
+        ],
+        [
+          "warming",
+          "2026-10-21T11:01:34.855479Z",
+          "first request"
+        ],
+        [
+          "ready",
+          "2026-10-21T11:01:34.958136Z",
+          "vLLM holds the whole model on CUDA0 (NVIDIA GeForce RTX 5070 Ti Laptop GPU): weights 5.29 GiB, KV cache 4.90 GiB (91,664 tokens, 22.4x concurrency at 4,096 tokens); engine init 9.3 s, weights load 10.8 s"
+        ],
+        [
+          "draining",
+          "2026-10-21T11:03:26.092015Z",
+          "stopped by owner"
+        ],
+        [
+          "stopped",
+          "2026-10-21T11:03:28.211648Z",
+          "stopped by owner"
+        ]
+      ]
+    },
+    {
+      "id": "14cb336239164b93a6f60f56898064c0",
+      "model": "qwen2.5-7b-instruct-awq",
+      "strategy": "local_only",
+      "devices": [],
+      "final_state": "failed",
+      "error": "vLLM failed to start: less GPU memory was free than --gpu-memory-utilization reserves ((EngineCore pid=609) INFO 10-21 03:57:41 [gpu_worker.py:1034] Free memory on device (10.77/11.94 GiB) on startup. Desired GPU memory utilization is (0.89, 10.63 GiB). Actual usage is 5.45 GiB for consumed memory (weights + non-torch), 1.06 GiB for peak activation, and 0.03 GiB for CUDAGraph memory. )",
+      "cleanup": "vLLM in WSL (Ubuntu): killed; deployment:14cb336239164b93a6f60f56898064c0 pid 38812: already_exited (exit code 9); released 1 lease(s)",
+      "participation_verified": false,
+      "history": [
+        [
+          "planned",
+          "2026-10-21T10:56:36.045986Z",
+          null
+        ],
+        [
+          "reserving",
+          "2026-10-21T10:56:36.046435Z",
+          null
+        ],
+        [
+          "preparing",
+          "2026-10-21T10:56:36.046435Z",
+          "re-checking peers and model file"
+        ],
+        [
+          "loading",
+          "2026-10-21T10:56:36.095898Z",
+          "starting vLLM server"
+        ],
+        [
+          "failed",
+          "2026-10-21T10:58:13.362934Z",
+          "vLLM failed to start: less GPU memory was free than --gpu-memory-utilization reserves ((EngineCore pid=609) INFO 10-21 03:57:41 [gpu_worker.py:1034] Free memory on device (10.77/11.94 GiB) on startup. Desired GPU memory utilization is (0.89, 10.63 GiB). Actual usage is 5.45 GiB for consumed memory (weights + non-torch), 1.06 GiB for peak activation, and 0.03 GiB for CUDAGraph memory. )"
+        ]
+      ]
+    },
+    {
+      "id": "4a18d95661884845a8aa78819c827411",
+      "model": "qwen2.5-0.5b-instruct-hf",
+      "strategy": "local_only",
+      "devices": [],
+      "final_state": "stopped",
+      "error": null,
+      "cleanup": "deployment:4a18d95661884845a8aa78819c827411 pid 66720: terminated (exit code 1); released 1 lease(s)",
+      "participation_verified": true,
+      "history": [
+        [
+          "planned",
+          "2026-10-21T10:44:47.325519Z",
+          null
+        ],
+        [
+          "reserving",
+          "2026-10-21T10:44:47.327491Z",
+          null
+        ],
+        [
+          "preparing",
+          "2026-10-21T10:44:47.331304Z",
+          "re-checking peers and model file"
+        ],
+        [
+          "loading",
+          "2026-10-21T10:44:47.333113Z",
+          "starting AirLLM worker"
+        ],
+        [
+          "warming",
+          "2026-10-21T10:45:30.751366Z",
+          "first request"
+        ],
+        [
+          "ready",
+          "2026-10-21T10:45:37.258734Z",
+          "AirLLM streams every layer from C:\\Users\\operator\\.hypercompute\\airllm-shards\\qwen2.5-0.5b-instruct-hf\\7ae557604adf to cuda:0 for every token (disk tier, this machine only)"
+        ],
+        [
+          "draining",
+          "2026-10-21T10:56:20.222771Z",
+          "stopped by owner"
+        ],
+        [
+          "stopped",
+          "2026-10-21T10:56:20.276301Z",
+          "stopped by owner"
+        ]
+      ]
+    },
+    {
+      "id": "d29410fd6ce34945a524c8a128d821db",
+      "model": "qwen2.5-0.5b-instruct-q4_k_m",
+      "strategy": "all_selected",
+      "devices": [
+        "RPC0",
+        "CUDA0"
+      ],
+      "final_state": "failed",
+      "error": "peer 8f169e35 lost: contributor stopped sharing",
+      "cleanup": "deployment:d29410fd6ce34945a524c8a128d821db pid 60664: terminated (exit code 1); released 2 lease(s)",
+      "participation_verified": true,
+      "history": [
+        [
+          "planned",
+          "2026-10-21T10:44:29.415059Z",
+          null
+        ],
+        [
+          "reserving",
+          "2026-10-21T10:44:29.415059Z",
+          null
+        ],
+        [
+          "preparing",
+          "2026-10-21T10:44:29.422870Z",
+          "re-checking peers and model file"
+        ],
+        [
+          "loading",
+          "2026-10-21T10:44:30.353852Z",
+          "starting llama-server"
+        ],
+        [
+          "warming",
+          "2026-10-21T10:44:31.440539Z",
+          "first request"
+        ],
+        [
+          "ready",
+          "2026-10-21T10:44:31.509557Z",
+          "RPC0[127.0.0.1:47052]: model 10 MiB, KV 2 MiB, ~1 layers (planned 1); CUDA0: model 363 MiB, KV 46 MiB, ~23 layers (planned 23)"
+        ],
+        [
+          "failed",
+          "2026-10-21T10:44:34.219928Z",
+          "peer 8f169e35 lost: contributor stopped sharing"
+        ]
+      ]
+    },
+    {
+      "id": "e8005e3cec9c44c0af0f7d27053280de",
+      "model": "qwen2.5-0.5b-instruct-q4_k_m",
+      "strategy": "all_selected",
+      "devices": [
+        "RPC0",
+        "CUDA0"
+      ],
+      "final_state": "failed",
+      "error": "peer 8f169e35 lost: no heartbeat for 17s",
+      "cleanup": "deployment:e8005e3cec9c44c0af0f7d27053280de pid 37160: terminated (exit code 1); released 2 lease(s)",
+      "participation_verified": true,
+      "history": [
+        [
+          "planned",
+          "2026-10-21T10:43:41.830795Z",
+          null
+        ],
+        [
+          "reserving",
+          "2026-10-21T10:43:41.830795Z",
+          null
+        ],
+        [
+          "preparing",
+          "2026-10-21T10:43:41.830795Z",
+          "re-checking peers and model file"
+        ],
+        [
+          "loading",
+          "2026-10-21T10:43:42.785893Z",
+          "starting llama-server"
+        ],
+        [
+          "warming",
+          "2026-10-21T10:43:43.832135Z",
+          "first request"
+        ],
+        [
+          "ready",
+          "2026-10-21T10:43:43.918072Z",
+          "RPC0[127.0.0.1:47052]: model 10 MiB, KV 2 MiB, ~1 layers (planned 1); CUDA0: model 363 MiB, KV 46 MiB, ~23 layers (planned 23)"
+        ],
+        [
+          "failed",
+          "2026-10-21T10:44:02.792655Z",
+          "peer 8f169e35 lost: no heartbeat for 17s"
+        ]
+      ]
+    },
+    {
+      "id": "40ccffd559a6401f82aa404698ae4362",
+      "model": "qwen2.5-14b-instruct-q6_k",
+      "strategy": "auto",
+      "devices": [
+        "CUDA0"
+      ],
+      "final_state": "stopped",
+      "error": null,
+      "cleanup": "deployment:40ccffd559a6401f82aa404698ae4362 pid 22452: terminated (exit code 1); released 2 lease(s)",
+      "participation_verified": false,
+      "history": [
+        [
+          "planned",
+          "2026-10-21T10:43:07.605566Z",
+          null
+        ],
+        [
+          "reserving",
+          "2026-10-21T10:43:07.608590Z",
+          null
+        ],
+        [
+          "preparing",
+          "2026-10-21T10:43:07.608590Z",
+          "re-checking peers and model file"
+        ],
+        [
+          "loading",
+          "2026-10-21T10:43:07.615788Z",
+          "starting llama-server"
+        ],
+        [
+          "warming",
+          "2026-10-21T10:43:13.833912Z",
+          "first request"
+        ],
+        [
+          "ready",
+          "2026-10-21T10:43:14.260821Z",
+          "local-only deployment (no peers in the plan); CPU: model 0 MiB, KV 64 MiB, ~4 layers (planned 4); CUDA0: model 10087 MiB, KV 704 MiB, ~44 layers (planned 44)"
+        ],
+        [
+          "draining",
+          "2026-10-21T10:43:20.005701Z",
+          "tuning: candidate finished"
+        ],
+        [
+          "stopped",
+          "2026-10-21T10:43:21.380329Z",
+          "tuning: candidate finished"
+        ]
+      ]
+    },
+    {
+      "id": "c9062b2e0cae4f66a533d06a7cd7f02e",
+      "model": "qwen2.5-14b-instruct-q6_k",
+      "strategy": "auto",
+      "devices": [
+        "RPC0",
+        "CUDA0"
+      ],
+      "final_state": "stopped",
+      "error": null,
+      "cleanup": "deployment:c9062b2e0cae4f66a533d06a7cd7f02e pid 31188: terminated (exit code 1); released 2 lease(s)",
+      "participation_verified": true,
+      "history": [
+        [
+          "planned",
+          "2026-10-21T10:42:51.688262Z",
+          null
+        ],
+        [
+          "reserving",
+          "2026-10-21T10:42:51.696194Z",
+          null
+        ],
+        [
+          "preparing",
+          "2026-10-21T10:42:51.696510Z",
+          "re-checking peers and model file"
+        ],
+        [
+          "loading",
+          "2026-10-21T10:42:52.687303Z",
+          "starting llama-server"
+        ],
+        [
+          "warming",
+          "2026-10-21T10:42:59.805990Z",
+          "first request"
+        ],
+        [
+          "ready",
+          "2026-10-21T10:43:00.033134Z",
+          "RPC0[127.0.0.1:47052]: model 862 MiB, KV 64 MiB, ~4 layers (planned 4); CUDA0: model 10087 MiB, KV 704 MiB, ~44 layers (planned 44)"
+        ],
+        [
+          "draining",
+          "2026-10-21T10:43:06.123710Z",
+          "tuning: candidate finished"
+        ],
+        [
+          "stopped",
+          "2026-10-21T10:43:07.589764Z",
+          "tuning: candidate finished"
+        ]
+      ]
+    },
+    {
+      "id": "b88f4d3047c44508854c7272e15f1cd5",
+      "model": "qwen2.5-14b-instruct-q6_k",
+      "strategy": "auto",
+      "devices": [
+        "CUDA0"
+      ],
+      "final_state": "stopped",
+      "error": null,
+      "cleanup": "deployment:b88f4d3047c44508854c7272e15f1cd5 pid 48892: terminated (exit code 1); released 2 lease(s)",
+      "participation_verified": false,
+      "history": [
+        [
+          "planned",
+          "2026-10-21T10:42:39.378078Z",
+          null
+        ],
+        [
+          "reserving",
+          "2026-10-21T10:42:39.378078Z",
+          null
+        ],
+        [
+          "preparing",
+          "2026-10-21T10:42:39.378078Z",
+          "re-checking peers and model file"
+        ],
+        [
+          "loading",
+          "2026-10-21T10:42:39.378078Z",
+          "starting llama-server"
+        ],
+        [
+          "warming",
+          "2026-10-21T10:42:45.551399Z",
+          "first request"
+        ],
+        [
+          "ready",
+          "2026-10-21T10:42:45.734272Z",
+          "local-only deployment (no peers in the plan); CPU: model 0 MiB, KV 64 MiB, ~4 layers (planned 4); CUDA0: model 10087 MiB, KV 704 MiB, ~44 layers (planned 44)"
+        ],
+        [
+          "draining",
+          "2026-10-21T10:42:50.328011Z",
+          "tuning: candidate finished"
+        ],
+        [
+          "stopped",
+          "2026-10-21T10:42:51.688262Z",
+          "tuning: candidate finished"
+        ]
+      ]
+    },
+    {
+      "id": "de84b74cdeb241e792498b23ba3d9951",
+      "model": "qwen2.5-14b-instruct-q6_k",
+      "strategy": "auto",
+      "devices": [
+        "CUDA0"
+      ],
+      "final_state": "stopped",
+      "error": null,
+      "cleanup": "deployment:de84b74cdeb241e792498b23ba3d9951 pid 20512: terminated (exit code 1); released 2 lease(s)",
+      "participation_verified": false,
+      "history": [
+        [
+          "planned",
+          "2026-10-21T10:42:26.886809Z",
+          null
+        ],
+        [
+          "reserving",
+          "2026-10-21T10:42:26.886809Z",
+          null
+        ],
+        [
+          "preparing",
+          "2026-10-21T10:42:26.902852Z",
+          "re-checking peers and model file"
+        ],
+        [
+          "loading",
+          "2026-10-21T10:42:26.902852Z",
+          "starting llama-server"
+        ],
+        [
+          "warming",
+          "2026-10-21T10:42:33.052459Z",
+          "first request"
+        ],
+        [
+          "ready",
+          "2026-10-21T10:42:33.254712Z",
+          "local-only deployment (no peers in the plan); CPU: model 0 MiB, KV 64 MiB, ~4 layers (planned 4); CUDA0: model 10087 MiB, KV 704 MiB, ~44 layers (planned 44)"
+        ],
+        [
+          "draining",
+          "2026-10-21T10:42:37.964768Z",
+          "tuning: candidate finished"
+        ],
+        [
+          "stopped",
+          "2026-10-21T10:42:39.367586Z",
+          "tuning: candidate finished"
+        ]
+      ]
+    },
+    {
+      "id": "2ea4e1b928a341d4b7bdc3a175a22328",
+      "model": "qwen2.5-0.5b-instruct-q4_k_m",
+      "strategy": "all_selected",
+      "devices": [
+        "RPC0",
+        "CUDA0"
+      ],
+      "final_state": "stopped",
+      "error": null,
+      "cleanup": "deployment:2ea4e1b928a341d4b7bdc3a175a22328 pid 31788: terminated (exit code 1); released 2 lease(s)",
+      "participation_verified": true,
+      "history": [
+        [
+          "planned",
+          "2026-10-21T10:42:12.339228Z",
+          null
+        ],
+        [
+          "reserving",
+          "2026-10-21T10:42:12.339228Z",
+          null
+        ],
+        [
+          "preparing",
+          "2026-10-21T10:42:12.339228Z",
+          "re-checking peers and model file"
+        ],
+        [
+          "loading",
+          "2026-10-21T10:42:13.385198Z",
+          "starting llama-server"
+        ],
+        [
+          "warming",
+          "2026-10-21T10:42:14.440509Z",
+          "first request"
+        ],
+        [
+          "ready",
+          "2026-10-21T10:42:14.524069Z",
+          "RPC0[127.0.0.1:47052]: model 10 MiB, KV 2 MiB, ~1 layers (planned 1); CUDA0: model 363 MiB, KV 46 MiB, ~23 layers (planned 23)"
+        ],
+        [
+          "draining",
+          "2026-10-21T10:42:15.352697Z",
+          "stopped by owner"
+        ],
+        [
+          "stopped",
+          "2026-10-21T10:42:15.521794Z",
+          "stopped by owner"
+        ]
+      ]
+    },
+    {
+      "id": "6701f8ebb9434c84a2dba805090c80a1",
+      "model": "qwen2.5-14b-instruct-q6_k",
+      "strategy": "auto",
+      "devices": [
+        "CUDA0"
+      ],
+      "final_state": "stopped",
+      "error": null,
+      "cleanup": "deployment:6701f8ebb9434c84a2dba805090c80a1 pid 24124: terminated (exit code 1); released 2 lease(s)",
+      "participation_verified": false,
+      "history": [
+        [
+          "planned",
+          "2026-10-21T10:39:11.772101Z",
+          null
+        ],
+        [
+          "reserving",
+          "2026-10-21T10:39:11.774103Z",
+          null
+        ],
+        [
+          "preparing",
+          "2026-10-21T10:39:11.775101Z",
+          "re-checking peers and model file"
+        ],
+        [
+          "loading",
+          "2026-10-21T10:39:11.777102Z",
+          "starting llama-server"
+        ],
+        [
+          "warming",
+          "2026-10-21T10:39:19.657592Z",
+          "first request"
+        ],
+        [
+          "ready",
+          "2026-10-21T10:39:19.843851Z",
+          "local-only deployment (no peers in the plan); CPU: model 0 MiB, KV 64 MiB, ~4 layers (planned 4); CUDA0: model 10087 MiB, KV 704 MiB, ~44 layers (planned 44)"
+        ],
+        [
+          "draining",
+          "2026-10-21T10:40:12.990506Z",
+          "stopped by owner"
+        ],
+        [
+          "stopped",
+          "2026-10-21T10:40:14.346330Z",
+          "stopped by owner"
+        ]
+      ]
+    },
+    {
+      "id": "9a4147ccc4b54b5b91d93b0ddc620fbd",
+      "model": "qwen2.5-7b-instruct-q4_k_m",
+      "strategy": "auto",
+      "devices": [
+        "CUDA0"
+      ],
+      "final_state": "stopped",
+      "error": null,
+      "cleanup": "deployment:9a4147ccc4b54b5b91d93b0ddc620fbd pid 57364: terminated (exit code 1); released 1 lease(s)",
+      "participation_verified": false,
+      "history": [
+        [
+          "planned",
+          "2026-10-21T10:38:44.083747Z",
+          null
+        ],
+        [
+          "reserving",
+          "2026-10-21T10:38:44.083747Z",
+          null
+        ],
+        [
+          "preparing",
+          "2026-10-21T10:38:44.092131Z",
+          "re-checking peers and model file"
+        ],
+        [
+          "loading",
+          "2026-10-21T10:38:44.092131Z",
+          "starting llama-server"
+        ],
+        [
+          "warming",
+          "2026-10-21T10:38:48.159886Z",
+          "first request"
+        ],
+        [
+          "ready",
+          "2026-10-21T10:38:48.218468Z",
+          "local-only deployment (no peers in the plan); CUDA0: model 4168 MiB, KV 224 MiB, ~28 layers (planned 28)"
+        ],
+        [
+          "draining",
+          "2026-10-21T10:39:04.142577Z",
+          "stopped by owner"
+        ],
+        [
+          "stopped",
+          "2026-10-21T10:39:04.676373Z",
+          "stopped by owner"
+        ]
+      ]
+    },
+    {
+      "id": "865929b98bb1468fb5f52c8ab2ce6f4c",
+      "model": "mistral-small-3.2-24b-instruct-q4_k_m",
+      "strategy": "fastest_fit",
+      "devices": [
+        "CUDA0",
+        "RPC0"
+      ],
+      "final_state": "failed",
+      "error": "gateway restarted while deployment was active",
+      "cleanup": "deployment:865929b98bb1468fb5f52c8ab2ce6f4c: pid 68572 no longer running",
+      "participation_verified": true,
+      "history": [
+        [
+          "planned",
+          "2026-10-21T04:52:14.288529Z",
+          null
+        ],
+        [
+          "reserving",
+          "2026-10-21T04:52:14.290530Z",
+          null
+        ],
+        [
+          "preparing",
+          "2026-10-21T04:52:14.291526Z",
+          "re-checking peers and model file"
+        ],
+        [
+          "loading",
+          "2026-10-21T04:52:16.033518Z",
+          "starting llama-server"
+        ],
+        [
+          "warming",
+          "2026-10-21T04:55:07.947226Z",
+          "first request"
+        ],
+        [
+          "ready",
+          "2026-10-21T04:55:10.677205Z",
+          "CUDA0: model 10137 MiB, KV 512 MiB, ~32 layers (planned 32); RPC0[10.19.252.207:47052]: model 3166 MiB, KV 128 MiB, ~8 layers (planned 8)"
+        ],
+        [
+          "failed",
+          "2026-10-21T10:38:33.902581Z",
+          "gateway restarted"
+        ]
+      ]
+    },
+    {
+      "id": "c476506a674d4490b42c7a0a720da26b",
+      "model": "qwen2.5-14b-instruct-q6_k",
+      "strategy": "fastest_fit",
+      "devices": [
+        "CUDA0",
+        "RPC0"
+      ],
+      "final_state": "stopped",
+      "error": null,
+      "cleanup": "deployment:c476506a674d4490b42c7a0a720da26b pid 45528: terminated (exit code 1); released 2 lease(s)",
+      "participation_verified": true,
+      "history": [
+        [
+          "planned",
+          "2026-10-21T04:32:58.948873Z",
+          null
+        ],
+        [
+          "reserving",
+          "2026-10-21T04:32:58.950935Z",
+          null
+        ],
+        [
+          "preparing",
+          "2026-10-21T04:32:58.951936Z",
+          "re-checking peers and model file"
+        ],
+        [
+          "loading",
+          "2026-10-21T04:33:00.588307Z",
+          "starting llama-server"
+        ],
+        [
+          "warming",
+          "2026-10-21T04:34:36.559465Z",
+          "first request"
+        ],
+        [
+          "ready",
+          "2026-10-21T04:34:36.995265Z",
+          "CUDA0: model 9908 MiB, KV 736 MiB, ~46 layers (planned 46); RPC0[10.19.252.207:47052]: model 1040 MiB, KV 32 MiB, ~2 layers (planned 2)"
+        ],
+        [
+          "draining",
+          "2026-10-21T04:39:23.934836Z",
+          "stopped by owner"
+        ],
+        [
+          "stopped",
+          "2026-10-21T04:39:25.423960Z",
+          "stopped by owner"
+        ]
+      ]
+    },
+    {
+      "id": "725198feec7841178cd2d57a579245f4",
+      "model": "qwen2.5-0.5b-instruct-q4_k_m",
+      "strategy": "all_selected",
+      "devices": [
+        "CUDA0",
+        "RPC0"
+      ],
+      "final_state": "failed",
+      "error": "peer 4c299174 lost: no heartbeat for 17s",
+      "cleanup": "deployment:725198feec7841178cd2d57a579245f4 pid 28112: terminated (exit code 1); released 2 lease(s)",
+      "participation_verified": true,
+      "history": [
+        [
+          "planned",
+          "2026-10-21T04:24:46.945359Z",
+          null
+        ],
+        [
+          "reserving",
+          "2026-10-21T04:24:46.947533Z",
+          null
+        ],
+        [
+          "preparing",
+          "2026-10-21T04:24:46.950720Z",
+          "re-checking peers and model file"
+        ],
+        [
+          "loading",
+          "2026-10-21T04:24:49.157186Z",
+          "starting llama-server"
+        ],
+        [
+          "warming",
+          "2026-10-21T04:25:07.509034Z",
+          "first request"
+        ],
+        [
+          "ready",
+          "2026-10-21T04:25:08.687708Z",
+          "CUDA0: model 198 MiB, KV 20 MiB, ~20 layers (planned 20); RPC0[10.19.252.207:47052]: model 176 MiB, KV 4 MiB, ~4 layers (planned 4)"
+        ],
+        [
+          "failed",
+          "2026-10-21T04:25:32.609903Z",
+          "peer 4c299174 lost: no heartbeat for 17s"
+        ]
+      ]
+    },
+    {
+      "id": "628928b48ab342c08e5d5d6776a556f1",
+      "model": "qwen2.5-0.5b-instruct-q4_k_m",
+      "strategy": "local_only",
+      "devices": [
+        "CUDA0"
+      ],
+      "final_state": "stopped",
+      "error": null,
+      "cleanup": "deployment:628928b48ab342c08e5d5d6776a556f1 pid 44212: terminated (exit code 1); released 1 lease(s)",
+      "participation_verified": false,
+      "history": [
+        [
+          "planned",
+          "2026-10-21T04:13:23.749723Z",
+          null
+        ],
+        [
+          "reserving",
+          "2026-10-21T04:13:23.751996Z",
+          null
+        ],
+        [
+          "preparing",
+          "2026-10-21T04:13:23.753509Z",
+          "re-checking peers and model file"
+        ],
+        [
+          "loading",
+          "2026-10-21T04:13:23.754519Z",
+          "starting llama-server"
+        ],
+        [
+          "warming",
+          "2026-10-21T04:13:25.331191Z",
+          "first request"
+        ],
+        [
+          "ready",
+          "2026-10-21T04:13:25.404536Z",
+          "local-only deployment (no peers in the plan); CUDA0: model 374 MiB, KV 48 MiB, ~24 layers (planned 24)"
+        ],
+        [
+          "draining",
+          "2026-10-21T04:13:26.040243Z",
+          "stopped by owner"
+        ],
+        [
+          "stopped",
+          "2026-10-21T04:13:26.174636Z",
+          "stopped by owner"
+        ]
+      ]
+    },
+    {
+      "id": "bd7667d3e3a24023a9b92cddd18485f6",
+      "model": "qwen2.5-7b-instruct-q4_k_m",
+      "strategy": "all_selected",
+      "devices": [
+        "CUDA0",
+        "RPC1",
+        "RPC0"
+      ],
+      "final_state": "stopped",
+      "error": null,
+      "cleanup": "deployment:bd7667d3e3a24023a9b92cddd18485f6 pid 31052: terminated (exit code 1); released 3 lease(s)",
+      "participation_verified": true,
+      "history": [
+        [
+          "planned",
+          "2026-10-21T03:41:49.549516Z",
+          null
+        ],
+        [
+          "reserving",
+          "2026-10-21T03:41:49.552267Z",
+          null
+        ],
+        [
+          "preparing",
+          "2026-10-21T03:41:49.553775Z",
+          "re-checking peers and model file"
+        ],
+        [
+          "loading",
+          "2026-10-21T03:41:49.806450Z",
+          "starting llama-server"
+        ],
+        [
+          "warming",
+          "2026-10-21T03:41:58.664996Z",
+          "first request"
+        ],
+        [
+          "ready",
+          "2026-10-21T03:41:58.931802Z",
+          "CUDA0: model 2638 MiB, KV 160 MiB, ~20 layers (planned 20); RPC0[172.18.63.230:47052]: model 819 MiB, KV 48 MiB, ~6 layers (planned 6); RPC0[127.0.0.1:47052]: model 711 MiB, KV 16 MiB, ~2 layers (planned 2)"
+        ],
+        [
+          "draining",
+          "2026-10-21T03:43:10.244226Z",
+          "stopped by owner"
+        ],
+        [
+          "stopped",
+          "2026-10-21T03:43:10.814314Z",
+          "stopped by owner"
+        ]
+      ]
+    },
+    {
+      "id": "8aa22e57262b471e8b6b0b327cda2a23",
+      "model": "qwen2.5-7b-instruct-q4_k_m",
+      "strategy": "all_selected",
+      "devices": [
+        "CUDA0",
+        "RPC1",
+        "RPC0"
+      ],
+      "final_state": "stopped",
+      "error": null,
+      "cleanup": "deployment:8aa22e57262b471e8b6b0b327cda2a23 pid 24664: terminated (exit code 1); released 3 lease(s)",
+      "participation_verified": true,
+      "history": [
+        [
+          "planned",
+          "2026-10-21T03:19:42.875173Z",
+          null
+        ],
+        [
+          "reserving",
+          "2026-10-21T03:19:42.876480Z",
+          null
+        ],
+        [
+          "preparing",
+          "2026-10-21T03:19:42.878487Z",
+          "re-checking peers and model file"
+        ],
+        [
+          "loading",
+          "2026-10-21T03:19:43.138090Z",
+          "starting llama-server"
+        ],
+        [
+          "warming",
+          "2026-10-21T03:19:50.460819Z",
+          "first request"
+        ],
+        [
+          "ready",
+          "2026-10-21T03:19:50.723256Z",
+          "CUDA0: model 2246 MiB, KV 136 MiB, ~17 layers (planned 17); RPC0[172.18.63.230:47052]: model 1211 MiB, KV 72 MiB, ~9 layers (planned 9); RPC0[127.0.0.1:47052]: model 711 MiB, KV 16 MiB, ~2 layers (planned 2)"
+        ],
+        [
+          "draining",
+          "2026-10-21T03:21:55.748313Z",
+          "stopped by owner"
+        ],
+        [
+          "stopped",
+          "2026-10-21T03:21:56.420707Z",
+          "stopped by owner"
+        ]
+      ]
+    },
+    {
+      "id": "1e34ded2f53f4a3bab71c347a907b585",
+      "model": "qwen2.5-7b-instruct-q4_k_m",
+      "strategy": "all_selected",
+      "devices": [
+        "CUDA0",
+        "RPC0"
+      ],
+      "final_state": "stopped",
+      "error": null,
+      "cleanup": "deployment:1e34ded2f53f4a3bab71c347a907b585 pid 52336: terminated (exit code 1); released 2 lease(s)",
+      "participation_verified": true,
+      "history": [
+        [
+          "planned",
+          "2026-10-21T03:18:12.640474Z",
+          null
+        ],
+        [
+          "reserving",
+          "2026-10-21T03:18:12.642440Z",
+          null
+        ],
+        [
+          "preparing",
+          "2026-10-21T03:18:12.644466Z",
+          "re-checking peers and model file"
+        ],
+        [
+          "loading",
+          "2026-10-21T03:18:12.888892Z",
+          "starting llama-server"
+        ],
+        [
+          "warming",
+          "2026-10-21T03:18:19.618307Z",
+          "first request"
+        ],
+        [
+          "ready",
+          "2026-10-21T03:18:19.844894Z",
+          "CUDA0: model 2513 MiB, KV 152 MiB, ~19 layers (planned 19); RPC0[172.18.63.230:47052]: model 1655 MiB, KV 72 MiB, ~9 layers (planned 9)"
+        ],
+        [
+          "draining",
+          "2026-10-21T03:19:41.650425Z",
+          "stopped by owner"
+        ],
+        [
+          "stopped",
+          "2026-10-21T03:19:42.228425Z",
+          "stopped by owner"
+        ]
+      ]
+    },
+    {
+      "id": "ece93840636140ad9ef0c91874154902",
+      "model": "qwen2.5-7b-instruct-q4_k_m",
+      "strategy": "local_only",
+      "devices": [
+        "CUDA0"
+      ],
+      "final_state": "stopped",
+      "error": null,
+      "cleanup": "deployment:ece93840636140ad9ef0c91874154902 pid 6740: terminated (exit code 1); released 1 lease(s)",
+      "participation_verified": false,
+      "history": [
+        [
+          "planned",
+          "2026-10-21T03:17:51.866425Z",
+          null
+        ],
+        [
+          "reserving",
+          "2026-10-21T03:17:51.869414Z",
+          null
+        ],
+        [
+          "preparing",
+          "2026-10-21T03:17:51.871420Z",
+          "re-checking peers and model file"
+        ],
+        [
+          "loading",
+          "2026-10-21T03:17:51.872895Z",
+          "starting llama-server"
+        ],
+        [
+          "warming",
+          "2026-10-21T03:17:55.071341Z",
+          "first request"
+        ],
+        [
+          "ready",
+          "2026-10-21T03:17:55.149849Z",
+          "local-only deployment (no peers in the plan); CUDA0: model 4168 MiB, KV 224 MiB, ~28 layers (planned 28)"
+        ],
+        [
+          "draining",
+          "2026-10-21T03:18:11.450384Z",
+          "stopped by owner"
+        ],
+        [
+          "stopped",
+          "2026-10-21T03:18:12.025103Z",
+          "stopped by owner"
+        ]
+      ]
+    },
+    {
+      "id": "d72def0b27a34deba4f80bf5a28da447",
+      "model": "qwen2.5-0.5b-instruct-q4_k_m",
+      "strategy": "all_selected",
+      "devices": [
+        "CUDA0",
+        "RPC0"
+      ],
+      "final_state": "stopped",
+      "error": null,
+      "cleanup": "deployment:d72def0b27a34deba4f80bf5a28da447 pid 39900: terminated (exit code 1); released 2 lease(s)",
+      "participation_verified": true,
+      "history": [
+        [
+          "planned",
+          "2026-10-21T03:17:35.957634Z",
+          null
+        ],
+        [
+          "reserving",
+          "2026-10-21T03:17:35.960135Z",
+          null
+        ],
+        [
+          "preparing",
+          "2026-10-21T03:17:35.963054Z",
+          "re-checking peers and model file"
+        ],
+        [
+          "loading",
+          "2026-10-21T03:17:36.209851Z",
+          "starting llama-server"
+        ],
+        [
+          "warming",
+          "2026-10-21T03:17:37.786479Z",
+          "first request"
+        ],
+        [
+          "ready",
+          "2026-10-21T03:17:37.856334Z",
+          "CUDA0: model 178 MiB, KV 36 MiB, ~18 layers (planned 18); RPC0[172.18.63.230:47052]: model 196 MiB, KV 12 MiB, ~6 layers (planned 6)"
+        ],
+        [
+          "draining",
+          "2026-10-21T03:17:51.099736Z",
+          "stopped by owner"
+        ],
+        [
+          "stopped",
+          "2026-10-21T03:17:51.236679Z",
+          "stopped by owner"
+        ]
+      ]
+    },
+    {
+      "id": "359ae248ef4245f8a0e98142f5de78e7",
+      "model": "qwen2.5-0.5b-instruct-q4_k_m",
+      "strategy": "local_only",
+      "devices": [
+        "CUDA0"
+      ],
+      "final_state": "stopped",
+      "error": null,
+      "cleanup": "deployment:359ae248ef4245f8a0e98142f5de78e7 pid 6016: terminated (exit code 1); released 1 lease(s)",
+      "participation_verified": false,
+      "history": [
+        [
+          "planned",
+          "2026-10-21T03:17:29.339139Z",
+          null
+        ],
+        [
+          "reserving",
+          "2026-10-21T03:17:29.341823Z",
+          null
+        ],
+        [
+          "preparing",
+          "2026-10-21T03:17:29.344819Z",
+          "re-checking peers and model file"
+        ],
+        [
+          "loading",
+          "2026-10-21T03:17:29.346820Z",
+          "starting llama-server"
+        ],
+        [
+          "warming",
+          "2026-10-21T03:17:30.373324Z",
+          "first request"
+        ],
+        [
+          "ready",
+          "2026-10-21T03:17:30.423867Z",
+          "local-only deployment (no peers in the plan); CUDA0: model 374 MiB, KV 48 MiB, ~24 layers (planned 24)"
+        ],
+        [
+          "draining",
+          "2026-10-21T03:17:35.156761Z",
+          "stopped by owner"
+        ],
+        [
+          "stopped",
+          "2026-10-21T03:17:35.341981Z",
+          "stopped by owner"
+        ]
+      ]
+    },
+    {
+      "id": "71db3a79cda24aedbdfc96520b0e3aee",
+      "model": "qwen2.5-0.5b-instruct-q4_k_m",
+      "strategy": "all_selected",
+      "devices": [
+        "CUDA0",
+        "RPC1",
+        "RPC0"
+      ],
+      "final_state": "failed",
+      "error": "8f169e35 is ineligible",
+      "cleanup": "released 3 lease(s)",
+      "participation_verified": false,
+      "history": [
+        [
+          "planned",
+          "2026-10-21T03:16:55.842322Z",
+          null
+        ],
+        [
+          "reserving",
+          "2026-10-21T03:16:55.845712Z",
+          null
+        ],
+        [
+          "preparing",
+          "2026-10-21T03:16:55.849712Z",
+          "re-checking peers and model file"
+        ],
+        [
+          "failed",
+          "2026-10-21T03:16:55.852712Z",
+          "8f169e35 is ineligible"
+        ]
+      ]
+    },
+    {
+      "id": "3840c61da0b041bc9d9de61b7583dbf1",
+      "model": "qwen2.5-0.5b-instruct-q4_k_m",
+      "strategy": "all_selected",
+      "devices": [
+        "CUDA0",
+        "RPC1",
+        "RPC0"
+      ],
+      "final_state": "stopped",
+      "error": null,
+      "cleanup": "deployment:3840c61da0b041bc9d9de61b7583dbf1 pid 20860: terminated (exit code 1); released 3 lease(s)",
+      "participation_verified": true,
+      "history": [
+        [
+          "planned",
+          "2026-10-21T03:15:14.132135Z",
+          null
+        ],
+        [
+          "reserving",
+          "2026-10-21T03:15:14.135134Z",
+          null
+        ],
+        [
+          "preparing",
+          "2026-10-21T03:15:14.138133Z",
+          "re-checking peers and model file"
+        ],
+        [
+          "loading",
+          "2026-10-21T03:15:14.388454Z",
+          "starting llama-server"
+        ],
+        [
+          "warming",
+          "2026-10-21T03:15:15.965792Z",
+          "first request"
+        ],
+        [
+          "ready",
+          "2026-10-21T03:15:16.065639Z",
+          "CUDA0: model 158 MiB, KV 32 MiB, ~16 layers (planned 16); RPC0[172.18.63.230:47052]: model 59 MiB, KV 12 MiB, ~6 layers (planned 6); RPC0[127.0.0.1:47052]: model 156 MiB, KV 4 MiB, ~2 layers (planned 2)"
+        ],
+        [
+          "draining",
+          "2026-10-21T03:16:39.111598Z",
+          "stopped by owner"
+        ],
+        [
+          "stopped",
+          "2026-10-21T03:16:39.304428Z",
+          "stopped by owner"
+        ]
+      ]
+    },
+    {
+      "id": "8a8576acd8bc416da2bc114c30062781",
+      "model": "qwen2.5-0.5b-instruct-q4_k_m",
+      "strategy": "all_selected",
+      "devices": [
+        "CUDA0",
+        "RPC1",
+        "RPC0"
+      ],
+      "final_state": "failed",
+      "error": "gateway restarted while deployment was active",
+      "cleanup": "deployment:8a8576acd8bc416da2bc114c30062781: pid 19728 no longer running",
+      "participation_verified": true,
+      "history": [
+        [
+          "planned",
+          "2026-10-21T03:13:44.370325Z",
+          null
+        ],
+        [
+          "reserving",
+          "2026-10-21T03:13:44.374985Z",
+          null
+        ],
+        [
+          "preparing",
+          "2026-10-21T03:13:44.374985Z",
+          "re-checking peers and model file"
+        ],
+        [
+          "loading",
+          "2026-10-21T03:13:44.624068Z",
+          "starting llama-server"
+        ],
+        [
+          "warming",
+          "2026-10-21T03:13:46.211550Z",
+          "first request"
+        ],
+        [
+          "ready",
+          "2026-10-21T03:13:46.424704Z",
+          "CUDA0: model 158 MiB, KV 32 MiB, ~16 layers (planned 16); RPC0[172.18.63.230:47052]: model 59 MiB, KV 12 MiB, ~6 layers (planned 6); RPC0[127.0.0.1:47052]: model 156 MiB, KV 4 MiB, ~2 layers (planned 2)"
+        ],
+        [
+          "failed",
+          "2026-10-21T03:14:08.266774Z",
+          "gateway restarted"
+        ]
+      ]
+    },
+    {
+      "id": "77da9bc935f8420abea2eda4986facd6",
+      "model": "qwen2.5-0.5b-instruct-q4_k_m",
+      "strategy": "all_selected",
+      "devices": [
+        "CUDA0",
+        "RPC0"
+      ],
+      "final_state": "failed",
+      "error": "peer 8f169e35 lost: paused by contributor",
+      "cleanup": "deployment:77da9bc935f8420abea2eda4986facd6 pid 54612: terminated (exit code 1); released 2 lease(s)",
+      "participation_verified": true,
+      "history": [
+        [
+          "planned",
+          "2026-10-21T02:37:00.947231Z",
+          null
+        ],
+        [
+          "reserving",
+          "2026-10-21T02:37:00.947231Z",
+          null
+        ],
+        [
+          "preparing",
+          "2026-10-21T02:37:00.947231Z",
+          "re-checking peers and model file"
+        ],
+        [
+          "loading",
+          "2026-10-21T02:37:01.233158Z",
+          "starting llama-server"
+        ],
+        [
+          "warming",
+          "2026-10-21T02:37:02.375365Z",
+          "first request"
+        ],
+        [
+          "ready",
+          "2026-10-21T02:37:02.456525Z",
+          "CUDA0: model 207 MiB, KV 42 MiB, ~21 layers (planned 21); RPC0[127.0.0.1:47052]: model 167 MiB, KV 6 MiB, ~3 layers (planned 3)"
+        ],
+        [
+          "failed",
+          "2026-10-21T02:37:07.767015Z",
+          "peer 8f169e35 lost: paused by contributor"
+        ]
+      ]
+    },
+    {
+      "id": "240db8c9ec8b4836bed4f7aa2cdbc1b4",
+      "model": "qwen2.5-0.5b-instruct-q4_k_m",
+      "strategy": "all_selected",
+      "devices": [
+        "CUDA0",
+        "RPC0"
+      ],
+      "final_state": "stopped",
+      "error": null,
+      "cleanup": "deployment:240db8c9ec8b4836bed4f7aa2cdbc1b4 pid 1732: terminated (exit code 1); released 2 lease(s)",
+      "participation_verified": true,
+      "history": [
+        [
+          "planned",
+          "2026-10-21T02:30:06.697235Z",
+          null
+        ],
+        [
+          "reserving",
+          "2026-10-21T02:30:06.705181Z",
+          null
+        ],
+        [
+          "preparing",
+          "2026-10-21T02:30:06.725245Z",
+          "re-checking peers and model file"
+        ],
+        [
+          "loading",
+          "2026-10-21T02:30:07.431004Z",
+          "starting llama-server"
+        ],
+        [
+          "warming",
+          "2026-10-21T02:30:10.557571Z",
+          "first request"
+        ],
+        [
+          "ready",
+          "2026-10-21T02:30:11.126943Z",
+          "CUDA0: model 178 MiB, KV 36 MiB, ~18 layers (planned 18); RPC0[172.18.63.230:47052]: model 196 MiB, KV 12 MiB, ~6 layers (planned 6)"
+        ],
+        [
+          "draining",
+          "2026-10-21T02:31:06.261487Z",
+          "stopped by owner"
+        ],
+        [
+          "stopped",
+          "2026-10-21T02:31:06.558600Z",
+          "stopped by owner"
+        ]
+      ]
+    },
+    {
+      "id": "72187214c57c4fceadc48f6ca6b9816f",
+      "model": "qwen2.5-0.5b-instruct-q4_k_m",
+      "strategy": "local_only",
+      "devices": [
+        "CUDA0"
+      ],
+      "final_state": "stopped",
+      "error": null,
+      "cleanup": "deployment:72187214c57c4fceadc48f6ca6b9816f pid 56144: terminated (exit code 1); released 1 lease(s)",
+      "participation_verified": false,
+      "history": [
+        [
+          "planned",
+          "2026-10-21T02:29:52.425678Z",
+          null
+        ],
+        [
+          "reserving",
+          "2026-10-21T02:29:52.431699Z",
+          null
+        ],
+        [
+          "preparing",
+          "2026-10-21T02:29:52.453273Z",
+          "re-checking peers and model file"
+        ],
+        [
+          "loading",
+          "2026-10-21T02:29:52.455824Z",
+          "starting llama-server"
+        ],
+        [
+          "warming",
+          "2026-10-21T02:29:56.262992Z",
+          "first request"
+        ],
+        [
+          "ready",
+          "2026-10-21T02:29:56.643239Z",
+          "local-only deployment (no peers in the plan); CUDA0: model 374 MiB, KV 48 MiB, ~24 layers (planned 24)"
+        ],
+        [
+          "draining",
+          "2026-10-21T02:30:04.304753Z",
+          "stopped by owner"
+        ],
+        [
+          "stopped",
+          "2026-10-21T02:30:04.955726Z",
+          "stopped by owner"
+        ]
+      ]
+    },
+    {
+      "id": "6818b852f07f472cb91b5b1b613af5f6",
+      "model": "qwen2.5-7b-instruct-q4_k_m",
+      "strategy": "all_selected",
+      "devices": [
+        "CUDA0",
+        "RPC0"
+      ],
+      "final_state": "stopped",
+      "error": null,
+      "cleanup": "deployment:6818b852f07f472cb91b5b1b613af5f6 pid 60376: terminated (exit code 1); released 2 lease(s)",
+      "participation_verified": true,
+      "history": [
+        [
+          "planned",
+          "2026-10-21T02:23:40.986070Z",
+          null
+        ],
+        [
+          "reserving",
+          "2026-10-21T02:23:40.989549Z",
+          null
+        ],
+        [
+          "preparing",
+          "2026-10-21T02:23:40.994058Z",
+          "re-checking peers and model file"
+        ],
+        [
+          "loading",
+          "2026-10-21T02:23:41.330932Z",
+          "starting llama-server"
+        ],
+        [
+          "warming",
+          "2026-10-21T02:24:08.479946Z",
+          "first request"
+        ],
+        [
+          "ready",
+          "2026-10-21T02:24:08.767239Z",
+          "CUDA0: model 2906 MiB, KV 176 MiB, ~22 layers (planned 22); RPC0[172.18.63.230:47052]: model 1262 MiB, KV 48 MiB, ~6 layers (planned 6)"
+        ],
+        [
+          "draining",
+          "2026-10-21T02:25:28.512741Z",
+          "stopped by owner"
+        ],
+        [
+          "stopped",
+          "2026-10-21T02:25:29.263956Z",
+          "stopped by owner"
+        ]
+      ]
+    },
+    {
+      "id": "7076482cdb0843eabc4ee870e45796ce",
+      "model": "qwen2.5-0.5b-instruct-q4_k_m",
+      "strategy": "all_selected",
+      "devices": [
+        "CUDA0",
+        "RPC0"
+      ],
+      "final_state": "stopped",
+      "error": null,
+      "cleanup": "deployment:7076482cdb0843eabc4ee870e45796ce pid 34952: terminated (exit code 1); released 2 lease(s)",
+      "participation_verified": true,
+      "history": [
+        [
+          "planned",
+          "2026-10-21T02:23:35.629620Z",
+          null
+        ],
+        [
+          "reserving",
+          "2026-10-21T02:23:35.638192Z",
+          null
+        ],
+        [
+          "preparing",
+          "2026-10-21T02:23:35.638192Z",
+          "re-checking peers and model file"
+        ],
+        [
+          "loading",
+          "2026-10-21T02:23:35.967255Z",
+          "starting llama-server"
+        ],
+        [
+          "warming",
+          "2026-10-21T02:23:37.607233Z",
+          "first request"
+        ],
+        [
+          "ready",
+          "2026-10-21T02:23:37.702618Z",
+          "CUDA0: model 178 MiB, KV 36 MiB, ~18 layers (planned 18); RPC0[172.18.63.230:47052]: model 196 MiB, KV 12 MiB, ~6 layers (planned 6)"
+        ],
+        [
+          "draining",
+          "2026-10-21T02:23:39.749961Z",
+          "stopped by owner"
+        ],
+        [
+          "stopped",
+          "2026-10-21T02:23:39.946745Z",
+          "stopped by owner"
+        ]
+      ]
+    },
+    {
+      "id": "bc05011591bf4e1fad83660c2da811cd",
+      "model": "qwen2.5-0.5b-instruct-q4_k_m",
+      "strategy": "all_selected",
+      "devices": [
+        "CUDA0",
+        "RPC0"
+      ],
+      "final_state": "failed",
+      "error": "peer 8f169e35 lost: contributor stopped sharing",
+      "cleanup": "deployment:bc05011591bf4e1fad83660c2da811cd pid 67968: terminated (exit code 1); released 2 lease(s)",
+      "participation_verified": true,
+      "history": [
+        [
+          "planned",
+          "2026-10-21T02:12:50.776535Z",
+          null
+        ],
+        [
+          "reserving",
+          "2026-10-21T02:12:50.779538Z",
+          null
+        ],
+        [
+          "preparing",
+          "2026-10-21T02:12:50.783266Z",
+          "re-checking peers and model file"
+        ],
+        [
+          "loading",
+          "2026-10-21T02:12:51.156303Z",
+          "starting llama-server"
+        ],
+        [
+          "warming",
+          "2026-10-21T02:12:52.250242Z",
+          "first request"
+        ],
+        [
+          "ready",
+          "2026-10-21T02:12:52.347845Z",
+          "CUDA0: model 198 MiB, KV 40 MiB, ~20 layers (planned 20); RPC0[127.0.0.1:47052]: model 176 MiB, KV 8 MiB, ~4 layers (planned 4)"
+        ],
+        [
+          "failed",
+          "2026-10-21T02:12:55.821421Z",
+          "peer 8f169e35 lost: contributor stopped sharing"
+        ]
+      ]
+    },
+    {
+      "id": "e85488dcd6cf4c90b9d8fcd5ca5cb4e4",
+      "model": "qwen2.5-7b-instruct-q4_k_m",
+      "strategy": "all_selected",
+      "devices": [
+        "CUDA0",
+        "RPC0"
+      ],
+      "final_state": "stopped",
+      "error": null,
+      "cleanup": "deployment:e85488dcd6cf4c90b9d8fcd5ca5cb4e4 pid 66920: terminated (exit code 1); released 2 lease(s)",
+      "participation_verified": true,
+      "history": [
+        [
+          "planned",
+          "2026-10-21T02:11:34.665384Z",
+          null
+        ],
+        [
+          "reserving",
+          "2026-10-21T02:11:34.665384Z",
+          null
+        ],
+        [
+          "preparing",
+          "2026-10-21T02:11:34.665384Z",
+          "re-checking peers and model file"
+        ],
+        [
+          "loading",
+          "2026-10-21T02:11:34.943114Z",
+          "starting llama-server"
+        ],
+        [
+          "warming",
+          "2026-10-21T02:11:42.177638Z",
+          "first request"
+        ],
+        [
+          "ready",
+          "2026-10-21T02:11:42.486464Z",
+          "CUDA0: model 3173 MiB, KV 192 MiB, ~24 layers (planned 24); RPC0[127.0.0.1:47052]: model 995 MiB, KV 32 MiB, ~4 layers (planned 4)"
+        ],
+        [
+          "draining",
+          "2026-10-21T02:12:38.161732Z",
+          "stopped by owner"
+        ],
+        [
+          "stopped",
+          "2026-10-21T02:12:39.071348Z",
+          "stopped by owner"
+        ]
+      ]
+    },
+    {
+      "id": "6534f3c457e94abdb3fd54bad5a90e93",
+      "model": "qwen2.5-7b-instruct-q4_k_m",
+      "strategy": "local_only",
+      "devices": [
+        "CUDA0"
+      ],
+      "final_state": "stopped",
+      "error": null,
+      "cleanup": "deployment:6534f3c457e94abdb3fd54bad5a90e93 pid 15148: terminated (exit code 1); released 1 lease(s)",
+      "participation_verified": false,
+      "history": [
+        [
+          "planned",
+          "2026-10-21T02:11:05.111395Z",
+          null
+        ],
+        [
+          "reserving",
+          "2026-10-21T02:11:05.111395Z",
+          null
+        ],
+        [
+          "preparing",
+          "2026-10-21T02:11:05.120452Z",
+          "re-checking peers and model file"
+        ],
+        [
+          "loading",
+          "2026-10-21T02:11:05.121450Z",
+          "starting llama-server"
+        ],
+        [
+          "warming",
+          "2026-10-21T02:11:08.279818Z",
+          "first request"
+        ],
+        [
+          "ready",
+          "2026-10-21T02:11:08.380275Z",
+          "local-only deployment (no peers in the plan); CUDA0: model 4168 MiB, KV 224 MiB, ~28 layers (planned 28)"
+        ],
+        [
+          "draining",
+          "2026-10-21T02:11:26.349860Z",
+          "stopped by owner"
+        ],
+        [
+          "stopped",
+          "2026-10-21T02:11:26.953945Z",
+          "stopped by owner"
+        ]
+      ]
+    },
+    {
+      "id": "7129a8d001594cc2984a6dae118e688e",
+      "model": "qwen2.5-0.5b-instruct-q4_k_m",
+      "strategy": "all_selected",
+      "devices": [
+        "CUDA0",
+        "RPC0"
+      ],
+      "final_state": "failed",
+      "error": "peer 8f169e35 lost: no heartbeat for 16s",
+      "cleanup": "deployment:7129a8d001594cc2984a6dae118e688e pid 67936: terminated (exit code 1); released 2 lease(s)",
+      "participation_verified": true,
+      "history": [
+        [
+          "planned",
+          "2026-10-21T02:09:57.019769Z",
+          null
+        ],
+        [
+          "reserving",
+          "2026-10-21T02:09:57.020769Z",
+          null
+        ],
+        [
+          "preparing",
+          "2026-10-21T02:09:57.020769Z",
+          "re-checking peers and model file"
+        ],
+        [
+          "loading",
+          "2026-10-21T02:09:57.272056Z",
+          "starting llama-server"
+        ],
+        [
+          "warming",
+          "2026-10-21T02:09:58.453941Z",
+          "first request"
+        ],
+        [
+          "ready",
+          "2026-10-21T02:09:58.533727Z",
+          "CUDA0: model 207 MiB, KV 42 MiB, ~21 layers (planned 21); RPC0[127.0.0.1:47052]: model 167 MiB, KV 6 MiB, ~3 layers (planned 3)"
+        ],
+        [
+          "failed",
+          "2026-10-21T02:10:17.538442Z",
+          "peer 8f169e35 lost: no heartbeat for 16s"
+        ]
+      ]
+    },
+    {
+      "id": "ee5ff5c9fbd443979690efe8b6bac0a5",
+      "model": "qwen2.5-0.5b-instruct-q4_k_m",
+      "strategy": "all_selected",
+      "devices": [
+        "CUDA0",
+        "RPC0"
+      ],
+      "final_state": "failed",
+      "error": "gateway restarted while deployment was active",
+      "cleanup": "deployment:ee5ff5c9fbd443979690efe8b6bac0a5: stopped orphaned pid 29728",
+      "participation_verified": true,
+      "history": [
+        [
+          "planned",
+          "2026-10-21T02:09:14.861647Z",
+          null
+        ],
+        [
+          "reserving",
+          "2026-10-21T02:09:14.869934Z",
+          null
+        ],
+        [
+          "preparing",
+          "2026-10-21T02:09:14.870933Z",
+          "re-checking peers and model file"
+        ],
+        [
+          "loading",
+          "2026-10-21T02:09:15.123335Z",
+          "starting llama-server"
+        ],
+        [
+          "warming",
+          "2026-10-21T02:09:16.698801Z",
+          "first request"
+        ],
+        [
+          "ready",
+          "2026-10-21T02:09:16.761521Z",
+          "CUDA0: model 207 MiB, KV 42 MiB, ~21 layers (planned 21); RPC0[127.0.0.1:47052]: model 167 MiB, KV 6 MiB, ~3 layers (planned 3)"
+        ],
+        [
+          "failed",
+          "2026-10-21T02:09:43.014052Z",
+          "gateway restarted"
+        ]
+      ]
+    },
+    {
+      "id": "aa4e4e4547184513896356776f45cf0c",
+      "model": "qwen2.5-0.5b-instruct-q4_k_m",
+      "strategy": "all_selected",
+      "devices": [
+        "CUDA0",
+        "RPC0"
+      ],
+      "final_state": "stopped",
+      "error": null,
+      "cleanup": "deployment:aa4e4e4547184513896356776f45cf0c pid 40676: graceful (exit code 1); released 2 lease(s)",
+      "participation_verified": true,
+      "history": [
+        [
+          "planned",
+          "2026-10-21T02:06:58.991962Z",
+          null
+        ],
+        [
+          "reserving",
+          "2026-10-21T02:06:58.994471Z",
+          null
+        ],
+        [
+          "preparing",
+          "2026-10-21T02:06:58.996481Z",
+          "re-checking peers and model file"
+        ],
+        [
+          "loading",
+          "2026-10-21T02:06:59.314504Z",
+          "starting llama-server"
+        ],
+        [
+          "warming",
+          "2026-10-21T02:07:00.894018Z",
+          "first request"
+        ],
+        [
+          "ready",
+          "2026-10-21T02:07:00.962601Z",
+          "CUDA0: model 207 MiB, KV 42 MiB, ~21 layers (planned 21); RPC0[127.0.0.1:47052]: model 167 MiB, KV 6 MiB, ~3 layers (planned 3)"
+        ],
+        [
+          "draining",
+          "2026-10-21T02:07:07.984336Z",
+          "stopped by owner"
+        ],
+        [
+          "stopped",
+          "2026-10-21T02:07:08.175692Z",
+          "stopped by owner"
+        ]
+      ]
+    },
+    {
+      "id": "e77030de8be34c4d996bb7193a6df786",
+      "model": "qwen2.5-0.5b-instruct-q4_k_m",
+      "strategy": "local_only",
+      "devices": [
+        "CUDA0"
+      ],
+      "final_state": "stopped",
+      "error": null,
+      "cleanup": "deployment:e77030de8be34c4d996bb7193a6df786 pid 60180: graceful (exit code 1); released 1 lease(s)",
+      "participation_verified": false,
+      "history": [
+        [
+          "planned",
+          "2026-10-21T02:06:00.617034Z",
+          null
+        ],
+        [
+          "reserving",
+          "2026-10-21T02:06:00.622851Z",
+          null
+        ],
+        [
+          "preparing",
+          "2026-10-21T02:06:00.625054Z",
+          "re-checking peers and model file"
+        ],
+        [
+          "loading",
+          "2026-10-21T02:06:00.628305Z",
+          "starting llama-server"
+        ],
+        [
+          "warming",
+          "2026-10-21T02:06:01.662831Z",
+          "first request"
+        ],
+        [
+          "ready",
+          "2026-10-21T02:06:01.724562Z",
+          "local-only deployment (no peers in the plan); CUDA0: model 374 MiB, KV 48 MiB, ~24 layers (planned 24)"
+        ],
+        [
+          "draining",
+          "2026-10-21T02:06:02.600385Z",
+          "stopped by owner"
+        ],
+        [
+          "stopped",
+          "2026-10-21T02:06:02.781699Z",
+          "stopped by owner"
+        ]
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "display_name": "benchmark-host (this machine)",
+      "state": "eligible",
+      "state_reason": null,
+      "is_local": true
+    },
+    {
+      "display_name": "Azims-MacBook-Air-5.local",
+      "state": "stale",
+      "state_reason": "gateway restarted; waiting for heartbeat",
+      "is_local": false
+    }
+  ],
+  "events": [
+    {
+      "seq": 1,
+      "at": "2026-10-21T02:06:00.620742Z",
+      "type": "deployment.state",
+      "message": "Deployment e77030de: planned",
+      "data": {
+        "deployment_id": "e77030de8be34c4d996bb7193a6df786",
+        "state": "planned"
+      }
+    },
+    {
+      "seq": 2,
+      "at": "2026-10-21T02:06:00.622851Z",
+      "type": "deployment.state",
+      "message": "Deployment e77030de: reserving",
+      "data": {
+        "deployment_id": "e77030de8be34c4d996bb7193a6df786",
+        "state": "reserving"
+      }
+    },
+    {
+      "seq": 3,
+      "at": "2026-10-21T02:06:00.625054Z",
+      "type": "deployment.state",
+      "message": "Deployment e77030de: preparing (re-checking peers and model file)",
+      "data": {
+        "deployment_id": "e77030de8be34c4d996bb7193a6df786",
+        "state": "preparing"
+      }
+    },
+    {
+      "seq": 4,
+      "at": "2026-10-21T02:06:00.629302Z",
+      "type": "deployment.state",
+      "message": "Deployment e77030de: loading (starting llama-server)",
+      "data": {
+        "deployment_id": "e77030de8be34c4d996bb7193a6df786",
+        "state": "loading"
+      }
+    },
+    {
+      "seq": 7,
+      "at": "2026-10-21T02:06:01.662831Z",
+      "type": "deployment.state",
+      "message": "Deployment e77030de: warming (first request)",
+      "data": {
+        "deployment_id": "e77030de8be34c4d996bb7193a6df786",
+        "state": "warming"
+      }
+    },
+    {
+      "seq": 9,
+      "at": "2026-10-21T02:06:01.724562Z",
+      "type": "deployment.state",
+      "message": "Deployment e77030de: ready (local-only deployment (no peers in the plan); CUDA0: model 374 MiB, KV 48 MiB, ~24 layers (planned 24))",
+      "data": {
+        "deployment_id": "e77030de8be34c4d996bb7193a6df786",
+        "state": "ready"
+      }
+    },
+    {
+      "seq": 11,
+      "at": "2026-10-21T02:06:02.600385Z",
+      "type": "deployment.state",
+      "message": "Deployment e77030de: draining (stopped by owner)",
+      "data": {
+        "deployment_id": "e77030de8be34c4d996bb7193a6df786",
+        "state": "draining"
+      }
+    },
+    {
+      "seq": 12,
+      "at": "2026-10-21T02:06:02.782703Z",
+      "type": "deployment.state",
+      "message": "Deployment e77030de: stopped (stopped by owner)",
+      "data": {
+        "deployment_id": "e77030de8be34c4d996bb7193a6df786",
+        "state": "stopped"
+      }
+    },
+    {
+      "seq": 16,
+      "at": "2026-10-21T02:06:35.399772Z",
+      "type": "node.state",
+      "message": "loopback-cpu-worker: eligible",
+      "data": {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+        "state": "eligible"
+      }
+    },
+    {
+      "seq": 17,
+      "at": "2026-10-21T02:06:35.400770Z",
+      "type": "node.verified",
+      "message": "loopback-cpu-worker verified: RPC0",
+      "data": {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c"
+      }
+    },
+    {
+      "seq": 18,
+      "at": "2026-10-21T02:06:58.992965Z",
+      "type": "deployment.state",
+      "message": "Deployment aa4e4e45: planned",
+      "data": {
+        "deployment_id": "aa4e4e4547184513896356776f45cf0c",
+        "state": "planned"
+      }
+    },
+    {
+      "seq": 19,
+      "at": "2026-10-21T02:06:58.995482Z",
+      "type": "deployment.state",
+      "message": "Deployment aa4e4e45: reserving",
+      "data": {
+        "deployment_id": "aa4e4e4547184513896356776f45cf0c",
+        "state": "reserving"
+      }
+    },
+    {
+      "seq": 20,
+      "at": "2026-10-21T02:06:58.997479Z",
+      "type": "deployment.state",
+      "message": "Deployment aa4e4e45: preparing (re-checking peers and model file)",
+      "data": {
+        "deployment_id": "aa4e4e4547184513896356776f45cf0c",
+        "state": "preparing"
+      }
+    },
+    {
+      "seq": 21,
+      "at": "2026-10-21T02:06:59.315822Z",
+      "type": "deployment.state",
+      "message": "Deployment aa4e4e45: loading (starting llama-server)",
+      "data": {
+        "deployment_id": "aa4e4e4547184513896356776f45cf0c",
+        "state": "loading"
+      }
+    },
+    {
+      "seq": 25,
+      "at": "2026-10-21T02:07:00.895030Z",
+      "type": "deployment.state",
+      "message": "Deployment aa4e4e45: warming (first request)",
+      "data": {
+        "deployment_id": "aa4e4e4547184513896356776f45cf0c",
+        "state": "warming"
+      }
+    },
+    {
+      "seq": 27,
+      "at": "2026-10-21T02:07:00.962601Z",
+      "type": "deployment.state",
+      "message": "Deployment aa4e4e45: ready (CUDA0: model 207 MiB, KV 42 MiB, ~21 layers (planned 21); RPC0[127.0.0.1:47052]: model 167 MiB, KV 6 MiB, ~3 layers (planned 3))",
+      "data": {
+        "deployment_id": "aa4e4e4547184513896356776f45cf0c",
+        "state": "ready"
+      }
+    },
+    {
+      "seq": 39,
+      "at": "2026-10-21T02:07:07.997427Z",
+      "type": "deployment.state",
+      "message": "Deployment aa4e4e45: draining (stopped by owner)",
+      "data": {
+        "deployment_id": "aa4e4e4547184513896356776f45cf0c",
+        "state": "draining"
+      }
+    },
+    {
+      "seq": 40,
+      "at": "2026-10-21T02:07:08.194660Z",
+      "type": "deployment.state",
+      "message": "Deployment aa4e4e45: stopped (stopped by owner)",
+      "data": {
+        "deployment_id": "aa4e4e4547184513896356776f45cf0c",
+        "state": "stopped"
+      }
+    },
+    {
+      "seq": 41,
+      "at": "2026-10-21T02:09:14.868921Z",
+      "type": "deployment.state",
+      "message": "Deployment ee5ff5c9: planned",
+      "data": {
+        "deployment_id": "ee5ff5c9fbd443979690efe8b6bac0a5",
+        "state": "planned"
+      }
+    },
+    {
+      "seq": 42,
+      "at": "2026-10-21T02:09:14.869934Z",
+      "type": "deployment.state",
+      "message": "Deployment ee5ff5c9: reserving",
+      "data": {
+        "deployment_id": "ee5ff5c9fbd443979690efe8b6bac0a5",
+        "state": "reserving"
+      }
+    },
+    {
+      "seq": 43,
+      "at": "2026-10-21T02:09:14.871933Z",
+      "type": "deployment.state",
+      "message": "Deployment ee5ff5c9: preparing (re-checking peers and model file)",
+      "data": {
+        "deployment_id": "ee5ff5c9fbd443979690efe8b6bac0a5",
+        "state": "preparing"
+      }
+    },
+    {
+      "seq": 44,
+      "at": "2026-10-21T02:09:15.123335Z",
+      "type": "deployment.state",
+      "message": "Deployment ee5ff5c9: loading (starting llama-server)",
+      "data": {
+        "deployment_id": "ee5ff5c9fbd443979690efe8b6bac0a5",
+        "state": "loading"
+      }
+    },
+    {
+      "seq": 48,
+      "at": "2026-10-21T02:09:16.698801Z",
+      "type": "deployment.state",
+      "message": "Deployment ee5ff5c9: warming (first request)",
+      "data": {
+        "deployment_id": "ee5ff5c9fbd443979690efe8b6bac0a5",
+        "state": "warming"
+      }
+    },
+    {
+      "seq": 50,
+      "at": "2026-10-21T02:09:16.762520Z",
+      "type": "deployment.state",
+      "message": "Deployment ee5ff5c9: ready (CUDA0: model 207 MiB, KV 42 MiB, ~21 layers (planned 21); RPC0[127.0.0.1:47052]: model 167 MiB, KV 6 MiB, ~3 layers (planned 3))",
+      "data": {
+        "deployment_id": "ee5ff5c9fbd443979690efe8b6bac0a5",
+        "state": "ready"
+      }
+    },
+    {
+      "seq": 1,
+      "at": "2026-10-21T02:09:43.213871Z",
+      "type": "gateway.startup",
+      "message": "deployment:ee5ff5c9fbd443979690efe8b6bac0a5: stopped orphaned pid 29728",
+      "data": {}
+    },
+    {
+      "seq": 2,
+      "at": "2026-10-21T02:09:43.215375Z",
+      "type": "gateway.startup",
+      "message": "deployment ee5ff5c9 marked failed after restart",
+      "data": {}
+    },
+    {
+      "seq": 3,
+      "at": "2026-10-21T02:09:43.216382Z",
+      "type": "gateway.startup",
+      "message": "released 2 stale lease(s)",
+      "data": {}
+    },
+    {
+      "seq": 4,
+      "at": "2026-10-21T02:09:43.216382Z",
+      "type": "gateway.startup",
+      "message": "loopback-cpu-worker: awaiting heartbeat after restart",
+      "data": {}
+    },
+    {
+      "seq": 5,
+      "at": "2026-10-21T02:09:45.617446Z",
+      "type": "node.state",
+      "message": "loopback-cpu-worker: verifying (heartbeat resumed; re-checking worker)",
+      "data": {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+        "state": "verifying"
+      }
+    },
+    {
+      "seq": 6,
+      "at": "2026-10-21T02:09:45.908855Z",
+      "type": "node.state",
+      "message": "loopback-cpu-worker: eligible",
+      "data": {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+        "state": "eligible"
+      }
+    },
+    {
+      "seq": 7,
+      "at": "2026-10-21T02:09:45.909854Z",
+      "type": "node.verified",
+      "message": "loopback-cpu-worker verified: RPC0",
+      "data": {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c"
+      }
+    },
+    {
+      "seq": 8,
+      "at": "2026-10-21T02:09:57.020769Z",
+      "type": "deployment.state",
+      "message": "Deployment 7129a8d0: planned",
+      "data": {
+        "deployment_id": "7129a8d001594cc2984a6dae118e688e",
+        "state": "planned"
+      }
+    },
+    {
+      "seq": 9,
+      "at": "2026-10-21T02:09:57.020769Z",
+      "type": "deployment.state",
+      "message": "Deployment 7129a8d0: reserving",
+      "data": {
+        "deployment_id": "7129a8d001594cc2984a6dae118e688e",
+        "state": "reserving"
+      }
+    },
+    {
+      "seq": 10,
+      "at": "2026-10-21T02:09:57.020769Z",
+      "type": "deployment.state",
+      "message": "Deployment 7129a8d0: preparing (re-checking peers and model file)",
+      "data": {
+        "deployment_id": "7129a8d001594cc2984a6dae118e688e",
+        "state": "preparing"
+      }
+    },
+    {
+      "seq": 11,
+      "at": "2026-10-21T02:09:57.273055Z",
+      "type": "deployment.state",
+      "message": "Deployment 7129a8d0: loading (starting llama-server)",
+      "data": {
+        "deployment_id": "7129a8d001594cc2984a6dae118e688e",
+        "state": "loading"
+      }
+    },
+    {
+      "seq": 14,
+      "at": "2026-10-21T02:09:58.454941Z",
+      "type": "deployment.state",
+      "message": "Deployment 7129a8d0: warming (first request)",
+      "data": {
+        "deployment_id": "7129a8d001594cc2984a6dae118e688e",
+        "state": "warming"
+      }
+    },
+    {
+      "seq": 16,
+      "at": "2026-10-21T02:09:58.535644Z",
+      "type": "deployment.state",
+      "message": "Deployment 7129a8d0: ready (CUDA0: model 207 MiB, KV 42 MiB, ~21 layers (planned 21); RPC0[127.0.0.1:47052]: model 167 MiB, KV 6 MiB, ~3 layers (planned 3))",
+      "data": {
+        "deployment_id": "7129a8d001594cc2984a6dae118e688e",
+        "state": "ready"
+      }
+    },
+    {
+      "seq": 18,
+      "at": "2026-10-21T02:10:17.350576Z",
+      "type": "node.state",
+      "message": "loopback-cpu-worker: stale (no heartbeat for 16s)",
+      "data": {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+        "state": "stale"
+      }
+    },
+    {
+      "seq": 19,
+      "at": "2026-10-21T02:10:17.538442Z",
+      "type": "deployment.state",
+      "message": "Deployment 7129a8d0: failed (peer 8f169e35 lost: no heartbeat for 16s)",
+      "data": {
+        "deployment_id": "7129a8d001594cc2984a6dae118e688e",
+        "state": "failed"
+      }
+    },
+    {
+      "seq": 20,
+      "at": "2026-10-21T02:10:34.426488Z",
+      "type": "node.state",
+      "message": "loopback-cpu-worker: left (contributor stopped sharing)",
+      "data": {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+        "state": "left"
+      }
+    },
+    {
+      "seq": 21,
+      "at": "2026-10-21T02:10:34.426488Z",
+      "type": "node.left",
+      "message": "loopback-cpu-worker: contributor stopped sharing",
+      "data": {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c"
+      }
+    },
+    {
+      "seq": 24,
+      "at": "2026-10-21T02:10:57.872911Z",
+      "type": "node.state",
+      "message": "loopback-cpu-worker: eligible",
+      "data": {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+        "state": "eligible"
+      }
+    },
+    {
+      "seq": 25,
+      "at": "2026-10-21T02:10:57.873910Z",
+      "type": "node.verified",
+      "message": "loopback-cpu-worker verified: RPC0",
+      "data": {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c"
+      }
+    },
+    {
+      "seq": 26,
+      "at": "2026-10-21T02:11:05.111395Z",
+      "type": "deployment.state",
+      "message": "Deployment 6534f3c4: planned",
+      "data": {
+        "deployment_id": "6534f3c457e94abdb3fd54bad5a90e93",
+        "state": "planned"
+      }
+    },
+    {
+      "seq": 27,
+      "at": "2026-10-21T02:11:05.111395Z",
+      "type": "deployment.state",
+      "message": "Deployment 6534f3c4: reserving",
+      "data": {
+        "deployment_id": "6534f3c457e94abdb3fd54bad5a90e93",
+        "state": "reserving"
+      }
+    },
+    {
+      "seq": 28,
+      "at": "2026-10-21T02:11:05.120452Z",
+      "type": "deployment.state",
+      "message": "Deployment 6534f3c4: preparing (re-checking peers and model file)",
+      "data": {
+        "deployment_id": "6534f3c457e94abdb3fd54bad5a90e93",
+        "state": "preparing"
+      }
+    },
+    {
+      "seq": 29,
+      "at": "2026-10-21T02:11:05.122449Z",
+      "type": "deployment.state",
+      "message": "Deployment 6534f3c4: loading (starting llama-server)",
+      "data": {
+        "deployment_id": "6534f3c457e94abdb3fd54bad5a90e93",
+        "state": "loading"
+      }
+    },
+    {
+      "seq": 34,
+      "at": "2026-10-21T02:11:08.280819Z",
+      "type": "deployment.state",
+      "message": "Deployment 6534f3c4: warming (first request)",
+      "data": {
+        "deployment_id": "6534f3c457e94abdb3fd54bad5a90e93",
+        "state": "warming"
+      }
+    },
+    {
+      "seq": 36,
+      "at": "2026-10-21T02:11:08.381278Z",
+      "type": "deployment.state",
+      "message": "Deployment 6534f3c4: ready (local-only deployment (no peers in the plan); CUDA0: model 4168 MiB, KV 224 MiB, ~28 layers (planned 28))",
+      "data": {
+        "deployment_id": "6534f3c457e94abdb3fd54bad5a90e93",
+        "state": "ready"
+      }
+    },
+    {
+      "seq": 48,
+      "at": "2026-10-21T02:11:26.352860Z",
+      "type": "deployment.state",
+      "message": "Deployment 6534f3c4: draining (stopped by owner)",
+      "data": {
+        "deployment_id": "6534f3c457e94abdb3fd54bad5a90e93",
+        "state": "draining"
+      }
+    },
+    {
+      "seq": 49,
+      "at": "2026-10-21T02:11:26.955946Z",
+      "type": "deployment.state",
+      "message": "Deployment 6534f3c4: stopped (stopped by owner)",
+      "data": {
+        "deployment_id": "6534f3c457e94abdb3fd54bad5a90e93",
+        "state": "stopped"
+      }
+    },
+    {
+      "seq": 50,
+      "at": "2026-10-21T02:11:34.665384Z",
+      "type": "deployment.state",
+      "message": "Deployment e85488dc: planned",
+      "data": {
+        "deployment_id": "e85488dcd6cf4c90b9d8fcd5ca5cb4e4",
+        "state": "planned"
+      }
+    },
+    {
+      "seq": 51,
+      "at": "2026-10-21T02:11:34.665384Z",
+      "type": "deployment.state",
+      "message": "Deployment e85488dc: reserving",
+      "data": {
+        "deployment_id": "e85488dcd6cf4c90b9d8fcd5ca5cb4e4",
+        "state": "reserving"
+      }
+    },
+    {
+      "seq": 52,
+      "at": "2026-10-21T02:11:34.665384Z",
+      "type": "deployment.state",
+      "message": "Deployment e85488dc: preparing (re-checking peers and model file)",
+      "data": {
+        "deployment_id": "e85488dcd6cf4c90b9d8fcd5ca5cb4e4",
+        "state": "preparing"
+      }
+    },
+    {
+      "seq": 53,
+      "at": "2026-10-21T02:11:34.944109Z",
+      "type": "deployment.state",
+      "message": "Deployment e85488dc: loading (starting llama-server)",
+      "data": {
+        "deployment_id": "e85488dcd6cf4c90b9d8fcd5ca5cb4e4",
+        "state": "loading"
+      }
+    },
+    {
+      "seq": 58,
+      "at": "2026-10-21T02:11:42.191198Z",
+      "type": "deployment.state",
+      "message": "Deployment e85488dc: warming (first request)",
+      "data": {
+        "deployment_id": "e85488dcd6cf4c90b9d8fcd5ca5cb4e4",
+        "state": "warming"
+      }
+    },
+    {
+      "seq": 60,
+      "at": "2026-10-21T02:11:42.498606Z",
+      "type": "deployment.state",
+      "message": "Deployment e85488dc: ready (CUDA0: model 3173 MiB, KV 192 MiB, ~24 layers (planned 24); RPC0[127.0.0.1:47052]: model 995 MiB, KV 32 MiB, ~4 layers (planned 4))",
+      "data": {
+        "deployment_id": "e85488dcd6cf4c90b9d8fcd5ca5cb4e4",
+        "state": "ready"
+      }
+    },
+    {
+      "seq": 72,
+      "at": "2026-10-21T02:12:38.161732Z",
+      "type": "deployment.state",
+      "message": "Deployment e85488dc: draining (stopped by owner)",
+      "data": {
+        "deployment_id": "e85488dcd6cf4c90b9d8fcd5ca5cb4e4",
+        "state": "draining"
+      }
+    },
+    {
+      "seq": 73,
+      "at": "2026-10-21T02:12:39.073826Z",
+      "type": "deployment.state",
+      "message": "Deployment e85488dc: stopped (stopped by owner)",
+      "data": {
+        "deployment_id": "e85488dcd6cf4c90b9d8fcd5ca5cb4e4",
+        "state": "stopped"
+      }
+    },
+    {
+      "seq": 74,
+      "at": "2026-10-21T02:12:50.777534Z",
+      "type": "deployment.state",
+      "message": "Deployment bc050115: planned",
+      "data": {
+        "deployment_id": "bc05011591bf4e1fad83660c2da811cd",
+        "state": "planned"
+      }
+    },
+    {
+      "seq": 75,
+      "at": "2026-10-21T02:12:50.780537Z",
+      "type": "deployment.state",
+      "message": "Deployment bc050115: reserving",
+      "data": {
+        "deployment_id": "bc05011591bf4e1fad83660c2da811cd",
+        "state": "reserving"
+      }
+    },
+    {
+      "seq": 76,
+      "at": "2026-10-21T02:12:50.783266Z",
+      "type": "deployment.state",
+      "message": "Deployment bc050115: preparing (re-checking peers and model file)",
+      "data": {
+        "deployment_id": "bc05011591bf4e1fad83660c2da811cd",
+        "state": "preparing"
+      }
+    },
+    {
+      "seq": 77,
+      "at": "2026-10-21T02:12:51.158303Z",
+      "type": "deployment.state",
+      "message": "Deployment bc050115: loading (starting llama-server)",
+      "data": {
+        "deployment_id": "bc05011591bf4e1fad83660c2da811cd",
+        "state": "loading"
+      }
+    },
+    {
+      "seq": 80,
+      "at": "2026-10-21T02:12:52.251242Z",
+      "type": "deployment.state",
+      "message": "Deployment bc050115: warming (first request)",
+      "data": {
+        "deployment_id": "bc05011591bf4e1fad83660c2da811cd",
+        "state": "warming"
+      }
+    },
+    {
+      "seq": 82,
+      "at": "2026-10-21T02:12:52.348364Z",
+      "type": "deployment.state",
+      "message": "Deployment bc050115: ready (CUDA0: model 198 MiB, KV 40 MiB, ~20 layers (planned 20); RPC0[127.0.0.1:47052]: model 176 MiB, KV 8 MiB, ~4 layers (planned 4))",
+      "data": {
+        "deployment_id": "bc05011591bf4e1fad83660c2da811cd",
+        "state": "ready"
+      }
+    },
+    {
+      "seq": 84,
+      "at": "2026-10-21T02:12:55.821421Z",
+      "type": "deployment.state",
+      "message": "Deployment bc050115: failed (peer 8f169e35 lost: contributor stopped sharing)",
+      "data": {
+        "deployment_id": "bc05011591bf4e1fad83660c2da811cd",
+        "state": "failed"
+      }
+    },
+    {
+      "seq": 85,
+      "at": "2026-10-21T02:12:55.821421Z",
+      "type": "node.state",
+      "message": "loopback-cpu-worker: left (contributor stopped sharing)",
+      "data": {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+        "state": "left"
+      }
+    },
+    {
+      "seq": 86,
+      "at": "2026-10-21T02:12:55.821421Z",
+      "type": "node.left",
+      "message": "loopback-cpu-worker: contributor stopped sharing",
+      "data": {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c"
+      }
+    },
+    {
+      "seq": 89,
+      "at": "2026-10-21T02:23:26.814692Z",
+      "type": "node.state",
+      "message": "wsl-ubuntu-cpu: eligible",
+      "data": {
+        "node_id": "07118aa37e8646058734355ad5a7fd61",
+        "state": "eligible"
+      }
+    },
+    {
+      "seq": 90,
+      "at": "2026-10-21T02:23:26.815961Z",
+      "type": "node.verified",
+      "message": "wsl-ubuntu-cpu verified: RPC0",
+      "data": {
+        "node_id": "07118aa37e8646058734355ad5a7fd61"
+      }
+    },
+    {
+      "seq": 91,
+      "at": "2026-10-21T02:23:35.629620Z",
+      "type": "deployment.state",
+      "message": "Deployment 7076482c: planned",
+      "data": {
+        "deployment_id": "7076482cdb0843eabc4ee870e45796ce",
+        "state": "planned"
+      }
+    },
+    {
+      "seq": 92,
+      "at": "2026-10-21T02:23:35.638192Z",
+      "type": "deployment.state",
+      "message": "Deployment 7076482c: reserving",
+      "data": {
+        "deployment_id": "7076482cdb0843eabc4ee870e45796ce",
+        "state": "reserving"
+      }
+    },
+    {
+      "seq": 93,
+      "at": "2026-10-21T02:23:35.638192Z",
+      "type": "deployment.state",
+      "message": "Deployment 7076482c: preparing (re-checking peers and model file)",
+      "data": {
+        "deployment_id": "7076482cdb0843eabc4ee870e45796ce",
+        "state": "preparing"
+      }
+    },
+    {
+      "seq": 94,
+      "at": "2026-10-21T02:23:35.968252Z",
+      "type": "deployment.state",
+      "message": "Deployment 7076482c: loading (starting llama-server)",
+      "data": {
+        "deployment_id": "7076482cdb0843eabc4ee870e45796ce",
+        "state": "loading"
+      }
+    },
+    {
+      "seq": 98,
+      "at": "2026-10-21T02:23:37.608225Z",
+      "type": "deployment.state",
+      "message": "Deployment 7076482c: warming (first request)",
+      "data": {
+        "deployment_id": "7076482cdb0843eabc4ee870e45796ce",
+        "state": "warming"
+      }
+    },
+    {
+      "seq": 100,
+      "at": "2026-10-21T02:23:37.702618Z",
+      "type": "deployment.state",
+      "message": "Deployment 7076482c: ready (CUDA0: model 178 MiB, KV 36 MiB, ~18 layers (planned 18); RPC0[172.18.63.230:47052]: model 196 MiB, KV 12 MiB, ~6 layers (planned 6))",
+      "data": {
+        "deployment_id": "7076482cdb0843eabc4ee870e45796ce",
+        "state": "ready"
+      }
+    },
+    {
+      "seq": 102,
+      "at": "2026-10-21T02:23:39.750963Z",
+      "type": "deployment.state",
+      "message": "Deployment 7076482c: draining (stopped by owner)",
+      "data": {
+        "deployment_id": "7076482cdb0843eabc4ee870e45796ce",
+        "state": "draining"
+      }
+    },
+    {
+      "seq": 103,
+      "at": "2026-10-21T02:23:39.948942Z",
+      "type": "deployment.state",
+      "message": "Deployment 7076482c: stopped (stopped by owner)",
+      "data": {
+        "deployment_id": "7076482cdb0843eabc4ee870e45796ce",
+        "state": "stopped"
+      }
+    },
+    {
+      "seq": 104,
+      "at": "2026-10-21T02:23:40.986463Z",
+      "type": "deployment.state",
+      "message": "Deployment 6818b852: planned",
+      "data": {
+        "deployment_id": "6818b852f07f472cb91b5b1b613af5f6",
+        "state": "planned"
+      }
+    },
+    {
+      "seq": 105,
+      "at": "2026-10-21T02:23:40.991555Z",
+      "type": "deployment.state",
+      "message": "Deployment 6818b852: reserving",
+      "data": {
+        "deployment_id": "6818b852f07f472cb91b5b1b613af5f6",
+        "state": "reserving"
+      }
+    },
+    {
+      "seq": 106,
+      "at": "2026-10-21T02:23:40.995305Z",
+      "type": "deployment.state",
+      "message": "Deployment 6818b852: preparing (re-checking peers and model file)",
+      "data": {
+        "deployment_id": "6818b852f07f472cb91b5b1b613af5f6",
+        "state": "preparing"
+      }
+    },
+    {
+      "seq": 107,
+      "at": "2026-10-21T02:23:41.331944Z",
+      "type": "deployment.state",
+      "message": "Deployment 6818b852: loading (starting llama-server)",
+      "data": {
+        "deployment_id": "6818b852f07f472cb91b5b1b613af5f6",
+        "state": "loading"
+      }
+    },
+    {
+      "seq": 112,
+      "at": "2026-10-21T02:24:08.482398Z",
+      "type": "deployment.state",
+      "message": "Deployment 6818b852: warming (first request)",
+      "data": {
+        "deployment_id": "6818b852f07f472cb91b5b1b613af5f6",
+        "state": "warming"
+      }
+    },
+    {
+      "seq": 114,
+      "at": "2026-10-21T02:24:08.768424Z",
+      "type": "deployment.state",
+      "message": "Deployment 6818b852: ready (CUDA0: model 2906 MiB, KV 176 MiB, ~22 layers (planned 22); RPC0[172.18.63.230:47052]: model 1262 MiB, KV 48 MiB, ~6 layers (planned 6))",
+      "data": {
+        "deployment_id": "6818b852f07f472cb91b5b1b613af5f6",
+        "state": "ready"
+      }
+    },
+    {
+      "seq": 126,
+      "at": "2026-10-21T02:25:28.515510Z",
+      "type": "deployment.state",
+      "message": "Deployment 6818b852: draining (stopped by owner)",
+      "data": {
+        "deployment_id": "6818b852f07f472cb91b5b1b613af5f6",
+        "state": "draining"
+      }
+    },
+    {
+      "seq": 127,
+      "at": "2026-10-21T02:25:29.265946Z",
+      "type": "deployment.state",
+      "message": "Deployment 6818b852: stopped (stopped by owner)",
+      "data": {
+        "deployment_id": "6818b852f07f472cb91b5b1b613af5f6",
+        "state": "stopped"
+      }
+    },
+    {
+      "seq": 128,
+      "at": "2026-10-21T02:29:52.426680Z",
+      "type": "deployment.state",
+      "message": "Deployment 72187214: planned",
+      "data": {
+        "deployment_id": "72187214c57c4fceadc48f6ca6b9816f",
+        "state": "planned"
+      }
+    },
+    {
+      "seq": 129,
+      "at": "2026-10-21T02:29:52.432702Z",
+      "type": "deployment.state",
+      "message": "Deployment 72187214: reserving",
+      "data": {
+        "deployment_id": "72187214c57c4fceadc48f6ca6b9816f",
+        "state": "reserving"
+      }
+    },
+    {
+      "seq": 130,
+      "at": "2026-10-21T02:29:52.454799Z",
+      "type": "deployment.state",
+      "message": "Deployment 72187214: preparing (re-checking peers and model file)",
+      "data": {
+        "deployment_id": "72187214c57c4fceadc48f6ca6b9816f",
+        "state": "preparing"
+      }
+    },
+    {
+      "seq": 131,
+      "at": "2026-10-21T02:29:52.457314Z",
+      "type": "deployment.state",
+      "message": "Deployment 72187214: loading (starting llama-server)",
+      "data": {
+        "deployment_id": "72187214c57c4fceadc48f6ca6b9816f",
+        "state": "loading"
+      }
+    },
+    {
+      "seq": 137,
+      "at": "2026-10-21T02:29:56.264516Z",
+      "type": "deployment.state",
+      "message": "Deployment 72187214: warming (first request)",
+      "data": {
+        "deployment_id": "72187214c57c4fceadc48f6ca6b9816f",
+        "state": "warming"
+      }
+    },
+    {
+      "seq": 139,
+      "at": "2026-10-21T02:29:56.647878Z",
+      "type": "deployment.state",
+      "message": "Deployment 72187214: ready (local-only deployment (no peers in the plan); CUDA0: model 374 MiB, KV 48 MiB, ~24 layers (planned 24))",
+      "data": {
+        "deployment_id": "72187214c57c4fceadc48f6ca6b9816f",
+        "state": "ready"
+      }
+    },
+    {
+      "seq": 151,
+      "at": "2026-10-21T02:30:04.304753Z",
+      "type": "deployment.state",
+      "message": "Deployment 72187214: draining (stopped by owner)",
+      "data": {
+        "deployment_id": "72187214c57c4fceadc48f6ca6b9816f",
+        "state": "draining"
+      }
+    },
+    {
+      "seq": 152,
+      "at": "2026-10-21T02:30:04.957049Z",
+      "type": "deployment.state",
+      "message": "Deployment 72187214: stopped (stopped by owner)",
+      "data": {
+        "deployment_id": "72187214c57c4fceadc48f6ca6b9816f",
+        "state": "stopped"
+      }
+    },
+    {
+      "seq": 153,
+      "at": "2026-10-21T02:30:06.697235Z",
+      "type": "deployment.state",
+      "message": "Deployment 240db8c9: planned",
+      "data": {
+        "deployment_id": "240db8c9ec8b4836bed4f7aa2cdbc1b4",
+        "state": "planned"
+      }
+    },
+    {
+      "seq": 154,
+      "at": "2026-10-21T02:30:06.705181Z",
+      "type": "deployment.state",
+      "message": "Deployment 240db8c9: reserving",
+      "data": {
+        "deployment_id": "240db8c9ec8b4836bed4f7aa2cdbc1b4",
+        "state": "reserving"
+      }
+    },
+    {
+      "seq": 155,
+      "at": "2026-10-21T02:30:06.729219Z",
+      "type": "deployment.state",
+      "message": "Deployment 240db8c9: preparing (re-checking peers and model file)",
+      "data": {
+        "deployment_id": "240db8c9ec8b4836bed4f7aa2cdbc1b4",
+        "state": "preparing"
+      }
+    },
+    {
+      "seq": 156,
+      "at": "2026-10-21T02:30:07.434326Z",
+      "type": "deployment.state",
+      "message": "Deployment 240db8c9: loading (starting llama-server)",
+      "data": {
+        "deployment_id": "240db8c9ec8b4836bed4f7aa2cdbc1b4",
+        "state": "loading"
+      }
+    },
+    {
+      "seq": 161,
+      "at": "2026-10-21T02:30:10.562466Z",
+      "type": "deployment.state",
+      "message": "Deployment 240db8c9: warming (first request)",
+      "data": {
+        "deployment_id": "240db8c9ec8b4836bed4f7aa2cdbc1b4",
+        "state": "warming"
+      }
+    },
+    {
+      "seq": 163,
+      "at": "2026-10-21T02:30:11.129475Z",
+      "type": "deployment.state",
+      "message": "Deployment 240db8c9: ready (CUDA0: model 178 MiB, KV 36 MiB, ~18 layers (planned 18); RPC0[172.18.63.230:47052]: model 196 MiB, KV 12 MiB, ~6 layers (planned 6))",
+      "data": {
+        "deployment_id": "240db8c9ec8b4836bed4f7aa2cdbc1b4",
+        "state": "ready"
+      }
+    },
+    {
+      "seq": 175,
+      "at": "2026-10-21T02:31:06.263485Z",
+      "type": "deployment.state",
+      "message": "Deployment 240db8c9: draining (stopped by owner)",
+      "data": {
+        "deployment_id": "240db8c9ec8b4836bed4f7aa2cdbc1b4",
+        "state": "draining"
+      }
+    },
+    {
+      "seq": 176,
+      "at": "2026-10-21T02:31:06.560610Z",
+      "type": "deployment.state",
+      "message": "Deployment 240db8c9: stopped (stopped by owner)",
+      "data": {
+        "deployment_id": "240db8c9ec8b4836bed4f7aa2cdbc1b4",
+        "state": "stopped"
+      }
+    },
+    {
+      "seq": 179,
+      "at": "2026-10-21T02:36:52.341306Z",
+      "type": "node.state",
+      "message": "loopback-cpu-worker: eligible",
+      "data": {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+        "state": "eligible"
+      }
+    },
+    {
+      "seq": 180,
+      "at": "2026-10-21T02:36:52.341306Z",
+      "type": "node.verified",
+      "message": "loopback-cpu-worker verified: RPC0",
+      "data": {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c"
+      }
+    },
+    {
+      "seq": 181,
+      "at": "2026-10-21T02:37:00.947231Z",
+      "type": "deployment.state",
+      "message": "Deployment 77da9bc9: planned",
+      "data": {
+        "deployment_id": "77da9bc935f8420abea2eda4986facd6",
+        "state": "planned"
+      }
+    },
+    {
+      "seq": 182,
+      "at": "2026-10-21T02:37:00.947231Z",
+      "type": "deployment.state",
+      "message": "Deployment 77da9bc9: reserving",
+      "data": {
+        "deployment_id": "77da9bc935f8420abea2eda4986facd6",
+        "state": "reserving"
+      }
+    },
+    {
+      "seq": 183,
+      "at": "2026-10-21T02:37:00.952867Z",
+      "type": "deployment.state",
+      "message": "Deployment 77da9bc9: preparing (re-checking peers and model file)",
+      "data": {
+        "deployment_id": "77da9bc935f8420abea2eda4986facd6",
+        "state": "preparing"
+      }
+    },
+    {
+      "seq": 184,
+      "at": "2026-10-21T02:37:01.233158Z",
+      "type": "deployment.state",
+      "message": "Deployment 77da9bc9: loading (starting llama-server)",
+      "data": {
+        "deployment_id": "77da9bc935f8420abea2eda4986facd6",
+        "state": "loading"
+      }
+    },
+    {
+      "seq": 187,
+      "at": "2026-10-21T02:37:02.376437Z",
+      "type": "deployment.state",
+      "message": "Deployment 77da9bc9: warming (first request)",
+      "data": {
+        "deployment_id": "77da9bc935f8420abea2eda4986facd6",
+        "state": "warming"
+      }
+    },
+    {
+      "seq": 189,
+      "at": "2026-10-21T02:37:02.456525Z",
+      "type": "deployment.state",
+      "message": "Deployment 77da9bc9: ready (CUDA0: model 207 MiB, KV 42 MiB, ~21 layers (planned 21); RPC0[127.0.0.1:47052]: model 167 MiB, KV 6 MiB, ~3 layers (planned 3))",
+      "data": {
+        "deployment_id": "77da9bc935f8420abea2eda4986facd6",
+        "state": "ready"
+      }
+    },
+    {
+      "seq": 191,
+      "at": "2026-10-21T02:37:07.617657Z",
+      "type": "node.state",
+      "message": "loopback-cpu-worker: ineligible (paused by contributor)",
+      "data": {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+        "state": "ineligible"
+      }
+    },
+    {
+      "seq": 192,
+      "at": "2026-10-21T02:37:07.767015Z",
+      "type": "deployment.state",
+      "message": "Deployment 77da9bc9: failed (peer 8f169e35 lost: paused by contributor)",
+      "data": {
+        "deployment_id": "77da9bc935f8420abea2eda4986facd6",
+        "state": "failed"
+      }
+    },
+    {
+      "seq": 193,
+      "at": "2026-10-21T02:37:10.825073Z",
+      "type": "node.state",
+      "message": "loopback-cpu-worker: verifying (worker running again; re-checking)",
+      "data": {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+        "state": "verifying"
+      }
+    },
+    {
+      "seq": 194,
+      "at": "2026-10-21T02:37:11.148594Z",
+      "type": "node.state",
+      "message": "loopback-cpu-worker: eligible",
+      "data": {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+        "state": "eligible"
+      }
+    },
+    {
+      "seq": 195,
+      "at": "2026-10-21T02:37:11.148594Z",
+      "type": "node.verified",
+      "message": "loopback-cpu-worker verified: RPC0",
+      "data": {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c"
+      }
+    },
+    {
+      "seq": 1,
+      "at": "2026-10-21T02:41:11.424336Z",
+      "type": "gateway.startup",
+      "message": "loopback-cpu-worker: awaiting heartbeat after restart",
+      "data": {}
+    },
+    {
+      "seq": 2,
+      "at": "2026-10-21T02:41:11.426328Z",
+      "type": "gateway.startup",
+      "message": "wsl-ubuntu-cpu: awaiting heartbeat after restart",
+      "data": {}
+    },
+    {
+      "seq": 196,
+      "at": "2026-10-21T02:42:09.020260Z",
+      "type": "node.state",
+      "message": "loopback-cpu-worker: ineligible (worker exited (exit code 15))",
+      "data": {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+        "state": "ineligible"
+      }
+    },
+    {
+      "seq": 197,
+      "at": "2026-10-21T02:42:09.894228Z",
+      "type": "node.state",
+      "message": "loopback-cpu-worker: left (contributor stopped sharing)",
+      "data": {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+        "state": "left"
+      }
+    },
+    {
+      "seq": 198,
+      "at": "2026-10-21T02:42:09.896224Z",
+      "type": "node.left",
+      "message": "loopback-cpu-worker: contributor stopped sharing",
+      "data": {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c"
+      }
+    },
+    {
+      "seq": 199,
+      "at": "2026-10-21T03:12:47.771975Z",
+      "type": "node.state",
+      "message": "wsl-ubuntu-cpu: left (contributor stopped sharing)",
+      "data": {
+        "node_id": "07118aa37e8646058734355ad5a7fd61",
+        "state": "left"
+      }
+    },
+    {
+      "seq": 200,
+      "at": "2026-10-21T03:12:47.773221Z",
+      "type": "node.left",
+      "message": "wsl-ubuntu-cpu: contributor stopped sharing",
+      "data": {
+        "node_id": "07118aa37e8646058734355ad5a7fd61"
+      }
+    },
+    {
+      "seq": 5,
+      "at": "2026-10-21T03:13:31.872052Z",
+      "type": "node.state",
+      "message": "loopback-cpu-worker: eligible",
+      "data": {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+        "state": "eligible"
+      }
+    },
+    {
+      "seq": 6,
+      "at": "2026-10-21T03:13:31.872052Z",
+      "type": "node.verified",
+      "message": "loopback-cpu-worker verified: RPC0",
+      "data": {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c"
+      }
+    },
+    {
+      "seq": 7,
+      "at": "2026-10-21T03:13:31.912026Z",
+      "type": "node.state",
+      "message": "wsl-ubuntu-cpu: eligible",
+      "data": {
+        "node_id": "07118aa37e8646058734355ad5a7fd61",
+        "state": "eligible"
+      }
+    },
+    {
+      "seq": 8,
+      "at": "2026-10-21T03:13:31.913025Z",
+      "type": "node.verified",
+      "message": "wsl-ubuntu-cpu verified: RPC0",
+      "data": {
+        "node_id": "07118aa37e8646058734355ad5a7fd61"
+      }
+    },
+    {
+      "seq": 9,
+      "at": "2026-10-21T03:13:44.374985Z",
+      "type": "deployment.state",
+      "message": "Deployment 8a8576ac: planned",
+      "data": {
+        "deployment_id": "8a8576acd8bc416da2bc114c30062781",
+        "state": "planned"
+      }
+    },
+    {
+      "seq": 10,
+      "at": "2026-10-21T03:13:44.374985Z",
+      "type": "deployment.state",
+      "message": "Deployment 8a8576ac: reserving",
+      "data": {
+        "deployment_id": "8a8576acd8bc416da2bc114c30062781",
+        "state": "reserving"
+      }
+    },
+    {
+      "seq": 11,
+      "at": "2026-10-21T03:13:44.374985Z",
+      "type": "deployment.state",
+      "message": "Deployment 8a8576ac: preparing (re-checking peers and model file)",
+      "data": {
+        "deployment_id": "8a8576acd8bc416da2bc114c30062781",
+        "state": "preparing"
+      }
+    },
+    {
+      "seq": 12,
+      "at": "2026-10-21T03:13:44.625362Z",
+      "type": "deployment.state",
+      "message": "Deployment 8a8576ac: loading (starting llama-server)",
+      "data": {
+        "deployment_id": "8a8576acd8bc416da2bc114c30062781",
+        "state": "loading"
+      }
+    },
+    {
+      "seq": 16,
+      "at": "2026-10-21T03:13:46.211550Z",
+      "type": "deployment.state",
+      "message": "Deployment 8a8576ac: warming (first request)",
+      "data": {
+        "deployment_id": "8a8576acd8bc416da2bc114c30062781",
+        "state": "warming"
+      }
+    },
+    {
+      "seq": 18,
+      "at": "2026-10-21T03:13:46.427759Z",
+      "type": "deployment.state",
+      "message": "Deployment 8a8576ac: ready (CUDA0: model 158 MiB, KV 32 MiB, ~16 layers (planned 16); RPC0[172.18.63.230:47052]: model 59 MiB, KV 12 MiB, ~6 layers (planned 6); RPC0[127.0.0.1:47052]: model 156 MiB, KV 4 MiB, ~2 layers (planned 2))",
+      "data": {
+        "deployment_id": "8a8576acd8bc416da2bc114c30062781",
+        "state": "ready"
+      }
+    },
+    {
+      "seq": 1,
+      "at": "2026-10-21T03:14:08.448337Z",
+      "type": "gateway.startup",
+      "message": "deployment:8a8576acd8bc416da2bc114c30062781: pid 19728 no longer running",
+      "data": {}
+    },
+    {
+      "seq": 2,
+      "at": "2026-10-21T03:14:08.449335Z",
+      "type": "gateway.startup",
+      "message": "deployment 8a8576ac marked failed after restart",
+      "data": {}
+    },
+    {
+      "seq": 3,
+      "at": "2026-10-21T03:14:08.450335Z",
+      "type": "gateway.startup",
+      "message": "released 3 stale lease(s)",
+      "data": {}
+    },
+    {
+      "seq": 4,
+      "at": "2026-10-21T03:14:08.451340Z",
+      "type": "gateway.startup",
+      "message": "loopback-cpu-worker: awaiting heartbeat after restart",
+      "data": {}
+    },
+    {
+      "seq": 5,
+      "at": "2026-10-21T03:14:08.452341Z",
+      "type": "gateway.startup",
+      "message": "wsl-ubuntu-cpu: awaiting heartbeat after restart",
+      "data": {}
+    },
+    {
+      "seq": 6,
+      "at": "2026-10-21T03:14:08.861538Z",
+      "type": "node.state",
+      "message": "wsl-ubuntu-cpu: verifying (heartbeat resumed; re-checking worker)",
+      "data": {
+        "node_id": "07118aa37e8646058734355ad5a7fd61",
+        "state": "verifying"
+      }
+    },
+    {
+      "seq": 7,
+      "at": "2026-10-21T03:14:09.115684Z",
+      "type": "node.state",
+      "message": "wsl-ubuntu-cpu: eligible",
+      "data": {
+        "node_id": "07118aa37e8646058734355ad5a7fd61",
+        "state": "eligible"
+      }
+    },
+    {
+      "seq": 8,
+      "at": "2026-10-21T03:14:09.116681Z",
+      "type": "node.verified",
+      "message": "wsl-ubuntu-cpu verified: RPC0",
+      "data": {
+        "node_id": "07118aa37e8646058734355ad5a7fd61"
+      }
+    },
+    {
+      "seq": 9,
+      "at": "2026-10-21T03:14:10.890819Z",
+      "type": "node.state",
+      "message": "loopback-cpu-worker: verifying (heartbeat resumed; re-checking worker)",
+      "data": {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+        "state": "verifying"
+      }
+    },
+    {
+      "seq": 10,
+      "at": "2026-10-21T03:14:11.155129Z",
+      "type": "node.state",
+      "message": "loopback-cpu-worker: eligible",
+      "data": {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+        "state": "eligible"
+      }
+    },
+    {
+      "seq": 11,
+      "at": "2026-10-21T03:14:11.156240Z",
+      "type": "node.verified",
+      "message": "loopback-cpu-worker verified: RPC0",
+      "data": {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c"
+      }
+    },
+    {
+      "seq": 12,
+      "at": "2026-10-21T03:15:14.133140Z",
+      "type": "deployment.state",
+      "message": "Deployment 3840c61d: planned",
+      "data": {
+        "deployment_id": "3840c61da0b041bc9d9de61b7583dbf1",
+        "state": "planned"
+      }
+    },
+    {
+      "seq": 13,
+      "at": "2026-10-21T03:15:14.136133Z",
+      "type": "deployment.state",
+      "message": "Deployment 3840c61d: reserving",
+      "data": {
+        "deployment_id": "3840c61da0b041bc9d9de61b7583dbf1",
+        "state": "reserving"
+      }
+    },
+    {
+      "seq": 14,
+      "at": "2026-10-21T03:15:14.138133Z",
+      "type": "deployment.state",
+      "message": "Deployment 3840c61d: preparing (re-checking peers and model file)",
+      "data": {
+        "deployment_id": "3840c61da0b041bc9d9de61b7583dbf1",
+        "state": "preparing"
+      }
+    },
+    {
+      "seq": 15,
+      "at": "2026-10-21T03:15:14.388454Z",
+      "type": "deployment.state",
+      "message": "Deployment 3840c61d: loading (starting llama-server)",
+      "data": {
+        "deployment_id": "3840c61da0b041bc9d9de61b7583dbf1",
+        "state": "loading"
+      }
+    },
+    {
+      "seq": 19,
+      "at": "2026-10-21T03:15:15.965792Z",
+      "type": "deployment.state",
+      "message": "Deployment 3840c61d: warming (first request)",
+      "data": {
+        "deployment_id": "3840c61da0b041bc9d9de61b7583dbf1",
+        "state": "warming"
+      }
+    },
+    {
+      "seq": 21,
+      "at": "2026-10-21T03:15:16.067653Z",
+      "type": "deployment.state",
+      "message": "Deployment 3840c61d: ready (CUDA0: model 158 MiB, KV 32 MiB, ~16 layers (planned 16); RPC0[172.18.63.230:47052]: model 59 MiB, KV 12 MiB, ~6 layers (planned 6); RPC0[127.0.0.1:47052]: model 156 MiB, KV 4 MiB, ~2 layers (planned 2))",
+      "data": {
+        "deployment_id": "3840c61da0b041bc9d9de61b7583dbf1",
+        "state": "ready"
+      }
+    },
+    {
+      "seq": 23,
+      "at": "2026-10-21T03:16:39.113445Z",
+      "type": "deployment.state",
+      "message": "Deployment 3840c61d: draining (stopped by owner)",
+      "data": {
+        "deployment_id": "3840c61da0b041bc9d9de61b7583dbf1",
+        "state": "draining"
+      }
+    },
+    {
+      "seq": 24,
+      "at": "2026-10-21T03:16:39.305435Z",
+      "type": "deployment.state",
+      "message": "Deployment 3840c61d: stopped (stopped by owner)",
+      "data": {
+        "deployment_id": "3840c61da0b041bc9d9de61b7583dbf1",
+        "state": "stopped"
+      }
+    },
+    {
+      "seq": 25,
+      "at": "2026-10-21T03:16:52.978250Z",
+      "type": "node.state",
+      "message": "loopback-cpu-worker: ineligible (paused by contributor)",
+      "data": {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+        "state": "ineligible"
+      }
+    },
+    {
+      "seq": 26,
+      "at": "2026-10-21T03:16:55.843662Z",
+      "type": "deployment.state",
+      "message": "Deployment 71db3a79: planned",
+      "data": {
+        "deployment_id": "71db3a79cda24aedbdfc96520b0e3aee",
+        "state": "planned"
+      }
+    },
+    {
+      "seq": 27,
+      "at": "2026-10-21T03:16:55.846714Z",
+      "type": "deployment.state",
+      "message": "Deployment 71db3a79: reserving",
+      "data": {
+        "deployment_id": "71db3a79cda24aedbdfc96520b0e3aee",
+        "state": "reserving"
+      }
+    },
+    {
+      "seq": 28,
+      "at": "2026-10-21T03:16:55.849712Z",
+      "type": "deployment.state",
+      "message": "Deployment 71db3a79: preparing (re-checking peers and model file)",
+      "data": {
+        "deployment_id": "71db3a79cda24aedbdfc96520b0e3aee",
+        "state": "preparing"
+      }
+    },
+    {
+      "seq": 29,
+      "at": "2026-10-21T03:16:55.853713Z",
+      "type": "deployment.state",
+      "message": "Deployment 71db3a79: failed (8f169e35 is ineligible)",
+      "data": {
+        "deployment_id": "71db3a79cda24aedbdfc96520b0e3aee",
+        "state": "failed"
+      }
+    },
+    {
+      "seq": 30,
+      "at": "2026-10-21T03:17:11.333414Z",
+      "type": "node.state",
+      "message": "loopback-cpu-worker: verifying (worker running again; re-checking)",
+      "data": {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+        "state": "verifying"
+      }
+    },
+    {
+      "seq": 31,
+      "at": "2026-10-21T03:17:11.579865Z",
+      "type": "node.state",
+      "message": "loopback-cpu-worker: eligible",
+      "data": {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+        "state": "eligible"
+      }
+    },
+    {
+      "seq": 32,
+      "at": "2026-10-21T03:17:11.579865Z",
+      "type": "node.verified",
+      "message": "loopback-cpu-worker verified: RPC0",
+      "data": {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c"
+      }
+    },
+    {
+      "seq": 33,
+      "at": "2026-10-21T03:17:29.340644Z",
+      "type": "deployment.state",
+      "message": "Deployment 359ae248: planned",
+      "data": {
+        "deployment_id": "359ae248ef4245f8a0e98142f5de78e7",
+        "state": "planned"
+      }
+    },
+    {
+      "seq": 34,
+      "at": "2026-10-21T03:17:29.342822Z",
+      "type": "deployment.state",
+      "message": "Deployment 359ae248: reserving",
+      "data": {
+        "deployment_id": "359ae248ef4245f8a0e98142f5de78e7",
+        "state": "reserving"
+      }
+    },
+    {
+      "seq": 35,
+      "at": "2026-10-21T03:17:29.345823Z",
+      "type": "deployment.state",
+      "message": "Deployment 359ae248: preparing (re-checking peers and model file)",
+      "data": {
+        "deployment_id": "359ae248ef4245f8a0e98142f5de78e7",
+        "state": "preparing"
+      }
+    },
+    {
+      "seq": 36,
+      "at": "2026-10-21T03:17:29.346820Z",
+      "type": "deployment.state",
+      "message": "Deployment 359ae248: loading (starting llama-server)",
+      "data": {
+        "deployment_id": "359ae248ef4245f8a0e98142f5de78e7",
+        "state": "loading"
+      }
+    },
+    {
+      "seq": 39,
+      "at": "2026-10-21T03:17:30.373324Z",
+      "type": "deployment.state",
+      "message": "Deployment 359ae248: warming (first request)",
+      "data": {
+        "deployment_id": "359ae248ef4245f8a0e98142f5de78e7",
+        "state": "warming"
+      }
+    },
+    {
+      "seq": 41,
+      "at": "2026-10-21T03:17:30.424871Z",
+      "type": "deployment.state",
+      "message": "Deployment 359ae248: ready (local-only deployment (no peers in the plan); CUDA0: model 374 MiB, KV 48 MiB, ~24 layers (planned 24))",
+      "data": {
+        "deployment_id": "359ae248ef4245f8a0e98142f5de78e7",
+        "state": "ready"
+      }
+    },
+    {
+      "seq": 53,
+      "at": "2026-10-21T03:17:35.158751Z",
+      "type": "deployment.state",
+      "message": "Deployment 359ae248: draining (stopped by owner)",
+      "data": {
+        "deployment_id": "359ae248ef4245f8a0e98142f5de78e7",
+        "state": "draining"
+      }
+    },
+    {
+      "seq": 54,
+      "at": "2026-10-21T03:17:35.342982Z",
+      "type": "deployment.state",
+      "message": "Deployment 359ae248: stopped (stopped by owner)",
+      "data": {
+        "deployment_id": "359ae248ef4245f8a0e98142f5de78e7",
+        "state": "stopped"
+      }
+    },
+    {
+      "seq": 55,
+      "at": "2026-10-21T03:17:35.959128Z",
+      "type": "deployment.state",
+      "message": "Deployment d72def0b: planned",
+      "data": {
+        "deployment_id": "d72def0b27a34deba4f80bf5a28da447",
+        "state": "planned"
+      }
+    },
+    {
+      "seq": 56,
+      "at": "2026-10-21T03:17:35.960135Z",
+      "type": "deployment.state",
+      "message": "Deployment d72def0b: reserving",
+      "data": {
+        "deployment_id": "d72def0b27a34deba4f80bf5a28da447",
+        "state": "reserving"
+      }
+    },
+    {
+      "seq": 57,
+      "at": "2026-10-21T03:17:35.964363Z",
+      "type": "deployment.state",
+      "message": "Deployment d72def0b: preparing (re-checking peers and model file)",
+      "data": {
+        "deployment_id": "d72def0b27a34deba4f80bf5a28da447",
+        "state": "preparing"
+      }
+    },
+    {
+      "seq": 58,
+      "at": "2026-10-21T03:17:36.210850Z",
+      "type": "deployment.state",
+      "message": "Deployment d72def0b: loading (starting llama-server)",
+      "data": {
+        "deployment_id": "d72def0b27a34deba4f80bf5a28da447",
+        "state": "loading"
+      }
+    },
+    {
+      "seq": 62,
+      "at": "2026-10-21T03:17:37.786479Z",
+      "type": "deployment.state",
+      "message": "Deployment d72def0b: warming (first request)",
+      "data": {
+        "deployment_id": "d72def0b27a34deba4f80bf5a28da447",
+        "state": "warming"
+      }
+    },
+    {
+      "seq": 64,
+      "at": "2026-10-21T03:17:37.861352Z",
+      "type": "deployment.state",
+      "message": "Deployment d72def0b: ready (CUDA0: model 178 MiB, KV 36 MiB, ~18 layers (planned 18); RPC0[172.18.63.230:47052]: model 196 MiB, KV 12 MiB, ~6 layers (planned 6))",
+      "data": {
+        "deployment_id": "d72def0b27a34deba4f80bf5a28da447",
+        "state": "ready"
+      }
+    },
+    {
+      "seq": 76,
+      "at": "2026-10-21T03:17:51.101218Z",
+      "type": "deployment.state",
+      "message": "Deployment d72def0b: draining (stopped by owner)",
+      "data": {
+        "deployment_id": "d72def0b27a34deba4f80bf5a28da447",
+        "state": "draining"
+      }
+    },
+    {
+      "seq": 77,
+      "at": "2026-10-21T03:17:51.236679Z",
+      "type": "deployment.state",
+      "message": "Deployment d72def0b: stopped (stopped by owner)",
+      "data": {
+        "deployment_id": "d72def0b27a34deba4f80bf5a28da447",
+        "state": "stopped"
+      }
+    },
+    {
+      "seq": 78,
+      "at": "2026-10-21T03:17:51.867414Z",
+      "type": "deployment.state",
+      "message": "Deployment ece93840: planned",
+      "data": {
+        "deployment_id": "ece93840636140ad9ef0c91874154902",
+        "state": "planned"
+      }
+    },
+    {
+      "seq": 79,
+      "at": "2026-10-21T03:17:51.870421Z",
+      "type": "deployment.state",
+      "message": "Deployment ece93840: reserving",
+      "data": {
+        "deployment_id": "ece93840636140ad9ef0c91874154902",
+        "state": "reserving"
+      }
+    },
+    {
+      "seq": 80,
+      "at": "2026-10-21T03:17:51.871420Z",
+      "type": "deployment.state",
+      "message": "Deployment ece93840: preparing (re-checking peers and model file)",
+      "data": {
+        "deployment_id": "ece93840636140ad9ef0c91874154902",
+        "state": "preparing"
+      }
+    },
+    {
+      "seq": 81,
+      "at": "2026-10-21T03:17:51.873819Z",
+      "type": "deployment.state",
+      "message": "Deployment ece93840: loading (starting llama-server)",
+      "data": {
+        "deployment_id": "ece93840636140ad9ef0c91874154902",
+        "state": "loading"
+      }
+    },
+    {
+      "seq": 86,
+      "at": "2026-10-21T03:17:55.072339Z",
+      "type": "deployment.state",
+      "message": "Deployment ece93840: warming (first request)",
+      "data": {
+        "deployment_id": "ece93840636140ad9ef0c91874154902",
+        "state": "warming"
+      }
+    },
+    {
+      "seq": 88,
+      "at": "2026-10-21T03:17:55.151136Z",
+      "type": "deployment.state",
+      "message": "Deployment ece93840: ready (local-only deployment (no peers in the plan); CUDA0: model 4168 MiB, KV 224 MiB, ~28 layers (planned 28))",
+      "data": {
+        "deployment_id": "ece93840636140ad9ef0c91874154902",
+        "state": "ready"
+      }
+    },
+    {
+      "seq": 100,
+      "at": "2026-10-21T03:18:11.450384Z",
+      "type": "deployment.state",
+      "message": "Deployment ece93840: draining (stopped by owner)",
+      "data": {
+        "deployment_id": "ece93840636140ad9ef0c91874154902",
+        "state": "draining"
+      }
+    },
+    {
+      "seq": 101,
+      "at": "2026-10-21T03:18:12.025103Z",
+      "type": "deployment.state",
+      "message": "Deployment ece93840: stopped (stopped by owner)",
+      "data": {
+        "deployment_id": "ece93840636140ad9ef0c91874154902",
+        "state": "stopped"
+      }
+    },
+    {
+      "seq": 102,
+      "at": "2026-10-21T03:18:12.641432Z",
+      "type": "deployment.state",
+      "message": "Deployment 1e34ded2: planned",
+      "data": {
+        "deployment_id": "1e34ded2f53f4a3bab71c347a907b585",
+        "state": "planned"
+      }
+    },
+    {
+      "seq": 103,
+      "at": "2026-10-21T03:18:12.643460Z",
+      "type": "deployment.state",
+      "message": "Deployment 1e34ded2: reserving",
+      "data": {
+        "deployment_id": "1e34ded2f53f4a3bab71c347a907b585",
+        "state": "reserving"
+      }
+    },
+    {
+      "seq": 104,
+      "at": "2026-10-21T03:18:12.645304Z",
+      "type": "deployment.state",
+      "message": "Deployment 1e34ded2: preparing (re-checking peers and model file)",
+      "data": {
+        "deployment_id": "1e34ded2f53f4a3bab71c347a907b585",
+        "state": "preparing"
+      }
+    },
+    {
+      "seq": 105,
+      "at": "2026-10-21T03:18:12.889881Z",
+      "type": "deployment.state",
+      "message": "Deployment 1e34ded2: loading (starting llama-server)",
+      "data": {
+        "deployment_id": "1e34ded2f53f4a3bab71c347a907b585",
+        "state": "loading"
+      }
+    },
+    {
+      "seq": 109,
+      "at": "2026-10-21T03:18:19.619633Z",
+      "type": "deployment.state",
+      "message": "Deployment 1e34ded2: warming (first request)",
+      "data": {
+        "deployment_id": "1e34ded2f53f4a3bab71c347a907b585",
+        "state": "warming"
+      }
+    },
+    {
+      "seq": 111,
+      "at": "2026-10-21T03:18:19.846675Z",
+      "type": "deployment.state",
+      "message": "Deployment 1e34ded2: ready (CUDA0: model 2513 MiB, KV 152 MiB, ~19 layers (planned 19); RPC0[172.18.63.230:47052]: model 1655 MiB, KV 72 MiB, ~9 layers (planned 9))",
+      "data": {
+        "deployment_id": "1e34ded2f53f4a3bab71c347a907b585",
+        "state": "ready"
+      }
+    },
+    {
+      "seq": 123,
+      "at": "2026-10-21T03:19:41.652426Z",
+      "type": "deployment.state",
+      "message": "Deployment 1e34ded2: draining (stopped by owner)",
+      "data": {
+        "deployment_id": "1e34ded2f53f4a3bab71c347a907b585",
+        "state": "draining"
+      }
+    },
+    {
+      "seq": 124,
+      "at": "2026-10-21T03:19:42.228425Z",
+      "type": "deployment.state",
+      "message": "Deployment 1e34ded2: stopped (stopped by owner)",
+      "data": {
+        "deployment_id": "1e34ded2f53f4a3bab71c347a907b585",
+        "state": "stopped"
+      }
+    },
+    {
+      "seq": 125,
+      "at": "2026-10-21T03:19:42.876480Z",
+      "type": "deployment.state",
+      "message": "Deployment 8aa22e57: planned",
+      "data": {
+        "deployment_id": "8aa22e57262b471e8b6b0b327cda2a23",
+        "state": "planned"
+      }
+    },
+    {
+      "seq": 126,
+      "at": "2026-10-21T03:19:42.878487Z",
+      "type": "deployment.state",
+      "message": "Deployment 8aa22e57: reserving",
+      "data": {
+        "deployment_id": "8aa22e57262b471e8b6b0b327cda2a23",
+        "state": "reserving"
+      }
+    },
+    {
+      "seq": 127,
+      "at": "2026-10-21T03:19:42.878487Z",
+      "type": "deployment.state",
+      "message": "Deployment 8aa22e57: preparing (re-checking peers and model file)",
+      "data": {
+        "deployment_id": "8aa22e57262b471e8b6b0b327cda2a23",
+        "state": "preparing"
+      }
+    },
+    {
+      "seq": 128,
+      "at": "2026-10-21T03:19:43.138090Z",
+      "type": "deployment.state",
+      "message": "Deployment 8aa22e57: loading (starting llama-server)",
+      "data": {
+        "deployment_id": "8aa22e57262b471e8b6b0b327cda2a23",
+        "state": "loading"
+      }
+    },
+    {
+      "seq": 133,
+      "at": "2026-10-21T03:19:50.461818Z",
+      "type": "deployment.state",
+      "message": "Deployment 8aa22e57: warming (first request)",
+      "data": {
+        "deployment_id": "8aa22e57262b471e8b6b0b327cda2a23",
+        "state": "warming"
+      }
+    },
+    {
+      "seq": 135,
+      "at": "2026-10-21T03:19:50.726279Z",
+      "type": "deployment.state",
+      "message": "Deployment 8aa22e57: ready (CUDA0: model 2246 MiB, KV 136 MiB, ~17 layers (planned 17); RPC0[172.18.63.230:47052]: model 1211 MiB, KV 72 MiB, ~9 layers (planned 9); RPC0[127.0.0.1:47052]: model 711 MiB, KV 16 MiB, ~2 layers (planned 2))",
+      "data": {
+        "deployment_id": "8aa22e57262b471e8b6b0b327cda2a23",
+        "state": "ready"
+      }
+    },
+    {
+      "seq": 147,
+      "at": "2026-10-21T03:21:55.748313Z",
+      "type": "deployment.state",
+      "message": "Deployment 8aa22e57: draining (stopped by owner)",
+      "data": {
+        "deployment_id": "8aa22e57262b471e8b6b0b327cda2a23",
+        "state": "draining"
+      }
+    },
+    {
+      "seq": 148,
+      "at": "2026-10-21T03:21:56.420707Z",
+      "type": "deployment.state",
+      "message": "Deployment 8aa22e57: stopped (stopped by owner)",
+      "data": {
+        "deployment_id": "8aa22e57262b471e8b6b0b327cda2a23",
+        "state": "stopped"
+      }
+    },
+    {
+      "seq": 149,
+      "at": "2026-10-21T03:24:21.277262Z",
+      "type": "node.state",
+      "message": "loopback-cpu-worker: left (contributor stopped sharing)",
+      "data": {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+        "state": "left"
+      }
+    },
+    {
+      "seq": 150,
+      "at": "2026-10-21T03:24:21.278264Z",
+      "type": "node.left",
+      "message": "loopback-cpu-worker: contributor stopped sharing",
+      "data": {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c"
+      }
+    },
+    {
+      "seq": 151,
+      "at": "2026-10-21T03:24:22.507896Z",
+      "type": "node.state",
+      "message": "wsl-ubuntu-cpu: left (contributor stopped sharing)",
+      "data": {
+        "node_id": "07118aa37e8646058734355ad5a7fd61",
+        "state": "left"
+      }
+    },
+    {
+      "seq": 152,
+      "at": "2026-10-21T03:24:22.508903Z",
+      "type": "node.left",
+      "message": "wsl-ubuntu-cpu: contributor stopped sharing",
+      "data": {
+        "node_id": "07118aa37e8646058734355ad5a7fd61"
+      }
+    },
+    {
+      "seq": 4,
+      "at": "2026-10-21T03:41:28.225270Z",
+      "type": "node.state",
+      "message": "friend-windows-cpu: eligible",
+      "data": {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+        "state": "eligible"
+      }
+    },
+    {
+      "seq": 5,
+      "at": "2026-10-21T03:41:28.226888Z",
+      "type": "node.verified",
+      "message": "friend-windows-cpu verified: RPC0",
+      "data": {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c"
+      }
+    },
+    {
+      "seq": 7,
+      "at": "2026-10-21T03:41:29.466193Z",
+      "type": "node.state",
+      "message": "friend-linux-vm: eligible",
+      "data": {
+        "node_id": "07118aa37e8646058734355ad5a7fd61",
+        "state": "eligible"
+      }
+    },
+    {
+      "seq": 8,
+      "at": "2026-10-21T03:41:29.467191Z",
+      "type": "node.verified",
+      "message": "friend-linux-vm verified: RPC0",
+      "data": {
+        "node_id": "07118aa37e8646058734355ad5a7fd61"
+      }
+    },
+    {
+      "seq": 10,
+      "at": "2026-10-21T03:41:49.549516Z",
+      "type": "deployment.state",
+      "message": "Deployment bd7667d3: planned",
+      "data": {
+        "deployment_id": "bd7667d3e3a24023a9b92cddd18485f6",
+        "state": "planned"
+      }
+    },
+    {
+      "seq": 11,
+      "at": "2026-10-21T03:41:49.553263Z",
+      "type": "deployment.state",
+      "message": "Deployment bd7667d3: reserving",
+      "data": {
+        "deployment_id": "bd7667d3e3a24023a9b92cddd18485f6",
+        "state": "reserving"
+      }
+    },
+    {
+      "seq": 12,
+      "at": "2026-10-21T03:41:49.553775Z",
+      "type": "deployment.state",
+      "message": "Deployment bd7667d3: preparing (re-checking peers and model file)",
+      "data": {
+        "deployment_id": "bd7667d3e3a24023a9b92cddd18485f6",
+        "state": "preparing"
+      }
+    },
+    {
+      "seq": 13,
+      "at": "2026-10-21T03:41:49.808451Z",
+      "type": "deployment.state",
+      "message": "Deployment bd7667d3: loading (starting llama-server)",
+      "data": {
+        "deployment_id": "bd7667d3e3a24023a9b92cddd18485f6",
+        "state": "loading"
+      }
+    },
+    {
+      "seq": 19,
+      "at": "2026-10-21T03:41:58.665996Z",
+      "type": "deployment.state",
+      "message": "Deployment bd7667d3: warming (first request)",
+      "data": {
+        "deployment_id": "bd7667d3e3a24023a9b92cddd18485f6",
+        "state": "warming"
+      }
+    },
+    {
+      "seq": 21,
+      "at": "2026-10-21T03:41:58.931802Z",
+      "type": "deployment.state",
+      "message": "Deployment bd7667d3: ready (CUDA0: model 2638 MiB, KV 160 MiB, ~20 layers (planned 20); RPC0[172.18.63.230:47052]: model 819 MiB, KV 48 MiB, ~6 layers (planned 6); RPC0[127.0.0.1:47052]: model 711 MiB, KV 16 MiB, ~2 layers (planned 2))",
+      "data": {
+        "deployment_id": "bd7667d3e3a24023a9b92cddd18485f6",
+        "state": "ready"
+      }
+    },
+    {
+      "seq": 23,
+      "at": "2026-10-21T03:43:10.250576Z",
+      "type": "deployment.state",
+      "message": "Deployment bd7667d3: draining (stopped by owner)",
+      "data": {
+        "deployment_id": "bd7667d3e3a24023a9b92cddd18485f6",
+        "state": "draining"
+      }
+    },
+    {
+      "seq": 24,
+      "at": "2026-10-21T03:43:10.814314Z",
+      "type": "deployment.state",
+      "message": "Deployment bd7667d3: stopped (stopped by owner)",
+      "data": {
+        "deployment_id": "bd7667d3e3a24023a9b92cddd18485f6",
+        "state": "stopped"
+      }
+    },
+    {
+      "seq": 26,
+      "at": "2026-10-21T03:43:10.905363Z",
+      "type": "node.state",
+      "message": "friend-windows-cpu: removed (removed by host)",
+      "data": {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+        "state": "removed"
+      }
+    },
+    {
+      "seq": 27,
+      "at": "2026-10-21T03:43:10.905363Z",
+      "type": "node.left",
+      "message": "friend-windows-cpu: removed by host",
+      "data": {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c"
+      }
+    },
+    {
+      "seq": 28,
+      "at": "2026-10-21T03:43:10.905363Z",
+      "type": "node.state",
+      "message": "friend-linux-vm: removed (removed by host)",
+      "data": {
+        "node_id": "07118aa37e8646058734355ad5a7fd61",
+        "state": "removed"
+      }
+    },
+    {
+      "seq": 29,
+      "at": "2026-10-21T03:43:10.905363Z",
+      "type": "node.left",
+      "message": "friend-linux-vm: removed by host",
+      "data": {
+        "node_id": "07118aa37e8646058734355ad5a7fd61"
+      }
+    },
+    {
+      "seq": 3,
+      "at": "2026-10-21T04:13:23.750275Z",
+      "type": "deployment.state",
+      "message": "Deployment 628928b4: planned",
+      "data": {
+        "deployment_id": "628928b48ab342c08e5d5d6776a556f1",
+        "state": "planned"
+      }
+    },
+    {
+      "seq": 4,
+      "at": "2026-10-21T04:13:23.751996Z",
+      "type": "deployment.state",
+      "message": "Deployment 628928b4: reserving",
+      "data": {
+        "deployment_id": "628928b48ab342c08e5d5d6776a556f1",
+        "state": "reserving"
+      }
+    },
+    {
+      "seq": 5,
+      "at": "2026-10-21T04:13:23.753509Z",
+      "type": "deployment.state",
+      "message": "Deployment 628928b4: preparing (re-checking peers and model file)",
+      "data": {
+        "deployment_id": "628928b48ab342c08e5d5d6776a556f1",
+        "state": "preparing"
+      }
+    },
+    {
+      "seq": 6,
+      "at": "2026-10-21T04:13:23.754519Z",
+      "type": "deployment.state",
+      "message": "Deployment 628928b4: loading (starting llama-server)",
+      "data": {
+        "deployment_id": "628928b48ab342c08e5d5d6776a556f1",
+        "state": "loading"
+      }
+    },
+    {
+      "seq": 9,
+      "at": "2026-10-21T04:13:25.331191Z",
+      "type": "deployment.state",
+      "message": "Deployment 628928b4: warming (first request)",
+      "data": {
+        "deployment_id": "628928b48ab342c08e5d5d6776a556f1",
+        "state": "warming"
+      }
+    },
+    {
+      "seq": 11,
+      "at": "2026-10-21T04:13:25.404536Z",
+      "type": "deployment.state",
+      "message": "Deployment 628928b4: ready (local-only deployment (no peers in the plan); CUDA0: model 374 MiB, KV 48 MiB, ~24 layers (planned 24))",
+      "data": {
+        "deployment_id": "628928b48ab342c08e5d5d6776a556f1",
+        "state": "ready"
+      }
+    },
+    {
+      "seq": 13,
+      "at": "2026-10-21T04:13:26.040243Z",
+      "type": "deployment.state",
+      "message": "Deployment 628928b4: draining (stopped by owner)",
+      "data": {
+        "deployment_id": "628928b48ab342c08e5d5d6776a556f1",
+        "state": "draining"
+      }
+    },
+    {
+      "seq": 14,
+      "at": "2026-10-21T04:13:26.174636Z",
+      "type": "deployment.state",
+      "message": "Deployment 628928b4: stopped (stopped by owner)",
+      "data": {
+        "deployment_id": "628928b48ab342c08e5d5d6776a556f1",
+        "state": "stopped"
+      }
+    },
+    {
+      "seq": 16,
+      "at": "2026-10-21T04:19:57.067919Z",
+      "type": "node.state",
+      "message": "Azims-MacBook-Air-5.local: eligible",
+      "data": {
+        "node_id": "4c2991743c154be896d10a0b53ba4d2b",
+        "state": "eligible"
+      }
+    },
+    {
+      "seq": 17,
+      "at": "2026-10-21T04:19:57.067919Z",
+      "type": "node.verified",
+      "message": "Azims-MacBook-Air-5.local verified: RPC0",
+      "data": {
+        "node_id": "4c2991743c154be896d10a0b53ba4d2b"
+      }
+    },
+    {
+      "seq": 19,
+      "at": "2026-10-21T04:24:46.946871Z",
+      "type": "deployment.state",
+      "message": "Deployment 725198fe: planned",
+      "data": {
+        "deployment_id": "725198feec7841178cd2d57a579245f4",
+        "state": "planned"
+      }
+    },
+    {
+      "seq": 20,
+      "at": "2026-10-21T04:24:46.947533Z",
+      "type": "deployment.state",
+      "message": "Deployment 725198fe: reserving",
+      "data": {
+        "deployment_id": "725198feec7841178cd2d57a579245f4",
+        "state": "reserving"
+      }
+    },
+    {
+      "seq": 21,
+      "at": "2026-10-21T04:24:46.951718Z",
+      "type": "deployment.state",
+      "message": "Deployment 725198fe: preparing (re-checking peers and model file)",
+      "data": {
+        "deployment_id": "725198feec7841178cd2d57a579245f4",
+        "state": "preparing"
+      }
+    },
+    {
+      "seq": 22,
+      "at": "2026-10-21T04:24:49.157186Z",
+      "type": "deployment.state",
+      "message": "Deployment 725198fe: loading (starting llama-server)",
+      "data": {
+        "deployment_id": "725198feec7841178cd2d57a579245f4",
+        "state": "loading"
+      }
+    },
+    {
+      "seq": 29,
+      "at": "2026-10-21T04:25:07.509034Z",
+      "type": "deployment.state",
+      "message": "Deployment 725198fe: warming (first request)",
+      "data": {
+        "deployment_id": "725198feec7841178cd2d57a579245f4",
+        "state": "warming"
+      }
+    },
+    {
+      "seq": 31,
+      "at": "2026-10-21T04:25:08.688710Z",
+      "type": "deployment.state",
+      "message": "Deployment 725198fe: ready (CUDA0: model 198 MiB, KV 20 MiB, ~20 layers (planned 20); RPC0[10.19.252.207:47052]: model 176 MiB, KV 4 MiB, ~4 layers (planned 4))",
+      "data": {
+        "deployment_id": "725198feec7841178cd2d57a579245f4",
+        "state": "ready"
+      }
+    },
+    {
+      "seq": 32,
+      "at": "2026-10-21T04:25:32.472260Z",
+      "type": "node.state",
+      "message": "Azims-MacBook-Air-5.local: stale (no heartbeat for 17s)",
+      "data": {
+        "node_id": "4c2991743c154be896d10a0b53ba4d2b",
+        "state": "stale"
+      }
+    },
+    {
+      "seq": 34,
+      "at": "2026-10-21T04:25:32.609903Z",
+      "type": "deployment.state",
+      "message": "Deployment 725198fe: failed (peer 4c299174 lost: no heartbeat for 17s)",
+      "data": {
+        "deployment_id": "725198feec7841178cd2d57a579245f4",
+        "state": "failed"
+      }
+    },
+    {
+      "seq": 39,
+      "at": "2026-10-21T04:32:19.915457Z",
+      "type": "node.state",
+      "message": "Azims-MacBook-Air-5.local: eligible",
+      "data": {
+        "node_id": "4c2991743c154be896d10a0b53ba4d2b",
+        "state": "eligible"
+      }
+    },
+    {
+      "seq": 40,
+      "at": "2026-10-21T04:32:19.915457Z",
+      "type": "node.verified",
+      "message": "Azims-MacBook-Air-5.local verified: RPC0",
+      "data": {
+        "node_id": "4c2991743c154be896d10a0b53ba4d2b"
+      }
+    },
+    {
+      "seq": 41,
+      "at": "2026-10-21T04:32:58.949937Z",
+      "type": "deployment.state",
+      "message": "Deployment c476506a: planned",
+      "data": {
+        "deployment_id": "c476506a674d4490b42c7a0a720da26b",
+        "state": "planned"
+      }
+    },
+    {
+      "seq": 42,
+      "at": "2026-10-21T04:32:58.950935Z",
+      "type": "deployment.state",
+      "message": "Deployment c476506a: reserving",
+      "data": {
+        "deployment_id": "c476506a674d4490b42c7a0a720da26b",
+        "state": "reserving"
+      }
+    },
+    {
+      "seq": 43,
+      "at": "2026-10-21T04:32:58.952443Z",
+      "type": "deployment.state",
+      "message": "Deployment c476506a: preparing (re-checking peers and model file)",
+      "data": {
+        "deployment_id": "c476506a674d4490b42c7a0a720da26b",
+        "state": "preparing"
+      }
+    },
+    {
+      "seq": 44,
+      "at": "2026-10-21T04:33:00.588307Z",
+      "type": "deployment.state",
+      "message": "Deployment c476506a: loading (starting llama-server)",
+      "data": {
+        "deployment_id": "c476506a674d4490b42c7a0a720da26b",
+        "state": "loading"
+      }
+    },
+    {
+      "seq": 51,
+      "at": "2026-10-21T04:34:36.560476Z",
+      "type": "deployment.state",
+      "message": "Deployment c476506a: warming (first request)",
+      "data": {
+        "deployment_id": "c476506a674d4490b42c7a0a720da26b",
+        "state": "warming"
+      }
+    },
+    {
+      "seq": 53,
+      "at": "2026-10-21T04:34:36.995265Z",
+      "type": "deployment.state",
+      "message": "Deployment c476506a: ready (CUDA0: model 9908 MiB, KV 736 MiB, ~46 layers (planned 46); RPC0[10.19.252.207:47052]: model 1040 MiB, KV 32 MiB, ~2 layers (planned 2))",
+      "data": {
+        "deployment_id": "c476506a674d4490b42c7a0a720da26b",
+        "state": "ready"
+      }
+    },
+    {
+      "seq": 56,
+      "at": "2026-10-21T04:39:23.935837Z",
+      "type": "deployment.state",
+      "message": "Deployment c476506a: draining (stopped by owner)",
+      "data": {
+        "deployment_id": "c476506a674d4490b42c7a0a720da26b",
+        "state": "draining"
+      }
+    },
+    {
+      "seq": 57,
+      "at": "2026-10-21T04:39:25.423960Z",
+      "type": "deployment.state",
+      "message": "Deployment c476506a: stopped (stopped by owner)",
+      "data": {
+        "deployment_id": "c476506a674d4490b42c7a0a720da26b",
+        "state": "stopped"
+      }
+    },
+    {
+      "seq": 1,
+      "at": "2026-10-21T04:41:36.754939Z",
+      "type": "gateway.startup",
+      "message": "Azims-MacBook-Air-5.local: awaiting heartbeat after restart",
+      "data": {}
+    },
+    {
+      "seq": 3,
+      "at": "2026-10-21T04:41:39.375379Z",
+      "type": "node.state",
+      "message": "Azims-MacBook-Air-5.local: verifying (heartbeat resumed; re-checking worker)",
+      "data": {
+        "node_id": "4c2991743c154be896d10a0b53ba4d2b",
+        "state": "verifying"
+      }
+    },
+    {
+      "seq": 4,
+      "at": "2026-10-21T04:41:40.804494Z",
+      "type": "node.state",
+      "message": "Azims-MacBook-Air-5.local: eligible",
+      "data": {
+        "node_id": "4c2991743c154be896d10a0b53ba4d2b",
+        "state": "eligible"
+      }
+    },
+    {
+      "seq": 5,
+      "at": "2026-10-21T04:41:40.806598Z",
+      "type": "node.verified",
+      "message": "Azims-MacBook-Air-5.local verified: RPC0",
+      "data": {
+        "node_id": "4c2991743c154be896d10a0b53ba4d2b"
+      }
+    },
+    {
+      "seq": 1,
+      "at": "2026-10-21T04:43:33.530290Z",
+      "type": "gateway.startup",
+      "message": "Azims-MacBook-Air-5.local: awaiting heartbeat after restart",
+      "data": {}
+    },
+    {
+      "seq": 2,
+      "at": "2026-10-21T04:43:37.470201Z",
+      "type": "node.state",
+      "message": "Azims-MacBook-Air-5.local: verifying (heartbeat resumed; re-checking worker)",
+      "data": {
+        "node_id": "4c2991743c154be896d10a0b53ba4d2b",
+        "state": "verifying"
+      }
+    },
+    {
+      "seq": 3,
+      "at": "2026-10-21T04:43:39.064604Z",
+      "type": "node.state",
+      "message": "Azims-MacBook-Air-5.local: eligible",
+      "data": {
+        "node_id": "4c2991743c154be896d10a0b53ba4d2b",
+        "state": "eligible"
+      }
+    },
+    {
+      "seq": 4,
+      "at": "2026-10-21T04:43:39.064604Z",
+      "type": "node.verified",
+      "message": "Azims-MacBook-Air-5.local verified: RPC0",
+      "data": {
+        "node_id": "4c2991743c154be896d10a0b53ba4d2b"
+      }
+    },
+    {
+      "seq": 7,
+      "at": "2026-10-21T04:52:14.289527Z",
+      "type": "deployment.state",
+      "message": "Deployment 865929b9: planned",
+      "data": {
+        "deployment_id": "865929b98bb1468fb5f52c8ab2ce6f4c",
+        "state": "planned"
+      }
+    },
+    {
+      "seq": 8,
+      "at": "2026-10-21T04:52:14.290530Z",
+      "type": "deployment.state",
+      "message": "Deployment 865929b9: reserving",
+      "data": {
+        "deployment_id": "865929b98bb1468fb5f52c8ab2ce6f4c",
+        "state": "reserving"
+      }
+    },
+    {
+      "seq": 9,
+      "at": "2026-10-21T04:52:14.291526Z",
+      "type": "deployment.state",
+      "message": "Deployment 865929b9: preparing (re-checking peers and model file)",
+      "data": {
+        "deployment_id": "865929b98bb1468fb5f52c8ab2ce6f4c",
+        "state": "preparing"
+      }
+    },
+    {
+      "seq": 10,
+      "at": "2026-10-21T04:52:16.033518Z",
+      "type": "deployment.state",
+      "message": "Deployment 865929b9: loading (starting llama-server)",
+      "data": {
+        "deployment_id": "865929b98bb1468fb5f52c8ab2ce6f4c",
+        "state": "loading"
+      }
+    },
+    {
+      "seq": 17,
+      "at": "2026-10-21T04:55:07.954437Z",
+      "type": "deployment.state",
+      "message": "Deployment 865929b9: warming (first request)",
+      "data": {
+        "deployment_id": "865929b98bb1468fb5f52c8ab2ce6f4c",
+        "state": "warming"
+      }
+    },
+    {
+      "seq": 19,
+      "at": "2026-10-21T04:55:10.679205Z",
+      "type": "deployment.state",
+      "message": "Deployment 865929b9: ready (CUDA0: model 10137 MiB, KV 512 MiB, ~32 layers (planned 32); RPC0[10.19.252.207:47052]: model 3166 MiB, KV 128 MiB, ~8 layers (planned 8))",
+      "data": {
+        "deployment_id": "865929b98bb1468fb5f52c8ab2ce6f4c",
+        "state": "ready"
+      }
+    },
+    {
+      "seq": 1,
+      "at": "2026-10-21T10:38:34.093041Z",
+      "type": "gateway.startup",
+      "message": "deployment:865929b98bb1468fb5f52c8ab2ce6f4c: pid 68572 no longer running",
+      "data": {}
+    },
+    {
+      "seq": 2,
+      "at": "2026-10-21T10:38:34.095208Z",
+      "type": "gateway.startup",
+      "message": "deployment 865929b9 marked failed after restart",
+      "data": {}
+    },
+    {
+      "seq": 3,
+      "at": "2026-10-21T10:38:34.095208Z",
+      "type": "gateway.startup",
+      "message": "released 2 stale lease(s)",
+      "data": {}
+    },
+    {
+      "seq": 4,
+      "at": "2026-10-21T10:38:34.095208Z",
+      "type": "gateway.startup",
+      "message": "Azims-MacBook-Air-5.local: awaiting heartbeat after restart",
+      "data": {}
+    },
+    {
+      "seq": 5,
+      "at": "2026-10-21T10:38:44.083747Z",
+      "type": "deployment.state",
+      "message": "Deployment 9a4147cc: planned",
+      "data": {
+        "deployment_id": "9a4147ccc4b54b5b91d93b0ddc620fbd",
+        "state": "planned"
+      }
+    },
+    {
+      "seq": 6,
+      "at": "2026-10-21T10:38:44.083747Z",
+      "type": "deployment.state",
+      "message": "Deployment 9a4147cc: reserving",
+      "data": {
+        "deployment_id": "9a4147ccc4b54b5b91d93b0ddc620fbd",
+        "state": "reserving"
+      }
+    },
+    {
+      "seq": 7,
+      "at": "2026-10-21T10:38:44.092131Z",
+      "type": "deployment.state",
+      "message": "Deployment 9a4147cc: preparing (re-checking peers and model file)",
+      "data": {
+        "deployment_id": "9a4147ccc4b54b5b91d93b0ddc620fbd",
+        "state": "preparing"
+      }
+    },
+    {
+      "seq": 8,
+      "at": "2026-10-21T10:38:44.092131Z",
+      "type": "deployment.state",
+      "message": "Deployment 9a4147cc: loading (starting llama-server)",
+      "data": {
+        "deployment_id": "9a4147ccc4b54b5b91d93b0ddc620fbd",
+        "state": "loading"
+      }
+    },
+    {
+      "seq": 12,
+      "at": "2026-10-21T10:38:48.159886Z",
+      "type": "deployment.state",
+      "message": "Deployment 9a4147cc: warming (first request)",
+      "data": {
+        "deployment_id": "9a4147ccc4b54b5b91d93b0ddc620fbd",
+        "state": "warming"
+      }
+    },
+    {
+      "seq": 14,
+      "at": "2026-10-21T10:38:48.218468Z",
+      "type": "deployment.state",
+      "message": "Deployment 9a4147cc: ready (local-only deployment (no peers in the plan); CUDA0: model 4168 MiB, KV 224 MiB, ~28 layers (planned 28))",
+      "data": {
+        "deployment_id": "9a4147ccc4b54b5b91d93b0ddc620fbd",
+        "state": "ready"
+      }
+    },
+    {
+      "seq": 26,
+      "at": "2026-10-21T10:39:04.143576Z",
+      "type": "deployment.state",
+      "message": "Deployment 9a4147cc: draining (stopped by owner)",
+      "data": {
+        "deployment_id": "9a4147ccc4b54b5b91d93b0ddc620fbd",
+        "state": "draining"
+      }
+    },
+    {
+      "seq": 27,
+      "at": "2026-10-21T10:39:04.676373Z",
+      "type": "deployment.state",
+      "message": "Deployment 9a4147cc: stopped (stopped by owner)",
+      "data": {
+        "deployment_id": "9a4147ccc4b54b5b91d93b0ddc620fbd",
+        "state": "stopped"
+      }
+    },
+    {
+      "seq": 28,
+      "at": "2026-10-21T10:39:11.773104Z",
+      "type": "deployment.state",
+      "message": "Deployment 6701f8eb: planned",
+      "data": {
+        "deployment_id": "6701f8ebb9434c84a2dba805090c80a1",
+        "state": "planned"
+      }
+    },
+    {
+      "seq": 29,
+      "at": "2026-10-21T10:39:11.774103Z",
+      "type": "deployment.state",
+      "message": "Deployment 6701f8eb: reserving",
+      "data": {
+        "deployment_id": "6701f8ebb9434c84a2dba805090c80a1",
+        "state": "reserving"
+      }
+    },
+    {
+      "seq": 30,
+      "at": "2026-10-21T10:39:11.776102Z",
+      "type": "deployment.state",
+      "message": "Deployment 6701f8eb: preparing (re-checking peers and model file)",
+      "data": {
+        "deployment_id": "6701f8ebb9434c84a2dba805090c80a1",
+        "state": "preparing"
+      }
+    },
+    {
+      "seq": 31,
+      "at": "2026-10-21T10:39:11.777102Z",
+      "type": "deployment.state",
+      "message": "Deployment 6701f8eb: loading (starting llama-server)",
+      "data": {
+        "deployment_id": "6701f8ebb9434c84a2dba805090c80a1",
+        "state": "loading"
+      }
+    },
+    {
+      "seq": 37,
+      "at": "2026-10-21T10:39:19.657592Z",
+      "type": "deployment.state",
+      "message": "Deployment 6701f8eb: warming (first request)",
+      "data": {
+        "deployment_id": "6701f8ebb9434c84a2dba805090c80a1",
+        "state": "warming"
+      }
+    },
+    {
+      "seq": 39,
+      "at": "2026-10-21T10:39:19.843851Z",
+      "type": "deployment.state",
+      "message": "Deployment 6701f8eb: ready (local-only deployment (no peers in the plan); CPU: model 0 MiB, KV 64 MiB, ~4 layers (planned 4); CUDA0: model 10087 MiB, KV 704 MiB, ~44 layers (planned 44))",
+      "data": {
+        "deployment_id": "6701f8ebb9434c84a2dba805090c80a1",
+        "state": "ready"
+      }
+    },
+    {
+      "seq": 51,
+      "at": "2026-10-21T10:40:12.990506Z",
+      "type": "deployment.state",
+      "message": "Deployment 6701f8eb: draining (stopped by owner)",
+      "data": {
+        "deployment_id": "6701f8ebb9434c84a2dba805090c80a1",
+        "state": "draining"
+      }
+    },
+    {
+      "seq": 52,
+      "at": "2026-10-21T10:40:14.346330Z",
+      "type": "deployment.state",
+      "message": "Deployment 6701f8eb: stopped (stopped by owner)",
+      "data": {
+        "deployment_id": "6701f8ebb9434c84a2dba805090c80a1",
+        "state": "stopped"
+      }
+    },
+    {
+      "seq": 55,
+      "at": "2026-10-21T10:42:00.654589Z",
+      "type": "node.state",
+      "message": "loopback-cpu-worker: eligible",
+      "data": {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+        "state": "eligible"
+      }
+    },
+    {
+      "seq": 56,
+      "at": "2026-10-21T10:42:00.654589Z",
+      "type": "node.verified",
+      "message": "loopback-cpu-worker verified: RPC0",
+      "data": {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c"
+      }
+    },
+    {
+      "seq": 57,
+      "at": "2026-10-21T10:42:12.339228Z",
+      "type": "deployment.state",
+      "message": "Deployment 2ea4e1b9: planned",
+      "data": {
+        "deployment_id": "2ea4e1b928a341d4b7bdc3a175a22328",
+        "state": "planned"
+      }
+    },
+    {
+      "seq": 58,
+      "at": "2026-10-21T10:42:12.339228Z",
+      "type": "deployment.state",
+      "message": "Deployment 2ea4e1b9: reserving",
+      "data": {
+        "deployment_id": "2ea4e1b928a341d4b7bdc3a175a22328",
+        "state": "reserving"
+      }
+    },
+    {
+      "seq": 59,
+      "at": "2026-10-21T10:42:12.339228Z",
+      "type": "deployment.state",
+      "message": "Deployment 2ea4e1b9: preparing (re-checking peers and model file)",
+      "data": {
+        "deployment_id": "2ea4e1b928a341d4b7bdc3a175a22328",
+        "state": "preparing"
+      }
+    },
+    {
+      "seq": 60,
+      "at": "2026-10-21T10:42:13.387265Z",
+      "type": "deployment.state",
+      "message": "Deployment 2ea4e1b9: loading (starting llama-server)",
+      "data": {
+        "deployment_id": "2ea4e1b928a341d4b7bdc3a175a22328",
+        "state": "loading"
+      }
+    },
+    {
+      "seq": 63,
+      "at": "2026-10-21T10:42:14.441615Z",
+      "type": "deployment.state",
+      "message": "Deployment 2ea4e1b9: warming (first request)",
+      "data": {
+        "deployment_id": "2ea4e1b928a341d4b7bdc3a175a22328",
+        "state": "warming"
+      }
+    },
+    {
+      "seq": 65,
+      "at": "2026-10-21T10:42:14.524069Z",
+      "type": "deployment.state",
+      "message": "Deployment 2ea4e1b9: ready (RPC0[127.0.0.1:47052]: model 10 MiB, KV 2 MiB, ~1 layers (planned 1); CUDA0: model 363 MiB, KV 46 MiB, ~23 layers (planned 23))",
+      "data": {
+        "deployment_id": "2ea4e1b928a341d4b7bdc3a175a22328",
+        "state": "ready"
+      }
+    },
+    {
+      "seq": 67,
+      "at": "2026-10-21T10:42:15.352697Z",
+      "type": "deployment.state",
+      "message": "Deployment 2ea4e1b9: draining (stopped by owner)",
+      "data": {
+        "deployment_id": "2ea4e1b928a341d4b7bdc3a175a22328",
+        "state": "draining"
+      }
+    },
+    {
+      "seq": 68,
+      "at": "2026-10-21T10:42:15.522794Z",
+      "type": "deployment.state",
+      "message": "Deployment 2ea4e1b9: stopped (stopped by owner)",
+      "data": {
+        "deployment_id": "2ea4e1b928a341d4b7bdc3a175a22328",
+        "state": "stopped"
+      }
+    },
+    {
+      "seq": 71,
+      "at": "2026-10-21T10:42:26.886809Z",
+      "type": "deployment.state",
+      "message": "Deployment de84b74c: planned",
+      "data": {
+        "deployment_id": "de84b74cdeb241e792498b23ba3d9951",
+        "state": "planned"
+      }
+    },
+    {
+      "seq": 72,
+      "at": "2026-10-21T10:42:26.886809Z",
+      "type": "deployment.state",
+      "message": "Deployment de84b74c: reserving",
+      "data": {
+        "deployment_id": "de84b74cdeb241e792498b23ba3d9951",
+        "state": "reserving"
+      }
+    },
+    {
+      "seq": 73,
+      "at": "2026-10-21T10:42:26.902852Z",
+      "type": "deployment.state",
+      "message": "Deployment de84b74c: preparing (re-checking peers and model file)",
+      "data": {
+        "deployment_id": "de84b74cdeb241e792498b23ba3d9951",
+        "state": "preparing"
+      }
+    },
+    {
+      "seq": 74,
+      "at": "2026-10-21T10:42:26.902852Z",
+      "type": "deployment.state",
+      "message": "Deployment de84b74c: loading (starting llama-server)",
+      "data": {
+        "deployment_id": "de84b74cdeb241e792498b23ba3d9951",
+        "state": "loading"
+      }
+    },
+    {
+      "seq": 79,
+      "at": "2026-10-21T10:42:33.052459Z",
+      "type": "deployment.state",
+      "message": "Deployment de84b74c: warming (first request)",
+      "data": {
+        "deployment_id": "de84b74cdeb241e792498b23ba3d9951",
+        "state": "warming"
+      }
+    },
+    {
+      "seq": 81,
+      "at": "2026-10-21T10:42:33.254712Z",
+      "type": "deployment.state",
+      "message": "Deployment de84b74c: ready (local-only deployment (no peers in the plan); CPU: model 0 MiB, KV 64 MiB, ~4 layers (planned 4); CUDA0: model 10087 MiB, KV 704 MiB, ~44 layers (planned 44))",
+      "data": {
+        "deployment_id": "de84b74cdeb241e792498b23ba3d9951",
+        "state": "ready"
+      }
+    },
+    {
+      "seq": 86,
+      "at": "2026-10-21T10:42:37.964768Z",
+      "type": "deployment.state",
+      "message": "Deployment de84b74c: draining (tuning: candidate finished)",
+      "data": {
+        "deployment_id": "de84b74cdeb241e792498b23ba3d9951",
+        "state": "draining"
+      }
+    },
+    {
+      "seq": 87,
+      "at": "2026-10-21T10:42:39.367586Z",
+      "type": "deployment.state",
+      "message": "Deployment de84b74c: stopped (tuning: candidate finished)",
+      "data": {
+        "deployment_id": "de84b74cdeb241e792498b23ba3d9951",
+        "state": "stopped"
+      }
+    },
+    {
+      "seq": 89,
+      "at": "2026-10-21T10:42:39.378078Z",
+      "type": "deployment.state",
+      "message": "Deployment b88f4d30: planned",
+      "data": {
+        "deployment_id": "b88f4d3047c44508854c7272e15f1cd5",
+        "state": "planned"
+      }
+    },
+    {
+      "seq": 90,
+      "at": "2026-10-21T10:42:39.378078Z",
+      "type": "deployment.state",
+      "message": "Deployment b88f4d30: reserving",
+      "data": {
+        "deployment_id": "b88f4d3047c44508854c7272e15f1cd5",
+        "state": "reserving"
+      }
+    },
+    {
+      "seq": 91,
+      "at": "2026-10-21T10:42:39.378078Z",
+      "type": "deployment.state",
+      "message": "Deployment b88f4d30: preparing (re-checking peers and model file)",
+      "data": {
+        "deployment_id": "b88f4d3047c44508854c7272e15f1cd5",
+        "state": "preparing"
+      }
+    },
+    {
+      "seq": 92,
+      "at": "2026-10-21T10:42:39.378078Z",
+      "type": "deployment.state",
+      "message": "Deployment b88f4d30: loading (starting llama-server)",
+      "data": {
+        "deployment_id": "b88f4d3047c44508854c7272e15f1cd5",
+        "state": "loading"
+      }
+    },
+    {
+      "seq": 97,
+      "at": "2026-10-21T10:42:45.551399Z",
+      "type": "deployment.state",
+      "message": "Deployment b88f4d30: warming (first request)",
+      "data": {
+        "deployment_id": "b88f4d3047c44508854c7272e15f1cd5",
+        "state": "warming"
+      }
+    },
+    {
+      "seq": 99,
+      "at": "2026-10-21T10:42:45.734272Z",
+      "type": "deployment.state",
+      "message": "Deployment b88f4d30: ready (local-only deployment (no peers in the plan); CPU: model 0 MiB, KV 64 MiB, ~4 layers (planned 4); CUDA0: model 10087 MiB, KV 704 MiB, ~44 layers (planned 44))",
+      "data": {
+        "deployment_id": "b88f4d3047c44508854c7272e15f1cd5",
+        "state": "ready"
+      }
+    },
+    {
+      "seq": 104,
+      "at": "2026-10-21T10:42:50.328011Z",
+      "type": "deployment.state",
+      "message": "Deployment b88f4d30: draining (tuning: candidate finished)",
+      "data": {
+        "deployment_id": "b88f4d3047c44508854c7272e15f1cd5",
+        "state": "draining"
+      }
+    },
+    {
+      "seq": 105,
+      "at": "2026-10-21T10:42:51.688262Z",
+      "type": "deployment.state",
+      "message": "Deployment b88f4d30: stopped (tuning: candidate finished)",
+      "data": {
+        "deployment_id": "b88f4d3047c44508854c7272e15f1cd5",
+        "state": "stopped"
+      }
+    },
+    {
+      "seq": 107,
+      "at": "2026-10-21T10:42:51.688262Z",
+      "type": "deployment.state",
+      "message": "Deployment c9062b2e: planned",
+      "data": {
+        "deployment_id": "c9062b2e0cae4f66a533d06a7cd7f02e",
+        "state": "planned"
+      }
+    },
+    {
+      "seq": 108,
+      "at": "2026-10-21T10:42:51.696510Z",
+      "type": "deployment.state",
+      "message": "Deployment c9062b2e: reserving",
+      "data": {
+        "deployment_id": "c9062b2e0cae4f66a533d06a7cd7f02e",
+        "state": "reserving"
+      }
+    },
+    {
+      "seq": 109,
+      "at": "2026-10-21T10:42:51.696510Z",
+      "type": "deployment.state",
+      "message": "Deployment c9062b2e: preparing (re-checking peers and model file)",
+      "data": {
+        "deployment_id": "c9062b2e0cae4f66a533d06a7cd7f02e",
+        "state": "preparing"
+      }
+    },
+    {
+      "seq": 110,
+      "at": "2026-10-21T10:42:52.689309Z",
+      "type": "deployment.state",
+      "message": "Deployment c9062b2e: loading (starting llama-server)",
+      "data": {
+        "deployment_id": "c9062b2e0cae4f66a533d06a7cd7f02e",
+        "state": "loading"
+      }
+    },
+    {
+      "seq": 115,
+      "at": "2026-10-21T10:42:59.805990Z",
+      "type": "deployment.state",
+      "message": "Deployment c9062b2e: warming (first request)",
+      "data": {
+        "deployment_id": "c9062b2e0cae4f66a533d06a7cd7f02e",
+        "state": "warming"
+      }
+    },
+    {
+      "seq": 117,
+      "at": "2026-10-21T10:43:00.033134Z",
+      "type": "deployment.state",
+      "message": "Deployment c9062b2e: ready (RPC0[127.0.0.1:47052]: model 862 MiB, KV 64 MiB, ~4 layers (planned 4); CUDA0: model 10087 MiB, KV 704 MiB, ~44 layers (planned 44))",
+      "data": {
+        "deployment_id": "c9062b2e0cae4f66a533d06a7cd7f02e",
+        "state": "ready"
+      }
+    },
+    {
+      "seq": 122,
+      "at": "2026-10-21T10:43:06.123710Z",
+      "type": "deployment.state",
+      "message": "Deployment c9062b2e: draining (tuning: candidate finished)",
+      "data": {
+        "deployment_id": "c9062b2e0cae4f66a533d06a7cd7f02e",
+        "state": "draining"
+      }
+    },
+    {
+      "seq": 123,
+      "at": "2026-10-21T10:43:07.589764Z",
+      "type": "deployment.state",
+      "message": "Deployment c9062b2e: stopped (tuning: candidate finished)",
+      "data": {
+        "deployment_id": "c9062b2e0cae4f66a533d06a7cd7f02e",
+        "state": "stopped"
+      }
+    },
+    {
+      "seq": 125,
+      "at": "2026-10-21T10:43:07.606605Z",
+      "type": "deployment.state",
+      "message": "Deployment 40ccffd5: planned",
+      "data": {
+        "deployment_id": "40ccffd559a6401f82aa404698ae4362",
+        "state": "planned"
+      }
+    },
+    {
+      "seq": 126,
+      "at": "2026-10-21T10:43:07.608590Z",
+      "type": "deployment.state",
+      "message": "Deployment 40ccffd5: reserving",
+      "data": {
+        "deployment_id": "40ccffd559a6401f82aa404698ae4362",
+        "state": "reserving"
+      }
+    },
+    {
+      "seq": 127,
+      "at": "2026-10-21T10:43:07.608590Z",
+      "type": "deployment.state",
+      "message": "Deployment 40ccffd5: preparing (re-checking peers and model file)",
+      "data": {
+        "deployment_id": "40ccffd559a6401f82aa404698ae4362",
+        "state": "preparing"
+      }
+    },
+    {
+      "seq": 128,
+      "at": "2026-10-21T10:43:07.616777Z",
+      "type": "deployment.state",
+      "message": "Deployment 40ccffd5: loading (starting llama-server)",
+      "data": {
+        "deployment_id": "40ccffd559a6401f82aa404698ae4362",
+        "state": "loading"
+      }
+    },
+    {
+      "seq": 134,
+      "at": "2026-10-21T10:43:13.833912Z",
+      "type": "deployment.state",
+      "message": "Deployment 40ccffd5: warming (first request)",
+      "data": {
+        "deployment_id": "40ccffd559a6401f82aa404698ae4362",
+        "state": "warming"
+      }
+    },
+    {
+      "seq": 136,
+      "at": "2026-10-21T10:43:14.261823Z",
+      "type": "deployment.state",
+      "message": "Deployment 40ccffd5: ready (local-only deployment (no peers in the plan); CPU: model 0 MiB, KV 64 MiB, ~4 layers (planned 4); CUDA0: model 10087 MiB, KV 704 MiB, ~44 layers (planned 44))",
+      "data": {
+        "deployment_id": "40ccffd559a6401f82aa404698ae4362",
+        "state": "ready"
+      }
+    },
+    {
+      "seq": 141,
+      "at": "2026-10-21T10:43:20.005701Z",
+      "type": "deployment.state",
+      "message": "Deployment 40ccffd5: draining (tuning: candidate finished)",
+      "data": {
+        "deployment_id": "40ccffd559a6401f82aa404698ae4362",
+        "state": "draining"
+      }
+    },
+    {
+      "seq": 142,
+      "at": "2026-10-21T10:43:21.380329Z",
+      "type": "deployment.state",
+      "message": "Deployment 40ccffd5: stopped (tuning: candidate finished)",
+      "data": {
+        "deployment_id": "40ccffd559a6401f82aa404698ae4362",
+        "state": "stopped"
+      }
+    },
+    {
+      "seq": 144,
+      "at": "2026-10-21T10:43:41.830795Z",
+      "type": "deployment.state",
+      "message": "Deployment e8005e3c: planned",
+      "data": {
+        "deployment_id": "e8005e3cec9c44c0af0f7d27053280de",
+        "state": "planned"
+      }
+    },
+    {
+      "seq": 145,
+      "at": "2026-10-21T10:43:41.830795Z",
+      "type": "deployment.state",
+      "message": "Deployment e8005e3c: reserving",
+      "data": {
+        "deployment_id": "e8005e3cec9c44c0af0f7d27053280de",
+        "state": "reserving"
+      }
+    },
+    {
+      "seq": 146,
+      "at": "2026-10-21T10:43:41.830795Z",
+      "type": "deployment.state",
+      "message": "Deployment e8005e3c: preparing (re-checking peers and model file)",
+      "data": {
+        "deployment_id": "e8005e3cec9c44c0af0f7d27053280de",
+        "state": "preparing"
+      }
+    },
+    {
+      "seq": 147,
+      "at": "2026-10-21T10:43:42.786899Z",
+      "type": "deployment.state",
+      "message": "Deployment e8005e3c: loading (starting llama-server)",
+      "data": {
+        "deployment_id": "e8005e3cec9c44c0af0f7d27053280de",
+        "state": "loading"
+      }
+    },
+    {
+      "seq": 150,
+      "at": "2026-10-21T10:43:43.832135Z",
+      "type": "deployment.state",
+      "message": "Deployment e8005e3c: warming (first request)",
+      "data": {
+        "deployment_id": "e8005e3cec9c44c0af0f7d27053280de",
+        "state": "warming"
+      }
+    },
+    {
+      "seq": 152,
+      "at": "2026-10-21T10:43:43.918072Z",
+      "type": "deployment.state",
+      "message": "Deployment e8005e3c: ready (RPC0[127.0.0.1:47052]: model 10 MiB, KV 2 MiB, ~1 layers (planned 1); CUDA0: model 363 MiB, KV 46 MiB, ~23 layers (planned 23))",
+      "data": {
+        "deployment_id": "e8005e3cec9c44c0af0f7d27053280de",
+        "state": "ready"
+      }
+    },
+    {
+      "seq": 154,
+      "at": "2026-10-21T10:44:02.663212Z",
+      "type": "node.state",
+      "message": "loopback-cpu-worker: stale (no heartbeat for 17s)",
+      "data": {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+        "state": "stale"
+      }
+    },
+    {
+      "seq": 155,
+      "at": "2026-10-21T10:44:02.792655Z",
+      "type": "deployment.state",
+      "message": "Deployment e8005e3c: failed (peer 8f169e35 lost: no heartbeat for 17s)",
+      "data": {
+        "deployment_id": "e8005e3cec9c44c0af0f7d27053280de",
+        "state": "failed"
+      }
+    },
+    {
+      "seq": 156,
+      "at": "2026-10-21T10:44:17.169425Z",
+      "type": "node.state",
+      "message": "loopback-cpu-worker: left (contributor stopped sharing)",
+      "data": {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+        "state": "left"
+      }
+    },
+    {
+      "seq": 157,
+      "at": "2026-10-21T10:44:17.169425Z",
+      "type": "node.left",
+      "message": "loopback-cpu-worker: contributor stopped sharing",
+      "data": {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c"
+      }
+    },
+    {
+      "seq": 160,
+      "at": "2026-10-21T10:44:27.834137Z",
+      "type": "node.state",
+      "message": "loopback-cpu-worker: eligible",
+      "data": {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+        "state": "eligible"
+      }
+    },
+    {
+      "seq": 161,
+      "at": "2026-10-21T10:44:27.834137Z",
+      "type": "node.verified",
+      "message": "loopback-cpu-worker verified: RPC0",
+      "data": {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c"
+      }
+    },
+    {
+      "seq": 162,
+      "at": "2026-10-21T10:44:29.415059Z",
+      "type": "deployment.state",
+      "message": "Deployment d29410fd: planned",
+      "data": {
+        "deployment_id": "d29410fd6ce34945a524c8a128d821db",
+        "state": "planned"
+      }
+    },
+    {
+      "seq": 163,
+      "at": "2026-10-21T10:44:29.415059Z",
+      "type": "deployment.state",
+      "message": "Deployment d29410fd: reserving",
+      "data": {
+        "deployment_id": "d29410fd6ce34945a524c8a128d821db",
+        "state": "reserving"
+      }
+    },
+    {
+      "seq": 164,
+      "at": "2026-10-21T10:44:29.422870Z",
+      "type": "deployment.state",
+      "message": "Deployment d29410fd: preparing (re-checking peers and model file)",
+      "data": {
+        "deployment_id": "d29410fd6ce34945a524c8a128d821db",
+        "state": "preparing"
+      }
+    },
+    {
+      "seq": 165,
+      "at": "2026-10-21T10:44:30.353852Z",
+      "type": "deployment.state",
+      "message": "Deployment d29410fd: loading (starting llama-server)",
+      "data": {
+        "deployment_id": "d29410fd6ce34945a524c8a128d821db",
+        "state": "loading"
+      }
+    },
+    {
+      "seq": 168,
+      "at": "2026-10-21T10:44:31.442160Z",
+      "type": "deployment.state",
+      "message": "Deployment d29410fd: warming (first request)",
+      "data": {
+        "deployment_id": "d29410fd6ce34945a524c8a128d821db",
+        "state": "warming"
+      }
+    },
+    {
+      "seq": 170,
+      "at": "2026-10-21T10:44:31.511298Z",
+      "type": "deployment.state",
+      "message": "Deployment d29410fd: ready (RPC0[127.0.0.1:47052]: model 10 MiB, KV 2 MiB, ~1 layers (planned 1); CUDA0: model 363 MiB, KV 46 MiB, ~23 layers (planned 23))",
+      "data": {
+        "deployment_id": "d29410fd6ce34945a524c8a128d821db",
+        "state": "ready"
+      }
+    },
+    {
+      "seq": 172,
+      "at": "2026-10-21T10:44:34.219928Z",
+      "type": "deployment.state",
+      "message": "Deployment d29410fd: failed (peer 8f169e35 lost: contributor stopped sharing)",
+      "data": {
+        "deployment_id": "d29410fd6ce34945a524c8a128d821db",
+        "state": "failed"
+      }
+    },
+    {
+      "seq": 173,
+      "at": "2026-10-21T10:44:34.219928Z",
+      "type": "node.state",
+      "message": "loopback-cpu-worker: left (contributor stopped sharing)",
+      "data": {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c",
+        "state": "left"
+      }
+    },
+    {
+      "seq": 174,
+      "at": "2026-10-21T10:44:34.219928Z",
+      "type": "node.left",
+      "message": "loopback-cpu-worker: contributor stopped sharing",
+      "data": {
+        "node_id": "8f169e3549fc41fbb14f6876a19d704c"
+      }
+    },
+    {
+      "seq": 175,
+      "at": "2026-10-21T10:44:47.327491Z",
+      "type": "deployment.state",
+      "message": "Deployment 4a18d956: planned",
+      "data": {
+        "deployment_id": "4a18d95661884845a8aa78819c827411",
+        "state": "planned"
+      }
+    },
+    {
+      "seq": 176,
+      "at": "2026-10-21T10:44:47.327491Z",
+      "type": "deployment.state",
+      "message": "Deployment 4a18d956: reserving",
+      "data": {
+        "deployment_id": "4a18d95661884845a8aa78819c827411",
+        "state": "reserving"
+      }
+    },
+    {
+      "seq": 177,
+      "at": "2026-10-21T10:44:47.331304Z",
+      "type": "deployment.state",
+      "message": "Deployment 4a18d956: preparing (re-checking peers and model file)",
+      "data": {
+        "deployment_id": "4a18d95661884845a8aa78819c827411",
+        "state": "preparing"
+      }
+    },
+    {
+      "seq": 178,
+      "at": "2026-10-21T10:44:47.334149Z",
+      "type": "deployment.state",
+      "message": "Deployment 4a18d956: loading (starting AirLLM worker)",
+      "data": {
+        "deployment_id": "4a18d95661884845a8aa78819c827411",
+        "state": "loading"
+      }
+    },
+    {
+      "seq": 181,
+      "at": "2026-10-21T10:45:30.759608Z",
+      "type": "deployment.state",
+      "message": "Deployment 4a18d956: warming (first request)",
+      "data": {
+        "deployment_id": "4a18d95661884845a8aa78819c827411",
+        "state": "warming"
+      }
+    },
+    {
+      "seq": 183,
+      "at": "2026-10-21T10:45:37.263897Z",
+      "type": "deployment.state",
+      "message": "Deployment 4a18d956: ready (AirLLM streams every layer from C:\\Users\\operator\\.hypercompute\\airllm-shards\\qwen2.5-0.5b-instruct-hf\\7ae557604adf to cuda:0 for every token (disk tier, this machine only))",
+      "data": {
+        "deployment_id": "4a18d95661884845a8aa78819c827411",
+        "state": "ready"
+      }
+    },
+    {
+      "seq": 185,
+      "at": "2026-10-21T10:56:20.222771Z",
+      "type": "deployment.state",
+      "message": "Deployment 4a18d956: draining (stopped by owner)",
+      "data": {
+        "deployment_id": "4a18d95661884845a8aa78819c827411",
+        "state": "draining"
+      }
+    },
+    {
+      "seq": 186,
+      "at": "2026-10-21T10:56:20.277299Z",
+      "type": "deployment.state",
+      "message": "Deployment 4a18d956: stopped (stopped by owner)",
+      "data": {
+        "deployment_id": "4a18d95661884845a8aa78819c827411",
+        "state": "stopped"
+      }
+    },
+    {
+      "seq": 187,
+      "at": "2026-10-21T10:56:36.046435Z",
+      "type": "deployment.state",
+      "message": "Deployment 14cb3362: planned",
+      "data": {
+        "deployment_id": "14cb336239164b93a6f60f56898064c0",
+        "state": "planned"
+      }
+    },
+    {
+      "seq": 188,
+      "at": "2026-10-21T10:56:36.046435Z",
+      "type": "deployment.state",
+      "message": "Deployment 14cb3362: reserving",
+      "data": {
+        "deployment_id": "14cb336239164b93a6f60f56898064c0",
+        "state": "reserving"
+      }
+    },
+    {
+      "seq": 189,
+      "at": "2026-10-21T10:56:36.046435Z",
+      "type": "deployment.state",
+      "message": "Deployment 14cb3362: preparing (re-checking peers and model file)",
+      "data": {
+        "deployment_id": "14cb336239164b93a6f60f56898064c0",
+        "state": "preparing"
+      }
+    },
+    {
+      "seq": 190,
+      "at": "2026-10-21T10:56:36.096269Z",
+      "type": "deployment.state",
+      "message": "Deployment 14cb3362: loading (starting vLLM server)",
+      "data": {
+        "deployment_id": "14cb336239164b93a6f60f56898064c0",
+        "state": "loading"
+      }
+    },
+    {
+      "seq": 194,
+      "at": "2026-10-21T10:58:13.362934Z",
+      "type": "deployment.state",
+      "message": "Deployment 14cb3362: failed (vLLM failed to start: less GPU memory was free than --gpu-memory-utilization reserves ((EngineCore pid=609) INFO 10-21 03:57:41 [gpu_worker.py:1034] Free memory on device (10.77/11.94 GiB) on startup. Desired GPU memory utilization is (0.89, 10.63 GiB). Actual usage is 5.45 GiB for consumed memory (weights + non-torch), 1.06 GiB for peak activation, and 0.03 GiB for CUDAGraph memory. ))",
+      "data": {
+        "deployment_id": "14cb336239164b93a6f60f56898064c0",
+        "state": "failed"
+      }
+    },
+    {
+      "seq": 1,
+      "at": "2026-10-21T11:00:41.404845Z",
+      "type": "gateway.startup",
+      "message": "Azims-MacBook-Air-5.local: awaiting heartbeat after restart",
+      "data": {}
+    },
+    {
+      "seq": 2,
+      "at": "2026-10-21T11:00:44.050836Z",
+      "type": "deployment.state",
+      "message": "Deployment f03980cf: planned",
+      "data": {
+        "deployment_id": "f03980cfe3e94ea1882b717c36a0721e",
+        "state": "planned"
+      }
+    },
+    {
+      "seq": 3,
+      "at": "2026-10-21T11:00:44.066866Z",
+      "type": "deployment.state",
+      "message": "Deployment f03980cf: reserving",
+      "data": {
+        "deployment_id": "f03980cfe3e94ea1882b717c36a0721e",
+        "state": "reserving"
+      }
+    },
+    {
+      "seq": 4,
+      "at": "2026-10-21T11:00:44.066866Z",
+      "type": "deployment.state",
+      "message": "Deployment f03980cf: preparing (re-checking peers and model file)",
+      "data": {
+        "deployment_id": "f03980cfe3e94ea1882b717c36a0721e",
+        "state": "preparing"
+      }
+    },
+    {
+      "seq": 5,
+      "at": "2026-10-21T11:00:44.120421Z",
+      "type": "deployment.state",
+      "message": "Deployment f03980cf: loading (starting vLLM server)",
+      "data": {
+        "deployment_id": "f03980cfe3e94ea1882b717c36a0721e",
+        "state": "loading"
+      }
+    },
+    {
+      "seq": 10,
+      "at": "2026-10-21T11:01:34.857695Z",
+      "type": "deployment.state",
+      "message": "Deployment f03980cf: warming (first request)",
+      "data": {
+        "deployment_id": "f03980cfe3e94ea1882b717c36a0721e",
+        "state": "warming"
+      }
+    },
+    {
+      "seq": 12,
+      "at": "2026-10-21T11:01:34.958136Z",
+      "type": "deployment.state",
+      "message": "Deployment f03980cf: ready (vLLM holds the whole model on CUDA0 (NVIDIA GeForce RTX 5070 Ti Laptop GPU): weights 5.29 GiB, KV cache 4.90 GiB (91,664 tokens, 22.4x concurrency at 4,096 tokens); engine init 9.3 s, weights load 10.8 s)",
+      "data": {
+        "deployment_id": "f03980cfe3e94ea1882b717c36a0721e",
+        "state": "ready"
+      }
+    },
+    {
+      "seq": 123,
+      "at": "2026-10-21T11:03:26.094032Z",
+      "type": "deployment.state",
+      "message": "Deployment f03980cf: draining (stopped by owner)",
+      "data": {
+        "deployment_id": "f03980cfe3e94ea1882b717c36a0721e",
+        "state": "draining"
+      }
+    },
+    {
+      "seq": 124,
+      "at": "2026-10-21T11:03:28.211648Z",
+      "type": "deployment.state",
+      "message": "Deployment f03980cf: stopped (stopped by owner)",
+      "data": {
+        "deployment_id": "f03980cfe3e94ea1882b717c36a0721e",
+        "state": "stopped"
+      }
+    },
+    {
+      "seq": 1,
+      "at": "2026-10-21T11:12:34.382954Z",
+      "type": "gateway.startup",
+      "message": "Azims-MacBook-Air-5.local: awaiting heartbeat after restart",
+      "data": {}
+    }
+  ]
+}

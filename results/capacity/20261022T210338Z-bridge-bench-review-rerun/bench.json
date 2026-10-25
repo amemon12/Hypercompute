@@ -1,0 +1,359 @@
+{
+  "schema": "bridge-bench/1",
+  "label": "review-rerun",
+  "started_utc": "2026-10-22T21:03:00+00:00",
+  "env": {
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "event_loop": "ProactorEventLoop",
+    "git_head": "a8e13640e5fb51f1d59c3d215d9503a087cb8f3d",
+    "iroh_py_sha256": "de796a4fa31559eb841c8204376697808aa9c6a627ed74db8571c70e67f0e107",
+    "binding_speedups_after_run": {
+      "fast_bytes_lowering": true,
+      "inline_ready_wakeups": true
+    }
+  },
+  "config": {
+    "pairs": [
+      "16:16",
+      "256:256",
+      "2048:2048",
+      "16:2048",
+      "11520:11520"
+    ],
+    "warmup": 50,
+    "iters": 500,
+    "rounds": 2,
+    "bulk_bytes": 67108864,
+    "bulk_repeats": 2,
+    "paths": [
+      "tcp",
+      "tcp_proxy",
+      "iroh_stock",
+      "iroh"
+    ],
+    "single_send": false
+  },
+  "paths": {
+    "tcp": {
+      "rtt": {
+        "16:16": {
+          "n": 1000,
+          "median_us": 63.7,
+          "p90_us": 155.1,
+          "p99_us": 258.0,
+          "min_us": 43.8,
+          "mean_us": 86.6
+        },
+        "256:256": {
+          "n": 1000,
+          "median_us": 54.6,
+          "p90_us": 117.1,
+          "p99_us": 232.7,
+          "min_us": 40.2,
+          "mean_us": 70.5
+        },
+        "2048:2048": {
+          "n": 1000,
+          "median_us": 54.6,
+          "p90_us": 92.5,
+          "p99_us": 249.0,
+          "min_us": 40.6,
+          "mean_us": 75.8
+        },
+        "16:2048": {
+          "n": 1000,
+          "median_us": 56.8,
+          "p90_us": 135.5,
+          "p99_us": 250.9,
+          "min_us": 42.6,
+          "mean_us": 79.3
+        },
+        "11520:11520": {
+          "n": 1000,
+          "median_us": 65.3,
+          "p90_us": 142.7,
+          "p99_us": 239.4,
+          "min_us": 48.0,
+          "mean_us": 88.8
+        }
+      },
+      "bulk": {
+        "bytes": 67108864,
+        "seconds": [
+          0.0223,
+          0.0228,
+          0.021,
+          0.0244
+        ],
+        "median_mib_s": 2832.4,
+        "best_mib_s": 3046.4
+      },
+      "rtt_phase": {
+        "loop_cpu_s": 0.0,
+        "wall_s": 0.544,
+        "loop_cpu_us_per_exchange": 0.0
+      }
+    },
+    "tcp_proxy": {
+      "rtt": {
+        "16:16": {
+          "n": 1000,
+          "median_us": 98.7,
+          "p90_us": 207.5,
+          "p99_us": 399.7,
+          "min_us": 85.6,
+          "mean_us": 127.7
+        },
+        "256:256": {
+          "n": 1000,
+          "median_us": 94.6,
+          "p90_us": 174.0,
+          "p99_us": 363.4,
+          "min_us": 87.9,
+          "mean_us": 115.7
+        },
+        "2048:2048": {
+          "n": 1000,
+          "median_us": 103.2,
+          "p90_us": 243.6,
+          "p99_us": 436.3,
+          "min_us": 92.2,
+          "mean_us": 138.0
+        },
+        "16:2048": {
+          "n": 1000,
+          "median_us": 110.8,
+          "p90_us": 218.3,
+          "p99_us": 481.6,
+          "min_us": 89.7,
+          "mean_us": 157.2
+        },
+        "11520:11520": {
+          "n": 1000,
+          "median_us": 118.2,
+          "p90_us": 218.5,
+          "p99_us": 509.0,
+          "min_us": 96.7,
+          "mean_us": 150.7
+        }
+      },
+      "bulk": {
+        "bytes": 67108864,
+        "seconds": [
+          0.0567,
+          0.0566,
+          0.0568,
+          0.0555
+        ],
+        "median_mib_s": 1129.2,
+        "best_mib_s": 1154.1
+      },
+      "rtt_phase": {
+        "loop_cpu_s": 0.516,
+        "wall_s": 0.841,
+        "loop_cpu_us_per_exchange": 93.8
+      }
+    },
+    "iroh_stock": {
+      "rtt": {
+        "16:16": {
+          "n": 1000,
+          "median_us": 406.3,
+          "p90_us": 738.3,
+          "p99_us": 1189.6,
+          "min_us": 288.9,
+          "mean_us": 496.9
+        },
+        "256:256": {
+          "n": 1000,
+          "median_us": 443.1,
+          "p90_us": 804.0,
+          "p99_us": 1768.3,
+          "min_us": 326.0,
+          "mean_us": 540.9
+        },
+        "2048:2048": {
+          "n": 1000,
+          "median_us": 815.6,
+          "p90_us": 1386.8,
+          "p99_us": 2737.9,
+          "min_us": 672.2,
+          "mean_us": 957.9
+        },
+        "16:2048": {
+          "n": 1000,
+          "median_us": 682.1,
+          "p90_us": 1212.7,
+          "p99_us": 2696.3,
+          "min_us": 483.0,
+          "mean_us": 832.2
+        },
+        "11520:11520": {
+          "n": 1000,
+          "median_us": 2837.8,
+          "p90_us": 3816.9,
+          "p99_us": 6819.6,
+          "min_us": 2396.6,
+          "mean_us": 3120.9
+        }
+      },
+      "bulk": {
+        "bytes": 67108864,
+        "seconds": [
+          6.3463,
+          6.1647,
+          6.2852,
+          6.1521
+        ],
+        "median_mib_s": 10.3,
+        "best_mib_s": 10.4
+      },
+      "rtt_phase": {
+        "loop_cpu_s": 5.469,
+        "wall_s": 6.671,
+        "loop_cpu_us_per_exchange": 994.3
+      },
+      "path": {
+        "remote_id": "3978cd0c95a237a309c033e406c5cf7ef9ffe611b4c42ab402dce6b9e3a67264",
+        "mode": "direct",
+        "rtt_ms": 0,
+        "paths": 1
+      }
+    },
+    "iroh": {
+      "rtt": {
+        "16:16": {
+          "n": 1000,
+          "median_us": 337.2,
+          "p90_us": 621.0,
+          "p99_us": 1053.5,
+          "min_us": 237.0,
+          "mean_us": 399.6
+        },
+        "256:256": {
+          "n": 1000,
+          "median_us": 310.8,
+          "p90_us": 547.5,
+          "p99_us": 1333.6,
+          "min_us": 247.9,
+          "mean_us": 394.6
+        },
+        "2048:2048": {
+          "n": 1000,
+          "median_us": 333.1,
+          "p90_us": 661.9,
+          "p99_us": 1170.9,
+          "min_us": 261.1,
+          "mean_us": 418.4
+        },
+        "16:2048": {
+          "n": 1000,
+          "median_us": 340.0,
+          "p90_us": 631.1,
+          "p99_us": 1159.0,
+          "min_us": 256.0,
+          "mean_us": 423.9
+        },
+        "11520:11520": {
+          "n": 1000,
+          "median_us": 444.4,
+          "p90_us": 781.1,
+          "p99_us": 1614.3,
+          "min_us": 348.6,
+          "mean_us": 542.6
+        }
+      },
+      "bulk": {
+        "bytes": 67108864,
+        "seconds": [
+          0.26,
+          0.2364,
+          0.236,
+          0.251
+        ],
+        "median_mib_s": 262.9,
+        "best_mib_s": 271.1
+      },
+      "rtt_phase": {
+        "loop_cpu_s": 1.812,
+        "wall_s": 2.485,
+        "loop_cpu_us_per_exchange": 329.5
+      },
+      "path": {
+        "remote_id": "3978cd0c95a237a309c033e406c5cf7ef9ffe611b4c42ab402dce6b9e3a67264",
+        "mode": "direct",
+        "rtt_ms": 0,
+        "paths": 1
+      }
+    }
+  },
+  "overhead_vs_tcp": {
+    "tcp_proxy": {
+      "16:16": {
+        "median_us": 35.0,
+        "p90_us": 52.4
+      },
+      "256:256": {
+        "median_us": 40.0,
+        "p90_us": 56.9
+      },
+      "2048:2048": {
+        "median_us": 48.6,
+        "p90_us": 151.1
+      },
+      "16:2048": {
+        "median_us": 54.0,
+        "p90_us": 82.8
+      },
+      "11520:11520": {
+        "median_us": 52.9,
+        "p90_us": 75.8
+      }
+    },
+    "iroh_stock": {
+      "16:16": {
+        "median_us": 342.6,
+        "p90_us": 583.2
+      },
+      "256:256": {
+        "median_us": 388.5,
+        "p90_us": 686.9
+      },
+      "2048:2048": {
+        "median_us": 761.0,
+        "p90_us": 1294.3
+      },
+      "16:2048": {
+        "median_us": 625.3,
+        "p90_us": 1077.2
+      },
+      "11520:11520": {
+        "median_us": 2772.5,
+        "p90_us": 3674.2
+      }
+    },
+    "iroh": {
+      "16:16": {
+        "median_us": 273.5,
+        "p90_us": 465.9
+      },
+      "256:256": {
+        "median_us": 256.2,
+        "p90_us": 430.4
+      },
+      "2048:2048": {
+        "median_us": 278.5,
+        "p90_us": 569.4
+      },
+      "16:2048": {
+        "median_us": 283.2,
+        "p90_us": 495.6
+      },
+      "11520:11520": {
+        "median_us": 379.1,
+        "p90_us": 638.4
+      }
+    }
+  }
+}

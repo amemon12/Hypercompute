@@ -1,0 +1,182 @@
+[
+ {
+  "label": "235b-hs-local-w",
+  "model": "qwen3-235b-a22b-instruct-2507-ud-q2_k_xl",
+  "nodes": [],
+  "args": [
+   "--prompt-tokens",
+   "64",
+   "--output-tokens",
+   "64",
+   "--warmup",
+   "1",
+   "--reps",
+   "3"
+  ],
+  "timeout_s": 5400
+ },
+ {
+  "label": "235b-hs-D-1",
+  "model": "qwen3-235b-a22b-instruct-2507-ud-q2_k_xl",
+  "nodes": [
+   "4c2991743c154be896d10a0b53ba4d2b",
+   "6dad6cf75b2e4cf197b7bc7f4d0a67e4",
+   "d4e65f83c4be4a41aad722e40983b08b"
+  ],
+  "args": [
+   "--prompt-tokens",
+   "64",
+   "--output-tokens",
+   "64",
+   "--warmup",
+   "1",
+   "--reps",
+   "3",
+   "--layout",
+   "C:/Users/operator/AppData/Local/Temp/claude/C--/9e2c80d5-50ca-460d-8443-8db45359fcde/scratchpad/runs/layout_235b_D.json"
+  ],
+  "timeout_s": 5400
+ },
+ {
+  "label": "235b-hs-C1-1",
+  "model": "qwen3-235b-a22b-instruct-2507-ud-q2_k_xl",
+  "nodes": [
+   "4c2991743c154be896d10a0b53ba4d2b",
+   "6dad6cf75b2e4cf197b7bc7f4d0a67e4",
+   "d4e65f83c4be4a41aad722e40983b08b"
+  ],
+  "args": [
+   "--prompt-tokens",
+   "64",
+   "--output-tokens",
+   "64",
+   "--warmup",
+   "1",
+   "--reps",
+   "3",
+   "--layout",
+   "C:/Users/operator/AppData/Local/Temp/claude/C--/9e2c80d5-50ca-460d-8443-8db45359fcde/scratchpad/runs/layout_235b_C1.json"
+  ],
+  "timeout_s": 5400
+ },
+ {
+  "label": "235b-hs-local-1",
+  "model": "qwen3-235b-a22b-instruct-2507-ud-q2_k_xl",
+  "nodes": [],
+  "args": [
+   "--prompt-tokens",
+   "64",
+   "--output-tokens",
+   "64",
+   "--warmup",
+   "1",
+   "--reps",
+   "3"
+  ],
+  "timeout_s": 5400
+ },
+ {
+  "label": "235b-hs-C1-2",
+  "model": "qwen3-235b-a22b-instruct-2507-ud-q2_k_xl",
+  "nodes": [
+   "4c2991743c154be896d10a0b53ba4d2b",
+   "6dad6cf75b2e4cf197b7bc7f4d0a67e4",
+   "d4e65f83c4be4a41aad722e40983b08b"
+  ],
+  "args": [
+   "--prompt-tokens",
+   "64",
+   "--output-tokens",
+   "64",
+   "--warmup",
+   "1",
+   "--reps",
+   "3",
+   "--layout",
+   "C:/Users/operator/AppData/Local/Temp/claude/C--/9e2c80d5-50ca-460d-8443-8db45359fcde/scratchpad/runs/layout_235b_C1.json"
+  ],
+  "timeout_s": 5400
+ },
+ {
+  "label": "235b-hs-D-2",
+  "model": "qwen3-235b-a22b-instruct-2507-ud-q2_k_xl",
+  "nodes": [
+   "4c2991743c154be896d10a0b53ba4d2b",
+   "6dad6cf75b2e4cf197b7bc7f4d0a67e4",
+   "d4e65f83c4be4a41aad722e40983b08b"
+  ],
+  "args": [
+   "--prompt-tokens",
+   "64",
+   "--output-tokens",
+   "64",
+   "--warmup",
+   "1",
+   "--reps",
+   "3",
+   "--layout",
+   "C:/Users/operator/AppData/Local/Temp/claude/C--/9e2c80d5-50ca-460d-8443-8db45359fcde/scratchpad/runs/layout_235b_D.json"
+  ],
+  "timeout_s": 5400
+ },
+ {
+  "label": "235b-hs-local-2",
+  "model": "qwen3-235b-a22b-instruct-2507-ud-q2_k_xl",
+  "nodes": [],
+  "args": [
+   "--prompt-tokens",
+   "64",
+   "--output-tokens",
+   "64",
+   "--warmup",
+   "1",
+   "--reps",
+   "3"
+  ],
+  "timeout_s": 5400
+ },
+ {
+  "label": "235b-hs-C1-3",
+  "model": "qwen3-235b-a22b-instruct-2507-ud-q2_k_xl",
+  "nodes": [
+   "4c2991743c154be896d10a0b53ba4d2b",
+   "6dad6cf75b2e4cf197b7bc7f4d0a67e4",
+   "d4e65f83c4be4a41aad722e40983b08b"
+  ],
+  "args": [
+   "--prompt-tokens",
+   "64",
+   "--output-tokens",
+   "64",
+   "--warmup",
+   "1",
+   "--reps",
+   "3",
+   "--layout",
+   "C:/Users/operator/AppData/Local/Temp/claude/C--/9e2c80d5-50ca-460d-8443-8db45359fcde/scratchpad/runs/layout_235b_C1.json"
+  ],
+  "timeout_s": 5400
+ },
+ {
+  "label": "235b-hs-D-3",
+  "model": "qwen3-235b-a22b-instruct-2507-ud-q2_k_xl",
+  "nodes": [
+   "4c2991743c154be896d10a0b53ba4d2b",
+   "6dad6cf75b2e4cf197b7bc7f4d0a67e4",
+   "d4e65f83c4be4a41aad722e40983b08b"
+  ],
+  "args": [
+   "--prompt-tokens",
+   "64",
+   "--output-tokens",
+   "64",
+   "--warmup",
+   "1",
+   "--reps",
+   "3",
+   "--layout",
+   "C:/Users/operator/AppData/Local/Temp/claude/C--/9e2c80d5-50ca-460d-8443-8db45359fcde/scratchpad/runs/layout_235b_D.json"
+  ],
+  "timeout_s": 5400
+ }
+]

@@ -1,0 +1,10 @@
+(APIServer pid=2211) INFO 10-21 09:14:02 [utils.py:253] non-default args: {'model_tag': 'Qwen/Qwen2.5-7B-Instruct-AWQ', 'host': '127.0.0.1', 'port': 51234, 'model': 'Qwen/Qwen2.5-7B-Instruct-AWQ', 'revision': 'b25037543e9394b818fdfca67ab2a00ecc7dd641', 'max_model_len': 4096, 'served_model_name': ['qwen2.5-7b-instruct-awq'], 'gpu_memory_utilization': 0.89, 'max_num_seqs': 8}
+(EngineCore pid=2398) INFO 10-21 09:15:10 [auto_awq.py:451] Using MarlinLinearKernel for AutoAWQMarlinLinearMethod
+(EngineCore pid=2398) INFO 10-21 09:15:31 [gpu_model_runner.py:5150] Model loading took 5.21 GiB memory and 19.482113 seconds
+(EngineCore pid=2398) INFO 10-21 09:15:44 [gpu_worker.py:760] Available KV cache memory: 3.87 GiB
+(EngineCore pid=2398) INFO 10-21 09:15:44 [kv_cache_utils.py:2328] GPU KV cache size: 72,464 tokens, Maximum concurrency for 4,096 tokens per request: 17.69x
+(EngineCore pid=2398) INFO 10-21 09:16:02 [gpu_model_runner.py:6582] Graph capturing finished in 17 secs, took 0.41 GiB
+(EngineCore pid=2398) INFO 10-21 09:16:02 [core.py:403] init engine (profile, create kv cache, warmup model) took 31.20 s
+(APIServer pid=2211) INFO 10-21 09:16:04 [entry.py:136] Supported tasks: ['generate']
+(APIServer pid=2211) INFO 10-21 09:16:04 [entry.py:140] Starting vLLM server on http://127.0.0.1:51234
+(APIServer pid=2211) INFO:     Application startup complete.

@@ -1,0 +1,30 @@
+# Measured deployment profiles. Format for the M5 "measured preset" selector; the current planner does NOT
+# read this file yet and labels every plan `heuristic: true`. Each entry records a configuration that was
+# actually run on an otherwise idle machine, with the evidence file it came from. Copy to configs/profiles.yaml.
+#
+# Fields: model_id, engine release, ordered devices with their hardware class, tensor split in layer units
+# (n_layer + 1 for the output head), ctx_size, measured medians (decode = llama.cpp predicted_per_second;
+# ttft = gateway request -> first output; prompt caching disabled), and the evidence file under results/.
+profiles:
+  - id: qwen7b-g14-local
+    model_id: qwen2.5-7b-instruct-q4_k_m
+    engine: llama.cpp b11770
+    devices: [{name: CUDA0, class: "RTX 5070 Ti Laptop 12GiB (Windows)"}]
+    tensor_split: [29]
+    ctx_size: 4096
+    measured: {decode_tok_s_short: 80.6, ttft_ms_short: 34, ttft_ms_long: 956}
+    evidence: results/20261021T031812Z-local_only-final-7b-local.json
+
+  - id: qwen7b-g14-plus-linux-cpu-peer-same-host
+    model_id: qwen2.5-7b-instruct-q4_k_m
+    engine: llama.cpp b11770
+    devices:
+      - {name: CUDA0, class: "RTX 5070 Ti Laptop 12GiB (Windows)"}
+      - {name: RPC0, class: "CPU worker, Linux in a WSL2 VM on the same G14"}
+    tensor_split: [19, 10]
+    ctx_size: 4096
+    measured: {decode_tok_s_short: 25.8, ttft_ms_short: 195, ttft_ms_long: 10707}
+    evidence: results/20261021T031942Z-all_selected-final-7b-cuda+wsl.json
+    note: participation demo only; slower than local and not needed for capacity on this host
+
+# Not yet measured (needs hardware): G14 + M4 MacBook Air (Metal), RTX 5090 workstation, GX10.

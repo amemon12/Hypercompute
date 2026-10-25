@@ -1,0 +1,124 @@
+{
+  "schema": 1,
+  "platform": "windows",
+  "script": "inventory_windows.ps1",
+  "collected_at": "2026-10-21T02:07:51Z",
+  "probes": {
+    "computer_system": {
+      "cmd": [
+        "powershell",
+        "-NoProfile",
+        "-Command",
+        "Get-CimInstance -ClassName Win32_ComputerSystem | Select-Object Manufacturer, Model, TotalPhysicalMemory | ConvertTo-Json -Compress"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"Manufacturer\":\"ASUSTeK COMPUTER INC.\",\"Model\":\"ROG Zephyrus G14 GA403WR_GA403WR\",\"TotalPhysicalMemory\":33412722688}",
+      "stderr": ""
+    },
+    "operating_system": {
+      "cmd": [
+        "powershell",
+        "-NoProfile",
+        "-Command",
+        "Get-CimInstance -ClassName Win32_OperatingSystem | Select-Object Caption, Version, BuildNumber, OSArchitecture, FreePhysicalMemory | ConvertTo-Json -Compress"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"Caption\":\"Microsoft Windows 11 Home\",\"Version\":\"10.0.26200\",\"BuildNumber\":\"26200\",\"OSArchitecture\":\"64-bit\",\"FreePhysicalMemory\":6205332}",
+      "stderr": "",
+      "note": "FreePhysicalMemory is in KiB."
+    },
+    "video_controllers": {
+      "cmd": [
+        "powershell",
+        "-NoProfile",
+        "-Command",
+        "ConvertTo-Json -Compress -InputObject @(Get-CimInstance -ClassName Win32_VideoController | Select-Object Name, AdapterCompatibility, DriverVersion, AdapterRAM)"
+      ],
+      "exit_code": 0,
+      "stdout": "[{\"Name\":\"AMD Radeon(TM) 890M Graphics\",\"AdapterCompatibility\":\"Advanced Micro Devices, Inc.\",\"DriverVersion\":\"32.0.13062.3005\",\"AdapterRAM\":536870912},{\"Name\":\"NVIDIA GeForce RTX 5070 Ti Laptop GPU\",\"AdapterCompatibility\":\"NVIDIA\",\"DriverVersion\":\"32.0.15.9184\",\"AdapterRAM\":4293918720}]",
+      "stderr": "",
+      "note": "AdapterRAM is a uint32 and is not authoritative above 4 GiB; use nvidia-smi memory.total or the engine device list for VRAM."
+    },
+    "processors": {
+      "cmd": [
+        "powershell",
+        "-NoProfile",
+        "-Command",
+        "ConvertTo-Json -Compress -InputObject @(Get-CimInstance -ClassName Win32_Processor | Select-Object Name, Manufacturer, NumberOfCores, NumberOfLogicalProcessors, MaxClockSpeed, Architecture)"
+      ],
+      "exit_code": 0,
+      "stdout": "[{\"Name\":\"AMD Ryzen AI 9 HX 370 w/ Radeon 890M           \",\"Manufacturer\":\"AuthenticAMD\",\"NumberOfCores\":12,\"NumberOfLogicalProcessors\":24,\"MaxClockSpeed\":2000,\"Architecture\":9}]",
+      "stderr": "",
+      "note": "Architecture: 9 = x64, 12 = ARM64."
+    },
+    "net_adapters": {
+      "cmd": [
+        "powershell",
+        "-NoProfile",
+        "-Command",
+        "ConvertTo-Json -Compress -InputObject @(Get-NetAdapter | Select-Object Name, Status, LinkSpeed, InterfaceDescription)"
+      ],
+      "exit_code": 0,
+      "stdout": "[{\"Name\":\"Ethernet\",\"Status\":\"Up\",\"LinkSpeed\":\"1 Gbps\",\"InterfaceDescription\":\"VirtualBox Host-Only Ethernet Adapter\"},{\"Name\":\"Bluetooth Network Connection\",\"Status\":\"Disconnected\",\"LinkSpeed\":\"3 Mbps\",\"InterfaceDescription\":\"Bluetooth Device (Personal Area Network)\"},{\"Name\":\"Ethernet 2\",\"Status\":\"Disconnected\",\"LinkSpeed\":\"0 bps\",\"InterfaceDescription\":\"Realtek USB GbE Family Controller\"},{\"Name\":\"Wi-Fi 2\",\"Status\":\"Not Present\",\"LinkSpeed\":\"0 bps\",\"InterfaceDescription\":\"MediaTek Wi-Fi 7 MT7925 Wireless LAN Card\"},{\"Name\":\"Wi-Fi 4\",\"Status\":\"Not Present\",\"LinkSpeed\":\"0 bps\",\"InterfaceDescription\":\"MediaTek Wi-Fi 7 MT7925 Wireless LAN Card\"},{\"Name\":\"vEthernet (WSL (Hyper-V firewall))\",\"Status\":\"Up\",\"LinkSpeed\":\"10 Gbps\",\"InterfaceDescription\":\"Hyper-V Virtual Ethernet Adapter\"},{\"Name\":\"Wi-Fi\",\"Status\":\"Up\",\"LinkSpeed\":\"1.2 Gbps\",\"InterfaceDescription\":\"MediaTek Wi-Fi 7 MT7925 Wireless LAN Card\"}]",
+      "stderr": ""
+    },
+    "net_connection_profiles": {
+      "cmd": [
+        "powershell",
+        "-NoProfile",
+        "-Command",
+        "ConvertTo-Json -Compress -InputObject @(Get-NetConnectionProfile | Select-Object InterfaceAlias, @{Name = 'NetworkCategory'; Expression = { [string]$_.NetworkCategory }})"
+      ],
+      "exit_code": 0,
+      "stdout": "[{\"InterfaceAlias\":\"Wi-Fi\",\"NetworkCategory\":\"Public\"}]",
+      "stderr": ""
+    },
+    "net_ipv4": {
+      "cmd": [
+        "powershell",
+        "-NoProfile",
+        "-Command",
+        "ConvertTo-Json -Compress -InputObject @(Get-NetIPAddress -AddressFamily IPv4 | Select-Object InterfaceAlias, IPAddress, PrefixLength, @{Name = 'AddressState'; Expression = { [string]$_.AddressState }})"
+      ],
+      "exit_code": 0,
+      "stdout": "[{\"InterfaceAlias\":\"Ethernet 2\",\"IPAddress\":\"169.254.21.125\",\"PrefixLength\":16,\"AddressState\":\"Tentative\"},{\"InterfaceAlias\":\"vEthernet (WSL (Hyper-V firewall))\",\"IPAddress\":\"172.18.48.1\",\"PrefixLength\":20,\"AddressState\":\"Preferred\"},{\"InterfaceAlias\":\"Wi-Fi 5\",\"IPAddress\":\"169.254.129.29\",\"PrefixLength\":16,\"AddressState\":\"Tentative\"},{\"InterfaceAlias\":\"Wi-Fi 3\",\"IPAddress\":\"169.254.150.175\",\"PrefixLength\":16,\"AddressState\":\"Tentative\"},{\"InterfaceAlias\":\"Bluetooth Network Connection\",\"IPAddress\":\"169.254.85.255\",\"PrefixLength\":16,\"AddressState\":\"Tentative\"},{\"InterfaceAlias\":\"Wi-Fi\",\"IPAddress\":\"10.19.175.205\",\"PrefixLength\":15,\"AddressState\":\"Preferred\"},{\"InterfaceAlias\":\"Ethernet\",\"IPAddress\":\"192.168.56.1\",\"PrefixLength\":24,\"AddressState\":\"Preferred\"},{\"InterfaceAlias\":\"Loopback Pseudo-Interface 1\",\"IPAddress\":\"127.0.0.1\",\"PrefixLength\":8,\"AddressState\":\"Preferred\"}]",
+      "stderr": ""
+    },
+    "tcp_excluded_port_ranges": {
+      "cmd": [
+        "netsh",
+        "int",
+        "ipv4",
+        "show",
+        "excludedportrange",
+        "protocol=tcp"
+      ],
+      "exit_code": 0,
+      "stdout": "\r\nProtocol tcp Port Exclusion Ranges\r\n\r\nStart Port    End Port      \r\n----------    --------      \r\n     27339       27339      \r\n     50000       50059     *\r\n     50130       50229      \r\n     50336       50435      \r\n     50724       50823      \r\n     56430       56529      \r\n     56530       56629      \r\n     56833       56932      \r\n     65256       65355      \r\n\r\n* - Administered port exclusions.\r\n\r\n",
+      "stderr": "",
+      "note": "Hyper-V/WSL/Docker reserve TCP ranges here; a worker port inside one cannot be bound."
+    },
+    "profile_drive_free": {
+      "cmd": [
+        "powershell",
+        "-NoProfile",
+        "-Command",
+        "Get-CimInstance -ClassName Win32_LogicalDisk -Filter \"DeviceID='C:'\" | Select-Object DeviceID, FreeSpace, Size | ConvertTo-Json -Compress"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"DeviceID\":\"C:\",\"FreeSpace\":68798009344,\"Size\":992694571008}",
+      "stderr": "",
+      "note": "FreeSpace and Size are bytes."
+    },
+    "nvidia_smi": {
+      "cmd": [
+        "nvidia-smi",
+        "--query-gpu=name,memory.total,memory.free,driver_version,compute_cap",
+        "--format=csv"
+      ],
+      "exit_code": 0,
+      "stdout": "name, memory.total [MiB], memory.free [MiB], driver_version, compute_cap\r\nNVIDIA GeForce RTX 5070 Ti Laptop GPU, 12227 MiB, 11944 MiB, 591.84, 12.0\r\n",
+      "stderr": ""
+    }
+  }
+}

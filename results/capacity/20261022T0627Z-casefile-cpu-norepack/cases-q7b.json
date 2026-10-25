@@ -1,0 +1,25 @@
+[
+ {
+  "label": "cal-qwen2.5-7b-instruct-q4_k_m-cpu-norepack-t12",
+  "model_paths": [
+   "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-7b-instruct-q4_k_m\\qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+   "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-7b-instruct-q4_k_m\\qwen2.5-7b-instruct-q4_k_m-00002-of-00002.gguf"
+  ],
+  "engine": {
+   "devices": [],
+   "tensor_split": [],
+   "ngl": 0,
+   "ctx": 2048,
+   "threads": 12,
+   "load_mode": "mmap",
+   "flags": [
+    "--no-repack",
+    "--cache-ram",
+    "0"
+   ]
+  },
+  "stream": null,
+  "rpc_endpoints": [],
+  "rpc_path_class": "local"
+ }
+]

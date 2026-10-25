@@ -1,0 +1,169 @@
+{
+  "schema": "hypercompute.capacity.big/1",
+  "started_at": "2026-10-25T01:58:10.411797+00:00",
+  "requested": {
+    "model": "llama-3.3-70b-instruct-q4_k_m",
+    "port": 8001,
+    "strategy": "all_selected",
+    "ctx": 4096,
+    "nodes": [
+      "6dad6cf75b2e4cf197b7bc7f4d0a67e4",
+      "d4e65f83c4be4a41aad722e40983b08b"
+    ],
+    "engine": null,
+    "allow_capacity_mode": true,
+    "prompt_tokens": 64,
+    "output_tokens": 32,
+    "warmup": 1,
+    "reps": 2,
+    "keep": false,
+    "plan_only": false,
+    "load_timeout_s": 3600.0,
+    "chat_timeout_s": 1800.0,
+    "poll_s": 2.0,
+    "heartbeat_wait_s": 7.5,
+    "sample_interval_s": 0.5,
+    "gpu_every": 4,
+    "min_available_gib": 0.0,
+    "min_drive_free_gib": 5.0,
+    "max_commit_growth_gib": 8.0,
+    "max_swap_growth_gib": 2.0,
+    "seed_peers": true,
+    "seed_timeout_s": 3600.0,
+    "seed_poll_s": 5.0,
+    "replan_after_s": 480.0,
+    "layout": [
+      {
+        "node_id": "local",
+        "device": "CPU",
+        "layers": 21
+      },
+      {
+        "node_id": "6dad6cf75b2e4cf197b7bc7f4d0a67e4",
+        "device": "MTL0",
+        "layers": 20
+      },
+      {
+        "node_id": "d4e65f83c4be4a41aad722e40983b08b",
+        "device": "MTL0",
+        "layers": 20
+      },
+      {
+        "node_id": "local",
+        "device": "CUDA0",
+        "layers": 19
+      }
+    ],
+    "concurrency": 1,
+    "home": "C:\\Users\\operator\\.hypercompute\\iroh-session",
+    "results_dir": "C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity",
+    "chat_settings": {
+      "stream": true,
+      "temperature": 0,
+      "seed": 7,
+      "cache_prompt": false,
+      "ignore_eos": true
+    }
+  },
+  "runner": {
+    "git_head": "1b8b68fceb8c7dd45149aa86ecd34c25df882589",
+    "uncommitted_paths": 21,
+    "note": "the runner's checkout; the gateway runs whatever code it was started from"
+  },
+  "predicted": {},
+  "measured": {
+    "host": {
+      "source": "hostmon: GetPerformanceInfo (available, commit, file cache), psutil disk_io_counters (system-wide physical reads, every process), shutil.disk_usage (system drive), psutil engine process counters (ReadFile bytes exclude mmap page-fault reads), nvidia-smi (all GPUs)",
+      "platform": "windows",
+      "guards": {
+        "min_available": {
+          "limit_bytes": 0,
+          "active": false,
+          "inactive_because": "turned off"
+        },
+        "min_drive_free": {
+          "limit_bytes": 5368709120,
+          "active": true,
+          "inactive_because": null,
+          "volume": "system drive",
+          "path": "C:\\"
+        },
+        "max_commit_growth": {
+          "limit_bytes": 8589934592,
+          "active": true,
+          "inactive_because": null
+        },
+        "max_swap_growth": {
+          "limit_bytes": 2147483648,
+          "active": false,
+          "inactive_because": "this host reported no swap_used reading"
+        }
+      },
+      "interval_s": 0.5,
+      "marks": [],
+      "error": null,
+      "guard_tripped": null,
+      "guard_stop": null,
+      "whole_run": {
+        "t0": 0.0,
+        "t1": 0.767,
+        "samples": 2,
+        "available_min": 18623430656,
+        "commit_charge_peak": 35373973504,
+        "commit_limit_peak": 52740075520,
+        "system_cache_peak": 8586346496,
+        "drive_free_min": 77526081536,
+        "engine_rss_peak": null,
+        "engine_private_peak": null,
+        "gpu_used_peak": 0,
+        "swap_used_min": null,
+        "swap_used_peak": null,
+        "disk_read_bytes": 38400,
+        "engine_read_bytes": null,
+        "engine_page_faults": null
+      },
+      "samples": [
+        {
+          "t": 0.725,
+          "available": 18637332480,
+          "commit_charge": 35366850560,
+          "commit_limit": 52740075520,
+          "system_cache": 8579366912,
+          "disk_read_bytes": 10310726033920,
+          "drive_free": 77526151168,
+          "engine_rss": null,
+          "engine_private": null,
+          "engine_read_bytes": null,
+          "engine_page_faults": null,
+          "gpu_used": 0,
+          "swap_used": null
+        },
+        {
+          "t": 0.767,
+          "available": 18623430656,
+          "commit_charge": 35373973504,
+          "commit_limit": 52740075520,
+          "system_cache": 8586346496,
+          "disk_read_bytes": 10310726072320,
+          "drive_free": 77526081536,
+          "engine_rss": null,
+          "engine_private": null,
+          "engine_read_bytes": null,
+          "engine_page_faults": null,
+          "gpu_used": null,
+          "swap_used": null
+        }
+      ]
+    }
+  },
+  "status": "refused",
+  "error": {
+    "type": "RunRefused",
+    "message": "the gateway rejected --layout: HTTP 422 layout_order: only the last stage is on this machine: peers come first and this machine's GPU last, as llama.cpp orders them. The host CPU is no stage: an MoE model keeps the routed experts its GPU cannot hold there, as the moe_offload tier does",
+    "fix": null
+  },
+  "deployment_id": null,
+  "stop": null,
+  "kept": false,
+  "finished_at": "2026-10-25T01:58:11.231978+00:00"
+}

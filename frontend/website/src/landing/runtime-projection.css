@@ -1,0 +1,105 @@
+#hc-home .hc-runtime-projection {
+  margin-top: 96px;
+  color: var(--hc-ink);
+  scroll-margin-top: calc(var(--hc-header-height) + 24px);
+}
+#hc-home .hc-runtime-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 20px;
+}
+#hc-home .hc-page .hc-runtime-heading p { font-size: 15px; line-height: 1.5; }
+#hc-home .hc-runtime-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  gap: 56px;
+  margin-top: 32px;
+}
+#hc-home .hc-runtime-controls > div { min-width: 0; }
+#hc-home .hc-runtime-controls label,
+#hc-home .hc-runtime-result-label {
+  display: block;
+  font: 400 12px/1.5 'IBM Plex Mono', monospace;
+}
+#hc-home .hc-runtime-model-control select {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  margin-top: 10px;
+  padding: 8px 28px 8px 0;
+  border: 0;
+  border-bottom: 1px solid rgba(23, 23, 19, .3);
+  border-radius: 0;
+  background: transparent;
+  color: var(--hc-ink);
+  font: 400 16px/1.4 Geist, Arial, sans-serif;
+}
+#hc-home .hc-runtime-length-control label { display: flex; justify-content: space-between; gap: 12px; }
+#hc-home .hc-runtime-length-control label span { white-space: nowrap; }
+#hc-home .hc-runtime-length-control input {
+  display: block;
+  width: 100%;
+  height: 28px;
+  margin: 14px 0 0;
+  padding: 0;
+  accent-color: var(--hc-ink);
+  cursor: pointer;
+}
+#hc-home .hc-runtime-range-ends {
+  display: flex;
+  justify-content: space-between;
+  font: 400 11px/1.5 'IBM Plex Mono', monospace;
+}
+#hc-home .hc-runtime-result-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 28px;
+  margin-top: 32px;
+}
+#hc-home .hc-runtime-result output {
+  display: block;
+  margin-top: 8px;
+  font: 500 clamp(36px, 4vw, 52px)/1.1 'Helvetica Neue', Arial, sans-serif;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -.045em;
+}
+#hc-home .hc-page .hc-runtime-sample-range { margin-top: 8px; font-size: 13px; line-height: 1.5; }
+#hc-home .hc-runtime-load-control {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  min-height: 44px;
+  cursor: pointer;
+  font-size: 14px;
+}
+#hc-home .hc-runtime-load-control input { width: 16px; height: 16px; margin: 3px 0 0; accent-color: var(--hc-ink); }
+#hc-home .hc-runtime-load-control small { display: block; margin-top: 4px; font-size: 12px; }
+#hc-home .hc-runtime-projection input:focus-visible,
+#hc-home .hc-runtime-projection select:focus-visible { outline: 2px solid var(--hc-ink); outline-offset: 5px; }
+#hc-home .hc-runtime-chart { min-width: 0; margin-top: 30px; }
+#hc-home .hc-runtime-chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+#hc-home .hc-runtime-chart text { fill: var(--hc-ink); font: 400 11px 'IBM Plex Mono', monospace; }
+#hc-home .hc-runtime-chart .hc-runtime-axis-title { font-size: 12px; }
+#hc-home .hc-runtime-grid { fill: none; stroke: currentColor; stroke-opacity: .13; }
+#hc-home .hc-runtime-axis { fill: none; stroke: currentColor; stroke-opacity: .4; }
+#hc-home .hc-runtime-selection { fill: none; stroke: currentColor; stroke-opacity: .35; stroke-dasharray: 2 5; }
+#hc-home .hc-runtime-legend { display: flex; flex-wrap: wrap; gap: 12px 28px; margin-top: 22px; font-size: 12px; }
+#hc-home .hc-runtime-legend span { display: flex; align-items: center; gap: 8px; }
+#hc-home .hc-runtime-legend i { display: block; flex: none; width: 22px; height: 0; }
+#hc-home .hc-runtime-legend .hc-runtime-recorded-mark { width: 7px; height: 7px; margin: 0 7px; border: 1px solid currentColor; border-radius: 50%; }
+#hc-home .hc-runtime-dashed-mark { border-top: 2px dashed #728c68; }
+#hc-home .hc-runtime-legend .hc-runtime-range-mark { height: 10px; opacity: .17; }
+#hc-home .hc-page .hc-runtime-method { max-width: 920px; margin-top: 22px; font-size: 13px; line-height: 1.65; }
+@media (max-width: 760px) {
+  #hc-home .hc-runtime-projection { margin-top: 64px; }
+  #hc-home .hc-runtime-heading { display: block; }
+  #hc-home .hc-page .hc-runtime-heading p { margin-top: 10px; }
+  #hc-home .hc-runtime-controls { grid-template-columns: 1fr; gap: 26px; margin-top: 28px; }
+  #hc-home .hc-runtime-result-row { align-items: flex-start; flex-direction: column; gap: 22px; }
+  #hc-home .hc-runtime-model-control select { font-size: 14px; }
+  #hc-home .hc-runtime-chart { margin-top: 20px; }
+  #hc-home .hc-runtime-legend { gap: 10px 20px; }
+}

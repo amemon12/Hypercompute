@@ -1,0 +1,61 @@
+{
+ "status": "ok",
+ "requested": {
+  "concurrency": 1
+ },
+ "error": null,
+ "measured": {
+  "load": {
+   "seconds": 45.0
+  },
+  "seed": {
+   "seconds": 30.06
+  },
+  "chats": {
+   "reps": [
+    {
+     "label": "warmup0",
+     "ok": true,
+     "ttft_ms": 900.0,
+     "total_ms": 7000.0,
+     "t_start": 0.0,
+     "t_end": 7.0,
+     "prompt_n": 64,
+     "predicted_n": 33,
+     "predicted_ms": 6000.0,
+     "decode_tok_s": 5.0,
+     "prefill_tok_s": 25.0,
+     "decode_disk_read_bytes_per_token": 1048576
+    },
+    {
+     "label": "rep0",
+     "ok": true,
+     "ttft_ms": 500.0,
+     "total_ms": 6000.0,
+     "t_start": 100.0,
+     "t_end": 106.0,
+     "prompt_n": 64,
+     "predicted_n": 33,
+     "predicted_ms": 5500.0,
+     "decode_tok_s": 6.0,
+     "prefill_tok_s": 30.0,
+     "decode_disk_read_bytes_per_token": 1048576
+    },
+    {
+     "label": "rep1",
+     "ok": true,
+     "ttft_ms": 500.0,
+     "total_ms": 6000.0,
+     "t_start": 200.0,
+     "t_end": 206.0,
+     "prompt_n": 64,
+     "predicted_n": 33,
+     "predicted_ms": 5500.0,
+     "decode_tok_s": 6.0,
+     "prefill_tok_s": 30.0,
+     "decode_disk_read_bytes_per_token": 1048576
+    }
+   ]
+  }
+ }
+}

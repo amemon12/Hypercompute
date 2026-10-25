@@ -1,0 +1,14 @@
+{
+  "sha256": "8b5826169ace95ac975307b69fcfaacebc84fd5e5b9ac086974d0c4fd8def03e",
+  "toolchain": "zig 0.16.0",
+  "built_at": "2026-10-22T23:10:40.002501+00:00",
+  "sources": {
+    "native/hcpeer/src/ggml-rpc.cpp": "8c956469ee2cb17375fd01b745ab6112de0b6d557823fa117690a33a4c984731",
+    "native/hcpeer/src/hcpeer.cpp": "a5c0b85e6b54547acbd7111923f4f26f5ebaca48fb6e087216d24990205303f3",
+    "native/hcpeer/third_party/llama.cpp/transport.cpp": "a5a6774d87398344a09da643de6ac175ad8188c91d8def25f6dad9c0e8957e34",
+    "native/hcpeer/third_party/llama.cpp/log.cpp": "8a8d787eec2e4e8bbeb31d169fffd871a3ccf298be502a23aaaff790dfc77d2b",
+    "native/hcpeer/src/hcpeer.h": "5d80d8f896e52832c6cda45a51017ebbe35dac32328400e1879d00fd17989c24"
+  },
+  "release_original_sha256": "547ac08b705a96e82ddb9fcfc2529472f97f5da1957984b3a7652cd5875d452d",
+  "verify_ok": true
+}

@@ -1,0 +1,56 @@
+{
+  "hostname": "linux-box",
+  "os": {
+    "system": "linux",
+    "release": "fixture",
+    "version": "fixture",
+    "machine": "x86_64"
+  },
+  "cpu": {
+    "model": null,
+    "physical_cores": null,
+    "logical_cores": null
+  },
+  "memory_pools": [
+    {
+      "id": "ram",
+      "kind": "system_ram",
+      "total_bytes": 34359738368,
+      "free_bytes": 25769803776,
+      "measured_at": "2026-10-24T12:00:00Z",
+      "source": "psutil"
+    }
+  ],
+  "devices": [
+    {
+      "id": "CPU",
+      "kind": "cpu",
+      "name": "desktop CPU",
+      "vendor": null,
+      "pool_id": "ram",
+      "backend": "cpu",
+      "total_bytes": null,
+      "free_bytes": null,
+      "source": "fixture"
+    }
+  ],
+  "disk_free_bytes": 37580963840,
+  "network": [],
+  "engine": {
+    "engine": "llama_rpc",
+    "installed": true,
+    "release": "b11770",
+    "build_number": 11770,
+    "commit": null,
+    "rpc_proto": "8.0.0",
+    "variant": "linux-x64-cpu",
+    "accelerator": "cpu",
+    "bin_dir": null,
+    "smoke": "passed",
+    "smoke_detail": "llama-server --list-devices ran",
+    "devices": []
+  },
+  "collected_at": "2026-10-24T12:00:00Z",
+  "diagnostics": [],
+  "extra_engines": []
+}

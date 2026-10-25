@@ -1,0 +1,71 @@
+{
+  "kind": "functional rehearsal, not a benchmark comparison",
+  "date": "2026-10-25",
+  "gateway_runtime_commit": "77e17f3",
+  "host": "GX10",
+  "model": "deepseek-v3.1-ud-tq1_0",
+  "deployment_id": "c07e5f86923349ad863faa21226c2406",
+  "deployment_created_at_utc": "2026-10-25T11:43:40.925367Z",
+  "deployment_ready_at_utc": "2026-10-25T11:49:31.353791Z",
+  "deployment_to_ready_seconds": 350.428424,
+  "tier": "moe_offload",
+  "layers": [
+    {
+      "peer": "mac-b",
+      "layers": 5
+    },
+    {
+      "peer": "mac-a",
+      "layers": 2
+    },
+    {
+      "peer": "g14",
+      "layers": 3
+    },
+    {
+      "peer": "GX10",
+      "layers": 51
+    }
+  ],
+  "total_layers": 61,
+  "peer_join": {
+    "peer": "mac-a",
+    "method": "hypercompute-join.command invoked over SSH",
+    "exit_code": 0,
+    "sharing_confirmed": true,
+    "physical_double_click_filmed": false
+  },
+  "peer_list_capture": {
+    "filename": "page-2026-10-25T11-41-07-763Z.png",
+    "eligible_peers": 3,
+    "admissible_gib": {
+      "mac-b": 7.2,
+      "g14": 9.0,
+      "mac-a": 7.1
+    }
+  },
+  "loading_capture": "page-2026-10-25T11-47-54-231Z.png",
+  "ready_capture": "page-2026-10-25T11-50-26-884Z.png",
+  "loading_edit": {
+    "method": "time-compressed reconstruction from recorded states",
+    "shown_seconds": 12,
+    "caption_actual_seconds": 350.4,
+    "caption_speedup": 29.2
+  },
+  "seed_seconds_reported": 180,
+  "example_readiness_poll_seconds_reported": 351,
+  "app_chat": {
+    "prompt": "Reply in one short sentence: why share a model across computers?",
+    "answer": "To distribute computational load and enable parallel processing for faster training and inference.",
+    "displayed_tokens_per_second": 2.23,
+    "classification": "one functional chat, not a benchmark",
+    "capture": "page-2026-10-25T11-54-32-822Z.png"
+  },
+  "sdk_stream_recheck": {
+    "max_tokens": 400,
+    "content": "1, 2, 3, 4, 5, 6, 7, 8, 9, 10.",
+    "reasoning_characters": 370,
+    "chunks": 133,
+    "completed": true
+  }
+}

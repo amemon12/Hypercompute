@@ -1,0 +1,178 @@
+{
+  "schema": 1,
+  "llama_cpp": {
+    "repo": "https://github.com/ggml-org/llama.cpp",
+    "license": "MIT",
+    "release": "b11770",
+    "build_number": 11770,
+    "commit": "39da130fcd1b6ca47d3c0522a40eccff41ea3dfb",
+    "rpc_proto": "8.0.0",
+    "rpc_server_binary": "ggml-rpc-server",
+    "handover_audit_commit": "9a3b91c6801e68f412fcf1b6f8e153aa562b8536",
+    "pin_reason": "The handover's audit commit 9a3b91c6 resolves on master (2026-10-20T23:19Z) but had no prebuilt release when Hypercompute was built, and the first host (Windows G14) has no CMake/MSVC/CUDA toolkit for a source build. b11770 (39da130f) is 12 commits behind it; the 12 commits touch tools/server, tools/mtmd, src/models, conversion and hexagon only, with no ggml-rpc, ggml-backend or common/arg.cpp changes. Every RPC peer must run this same release.",
+    "source_build": {
+      "commit": "39da130fcd1b6ca47d3c0522a40eccff41ea3dfb",
+      "targets": [
+        "llama-server",
+        "llama-cli",
+        "ggml-rpc-server"
+      ],
+      "cmake_common": [
+        "-DGGML_RPC=ON",
+        "-DLLAMA_BUILD_TESTS=OFF"
+      ]
+    },
+    "variants": {
+      "windows-x64-cuda13.4": {
+        "os": "windows",
+        "arch": "x86_64",
+        "accelerator": "cuda",
+        "requires": "NVIDIA GPU + driver R580 or newer (CUDA 13.x). Validated on RTX 5070 Ti Laptop (sm_120), driver 591.84.",
+        "assets": [
+          {
+            "name": "llama-b11770-bin-win-cuda-13.4-x64.zip",
+            "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11770/llama-b11770-bin-win-cuda-13.4-x64.zip",
+            "sha256": "bcf1c02f6cfad0a625930130b7378dcd8e17d887e032840e0cce14c2c2437266",
+            "size": 159608346
+          },
+          {
+            "name": "cudart-llama-bin-win-cuda-13.4-x64.zip",
+            "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11770/cudart-llama-bin-win-cuda-13.4-x64.zip",
+            "sha256": "738f8c251ac22b70c3ae6f83a10cf222725df0395246a2cf58f32bdb85fbe668",
+            "size": 423535356
+          }
+        ]
+      },
+      "windows-x64-vulkan": {
+        "os": "windows",
+        "arch": "x86_64",
+        "accelerator": "vulkan",
+        "requires": "Vulkan-capable GPU driver (AMD/Intel/NVIDIA). Not yet validated by Hypercompute.",
+        "assets": [
+          {
+            "name": "llama-b11770-bin-win-vulkan-x64.zip",
+            "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11770/llama-b11770-bin-win-vulkan-x64.zip",
+            "sha256": "92c52c48c180be9adcc39f5a3168e8aee1b56e461f53ee256ee1642b8e34fb1e",
+            "size": 36751630
+          }
+        ]
+      },
+      "windows-x64-cpu": {
+        "os": "windows",
+        "arch": "x86_64",
+        "accelerator": "cpu",
+        "requires": "Explicit CPU fallback (slow).",
+        "assets": [
+          {
+            "name": "llama-b11770-bin-win-cpu-x64.zip",
+            "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11770/llama-b11770-bin-win-cpu-x64.zip",
+            "sha256": "2b7f4c3a844683780e2b3abe77b7ca014bc4185cb19f5be75db507bdcc686281",
+            "size": 23959829
+          }
+        ]
+      },
+      "macos-arm64": {
+        "os": "macos",
+        "arch": "arm64",
+        "accelerator": "metal",
+        "requires": "Apple Silicon Mac. Metal backend; CPU and GPU share one unified memory pool.",
+        "assets": [
+          {
+            "name": "llama-b11770-bin-macos-arm64.tar.gz",
+            "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11770/llama-b11770-bin-macos-arm64.tar.gz",
+            "sha256": "83790ddc9e771111077fe224f65e973bce21d80c0e0ae87b5e2e5247c04843e7",
+            "size": 16088373
+          }
+        ]
+      },
+      "linux-x64-cuda13.4": {
+        "os": "linux",
+        "arch": "x86_64",
+        "accelerator": "cuda",
+        "requires": "NVIDIA GPU + driver R580 or newer, glibc compatible with Ubuntu builds.",
+        "assets": [
+          {
+            "name": "llama-b11770-bin-ubuntu-cuda-13.4-x64.tar.gz",
+            "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11770/llama-b11770-bin-ubuntu-cuda-13.4-x64.tar.gz",
+            "sha256": "8f3b25f64c41bb502b96f0ef4e3194fd82a9904ff1fdbf5ef346b1f1e3531940",
+            "size": 158580829
+          },
+          {
+            "name": "cudart-llama-b11770-bin-ubuntu-cuda-13.4-x64.tar.gz",
+            "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11770/cudart-llama-b11770-bin-ubuntu-cuda-13.4-x64.tar.gz",
+            "sha256": "92dacde3ad44f5270ab8ebc9e2aa16d9d922895f44eb0d10bddde8c9e15b0dbe",
+            "size": 440245151
+          }
+        ]
+      },
+      "linux-x64-cuda12.8": {
+        "os": "linux",
+        "arch": "x86_64",
+        "accelerator": "cuda",
+        "requires": "NVIDIA GPU + driver R570 or newer when the driver cannot run CUDA 13.",
+        "assets": [
+          {
+            "name": "llama-b11770-bin-ubuntu-cuda-12.8-x64.tar.gz",
+            "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11770/llama-b11770-bin-ubuntu-cuda-12.8-x64.tar.gz",
+            "sha256": "f10f9cd6a941f2c85f6d70a1be6e6399cd63e5f4e3f600d42ad162e2d09d7006",
+            "size": 177720093
+          },
+          {
+            "name": "cudart-llama-b11770-bin-ubuntu-cuda-12.8-x64.tar.gz",
+            "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11770/cudart-llama-b11770-bin-ubuntu-cuda-12.8-x64.tar.gz",
+            "sha256": "cd68f2e86b5594d2604d0e5eeb286b666d38364ebe35f5b890ac63b2f635fbe3",
+            "size": 594379115
+          }
+        ]
+      },
+      "linux-x64-vulkan": {
+        "os": "linux",
+        "arch": "x86_64",
+        "accelerator": "vulkan",
+        "requires": "Vulkan loader + GPU driver. Not yet validated by Hypercompute.",
+        "assets": [
+          {
+            "name": "llama-b11770-bin-ubuntu-vulkan-x64.tar.gz",
+            "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11770/llama-b11770-bin-ubuntu-vulkan-x64.tar.gz",
+            "sha256": "27f446a361c25944d6c9dd8e6050f8b1a722ae2c4e0e6137670657a914fbc12c",
+            "size": 34878959
+          }
+        ]
+      },
+      "linux-x64-cpu": {
+        "os": "linux",
+        "arch": "x86_64",
+        "accelerator": "cpu",
+        "requires": "Explicit CPU fallback (slow).",
+        "assets": [
+          {
+            "name": "llama-b11770-bin-ubuntu-x64.tar.gz",
+            "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11770/llama-b11770-bin-ubuntu-x64.tar.gz",
+            "sha256": "1e29b111d381ea2d3e0c66864329203e646357148a57b5f16a04e8b09b7acc04",
+            "size": 22236580
+          }
+        ]
+      },
+      "linux-arm64-cuda13.4": {
+        "os": "linux",
+        "arch": "arm64",
+        "accelerator": "cuda",
+        "requires": "GX10 / DGX Spark candidate (GB10, sm_121). NOT validated: verify the release's CUDA arch list covers sm_121 or build from source with CMAKE_CUDA_ARCHITECTURES=121-real.",
+        "assets": [
+          {
+            "name": "llama-b11770-bin-ubuntu-cuda-13.4-arm64.tar.gz",
+            "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11770/llama-b11770-bin-ubuntu-cuda-13.4-arm64.tar.gz",
+            "sha256": "844ef87f1a35ce316d8ef00669dbb963467060d61753b06a97a81180a7f01aeb",
+            "size": 153730688
+          },
+          {
+            "name": "cudart-llama-b11770-bin-ubuntu-cuda-13.4-arm64.tar.gz",
+            "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11770/cudart-llama-b11770-bin-ubuntu-cuda-13.4-arm64.tar.gz",
+            "sha256": "9976976c97d566bc18ef7436b6dc7be00fb12fef480a8f45b82d276ecbb9be68",
+            "size": 552522173
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,80 @@
+#hc-home .hc-memory-plan{margin-top:64px;color:#000}
+#hc-home .hc-memory-plan :is(button,h3,h4,p,span,figcaption){color:#000}
+#hc-home .hc-memory-controls{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:38px}
+#hc-home .hc-memory-controls button{min-height:46px;padding:11px 22px;border:1px solid transparent;border-radius:0;background:#f3f5f7;font-size:14px;transition:background .2s}
+#hc-home .hc-memory-controls button[aria-pressed=true]{background:#b8d2ef;border-color:#000}
+#hc-home .hc-memory-controls button:hover{background:#caddf2}
+#hc-home .hc-memory-controls button:focus-visible{outline:2px solid #000;outline-offset:4px}
+#hc-home .hc-memory-figure{margin:0;width:100%}
+#hc-home .hc-memory-caption{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:30px;font:400 11px/1.6 'IBM Plex Mono',monospace}
+#hc-home .hc-memory-row{display:grid;grid-template-columns:116px minmax(0,1fr) 158px;gap:24px;align-items:center;margin-top:24px}
+#hc-home .hc-memory-hardware{display:block;width:92px;height:55px;stroke:#000;stroke-width:1;stroke-linejoin:round}
+#hc-home .hc-memory-device h4{font:400 16px/1.3 Geist,Arial,sans-serif;margin:9px 0 4px}
+#hc-home .hc-memory-device>span{display:block;font:400 10px/1.5 'IBM Plex Mono',monospace}
+#hc-home .hc-memory-allocation{display:grid;grid-template-columns:minmax(0,1fr) 176px;gap:22px;min-width:0;min-height:148px;padding:18px;background:#f8fafc;border:1px solid #000}
+#hc-home .hc-memory-weights{display:flex;flex-direction:column;min-width:0}
+#hc-home .hc-memory-area-label{display:block;min-height:17px;font:400 10px/1.5 'IBM Plex Mono',monospace;margin-bottom:13px}
+#hc-home .hc-memory-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(23px,1fr));gap:4px;min-height:50px;align-content:stretch}
+#hc-home .hc-memory-group{display:flex;align-items:center;justify-content:center;min-height:50px;background:#b8d2ef;font:400 10px/1 'IBM Plex Mono',monospace}
+#hc-home .hc-memory-row[data-device=ram] .hc-memory-group{background:#d0e1f4}
+#hc-home .hc-memory-row[data-device=disk] .hc-memory-group{background:#dce1e6}
+#hc-home .hc-memory-groups[data-paged=true] .hc-memory-group{border:1px solid #000}
+#hc-home .hc-memory-area-detail{display:block;font:400 9px/1.5 'IBM Plex Mono',monospace;margin-top:9px}
+#hc-home .hc-memory-reserve-blocks{display:grid;grid-template-columns:1fr 1fr;gap:5px;min-height:50px}
+#hc-home .hc-memory-reserve-blocks>span{display:flex;align-items:center;justify-content:center;padding:7px 4px;background:#e4e8ed;font:400 10px/1.4 'IBM Plex Mono',monospace;text-align:center}
+#hc-home .hc-memory-unassigned{display:flex;align-items:center;min-height:50px;background:#edf0f3;padding:10px 14px;font:400 11px/1.5 'IBM Plex Mono',monospace}
+#hc-home .hc-memory-row-note{font:400 12px/1.6 Geist,Arial,sans-serif;margin:0!important;max-width:158px}
+#hc-home .hc-memory-source-file{display:flex;align-items:center;gap:12px;flex-wrap:wrap;min-height:50px;background:#edf0f3;padding:10px 12px;font:400 11px/1.4 'IBM Plex Mono',monospace}
+#hc-home .hc-memory-source-file>span:last-child{font-size:9px}
+#hc-home .hc-memory-file-icon{width:13px;height:17px;border:1px solid #000;background:#f8fafc;flex:none}
+#hc-home .hc-memory-disk-path>span:nth-child(2){display:block;font:400 14px/1.5 'IBM Plex Mono',monospace;margin-top:16px}
+#hc-home .hc-memory-disk-path>span:nth-child(2)>span{padding:0 5px}
+#hc-home .hc-memory-disk-path>span:last-child{display:block;font:400 9px/1.5 'IBM Plex Mono',monospace;margin-top:7px;max-width:160px}
+#hc-home .hc-memory-key{display:flex;flex-wrap:wrap;gap:14px 26px;margin:24px 0 0 140px;font:400 10px/1.5 'IBM Plex Mono',monospace}
+#hc-home .hc-memory-key>span{display:flex;align-items:center;gap:8px}
+#hc-home .hc-memory-key i{display:block;width:12px;height:12px;background:#b8d2ef;flex:none}
+#hc-home .hc-memory-key i[data-kind=reserved]{background:#e4e8ed}
+#hc-home .hc-memory-key i[data-kind=pages]{background:#dce1e6;border:1px solid #000}
+#hc-home .hc-memory-explanation{display:grid;grid-template-columns:1fr 1.2fr;gap:80px;min-height:130px;margin-top:56px}
+#hc-home .hc-memory-explanation h3{font-size:28px;line-height:1.2;font-weight:400;letter-spacing:-.035em;max-width:370px}
+#hc-home .hc-memory-explanation p{font-size:17px;line-height:1.7;max-width:580px}
+#hc-home .hc-diagram-note{font:400 10px/1.7 'IBM Plex Mono',monospace;max-width:850px;margin-top:20px!important}
+@container(max-width:1100px){
+  #hc-home .hc-memory-row{grid-template-columns:116px minmax(0,1fr);gap:12px 24px;align-items:start;margin-top:28px}
+  #hc-home .hc-memory-row-note{grid-column:2;max-width:none}
+  #hc-home .hc-memory-allocation{grid-template-columns:minmax(0,1fr) 160px;gap:16px}
+}
+@container(max-width:760px){
+  #hc-home .hc-memory-plan{margin-top:44px}
+  #hc-home .hc-memory-controls{margin-bottom:30px}
+  #hc-home .hc-memory-caption{display:block}
+  #hc-home .hc-memory-caption>span{display:block}
+  #hc-home .hc-memory-caption>span+span{margin-top:6px}
+  #hc-home .hc-memory-row{grid-template-columns:1fr;gap:12px;margin-top:32px}
+  #hc-home .hc-memory-device{display:grid;grid-template-columns:82px 1fr;grid-template-rows:1fr 1fr;column-gap:14px;align-items:center}
+  #hc-home .hc-memory-hardware{grid-row:1/3;width:82px;height:49px}
+  #hc-home .hc-memory-device h4{align-self:end;margin:0 0 3px}
+  #hc-home .hc-memory-device>span{align-self:start}
+  #hc-home .hc-memory-row-note{grid-column:1;max-width:none;font-size:13px}
+  #hc-home .hc-memory-allocation{grid-template-columns:minmax(0,1fr) 142px;padding:14px;gap:14px}
+  #hc-home .hc-memory-groups{grid-template-columns:repeat(6,minmax(0,1fr))}
+  #hc-home .hc-memory-group{min-height:38px}
+  #hc-home .hc-memory-reserve-blocks{min-height:80px}
+  #hc-home .hc-memory-key{margin-left:0;font-size:9px;gap:12px 18px}
+  #hc-home .hc-memory-explanation{grid-template-columns:1fr;gap:18px;min-height:170px;margin-top:40px}
+  #hc-home .hc-memory-explanation h3{font-size:26px;max-width:none}
+  #hc-home .hc-memory-explanation p{font-size:16px}
+}
+@container(max-width:480px){
+  #hc-home .hc-memory-controls{gap:6px}
+  #hc-home .hc-memory-controls button{padding:10px 14px;font-size:12px}
+  #hc-home .hc-memory-allocation{grid-template-columns:1fr;gap:18px;padding:14px}
+  #hc-home .hc-memory-reserved{display:grid;grid-template-columns:minmax(0,1fr) 160px;gap:8px;align-items:center}
+  #hc-home .hc-memory-reserved .hc-memory-area-label{margin:0;max-width:90px}
+  #hc-home .hc-memory-reserve-blocks{min-height:48px}
+  #hc-home .hc-memory-disk-path{display:grid;grid-template-columns:1fr 1fr;gap:5px 12px}
+  #hc-home .hc-memory-disk-path .hc-memory-area-label{grid-row:1/3;margin:0;align-self:center}
+  #hc-home .hc-memory-disk-path>span:nth-child(2),#hc-home .hc-memory-disk-path>span:last-child{margin:0}
+  #hc-home .hc-memory-key{display:grid;gap:10px}
+  #hc-home .hc-memory-explanation{min-height:205px}
+}

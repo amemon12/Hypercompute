@@ -1,0 +1,5 @@
+{"model": "fx-model-q4", "args": [], "label": "fx-hA-1", "nodes": [], "exit": 0, "wall_s": 100.0, "result_dir": "fx1-big-fx", "network_before": {"peers": [{"node_id": "aa", "connected": true, "path": {"rtt_ms": 5}, "rpc": {"tcp_to_quic_bytes": 0, "quic_to_tcp_bytes": 0}}, {"node_id": "bb", "connected": true, "path": {"rtt_ms": 7}}]}, "network_after": {"peers": [{"node_id": "aa", "rpc": {"tcp_to_quic_bytes": 2097152, "quic_to_tcp_bytes": 1048576}}]}}
+{"model": "fx-model-q4", "args": [], "label": "fx-hP2-1", "nodes": ["mac-a", "mac-b"], "exit": 0, "wall_s": 200.0, "result_dir": "fx2-big-fx", "network_before": {"peers": [{"node_id": "aa", "connected": true, "path": {"rtt_ms": 6}}, {"node_id": "bb", "connected": false, "path": {"rtt_ms": 90}}]}}
+{"model": "fx-model-q4", "args": ["--concurrency", "4"], "label": "fxn4-hA-1", "nodes": [], "exit": 0, "wall_s": 300.0, "result_dir": "fx3-big-fx"}
+{"model": "fx-model-q4", "args": [], "label": "fx-hP2-2", "nodes": ["mac-a", "mac-b"], "exit": 2, "wall_s": 5.0, "result_dir": "fx4-big-fx"}
+{"model": "fx-model-q4", "args": [], "label": "fx-hA-2", "nodes": [], "exit": 137, "wall_s": 400.0, "result_dir": "fx5-big-missing"}

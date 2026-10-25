@@ -1,0 +1,21 @@
+{
+ "kind": "storage_calibration",
+ "tool": "scripts/capacity/calibrate.py storage",
+ "model": "qwen2.5-7b-instruct-q4_k_m",
+ "file": "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-7b-instruct-q4_k_m\\qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+ "power": {
+  "state": "battery",
+  "via": "Win32_Battery.BatteryStatus",
+  "battery_status": [
+   1
+  ]
+ },
+ "started_at": "2026-10-22T05:43:15.526007+00:00",
+ "requested": {
+  "bytes": 4294967296,
+  "runs": 3,
+  "readers": 4,
+  "chunk_bytes": 8388608
+ },
+ "refused": "on battery power"
+}

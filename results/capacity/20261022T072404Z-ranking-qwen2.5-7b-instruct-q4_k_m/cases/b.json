@@ -1,0 +1,30 @@
+[
+ {
+  "label": "rank-qwen2.5-7b-instruct-q4_k_m-b",
+  "model_paths": [
+   "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-7b-instruct-q4_k_m\\qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+   "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-7b-instruct-q4_k_m\\qwen2.5-7b-instruct-q4_k_m-00002-of-00002.gguf"
+  ],
+  "engine": {
+   "devices": [
+    "CUDA0"
+   ],
+   "tensor_split": [
+    21
+   ],
+   "ngl": 21,
+   "ctx": 2048,
+   "threads": 12,
+   "load_mode": "none",
+   "flags": [
+    "--no-host",
+    "--no-repack",
+    "--cache-ram",
+    "0"
+   ]
+  },
+  "stream": null,
+  "rpc_endpoints": [],
+  "rpc_path_class": "local"
+ }
+]

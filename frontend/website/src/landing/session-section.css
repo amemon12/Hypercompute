@@ -1,0 +1,39 @@
+#hc-home .hc-session-section{position:relative;isolation:isolate;display:grid;align-items:center;padding:48px 48px 56px;overflow:hidden}
+#hc-home .hc-session-layout{position:relative;z-index:1;display:grid;grid-template-columns:minmax(260px,1fr) minmax(0,1fr);align-items:center;gap:64px;width:100%;max-width:1080px;margin-inline:auto}
+#hc-home .hc-session-layout .hc-open-compute{max-width:420px}
+#hc-home .hc-session-copy{max-width:460px;padding-block:24px}
+#hc-home .hc-session-copy h2{font:700 clamp(38px,3.8cqw,60px)/1.06 'Helvetica Neue',Arial,sans-serif;letter-spacing:-.045em;text-wrap:balance}
+#hc-home .hc-page .hc-session-copy p{margin-top:32px;font:400 clamp(22px,2.05cqw,30px)/1.42 Georgia,'Times New Roman',serif;letter-spacing:-.018em;text-wrap:pretty}
+#hc-home .hc-session-print{position:absolute;inset:0;z-index:0;pointer-events:none}
+#hc-home .hc-session-registration{position:absolute;top:38px;left:48px;width:40px;height:40px;stroke:#68675c;stroke-width:.8;fill:none}
+#hc-home .hc-session-corner{position:absolute;overflow:visible}
+#hc-home .hc-session-corner-top{top:0;right:0;width:clamp(150px,18%,250px);height:auto}
+#hc-home .hc-session-corner-bottom{bottom:0;left:0;width:clamp(160px,17%,250px);height:auto}
+#hc-home .hc-session-ink{fill:none;stroke:var(--hc-ink);stroke-width:1;stroke-linecap:round;vector-effect:non-scaling-stroke}
+@container(min-width:1200px){
+  #hc-home .hc-session-section{padding-inline:64px}
+  #hc-home .hc-session-layout{gap:80px}
+  #hc-home .hc-session-registration{left:64px;top:42px}
+}
+@media(max-width:1000px) and (min-width:761px){
+  #hc-home .hc-session-section{padding-inline:40px}
+  #hc-home .hc-session-layout{grid-template-columns:minmax(240px,1fr) minmax(0,1fr);gap:32px}
+  #hc-home .hc-session-copy h2{font-size:38px}
+  #hc-home .hc-page .hc-session-copy p{font-size:22px;margin-top:26px}
+}
+@media(max-width:760px){
+  #hc-home .hc-session-section{padding:32px 24px 48px}
+  #hc-home .hc-session-layout{grid-template-columns:1fr;gap:20px}
+  #hc-home .hc-session-layout .hc-open-compute{max-width:340px}
+  #hc-home .hc-session-copy{max-width:530px;margin-inline:auto;padding-block:12px}
+  #hc-home .hc-session-copy h2{font-size:40px}
+  #hc-home .hc-page .hc-session-copy p{max-width:470px;font-size:22px;margin-top:22px}
+  #hc-home .hc-session-registration{width:26px;height:26px;top:20px;left:24px}
+  #hc-home .hc-session-corner-top{width:105px}
+  #hc-home .hc-session-corner-bottom{width:130px;opacity:.85}
+}
+@media(max-width:480px){
+  #hc-home .hc-session-section{padding:32px 22px 40px}
+  #hc-home .hc-session-copy h2{font-size:36px}
+  #hc-home .hc-page .hc-session-copy p{font-size:20px;line-height:1.4}
+}

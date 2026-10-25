@@ -1,0 +1,23 @@
+hcstream: enabled (288 tensors, 24 streamed layers, 1 slots, prefetch off)
+0.00.214.779 E ggml_cuda_init: failed to initialize CUDA: no CUDA-capable device is detected
+0.00.238.317 I srv  llama_server: initializing ...
+0.00.238.324 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.238.464 I srv  init_listene: The UI is disabled
+0.00.238.465 I srv  init_listene: Use --ui/--no-ui (or deprecated --webui/--no-webui) to enable/disable
+0.00.238.569 W srv  llama_server: security: no API key is set and CORS allows all origins (see https://github.com/ggml-org/llama.cpp/pull/25655)
+0.00.257.139 I srv    load_model: loading model 'C:\Users\operator\.hypercompute\models\qwen2.5-0.5b-instruct-q4_k_m\qwen2.5-0.5b-instruct-q4_k_m.gguf'
+0.00.481.360 W load: control-looking token: 128247 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden
+0.00.529.148 I cmn          init: llama threadpool init, n_threads = 8
+hcstream: attached: 24 streamed layers in 1 slots of 10887168 bytes, readers 4, chunk 8388608
+0.00.879.894 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 1024, kv_unified = 'false'
+0.00.880.005 W srv          init: --cache-idle-slots requires --cache-ram, disabling
+0.00.885.379 I srv  llama_server: model loaded
+0.00.885.394 I srv  llama_server: listening on http://127.0.0.1:59809
+0.00.906.424 I slot get_availabl: id  0 | task -1 | selected slot by LRU, n_tokens = 0, t_last = -1
+0.00.906.462 I slot launch_slot_: id  0 | task 0 | processing task, is_child = 0
+0.02.753.967 I slot print_timing: id  0 | task 0 | prompt eval time =     157.87 ms /    54 tokens (    2.92 ms per token,   342.05 tokens per second)
+0.02.753.975 I slot print_timing: id  0 | task 0 |        eval time =    1689.60 ms /    24 tokens (   73.46 ms per token,    13.61 tokens per second)
+0.02.753.977 I slot print_timing: id  0 | task 0 |       total time =    1847.48 ms /    78 tokens
+0.02.753.991 I slot print_timing: id  0 | task 0 |    graphs reused =         23
+0.02.753.992 I slot print_timing: id  0 | task 0 |   graph reallocs =          0    /     0        (same size) / (changed size)
+0.02.754.027 I slot      release: id  0 | task 0 | stop processing: n_tokens = 77, truncated = 0

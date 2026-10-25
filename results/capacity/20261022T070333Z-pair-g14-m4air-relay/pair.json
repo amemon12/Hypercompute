@@ -1,0 +1,234 @@
+{
+  "schema": "hypercompute.capacity.pair/1",
+  "status": "not_run",
+  "why": [
+    "PowerOnline False at 07:00:39Z, 07:04:32Z and 07:05:01Z (Discharging True, 35-42 W); the task stops all hardware work on battery",
+    "Mac node 4c2991743c154be896d10a0b53ba4d2b was state stale ('no heartbeat for 16s', heartbeat age 1236 s, last heartbeat ~06:40:25Z) in the 07:00:57Z /api/nodes snapshot; it was eligible again at 07:04:46Z, but power was still offline"
+  ],
+  "port_52110": "only the gateway listener (pid 42668), no established connection, at 07:00:39Z and 07:05:01Z; this step opened no connection to it",
+  "workload": {
+    "ctx": 2048,
+    "prompt_tokens": 512,
+    "output_tokens": 32,
+    "reps": 3,
+    "warmup": 1,
+    "threads": 12
+  },
+  "rows": [
+    {
+      "layout": "a",
+      "spans": "local:CUDA0 [0-23 + head]",
+      "predicted_decode_ms_per_token": 1.0700624447482248,
+      "predicted_prefill_ms_512": 11.362926543957016,
+      "predicted_load_ms": 2065.33383767931,
+      "predicted_hop_ms": 0.0,
+      "predicted_upload_bytes": 0,
+      "optimizer_feasible": true,
+      "optimizer_reasons": [],
+      "case_file": "results\\capacity\\20261022T070333Z-pair-g14-m4air-relay\\cases\\a.json",
+      "bench_argv": [
+        "-m",
+        "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-0.5b-instruct-q4_k_m\\qwen2.5-0.5b-instruct-q4_k_m.gguf",
+        "--load-mode",
+        "mmap",
+        "--cache-ram",
+        "0",
+        "--device",
+        "CUDA0",
+        "--split-mode",
+        "layer",
+        "--tensor-split",
+        "25",
+        "-ngl",
+        "all",
+        "--fit",
+        "off",
+        "-c",
+        "2048",
+        "-np",
+        "1",
+        "-t",
+        "12",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "0",
+        "--no-ui",
+        "-lv",
+        "4",
+        "--log-colors",
+        "off"
+      ],
+      "measured": null,
+      "not_run_reason": "AC power offline (PowerOnline False) at every check 07:00:39Z-07:05:01Z"
+    },
+    {
+      "layout": "b",
+      "spans": "4c2991743c154be896d10a0b53ba4d2b:MTL0 [0-1], local:CUDA0 [2-23 + head]",
+      "predicted_decode_ms_per_token": 41.73929540882786,
+      "predicted_prefill_ms_512": 2374.7776224409854,
+      "predicted_load_ms": 16292.516491414002,
+      "predicted_hop_ms": 40.49249525807852,
+      "predicted_upload_bytes": 21767680,
+      "optimizer_feasible": false,
+      "optimizer_reasons": [
+        "4c2991743c154be896d10a0b53ba4d2b:MTL0 units 0-1: needs 453 MiB (weights 21 MiB, KV 2 MiB, workspace 110 MiB, staging 64 MiB, overhead 256 MiB), pool admits 0 B"
+      ],
+      "case_file": "results\\capacity\\20261022T070333Z-pair-g14-m4air-relay\\cases\\b.json",
+      "bench_argv": [
+        "-m",
+        "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-0.5b-instruct-q4_k_m\\qwen2.5-0.5b-instruct-q4_k_m.gguf",
+        "--load-mode",
+        "mmap",
+        "--cache-ram",
+        "0",
+        "--rpc",
+        "127.0.0.1:52110",
+        "--device",
+        "RPC0,CUDA0",
+        "--split-mode",
+        "layer",
+        "--tensor-split",
+        "2,23",
+        "-ngl",
+        "all",
+        "--fit",
+        "off",
+        "-c",
+        "2048",
+        "-np",
+        "1",
+        "-t",
+        "12",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "0",
+        "--no-ui",
+        "-lv",
+        "4",
+        "--log-colors",
+        "off"
+      ],
+      "measured": null,
+      "not_run_reason": "AC power offline (PowerOnline False) at every check 07:00:39Z-07:05:01Z"
+    },
+    {
+      "layout": "c",
+      "spans": "4c2991743c154be896d10a0b53ba4d2b:MTL0 [0-5], local:CUDA0 [6-23 + head]",
+      "predicted_decode_ms_per_token": 42.06435518895026,
+      "predicted_prefill_ms_512": 2397.654173038525,
+      "predicted_load_ms": 41539.84529342405,
+      "predicted_hop_ms": 40.49249525807852,
+      "predicted_upload_bytes": 61803264,
+      "optimizer_feasible": false,
+      "optimizer_reasons": [
+        "4c2991743c154be896d10a0b53ba4d2b:MTL0 units 0-5: needs 495 MiB (weights 59 MiB, KV 6 MiB, workspace 110 MiB, staging 64 MiB, overhead 256 MiB), pool admits 0 B"
+      ],
+      "case_file": "results\\capacity\\20261022T070333Z-pair-g14-m4air-relay\\cases\\c.json",
+      "bench_argv": [
+        "-m",
+        "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-0.5b-instruct-q4_k_m\\qwen2.5-0.5b-instruct-q4_k_m.gguf",
+        "--load-mode",
+        "mmap",
+        "--cache-ram",
+        "0",
+        "--rpc",
+        "127.0.0.1:52110",
+        "--device",
+        "RPC0,CUDA0",
+        "--split-mode",
+        "layer",
+        "--tensor-split",
+        "6,19",
+        "-ngl",
+        "all",
+        "--fit",
+        "off",
+        "-c",
+        "2048",
+        "-np",
+        "1",
+        "-t",
+        "12",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "0",
+        "--no-ui",
+        "-lv",
+        "4",
+        "--log-colors",
+        "off"
+      ],
+      "measured": null,
+      "not_run_reason": "AC power offline (PowerOnline False) at every check 07:00:39Z-07:05:01Z"
+    }
+  ],
+  "optimizer_choice_real_reserve": {
+    "bench_warm": {
+      "best": "local:CUDA0 [0-23 + head]",
+      "decode_ms": 1.0700624447482248,
+      "J_ms": 45.60492477590021,
+      "skipped": [
+        "4c2991743c154be896d10a0b53ba4d2b:MTL0: not used: 4c2991743c154be896d10a0b53ba4d2b:MTL0 units 0-0: needs 441 MiB (weights 10 MiB, KV 1 MiB, workspace 110 MiB, staging 64 MiB, overhead 256 MiB), pool admits 0 B"
+      ]
+    },
+    "bench_cold": {
+      "best": "local:CUDA0 [0-23 + head]",
+      "decode_ms": 1.0700624447482248,
+      "J_ms": 2110.9387624552105,
+      "skipped": [
+        "4c2991743c154be896d10a0b53ba4d2b:MTL0: not used: 4c2991743c154be896d10a0b53ba4d2b:MTL0 units 0-0: needs 441 MiB (weights 10 MiB, KV 1 MiB, workspace 110 MiB, staging 64 MiB, overhead 256 MiB), pool admits 0 B"
+      ]
+    },
+    "service_default_cold": {
+      "best": "local:CUDA0 [0-23 + head]",
+      "decode_ms": 1.0700624447482248,
+      "J_ms": 2350.6327500788125,
+      "skipped": [
+        "4c2991743c154be896d10a0b53ba4d2b:MTL0: not used: 4c2991743c154be896d10a0b53ba4d2b:MTL0 units 0-0: needs 441 MiB (weights 10 MiB, KV 1 MiB, workspace 110 MiB, staging 64 MiB, overhead 256 MiB), pool admits 0 B"
+      ]
+    }
+  },
+  "optimizer_choice_counterfactual_reserve_0": {
+    "bench_warm": {
+      "best": "local:CUDA0 [0-23 + head]",
+      "decode_ms": 1.0700624447482248,
+      "J_ms": 45.60492477590021,
+      "skipped": [
+        "4c2991743c154be896d10a0b53ba4d2b:MTL0: not used: adds 40.5 ms hop per token, adds 0.1 ms compute and I/O per token; the best layout with it scores J +3786 ms"
+      ],
+      "mac_admissible_bytes": 3665199104
+    },
+    "bench_cold": {
+      "best": "local:CUDA0 [0-23 + head]",
+      "decode_ms": 1.0700624447482248,
+      "J_ms": 2110.9387624552105,
+      "skipped": [
+        "4c2991743c154be896d10a0b53ba4d2b:MTL0: not used: adds 40.5 ms hop per token, adds 0.1 ms compute and I/O per token, adds 7.4 s load; the best layout with it scores J +11149 ms"
+      ],
+      "mac_admissible_bytes": 3665199104
+    },
+    "service_default_cold": {
+      "best": "local:CUDA0 [0-23 + head]",
+      "decode_ms": 1.0700624447482248,
+      "J_ms": 2350.6327500788125,
+      "skipped": [
+        "4c2991743c154be896d10a0b53ba4d2b:MTL0: not used: adds 40.5 ms hop per token, adds 0.1 ms compute and I/O per token, adds 7.4 s load; the best layout with it scores J +21149 ms"
+      ],
+      "mac_admissible_bytes": 3665199104
+    }
+  },
+  "evidence": {
+    "predictions": "results\\capacity\\20261022T070333Z-pair-g14-m4air-relay\\predictions.json",
+    "counterfactual": "results\\capacity\\20261022T070333Z-pair-g14-m4air-relay\\counterfactual_mac_reserve_0.json",
+    "nodes_snapshot": "results\\capacity\\20261022T070333Z-pair-g14-m4air-relay\\nodes-0700Z.json",
+    "dry_runs": [
+      "results/capacity/20261022T070450Z-bench-pair-qwen2.5-0.5b-instruct-q4_k_m-a/bench.json",
+      "results/capacity/20261022T070451Z-bench-pair-qwen2.5-0.5b-instruct-q4_k_m-b/bench.json",
+      "results/capacity/20261022T070453Z-bench-pair-qwen2.5-0.5b-instruct-q4_k_m-c/bench.json"
+    ]
+  },
+  "provenance": "no measured values in this file; every number is an optimizer prediction (coefficient provenance per term in predictions.json)"
+}

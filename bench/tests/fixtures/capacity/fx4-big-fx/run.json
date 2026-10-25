@@ -1,0 +1,11 @@
+{
+ "status": "refused",
+ "requested": {
+  "concurrency": 1
+ },
+ "measured": {},
+ "error": {
+  "type": "RunRefused",
+  "message": "the gateway rejected --layout: | token abcdefghijabcdefghijabcdefghijabcdefghijabcdefghij | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+ }
+}

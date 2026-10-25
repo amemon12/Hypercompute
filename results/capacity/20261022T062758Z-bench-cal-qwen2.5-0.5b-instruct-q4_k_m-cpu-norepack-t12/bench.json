@@ -1,0 +1,743 @@
+{
+  "schema": "hypercompute.capacity.bench/1",
+  "status": "ok",
+  "started_at": "2026-10-22T06:27:58.626457+00:00",
+  "finished_at": "2026-10-22T06:28:07.456721+00:00",
+  "case": {
+    "label": "cal-qwen2.5-0.5b-instruct-q4_k_m-cpu-norepack-t12",
+    "model_paths": [
+      "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-0.5b-instruct-q4_k_m\\qwen2.5-0.5b-instruct-q4_k_m.gguf"
+    ],
+    "engine": {
+      "devices": [],
+      "tensor_split": [],
+      "ngl": 0,
+      "ctx": 2048,
+      "threads": 12,
+      "load_mode": "mmap",
+      "flags": [
+        "--no-repack",
+        "--cache-ram",
+        "0"
+      ]
+    },
+    "stream": null,
+    "rpc_endpoints": [],
+    "rpc_path_class": "local"
+  },
+  "workload": {
+    "prompt": "You are a careful assistant. Explain, in plain sentences, why a laptop that reads part of a language model from its SSD for every token is slower than one that keeps every layer in memory, and what changes when a second computer with spare memory joins over a network.",
+    "prompt_tokens": 512,
+    "output_tokens": 64,
+    "reps": 3,
+    "warmup": 1,
+    "reuse_output_tokens": 1,
+    "seed": 7,
+    "temperature": 0.0,
+    "top_k": 1,
+    "request_timeout_s": 1800,
+    "load_timeout_s": 900
+  },
+  "host": {
+    "system": "Windows",
+    "release": "11",
+    "version": "10.0.26200",
+    "machine": "AMD64",
+    "processor": "AMD64 Family 26 Model 36 Stepping 0, AuthenticAMD",
+    "python": "3.12.10",
+    "cpu_logical": 24,
+    "cpu_physical": 12,
+    "ram_total_bytes": 33412722688,
+    "ram_available_bytes": 11032670208,
+    "power": {
+      "source": "ac",
+      "percent": 16,
+      "via": "psutil.sensors_battery"
+    }
+  },
+  "llama_cpp": {
+    "release": "b11770",
+    "variant": "windows-x64-cuda13.4",
+    "accelerator": "cuda",
+    "engine_dir": "C:\\Users\\operator\\.hypercompute\\engines\\llama-b11770-windows-x64-cuda13.4",
+    "source": "pinned-release",
+    "build": 11770,
+    "commit": "39da130fc",
+    "build_source": "llama-server log"
+  },
+  "model": {
+    "model_id": "qwen2.5-0.5b-instruct-q4_k_m",
+    "shards": [
+      {
+        "path": "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-0.5b-instruct-q4_k_m\\qwen2.5-0.5b-instruct-q4_k_m.gguf",
+        "size": 491400032,
+        "mtime_ns": 1792546567859131600
+      }
+    ],
+    "bytes": 491400032,
+    "fingerprint": "1882222dbcdee64cb779fc0b162e066cd89dc56ed26473469a59a2163f117f93",
+    "architecture": "qwen2",
+    "file_type": "Q4_K_M",
+    "n_layer": 24
+  },
+  "preflight": {
+    "port": 52062,
+    "port_listener": null,
+    "available_ram_bytes": 11045167104,
+    "predicted": {
+      "total_bytes": 1047591936,
+      "parts": [
+        [
+          "cpu unit weights",
+          391962624
+        ],
+        [
+          "token_embd",
+          93592576
+        ],
+        [
+          "kv cache (cpu blocks)",
+          25165824
+        ],
+        [
+          "compute prior",
+          536870912
+        ]
+      ],
+      "provenance": "estimate"
+    },
+    "free_disk_bytes": 45237075968,
+    "disk_path": "C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity"
+  },
+  "refused": [],
+  "launch": {
+    "argv": [
+      "C:\\Users\\operator\\.hypercompute\\engines\\llama-b11770-windows-x64-cuda13.4\\llama-server.exe",
+      "-m",
+      "C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-0.5b-instruct-q4_k_m\\qwen2.5-0.5b-instruct-q4_k_m.gguf",
+      "--load-mode",
+      "mmap",
+      "--no-repack",
+      "--cache-ram",
+      "0",
+      "--device",
+      "none",
+      "-ngl",
+      "0",
+      "--fit",
+      "off",
+      "-c",
+      "2048",
+      "-np",
+      "1",
+      "-t",
+      "12",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "52062",
+      "--no-ui",
+      "-lv",
+      "4",
+      "--log-colors",
+      "off"
+    ],
+    "port": 52062,
+    "bin_dir": "C:\\Users\\operator\\.hypercompute\\engines\\llama-b11770-windows-x64-cuda13.4",
+    "log": "C:\\Users\\operator\\.hypercompute\\worktrees\\iroh-transport\\results\\capacity\\20261022T062758Z-bench-cal-qwen2.5-0.5b-instruct-q4_k_m-cpu-norepack-t12\\llama-server-52062.log",
+    "env_removed": []
+  },
+  "load": {
+    "ok": true,
+    "seconds": 1.224,
+    "error": null,
+    "log_lines": [
+      "0.00.775.948 I cmn  common_param: common_params_print_info: build 11770 (39da130fc) with Clang 20.1.8 for Windows x86_64",
+      "0.00.831.071 I cmn  common_param: system_info: n_threads = 12 (n_threads_batch = 12) / 24 | CUDA : ARCHS = 750,800,860,890,900,1200,1210 | USE_GRAPHS = 1 | FA_QUANTS = q4_0-q4_0,q8_0-q8_0,f16-f16,bf16-bf16 | BLACKWELL_NATIVE_FP4 = 1 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | AVX512 = 1 | AVX512_VBMI = 1 | AVX512_VNNI = 1 | AVX512_BF16 = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 |",
+      "0.00.838.033 I srv    load_model: loading model 'C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-0.5b-instruct-q4_k_m\\qwen2.5-0.5b-instruct-q4_k_m.gguf'",
+      "0.00.838.048 I srv    load_model: local path 'C:\\Users\\operator\\.hypercompute\\models\\qwen2.5-0.5b-instruct-q4_k_m\\qwen2.5-0.5b-instruct-q4_k_m.gguf'",
+      "0.01.054.122 I load_tensors: loading model tensors, this can take a while... (load_mode = mmap)",
+      "0.01.076.941 I load_tensors: offloading 0 repeating layers to GPU",
+      "0.01.076.944 I load_tensors: offloaded 0/25 layers to GPU",
+      "0.01.076.948 I load_tensors:   CPU_Mapped model buffer size =   462.96 MiB",
+      "0.01.080.980 I llama_kv_cache:        CPU KV buffer size =    24.00 MiB",
+      "0.01.083.183 I llama_kv_cache: size =   24.00 MiB (  2048 cells,  24 layers,  1/1 seqs), K (f16):   12.00 MiB, V (f16):   12.00 MiB",
+      "0.01.083.198 I llama_kv_cache: n_rot_k = 0, n_embd_head_k_all = 64",
+      "0.01.083.199 I llama_kv_cache: n_rot_v = 0, n_embd_head_k_all = 64",
+      "0.01.083.210 I sched_reserve: reserving ...",
+      "0.01.085.825 I sched_reserve:        CPU compute buffer size =    39.27 MiB",
+      "0.01.085.829 I sched_reserve: graph: nodes = 825, splits = 1, input objects = 4, input tensors = 9",
+      "0.01.085.830 I sched_reserve: reserve took 2.62 ms, sched copies = 1",
+      "0.01.175.670 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 2048, kv_unified = 'false'",
+      "0.01.175.699 I slot   load_model: id  0 | task -1 | new slot, n_ctx = 2048",
+      "0.01.175.750 I srv    load_model: prompt cache is disabled - use `--cache-ram N` to enable it",
+      "0.01.175.751 I srv    load_model: for more info see https://github.com/ggml-org/llama.cpp/pull/16391",
+      "0.01.175.752 I srv    load_model: context checkpoints enabled, max = 32, min spacing = 8192",
+      "0.01.183.211 I srv  llama_server: model loaded"
+    ],
+    "build": {
+      "build": 11770,
+      "commit": "39da130fc",
+      "build_source": "llama-server log"
+    },
+    "memory": {
+      "loaded_at_s": 1.217,
+      "samples": 12,
+      "seconds": 1.156,
+      "working_set_peak": 698658816,
+      "working_set_median": 197447680,
+      "private_peak": 741769216,
+      "sys_available_min": 10354933760,
+      "page_faults": 184522,
+      "proc_read_bytes": 15805441,
+      "sys_disk_read_bytes": 0
+    },
+    "log_tail": []
+  },
+  "reps": [
+    {
+      "index": 0,
+      "warmup": true,
+      "ok": true,
+      "phases": [
+        {
+          "phase": "uncached",
+          "ok": true,
+          "error": null,
+          "wall_ms": 1149.816,
+          "ttft_ms": 582.236,
+          "timings": {
+            "prompt_n": 512,
+            "prompt_ms": 575.667,
+            "predicted_n": 64,
+            "predicted_ms": 567.512,
+            "cache_n": 0
+          },
+          "cache_prompt": false,
+          "prompt_head": "[58, 9995, 220, 15, 15, 15, 15, 220, 18, 22, 17, 20, 18, 22, 16,",
+          "io": {
+            "seconds": 1.1501,
+            "proc_read_bytes": 0,
+            "sys_disk_read_bytes": 831488,
+            "page_faults": 11193,
+            "working_set_peak": 840630272,
+            "private_peak": 747438080
+          }
+        },
+        {
+          "phase": "prefix_prime",
+          "ok": true,
+          "error": null,
+          "wall_ms": 588.565,
+          "ttft_ms": null,
+          "timings": {
+            "prompt_n": 512,
+            "prompt_ms": 585.954,
+            "predicted_n": 1,
+            "predicted_ms": 0.001,
+            "cache_n": 0
+          },
+          "cache_prompt": false,
+          "prompt_head": "[58, 9995, 220, 15, 15, 15, 15, 220, 18, 22, 17, 20, 18, 22, 16,",
+          "io": {
+            "seconds": 0.5889,
+            "proc_read_bytes": 0,
+            "sys_disk_read_bytes": 0,
+            "page_faults": 477,
+            "working_set_peak": 840777728,
+            "private_peak": 747573248
+          }
+        },
+        {
+          "phase": "prefix_reuse",
+          "ok": true,
+          "error": null,
+          "wall_ms": 10.611,
+          "ttft_ms": null,
+          "timings": {
+            "prompt_n": 1,
+            "prompt_ms": 8.092,
+            "predicted_n": 1,
+            "predicted_ms": 0.001,
+            "cache_n": 511
+          },
+          "cache_prompt": true,
+          "prompt_head": "[58, 9995, 220, 15, 15, 15, 15, 220, 18, 22, 17, 20, 18, 22, 16,",
+          "io": {
+            "seconds": 0.0107,
+            "proc_read_bytes": 0,
+            "sys_disk_read_bytes": 0,
+            "page_faults": 447,
+            "working_set_peak": 840777728,
+            "private_peak": 747573248
+          }
+        }
+      ],
+      "gpu": null,
+      "power": {
+        "source": "ac",
+        "percent": 17,
+        "via": "psutil.sensors_battery"
+      },
+      "rpc": null,
+      "started_at": "2026-10-22T06:28:00.360043+00:00"
+    },
+    {
+      "index": 1,
+      "warmup": false,
+      "ok": true,
+      "phases": [
+        {
+          "phase": "uncached",
+          "ok": true,
+          "error": null,
+          "wall_ms": 1101.584,
+          "ttft_ms": 587.889,
+          "timings": {
+            "prompt_n": 512,
+            "prompt_ms": 586.18,
+            "predicted_n": 64,
+            "predicted_ms": 513.09,
+            "cache_n": 0
+          },
+          "cache_prompt": false,
+          "prompt_head": "[58, 9995, 220, 15, 15, 15, 16, 220, 16, 17, 18, 19, 21, 24, 17,",
+          "io": {
+            "seconds": 1.1019,
+            "proc_read_bytes": 0,
+            "sys_disk_read_bytes": 65536,
+            "page_faults": 448,
+            "working_set_peak": 840822784,
+            "private_peak": 747614208
+          }
+        },
+        {
+          "phase": "prefix_prime",
+          "ok": true,
+          "error": null,
+          "wall_ms": 565.844,
+          "ttft_ms": null,
+          "timings": {
+            "prompt_n": 512,
+            "prompt_ms": 563.841,
+            "predicted_n": 1,
+            "predicted_ms": 0.001,
+            "cache_n": 0
+          },
+          "cache_prompt": false,
+          "prompt_head": "[58, 9995, 220, 15, 15, 15, 16, 220, 16, 17, 18, 19, 21, 24, 17,",
+          "io": {
+            "seconds": 0.566,
+            "proc_read_bytes": 0,
+            "sys_disk_read_bytes": 0,
+            "page_faults": 447,
+            "working_set_peak": 840908800,
+            "private_peak": 747700224
+          }
+        },
+        {
+          "phase": "prefix_reuse",
+          "ok": true,
+          "error": null,
+          "wall_ms": 10.236,
+          "ttft_ms": null,
+          "timings": {
+            "prompt_n": 1,
+            "prompt_ms": 8.199,
+            "predicted_n": 1,
+            "predicted_ms": 0.001,
+            "cache_n": 511
+          },
+          "cache_prompt": true,
+          "prompt_head": "[58, 9995, 220, 15, 15, 15, 16, 220, 16, 17, 18, 19, 21, 24, 17,",
+          "io": {
+            "seconds": 0.0104,
+            "proc_read_bytes": 0,
+            "sys_disk_read_bytes": 0,
+            "page_faults": 447,
+            "working_set_peak": 840908800,
+            "private_peak": 747700224
+          }
+        }
+      ],
+      "gpu": null,
+      "power": {
+        "source": "ac",
+        "percent": 17,
+        "via": "psutil.sensors_battery"
+      },
+      "rpc": null,
+      "started_at": "2026-10-22T06:28:02.123382+00:00"
+    },
+    {
+      "index": 2,
+      "warmup": false,
+      "ok": true,
+      "phases": [
+        {
+          "phase": "uncached",
+          "ok": true,
+          "error": null,
+          "wall_ms": 1104.728,
+          "ttft_ms": 578.955,
+          "timings": {
+            "prompt_n": 512,
+            "prompt_ms": 577.631,
+            "predicted_n": 64,
+            "predicted_ms": 525.136,
+            "cache_n": 0
+          },
+          "cache_prompt": false,
+          "prompt_head": "[58, 9995, 220, 15, 15, 15, 17, 220, 24, 20, 19, 23, 24, 18, 15,",
+          "io": {
+            "seconds": 1.1049,
+            "proc_read_bytes": 0,
+            "sys_disk_read_bytes": 196608,
+            "page_faults": 447,
+            "working_set_peak": 840908800,
+            "private_peak": 747700224
+          }
+        },
+        {
+          "phase": "prefix_prime",
+          "ok": true,
+          "error": null,
+          "wall_ms": 604.45,
+          "ttft_ms": null,
+          "timings": {
+            "prompt_n": 512,
+            "prompt_ms": 602.299,
+            "predicted_n": 1,
+            "predicted_ms": 0.001,
+            "cache_n": 0
+          },
+          "cache_prompt": false,
+          "prompt_head": "[58, 9995, 220, 15, 15, 15, 17, 220, 24, 20, 19, 23, 24, 18, 15,",
+          "io": {
+            "seconds": 0.6047,
+            "proc_read_bytes": 0,
+            "sys_disk_read_bytes": 0,
+            "page_faults": 447,
+            "working_set_peak": 840933376,
+            "private_peak": 747724800
+          }
+        },
+        {
+          "phase": "prefix_reuse",
+          "ok": true,
+          "error": null,
+          "wall_ms": 11.174,
+          "ttft_ms": null,
+          "timings": {
+            "prompt_n": 1,
+            "prompt_ms": 8.588,
+            "predicted_n": 1,
+            "predicted_ms": 0.001,
+            "cache_n": 511
+          },
+          "cache_prompt": true,
+          "prompt_head": "[58, 9995, 220, 15, 15, 15, 17, 220, 24, 20, 19, 23, 24, 18, 15,",
+          "io": {
+            "seconds": 0.0113,
+            "proc_read_bytes": 0,
+            "sys_disk_read_bytes": 0,
+            "page_faults": 447,
+            "working_set_peak": 840933376,
+            "private_peak": 747724800
+          }
+        }
+      ],
+      "gpu": null,
+      "power": {
+        "source": "ac",
+        "percent": 17,
+        "via": "psutil.sensors_battery"
+      },
+      "rpc": null,
+      "started_at": "2026-10-22T06:28:03.825384+00:00"
+    },
+    {
+      "index": 3,
+      "warmup": false,
+      "ok": true,
+      "phases": [
+        {
+          "phase": "uncached",
+          "ok": true,
+          "error": null,
+          "wall_ms": 1143.565,
+          "ttft_ms": 625.291,
+          "timings": {
+            "prompt_n": 512,
+            "prompt_ms": 623.589,
+            "predicted_n": 64,
+            "predicted_ms": 517.893,
+            "cache_n": 0
+          },
+          "cache_prompt": false,
+          "prompt_head": "[58, 9995, 220, 15, 15, 15, 18, 220, 17, 15, 22, 20, 15, 20, 15,",
+          "io": {
+            "seconds": 1.1439,
+            "proc_read_bytes": 0,
+            "sys_disk_read_bytes": 0,
+            "page_faults": 449,
+            "working_set_peak": 840945664,
+            "private_peak": 747732992
+          }
+        },
+        {
+          "phase": "prefix_prime",
+          "ok": true,
+          "error": null,
+          "wall_ms": 617.943,
+          "ttft_ms": null,
+          "timings": {
+            "prompt_n": 512,
+            "prompt_ms": 615.566,
+            "predicted_n": 1,
+            "predicted_ms": 0.001,
+            "cache_n": 0
+          },
+          "cache_prompt": false,
+          "prompt_head": "[58, 9995, 220, 15, 15, 15, 18, 220, 17, 15, 22, 20, 15, 20, 15,",
+          "io": {
+            "seconds": 0.6182,
+            "proc_read_bytes": 0,
+            "sys_disk_read_bytes": 36864,
+            "page_faults": 449,
+            "working_set_peak": 841003008,
+            "private_peak": 747794432
+          }
+        },
+        {
+          "phase": "prefix_reuse",
+          "ok": true,
+          "error": null,
+          "wall_ms": 11.459,
+          "ttft_ms": null,
+          "timings": {
+            "prompt_n": 1,
+            "prompt_ms": 8.807,
+            "predicted_n": 1,
+            "predicted_ms": 0.001,
+            "cache_n": 511
+          },
+          "cache_prompt": true,
+          "prompt_head": "[58, 9995, 220, 15, 15, 15, 18, 220, 17, 15, 22, 20, 15, 20, 15,",
+          "io": {
+            "seconds": 0.0116,
+            "proc_read_bytes": 0,
+            "sys_disk_read_bytes": 0,
+            "page_faults": 447,
+            "working_set_peak": 841003008,
+            "private_peak": 747794432
+          }
+        }
+      ],
+      "gpu": null,
+      "power": {
+        "source": "ac",
+        "percent": 17,
+        "via": "psutil.sensors_battery"
+      },
+      "rpc": null,
+      "started_at": "2026-10-22T06:28:05.556363+00:00"
+    }
+  ],
+  "summary": {
+    "n_reps": 3,
+    "n_warmup": 1,
+    "n_reps_ok": 3,
+    "metrics": {
+      "hcstream_bytes_per_pass": {
+        "n": 0
+      },
+      "prefill_tokens": {
+        "n": 3,
+        "median": 512.0,
+        "low": 512.0,
+        "high": 512.0,
+        "spread": "min/max"
+      },
+      "prefill_ms": {
+        "n": 3,
+        "median": 586.18,
+        "low": 577.631,
+        "high": 623.589,
+        "spread": "min/max"
+      },
+      "prefill_tok_s": {
+        "n": 3,
+        "median": 873.451840731516,
+        "low": 821.0536106313613,
+        "high": 886.3790205165582,
+        "spread": "min/max"
+      },
+      "ttft_ms": {
+        "n": 3,
+        "median": 587.889,
+        "low": 578.955,
+        "high": 625.291,
+        "spread": "min/max"
+      },
+      "decode_tokens": {
+        "n": 3,
+        "median": 64.0,
+        "low": 64.0,
+        "high": 64.0,
+        "spread": "min/max"
+      },
+      "decode_steps": {
+        "n": 3,
+        "median": 63.0,
+        "low": 63.0,
+        "high": 63.0,
+        "spread": "min/max"
+      },
+      "decode_ms": {
+        "n": 3,
+        "median": 517.893,
+        "low": 513.09,
+        "high": 525.136,
+        "spread": "min/max"
+      },
+      "decode_tok_s": {
+        "n": 3,
+        "median": 121.64674942507428,
+        "low": 119.96892233630908,
+        "high": 122.78547623223996,
+        "spread": "min/max"
+      },
+      "decode_ms_per_token": {
+        "n": 3,
+        "median": 8.22052380952381,
+        "low": 8.144285714285715,
+        "high": 8.335492063492064,
+        "spread": "min/max"
+      },
+      "uncached_wall_ms": {
+        "n": 3,
+        "median": 1104.728,
+        "low": 1101.584,
+        "high": 1143.565,
+        "spread": "min/max"
+      },
+      "proc_read_bytes": {
+        "n": 3,
+        "median": 0.0,
+        "low": 0.0,
+        "high": 0.0,
+        "spread": "min/max"
+      },
+      "sys_disk_read_bytes": {
+        "n": 3,
+        "median": 65536.0,
+        "low": 0.0,
+        "high": 196608.0,
+        "spread": "min/max"
+      },
+      "proc_read_bytes_per_token": {
+        "n": 3,
+        "median": 0.0,
+        "low": 0.0,
+        "high": 0.0,
+        "spread": "min/max"
+      },
+      "sys_disk_read_bytes_per_token": {
+        "n": 3,
+        "median": 1024.0,
+        "low": 0.0,
+        "high": 3072.0,
+        "spread": "min/max"
+      },
+      "hcstream_bytes_read": {
+        "n": 0
+      },
+      "hcstream_bytes_per_token": {
+        "n": 0
+      },
+      "page_faults": {
+        "n": 3,
+        "median": 448.0,
+        "low": 447.0,
+        "high": 449.0,
+        "spread": "min/max"
+      },
+      "reuse_cache_n": {
+        "n": 3,
+        "median": 511.0,
+        "low": 511.0,
+        "high": 511.0,
+        "spread": "min/max"
+      },
+      "reuse_prompt_n": {
+        "n": 3,
+        "median": 1.0,
+        "low": 1.0,
+        "high": 1.0,
+        "spread": "min/max"
+      },
+      "reuse_prompt_ms": {
+        "n": 3,
+        "median": 8.588,
+        "low": 8.199,
+        "high": 8.807,
+        "spread": "min/max"
+      },
+      "reuse_wall_ms": {
+        "n": 3,
+        "median": 11.174,
+        "low": 10.236,
+        "high": 11.459,
+        "spread": "min/max"
+      },
+      "working_set_peak": {
+        "n": 3,
+        "median": 840933376.0,
+        "low": 840908800.0,
+        "high": 841003008.0,
+        "spread": "min/max"
+      },
+      "private_peak": {
+        "n": 3,
+        "median": 747724800.0,
+        "low": 747700224.0,
+        "high": 747794432.0,
+        "spread": "min/max"
+      }
+    },
+    "failures": []
+  },
+  "stop": {
+    "exit_code": 1,
+    "stop_s": 0.108,
+    "children": 0,
+    "children_alive": [],
+    "child_alive_after_stop": false,
+    "error": null,
+    "pressure_guard_tripped": false,
+    "sampler_error": null,
+    "memory_whole_run": {
+      "samples": 78,
+      "seconds": 8.253,
+      "working_set_peak": 841003008,
+      "working_set_median": 839081984,
+      "private_peak": 747794432,
+      "sys_available_min": 10182574080,
+      "page_faults": 224227,
+      "proc_read_bytes": 15805441,
+      "sys_disk_read_bytes": 1130496
+    },
+    "available_after_stop": 11070607360
+  },
+  "error": null,
+  "provenance": {
+    "load, reps, summary": "measured on this host during this run",
+    "preflight.predicted": "estimate: GGUF unit sizes plus KV sizing plus a compute prior, used only to refuse a run",
+    "ttft_ms": "measured client side over loopback with streaming; no gateway in the path",
+    "gpu": "nvidia-smi snapshot after the uncached phase, not a peak",
+    "decode_tok_s": "(predicted_n - 1) / predicted_ms from engine timings, the engine's own predicted_per_second",
+    "*_read_bytes_per_token": "all reads of the uncached phase (prefill and decode) over predicted_n",
+    "hcstream_bytes_per_pass": "hcstream bytes_read over its forward-pass count (decode bytes per token)"
+  }
+}

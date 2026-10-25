@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f4efe5">
+<title>Hypercompute</title>
+<link rel="icon" href="/brand/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/brand/fonts/fonts.css">
+<style>
+  :root { --paper:#f4efe5; --ink:#171713; --muted:#5d5e51; --green:#4d7548; --soft:color-mix(in srgb,#4d7548 9%,#f4efe5);
+          --neutral:#dedccf; --rule:#c8c2b5; --maroon:#733c3e; --btn-text:#f6f3e9;
+          --d1:#98ad92; --d2:#d69876; --d3:#ccc9bd; --d4:#9bb7c6; --d5:#77916e; --d6:#bb8057; }
+  * { box-sizing:border-box; }
+  html,body { margin:0; background:var(--paper) url('/brand/paper-grain.svg'); color:var(--ink);
+              font:16px/1.5 Geist, system-ui, sans-serif; }
+  ::selection { background:#c8d5bc; color:var(--ink); }
+  header { display:flex; align-items:center; gap:12px; padding:22px 28px; border-bottom:1px solid var(--rule); }
+  header img { width:34px; height:34px; }
+  .word { font:700 22px 'Helvetica Neue', Arial, sans-serif; letter-spacing:-.02em; }
+  main { max-width:880px; margin:0 auto; padding:28px 20px 60px; }
+  h1 { font:700 clamp(34px,6vw,54px)/1.02 'Helvetica Neue', Arial, sans-serif; letter-spacing:-.03em; margin:8px 0 6px; }
+  .lede { color:var(--muted); margin:0 0 26px; }
+  .tabs { display:flex; gap:8px; margin-bottom:22px; }
+  .tab { border:1px solid var(--ink); background:transparent; padding:9px 16px; border-radius:999px; cursor:pointer;
+         font:500 15px Geist, sans-serif; color:var(--ink); }
+  .tab[aria-selected=true] { background:var(--ink); color:var(--paper); }
+  .card { border:1px solid var(--rule); background:color-mix(in srgb,var(--paper) 70%,white); border-radius:14px;
+          padding:20px; margin-bottom:16px; }
+  .card h2 { font:700 20px 'Helvetica Neue', Arial, sans-serif; margin:0 0 10px; letter-spacing:-.01em; }
+  .row { display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+  button.go { background:var(--green); color:var(--btn-text); border:0; border-radius:10px; padding:12px 18px;
+              font:500 16px Geist, sans-serif; cursor:pointer; }
+  button.ghost { background:transparent; color:var(--ink); border:1px solid var(--ink); border-radius:10px; padding:11px 16px;
+                 font:500 15px Geist, sans-serif; cursor:pointer; }
+  button:disabled { opacity:.45; cursor:default; }
+  button:focus-visible, .tab:focus-visible, select:focus-visible, textarea:focus-visible, input:focus-visible
+    { outline:2px solid var(--green); outline-offset:2px; }
+  .pill { display:inline-flex; align-items:center; gap:7px; font:400 13px 'IBM Plex Mono', monospace; color:var(--muted); }
+  .dot { width:9px; height:9px; border-radius:50%; background:#8d8277; }
+  .dot.on { background:var(--green); }
+  .peers { display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:10px; margin-top:12px; }
+  .peer { border-radius:10px; padding:12px; border:1px solid var(--rule); }
+  .peer b { display:block; font:700 16px 'Helvetica Neue', Arial, sans-serif; }
+  .mono { font:400 13px 'IBM Plex Mono', monospace; color:var(--muted); }
+  .bar { display:flex; height:34px; border-radius:8px; overflow:hidden; margin:12px 0 4px; border:1px solid var(--rule); }
+  .bar span { display:flex; align-items:center; justify-content:center; font:400 12px 'IBM Plex Mono', monospace; }
+  select, textarea, input { font:15px Geist, sans-serif; color:var(--ink); background:var(--paper); border:1px solid var(--rule);
+                            border-radius:10px; padding:11px 12px; }
+  textarea { width:100%; min-height:84px; resize:vertical; }
+  #answer { white-space:pre-wrap; margin-top:12px; min-height:1.5em; }
+  .err { color:var(--maroon); }
+  .hidden { display:none; }
+</style>
+</head>
+<body>
+<header><img src="/brand/favicon.svg" alt=""><span class="word">hypercompute</span></header>
+<main>
+  <h1>Borrow your friends' computers.</h1>
+  <p class="lede">Split one model across the computers in your pool.</p>
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" id="t-host" aria-selected="true" aria-controls="host">Host the pool</button>
+    <button class="tab" role="tab" id="t-join" aria-selected="false" aria-controls="join">Join a pool</button>
+  </div>
+
+  <section id="host" role="tabpanel" aria-labelledby="t-host">
+    <div class="card">
+      <h2>1. Start hosting</h2>
+      <div class="row"><button class="go" id="start">Start hosting</button>
+        <span class="pill"><span class="dot" id="hostdot"></span><span id="hoststate">checking</span></span></div>
+    </div>
+    <div class="card">
+      <h2>2. Invite a friend</h2>
+      <div class="row"><button class="ghost" id="invite">Copy invite</button><span class="mono" id="invitestate">
+        One use. Send it to a friend; they paste it in Join a pool.</span></div>
+    </div>
+    <div class="card">
+      <h2>3. Who is in the pool</h2>
+      <div class="mono" id="peercount">nobody yet</div>
+      <div class="peers" id="peers"></div>
+    </div>
+    <div class="card">
+      <h2>4. Run a model across everyone</h2>
+      <div class="row"><select id="model" aria-label="Model"></select>
+        <button class="go" id="run">Run on the pool</button><button class="ghost" id="stopm">Stop model</button></div>
+      <div class="mono" id="jobstate"></div>
+      <div class="bar hidden" id="bar"></div>
+    </div>
+    <div class="card">
+      <h2>5. Ask it something</h2>
+      <div class="row" style="flex-wrap:nowrap"><input id="prompt" style="flex:1" placeholder="Explain pipeline parallelism in one sentence">
+        <button class="go" id="ask">Ask</button></div>
+      <div id="answer"></div><div class="mono" id="speed"></div>
+    </div>
+  </section>
+
+  <section id="join" role="tabpanel" aria-labelledby="t-join" class="hidden">
+    <div class="card">
+      <h2>Join a friend's pool</h2>
+      <p class="mono">Paste the invite they sent you. Your computer lends memory to the pool until you stop.</p>
+      <input type="password" id="inv" aria-label="Invite" placeholder="Paste your invite" autocomplete="off" style="width:100%">
+      <div class="row" style="margin-top:12px"><button class="go" id="joinbtn">Join the pool</button>
+        <button class="ghost" id="leave">Stop sharing</button></div>
+      <div class="mono" id="sharestate" style="margin-top:10px"></div>
+    </div>
+  </section>
+</main>
+<script>
+const launchToken = new URLSearchParams(location.hash.slice(1)).get('t');
+let T = launchToken || '';
+try {
+  if (launchToken) sessionStorage.setItem('hc-app-token', launchToken);
+  else T = sessionStorage.getItem('hc-app-token') || '';
+} catch (_) { /* The current page still works when browser storage is disabled. */ }
+if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+const $ = id => document.getElementById(id);
+const COLORS = ['var(--d1)','var(--d2)','var(--d3)','var(--d4)','var(--d5)','var(--d6)'];
+async function api(path, body) {
+  const r = await fetch(path, {method: body === undefined ? 'GET' : 'POST', headers: {'X-App-Token': T, 'Content-Type': 'application/json'},
+                               body: body === undefined ? undefined : JSON.stringify(body)});
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(j.error || r.statusText);
+  return j;
+}
+function tab(which) {
+  for (const [t, p] of [['t-host','host'],['t-join','join']]) {
+    const on = p === which; $(t).setAttribute('aria-selected', on); $(p).classList.toggle('hidden', !on);
+  }
+}
+$('t-host').onclick = () => tab('host'); $('t-join').onclick = () => tab('join');
+function say(id, text, bad) { $(id).textContent = text; $(id).classList.toggle('err', !!bad); }
+async function refresh() {
+  try {
+    const s = await api('/api/state');
+    $('hostdot').classList.toggle('on', s.host_up); $('hoststate').textContent = s.host_up ? 'hosting' : 'not hosting';
+    $('peercount').textContent = s.peers.length ? `${s.peers.length} computer${s.peers.length > 1 ? 's' : ''} joined` : 'nobody yet';
+    $('peers').innerHTML = '';
+    s.peers.forEach((p, i) => {
+      const d = document.createElement('div'); d.className = 'peer'; d.style.background = COLORS[i % COLORS.length];
+      d.innerHTML = '<b></b><span class="mono"></span>';
+      d.querySelector('b').textContent = p.name || 'friend';
+      d.querySelector('span').textContent = `${(p.devices || []).join(', ')} · ${p.admissible_gib} GiB free · ${p.state}`;
+      $('peers').appendChild(d);
+    });
+    const sel = $('model'), cur = sel.value;
+    if (sel.options.length !== s.models.length) {
+      sel.innerHTML = ''; s.models.forEach(m => sel.add(new Option(m, m))); if (cur) sel.value = cur;
+    }
+    const j = s.job || {};
+    $('run').disabled = ['planning','planned','reserving','preparing','loading','warming','ready','draining'].includes(j.state);
+    $('stopm').disabled = !j.can_stop;
+    say('jobstate', j.state === 'idle' ? '' : `${j.model || ''} ${j.state}${j.tier ? ' · tier ' + j.tier : ''}${j.progress ? ' · ' + j.progress : ''}${j.detail ? ' · ' + j.detail : ''}`,
+        ['failed','refused','does not fit'].includes(j.state));
+    const bar = $('bar');
+    if (j.stages && j.stages.length) {
+      const total = j.stages.reduce((a, s) => a + s.layers, 0); bar.innerHTML = ''; bar.classList.remove('hidden');
+      j.stages.forEach((st, i) => {
+        const sp = document.createElement('span'); sp.style.flex = st.layers; sp.style.background = COLORS[i % COLORS.length];
+        sp.textContent = `${st.node === 'local' ? 'host' : st.node} ${st.layers}`; sp.title = `${st.device}: ${st.layers} of ${total} layers`;
+        bar.appendChild(sp);
+      });
+    } else { bar.classList.add('hidden'); }
+    $('sharestate').textContent = s.sharing || '';
+  } catch (e) { say('hoststate', e.message, true); }
+}
+async function act(btn, path, body, out) {
+  btn.disabled = true;
+  try { const r = await api(path, body); if (out) say(out, r.result); return r.result; }
+  catch (e) { if (out) say(out, e.message, true); }
+  finally { btn.disabled = false; refresh(); }
+}
+$('start').onclick = () => act($('start'), '/api/host/start', {}, 'hoststate');
+$('invite').onclick = async () => {
+  const inv = await act($('invite'), '/api/invite', {});
+  if (inv) {
+    try { await navigator.clipboard.writeText(inv); say('invitestate', 'Copied. Send it privately to one friend.'); }
+    catch (_) { say('invitestate', 'Clipboard access was blocked. Allow clipboard access and try again.', true); }
+  }
+};
+$('run').onclick = () => act($('run'), '/api/run', {model: $('model').value}, 'jobstate');
+$('stopm').onclick = () => act($('stopm'), '/api/stop-model', {}, 'jobstate');
+$('joinbtn').onclick = () => act($('joinbtn'), '/api/join', {invite: $('inv').value}, 'sharestate').then(() => { $('inv').value = ''; });
+$('leave').onclick = () => act($('leave'), '/api/leave', {}, 'sharestate');
+$('ask').onclick = async () => {
+  $('answer').textContent = ''; $('speed').textContent = ''; $('ask').disabled = true;
+  try {
+    const r = await fetch('/api/chat', {method: 'POST', headers: {'X-App-Token': T, 'Content-Type': 'application/json'},
+                                        body: JSON.stringify({prompt: $('prompt').value})});
+    const rd = r.body.getReader(), dec = new TextDecoder(); let buf = '';
+    for (;;) {
+      const {value, done} = await rd.read(); if (done) break; buf += dec.decode(value, {stream: true});
+      let i; while ((i = buf.indexOf('\n\n')) >= 0) {
+        const line = buf.slice(0, i).replace(/^data: /, ''); buf = buf.slice(i + 2);
+        try { const ev = JSON.parse(line); if (ev.text) $('answer').textContent += ev.text;
+              if (ev.tok_s) $('speed').textContent = `${ev.tok_s.toFixed(2)} tokens a second, across the pool`; } catch (_) {}
+      }
+    }
+  } catch (e) { say('answer', e.message, true); } finally { $('ask').disabled = false; }
+};
+refresh(); setInterval(refresh, 2500);
+</script>
+</body>
+</html>

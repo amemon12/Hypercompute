@@ -1,0 +1,85 @@
+Hypercompute stress evidence, G14 alone, loopback, 2026-10-21 ~20:39-20:41 UTC
+Gateway: `uv run hypercompute host --no-browser` from C:\Users\operator\hypercompute at dfd8cf9 plus the uncommitted
+test-plan tools. No deployment was active; no model was loaded. Free physical RAM at the time: 8.19 GiB.
+Test IDs refer to docs/TEST_PLAN.md.
+
+== W1 / FI-N11 / P-CONN: 100 idle TCP connections (scripts/stress/hold.py 100 127.0.0.1 8000 12)
+13:40:22 holding 100 idle connections to 127.0.0.1:8000 for 12s
+during hold: health 503
+during hold: health 503
+during hold: health 503
+13:40:34 closed 100 connections
+after close: health 200
+(curl -w "%{http_code}" http://127.0.0.1:8000/api/health; times are the G14's local clock, PDT)
+Verdict: confirmed. 100 idle sockets with no credentials make every request 503 until they close.
+
+== Request bounds and body limits with no deployment (scripts/stress/bounds_probe.py --port 8000)
+deployment active=False ready=False
+ok  plan ctx_size=255                                -> 422 (expect 422)  body.ctx_size:greater_than_equal
+ok  plan ctx_size=256                                -> 200 (expect 200)  None
+ok  plan ctx_size=262144                             -> 200 (expect 200)  None
+ok  plan ctx_size=262145                             -> 422 (expect 422)  body.ctx_size:less_than_equal
+ok  tune max_candidates=0                            -> 422 (expect 422)  body.max_candidates:greater_than_equal
+--  tune max_candidates=1: skipped (would start a tune; run again with a deployment active)
+--  tune max_candidates=8: skipped (would start a tune; run again with a deployment active)
+ok  tune max_candidates=9                            -> 422 (expect 422)  body.max_candidates:less_than_equal
+ok  tune decode_tokens=7                             -> 422 (expect 422)  body.decode_tokens:greater_than_equal
+--  tune decode_tokens=8: skipped (would start a tune; run again with a deployment active)
+--  tune decode_tokens=512: skipped (would start a tune; run again with a deployment active)
+ok  tune decode_tokens=513                           -> 422 (expect 422)  body.decode_tokens:less_than_equal
+ok  tune ctx=256 decode_tokens=193                   -> 422 (expect 422)  bad_request
+ok  bench repetitions=0                              -> 422 (expect 422)  body.repetitions:greater_than_equal
+ok  bench repetitions=20                             -> 503 (expect 503)  no_ready_deployment
+ok  bench repetitions=21                             -> 422 (expect 422)  body.repetitions:less_than_equal
+ok  bench warmup=5                                   -> 503 (expect 503)  no_ready_deployment
+ok  bench warmup=6                                   -> 422 (expect 422)  body.warmup:less_than_equal
+ok  bench max_tokens=0                               -> 422 (expect 422)  body.max_tokens:greater_than_equal
+ok  bench max_tokens=2048                            -> 503 (expect 503)  no_ready_deployment
+ok  bench max_tokens=2049                            -> 422 (expect 422)  body.max_tokens:less_than_equal
+ok  bench label=80                                   -> 503 (expect 503)  no_ready_deployment
+ok  bench label=81                                   -> 422 (expect 422)  body.label:string_too_long
+ok  session name len=81                              -> 422 (expect 422)  body.name:string_too_long
+ok  runs limit=0    -> 200 returned 1 (cap 1)
+ok  runs limit=1    -> 200 returned 1 (cap 1)
+ok  runs limit=500  -> 200 returned 301 (cap 500)
+ok  runs limit=501  -> 200 returned 301 (cap 500)
+ok  join code len=3                                  -> 422 (expect 422)  body.code:string_too_short;body.node_id:missing
+ok  join code len=33                                 -> 422 (expect 422)  body.code:string_too_long;body.node_id:missing
+ok  /api/plans body=65536                            -> 422 (expect 400/403/422/503)  body.model_id:missing;body.pad:extra_forbidden
+ok  /api/plans body=65537                            -> 413 (expect 413)  body_too_large
+ok  /api/plans chunked body=65537                    -> 413 (expect 413)  body_too_large
+ok  /api/sessions/join body=262144                   -> 422 (expect 400/403/422/503)  body.code:missing;body.node_id:missing
+ok  /api/sessions/join body=262145                   -> 413 (expect 413)  body_too_large
+ok  /api/sessions/join chunked body=262145           -> 413 (expect 413)  body_too_large
+ok  /v1/chat/completions body=4194304                -> 400 (expect 400/403/422/503)  bad_request
+ok  /v1/chat/completions body=4194305                -> 413 (expect 413)  body_too_large
+ok  /v1/chat/completions chunked body=4194305        -> 413 (expect 413)  body_too_large
+Verdict: the no-deployment half passes. The tune at-limit values still need a run with a deployment active.
+Note: ctx_size 262144 is accepted for any model (W8: not capped at the model's trained context).
+
+== Q-M7 (K4): free host RAM decides the tier (scripts/e2e_check.py --model qwen2.5-14b-instruct-q6_k --strategy auto --plan-only)
+plan llama_rpc/gpu_disk estimated_fit feasible=True model=qwen2.5-14b-instruct-q6_k devices=['CUDA0'] split=[45] cpu_layers=4 ngl=45
+  CPU: 4 layers, 0.30 of 1.00 GiB
+  CUDA0: 44 layers + head, 11.15 of 11.16 GiB
+  - capacity mode: 4 of 48 layers (~862 MiB) run on this machine's CPU straight from the GGUF on disk, because they
+    do not fit in the ~1.0 GiB of free RAM left for CPU layers. Every token re-reads the evicted part from disk, so
+    expect seconds per token, far slower than the RAM tier.
+Full plan: results/plans/20261021T203914Z-auto-verify-plan-only.json
+Verdict: the planner saw 8,518 MiB available (psutil; PowerShell read 8.19 GiB free just before). CPU budget =
+8,518 - 6,373 reserve - 512 safety - 609 token embeddings = 1,024 MiB, below the 1.14 GiB the 4 CPU layers need, so
+the same 4-layer placement that ran at 26.7 tok/s on the RAM tier is now labeled capacity mode with a "seconds per
+token" warning.
+
+== Selector swap (scripts/e2e_check.py --model qwen2.5-7b-instruct-q4_k_m --strategy auto --objective throughput --plan-only)
+plan vllm/gpu estimated_fit feasible=True model=qwen2.5-7b-instruct-awq devices=[] split=[] cpu_layers=0 ngl=None
+  CUDA0: 28 layers + head, 10.63 of 10.66 GiB
+  - vLLM serves qwen2.5-7b-instruct-awq (a different model id than qwen2.5-7b-instruct-q4_k_m) for objective=throughput
+Full plan: results/plans/20261021T203916Z-auto-verify-swap.json
+Before this change e2e_check sent "model": "qwen2.5-7b-instruct-q4_k_m" in its chat, which the gateway refuses with
+404 model_not_found once the plan serves the AWQ id; it now sends the plan's model id.
+
+== Tool check against the idle gateway
+flood.py -n 3 --body p2k.json (mkprompt.py 2000):  status=503 code=no_ready_deployment: 3
+flood.py -n 2 --no-stream:                         status=503 code=no_ready_deployment: 2
+failures_load.py chats --n 2 --max-tokens 8:        outcomes {"http_503": 2}
+Before the fix, flood.py crashed with httpx.StreamConsumed on any streamed refusal (it read the body twice).

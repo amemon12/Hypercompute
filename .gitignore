@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+dist/
+build/
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+# Model weights, engines and runtime state never belong in git
+*.gguf
+*.safetensors
+.hypercompute/
+configs/models.yaml
+configs/profiles.yaml
+
+# Secrets
+.env
+*.key
+*.pem

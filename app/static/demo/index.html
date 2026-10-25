@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4efe5">
+  <title>Your pool · Hypercompute</title>
+  <link rel="icon" href="/brand/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/brand/fonts/fonts.css">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/demo.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to the session</a>
+  <header class="masthead">
+    <a class="wordmark" href="/" aria-label="Hypercompute home">hypercompute</a>
+    <span class="edition">Demo session</span>
+  </header>
+  <main id="main">
+    <div id="host-view">
+      <div class="intro">
+        <h1>Your pool.</h1>
+        <p>One model, shared across your computers.</p>
+      </div>
+
+      <section class="hosting-row" aria-labelledby="hosting-title">
+        <div><h2 id="hosting-title">Host a session</h2><p id="hosting-help">Turn on hosting to get started.</p></div>
+        <div class="switch-control"><span id="hosting-label">Off</span><button id="hosting" class="switch" role="switch" aria-checked="false" aria-label="Hosting" disabled><span></span></button></div>
+      </section>
+
+      <section class="invite-row" aria-labelledby="invite-title">
+        <h2 id="invite-title">Invite a friend</h2>
+        <div class="invite-actions"><button id="copy-link" class="button secondary" disabled><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M12 7V3H3v9h4"/></svg><span>Copy invite</span></button><div class="invite-details"><span id="join-code" class="join-code" hidden></span><p id="invite-help" aria-live="polite">Available when hosting is on.</p></div></div>
+      </section>
+
+      <section class="pool-section" aria-labelledby="pool-title">
+        <div class="section-heading"><h2 id="pool-title">The pool</h2><span id="pool-state" class="mono" role="status">Not connected</span></div>
+        <div class="pool-layout">
+          <div class="computers live-computers" id="computers" aria-label="Computers in the pool"></div>
+          <div class="resources">
+            <span class="mono">Memory in the pool</span>
+            <div class="memory-total"><span id="memory-total">0</span><span>GiB</span></div>
+            <div class="memory-track" id="memory-track" aria-hidden="true"></div>
+            <dl id="memory-breakdown"></dl>
+            <p id="resource-state" class="resource-note">Start a session to add memory.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="model-section" aria-labelledby="model-title">
+        <div class="section-heading model-heading"><div><h2 id="model-title">DeepSeek 671B</h2><p class="mono" id="model-detail">61 layers <span class="separator">/</span> Demo model</p></div><span id="model-state" class="model-state" role="status">Waiting for the pool</span></div>
+        <div class="layers" id="layers" role="img" aria-label="61 layers, not allocated"></div>
+        <div class="layer-legend" id="layer-legend"><span id="host-layers">Layer allocation appears here</span><span id="friend-layers"></span></div>
+      </section>
+
+      <section class="chat-section" aria-labelledby="chat-title">
+        <div class="section-heading"><h2 id="chat-title">Ask the model</h2><span id="chat-state" class="mono" role="status">Available after loading</span></div>
+        <form id="chat-form"><label class="sr-only" for="prompt">Your question</label><input id="prompt" value="Why split a model across computers?" maxlength="500" autocomplete="off" disabled><button class="button primary" id="ask" type="submit" disabled>Ask <span aria-hidden="true">↗</span></button></form>
+        <div class="suggestions"><button disabled data-prompt="Why split a model across computers?">Why split a model?</button><button disabled data-prompt="What does each computer do?">What does each computer do?</button></div>
+        <div class="response" id="response" aria-live="polite" aria-atomic="true" hidden><span class="mono">DeepSeek 671B <span class="separator">/</span> Demo response</span><p id="answer"></p></div>
+      </section>
+    </div>
+
+    <div id="join-view" hidden>
+      <div class="intro"><span class="eyebrow mono">You're invited</span><h1>Join the pool.</h1><p>Add your MacBook to the session.</p></div>
+      <div class="join-device"><svg viewBox="0 0 120 94" aria-hidden="true"><rect class="case" x="15" y="21" width="90" height="62" rx="3"/><rect class="screen" x="20" y="26" width="80" height="52" rx="1"/><path class="case" d="M5 84h110v3c0 4-6 6-11 6H16C11 93 5 91 5 87z"/><path d="M47 84h26l-3 3H50z"/></svg><h2 id="joining-name">MacBook Air</h2><p id="joining-spec">Apple M4 · 16 GB unified memory</p><span class="mono">Sample device for this demo</span></div>
+      <form id="join-form"><label for="code-input" class="sr-only">Session code</label><input id="code-input" class="code-input" maxlength="6" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Session code" aria-describedby="join-state" required><button id="join-button" class="button primary" disabled>Join session <span aria-hidden="true">↗</span></button></form><p id="join-state" role="status">Enter the code your friend shared.</p>
+    </div>
+    <p id="connection-error" role="alert" hidden></p>
+  </main>
+  <footer><span id="source-note">Simulated hardware, layer allocation and responses. Joining is shared between browsers.</span><span id="reset-note">Turn hosting off to reset.</span></footer>
+</body>
+</html>

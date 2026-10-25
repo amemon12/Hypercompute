@@ -1,0 +1,34 @@
+[
+ {
+  "node_id": "4c2991743c154be896d10a0b53ba4d2b",
+  "device": "MTL0",
+  "layers": 6
+ },
+ {
+  "node_id": "6dad6cf75b2e4cf197b7bc7f4d0a67e4",
+  "device": "MTL0",
+  "layers": 3
+ },
+ {
+  "node_id": "d4e65f83c4be4a41aad722e40983b08b",
+  "device": "MTL0",
+  "layers": 4
+ },
+ {
+  "node_id": "6dad6cf75b2e4cf197b7bc7f4d0a67e4",
+  "device": "CPU",
+  "layers": 4,
+  "residency": "file_backed"
+ },
+ {
+  "node_id": "d4e65f83c4be4a41aad722e40983b08b",
+  "device": "CPU",
+  "layers": 4,
+  "residency": "file_backed"
+ },
+ {
+  "node_id": "local",
+  "device": "CUDA0",
+  "layers": 40
+ }
+]

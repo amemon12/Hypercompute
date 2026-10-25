@@ -1,0 +1,7 @@
+# The prebuilt patched library ships with the branch so a Mac needs no toolchain; the release copy and the
+# downloaded archive used to build and check it stay local.
+!build/
+build/*
+!build/libggml-rpc.dylib
+!build/libggml-rpc.dylib.sha256
+!build/build.json

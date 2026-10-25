@@ -1,0 +1,70 @@
+Hypercompute landing page | photo credits
+
+Jensen Huang
+Photo by Anders Eidesvik.
+Source: https://commons.wikimedia.org/wiki/File:Jensen_huang_stanford_2026-04-30_010.jpg
+License: CC BY-SA 4.0 | https://creativecommons.org/licenses/by-sa/4.0/
+Asset: jensen-huang.jpg
+
+Kurt Akeley
+Photo by Khronos Group / Neil Trevett.
+Source: https://commons.wikimedia.org/wiki/File:Kurt_Akeley_at_SIGGRAPH_2012.jpg
+License: CC BY-SA 2.0 | https://creativecommons.org/licenses/by-sa/2.0/
+Asset: kurt-akeley.jpg
+
+Pat Hanrahan
+Photo by Francois Lamotte.
+Source: https://commons.wikimedia.org/wiki/File:Pat_Hanrahan_Tableau_Customer_Conference_2009.jpg
+License: CC BY 2.0 | https://creativecommons.org/licenses/by/2.0/
+Asset: pat-hanrahan.jpg
+
+Lisa Su
+Photo by Andrew Lih / Fuzheado.
+Source: https://commons.wikimedia.org/wiki/File:SXSW-2024-alih-OB7A0861-Lisa_Su_%28cropped_2%29.jpg
+License: CC BY 4.0 | https://creativecommons.org/licenses/by/4.0/
+Asset: lisa-su.jpg
+
+Chris Malachowsky
+Photo by Maryland GovPics / Polly Irungu.
+Source: https://commons.wikimedia.org/wiki/File:Chris_Malachowsky_%2854986972670%29.jpg
+License: CC BY 4.0 | https://creativecommons.org/licenses/by/4.0/
+Asset: chris-malachowsky.jpg
+
+Bill Dally
+Photo by The White House.
+Source: https://commons.wikimedia.org/wiki/File:William_Dally%2C_PCAST_Member_%28cropped%29.jpg
+License: Public domain | https://commons.wikimedia.org/wiki/Template:PD-USGov-POTUS
+Asset: bill-dally.jpg
+
+Photos are cropped within lettering and rendered in grayscale by the webpage. Licensed photo adaptations retain their respective licenses; the public-domain photo remains public domain. The bundled source photographs are unchanged.
+
+The GPU illustration (gpu-clean-v2.webp) and logo (hypercompute-logo.webp) were copied byte for byte from the approved local design preview. The logo was supplied by the project owner.
+
+
+Additional documentary photographs for the footer collage
+
+Jensen Huang signing a computer chip at Stanford University, 30 April 2026
+Photo by Anders Eidesvik (Anderseidesvik).
+Source: https://commons.wikimedia.org/wiki/File:Jensen_huang_stanford_2026-04-30_004.jpg
+License: CC BY-SA 4.0 | https://creativecommons.org/licenses/by-sa/4.0/
+Asset: jensen-huang-chip-signing.jpg
+
+NVIDIA keynote at CES 2025, Michelob Ultra Arena, 6 January 2025
+Photo by Joseph Zadeh.
+Source: https://commons.wikimedia.org/wiki/File:Jensen_Huang_Nvidia_Keynote_CES_2025.jpg
+License: CC BY-SA 4.0 | https://creativecommons.org/licenses/by-sa/4.0/
+Asset: jensen-huang-ces-2025.jpg
+
+Lisa Su speaking about the Frontier supercomputer at Oak Ridge National Laboratory, 7 May 2019
+Photo by Genevieve Martin, OLCF at ORNL.
+Source: https://commons.wikimedia.org/wiki/File:AMD_CEO_Lisa_Su_speaking_at_ORNL_2019-05-07.jpg
+License: CC BY 2.0 | https://creativecommons.org/licenses/by/2.0/
+Asset: lisa-su-frontier-2019.jpg
+
+Ivan Sutherland at his 70th birthday celebration at the Computer History Museum, 22 May 2008
+Photo by Dick Lyon.
+Source: https://commons.wikimedia.org/wiki/File:Ivan_Sutherland_at_CHM.jpg
+License selected: CC BY-SA 3.0 | https://creativecommons.org/licenses/by-sa/3.0/
+Asset: ivan-sutherland-chm.jpg
+
+These source photographs are unchanged downloads from Wikimedia Commons. Display cropping and grayscale may be applied by the webpage; photo adaptations retain their respective licenses.

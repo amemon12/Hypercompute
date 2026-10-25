@@ -1,0 +1,4 @@
+CONTENT: Mixture‑of‑Experts (MoE) is a neural‑network architecture that contains many “expert” sub‑models, each specialized on a subset of the input space, and a lightweight gating network that, for each input, selects (or softly weights) a small subset of those experts to produce the final output. This design lets the overall system scale to billions of parameters while keeping inference cost low, because only a few experts are activated per example.
+REASONING: Need concise explanation.
+TIMINGS: {"cache_n": 0, "prompt_n": 76, "prompt_ms": 69217.509, "prompt_per_token_ms": 910.7566973684211, "prompt_per_second": 1.0979880827551884, "predicted_n": 106, "predicted_ms": 40655.544, "predicted_per_token_ms": 387.19565714285716, "predicted_per_second": 2.582673595512582}
+USAGE: {"completion_tokens": 106, "prompt_tokens": 76, "total_tokens": 182, "prompt_tokens_details": {"cached_tokens": 0}}

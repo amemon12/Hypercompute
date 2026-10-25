@@ -1,0 +1,53 @@
+--- a/ggml/src/ggml-rpc/ggml-rpc.cpp
++++ b/ggml/src/ggml-rpc/ggml-rpc.cpp
+@@ -4,6 +4,7 @@
+ #include "ggml-cpp.h"
+ #include "transport.h"
+ #include "log.h"
++#include "hcpeer.h"
+ 
+ #include <array>
+ #include <chrono>
+@@ -1528,6 +1529,7 @@
+     }
+     ggml_backend_buffer_type_t buft = ggml_backend_get_default_buffer_type(backends[dev_id]);
+     size_t alignment = ggml_backend_buft_get_alignment(buft);
++    alignment = hcpeer_alignment(buft, alignment, cache_dir != nullptr);
+     LOG_DBG2("[%s] device: %u, alignment: %s\n", __func__, dev_id, rpc_log_format_size(alignment).c_str());
+     response.alignment = alignment;
+     return true;
+@@ -1743,6 +1745,14 @@
+         uint64_t hash = fnv_hash((const uint8_t*)data, size);
+         char hash_str[17];
+         snprintf(hash_str, sizeof(hash_str), "%016" PRIx64, hash);
++        const int hc = hcpeer_save_cached(tensor, offset, data, size, cache_dir, hash_str);
++        if (hc == HCPEER_DONE) {
++            return true;
++        }
++        if (hc == HCPEER_COPY) {
++            ggml_backend_tensor_set(tensor, data, offset, size);
++            return true;
++        }
+         // save to cache_dir/hash_str
+         fs::path cache_file = fs::path(cache_dir) / hash_str;
+         std::ofstream ofs(cache_file, std::ios::binary);
+@@ -1852,6 +1862,11 @@
+         return false;
+     }
+ 
++    const int hc = hcpeer_map_cached(tensor, request.offset, cache_dir, request.hash);
++    if (hc != HCPEER_STOCK) {
++        response.result = hc == HCPEER_DONE ? 1 : 0;
++        return true;
++    }
+     std::vector<uint8_t> cached_file;
+     if (!get_cached_file(request.hash, cached_file)) {
+         LOG_DBG2("[%s] tensor: %s, offset: %" PRIu64 ", hash: 0x%" PRIx64 ", cache miss\n",
+@@ -2772,6 +2787,7 @@
+         RPC_PROTO_PATCH_VERSION);
+     LOG_INFO("  endpoint       : %s\n", endpoint);
+     LOG_INFO("  local cache    : %s\n", cache_dir ? cache_dir : "n/a");
++    hcpeer_log_banner(cache_dir);
+     LOG_INFO("Devices:\n");
+     for (size_t i = 0; i < n_devices; i++) {
+         auto dev = devices[i];

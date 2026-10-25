@@ -1,0 +1,32 @@
+{
+  "verified": true,
+  "captured_at": "2026-10-25T14:12:59.302038+00:00",
+  "model": "DeepSeek V3.1 671B",
+  "model_id": "deepseek-v3.1-ud-tq1_0",
+  "state": "ready",
+  "tier": "moe_offload",
+  "stages": [
+    {
+      "node": "g14",
+      "label": "GeForce RTX 5070 Ti",
+      "layers": 3
+    },
+    {
+      "node": "mac-b",
+      "label": "Second MacBook",
+      "layers": 2
+    },
+    {
+      "node": "mac-a",
+      "label": "MacBook Air",
+      "layers": 2
+    },
+    {
+      "node": "local",
+      "label": "GX10",
+      "layers": 54
+    }
+  ],
+  "total_layers": 61,
+  "note": "Previously loaded deployment; the local demo uses a separate simulated allocation."
+}
